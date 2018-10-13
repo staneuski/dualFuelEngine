@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# Путь к проекту
+cd /Volumes/HDD/OpenFOAM
+cd twoFuelEngine # вставить название папки проекта
+cd geometry/
+
+# Открытие файлов .stl
+open *.stl &
+
+##################################################
+osascript -e 'tell application "Terminal" to quit'

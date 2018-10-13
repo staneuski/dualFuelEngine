@@ -1,0 +1,151 @@
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  6
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 6-1a0c91b3baa8
+Exec   : refineMesh -overwrite
+Date   : Oct 11 2018
+Time   : 01:51:19
+Host   : "ubuntu"
+PID    : 22273
+I/O    : uncollated
+Case   : /media/psf/HDD/OpenFOAM/twoFuelEngine/case
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create polyMesh for time = 0
+
+Mesh edge statistics:
+    x aligned :  number:3510	minLen:0.1	maxLen:0.1
+    y aligned :  number:3510	minLen:0.1	maxLen:0.1
+    z aligned :  number:3816	minLen:0.1	maxLen:0.1
+    other     :  number:0	minLen:4.5036e+15	maxLen:-4.5036e+15
+
+Refinement dictionary refineMeshDict not found
+Refining all cells
+
+3D case; refining all directions
+
+Writing refined cells (24232) to cellSet "constant/polyMesh/sets/refinedCells"
+
+Writing map from new to old cell to "/media/psf/HDD/OpenFOAM/twoFuelEngine/case/0/polyMesh/cellMap"
+
+Mesh edge statistics:
+    x aligned :  number:26148	minLen:0.05	maxLen:0.05
+    y aligned :  number:26148	minLen:0.05	maxLen:0.05
+    z aligned :  number:27290	minLen:0.05	maxLen:0.05
+    other     :  number:0	minLen:4.5036e+15	maxLen:-4.5036e+15
+
+End
+
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  6
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 6-1a0c91b3baa8
+Exec   : potentialFoam
+Date   : Oct 11 2018
+Time   : 01:51:19
+Host   : "ubuntu"
+PID    : 22275
+I/O    : uncollated
+Case   : /media/psf/HDD/OpenFOAM/twoFuelEngine/case
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+Reading velocity field U
+
+Constructing pressure field p
+
+Constructing velocity potential field Phi
+
+--> FOAM Warning : 
+    From function bool Foam::IOobject::typeHeaderOk(bool) [with Type = Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>]
+    in file /home/ubuntu/OpenFOAM/OpenFOAM-6/src/OpenFOAM/lnInclude/IOobjectTemplates.C at line 57
+    unexpected class name surfaceScalarField expected volScalarField when reading "/media/psf/HDD/OpenFOAM/twoFuelEngine/case/0/Phi"
+No MRF models present
+
+
+Calculating potential flow
+GAMG:  Solving for Phi, Initial residual = 1, Final residual = 0.00949354, No Iterations 8
+GAMG:  Solving for Phi, Initial residual = 0.000322976, Final residual = 2.50352e-06, No Iterations 7
+GAMG:  Solving for Phi, Initial residual = 2.5007e-06, Final residual = 6.1427e-07, No Iterations 2
+GAMG:  Solving for Phi, Initial residual = 6.14268e-07, Final residual = 6.14268e-07, No Iterations 0
+Continuity error = 2.8645e-06
+Interpolated velocity error = 0.000107694
+ExecutionTime = 0.49 s  ClockTime = 1 s
+
+End
+
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  6
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 6-1a0c91b3baa8
+Exec   : foamToVTK
+Date   : Oct 11 2018
+Time   : 01:51:20
+Host   : "ubuntu"
+PID    : 22280
+I/O    : uncollated
+Case   : /media/psf/HDD/OpenFOAM/twoFuelEngine/case
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+Deleting old VTK files in "/media/psf/HDD/OpenFOAM/twoFuelEngine/case/VTK"
+
+Time: 0
+    volScalarFields            : p
+    volVectorFields            : U
+
+    Internal  : "/media/psf/HDD/OpenFOAM/twoFuelEngine/case/VTK/case_0.vtk"
+    Original cells:24232 points:27732   Additional cells:0  additional points:0
+
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/case/VTK/inletXMinus/inletXMinus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/case/VTK/inletXPlus/inletXPlus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/case/VTK/inletYMinus/inletYMinus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/case/VTK/inletYPlus/inletYPlus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/case/VTK/outlet/outlet_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/case/VTK/valve/valve_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/case/VTK/walls/walls_0.vtk"
+    surfScalarFields  : phi
+End
+
+-ne 
+TK/inletXPlus/inletXPlus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/case/VTK/inletYMinus/inletYMinus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/case/VTK/inletYPlus/inletYPlus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/case/VTK/outlet/outlet_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/case/VTK/valve/valve_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/case/VTK/walls/walls_0.vtk"
+    surfScalarFields  : phi
+End
+
