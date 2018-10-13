@@ -18,6 +18,15 @@ cp -r ../mesh/constant/polyMesh constant
 # potentialFoam
 multicompCompressFluid
 
-foamToVTK # конвертирование решенной задачи в формат VTK
+# Конвертировние и операции для просмотра решённой задачи
+foamToVTK # конвертирование в формат VTK
 
+# Перемещение файлов расчёта в папку 1 для возможности открытия в solved.foam
+mkdir 1
+mv 0/U 1
+mv 0/phi 1
+
+
+
+# ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 echo -ne '\007' # звуковой сигнал при выполнении задачи

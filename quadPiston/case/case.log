@@ -6,13 +6,13 @@
      \\/     M anipulation  |
 \*---------------------------------------------------------------------------*/
 Build  : 6-1a0c91b3baa8
-Exec   : potentialFoam
+Exec   : multicompCompressFluid
 Date   : Oct 13 2018
-Time   : 18:10:40
+Time   : 20:46:22
 Host   : "ubuntu"
-PID    : 11757
+PID    : 7565
 I/O    : uncollated
-Case   : /media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case
+Case   : /media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case
 nProcs : 1
 sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
 fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
@@ -39,7 +39,7 @@ GAMG:  Solving for Phi, Initial residual = 8.02629e-07, Final residual = 8.02629
 GAMG:  Solving for Phi, Initial residual = 8.02629e-07, Final residual = 8.02629e-07, No Iterations 0
 Continuity error = 1.2164e-05
 Interpolated velocity error = 0.000561937
-ExecutionTime = 0.09 s  ClockTime = 0 s
+ExecutionTime = 0.09 s  ClockTime = 1 s
 
 End
 
@@ -53,11 +53,11 @@ End
 Build  : 6-1a0c91b3baa8
 Exec   : foamToVTK
 Date   : Oct 13 2018
-Time   : 18:10:41
+Time   : 20:46:23
 Host   : "ubuntu"
-PID    : 11759
+PID    : 7567
 I/O    : uncollated
-Case   : /media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case
+Case   : /media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case
 nProcs : 1
 sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
 fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
@@ -68,35 +68,35 @@ Create time
 
 Create mesh for time = 0
 
-Deleting old VTK files in "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK"
+Deleting old VTK files in "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK"
 
 Time: 0
     volScalarFields            : p
     volVectorFields            : U
 
-    Internal  : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/case_0.vtk"
+    Internal  : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/case_0.vtk"
     Original cells:3029 points:3932   Additional cells:0  additional points:0
 
-    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/injectionXMinus/injectionXMinus_0.vtk"
-    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/injectionXPlus/injectionXPlus_0.vtk"
-    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/injectionYMinus/injectionYMinus_0.vtk"
-    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/injectionYPlus/injectionYPlus_0.vtk"
-    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/inletXMinus/inletXMinus_0.vtk"
-    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/inletXPlus/inletXPlus_0.vtk"
-    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/inletYMinus/inletYMinus_0.vtk"
-    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/inletYPlus/inletYPlus_0.vtk"
-    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/outlet/outlet_0.vtk"
-    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/valve/valve_0.vtk"
-    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/walls/walls_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/injectionXMinus/injectionXMinus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/injectionXPlus/injectionXPlus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/injectionYMinus/injectionYMinus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/injectionYPlus/injectionYPlus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/inletXMinus/inletXMinus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/inletXPlus/inletXPlus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/inletYMinus/inletYMinus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/inletYPlus/inletYPlus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/outlet/outlet_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/valve/valve_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/walls/walls_0.vtk"
     surfScalarFields  : phi
 End
 
 -ne 
-/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/inletYMinus/inletYMinus_0.vtk"
-    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/inletYPlus/inletYPlus_0.vtk"
-    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/outlet/outlet_0.vtk"
-    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/valve/valve_0.vtk"
-    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/walls/walls_0.vtk"
+ "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/inletYMinus/inletYMinus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/inletYPlus/inletYPlus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/outlet/outlet_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/valve/valve_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/walls/walls_0.vtk"
     surfScalarFields  : phi
 End
 
@@ -109,12 +109,466 @@ End
 \*---------------------------------------------------------------------------*/
 Build  : 6-1a0c91b3baa8
 Exec   : multicompCompressFluid
-Date   : Oct 13 2018
-Time   : 18:21:04
+Date   : Oct 14 2018
+Time   : 02:10:21
 Host   : "ubuntu"
-PID    : 13632
+PID    : 3535
 I/O    : uncollated
-Case   : /media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case
+Case   : /media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 1
+
+Reading velocity field U
+
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  6
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 6-1a0c91b3baa8
+Exec   : foamToVTK
+Date   : Oct 14 2018
+Time   : 02:10:22
+Host   : "ubuntu"
+PID    : 3539
+I/O    : uncollated
+Case   : /media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+Deleting old VTK files in "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK"
+
+Time: 0
+    volScalarFields            : p
+    volVectorFields            : U
+
+    Internal  : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/case_0.vtk"
+    Original cells:3029 points:3932   Additional cells:0  additional points:0
+
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/injectionXMinus/injectionXMinus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/injectionXPlus/injectionXPlus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/injectionYMinus/injectionYMinus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/injectionYPlus/injectionYPlus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/inletXMinus/inletXMinus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/inletXPlus/inletXPlus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/inletYMinus/inletYMinus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/inletYPlus/inletYPlus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/outlet/outlet_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/valve/valve_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/walls/walls_0.vtk"
+Time: 1
+
+    Internal  : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/case_1.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/injectionXMinus/injectionXMinus_1.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/injectionXPlus/injectionXPlus_1.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/injectionYMinus/injectionYMinus_1.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/injectionYPlus/injectionYPlus_1.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/inletXMinus/inletXMinus_1.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/inletXPlus/inletXPlus_1.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/inletYMinus/inletYMinus_1.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/inletYPlus/inletYPlus_1.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/outlet/outlet_1.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/valve/valve_1.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/walls/walls_1.vtk"
+    surfScalarFields  : phi
+End
+
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  6
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 6-1a0c91b3baa8
+Exec   : multicompCompressFluid
+Date   : Oct 14 2018
+Time   : 02:11:46
+Host   : "ubuntu"
+PID    : 3913
+I/O    : uncollated
+Case   : /media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 1
+
+Reading velocity field U
+
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  6
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 6-1a0c91b3baa8
+Exec   : foamToVTK
+Date   : Oct 14 2018
+Time   : 02:11:46
+Host   : "ubuntu"
+PID    : 3917
+I/O    : uncollated
+Case   : /media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+Deleting old VTK files in "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK"
+
+Time: 0
+    volScalarFields            : p
+    volVectorFields            : U
+
+    Internal  : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/case_0.vtk"
+    Original cells:3029 points:3932   Additional cells:0  additional points:0
+
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/injectionXMinus/injectionXMinus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/injectionXPlus/injectionXPlus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/injectionYMinus/injectionYMinus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/injectionYPlus/injectionYPlus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/inletXMinus/inletXMinus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/inletXPlus/inletXPlus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/inletYMinus/inletYMinus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/inletYPlus/inletYPlus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/outlet/outlet_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/valve/valve_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/walls/walls_0.vtk"
+Time: 1
+
+    Internal  : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/case_1.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/injectionXMinus/injectionXMinus_1.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/injectionXPlus/injectionXPlus_1.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/injectionYMinus/injectionYMinus_1.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/injectionYPlus/injectionYPlus_1.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/inletXMinus/inletXMinus_1.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/inletXPlus/inletXPlus_1.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/inletYMinus/inletYMinus_1.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/inletYPlus/inletYPlus_1.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/outlet/outlet_1.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/valve/valve_1.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/walls/walls_1.vtk"
+End
+
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  6
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 6-1a0c91b3baa8
+Exec   : multicompCompressFluid
+Date   : Oct 14 2018
+Time   : 02:12:41
+Host   : "ubuntu"
+PID    : 4080
+I/O    : uncollated
+Case   : /media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 1
+
+Reading velocity field U
+
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  6
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 6-1a0c91b3baa8
+Exec   : foamToVTK
+Date   : Oct 14 2018
+Time   : 02:12:41
+Host   : "ubuntu"
+PID    : 4085
+I/O    : uncollated
+Case   : /media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+Deleting old VTK files in "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK"
+
+Time: 0
+    volScalarFields            : p
+    volVectorFields            : U
+
+    Internal  : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/case_0.vtk"
+    Original cells:3029 points:3932   Additional cells:0  additional points:0
+
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/injectionXMinus/injectionXMinus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/injectionXPlus/injectionXPlus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/injectionYMinus/injectionYMinus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/injectionYPlus/injectionYPlus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/inletXMinus/inletXMinus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/inletXPlus/inletXPlus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/inletYMinus/inletYMinus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/inletYPlus/inletYPlus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/outlet/outlet_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/valve/valve_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/walls/walls_0.vtk"
+Time: 1
+
+    Internal  : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/case_1.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/injectionXMinus/injectionXMinus_1.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/injectionXPlus/injectionXPlus_1.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/injectionYMinus/injectionYMinus_1.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/injectionYPlus/injectionYPlus_1.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/inletXMinus/inletXMinus_1.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/inletXPlus/inletXPlus_1.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/inletYMinus/inletYMinus_1.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/inletYPlus/inletYPlus_1.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/outlet/outlet_1.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/valve/valve_1.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/walls/walls_1.vtk"
+End
+
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  6
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 6-1a0c91b3baa8
+Exec   : multicompCompressFluid
+Date   : Oct 14 2018
+Time   : 02:13:29
+Host   : "ubuntu"
+PID    : 4224
+I/O    : uncollated
+Case   : /media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+Reading velocity field U
+
+Constructing pressure field p
+
+Constructing velocity potential field Phi
+
+No MRF models present
+
+
+Calculating potential flow
+GAMG:  Solving for Phi, Initial residual = 1, Final residual = 0.00875248, No Iterations 8
+GAMG:  Solving for Phi, Initial residual = 0.000122335, Final residual = 8.04666e-07, No Iterations 7
+GAMG:  Solving for Phi, Initial residual = 8.02629e-07, Final residual = 8.02629e-07, No Iterations 0
+GAMG:  Solving for Phi, Initial residual = 8.02629e-07, Final residual = 8.02629e-07, No Iterations 0
+Continuity error = 1.2164e-05
+Interpolated velocity error = 0.000561937
+ExecutionTime = 0.08 s  ClockTime = 0 s
+
+End
+
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  6
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 6-1a0c91b3baa8
+Exec   : foamToVTK
+Date   : Oct 14 2018
+Time   : 02:13:29
+Host   : "ubuntu"
+PID    : 4226
+I/O    : uncollated
+Case   : /media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+Deleting old VTK files in "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK"
+
+Time: 0
+    volScalarFields            : p
+    volVectorFields            : U
+
+    Internal  : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/case_0.vtk"
+    Original cells:3029 points:3932   Additional cells:0  additional points:0
+
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/injectionXMinus/injectionXMinus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/injectionXPlus/injectionXPlus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/injectionYMinus/injectionYMinus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/injectionYPlus/injectionYPlus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/inletXMinus/inletXMinus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/inletXPlus/inletXPlus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/inletYMinus/inletYMinus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/inletYPlus/inletYPlus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/outlet/outlet_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/valve/valve_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/walls/walls_0.vtk"
+    surfScalarFields  : phi
+End
+
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  6
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 6-1a0c91b3baa8
+Exec   : multicompCompressFluid
+Date   : Oct 14 2018
+Time   : 02:15:05
+Host   : "ubuntu"
+PID    : 4528
+I/O    : uncollated
+Case   : /media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+Reading velocity field U
+
+Constructing pressure field p
+
+Constructing velocity potential field Phi
+
+--> FOAM Warning : 
+    From function bool Foam::IOobject::typeHeaderOk(bool) [with Type = Foam::GeometricField<double, Foam::fvPatchField, Foam::volMesh>]
+    in file /opt/openfoam6/src/OpenFOAM/lnInclude/IOobjectTemplates.C at line 57
+    unexpected class name surfaceScalarField expected volScalarField when reading "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/0/Phi"
+No MRF models present
+
+
+Calculating potential flow
+GAMG:  Solving for Phi, Initial residual = 1, Final residual = 0.00875248, No Iterations 8
+GAMG:  Solving for Phi, Initial residual = 0.000122335, Final residual = 8.04666e-07, No Iterations 7
+GAMG:  Solving for Phi, Initial residual = 8.02629e-07, Final residual = 8.02629e-07, No Iterations 0
+GAMG:  Solving for Phi, Initial residual = 8.02629e-07, Final residual = 8.02629e-07, No Iterations 0
+Continuity error = 1.2164e-05
+Interpolated velocity error = 0.000561937
+ExecutionTime = 0.08 s  ClockTime = 0 s
+
+End
+
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  6
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 6-1a0c91b3baa8
+Exec   : foamToVTK
+Date   : Oct 14 2018
+Time   : 02:15:05
+Host   : "ubuntu"
+PID    : 4532
+I/O    : uncollated
+Case   : /media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+Deleting old VTK files in "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK"
+
+Time: 0
+    volScalarFields            : p
+    volVectorFields            : U
+
+    Internal  : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/case_0.vtk"
+    Original cells:3029 points:3932   Additional cells:0  additional points:0
+
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/injectionXMinus/injectionXMinus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/injectionXPlus/injectionXPlus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/injectionYMinus/injectionYMinus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/injectionYPlus/injectionYPlus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/inletXMinus/inletXMinus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/inletXPlus/inletXPlus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/inletYMinus/inletYMinus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/inletYPlus/inletYPlus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/outlet/outlet_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/valve/valve_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/walls/walls_0.vtk"
+End
+
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  6
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 6-1a0c91b3baa8
+Exec   : multicompCompressFluid
+Date   : Oct 14 2018
+Time   : 02:16:15
+Host   : "ubuntu"
+PID    : 4739
+I/O    : uncollated
+Case   : /media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case
 nProcs : 1
 sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
 fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
@@ -154,12 +608,12 @@ End
 \*---------------------------------------------------------------------------*/
 Build  : 6-1a0c91b3baa8
 Exec   : foamToVTK
-Date   : Oct 13 2018
-Time   : 18:21:04
+Date   : Oct 14 2018
+Time   : 02:16:15
 Host   : "ubuntu"
-PID    : 13637
+PID    : 4747
 I/O    : uncollated
-Case   : /media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case
+Case   : /media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case
 nProcs : 1
 sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
 fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
@@ -170,26 +624,134 @@ Create time
 
 Create mesh for time = 0
 
-Deleting old VTK files in "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK"
+Deleting old VTK files in "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK"
 
 Time: 0
     volScalarFields            : p
     volVectorFields            : U
 
-    Internal  : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/case_0.vtk"
+    Internal  : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/case_0.vtk"
     Original cells:3029 points:3932   Additional cells:0  additional points:0
 
-    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/injectionXMinus/injectionXMinus_0.vtk"
-    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/injectionXPlus/injectionXPlus_0.vtk"
-    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/injectionYMinus/injectionYMinus_0.vtk"
-    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/injectionYPlus/injectionYPlus_0.vtk"
-    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/inletXMinus/inletXMinus_0.vtk"
-    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/inletXPlus/inletXPlus_0.vtk"
-    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/inletYMinus/inletYMinus_0.vtk"
-    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/inletYPlus/inletYPlus_0.vtk"
-    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/outlet/outlet_0.vtk"
-    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/valve/valve_0.vtk"
-    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/walls/walls_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/injectionXMinus/injectionXMinus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/injectionXPlus/injectionXPlus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/injectionYMinus/injectionYMinus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/injectionYPlus/injectionYPlus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/inletXMinus/inletXMinus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/inletXPlus/inletXPlus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/inletYMinus/inletYMinus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/inletYPlus/inletYPlus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/outlet/outlet_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/valve/valve_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/walls/walls_0.vtk"
+Time: 1
+    volVectorFields            : U
+
+    Internal  : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/case_1.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/injectionXMinus/injectionXMinus_1.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/injectionXPlus/injectionXPlus_1.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/injectionYMinus/injectionYMinus_1.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/injectionYPlus/injectionYPlus_1.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/inletXMinus/inletXMinus_1.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/inletXPlus/inletXPlus_1.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/inletYMinus/inletYMinus_1.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/inletYPlus/inletYPlus_1.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/outlet/outlet_1.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/valve/valve_1.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/walls/walls_1.vtk"
+    surfScalarFields  : phi
+End
+
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  6
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 6-1a0c91b3baa8
+Exec   : multicompCompressFluid
+Date   : Oct 14 2018
+Time   : 02:24:35
+Host   : "ubuntu"
+PID    : 2647
+I/O    : uncollated
+Case   : /media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+Reading velocity field U
+
+Constructing pressure field p
+
+Constructing velocity potential field Phi
+
+No MRF models present
+
+
+Calculating potential flow
+GAMG:  Solving for Phi, Initial residual = 1, Final residual = 0.00875248, No Iterations 8
+GAMG:  Solving for Phi, Initial residual = 0.000122335, Final residual = 8.04666e-07, No Iterations 7
+GAMG:  Solving for Phi, Initial residual = 8.02629e-07, Final residual = 8.02629e-07, No Iterations 0
+GAMG:  Solving for Phi, Initial residual = 8.02629e-07, Final residual = 8.02629e-07, No Iterations 0
+Continuity error = 1.2164e-05
+Interpolated velocity error = 0.000561937
+ExecutionTime = 0.09 s  ClockTime = 0 s
+
+End
+
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  6
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 6-1a0c91b3baa8
+Exec   : foamToVTK
+Date   : Oct 14 2018
+Time   : 02:24:36
+Host   : "ubuntu"
+PID    : 2649
+I/O    : uncollated
+Case   : /media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+Deleting old VTK files in "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK"
+
+Time: 0
+    volScalarFields            : p
+    volVectorFields            : U
+
+    Internal  : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/case_0.vtk"
+    Original cells:3029 points:3932   Additional cells:0  additional points:0
+
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/injectionXMinus/injectionXMinus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/injectionXPlus/injectionXPlus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/injectionYMinus/injectionYMinus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/injectionYPlus/injectionYPlus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/inletXMinus/inletXMinus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/inletXPlus/inletXPlus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/inletYMinus/inletYMinus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/inletYPlus/inletYPlus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/outlet/outlet_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/valve/valve_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case/VTK/walls/walls_0.vtk"
     surfScalarFields  : phi
 End
 
