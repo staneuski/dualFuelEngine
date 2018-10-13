@@ -1,0 +1,20 @@
+# Wavefront OBJ file written 2018-10-13T18:10:38
+o outlet_edgeMesh
+
+# points : 4
+# lines  : 5
+
+# <points count="4">
+v 0.25 -0.25 2.91667
+v -0.25 -0.25 2.91667
+v 0.25 0.25 2.91667
+v -0.25 0.25 2.91667
+# </points>
+
+# <edges count="5">
+l 2 3
+l 1 2
+l 3 1
+l 2 4
+l 4 3
+# </edges>

@@ -1,0 +1,23 @@
+#!/bin/sh
+
+# Путь к проекту
+cd /Volumes/HDD/OpenFOAM
+cd twoFuelEngine # вставить название папки проекта
+cd case/
+
+# Начальные условия
+open -a TextMate 0/p.orig 0/U.orig & 
+# open -a TextMate solved.foam
+
+# Настройки модели
+# open -a TextMate constant/transportProperties &
+
+# Настройки решателя 
+open -a TextMate system/controlDict system/fvSchemes system/fvSolution &
+
+# Открытие скриптов для расчёта
+open -a TextMate firstRun.sh rerun.sh hardRerun.sh &
+
+##################################################
+osascript -e 'tell application "Terminal" to quit'
+

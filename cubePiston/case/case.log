@@ -1,0 +1,195 @@
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  6
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 6-1a0c91b3baa8
+Exec   : potentialFoam
+Date   : Oct 13 2018
+Time   : 18:10:40
+Host   : "ubuntu"
+PID    : 11757
+I/O    : uncollated
+Case   : /media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+Reading velocity field U
+
+Constructing pressure field p
+
+Constructing velocity potential field Phi
+
+No MRF models present
+
+
+Calculating potential flow
+GAMG:  Solving for Phi, Initial residual = 1, Final residual = 0.00875248, No Iterations 8
+GAMG:  Solving for Phi, Initial residual = 0.000122335, Final residual = 8.04666e-07, No Iterations 7
+GAMG:  Solving for Phi, Initial residual = 8.02629e-07, Final residual = 8.02629e-07, No Iterations 0
+GAMG:  Solving for Phi, Initial residual = 8.02629e-07, Final residual = 8.02629e-07, No Iterations 0
+Continuity error = 1.2164e-05
+Interpolated velocity error = 0.000561937
+ExecutionTime = 0.09 s  ClockTime = 0 s
+
+End
+
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  6
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 6-1a0c91b3baa8
+Exec   : foamToVTK
+Date   : Oct 13 2018
+Time   : 18:10:41
+Host   : "ubuntu"
+PID    : 11759
+I/O    : uncollated
+Case   : /media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+Deleting old VTK files in "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK"
+
+Time: 0
+    volScalarFields            : p
+    volVectorFields            : U
+
+    Internal  : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/case_0.vtk"
+    Original cells:3029 points:3932   Additional cells:0  additional points:0
+
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/injectionXMinus/injectionXMinus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/injectionXPlus/injectionXPlus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/injectionYMinus/injectionYMinus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/injectionYPlus/injectionYPlus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/inletXMinus/inletXMinus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/inletXPlus/inletXPlus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/inletYMinus/inletYMinus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/inletYPlus/inletYPlus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/outlet/outlet_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/valve/valve_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/walls/walls_0.vtk"
+    surfScalarFields  : phi
+End
+
+-ne 
+/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/inletYMinus/inletYMinus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/inletYPlus/inletYPlus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/outlet/outlet_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/valve/valve_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/walls/walls_0.vtk"
+    surfScalarFields  : phi
+End
+
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  6
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 6-1a0c91b3baa8
+Exec   : multicompCompressFluid
+Date   : Oct 13 2018
+Time   : 18:21:04
+Host   : "ubuntu"
+PID    : 13632
+I/O    : uncollated
+Case   : /media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+Reading velocity field U
+
+Constructing pressure field p
+
+Constructing velocity potential field Phi
+
+No MRF models present
+
+
+Calculating potential flow
+GAMG:  Solving for Phi, Initial residual = 1, Final residual = 0.00875248, No Iterations 8
+GAMG:  Solving for Phi, Initial residual = 0.000122335, Final residual = 8.04666e-07, No Iterations 7
+GAMG:  Solving for Phi, Initial residual = 8.02629e-07, Final residual = 8.02629e-07, No Iterations 0
+GAMG:  Solving for Phi, Initial residual = 8.02629e-07, Final residual = 8.02629e-07, No Iterations 0
+Continuity error = 1.2164e-05
+Interpolated velocity error = 0.000561937
+ExecutionTime = 0.09 s  ClockTime = 0 s
+
+End
+
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  6
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 6-1a0c91b3baa8
+Exec   : foamToVTK
+Date   : Oct 13 2018
+Time   : 18:21:04
+Host   : "ubuntu"
+PID    : 13637
+I/O    : uncollated
+Case   : /media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+Deleting old VTK files in "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK"
+
+Time: 0
+    volScalarFields            : p
+    volVectorFields            : U
+
+    Internal  : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/case_0.vtk"
+    Original cells:3029 points:3932   Additional cells:0  additional points:0
+
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/injectionXMinus/injectionXMinus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/injectionXPlus/injectionXPlus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/injectionYMinus/injectionYMinus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/injectionYPlus/injectionYPlus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/inletXMinus/inletXMinus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/inletXPlus/inletXPlus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/inletYMinus/inletYMinus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/inletYPlus/inletYPlus_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/outlet/outlet_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/valve/valve_0.vtk"
+    Patch     : "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/case/VTK/walls/walls_0.vtk"
+    surfScalarFields  : phi
+End
+

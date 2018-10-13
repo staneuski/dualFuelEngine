@@ -1,0 +1,1193 @@
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  6
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 6-1a0c91b3baa8
+Exec   : surfaceFeatureExtract
+Date   : Oct 13 2018
+Time   : 18:10:37
+Host   : "ubuntu"
+PID    : 11740
+I/O    : uncollated
+Case   : /media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Reading surfaceFeatureExtractDict
+
+Surface            : "injectionXMinus.stl"
+
+
+Feature line extraction is only valid on closed manifold surfaces.
+Statistics:
+Triangles    : 2
+Vertices     : 4
+Bounding Box : (0.5 -0.05 -0.05) (0.5 0.05 0.05)
+
+
+Constructing feature set from included angle 180
+Selecting edges purely based on geometric tests: no
+
+Initial feature set:
+    feature points : 4
+    feature edges  : 5
+    of which
+        region edges   : 4
+        external edges : 0
+        internal edges : 1
+
+
+Final feature set:
+    points : 4
+    of which
+        convex             : 0
+        concave            : 0
+        mixed              : 4
+        non-feature        : 0
+    edges  : 5
+    of which
+        external edges     : 0
+        internal edges     : 0
+        flat edges         : 1
+        open edges         : 4
+        multiply connected : 0
+
+Writing extendedFeatureEdgeMesh to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/injectionXMinus.extendedFeatureEdgeMesh"
+
+Writing extendedEdgeMesh components to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/injectionXMinus"
+Writing convex feature points to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/injectionXMinus_convexFeaturePts.obj"
+Writing concave feature points to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/injectionXMinus_concaveFeaturePts.obj"
+Writing mixed feature points to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/injectionXMinus_mixedFeaturePts.obj"
+Writing mixed feature point structure to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/injectionXMinus_mixedFeaturePtsStructure.obj"
+Writing external edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/injectionXMinus_externalEdges.obj"
+Writing internal edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/injectionXMinus_internalEdges.obj"
+Writing flat edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/injectionXMinus_flatEdges.obj"
+Writing open edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/injectionXMinus_openEdges.obj"
+Writing multiple edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/injectionXMinus_multipleEdges.obj"
+Writing region edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/injectionXMinus_regionEdges.obj"
+Writing edge directions to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/injectionXMinus_edgeDirections.obj"
+
+Writing featureEdgeMesh to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/triSurface/injectionXMinus.eMesh"
+
+Surface            : "injectionXPlus.stl"
+
+
+Feature line extraction is only valid on closed manifold surfaces.
+Statistics:
+Triangles    : 2
+Vertices     : 4
+Bounding Box : (-0.5 -0.05 -0.05) (-0.5 0.05 0.05)
+
+
+Constructing feature set from included angle 180
+Selecting edges purely based on geometric tests: no
+
+Initial feature set:
+    feature points : 4
+    feature edges  : 5
+    of which
+        region edges   : 4
+        external edges : 0
+        internal edges : 1
+
+
+Final feature set:
+    points : 4
+    of which
+        convex             : 0
+        concave            : 0
+        mixed              : 4
+        non-feature        : 0
+    edges  : 5
+    of which
+        external edges     : 0
+        internal edges     : 0
+        flat edges         : 1
+        open edges         : 4
+        multiply connected : 0
+
+Writing extendedFeatureEdgeMesh to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/injectionXPlus.extendedFeatureEdgeMesh"
+
+Writing extendedEdgeMesh components to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/injectionXPlus"
+Writing convex feature points to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/injectionXPlus_convexFeaturePts.obj"
+Writing concave feature points to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/injectionXPlus_concaveFeaturePts.obj"
+Writing mixed feature points to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/injectionXPlus_mixedFeaturePts.obj"
+Writing mixed feature point structure to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/injectionXPlus_mixedFeaturePtsStructure.obj"
+Writing external edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/injectionXPlus_externalEdges.obj"
+Writing internal edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/injectionXPlus_internalEdges.obj"
+Writing flat edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/injectionXPlus_flatEdges.obj"
+Writing open edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/injectionXPlus_openEdges.obj"
+Writing multiple edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/injectionXPlus_multipleEdges.obj"
+Writing region edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/injectionXPlus_regionEdges.obj"
+Writing edge directions to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/injectionXPlus_edgeDirections.obj"
+
+Writing featureEdgeMesh to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/triSurface/injectionXPlus.eMesh"
+
+Surface            : "injectionYMinus.stl"
+
+
+Feature line extraction is only valid on closed manifold surfaces.
+Statistics:
+Triangles    : 2
+Vertices     : 4
+Bounding Box : (-0.05 0.5 -0.05) (0.05 0.5 0.05)
+
+
+Constructing feature set from included angle 180
+Selecting edges purely based on geometric tests: no
+
+Initial feature set:
+    feature points : 4
+    feature edges  : 5
+    of which
+        region edges   : 4
+        external edges : 0
+        internal edges : 1
+
+
+Final feature set:
+    points : 4
+    of which
+        convex             : 0
+        concave            : 0
+        mixed              : 4
+        non-feature        : 0
+    edges  : 5
+    of which
+        external edges     : 0
+        internal edges     : 0
+        flat edges         : 1
+        open edges         : 4
+        multiply connected : 0
+
+Writing extendedFeatureEdgeMesh to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/injectionYMinus.extendedFeatureEdgeMesh"
+
+Writing extendedEdgeMesh components to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/injectionYMinus"
+Writing convex feature points to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/injectionYMinus_convexFeaturePts.obj"
+Writing concave feature points to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/injectionYMinus_concaveFeaturePts.obj"
+Writing mixed feature points to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/injectionYMinus_mixedFeaturePts.obj"
+Writing mixed feature point structure to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/injectionYMinus_mixedFeaturePtsStructure.obj"
+Writing external edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/injectionYMinus_externalEdges.obj"
+Writing internal edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/injectionYMinus_internalEdges.obj"
+Writing flat edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/injectionYMinus_flatEdges.obj"
+Writing open edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/injectionYMinus_openEdges.obj"
+Writing multiple edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/injectionYMinus_multipleEdges.obj"
+Writing region edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/injectionYMinus_regionEdges.obj"
+Writing edge directions to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/injectionYMinus_edgeDirections.obj"
+
+Writing featureEdgeMesh to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/triSurface/injectionYMinus.eMesh"
+
+Surface            : "injectionYPlus.stl"
+
+
+Feature line extraction is only valid on closed manifold surfaces.
+Statistics:
+Triangles    : 2
+Vertices     : 4
+Bounding Box : (-0.05 -0.5 -0.05) (0.05 -0.5 0.05)
+
+
+Constructing feature set from included angle 180
+Selecting edges purely based on geometric tests: no
+
+Initial feature set:
+    feature points : 4
+    feature edges  : 5
+    of which
+        region edges   : 4
+        external edges : 0
+        internal edges : 1
+
+
+Final feature set:
+    points : 4
+    of which
+        convex             : 0
+        concave            : 0
+        mixed              : 4
+        non-feature        : 0
+    edges  : 5
+    of which
+        external edges     : 0
+        internal edges     : 0
+        flat edges         : 1
+        open edges         : 4
+        multiply connected : 0
+
+Writing extendedFeatureEdgeMesh to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/injectionYPlus.extendedFeatureEdgeMesh"
+
+Writing extendedEdgeMesh components to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/injectionYPlus"
+Writing convex feature points to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/injectionYPlus_convexFeaturePts.obj"
+Writing concave feature points to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/injectionYPlus_concaveFeaturePts.obj"
+Writing mixed feature points to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/injectionYPlus_mixedFeaturePts.obj"
+Writing mixed feature point structure to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/injectionYPlus_mixedFeaturePtsStructure.obj"
+Writing external edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/injectionYPlus_externalEdges.obj"
+Writing internal edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/injectionYPlus_internalEdges.obj"
+Writing flat edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/injectionYPlus_flatEdges.obj"
+Writing open edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/injectionYPlus_openEdges.obj"
+Writing multiple edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/injectionYPlus_multipleEdges.obj"
+Writing region edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/injectionYPlus_regionEdges.obj"
+Writing edge directions to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/injectionYPlus_edgeDirections.obj"
+
+Writing featureEdgeMesh to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/triSurface/injectionYPlus.eMesh"
+
+Surface            : "inletXMinus.stl"
+
+
+Feature line extraction is only valid on closed manifold surfaces.
+Statistics:
+Triangles    : 4
+Vertices     : 8
+Bounding Box : (0.5 -0.4 -1.75) (0.5 0.4 -1.55)
+
+
+Constructing feature set from included angle 180
+Selecting edges purely based on geometric tests: no
+
+Initial feature set:
+    feature points : 8
+    feature edges  : 10
+    of which
+        region edges   : 8
+        external edges : 0
+        internal edges : 2
+
+
+Final feature set:
+    points : 8
+    of which
+        convex             : 0
+        concave            : 0
+        mixed              : 8
+        non-feature        : 0
+    edges  : 10
+    of which
+        external edges     : 0
+        internal edges     : 0
+        flat edges         : 2
+        open edges         : 8
+        multiply connected : 0
+
+Writing extendedFeatureEdgeMesh to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/inletXMinus.extendedFeatureEdgeMesh"
+
+Writing extendedEdgeMesh components to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/inletXMinus"
+Writing convex feature points to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/inletXMinus_convexFeaturePts.obj"
+Writing concave feature points to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/inletXMinus_concaveFeaturePts.obj"
+Writing mixed feature points to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/inletXMinus_mixedFeaturePts.obj"
+Writing mixed feature point structure to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/inletXMinus_mixedFeaturePtsStructure.obj"
+Writing external edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/inletXMinus_externalEdges.obj"
+Writing internal edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/inletXMinus_internalEdges.obj"
+Writing flat edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/inletXMinus_flatEdges.obj"
+Writing open edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/inletXMinus_openEdges.obj"
+Writing multiple edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/inletXMinus_multipleEdges.obj"
+Writing region edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/inletXMinus_regionEdges.obj"
+Writing edge directions to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/inletXMinus_edgeDirections.obj"
+
+Writing featureEdgeMesh to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/triSurface/inletXMinus.eMesh"
+
+Surface            : "inletXPlus.stl"
+
+
+Feature line extraction is only valid on closed manifold surfaces.
+Statistics:
+Triangles    : 4
+Vertices     : 8
+Bounding Box : (-0.5 -0.4 -1.75) (-0.5 0.4 -1.55)
+
+
+Constructing feature set from included angle 180
+Selecting edges purely based on geometric tests: no
+
+Initial feature set:
+    feature points : 8
+    feature edges  : 10
+    of which
+        region edges   : 8
+        external edges : 0
+        internal edges : 2
+
+
+Final feature set:
+    points : 8
+    of which
+        convex             : 0
+        concave            : 0
+        mixed              : 8
+        non-feature        : 0
+    edges  : 10
+    of which
+        external edges     : 0
+        internal edges     : 0
+        flat edges         : 2
+        open edges         : 8
+        multiply connected : 0
+
+Writing extendedFeatureEdgeMesh to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/inletXPlus.extendedFeatureEdgeMesh"
+
+Writing extendedEdgeMesh components to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/inletXPlus"
+Writing convex feature points to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/inletXPlus_convexFeaturePts.obj"
+Writing concave feature points to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/inletXPlus_concaveFeaturePts.obj"
+Writing mixed feature points to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/inletXPlus_mixedFeaturePts.obj"
+Writing mixed feature point structure to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/inletXPlus_mixedFeaturePtsStructure.obj"
+Writing external edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/inletXPlus_externalEdges.obj"
+Writing internal edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/inletXPlus_internalEdges.obj"
+Writing flat edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/inletXPlus_flatEdges.obj"
+Writing open edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/inletXPlus_openEdges.obj"
+Writing multiple edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/inletXPlus_multipleEdges.obj"
+Writing region edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/inletXPlus_regionEdges.obj"
+Writing edge directions to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/inletXPlus_edgeDirections.obj"
+
+Writing featureEdgeMesh to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/triSurface/inletXPlus.eMesh"
+
+Surface            : "inletYMinus.stl"
+
+
+Feature line extraction is only valid on closed manifold surfaces.
+Statistics:
+Triangles    : 4
+Vertices     : 8
+Bounding Box : (-0.4 0.5 -1.75) (0.4 0.5 -1.55)
+
+
+Constructing feature set from included angle 180
+Selecting edges purely based on geometric tests: no
+
+Initial feature set:
+    feature points : 8
+    feature edges  : 10
+    of which
+        region edges   : 8
+        external edges : 0
+        internal edges : 2
+
+
+Final feature set:
+    points : 8
+    of which
+        convex             : 0
+        concave            : 0
+        mixed              : 8
+        non-feature        : 0
+    edges  : 10
+    of which
+        external edges     : 0
+        internal edges     : 0
+        flat edges         : 2
+        open edges         : 8
+        multiply connected : 0
+
+Writing extendedFeatureEdgeMesh to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/inletYMinus.extendedFeatureEdgeMesh"
+
+Writing extendedEdgeMesh components to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/inletYMinus"
+Writing convex feature points to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/inletYMinus_convexFeaturePts.obj"
+Writing concave feature points to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/inletYMinus_concaveFeaturePts.obj"
+Writing mixed feature points to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/inletYMinus_mixedFeaturePts.obj"
+Writing mixed feature point structure to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/inletYMinus_mixedFeaturePtsStructure.obj"
+Writing external edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/inletYMinus_externalEdges.obj"
+Writing internal edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/inletYMinus_internalEdges.obj"
+Writing flat edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/inletYMinus_flatEdges.obj"
+Writing open edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/inletYMinus_openEdges.obj"
+Writing multiple edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/inletYMinus_multipleEdges.obj"
+Writing region edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/inletYMinus_regionEdges.obj"
+Writing edge directions to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/inletYMinus_edgeDirections.obj"
+
+Writing featureEdgeMesh to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/triSurface/inletYMinus.eMesh"
+
+Surface            : "inletYPlus.stl"
+
+
+Feature line extraction is only valid on closed manifold surfaces.
+Statistics:
+Triangles    : 4
+Vertices     : 8
+Bounding Box : (-0.4 -0.5 -1.75) (0.4 -0.5 -1.55)
+
+
+Constructing feature set from included angle 180
+Selecting edges purely based on geometric tests: no
+
+Initial feature set:
+    feature points : 8
+    feature edges  : 10
+    of which
+        region edges   : 8
+        external edges : 0
+        internal edges : 2
+
+
+Final feature set:
+    points : 8
+    of which
+        convex             : 0
+        concave            : 0
+        mixed              : 8
+        non-feature        : 0
+    edges  : 10
+    of which
+        external edges     : 0
+        internal edges     : 0
+        flat edges         : 2
+        open edges         : 8
+        multiply connected : 0
+
+Writing extendedFeatureEdgeMesh to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/inletYPlus.extendedFeatureEdgeMesh"
+
+Writing extendedEdgeMesh components to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/inletYPlus"
+Writing convex feature points to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/inletYPlus_convexFeaturePts.obj"
+Writing concave feature points to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/inletYPlus_concaveFeaturePts.obj"
+Writing mixed feature points to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/inletYPlus_mixedFeaturePts.obj"
+Writing mixed feature point structure to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/inletYPlus_mixedFeaturePtsStructure.obj"
+Writing external edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/inletYPlus_externalEdges.obj"
+Writing internal edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/inletYPlus_internalEdges.obj"
+Writing flat edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/inletYPlus_flatEdges.obj"
+Writing open edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/inletYPlus_openEdges.obj"
+Writing multiple edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/inletYPlus_multipleEdges.obj"
+Writing region edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/inletYPlus_regionEdges.obj"
+Writing edge directions to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/inletYPlus_edgeDirections.obj"
+
+Writing featureEdgeMesh to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/triSurface/inletYPlus.eMesh"
+
+Surface            : "outlet.stl"
+
+
+Feature line extraction is only valid on closed manifold surfaces.
+Statistics:
+Triangles    : 2
+Vertices     : 4
+Bounding Box : (-0.25 -0.25 2.91667) (0.25 0.25 2.91667)
+
+
+Constructing feature set from included angle 180
+Selecting edges purely based on geometric tests: no
+
+Initial feature set:
+    feature points : 4
+    feature edges  : 5
+    of which
+        region edges   : 4
+        external edges : 0
+        internal edges : 1
+
+
+Final feature set:
+    points : 4
+    of which
+        convex             : 0
+        concave            : 0
+        mixed              : 4
+        non-feature        : 0
+    edges  : 5
+    of which
+        external edges     : 0
+        internal edges     : 0
+        flat edges         : 1
+        open edges         : 4
+        multiply connected : 0
+
+Writing extendedFeatureEdgeMesh to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/outlet.extendedFeatureEdgeMesh"
+
+Writing extendedEdgeMesh components to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/outlet"
+Writing convex feature points to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/outlet_convexFeaturePts.obj"
+Writing concave feature points to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/outlet_concaveFeaturePts.obj"
+Writing mixed feature points to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/outlet_mixedFeaturePts.obj"
+Writing mixed feature point structure to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/outlet_mixedFeaturePtsStructure.obj"
+Writing external edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/outlet_externalEdges.obj"
+Writing internal edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/outlet_internalEdges.obj"
+Writing flat edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/outlet_flatEdges.obj"
+Writing open edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/outlet_openEdges.obj"
+Writing multiple edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/outlet_multipleEdges.obj"
+Writing region edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/outlet_regionEdges.obj"
+Writing edge directions to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/outlet_edgeDirections.obj"
+
+Writing featureEdgeMesh to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/triSurface/outlet.eMesh"
+
+Surface            : "valve.stl"
+
+
+Feature line extraction is only valid on closed manifold surfaces.
+Statistics:
+Triangles    : 12
+Vertices     : 8
+Bounding Box : (-0.26 -0.26 1.44) (0.26 0.26 1.5)
+
+
+Constructing feature set from included angle 180
+Selecting edges purely based on geometric tests: no
+
+Initial feature set:
+    feature points : 8
+    feature edges  : 18
+    of which
+        region edges   : 0
+        external edges : 12
+        internal edges : 6
+
+
+Final feature set:
+    points : 8
+    of which
+        convex             : 0
+        concave            : 0
+        mixed              : 8
+        non-feature        : 0
+    edges  : 18
+    of which
+        external edges     : 12
+        internal edges     : 0
+        flat edges         : 6
+        open edges         : 0
+        multiply connected : 0
+
+Writing extendedFeatureEdgeMesh to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/valve.extendedFeatureEdgeMesh"
+
+Writing extendedEdgeMesh components to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/valve"
+Writing convex feature points to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/valve_convexFeaturePts.obj"
+Writing concave feature points to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/valve_concaveFeaturePts.obj"
+Writing mixed feature points to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/valve_mixedFeaturePts.obj"
+Writing mixed feature point structure to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/valve_mixedFeaturePtsStructure.obj"
+Writing external edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/valve_externalEdges.obj"
+Writing internal edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/valve_internalEdges.obj"
+Writing flat edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/valve_flatEdges.obj"
+Writing open edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/valve_openEdges.obj"
+Writing multiple edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/valve_multipleEdges.obj"
+Writing region edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/valve_regionEdges.obj"
+Writing edge directions to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/valve_edgeDirections.obj"
+
+Writing featureEdgeMesh to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/triSurface/valve.eMesh"
+
+Surface            : "walls.stl"
+
+
+Feature line extraction is only valid on closed manifold surfaces.
+Statistics:
+Triangles    : 82
+Vertices     : 64
+Bounding Box : (-0.5 -0.5 -1.75) (0.5 0.5 2.91667)
+
+
+Constructing feature set from included angle 180
+Selecting edges purely based on geometric tests: no
+
+Initial feature set:
+    feature points : 64
+    feature edges  : 153
+    of which
+        region edges   : 60
+        external edges : 8
+        internal edges : 85
+
+
+Final feature set:
+    points : 64
+    of which
+        convex             : 0
+        concave            : 0
+        mixed              : 64
+        non-feature        : 0
+    edges  : 153
+    of which
+        external edges     : 8
+        internal edges     : 8
+        flat edges         : 77
+        open edges         : 60
+        multiply connected : 0
+
+Writing extendedFeatureEdgeMesh to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/walls.extendedFeatureEdgeMesh"
+
+Writing extendedEdgeMesh components to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/walls"
+Writing convex feature points to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/walls_convexFeaturePts.obj"
+Writing concave feature points to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/walls_concaveFeaturePts.obj"
+Writing mixed feature points to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/walls_mixedFeaturePts.obj"
+Writing mixed feature point structure to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/walls_mixedFeaturePtsStructure.obj"
+Writing external edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/walls_externalEdges.obj"
+Writing internal edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/walls_internalEdges.obj"
+Writing flat edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/walls_flatEdges.obj"
+Writing open edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/walls_openEdges.obj"
+Writing multiple edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/walls_multipleEdges.obj"
+Writing region edges to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/walls_regionEdges.obj"
+Writing edge directions to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/extendedFeatureEdgeMesh/walls_edgeDirections.obj"
+
+Writing featureEdgeMesh to "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/triSurface/walls.eMesh"
+
+ExecutionTime = 0.13 s  ClockTime = 1 s
+
+End
+
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  6
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 6-1a0c91b3baa8
+Exec   : blockMesh
+Date   : Oct 13 2018
+Time   : 18:10:38
+Host   : "ubuntu"
+PID    : 11741
+I/O    : uncollated
+Case   : /media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Deleting polyMesh directory
+    "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/constant/polyMesh"
+Creating block mesh from
+    "/media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh/system/blockMeshDict"
+Creating block edges
+No non-planar block faces defined
+Creating topology blocks
+Creating topology patches
+
+Creating block mesh topology
+
+Check topology
+
+	Basic statistics
+		Number of internal faces : 0
+		Number of boundary faces : 6
+		Number of defined boundary faces : 6
+		Number of undefined boundary faces : 0
+	Checking patch -> block consistency
+
+Creating block offsets
+Creating merge list .
+
+Creating polyMesh from blockMesh
+Creating patches
+Creating cells
+Creating points with scale 0.001
+    Block 0 cell size :
+        i : 0.1 .. 0.1
+        j : 0.1 .. 0.1
+        k : 0.1 .. 0.1
+
+
+There are no merge patch pairs edges
+
+Writing polyMesh
+----------------
+Mesh Information
+----------------
+  boundingBox: (-1.25 -1.25 -1.8) (1.25 1.25 3.2)
+  nPoints: 34476
+  nCells: 31250
+  nFaces: 96875
+  nInternalFaces: 90625
+----------------
+Patches
+----------------
+  patch 0 (start: 90625 size: 6250) name: allBoundary
+
+End
+
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  6
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 6-1a0c91b3baa8
+Exec   : snappyHexMesh -overwrite
+Date   : Oct 13 2018
+Time   : 18:10:38
+Host   : "ubuntu"
+PID    : 11745
+I/O    : uncollated
+Case   : /media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+Read mesh in = 0.22 s
+
+Overall mesh bounding box  : (-1.25 -1.25 -1.8) (1.25 1.25 3.2)
+Relative tolerance         : 1e-06
+Absolute matching distance : 6.12372e-06
+
+Reading refinement surfaces.
+Read refinement surfaces in = 0 s
+
+Reading refinement shells.
+Read refinement shells in = 0 s
+
+Setting refinement level of surface to be consistent with shells.
+Checked shell refinement in = 0 s
+
+Reading features.
+Read edgeMesh injectionXMinus.eMesh
+    points      : 4
+    edges       : 5
+    boundingBox : (0.5 -0.05 -0.05) (0.5 0.05 0.05)
+
+Refinement level according to distance to "injectionXMinus.eMesh" (4 points, 5 edges).
+    level 0 for all cells within 0 metre.
+Read edgeMesh injectionXPlus.eMesh
+    points      : 4
+    edges       : 5
+    boundingBox : (-0.5 -0.05 -0.05) (-0.5 0.05 0.05)
+
+Refinement level according to distance to "injectionXPlus.eMesh" (4 points, 5 edges).
+    level 0 for all cells within 0 metre.
+Read edgeMesh injectionYMinus.eMesh
+    points      : 4
+    edges       : 5
+    boundingBox : (-0.05 0.5 -0.05) (0.05 0.5 0.05)
+
+Refinement level according to distance to "injectionYMinus.eMesh" (4 points, 5 edges).
+    level 0 for all cells within 0 metre.
+Read edgeMesh injectionYPlus.eMesh
+    points      : 4
+    edges       : 5
+    boundingBox : (-0.05 -0.5 -0.05) (0.05 -0.5 0.05)
+
+Refinement level according to distance to "injectionYPlus.eMesh" (4 points, 5 edges).
+    level 0 for all cells within 0 metre.
+Read edgeMesh inletXMinus.eMesh
+    points      : 8
+    edges       : 10
+    boundingBox : (0.5 -0.4 -1.75) (0.5 0.4 -1.55)
+
+Refinement level according to distance to "inletXMinus.eMesh" (8 points, 10 edges).
+    level 0 for all cells within 0 metre.
+Read edgeMesh inletXPlus.eMesh
+    points      : 8
+    edges       : 10
+    boundingBox : (-0.5 -0.4 -1.75) (-0.5 0.4 -1.55)
+
+Refinement level according to distance to "inletXPlus.eMesh" (8 points, 10 edges).
+    level 0 for all cells within 0 metre.
+Read edgeMesh inletYMinus.eMesh
+    points      : 8
+    edges       : 10
+    boundingBox : (-0.4 0.5 -1.75) (0.4 0.5 -1.55)
+
+Refinement level according to distance to "inletYMinus.eMesh" (8 points, 10 edges).
+    level 0 for all cells within 0 metre.
+Read edgeMesh inletYPlus.eMesh
+    points      : 8
+    edges       : 10
+    boundingBox : (-0.4 -0.5 -1.75) (0.4 -0.5 -1.55)
+
+Refinement level according to distance to "inletYPlus.eMesh" (8 points, 10 edges).
+    level 0 for all cells within 0 metre.
+Read edgeMesh outlet.eMesh
+    points      : 4
+    edges       : 5
+    boundingBox : (-0.25 -0.25 2.91667) (0.25 0.25 2.91667)
+
+Refinement level according to distance to "outlet.eMesh" (4 points, 5 edges).
+    level 0 for all cells within 0 metre.
+Read edgeMesh valve.eMesh
+    points      : 8
+    edges       : 18
+    boundingBox : (-0.26 -0.26 1.44) (0.26 0.26 1.5)
+
+Refinement level according to distance to "valve.eMesh" (8 points, 18 edges).
+    level 0 for all cells within 0 metre.
+Read edgeMesh walls.eMesh
+    points      : 64
+    edges       : 153
+    boundingBox : (-0.5 -0.5 -1.75) (0.5 0.5 2.91667)
+
+Refinement level according to distance to "walls.eMesh" (64 points, 153 edges).
+    level 0 for all cells within 0 metre.
+Read features in = 0.02 s
+
+
+Determining initial surface intersections
+-----------------------------------------
+
+Edge intersection testing:
+    Number of edges             : 96875
+    Number of edges to retest   : 96875
+    Number of intersected edges : 5327
+Calculated surface intersections in = 0.23 s
+
+Initial mesh : cells:31250  faces:96875  points:34476
+Cells per refinement level:
+    0	31250
+
+Adding patches for surface regions
+----------------------------------
+
+Patch Type                Region                        
+----- ----                ------                        
+injectionXMinus:
+
+1     wall                injectionXMinus               
+
+injectionXPlus:
+
+2     wall                injectionXPlus                
+
+injectionYMinus:
+
+3     wall                injectionYMinus               
+
+injectionYPlus:
+
+4     wall                injectionYPlus                
+
+inletXMinus:
+
+5     wall                inletXMinus                   
+
+inletXPlus:
+
+6     wall                inletXPlus                    
+
+inletYMinus:
+
+7     wall                inletYMinus                   
+
+inletYPlus:
+
+8     wall                inletYPlus                    
+
+outlet:
+
+9     wall                outlet                        
+
+valve:
+
+10    wall                valve                         
+
+walls:
+
+11    wall                walls                         
+
+Added patches in = 0.01 s
+
+Selecting decompositionMethod none
+Layer thickness specified as first layer and expansion ratio.
+
+Refinement phase
+----------------
+
+Found point (0 0 0) in cell 15437 on processor 0
+
+Feature refinement iteration 0
+------------------------------
+
+Marked for refinement due to explicit features             : 0 cells.
+Determined cells to refine in = 0.35 s
+Selected for feature refinement : 0 cells (out of 31250)
+Stopping refining since too few cells selected.
+
+
+Surface refinement iteration 0
+------------------------------
+
+Marked for refinement due to surface intersection          : 0 cells.
+Determined cells to refine in = 0.01 s
+Selected for refinement : 0 cells (out of 31250)
+Stopping refining since too few cells selected.
+
+
+Removing mesh beyond surface intersections
+------------------------------------------
+
+Found point (0 0 0) in global region 105 out of 416 regions.
+Keeping all cells in region 105 containing point (0 0 0)
+Selected for keeping : 6544 cells.
+Edge intersection testing:
+    Number of edges             : 20950
+    Number of edges to retest   : 2473
+    Number of intersected edges : 5354
+
+Shell refinement iteration 0
+----------------------------
+
+Marked for refinement due to distance to explicit features : 0 cells.
+Marked for refinement due to refinement shells             : 0 cells.
+Determined cells to refine in = 0.21 s
+Selected for internal refinement : 0 cells (out of 6544)
+Stopping refining since too few cells selected.
+
+
+Dangling coarse cells refinement iteration 0
+--------------------------------------------
+
+Determined cells to refine in = 0 s
+Selected for refinement : 0 cells (out of 6544)
+Stopping refining since too few cells selected.
+
+
+Dangling coarse cells refinement iteration 0
+--------------------------------------------
+
+Determined cells to refine in = 0.01 s
+Selected for refinement : 0 cells (out of 6544)
+Stopping refining since too few cells selected.
+
+
+Splitting mesh at surface intersections
+---------------------------------------
+
+Introducing baffles for 5354 faces that are intersected by the surface.
+
+Edge intersection testing:
+    Number of edges             : 26070
+    Number of edges to retest   : 21705
+    Number of intersected edges : 9638
+Created baffles in = 0.05 s
+
+
+After introducing baffles : cells:6544  faces:26070  points:7937
+Cells per refinement level:
+    0	6544
+
+Introducing baffles to block off problem cells
+----------------------------------------------
+
+markFacesOnProblemCells : marked 4955 additional internal faces to be converted into baffles.
+Analyzed problem cells in = 0.02 s
+
+
+Introducing baffles to delete problem cells.
+
+Edge intersection testing:
+    Number of edges             : 31025
+    Number of edges to retest   : 19482
+    Number of intersected edges : 10320
+Created baffles in = 0.05 s
+
+
+After introducing baffles : cells:6544  faces:31025  points:7937
+Cells per refinement level:
+    0	6544
+
+Remove unreachable sections of mesh
+-----------------------------------
+
+Keeping all cells in region 853 containing point (0 0 0)
+Selected for keeping : 3029 cells.
+Edge intersection testing:
+    Number of edges             : 9935
+    Number of edges to retest   : 0
+    Number of intersected edges : 1696
+Split mesh in = 0.1 s
+
+
+After subsetting : cells:3029  faces:9935  points:3932
+Cells per refinement level:
+    0	3029
+
+Handling cells with snap problems
+---------------------------------
+
+Introducing baffles for 1696 faces that are intersected by the surface.
+
+Edge intersection testing:
+    Number of edges             : 9935
+    Number of edges to retest   : 5776
+    Number of intersected edges : 1696
+Created baffles in = 0.02 s
+
+
+After introducing baffles : cells:3029  faces:9935  points:3932
+Cells per refinement level:
+    0	3029
+
+Introducing baffles to block off problem cells
+----------------------------------------------
+
+markFacesOnProblemCells : marked 0 additional internal faces to be converted into baffles.
+Analyzed problem cells in = 0.01 s
+
+
+Introducing baffles to delete problem cells.
+
+Edge intersection testing:
+    Number of edges             : 9935
+    Number of edges to retest   : 0
+    Number of intersected edges : 1696
+Created baffles in = 0.01 s
+
+
+After introducing baffles : cells:3029  faces:9935  points:3932
+Cells per refinement level:
+    0	3029
+
+Remove unreachable sections of mesh
+-----------------------------------
+
+Keeping all cells in region 0 containing point (0 0 0)
+Selected for keeping : 3029 cells.
+Edge intersection testing:
+    Number of edges             : 9935
+    Number of edges to retest   : 0
+    Number of intersected edges : 1696
+Split mesh in = 0.05 s
+
+
+After subsetting : cells:3029  faces:9935  points:3932
+Cells per refinement level:
+    0	3029
+
+Merge free-standing baffles
+---------------------------
+
+freeStandingBaffles : detected 0 free-standing baffles out of 0
+
+Detected free-standing baffles : 0
+Merged free-standing baffles in = 0.01 s
+
+
+dupNonManifoldPoints : Found : 0 non-manifold points (out of 3932)
+Edge intersection testing:
+    Number of edges             : 9935
+    Number of edges to retest   : 0
+    Number of intersected edges : 1696
+Detected unsplittable baffles : 0
+
+Merge refined boundary faces
+----------------------------
+
+Merging 0 sets of faces.
+
+No faces merged ...
+
+Merging all points on surface that
+- are used by only two boundary faces and
+- make an angle with a cosine of more than 0.707107.
+
+No straight edges simplified and no points removed ...
+
+Removing zero-sized patches:
+    allBoundary type patch at position 0
+
+Refined mesh : cells:3029  faces:9935  points:3932
+Cells per refinement level:
+    0	3029
+Writing mesh to time constant
+Wrote mesh in = 0.05 s.
+Mesh refined in = 0.95 s.
+Checking final mesh ...
+Checking faces in error :
+    non-orthogonality > 65  degrees                        : 0
+    faces with face pyramid volume < 1e-13                 : 0
+    faces with face-decomposition tet quality < 1e-15      : 0
+    faces with concavity > 80  degrees                     : 0
+    faces with skewness > 4   (internal) or 20  (boundary) : 0
+    faces with interpolation weights (0..1)  < 0.05        : 0
+    faces with volume ratio of neighbour cells < 0.01      : 0
+    faces with face twist < 0.02                           : 0
+    faces on cells with determinant < 0.001                : 0
+Finished meshing without any errors
+Finished meshing in = 1.45 s.
+End
+
+Checking the mesh...
+
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  6
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 6-1a0c91b3baa8
+Exec   : checkMesh
+Date   : Oct 13 2018
+Time   : 18:10:40
+Host   : "ubuntu"
+PID    : 11752
+I/O    : uncollated
+Case   : /media/psf/HDD/OpenFOAM/twoFuelEngine/cubePiston/mesh
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create polyMesh for time = 0
+
+Time = 0
+
+Mesh stats
+    points:           3932
+    faces:            9935
+    internal faces:   8239
+    cells:            3029
+    faces per cell:   6
+    boundary patches: 11
+    point zones:      0
+    face zones:       0
+    cell zones:       0
+
+Overall number of cells of each type:
+    hexahedra:     3029
+    prisms:        0
+    wedges:        0
+    pyramids:      0
+    tet wedges:    0
+    tetrahedra:    0
+    polyhedra:     0
+
+Checking topology...
+    Boundary definition OK.
+    Cell to face addressing OK.
+    Point usage OK.
+    Upper triangular ordering OK.
+    Face vertices OK.
+    Number of regions: 1 (OK).
+
+Checking patch topology for multiply connected surfaces...
+    Patch               Faces    Points   Surface topology                  
+    injectionXMinus     2        6        ok (non-closed singly connected)  
+    injectionXPlus      2        6        ok (non-closed singly connected)  
+    injectionYMinus     2        6        ok (non-closed singly connected)  
+    injectionYPlus      2        6        ok (non-closed singly connected)  
+    inletXMinus         12       24       ok (non-closed singly connected)  
+    inletXPlus          12       24       ok (non-closed singly connected)  
+    inletYMinus         12       24       ok (non-closed singly connected)  
+    inletYPlus          12       24       ok (non-closed singly connected)  
+    outlet              25       36       ok (non-closed singly connected)  
+    valve               70       72       ok (closed singly connected)      
+    walls               1545     1592     ok (non-closed singly connected)  
+
+Checking geometry...
+    Overall domain bounding box (-0.45 -0.45 -1.7) (0.45 0.45 2.9)
+    Mesh has 3 geometric (non-empty/wedge) directions (1 1 1)
+    Mesh has 3 solution (non-empty) directions (1 1 1)
+    Boundary openness (1.33275e-16 5.21644e-18 -7.15983e-19) OK.
+    Max cell openness = 1.89478e-16 OK.
+    Max aspect ratio = 1 OK.
+    Minimum face area = 0.01. Maximum face area = 0.01.  Face area magnitudes OK.
+    Min volume = 0.001. Max volume = 0.001.  Total volume = 3.029.  Cell volumes OK.
+    Mesh non-orthogonality Max: 0 average: 0
+    Non-orthogonality check OK.
+    Face pyramids OK.
+    Max skewness = 2.66454e-14 OK.
+    Coupled point location match (average 0) OK.
+
+Mesh OK.
+
+End
+
+-ne 

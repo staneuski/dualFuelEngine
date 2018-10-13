@@ -1,0 +1,29 @@
+# Wavefront OBJ file written 2018-10-13T18:10:37
+o inletXMinus_edgeMesh
+
+# points : 8
+# lines  : 10
+
+# <points count="8">
+v 0.5 -0.15 -1.75
+v 0.5 -0.4 -1.75
+v 0.5 -0.15 -1.55
+v 0.5 -0.4 -1.55
+v 0.5 0.4 -1.75
+v 0.5 0.15 -1.75
+v 0.5 0.4 -1.55
+v 0.5 0.15 -1.55
+# </points>
+
+# <edges count="10">
+l 2 3
+l 6 7
+l 1 2
+l 3 1
+l 2 4
+l 4 3
+l 5 6
+l 7 5
+l 6 8
+l 8 7
+# </edges>
