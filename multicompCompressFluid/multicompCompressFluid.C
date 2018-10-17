@@ -87,8 +87,10 @@ int main(int argc, char *argv[])
     // Since solver contains no time loop it would never execute function objects so do it ourselves
     runTime.functionObjects().start();
 
-    MRF.makeRelative(phi);
-    adjustPhi(phi, U, p);
+    MRF.makeRelative(phi); // Работа для различных зон. MRF zone definition based on cell zone and parameters obtained from a control dictionary constructed from the given stream. The rotation of the MRF region is defined by an origin and axis of rotation and an angular speed.
+    adjustPhi(phi, U, p); // For cases which do no have a pressure boundary adjust the balance of fluxes to obey continuity. Обеспечивает консервативность уравнений
+	// ? - обеспечивает баланс ур-ний неразрывности при отсутствии ГУ по давлению
+
 
     // Non-orthogonal velocity potential corrector loop
     while (potentialFlow.correctNonOrthogonal())
@@ -103,7 +105,7 @@ int main(int argc, char *argv[])
         );
 
         PhiEqn.setReference(PhiRefCell, PhiRefValue); // устанавливает настройки
-	  PhiEqn.solve(); // решает
+	  	PhiEqn.solve(); // решает
 
         if (potentialFlow.finalNonOrthogonalIter())
         {
