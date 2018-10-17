@@ -95,17 +95,19 @@ int main(int argc, char *argv[])
     {
         fvScalarMatrix PhiEqn
         (
+			// fvm - неявный метод/дискретизация, возвращает контрольно-объёмную матрицу
             fvm::laplacian(dimensionedScalar("1", dimless, 1), Phi)
          ==
-            fvc::div(phi)
+			// fvc - явный метод/дискретизация, возвращает поле
+			fvc::div(phi)
         );
 
-        PhiEqn.setReference(PhiRefCell, PhiRefValue);
-        PhiEqn.solve();
+        PhiEqn.setReference(PhiRefCell, PhiRefValue); // устанавливает настройки
+	  PhiEqn.solve(); // решает
 
         if (potentialFlow.finalNonOrthogonalIter())
         {
-            phi -= PhiEqn.flux();
+            phi -= PhiEqn.flux(); // flux - ???
         }
     }
 
