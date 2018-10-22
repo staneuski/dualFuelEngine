@@ -95,8 +95,14 @@ int main(int argc, char *argv[])
     // Non-orthogonal velocity potential corrector loop
     while (potentialFlow.correctNonOrthogonal())
     {
-        fvScalarMatrix PhiEqn
+		// Mass continuity for an incompressible fluid:	∇•U=0 | div(U) = 0 | du/dx+... = 0
+		// Pressure equation for an incompressible, irrotational fluid assuming steady-state conditions: (∇^2)p = 0 | ∆p = 0 | d^2(p_x)/dx^2+... = 0 | laplacian(p) = 0
+		// Phi - потенциал скорости (volScalarField): U = ∇•Phi | U = grad(Phi) | U = d(Phi)/dx*i+...
+		// ? phi - скороть, м/с (surfaceScalarField)
+		fvScalarMatrix PhiEqn
         (
+			// (∇^2)Phi = ∇(phi)
+			
 			// fvm - неявный метод/дискретизация, возвращает контрольно-объёмную матрицу
             fvm::laplacian(dimensionedScalar("1", dimless, 1), Phi)
          ==
