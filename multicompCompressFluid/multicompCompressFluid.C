@@ -209,7 +209,7 @@ int main(int argc, char *argv[])
         );
 
         // Calculate the flow-direction filter tensor
-        volScalarField magSqrU(magSqr(U));
+        volScalarField magSqrU(magSqr(U));	// квадрат амплитуды веткторного поля
         volSymmTensorField F(sqr(U)/(magSqrU + small*average(magSqrU)));
 
         // Calculate the divergence of the flow-direction filtered div(U*U)
@@ -220,7 +220,8 @@ int main(int argc, char *argv[])
         (
             fvc::div
             (
-                F & fvc::div(phi, U),
+                // & - понижение ранга тензора
+				F & fvc::div(phi, U), // поток количества движения
                 "div(div(phi,U))"
             )
         );
