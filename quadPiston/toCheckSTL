@@ -2,7 +2,7 @@
 
 # Путь к проекту
 cd /Volumes/HDD/OpenFOAM
-cd twoFuelEngine # вставить название папки проекта
+cd twoFuelEngine/quadPiston # вставить название папки проекта
 cd geometry/
 
 # Открытие файлов .stl

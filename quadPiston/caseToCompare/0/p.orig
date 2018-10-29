@@ -23,52 +23,44 @@ boundaryField
     // Injection
 	injectionXMinus
     {
-        type            fixedValue;
-        value           uniform 10;
+        type            zeroGradient;
     }
     injectionXPlus
     {
-        type            fixedValue;
-        value           uniform 10;
+        type            zeroGradient;
     }
     injectionYMinus
     {
-        type            fixedValue;
-        value           uniform 10;
+        type            zeroGradient;
     }
     injectionYPlus
     {
-        type            fixedValue;
-        value           uniform 10;
+        type            zeroGradient;
     }
 	
     // Inlet
 	inletXMinus
     {
-        type            fixedValue;
-        value           uniform 100;
+        type            zeroGradient;
     }
     inletXPlus
     {
-        type            fixedValue;
-        value           uniform 100;
+        type            zeroGradient;
     }
     inletYMinus
     {
-        type            fixedValue;
-        value           uniform 100;
+        type            zeroGradient;
     }
     inletYPlus
     {
-        type            fixedValue;
-        value           uniform 100;
+        type            zeroGradient;
     }
 	
 	// Other
     outlet
     {
         type            fixedValue;
-        value           uniform 0;	// атмосферное давление
+        value           uniform 0; 
     }
     valve
     {

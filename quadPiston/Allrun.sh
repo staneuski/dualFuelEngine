@@ -35,8 +35,16 @@ printf '\n~~~~~~~~~~~~~~~~~~~~~~~~\n\n'
 printf 'Solving the case...'
 cd ../case
 # sh firstRun.sh > case.log
-sh rerun.sh > case.log
+sh hardResolve.sh > case.log
 printf '\nThe case has being SOLVED.'
+printf '\n~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n'
+
+## Решение проекта для сравнения результатов
+printf 'Solving the compared case...'
+cd ../caseToCompare
+# sh firstRun.sh > case.log
+sh hardResolve.sh > case.log
+printf '\nThe compared case has being SOLVED.'
 printf '\n~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n'
 
 

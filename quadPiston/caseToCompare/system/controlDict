@@ -15,7 +15,7 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-application     	multicompCompressFluid;
+application     	potentialFoam;
 
 startFrom        	latestTime;
 

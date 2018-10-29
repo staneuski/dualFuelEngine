@@ -2,7 +2,7 @@
 
 # Путь к проекту и открытие его в Finder
 cd /Volumes/HDD/OpenFOAM
-cd twoFuelEngine # вставить название папки проекта
+cd twoFuelEngine/quadPiston # вставить название папки проекта
 cd mesh/
 
 # Настройки параметров разбиения сетки
