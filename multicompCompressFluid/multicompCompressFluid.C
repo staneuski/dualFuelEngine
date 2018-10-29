@@ -166,7 +166,7 @@ int main(int argc, char *argv[])
 
         if (potentialFlow.finalNonOrthogonalIter())
         {
-            phi -= PhiEqn.flux(); // flux - ???
+            phi -= PhiEqn.flux(); // flux - поток
         }
     }
 
@@ -186,11 +186,12 @@ int main(int argc, char *argv[])
     // Write U and phi
     U.write();
     phi.write();
-
+	
     // Optionally write Phi
     if (args.optionFound("writePhi"))
     {
-        Phi.write();
+        Info<< nl << "Writing field Phi (grad(Phi) = U)" << endl;
+		Phi.write();
     }
 
     // Calculate the pressure field
