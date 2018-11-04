@@ -15,7 +15,7 @@ FoamFile
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 dimensions      [0 2 -2 0 0 0 0]; // m^2/s^2 = Pa/(kg/m^3)
-
+								  // Air density was taken as 1.2041
 internalField   uniform 0;
 
 boundaryField
@@ -24,44 +24,46 @@ boundaryField
 	injectionXMinus
     {
         type            fixedValue;
-        value           uniform 10;
+        value           uniform 8304.958;
     }
     injectionXPlus
     {
         type            fixedValue;
-        value           uniform 10;
+        value           uniform 8304.958;
     }
     injectionYMinus
     {
         type            fixedValue;
-        value           uniform 10;
+        value           uniform 8304.958;
     }
     injectionYPlus
     {
         type            fixedValue;
-        value           uniform 10;
+        value           uniform 8304.958;
     }
 	
     // Inlet
+	// ∆p_kin = ∆p/rho = 0.1(bar) / 1.2041(kg/m^3) =
+	// = 10000(Pa) / 1.2041(kg/m^3) = 8304.958 m^2/s^2
 	inletXMinus
     {
         type            fixedValue;
-        value           uniform 100;
+        value           uniform 8304.958;
     }
     inletXPlus
     {
         type            fixedValue;
-        value           uniform 100;
+        value           uniform 8304.958;
     }
     inletYMinus
     {
         type            fixedValue;
-        value           uniform 100;
+        value           uniform 8304.958;
     }
     inletYPlus
     {
         type            fixedValue;
-        value           uniform 100;
+        value           uniform 8304.958;
     }
 	
 	// Other
