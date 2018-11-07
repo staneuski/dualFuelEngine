@@ -7,10 +7,10 @@
 \*---------------------------------------------------------------------------*/
 Build  : 6-1a0c91b3baa8
 Exec   : multicompCompressFluid -writep -writePhi
-Date   : Oct 29 2018
-Time   : 16:20:49
+Date   : Nov 04 2018
+Time   : 20:53:24
 Host   : "ubuntu"
-PID    : 7301
+PID    : 11822
 I/O    : uncollated
 Case   : /media/psf/HDD/OpenFOAM/twoFuelEngine/quadPiston/case
 nProcs : 1
@@ -33,21 +33,21 @@ No MRF models present
 
 
 Calculating potential flow
-GAMG:  Solving for Phi, Initial residual = 1, Final residual = 0.00392233, No Iterations 3
-GAMG:  Solving for Phi, Initial residual = 0.00265969, Final residual = 1.47282e-05, No Iterations 6
-GAMG:  Solving for Phi, Initial residual = 1.44444e-05, Final residual = 6.72129e-07, No Iterations 4
-GAMG:  Solving for Phi, Initial residual = 6.72066e-07, Final residual = 6.72066e-07, No Iterations 0
-Continuity error = 2.13549e-07
-Interpolated velocity error = 3.12791e-05
+GAMG:  Solving for Phi, Initial residual = 1, Final residual = 0.00391831, No Iterations 2
+GAMG:  Solving for Phi, Initial residual = 0.00356156, Final residual = 2.47518e-05, No Iterations 6
+GAMG:  Solving for Phi, Initial residual = 2.48269e-05, Final residual = 5.4573e-07, No Iterations 5
+GAMG:  Solving for Phi, Initial residual = 5.45697e-07, Final residual = 5.45697e-07, No Iterations 0
+Continuity error = 1.10665e-05
+Interpolated velocity error = 0.000724862
 
 Writing field Phi (grad(Phi) = U)
 
 Calculating approximate pressure field
-GAMG:  Solving for p, Initial residual = 1, Final residual = 0.00517091, No Iterations 3
-GAMG:  Solving for p, Initial residual = 0.00312111, Final residual = 2.56758e-05, No Iterations 6
-GAMG:  Solving for p, Initial residual = 2.55915e-05, Final residual = 5.59138e-07, No Iterations 5
-GAMG:  Solving for p, Initial residual = 5.59125e-07, Final residual = 5.59125e-07, No Iterations 0
-ExecutionTime = 0.1 s  ClockTime = 1 s
+GAMG:  Solving for p, Initial residual = 1, Final residual = 0.00418512, No Iterations 2
+GAMG:  Solving for p, Initial residual = 0.00384353, Final residual = 2.23181e-05, No Iterations 6
+GAMG:  Solving for p, Initial residual = 2.24573e-05, Final residual = 4.90111e-07, No Iterations 5
+GAMG:  Solving for p, Initial residual = 4.90079e-07, Final residual = 4.90079e-07, No Iterations 0
+ExecutionTime = 0.09 s  ClockTime = 0 s
 
 End
 

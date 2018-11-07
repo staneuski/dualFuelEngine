@@ -1,3 +1,5 @@
+// Field U
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Info<< "Reading velocity field U\n" << endl;
 volVectorField U
 (
@@ -14,6 +16,9 @@ volVectorField U
 
 U = dimensionedVector("0", U.dimensions(), Zero);
 
+
+// Field phi
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 surfaceScalarField phi
 (
     IOobject
@@ -34,6 +39,8 @@ if (args.optionFound("initialiseUBCs"))
 }
 
 
+// Field p
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Default name for the pressure field
 word pName("p");
 
@@ -71,7 +78,10 @@ volScalarField p
     pBCTypes
 );
 
-// Infer the velocity potential BCs from the pressure
+
+// Field Phi
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Infer the velocity potential boundary condicions from the pressure
 wordList PhiBCTypes
 (
     p.boundaryField().size(),
@@ -113,5 +123,24 @@ setRefCell
     PhiRefValue
 );
 mesh.setFluxRequired(Phi.name());
+
+
+// Field F
+// Info<< "Reading field F\n" << endl;
+// volScalarField F
+// (
+//     IOobject
+//     (
+//         "F",
+//         runTime.timeName(),
+//         mesh,
+//         IOobject::READ_IF_PRESENT,
+// 		IOobject::AUTO_WRITE
+//     ),
+//     mesh,
+//     dimensionedScalar("F", sqr(dimVelocity), 0),
+//     PhiBCTypes
+// );
+
 
 #include "createMRF.H"

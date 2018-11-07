@@ -32,57 +32,6 @@ Description
     This application is particularly useful to generate starting fields for
     Navier-Stokes codes.
 
-	\laplacian \Phi = \div(\vec{U})
-	\f]
-
-	Where:
-	\vartable
-	 \Phi      | Velocity potential [m2/s]
-	 \vec{U}   | Velocity [m/s]
-	\endvartable
-
-	The corresponding pressure field could be calculated from the divergence
-	of the Euler equation:
-
-	\f[
-	 \laplacian p + \div(\div(\vec{U}\otimes\vec{U})) = 0
-	\f]
-
-	but this generates excessive pressure variation in regions of large
-	velocity gradient normal to the flow direction.  A better option is to
-	calculate the pressure field corresponding to velocity variation along the
-	stream-lines:
-
-	\f[
-	  \laplacian p + \div(\vec{F}\cdot\div(\vec{U}\otimes\vec{U})) = 0
-	\f]
-	where the flow direction tensor \f$\vec{F}\f$ is obtained from
-	\f[
-	 \vec{F} = \hat{\vec{U}}\otimes\hat{\vec{U}}
-	\f]
-
-	\heading Required fields
-	\plaintable
-	 U         | Velocity [m/s]
-	\endplaintable
-
-	\heading Optional fields
-	\plaintable
-	 p         | Kinematic pressure [m2/s2]
-	 Phi       | Velocity potential [m2/s]
-	           | Generated from p (if present) or U if not present
-	\endplaintable
-
-	\heading Options
-	\plaintable
-	 -writep   | write the Euler pressure
-	 -writePhi | Write the final velocity potential
-	 -initialiseUBCs | Update the velocity boundaries before solving for Phi
-	\endplaintable
-
-	EXTENTED CODE GUIDE
-	https://www.openfoam.com/documentation/cpp-guide/html/potentialFoam_8C_source.html
-
 \*---------------------------------------------------------------------------*/
 
 #include "fvCFD.H"
@@ -183,17 +132,19 @@ int main(int argc, char *argv[])
         << (sqrt(sum(sqr(fvc::flux(U) - phi)))/sum(mesh.magSf())).value()
         << endl;
 
-    // Write U and phi
+    // Write U
     U.write();
-    phi.write();
+    
 	
-    // Optionally write Phi
+    // Optionally write Phi if not it writes phi
     if (args.optionFound("writePhi"))
     {
         Info<< nl << "Writing field Phi (grad(Phi) = U)" << endl;
 		Phi.write();
-    }
-
+    } else {
+		phi.write();
+	}
+	
     // Calculate the pressure field
     if (args.optionFound("writep"))
     {
@@ -210,8 +161,8 @@ int main(int argc, char *argv[])
         );
 
         // Calculate the flow-direction filter tensor
-        volScalarField magSqrU(magSqr(U));	// квадрат амплитуды веткторного поля
-        volSymmTensorField F(sqr(U)/(magSqrU + small*average(magSqrU)));
+        volScalarField magSqrU(magSqr(U));	// квадрат амплитуды веткторного поля |U|^2
+        volSymmTensorField F(sqr(U)/(magSqrU + small*average(magSqrU))); // U^2 / (|U|^2 + 1e-06*<|U|^2>)
 
         // Calculate the divergence of the flow-direction filtered div(U*U)
         // Filtering with the flow-direction generates a more reasonable
@@ -241,7 +192,7 @@ int main(int argc, char *argv[])
 
         p.write();
     }
-
+	
     runTime.functionObjects().end();
 
     Info<< "ExecutionTime = " << runTime.elapsedCpuTime() << " s"
@@ -250,6 +201,7 @@ int main(int argc, char *argv[])
 
     Info<< "End\n" << endl;
 
+	// F.write();
     return 0;
 }
 
