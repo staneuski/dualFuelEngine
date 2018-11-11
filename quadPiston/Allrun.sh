@@ -39,6 +39,7 @@ sh hardResolve.sh > case.log
 printf '\nThe case has being SOLVED.'
 printf '\n~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n'
 
+
 ## Решение проекта для сравнения результатов
 printf 'Solving the compared case...'
 cd ../caseToCompare
