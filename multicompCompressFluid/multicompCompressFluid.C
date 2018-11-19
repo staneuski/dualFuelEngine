@@ -35,7 +35,8 @@ Description
 \*---------------------------------------------------------------------------*/
 
 #include "fvCFD.H"
-#include "pisoControl.H"
+#include "simpleControl.H"
+#include "fvOptions.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
@@ -76,7 +77,7 @@ int main(int argc, char *argv[])
     #include "createTime.H"
     #include "createMesh.H"
 
-    pisoControl potentialFlow(mesh, "potentialFlow");
+	simpleControl multicompCompressFluid(mesh, "multicompCompressFluid");
 
     #include "createFields.H"
 
@@ -93,7 +94,7 @@ int main(int argc, char *argv[])
 
 
     // Non-orthogonal velocity potential corrector loop
-    while (potentialFlow.correctNonOrthogonal())
+    while (multicompCompressFluid.correctNonOrthogonal())
     {
 		// Mass continuity for an incompressible fluid:	∇•U=0 | div(U) = 0 | du/dx+... = 0
 		// Pressure equation for an incompressible, irrotational fluid assuming steady-state conditions: (∇^2)p = 0 | ∆p = 0 | d^2(p_x)/dx^2+... = 0 | laplacian(p) = 0
@@ -113,10 +114,24 @@ int main(int argc, char *argv[])
         PhiEqn.setReference(PhiRefCell, PhiRefValue); // устанавливает настройки
 	  	PhiEqn.solve(); // решает
 
-        if (potentialFlow.finalNonOrthogonalIter())
+        if (multicompCompressFluid.finalNonOrthogonalIter())
         {
             phi -= PhiEqn.flux(); // flux - поток
         }
+		
+        fvScalarMatrix TEqn
+        (
+            fvm::ddt(T)
+          + fvm::div(phi, T)
+          - fvm::laplacian(DT, T)
+         ==
+            fvOptions(T)
+        );
+
+        TEqn.relax();
+        fvOptions.constrain(TEqn);
+        TEqn.solve();
+		fvOptions.correct(T);
     }
 
     MRF.makeAbsolute(phi);
@@ -134,7 +149,9 @@ int main(int argc, char *argv[])
 
     // Write U
     U.write();
-    
+	
+	// Write T
+    T.write();
 	
     // Optionally write Phi if not it writes phi
     if (args.optionFound("writePhi"))
@@ -155,7 +172,7 @@ int main(int argc, char *argv[])
         setRefCell
         (
             p,
-            potentialFlow.dict(),
+            multicompCompressFluid.dict(),
             pRefCell,
             pRefValue
         );
@@ -179,7 +196,7 @@ int main(int argc, char *argv[])
         );
 
         // Solve a Poisson equation for the approximate pressure
-        while (potentialFlow.correctNonOrthogonal())
+        while (multicompCompressFluid.correctNonOrthogonal())
         {
             fvScalarMatrix pEqn
             (

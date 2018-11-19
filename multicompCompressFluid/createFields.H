@@ -1,4 +1,4 @@
-// Field U
+// Velocity field U
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Info<< "Reading velocity field U\n" << endl;
 volVectorField U
@@ -39,7 +39,7 @@ if (args.optionFound("initialiseUBCs"))
 }
 
 
-// Field p
+// Pressure field p
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Default name for the pressure field
 word pName("p");
@@ -79,7 +79,7 @@ volScalarField p
 );
 
 
-// Field Phi
+// Potential field Phi
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Infer the velocity potential boundary condicions from the pressure
 wordList PhiBCTypes
@@ -118,29 +118,62 @@ scalar PhiRefValue = 0;
 setRefCell
 (
     Phi,
-    potentialFlow.dict(),
+    multicompCompressFluid.dict(),
     PhiRefCell,
     PhiRefValue
 );
 mesh.setFluxRequired(Phi.name());
 
+// Temperature field T 
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Info<< "Reading field T\n" << endl;
 
-// Field F
-// Info<< "Reading field F\n" << endl;
-// volScalarField F
-// (
-//     IOobject
-//     (
-//         "F",
-//         runTime.timeName(),
-//         mesh,
-//         IOobject::READ_IF_PRESENT,
-// 		IOobject::AUTO_WRITE
-//     ),
-//     mesh,
-//     dimensionedScalar("F", sqr(dimVelocity), 0),
-//     PhiBCTypes
-// );
+volScalarField T
+(
+    IOobject
+    (
+        "T",
+        runTime.timeName(),
+        mesh,
+        IOobject::MUST_READ,
+        IOobject::AUTO_WRITE
+    ),
+    mesh
+);
+
+
+// Duffusivity constant DT
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Info<< "Reading transportProperties\n" << endl;
+
+IOdictionary transportProperties
+(
+    IOobject
+    (
+        "transportProperties",
+        runTime.constant(),
+        mesh,
+        IOobject::MUST_READ_IF_MODIFIED,
+        IOobject::NO_WRITE
+    )
+);
+
+
+Info<< "Reading diffusivity DT\n" << endl;
+
+dimensionedScalar DT
+(
+    transportProperties.lookup("DT")
+);
 
 
 #include "createMRF.H"
+
+#include "createFvOptions.H"
+
+
+
+
+
+
+

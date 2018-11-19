@@ -27,6 +27,7 @@ mkdir 1
 mv 0/U 1
 mv 0/p 1
 mv 0/phi 1
+mv 0/T 1
 
 
 

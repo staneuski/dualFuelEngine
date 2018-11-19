@@ -30,9 +30,17 @@ solvers
     {
         $Phi;
     }
+	
+    T
+    {
+        solver          PBiCGStab;
+        preconditioner  DILU;
+        tolerance       1e-06;
+        relTol          0;
+    }
 }
 
-potentialFlow
+multicompCompressFluid
 {
     nNonOrthogonalCorrectors 3;
 }

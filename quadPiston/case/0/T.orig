@@ -9,59 +9,59 @@ FoamFile
 {
     version     2.0;
     format      ascii;
-    class       volVectorField;
-    object      U;
+    class       volScalarField;
+    object      T;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [0 1 -1 0 0 0 0]; // [kg m s K kg-mol cd]
+dimensions      [0 0 0 1 0 0 0]; // K
 
-internalField   uniform (0 0 0);
+internalField   uniform 0;
 
 boundaryField
 {
     // Injection
 	injectionXMinus
     {
-		type            uniformFixedValue;
-		uniformValue    constant (-100 0 0);
+        type            fixedValue;
+        value           uniform 2;
     }
 	injectionXPlus
     {
-        type            uniformFixedValue;
-        uniformValue    constant (100 0 0);
+        type            fixedValue;
+        value           uniform 2;
     }
 	injectionYMinus
     {
-        type            uniformFixedValue;
-        uniformValue    constant (0 -100 0);
+        type            fixedValue;
+        value           uniform 2;
     }
 	injectionYPlus
     {
-        type            uniformFixedValue;
-        uniformValue    constant (0 100 0);
+        type            fixedValue;
+        value           uniform 2;
     }
 
 	// Inlet
 	inletXMinus
     {
-        type            uniformFixedValue;
-        uniformValue    constant (-100 0 0);
+        type            fixedValue;
+        value           uniform 1;
     }
 	inletXPlus
     {
-        type            uniformFixedValue;
-        uniformValue    constant (100 0 0);
+        type            fixedValue;
+        value           uniform 1;
     }
 	inletYMinus
     {
-        type            uniformFixedValue;
-        uniformValue    constant (0 -100 0);
+        type            fixedValue;
+        value           uniform 1;
     }
 	inletYPlus
     {
-        type            uniformFixedValue;
-        uniformValue    constant (0 100 0);
+        type            fixedValue;
+        value           uniform 1;
     }
 
 	// Other
@@ -71,11 +71,11 @@ boundaryField
     } // outlet
     valve
     {
-        type            noSlip;
+        type            zeroGradient;
     } // valve
     walls
     {
-        type            noSlip;
+        type            zeroGradient;
     } // walls
 }
 

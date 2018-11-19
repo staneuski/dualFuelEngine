@@ -10,43 +10,12 @@ FoamFile
     version     2.0;
     format      ascii;
     class       dictionary;
-    location    "system";
-    object      fvSchemes;
+    location    "constant";
+    object      transportProperties;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-ddtSchemes
-{
-    default         steadyState;
-}
-
-gradSchemes
-{
-    default         leastSquares;
-}
-
-divSchemes
-{
-    default         none;
-    div(phi,U)      bounded Gauss linear;
-    div(div(phi,U)) Gauss linear;
-	div(phi,T)      Gauss linearUpwind grad(T);
-}
-
-laplacianSchemes
-{
-    default         Gauss linear corrected;
-}
-
-interpolationSchemes
-{
-    default         linear;
-}
-
-snGradSchemes
-{
-    default         corrected;
-}
+DT              DT [0 2 -1 0 0 0 0] 0.01;
 
 
 // ************************************************************************* //

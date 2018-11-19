@@ -19,7 +19,7 @@ cp -r ../mesh/constant/polyMesh constant
 multicompCompressFluid -writep -writePhi
 
 # Конвертировние и операции для просмотра решённой задачи
-foamToVTK # конвертирование в формат VTK
+# foamToVTK # конвертирование в формат VTK
 
 # Перемещение файлов расчёта в папку 1 для возможности открытия в solved.foam
 if [! -d "$1" ]; then
@@ -27,6 +27,7 @@ if [! -d "$1" ]; then
 fi
 mv 0/U 1
 mv 0/phi 1
+mv 0/T 1
 
 
 
