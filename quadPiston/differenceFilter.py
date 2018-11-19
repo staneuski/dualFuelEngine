@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Difference between parameters
 
 # Difference between Phi
@@ -29,4 +30,14 @@ output.CellData.append(UCell_1 - UCell_0, '∆U')
 UPoint_0 = inputs[0].PointData['U']
 UPoint_1 = inputs[1].PointData['U']
 output.PointData.append(UPoint_1 - UPoint_0, '∆U')
+
+# Difference between T
+# Cell data
+TCell_0 = inputs[0].CellData['T']
+TCell_2 = inputs[2].CellData['T']
+output.CellData.append(TCell_2 - TCell_0, '∆T')
+# Point data
+TPoint_0 = inputs[0].PointData['T']
+TPoint_2 = inputs[2].PointData['T']
+output.PointData.append(TPoint_2 - TPoint_0, '∆T')
 
