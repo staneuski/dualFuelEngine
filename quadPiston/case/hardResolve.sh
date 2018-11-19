@@ -30,7 +30,7 @@ multicompCompressFluid -writep -writePhi | tee -a case.log
 # foamToVTK | tee -a case.log # конвертирование решенной задачи в формат VTK
 
 # Перемещение файлов расчёта в папку 1 для возможности открытия в solved.foam
-mkdir 1
+mkdir -p 1
 mv 0/U 1
 mv 0/p 1
 mv 0/phi 1

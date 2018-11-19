@@ -12,23 +12,21 @@
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # Копирование файлов сетки
-if [! -d "$constant" ]; then
-	mkdir constant
-fi
-cp -r ../mesh/constant/polyMesh constant
+mkdir -p constant
+cp -r ../mesh/constant/polyMesh constant/polyMesh
 
 # Копирование граничных условий из проекта с модифицированным ядром
-cp -r ../case/0/*.orig 0
+mkdir -p 0
+cp -r ../case/0/p.orig 0
+cp -r ../case/0/U.orig 0
 
 # Запуск расчёта
-potentialFoam
-
-# Конвертировние и операции для просмотра решённой задачи
-# foamToVTK # конвертирование в формат VTK
+potentialFoam -writePhi -writep | tee case.log
 
 # Перемещение файлов расчёта в папку 1 для возможности открытия в solved.foam
-mkdir 1
+mkdir -p 1
 mv 0/U 1
+mv 0/p 1
 mv 0/phi 1
 
 

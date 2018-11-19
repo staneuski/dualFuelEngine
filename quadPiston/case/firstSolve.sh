@@ -22,9 +22,7 @@ multicompCompressFluid -writep -writePhi
 # foamToVTK # конвертирование в формат VTK
 
 # Перемещение файлов расчёта в папку 1 для возможности открытия в solved.foam
-if [! -d "$1" ]; then
-	mkdir 1
-fi
+mkdir -p 1
 mv 0/U 1
 mv 0/phi 1
 mv 0/T 1

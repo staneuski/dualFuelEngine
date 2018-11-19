@@ -11,19 +11,18 @@
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-# Копирование файлов сетки
-if [! -d "$constant" ]; then
-	mkdir constant
-fi
-cp -r ../mesh/constant/polyMesh constant
+# Копирование файлов сетки и постоянных
+mkdir -p constant
+cp -r ../case/constant/transportProperties constant
+cp -r ../mesh/constant/polyMesh constant/polyMesh
 
 # Копирование граничных условий из проекта с модифицированным ядром
+mkdir -p 0
 cp -r ../case/0/T.orig 0
 cp -r ../case/1/U 0
-cp -r ../case/1/transportProperties constant
 
 # Запуск расчёта
-scalarTransportFoam
+scalarTransportFoam | tee case.log
 
 
 # ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
