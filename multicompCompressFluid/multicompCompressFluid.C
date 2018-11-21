@@ -128,8 +128,8 @@ int main(int argc, char *argv[])
             fvOptions(T)
         );
 
-        TEqn.relax();
-        fvOptions.constrain(TEqn);
+        // TEqn.relax();
+        // fvOptions.constrain(TEqn);
         TEqn.solve();
 		fvOptions.correct(T);
     }
@@ -150,17 +150,16 @@ int main(int argc, char *argv[])
     // Write U
     U.write();
 	
-	// Write T
-    T.write();
-	
-    // Optionally write Phi if not it writes phi
+    // Optionally write Phi (if not it writes phi)
     if (args.optionFound("writePhi"))
     {
         Info<< nl << "Writing field Phi (grad(Phi) = U)" << endl;
 		Phi.write();
     } else {
+		Info<< nl << "Writing field phi" << endl;
 		phi.write();
 	}
+	
 	
     // Calculate the pressure field
     if (args.optionFound("writep"))
@@ -209,6 +208,30 @@ int main(int argc, char *argv[])
 
         p.write();
     }
+	
+	// Calculating temperature field
+	Info<< nl << "Calculating temperature field" << endl;
+	
+	// Non-orthogonal temperature corrector loop
+    while (multicompCompressFluid.correctNonOrthogonal())
+    {
+        fvScalarMatrix TEqn
+        (
+            fvm::ddt(T)
+          + fvm::div(phi, T)
+          - fvm::laplacian(DT, T)
+         ==
+            fvOptions(T)
+        );
+
+        TEqn.relax();
+        fvOptions.constrain(TEqn);
+        TEqn.solve();
+		fvOptions.correct(T);
+    }
+	
+	// Write T
+    T.write();
 	
     runTime.functionObjects().end();
 
