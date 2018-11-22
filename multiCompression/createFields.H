@@ -118,7 +118,7 @@ scalar PhiRefValue = 0;
 setRefCell
 (
     Phi,
-    multicompCompressFluid.dict(),
+    multiCompression.dict(),
     PhiRefCell,
     PhiRefValue
 );

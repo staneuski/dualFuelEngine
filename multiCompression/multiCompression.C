@@ -22,7 +22,7 @@ License
     along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
 
 Application
-    multicompCompressFluid
+    multiCompression
 
 Description
     Potential flow solver which solves for the velocity potential, to
@@ -77,7 +77,7 @@ int main(int argc, char *argv[])
     #include "createTime.H"
     #include "createMesh.H"
 
-	simpleControl multicompCompressFluid(mesh, "multicompCompressFluid");
+	simpleControl multiCompression(mesh, "multiCompression");
 
     #include "createFields.H"
 
@@ -94,7 +94,7 @@ int main(int argc, char *argv[])
 
 
     // Non-orthogonal velocity potential corrector loop
-    while (multicompCompressFluid.correctNonOrthogonal())
+    while (multiCompression.correctNonOrthogonal())
     {
 		// Mass continuity for an incompressible fluid:	∇•U=0 | div(U) = 0 | du/dx+... = 0
 		// Pressure equation for an incompressible, irrotational fluid assuming steady-state conditions: (∇^2)p = 0 | ∆p = 0 | d^2(p_x)/dx^2+... = 0 | laplacian(p) = 0
@@ -114,7 +114,7 @@ int main(int argc, char *argv[])
         PhiEqn.setReference(PhiRefCell, PhiRefValue); // устанавливает настройки
 	  	PhiEqn.solve(); // решает
 
-        if (multicompCompressFluid.finalNonOrthogonalIter())
+        if (multiCompression.finalNonOrthogonalIter())
         {
             phi -= PhiEqn.flux(); // flux - поток
         }
@@ -171,7 +171,7 @@ int main(int argc, char *argv[])
         setRefCell
         (
             p,
-            multicompCompressFluid.dict(),
+            multiCompression.dict(),
             pRefCell,
             pRefValue
         );
@@ -195,7 +195,7 @@ int main(int argc, char *argv[])
         );
 
         // Solve a Poisson equation for the approximate pressure
-        while (multicompCompressFluid.correctNonOrthogonal())
+        while (multiCompression.correctNonOrthogonal())
         {
             fvScalarMatrix pEqn
             (
@@ -213,7 +213,7 @@ int main(int argc, char *argv[])
 	Info<< nl << "Calculating temperature field" << endl;
 	
 	// Non-orthogonal temperature corrector loop
-    while (multicompCompressFluid.correctNonOrthogonal())
+    while (multiCompression.correctNonOrthogonal())
     {
         fvScalarMatrix TEqn
         (
