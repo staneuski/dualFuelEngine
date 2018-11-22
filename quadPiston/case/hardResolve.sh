@@ -24,7 +24,7 @@ cp -r ../mesh/constant/polyMesh constant
 # refineMesh -overwrite | tee case.log
 
 # Запуск расчёта и запись постпроцессинга
-multicompCompressFluid -writep -writePhi | tee -a case.log
+multiCompression -writep -writePhi | tee -a case.log
 
 # Конвертировние и операции для просмотра решённой задачи
 # foamToVTK | tee -a case.log # конвертирование решенной задачи в формат VTK

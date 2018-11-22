@@ -32,7 +32,7 @@ solvers
     }
 }
 
-potentialFlow
+SIMPLE
 {
     nNonOrthogonalCorrectors 3;
 }

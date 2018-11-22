@@ -30,7 +30,7 @@ solvers
     {
         $Phi;
     }
-	
+
     T
     {
         solver          PBiCGStab;
@@ -40,10 +40,15 @@ solvers
     }
 }
 
-multicompCompressFluid
+multiCompression
 {
     nNonOrthogonalCorrectors 3;
 }
 
 
 // ************************************************************************* //
+
+
+
+
+

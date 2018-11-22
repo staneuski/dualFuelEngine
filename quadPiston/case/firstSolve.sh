@@ -16,7 +16,7 @@ cp -r ../mesh/constant/polyMesh constant
 
 # Запуск расчёта
 # potentialFoam
-multicompCompressFluid -writep -writePhi
+multiCompression -writep -writePhi
 
 # Конвертировние и операции для просмотра решённой задачи
 # foamToVTK # конвертирование в формат VTK

@@ -40,13 +40,22 @@ printf '\nThe case has being SOLVED.'
 printf '\n~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n'
 
 
-## Решение проекта для сравнения результатов
+## Решение проекта для сравнения результатов c potentialFoam'ом
 printf 'Solving the compared case...'
-cd ../caseToCompare
+cd ../casePotential
 # sh firstRun.sh > case.log
 sh hardResolve.sh > case.log
 printf '\nThe compared case has being SOLVED.'
 printf '\n~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n'
+
+
+## Решение проекта для сравнения результатов со scalarTransportFoam'ом
+printf 'Solving the compared case...'
+cd ../caseScalar
+# sh firstRun.sh > case.log
+sh hardResolve.sh > case.log
+printf '\nThe compared case has being SOLVED.'
+printf '\n~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n
 
 
 ## Вывод времени расчёта проекта в терминал и сигнал о завершении расчёта

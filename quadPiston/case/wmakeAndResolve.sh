@@ -2,7 +2,7 @@
 # Recompilates solver and resolves the case
 
 # Recompilation
-cd ../../multicompCompressFluid
+cd ../../multiCompression
 wmake #| tee ../quadPiston/case/wmake.log
 
 # Resolving the case 

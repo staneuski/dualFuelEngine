@@ -18,11 +18,13 @@ FoamFile
 ddtSchemes
 {
     default         steadyState;
+    ddt(T)          Euler;
 }
 
 gradSchemes
 {
     default         leastSquares;
+    grad(T)         Gauss linear;
 }
 
 divSchemes
@@ -30,6 +32,7 @@ divSchemes
     default         none;
     div(phi,U)      bounded Gauss linear;
     div(div(phi,U)) Gauss linear;
+	div(phi, T)      Gauss linearUpwind grad(T);
 }
 
 laplacianSchemes
