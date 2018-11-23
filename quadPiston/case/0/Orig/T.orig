@@ -10,13 +10,13 @@ FoamFile
     version     2.0;
     format      ascii;
     class       volScalarField;
-    object      p;
+    object      T;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [0 2 -2 0 0 0 0]; // m^2/s^2 = Pa/(kg/m^3)
-								  // Air density was taken as 1.2041
-internalField   uniform 0;
+dimensions      [0 0 0 1 0 0 0]; // K
+
+internalField   uniform 290;
 
 boundaryField
 {
@@ -24,62 +24,59 @@ boundaryField
 	injectionXMinus
     {
         type            fixedValue;
-        value           uniform 8304.958;
+        value           uniform 600;
     }
-    injectionXPlus
+	injectionXPlus
     {
         type            fixedValue;
-        value           uniform 8304.958;
+        value           uniform 600;
     }
-    injectionYMinus
+	injectionYMinus
     {
         type            fixedValue;
-        value           uniform 8304.958;
+        value           uniform 600;
     }
-    injectionYPlus
+	injectionYPlus
     {
         type            fixedValue;
-        value           uniform 8304.958;
+        value           uniform 600;
     }
-	
-    // Inlet
-	// ∆p_kin = ∆p/rho = 0.1(bar) / 1.2041(kg/m^3) =
-	// = 10000(Pa) / 1.2041(kg/m^3) = 8304.958 m^2/s^2
+
+	// Inlet
 	inletXMinus
     {
         type            fixedValue;
-        value           uniform 8304.958;
+        value           uniform 290;
     }
-    inletXPlus
+	inletXPlus
     {
         type            fixedValue;
-        value           uniform 8304.958;
+        value           uniform 290;
     }
-    inletYMinus
+	inletYMinus
     {
         type            fixedValue;
-        value           uniform 8304.958;
+        value           uniform 290;
     }
-    inletYPlus
+	inletYPlus
     {
         type            fixedValue;
-        value           uniform 8304.958;
+        value           uniform 290;
     }
-	
+
 	// Other
     outlet
     {
-        type            fixedValue;
-        value           uniform 0;	// атмосферное давление
-    }
+        type            zeroGradient;
+    } // outlet
     valve
     {
         type            zeroGradient;
-    }
+    } // valve
     walls
     {
         type            zeroGradient;
-    }
+    } // walls
 }
 
 // ************************************************************************* //

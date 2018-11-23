@@ -23,23 +23,19 @@ boundaryField
     // Injection
 	injectionXMinus
     {
-        type            fixedValue;
-        value           uniform 8304.958;
+        type            zeroGradient;
     }
     injectionXPlus
     {
-        type            fixedValue;
-        value           uniform 8304.958;
+        type            zeroGradient;
     }
     injectionYMinus
     {
-        type            fixedValue;
-        value           uniform 8304.958;
+        type            zeroGradient;
     }
     injectionYPlus
     {
-        type            fixedValue;
-        value           uniform 8304.958;
+        type            zeroGradient;
     }
 	
     // Inlet
@@ -47,23 +43,19 @@ boundaryField
 	// = 10000(Pa) / 1.2041(kg/m^3) = 8304.958 m^2/s^2
 	inletXMinus
     {
-        type            fixedValue;
-        value           uniform 8304.958;
+        type            zeroGradient;
     }
     inletXPlus
     {
-        type            fixedValue;
-        value           uniform 8304.958;
+        type            zeroGradient;
     }
     inletYMinus
     {
-        type            fixedValue;
-        value           uniform 8304.958;
+        type            zeroGradient;
     }
     inletYPlus
     {
-        type            fixedValue;
-        value           uniform 8304.958;
+        type            zeroGradient;
     }
 	
 	// Other

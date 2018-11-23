@@ -24,44 +24,44 @@ boundaryField
 	injectionXMinus
     {
 		type            uniformFixedValue;
-		uniformValue    constant (-100 0 0);
+		uniformValue    constant (-1 0 0);
     }
 	injectionXPlus
     {
         type            uniformFixedValue;
-        uniformValue    constant (100 0 0);
+        uniformValue    constant (1 0 0);
     }
 	injectionYMinus
     {
         type            uniformFixedValue;
-        uniformValue    constant (0 -100 0);
+        uniformValue    constant (0 -1 0);
     }
 	injectionYPlus
     {
         type            uniformFixedValue;
-        uniformValue    constant (0 100 0);
+        uniformValue    constant (0 1 0);
     }
 
 	// Inlet
 	inletXMinus
     {
         type            uniformFixedValue;
-        uniformValue    constant (-100 0 0);
+        uniformValue    constant (-1 0 0);
     }
 	inletXPlus
     {
         type            uniformFixedValue;
-        uniformValue    constant (100 0 0);
+        uniformValue    constant (1 0 0);
     }
 	inletYMinus
     {
         type            uniformFixedValue;
-        uniformValue    constant (0 -100 0);
+        uniformValue    constant (0 -1 0);
     }
 	inletYPlus
     {
         type            uniformFixedValue;
-        uniformValue    constant (0 100 0);
+        uniformValue    constant (0 1 0);
     }
 
 	// Other

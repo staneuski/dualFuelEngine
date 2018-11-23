@@ -16,7 +16,7 @@ FoamFile
 
 dimensions      [0 0 0 1 0 0 0]; // K
 
-internalField   uniform 290;
+internalField   uniform 0;
 
 boundaryField
 {
@@ -24,44 +24,44 @@ boundaryField
 	injectionXMinus
     {
         type            fixedValue;
-        value           uniform 600;
+        value           uniform 1;
     }
 	injectionXPlus
     {
         type            fixedValue;
-        value           uniform 600;
+        value           uniform 1;
     }
 	injectionYMinus
     {
         type            fixedValue;
-        value           uniform 600;
+        value           uniform 1;
     }
 	injectionYPlus
     {
         type            fixedValue;
-        value           uniform 600;
+        value           uniform 1;
     }
 
 	// Inlet
 	inletXMinus
     {
         type            fixedValue;
-        value           uniform 290;
+        value           uniform 1;
     }
 	inletXPlus
     {
         type            fixedValue;
-        value           uniform 290;
+        value           uniform 1;
     }
 	inletYMinus
     {
         type            fixedValue;
-        value           uniform 290;
+        value           uniform 1;
     }
 	inletYPlus
     {
         type            fixedValue;
-        value           uniform 290;
+        value           uniform 1;
     }
 
 	// Other
