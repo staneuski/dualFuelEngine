@@ -45,6 +45,12 @@ multiCompression
     nNonOrthogonalCorrectors 3;
 }
 
+SIMPLE
+{
+    nNonOrthogonalCorrectors 0;
+}
+
+
 
 // ************************************************************************* //
 

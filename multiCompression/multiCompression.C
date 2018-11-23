@@ -35,6 +35,7 @@ Description
 \*---------------------------------------------------------------------------*/
 
 #include "fvCFD.H"
+#include "pisoControl.H"
 #include "simpleControl.H"
 #include "fvOptions.H"
 
@@ -77,7 +78,9 @@ int main(int argc, char *argv[])
     #include "createTime.H"
     #include "createMesh.H"
 
-	simpleControl multiCompression(mesh, "multiCompression");
+	pisoControl multiCompression(mesh, "multiCompression");
+	simpleControl temperatureField(mesh);
+	
 
     #include "createFields.H"
 
@@ -213,7 +216,7 @@ int main(int argc, char *argv[])
 	Info<< nl << "Calculating temperature field" << endl;
 	
 	// Non-orthogonal temperature corrector loop
-    while (multiCompression.correctNonOrthogonal())
+    while (temperatureField.correctNonOrthogonal())
     {
         fvScalarMatrix TEqn
         (
