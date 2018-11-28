@@ -11,7 +11,7 @@ Potential flow solver which solves for the velocity potential, to calculate the 
 ## Solver details
 The potential flow solution is typically employed to generate initial fields or full Navier-Stokes codes.  The flow is evolved using the equation:
 $$
-	{\bigtriangledown}^{2} \Phi = div(\vec{U})
+{\bigtriangledown}^{2} \Phi = div(\vec{U})
 $$
 Where:
 | Variable     	  | Meaning    				| Dimension   |

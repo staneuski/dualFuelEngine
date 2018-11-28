@@ -74,6 +74,12 @@ int main(int argc, char *argv[])
         "execute functionObjects"
     );
 
+    argList::addBoolOption
+    (
+        "writedivphi",
+        "Calculating divergence of phi"
+    );
+
     #include "setRootCaseLists.H"
     #include "createTime.H"
     #include "createMesh.H"
@@ -122,19 +128,6 @@ int main(int argc, char *argv[])
             phi -= PhiEqn.flux(); // flux - поток
         }
 		
-        fvScalarMatrix TEqn
-        (
-            fvm::ddt(T)
-          + fvm::div(phi, T)
-          - fvm::laplacian(DT, T)
-         ==
-            fvOptions(T)
-        );
-
-        // TEqn.relax();
-        // fvOptions.constrain(TEqn);
-        TEqn.solve();
-		fvOptions.correct(T);
     }
 
     MRF.makeAbsolute(phi);
@@ -163,6 +156,13 @@ int main(int argc, char *argv[])
 		phi.write();
 	}
 	
+    // Calculate the pressure field
+    if (args.optionFound("writedivphi"))
+    {
+		Info<< nl << "Calculating divergence of phi" << endl;
+		volScalarField divphi(fvc::div(phi));
+		divphi.write();
+	}
 	
     // Calculate the pressure field
     if (args.optionFound("writep"))
@@ -210,6 +210,7 @@ int main(int argc, char *argv[])
         }
 
         p.write();
+		// F.write();
     }
 	
 	// Calculating temperature field
@@ -244,7 +245,6 @@ int main(int argc, char *argv[])
 
     Info<< "End\n" << endl;
 
-	// F.write();
     return 0;
 }
 

@@ -21,10 +21,10 @@ rm -r 1
 cp -r ../mesh/constant/polyMesh constant
 
 # Укрупнение сетки
-# refineMesh -overwrite | tee case.log
+refineMesh -overwrite | tee case.log
 
 # Запуск расчёта и запись постпроцессинга
-multiCompression -writep -writePhi | tee -a case.log
+multiCompression -writep -writePhi -writedivphi | tee -a case.log
 
 # Конвертировние и операции для просмотра решённой задачи
 # foamToVTK | tee -a case.log # конвертирование решенной задачи в формат VTK
@@ -35,6 +35,7 @@ mv 0/U 1
 mv 0/p 1
 mv 0/phi 1
 mv 0/T 1
+mv 0/div\(phi\) 1
 
 
 # ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~

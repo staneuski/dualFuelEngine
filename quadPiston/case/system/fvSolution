@@ -42,7 +42,7 @@ solvers
 
 multiCompression
 {
-    nNonOrthogonalCorrectors 3;
+    nNonOrthogonalCorrectors 5;
 }
 
 SIMPLE

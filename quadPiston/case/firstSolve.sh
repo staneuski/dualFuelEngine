@@ -16,7 +16,7 @@ cp -r ../mesh/constant/polyMesh constant
 
 # Запуск расчёта
 # potentialFoam
-multiCompression -writep -writePhi
+multiCompression -writep -writePhi -writedivphi | tee -a case.log
 
 # Конвертировние и операции для просмотра решённой задачи
 # foamToVTK # конвертирование в формат VTK
@@ -26,6 +26,7 @@ mkdir -p 1
 mv 0/U 1
 mv 0/phi 1
 mv 0/T 1
+mv 0/div\(phi\) 1
 
 
 
