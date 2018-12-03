@@ -18,50 +18,54 @@ dimensions      [0 0 0 1 0 0 0]; // K
 
 internalField   uniform 0;
 
+injection	 	1;
+
+inlet	 		1;
+
 boundaryField
 {
     // Injection
 	injectionXMinus
     {
         type            fixedValue;
-        value           uniform 1;
+        value           uniform $injection;
     }
 	injectionXPlus
     {
         type            fixedValue;
-        value           uniform 1;
+        value           uniform $injection;
     }
 	injectionYMinus
     {
         type            fixedValue;
-        value           uniform 1;
+        value           uniform $injection;
     }
 	injectionYPlus
     {
         type            fixedValue;
-        value           uniform 1;
+        value           uniform $injection;
     }
 
 	// Inlet
 	inletXMinus
     {
         type            fixedValue;
-        value           uniform 1;
+        value           uniform $inlet;
     }
 	inletXPlus
     {
         type            fixedValue;
-        value           uniform 1;
+        value           uniform $inlet;
     }
 	inletYMinus
     {
         type            fixedValue;
-        value           uniform 1;
+        value           uniform $inlet;
     }
 	inletYPlus
     {
         type            fixedValue;
-        value           uniform 1;
+        value           uniform $inlet;
     }
 
 	// Other
