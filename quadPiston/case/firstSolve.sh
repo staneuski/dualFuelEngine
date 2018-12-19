@@ -1,15 +1,18 @@
 #!/bin/sh
-#*---------------------------------*- sh -*----------------------------------*#
-# =========                 |                                                 #
-# \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           #
-#  \\    /   O peration     | Version:  6                                     #
-#   \\  /    A nd           | Mail:     stas.stasheuski@gmail.com             #
-#    \\/     M anipulation  |                                                 #
-#*---------------------------------------------------------------------------*#
-
-# Скрипт для запуска расчёта
-
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#-----------------------------------------------------------------------------#
+# =========                 |
+# \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+#  \\    /   O peration     | Website:  https://github.com/StasF1
+#   \\  /    A nd           | Version:  6
+#    \\/     M anipulation  |
+#------------------------------------------------------------------------------
+# Script
+#     firstSolve
+#
+# Description
+#     Run the case for the first time using multiCompression solver
+#
+#-----------------------------------------------------------------------------#
 
 # Копирование файлов сетки
 cp -r ../mesh/constant/polyMesh constant

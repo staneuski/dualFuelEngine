@@ -1,5 +1,18 @@
 #!/bin/sh
-# Recompilates solver and resolves the case
+#-----------------------------------------------------------------------------#
+# =========                 |
+# \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+#  \\    /   O peration     | Website:  https://github.com/StasF1
+#   \\  /    A nd           | Version:  6
+#    \\/     M anipulation  |
+#------------------------------------------------------------------------------
+# Script
+#     wmakeAndResolve
+#
+# Description
+#     Recompilates solver and resolves the case
+#
+#-----------------------------------------------------------------------------# 
 
 # Recompilation
 cd ../../multiCompression
