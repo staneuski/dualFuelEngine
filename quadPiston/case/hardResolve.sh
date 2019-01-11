@@ -24,7 +24,7 @@ rm -r 1
 cp -r ../mesh/constant/polyMesh constant
 
 # Укрупнение сетки
-refineMesh -overwrite | tee case.log
+# refineMesh -overwrite | tee case.log
 
 # Запуск расчёта и запись постпроцессинга
 multiCompression -writep -writePhi -writedivphi | tee -a case.log

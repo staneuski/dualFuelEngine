@@ -1,5 +1,20 @@
 # -*- coding: utf-8 -*-
-# Difference between parameters
+#------------------------------------------------------------------------------
+# =========                 |
+# \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+#  \\    /   O peration     | Website:  https://github.com/StasF1
+#   \\  /    A nd           | Copyright (C) 2017 OpenFOAM Foundation
+#    \\/     M anipulation  |
+#------------------------------------------------------------------------------
+# Script
+#     differenceFilter
+#
+# Description
+#     Python scipt to execute it from in the ParaView using the
+#     ProgrammableFilter to compare miltiCompresion result with other solvers 
+#     results
+# 
+#------------------------------------------------------------------------------
 
 # Difference between Phi
 # Cell data

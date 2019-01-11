@@ -23,8 +23,7 @@ ddtSchemes
 
 gradSchemes
 {
-    default         leastSquares;
-    // grad(T)         Gauss linear;
+    default         Gauss linear;
 }
 
 divSchemes
