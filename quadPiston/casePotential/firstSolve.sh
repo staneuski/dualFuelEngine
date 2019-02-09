@@ -15,22 +15,27 @@
 #-----------------------------------------------------------------------------# 
 
 # Копирование файлов сетки
-mkdir -p constant
+mkdir -p constant/
 cp -r ../mesh/constant/polyMesh constant/polyMesh
 
 # Копирование граничных условий из проекта с модифицированным ядром
-mkdir -p 0
+mkdir -p 0/
 cp -r ../case/0/p.orig 0
 cp -r ../case/0/U.orig 0
+
+# Копирование файла fvSolution из проекта с модифицированным ядром
+cp -r ../case/system/fvSolution system
+sed -i "s/multiCompression/potentialFlow/g" system/fvSolution
 
 # Запуск расчёта
 potentialFoam -writePhi -writep | tee case.log
 
 # Перемещение файлов расчёта в папку 1 для возможности открытия в solved.foam
-mkdir -p 1
+mkdir -p 1/
 mv 0/U 1
 mv 0/p 1
 mv 0/phi 1
+mv 0/Phi 1
 
 
 # ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~

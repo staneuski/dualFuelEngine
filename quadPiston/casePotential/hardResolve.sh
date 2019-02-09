@@ -17,6 +17,7 @@
 # Удаление cтарых результатов расчёта
 rm -r 1
 rm -r constant
+rm -r system/fvSolution
 
 # Перезапуск расчёта с копирование файлов сетки заново
 sh firstSolve.sh 
