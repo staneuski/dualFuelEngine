@@ -36,10 +36,10 @@ multiCompression -writep -writePhi -writedivphi | tee -a case.log
 mkdir -p 1
 mv 0/U 1
 mv 0/p 1
-mv 0/phi 1
 mv 0/T 1
+mv 0/phi 1
+mv 0/Phi 1
 mv 0/div\(phi\) 1
-
 
 # ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
 echo -ne '\007' # звуковой сигнал при выполнении задачи

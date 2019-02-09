@@ -27,8 +27,10 @@ multiCompression -writep -writePhi -writedivphi | tee -a case.log
 # Перемещение файлов расчёта в папку 1 для возможности открытия в solved.foam
 mkdir -p 1
 mv 0/U 1
-mv 0/phi 1
+mv 0/p 1
 mv 0/T 1
+mv 0/phi 1
+mv 0/Phi 1
 mv 0/div\(phi\) 1
 
 # ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~

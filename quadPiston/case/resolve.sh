@@ -30,8 +30,9 @@ multiCompression  -writep -writePhi -writedivphi | tee case.log
 mkdir -p 1
 mv 0/U 1
 mv 0/p 1
-mv 0/phi 1
 mv 0/T 1
+mv 0/phi 1
+mv 0/Phi 1
 mv 0/div\(phi\) 1
 
 
