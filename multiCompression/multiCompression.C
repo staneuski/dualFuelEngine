@@ -144,17 +144,19 @@ int main(int argc, char *argv[])
         << endl;
 
     // Write U
+	Info<< nl << "Writing field U" << endl;
     U.write();
 	
-    // Optionally write Phi (if not it writes phi)
+	// Write phi
+	Info<< nl << "Writing field phi" << endl;
+	phi.write();
+	
+    // Optionally write Phi
     if (args.optionFound("writePhi"))
     {
         Info<< nl << "Writing field Phi (grad(Phi) = U)" << endl;
 		Phi.write();
-    } else {
-		Info<< nl << "Writing field phi" << endl;
-		phi.write();
-	}
+    }
 	
     // Calculate the pressure field
     if (args.optionFound("writedivphi"))
