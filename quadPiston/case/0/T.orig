@@ -32,47 +32,40 @@ boundaryField
     }
 	injectionXPlus
     {
-        // type            fixedValue;
-        // value           uniform $injection;
-		type            zeroGradient;
+        type            fixedValue;
+        value           uniform $injection;
     }
 	injectionYMinus
     {
-        // type            fixedValue;
-        // value           uniform $injection;
-		type            zeroGradient;
+        type            fixedValue;
+        value           uniform $injection;
     }
 	injectionYPlus
     {
-        // type            fixedValue;
-        // value           uniform $injection;
-		type            zeroGradient;
+        type            fixedValue;
+        value           uniform $injection;
     }
 
 	// Inlet
 	inletXMinus
     {
-        // type            fixedValue;
-        // value           uniform $inlet;
-		type            zeroGradient;
+        type            fixedValue;
+        value           uniform $inlet;
     }
 	inletXPlus
     {
-        // type            fixedValue;
-        // value           uniform $inlet;
-		type            zeroGradient;
+        type            fixedValue;
+        value           uniform $inlet;
     }
 	inletYMinus
     {
-        // type            fixedValue;
-        // value           uniform $inlet;
-		type            zeroGradient;
+        type            fixedValue;
+        value           uniform $inlet;
     }
 	inletYPlus
     {
-        // type            fixedValue;
-        // value           uniform $inlet;
-		type            zeroGradient;
+        type            fixedValue;
+        value           uniform $inlet;
     }
 
 	// Other

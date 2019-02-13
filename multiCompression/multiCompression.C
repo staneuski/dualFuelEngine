@@ -43,54 +43,20 @@ Description
 
 int main(int argc, char *argv[])
 {
-    argList::addOption
-    (
-        "pName",
-        "pName",
-        "Name of the pressure field"
-    );
-
-    argList::addBoolOption
-    (
-        "initialiseUBCs",
-        "Initialise U boundary conditions"
-    );
-
-    argList::addBoolOption
-    (
-        "writePhi",
-        "Write the velocity potential field"
-    );
-
-    argList::addBoolOption
-    (
-        "writep",
-        "Calculate and write the pressure field"
-    );
-
-    argList::addBoolOption
-    (
-        "withFunctionObjects",
-        "execute functionObjects"
-    );
-
-    argList::addBoolOption
-    (
-        "writedivphi",
-        "Calculating divergence of phi"
-    );
-
+	#include "boolOptions.H"
     #include "setRootCaseLists.H"
     #include "createTime.H"
     #include "createMesh.H"
 
 	pisoControl multiCompression(mesh, "multiCompression");
-	simpleControl temperatureField(mesh);
-	
+	simpleControl concentrationField(mesh);
 
     #include "createFields.H"
 
     // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+	// Calculating potential flow
+	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     Info<< nl << "Calculating potential flow" << endl;
 
@@ -109,10 +75,8 @@ int main(int argc, char *argv[])
 		// Pressure equation for an incompressible, irrotational fluid assuming steady-state conditions: (∇^2)p = 0 | ∆p = 0 | d^2(p_x)/dx^2+... = 0 | laplacian(p) = 0
 		// Phi - потенциал скорости (volScalarField): U = ∇•Phi | U = grad(Phi) | U = d(Phi)/dx*i+...
 		// ? phi - скороcть, м/с (surfaceScalarField)
-		fvScalarMatrix PhiEqn
-        (
-			// (∇^2)Phi = ∇(phi)
-			
+		fvScalarMatrix PhiEqn /* (∇^2)Phi = ∇(phi) */
+        (		
 			// fvm - неявный метод/дискретизация, возвращает контрольно-объёмную матрицу
             fvm::laplacian(dimensionedScalar("1", dimless, 1), Phi)
          ==
@@ -142,29 +106,6 @@ int main(int argc, char *argv[])
     Info<< "Interpolated velocity error = "
         << (sqrt(sum(sqr(fvc::flux(U) - phi)))/sum(mesh.magSf())).value()
         << endl;
-
-    // Write U
-	Info<< nl << "Writing field U" << endl;
-    U.write();
-	
-	// Write phi
-	Info<< nl << "Writing field phi" << endl;
-	phi.write();
-	
-    // Optionally write Phi
-    if (args.optionFound("writePhi"))
-    {
-        Info<< nl << "Writing field Phi (grad(Phi) = U)" << endl;
-		Phi.write();
-    }
-	
-    // Calculate the pressure field
-    if (args.optionFound("writedivphi"))
-    {
-		Info<< nl << "Calculating divergence of phi" << endl;
-		volScalarField divphi(fvc::div(phi));
-		divphi.write();
-	}
 	
     // Calculate the pressure field
     if (args.optionFound("writep"))
@@ -211,33 +152,85 @@ int main(int argc, char *argv[])
             pEqn.solve();
         }
 
-        p.write();
-		// F.write();
+        p.write();		// F.write();
     }
 	
-	// Calculating temperature field
-	Info<< nl << "Calculating temperature field" << endl;
-	
-	// Non-orthogonal temperature corrector loop
-    while (temperatureField.correctNonOrthogonal())
+    // Calculate the divergence of the phi field
+    if (args.optionFound("writedivphi"))
     {
-        fvScalarMatrix TEqn
-        (
-            fvm::ddt(T)
-          + fvm::div(phi, T)
-          - fvm::laplacian(DT, T)
-         ==
-            fvOptions(T)
-        );
+		Info<< nl << "Calculating divergence of phi" << endl;
+		volScalarField divphi(fvc::div(phi));
+		divphi.write();
+	}
 
-        TEqn.relax();
-        fvOptions.constrain(TEqn);
-        TEqn.solve();
-		fvOptions.correct(T);
-    }
 	
-	// Write T
+	// Calculating concentrations
+	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
+	if (args.optionFound("stationary"))
+    {
+		
+		// Calculating concentrations stationary
+		Info<< nl << "Calculating temperature field stationary" << endl;
+		
+	    while (concentrationField.correctNonOrthogonal()) // Non-orthogonal temperature corrector loop
+	    {
+	        fvScalarMatrix TEqn
+	        (
+	            fvm::ddt(T)
+	          + fvm::div(phi, T)
+	          - fvm::laplacian(DT, T)
+	         ==
+	            fvOptions(T)
+	        );
+
+	        TEqn.relax();
+	        fvOptions.constrain(TEqn);
+	        TEqn.solve();
+			fvOptions.correct(T);
+	    }
+		
+	} else {
+		
+		// Calculating concentrations non-stationary
+	    while (concentrationField.loop(runTime))
+	    {
+			
+			Info<< nl << "Calculating temperature field" << endl;
+		
+		    while (concentrationField.correctNonOrthogonal()) // Non-orthogonal temperature corrector loop
+		    {
+		        fvScalarMatrix TEqn
+		        (
+		            fvm::ddt(T)
+		          + fvm::div(phi, T)
+		          - fvm::laplacian(DT, T)
+		         ==
+		            fvOptions(T)
+		        );
+
+		        TEqn.relax();
+		        fvOptions.constrain(TEqn);
+		        TEqn.solve();
+				fvOptions.correct(T);
+		    }
+			
+			runTime.write();
+		}
+	}
+	
+	// Write fields and display the run time
+	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	
+	Info<< nl << "Writing fields" << endl;	
+
     T.write();
+    U.write();
+	phi.write();
+	if(args.optionFound("writePhi")) // optionally write Phi (grad(Phi) = U)
+	{
+		Phi.write();
+	}	
 	
     runTime.functionObjects().end();
 

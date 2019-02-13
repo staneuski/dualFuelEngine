@@ -36,47 +36,40 @@ boundaryField
     }
 	injectionXPlus
     {
-        // type            uniformFixedValue;
-        // uniformValue    constant ($injection 0 0);
-		type            noSlip;
+        type            uniformFixedValue;
+        uniformValue    constant ($injection 0 0);
     }
 	injectionYMinus
     {
-        // type            uniformFixedValue;
-        // uniformValue    constant (0 $injectionMinus 0);
-		type            noSlip;
+        type            uniformFixedValue;
+        uniformValue    constant (0 $injectionMinus 0);
     }
 	injectionYPlus
     {
-        // type            uniformFixedValue;
-        // uniformValue    constant (0 $injection 0);
-		type            noSlip;
+        type            uniformFixedValue;
+        uniformValue    constant (0 $injection 0);
     }
 
 	// Inlet
 	inletXMinus
     {
-        // type            uniformFixedValue;
-        // uniformValue    constant ($inletMinus 0 0);
-		type            noSlip;
+        type            uniformFixedValue;
+        uniformValue    constant ($inletMinus 0 0);
 	}
 	inletXPlus
     {
-        // type            uniformFixedValue;
-        // uniformValue    constant ($inlet 0 0);
-		type            noSlip;
+        type            uniformFixedValue;
+        uniformValue    constant ($inlet 0 0);
     }
 	inletYMinus
     {
-        // type            uniformFixedValue;
-        // uniformValue    constant (0 $inletMinus 0);
-		type            noSlip;
+        type            uniformFixedValue;
+        uniformValue    constant (0 $inletMinus 0);
     }
 	inletYPlus
     {
-        // type            uniformFixedValue;
-        // uniformValue    constant (0 $inlet 0);
-		type            noSlip;
+        type            uniformFixedValue;
+        uniformValue    constant (0 $inlet 0);
     }
 
 	// Other
