@@ -49,7 +49,7 @@ int main(int argc, char *argv[])
     #include "createMesh.H"
 
 	pisoControl multiCompression(mesh, "multiCompression");
-	simpleControl concentrationField(mesh);
+	simpleControl simple(mesh);
 
     #include "createFields.H"
 
@@ -163,19 +163,18 @@ int main(int argc, char *argv[])
 		divphi.write();
 	}
 
-	
+	U.write();
 	// Calculating concentrations
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	
-	if (args.optionFound("stationary"))
+	if (args.optionFound("stat"))
     {
+		Info<< "\nCalculating scalar transport stationary\n" << endl;
 		
-		// Calculating concentrations stationary
-		Info<< nl << "Calculating temperature field stationary" << endl;
-		
-	    while (concentrationField.correctNonOrthogonal()) // Non-orthogonal temperature corrector loop
+	    while (simple.correctNonOrthogonal()) // Non-orthogonal temperature corrector loop
 	    {
-	        fvScalarMatrix TEqn
+			
+			fvScalarMatrix TEqn
 	        (
 	            fvm::ddt(T)
 	          + fvm::div(phi, T)
@@ -191,14 +190,16 @@ int main(int argc, char *argv[])
 	    }
 		
 	} else {
+
+		Info<< "\nCalculating scalar transport non-stationary\n" << endl;
 		
-		// Calculating concentrations non-stationary
-	    while (concentrationField.loop(runTime))
+		#include "CourantNo.H"
+		
+	    while (simple.loop(runTime))
 	    {
+			Info<< "Time = " << runTime.timeName() << nl << endl;
 			
-			Info<< nl << "Calculating temperature field" << endl;
-		
-		    while (concentrationField.correctNonOrthogonal()) // Non-orthogonal temperature corrector loop
+			while (simple.correctNonOrthogonal()) // non-orthogonal temperature corrector loop
 		    {
 		        fvScalarMatrix TEqn
 		        (
@@ -225,7 +226,7 @@ int main(int argc, char *argv[])
 	Info<< nl << "Writing fields" << endl;	
 
     T.write();
-    U.write();
+    
 	phi.write();
 	if(args.optionFound("writePhi")) // optionally write Phi (grad(Phi) = U)
 	{

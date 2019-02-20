@@ -17,7 +17,7 @@ FoamFile
 
 application     	multiCompression;
 
-startFrom        	startTime;
+startFrom       	startTime;
 
 startTime       	0;
 
@@ -25,11 +25,11 @@ stopAt          	endTime;
 
 endTime         	1;
 
-deltaT          	1;
+deltaT          	0.05;
 
-writeControl     	timeStep;
+writeControl    	timeStep;
 
-writeInterval    	1;
+writeInterval   	100;
 
 purgeWrite      	0;
 

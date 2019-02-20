@@ -22,7 +22,13 @@ cp -r ../mesh/constant/polyMesh constant/polyMesh
 # Копирование граничных условий из проекта с модифицированным ядром
 mkdir -p 0
 cp -r ../case/0/T.orig 0
-cp -r ../casePotential/1/U 0
+cp -r ../case/1/U 0
+
+# Копирование файлов system из проекта с модифицированным ядром
+cp -r ../case/system/controlDict system
+cp -r ../case/system/fvSolution system
+cp -r ../case/system/fvSchemes system
+sed -i "s/multiCompression/scalarTransportFoam/g" system/controlDict
 
 # Запуск расчёта
 scalarTransportFoam | tee case.log

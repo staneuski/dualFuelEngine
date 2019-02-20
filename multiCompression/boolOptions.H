@@ -37,6 +37,6 @@ argList::addBoolOption
 
 argList::addBoolOption
 (
-    "stationary",
+    "stat",
     "Calculating transport equation stationary"
 );

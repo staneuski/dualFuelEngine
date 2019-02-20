@@ -23,7 +23,9 @@ mkdir -p 0/
 cp -r ../case/0/p.orig 0
 cp -r ../case/0/U.orig 0
 
-# Копирование файла fvSolution из проекта с модифицированным ядром
+# Копирование файлов system
+cp -r ../case/system/controlDict system
+sed -i "s/multiCompression/potentialFoam/g" system/controlDict
 cp -r ../case/system/fvSolution system
 sed -i "s/multiCompression/potentialFlow/g" system/fvSolution
 

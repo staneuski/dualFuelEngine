@@ -18,7 +18,7 @@ FoamFile
 ddtSchemes
 {
     default         steadyState;
-    // ddt(T)          Euler;
+    ddt(T)          Euler;
 }
 
 gradSchemes
