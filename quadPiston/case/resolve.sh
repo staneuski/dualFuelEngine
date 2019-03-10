@@ -1,4 +1,4 @@
-#!/bin/sh
+ #!/bin/sh
 #-----------------------------------------------------------------------------#
 # =========                 |
 # \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
@@ -21,7 +21,7 @@ rm -r 1
 # cp -r ../mesh/constant/polyMesh constant
 
 # Запуск расчёта и запись постпроцессинга
-multiCompression  -writep -writePhi -writedivphi | tee case.log
+multiCompression  -writep -writePhi | tee case.log
 
 # Конвертировние и операции для просмотра решённой задачи
 # foamToVTK | tee -a case.log # конвертирование решенной задачи в формат VTK

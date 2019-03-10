@@ -16,11 +16,11 @@ FoamFile
 
 dimensions      [0 0 0 1 0 0 0]; // K
 
-internalField   uniform 0;
+internalField   uniform 858.1;
 
-injection	 	1;
+injection	 	400;
 
-inlet	 		1;
+inlet	 		293.15;
 
 boundaryField
 {
