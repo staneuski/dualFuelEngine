@@ -22,8 +22,3 @@ argList::addBoolOption
     "Calculating divergence of phi"
 );
 
-argList::addBoolOption
-(
-    "stat",
-    "Calculating transport equation stationary"
-);

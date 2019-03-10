@@ -38,13 +38,6 @@ if (args.optionFound("initialiseUBCs"))
 
 
 // Pressure field p
-// // Default name for the pressure field
-// word pName("p");
-//
-// // Update name of the pressure field from the command-line option
-// args.optionReadIfPresent("pName", pName);
-
-// Infer the pressure BCs from the velocity
 wordList pBCTypes
 (
     U.boundaryField().size(),
@@ -101,7 +94,6 @@ volScalarField Phi
         runTime.timeName(),
         mesh,
         IOobject::READ_IF_PRESENT,
-        // IOobject::NO_WRITE
 		IOobject::AUTO_WRITE
     ),
     mesh,

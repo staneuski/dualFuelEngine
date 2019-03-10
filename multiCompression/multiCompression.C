@@ -180,17 +180,20 @@ int main(int argc, char *argv[])
 
 	U.write();
 	
-	// Calculating concentrations
-	// ~~~~~~~~~~~~~~~~~~~~~~~~~~
+	// Calculating temperature field
+	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	
-	if (args.optionFound("stat"))
-    {
-		Info<< "\nCalculating temperature stationary\n" << endl;
+	Info<< "\nCalculating temperature field T\n" << endl;
 		
-	    while (multiCompression.correctNonOrthogonal()) // Non-orthogonal temperature corrector loop
+	#include "CourantNo.H"
+	
+    while (multiCompression.loop(runTime))
+    {
+		Info<< "Time = " << runTime.timeName() << nl << endl;
+		
+		while (multiCompression.correctNonOrthogonal()) // non-orthogonal temperature corrector loop
 	    {
-			
-			fvScalarMatrix TEqn
+	        fvScalarMatrix TEqn
 	        (
 	            fvm::ddt(T)
 	          + fvm::div(phi, T)
@@ -205,43 +208,14 @@ int main(int argc, char *argv[])
 			fvOptions.correct(T);
 	    }
 		
-	} else {
-
-		Info<< "\nCalculating temperature non-stationary\n" << endl;
-		
-		#include "CourantNo.H"
-		
-	    while (multiCompression.loop(runTime))
-	    {
-			Info<< "Time = " << runTime.timeName() << nl << endl;
-			
-			while (multiCompression.correctNonOrthogonal()) // non-orthogonal temperature corrector loop
-		    {
-		        fvScalarMatrix TEqn
-		        (
-		            fvm::ddt(T)
-		          + fvm::div(phi, T)
-		          - fvm::laplacian(DT, T)
-		         ==
-		            fvOptions(T)
-		        );
-
-		        TEqn.relax();
-		        fvOptions.constrain(TEqn);
-		        TEqn.solve();
-				fvOptions.correct(T);
-		    }
-			
-			runTime.write();
-		}
-	}	
+		runTime.write();
+	}
 
 	// Write fields and display the run time
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	Info<< nl << "Writing fields" << endl;	
 
     T.write();
-    alpha_air.write();
 	
 	phi.write();
 	if(args.optionFound("writePhi"))
