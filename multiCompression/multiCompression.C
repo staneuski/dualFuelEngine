@@ -89,7 +89,7 @@ int main(int argc, char *argv[])
     // Since solver contains no time loop it would never execute function objects so do it ourselves
     runTime.functionObjects().start();
 
-    MRF.makeRelative(phi);
+    // MRF.makeRelative(phi);
     adjustPhi(phi, U, p);
 
     // Non-orthogonal velocity potential corrector loop
@@ -112,7 +112,7 @@ int main(int argc, char *argv[])
 		
     }
 
-    MRF.makeAbsolute(phi);
+    // MRF.makeAbsolute(phi);
 
     Info<< "Continuity error = "
         << mag(fvc::div(phi))().weightedAverage(mesh.V()).value()
