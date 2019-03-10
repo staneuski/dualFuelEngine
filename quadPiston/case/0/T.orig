@@ -27,45 +27,45 @@ boundaryField
     // Injection
 	injectionXMinus
     {
-        type            fixedValue;
-        value           uniform $injection;
+        type            uniformFixedValue;
+        uniformValue 	uniform $injection;
     }
 	injectionXPlus
     {
-        type            fixedValue;
-        value           uniform $injection;
+        type            uniformFixedValue;
+        uniformValue 	uniform $injection;
     }
 	injectionYMinus
     {
-        type            fixedValue;
-        value           uniform $injection;
+        type            uniformFixedValue;
+        uniformValue 	uniform $injection;
     }
 	injectionYPlus
     {
-        type            fixedValue;
-        value           uniform $injection;
+        type            uniformFixedValue;
+        uniformValue 	uniform $injection;
     }
 
 	// Inlet
 	inletXMinus
     {
-        type            fixedValue;
-        value           uniform $inlet;
+        type            uniformFixedValue;
+        uniformValue 	uniform $inlet;
     }
 	inletXPlus
     {
-        type            fixedValue;
-        value           uniform $inlet;
+        type            uniformFixedValue;
+        uniformValue 	uniform $inlet;
     }
 	inletYMinus
     {
-        type            fixedValue;
-        value           uniform $inlet;
+        type            uniformFixedValue;
+        uniformValue 	uniform $inlet;
     }
 	inletYPlus
     {
-        type            fixedValue;
-        value           uniform $inlet;
+        type            uniformFixedValue;
+        uniformValue 	uniform $inlet;
     }
 
 	// Other
