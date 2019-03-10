@@ -83,7 +83,6 @@ int main(int argc, char *argv[])
 
 	// Calculating potential flow
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~
-
     Info<< nl << "Calculating potential flow" << endl;
 
     // Since solver contains no time loop it would never execute function objects so do it ourselves
@@ -182,7 +181,6 @@ int main(int argc, char *argv[])
 	
 	// Calculating temperature field
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	
 	Info<< "\nCalculating temperature field T\n" << endl;
 		
 	#include "CourantNo.H"
@@ -210,12 +208,41 @@ int main(int argc, char *argv[])
 		
 		runTime.write();
 	}
+	
+	// Calculating concentration fields
+	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	// Info<< "\nCalculating concentrations fields\n" << endl;
+	//
+	//     while (multiCompression.loop(runTime))
+	//     {
+	// 	Info<< "Time = " << runTime.timeName() << nl << endl;
+	//
+	// 	while (multiCompression.correctNonOrthogonal()) // non-orthogonal temperature corrector loop
+	//     {
+	//         fvScalarMatrix alphaEqn
+	//         (
+	//             fvm::ddt(alpha_air)
+	//           + fvm::div(phi, alpha_air)
+	//           - fvm::laplacian(DT, alpha_air)
+	//          ==
+	//             fvOptions(alpha_air)
+	//         );
+	//
+	//         alphaEqn.relax();
+	//         fvOptions.constrain(alphaEqn);
+	//         alphaEqn.solve();
+	// 		fvOptions.correct(alpha_air);
+	//     }
+	//
+	// 	runTime.write();
+	// }
 
 	// Write fields and display the run time
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	Info<< nl << "Writing fields" << endl;	
 
     T.write();
+	// alpha_air.write();
 	
 	phi.write();
 	if(args.optionFound("writePhi"))

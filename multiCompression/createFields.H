@@ -128,7 +128,6 @@ volScalarField T
     mesh
 );
 
-// Concentration fields
 Info<< "Reading transportProperties\n" << endl;
 
 IOdictionary transportProperties
@@ -149,6 +148,22 @@ dimensionedScalar DT
 (
     transportProperties.lookup("DT")
 );
+
+// Concentration fields alpha
+// Info<< "Reading field alpha\n" << endl;
+//
+// volScalarField alpha_air
+// (
+//     IOobject
+//     (
+//         "alpha_air",
+//         runTime.timeName(),
+//         mesh,
+//         IOobject::MUST_READ,
+//         IOobject::AUTO_WRITE
+//     ),
+//     mesh
+// );
 
 #include "createFvOptions.H"
 

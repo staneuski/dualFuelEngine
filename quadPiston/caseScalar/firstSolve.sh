@@ -29,6 +29,8 @@ cp -r ../case/system/controlDict system
 cp -r ../case/system/fvSolution system
 cp -r ../case/system/fvSchemes system
 sed -i "s/multiCompression/scalarTransportFoam/g" system/controlDict
+cp -r ../case/system/fvSolution system
+sed -i "s/multiCompression/SIMPLE/g" system/fvSolution
 
 # Запуск расчёта
 scalarTransportFoam | tee case.log

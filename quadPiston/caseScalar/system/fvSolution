@@ -40,17 +40,10 @@ solvers
     }
 }
 
-multiCompression
+SIMPLE
 {
     nNonOrthogonalCorrectors 2;
 }
-
-SIMPLE
-{
-    nNonOrthogonalCorrectors 0;
-}
-
-
 
 // ************************************************************************* //
 
