@@ -75,7 +75,7 @@ int main(int argc, char *argv[])
     #include "createMesh.H"
 
 	pisoControl multiCompression(mesh, "multiCompression");
-	simpleControl simple(mesh);
+	simpleControl simple(mesh, "multiCompression");
 
     #include "createFields.H"
 
@@ -89,7 +89,6 @@ int main(int argc, char *argv[])
     // Since solver contains no time loop it would never execute function objects so do it ourselves
     runTime.functionObjects().start();
 
-    // MRF.makeRelative(phi);
     adjustPhi(phi, U, p);
 
     // Non-orthogonal velocity potential corrector loop
@@ -111,8 +110,6 @@ int main(int argc, char *argv[])
         }
 		
     }
-
-    // MRF.makeAbsolute(phi);
 
     Info<< "Continuity error = "
         << mag(fvc::div(phi))().weightedAverage(mesh.V()).value()
@@ -182,14 +179,15 @@ int main(int argc, char *argv[])
 	}
 
 	U.write();
+	
 	// Calculating concentrations
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~
 	
 	if (args.optionFound("stat"))
     {
-		Info<< "\nCalculating scalar transport stationary\n" << endl;
+		Info<< "\nCalculating temperature stationary\n" << endl;
 		
-	    while (simple.correctNonOrthogonal()) // Non-orthogonal temperature corrector loop
+	    while (multiCompression.correctNonOrthogonal()) // Non-orthogonal temperature corrector loop
 	    {
 			
 			fvScalarMatrix TEqn
@@ -209,15 +207,15 @@ int main(int argc, char *argv[])
 		
 	} else {
 
-		Info<< "\nCalculating scalar transport non-stationary\n" << endl;
+		Info<< "\nCalculating temperature non-stationary\n" << endl;
 		
 		#include "CourantNo.H"
 		
-	    while (simple.loop(runTime))
+	    while (multiCompression.loop(runTime))
 	    {
 			Info<< "Time = " << runTime.timeName() << nl << endl;
 			
-			while (simple.correctNonOrthogonal()) // non-orthogonal temperature corrector loop
+			while (multiCompression.correctNonOrthogonal()) // non-orthogonal temperature corrector loop
 		    {
 		        fvScalarMatrix TEqn
 		        (
@@ -236,18 +234,19 @@ int main(int argc, char *argv[])
 			
 			runTime.write();
 		}
-	}
-	
+	}	
+
 	// Write fields and display the run time
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	
 	Info<< nl << "Writing fields" << endl;	
 
     T.write();
-    
+    alpha_air.write();
+	
 	phi.write();
-	if(args.optionFound("writePhi")) // optionally write Phi (grad(Phi) = U)
+	if(args.optionFound("writePhi"))
 	{
+		// optionally write Phi (grad(Phi) = U)
 		Phi.write();
 	}	
 	

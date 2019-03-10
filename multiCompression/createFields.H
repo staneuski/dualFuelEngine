@@ -77,7 +77,6 @@ volScalarField p
 
 
 // Potential field Phi
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 // Infer the velocity potential boundary condicions from the pressure
 wordList PhiBCTypes
 (
@@ -121,8 +120,7 @@ setRefCell
 );
 mesh.setFluxRequired(Phi.name());
 
-// Temperature field T 
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Temperature field T
 Info<< "Reading field T\n" << endl;
 
 volScalarField T
@@ -138,9 +136,7 @@ volScalarField T
     mesh
 );
 
-
-// Duffusivity constant DT
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+// Concentration fields
 Info<< "Reading transportProperties\n" << endl;
 
 IOdictionary transportProperties
@@ -155,16 +151,12 @@ IOdictionary transportProperties
     )
 );
 
-
 Info<< "Reading diffusivity DT\n" << endl;
 
 dimensionedScalar DT
 (
     transportProperties.lookup("DT")
 );
-
-
-#include "createMRF.H"
 
 #include "createFvOptions.H"
 
