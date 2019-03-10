@@ -20,7 +20,21 @@ internalField   uniform 858.1;
 
 injection	 	400;
 
-inlet	 		293.15;
+// inlet	 		293.15;
+
+T (/*(time value)*/
+	(0 	 381)
+	(0.1 374.4)
+	(0.2 375.9)
+	(0.3 395.6)
+	(0.4 428.2)
+	(0.5 478.8)
+	(0.6 558.8)
+	(0.7 685.1)
+	(0.8 875.9)
+	(0.9 1574.8)
+	(1 	 1818.1)
+);
 
 boundaryField
 {
@@ -28,7 +42,7 @@ boundaryField
 	injectionXMinus
     {
         type            uniformFixedValue;
-        uniformValue 	uniform $injection;
+        uniformValue    uniform $injection;
     }
 	injectionXPlus
     {
@@ -50,22 +64,22 @@ boundaryField
 	inletXMinus
     {
         type            uniformFixedValue;
-        uniformValue 	uniform $inlet;
+        uniformValue 	table $T;
     }
 	inletXPlus
     {
         type            uniformFixedValue;
-        uniformValue 	uniform $inlet;
+        uniformValue 	table $T;
     }
 	inletYMinus
     {
         type            uniformFixedValue;
-        uniformValue 	uniform $inlet;
+        uniformValue 	table $T;
     }
 	inletYPlus
     {
         type            uniformFixedValue;
-        uniformValue 	uniform $inlet;
+        uniformValue 	table $T;
     }
 
 	// Other
