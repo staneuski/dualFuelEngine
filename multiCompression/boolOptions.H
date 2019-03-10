@@ -1,16 +1,3 @@
-argList::addOption
-(
-    "pName",
-    "pName",
-    "Name of the pressure field"
-);
-
-argList::addBoolOption
-(
-    "initialiseUBCs",
-    "Initialise U boundary conditions"
-);
-
 argList::addBoolOption
 (
     "writePhi",

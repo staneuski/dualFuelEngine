@@ -1,5 +1,4 @@
 // Velocity field U
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Info<< "Reading velocity field U\n" << endl;
 volVectorField U
 (
@@ -18,7 +17,6 @@ U = dimensionedVector("0", U.dimensions(), Zero);
 
 
 // Field phi
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 surfaceScalarField phi
 (
     IOobject
@@ -40,12 +38,11 @@ if (args.optionFound("initialiseUBCs"))
 
 
 // Pressure field p
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-// Default name for the pressure field
-word pName("p");
-
-// Update name of the pressure field from the command-line option
-args.optionReadIfPresent("pName", pName);
+// // Default name for the pressure field
+// word pName("p");
+//
+// // Update name of the pressure field from the command-line option
+// args.optionReadIfPresent("pName", pName);
 
 // Infer the pressure BCs from the velocity
 wordList pBCTypes
@@ -62,19 +59,19 @@ forAll(U.boundaryField(), patchi)
     }
 }
 
-Info<< "Constructing pressure field " << pName << nl << endl;
+Info<< "Constructing pressure field p" << nl << endl;
 volScalarField p
 (
     IOobject
     (
-        pName,
+        "p",
         runTime.timeName(),
         mesh,
         IOobject::READ_IF_PRESENT,
         IOobject::NO_WRITE
     ),
     mesh,
-    dimensionedScalar(pName, sqr(dimVelocity), 0),
+    dimensionedScalar("p", sqr(dimVelocity), 0),
     pBCTypes
 );
 
@@ -170,8 +167,6 @@ dimensionedScalar DT
 #include "createMRF.H"
 
 #include "createFvOptions.H"
-
-
 
 
 

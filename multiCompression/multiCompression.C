@@ -32,7 +32,33 @@ Description
     This application is particularly useful to generate starting fields for
     Navier-Stokes codes.
 
+Comments
+	MRF
+	Работа для различных зон. MRF zone definition based on cell zone and
+	parameters obtained from a control dictionary constructed from the given
+	stream. The rotation of the MRF region is defined by an origin	and axis
+	of rotation and an angular speed.
+
+	adjustPhi
+	For cases which do no have a pressure boundary adjust the balance of
+	fluxes to obey continuity.
+	Обеспечивает консервативность уравнений. ? - обеспечивает баланс ур-ний
+	неразрывности при отсутствии ГУ по давлению
+
+	fvScalarMatrix PhiEqn
+	Mass continuity for an incompressible fluid:
+		∇•U=0 | div(U) = 0 | du/dx+... = 0
+	Pressure equation for an incompressible, irrotational fluid assuming
+	steady-state conditions:
+		(∇^2)p = 0 | ∆p = 0 | d^2(p_x)/dx^2+... = 0 | laplacian(p) = 0
+	Phi - потенциал скорости (volScalarField):
+		U = ∇•Phi | U = grad(Phi) | U = d(Phi)/dx*i+...
+	phi - скороcть (?), м/с (surfaceScalarField)
+	fvm - неявный метод/дискретизация, возвращает контрольно-объёмную матрицу
+	fvc - явный метод/дискретизация, возвращает поле
+
 \*---------------------------------------------------------------------------*/
+
 
 #include "fvCFD.H"
 #include "pisoControl.H"
@@ -56,31 +82,23 @@ int main(int argc, char *argv[])
     // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 	// Calculating potential flow
-	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	// ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
     Info<< nl << "Calculating potential flow" << endl;
 
     // Since solver contains no time loop it would never execute function objects so do it ourselves
     runTime.functionObjects().start();
 
-    MRF.makeRelative(phi); // Работа для различных зон. MRF zone definition based on cell zone and parameters obtained from a control dictionary constructed from the given stream. The rotation of the MRF region is defined by an origin and axis of rotation and an angular speed.
-    adjustPhi(phi, U, p); // For cases which do no have a pressure boundary adjust the balance of fluxes to obey continuity. Обеспечивает консервативность уравнений
-	// ? - обеспечивает баланс ур-ний неразрывности при отсутствии ГУ по давлению
-
+    MRF.makeRelative(phi);
+    adjustPhi(phi, U, p);
 
     // Non-orthogonal velocity potential corrector loop
     while (multiCompression.correctNonOrthogonal())
     {
-		// Mass continuity for an incompressible fluid:	∇•U=0 | div(U) = 0 | du/dx+... = 0
-		// Pressure equation for an incompressible, irrotational fluid assuming steady-state conditions: (∇^2)p = 0 | ∆p = 0 | d^2(p_x)/dx^2+... = 0 | laplacian(p) = 0
-		// Phi - потенциал скорости (volScalarField): U = ∇•Phi | U = grad(Phi) | U = d(Phi)/dx*i+...
-		// ? phi - скороcть, м/с (surfaceScalarField)
 		fvScalarMatrix PhiEqn /* (∇^2)Phi = ∇(phi) */
         (		
-			// fvm - неявный метод/дискретизация, возвращает контрольно-объёмную матрицу
-            fvm::laplacian(dimensionedScalar("1", dimless, 1), Phi)
+			fvm::laplacian(dimensionedScalar("1", dimless, 1), Phi)
          ==
-			// fvc - явный метод/дискретизация, возвращает поле
 			fvc::div(phi)
         );
 
@@ -152,7 +170,7 @@ int main(int argc, char *argv[])
             pEqn.solve();
         }
 
-        p.write();		// F.write();
+        p.write(); // F.write();
     }
 	
     // Calculate the divergence of the phi field
@@ -165,7 +183,7 @@ int main(int argc, char *argv[])
 
 	U.write();
 	// Calculating concentrations
-	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	// ~~~~~~~~~~~~~~~~~~~~~~~~~~
 	
 	if (args.optionFound("stat"))
     {
@@ -221,7 +239,7 @@ int main(int argc, char *argv[])
 	}
 	
 	// Write fields and display the run time
-	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	
 	Info<< nl << "Writing fields" << endl;	
 
