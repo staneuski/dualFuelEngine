@@ -182,6 +182,10 @@ dimensionedScalar DAir
 (
     transportProperties.lookup("DAir")
 );
+dimensionedScalar DGas
+(
+    transportProperties.lookup("DGas")
+);
 
 #include "createFvOptions.H"
 

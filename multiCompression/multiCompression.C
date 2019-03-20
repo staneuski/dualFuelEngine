@@ -226,7 +226,7 @@ int main(int argc, char *argv[])
 	        (
 	            fvm::ddt(alpha_gas)
 	          + fvm::div(phi, alpha_gas)
-	          - fvm::laplacian(DAir, alpha_gas)
+	          - fvm::laplacian(DGas, alpha_gas)
 	         ==
 	            fvOptions(alpha_gas)
 	        );
@@ -236,11 +236,9 @@ int main(int argc, char *argv[])
 	        alphaGas.solve();
 			fvOptions.correct(alpha_gas);
 			
-			volScalarField alpha_exh(1 - alpha_air - alpha_gas);						
 	    }
 		
 		runTime.write();
-		alpha_exh.write();
 	}
 
 	// Write fields and display the run time
@@ -250,7 +248,6 @@ int main(int argc, char *argv[])
     T.write();
 	alpha_air.write();
 	alpha_gas.write();
-	
 	
 	phi.write();
 	if(args.optionFound("writePhi"))
