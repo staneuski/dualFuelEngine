@@ -181,7 +181,7 @@ int main(int argc, char *argv[])
 	
 	// Calculating temperature field
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	Info<< "\nCalculating temperature field T\n" << endl;
+	Info<< "\nCalculating temperature and concentration fields\n" << endl;
 		
 	#include "CourantNo.H"
 	
@@ -191,6 +191,7 @@ int main(int argc, char *argv[])
 		
 		while (multiCompression.correctNonOrthogonal()) // non-orthogonal temperature corrector loop
 	    {
+			// Temperature
 	        fvScalarMatrix TEqn
 	        (
 	            fvm::ddt(T)
@@ -204,45 +205,33 @@ int main(int argc, char *argv[])
 	        fvOptions.constrain(TEqn);
 	        TEqn.solve();
 			fvOptions.correct(T);
+			
+			// Intake air concentration
+	        fvScalarMatrix alphaEqn
+	        (
+	            fvm::ddt(alpha_air)
+	          + fvm::div(phi, alpha_air)
+	          - fvm::laplacian(DAir, alpha_air)
+	         ==
+	            fvOptions(alpha_air)
+	        );
+
+	        alphaEqn.relax();
+	        fvOptions.constrain(alphaEqn);
+	        alphaEqn.solve();
+			fvOptions.correct(alpha_air);
+						
 	    }
 		
 		runTime.write();
 	}
-	
-	// Calculating concentration fields
-	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-	// Info<< "\nCalculating concentrations fields\n" << endl;
-	//
-	//     while (multiCompression.loop(runTime))
-	//     {
-	// 	Info<< "Time = " << runTime.timeName() << nl << endl;
-	//
-	// 	while (multiCompression.correctNonOrthogonal()) // non-orthogonal temperature corrector loop
-	//     {
-	//         fvScalarMatrix alphaEqn
-	//         (
-	//             fvm::ddt(alpha_air)
-	//           + fvm::div(phi, alpha_air)
-	//           - fvm::laplacian(DT, alpha_air)
-	//          ==
-	//             fvOptions(alpha_air)
-	//         );
-	//
-	//         alphaEqn.relax();
-	//         fvOptions.constrain(alphaEqn);
-	//         alphaEqn.solve();
-	// 		fvOptions.correct(alpha_air);
-	//     }
-	//
-	// 	runTime.write();
-	// }
 
 	// Write fields and display the run time
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	Info<< nl << "Writing fields" << endl;	
 
     T.write();
-	// alpha_air.write();
+	alpha_air.write();
 	
 	phi.write();
 	if(args.optionFound("writePhi"))

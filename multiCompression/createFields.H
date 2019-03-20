@@ -149,21 +149,26 @@ dimensionedScalar DT
     transportProperties.lookup("DT")
 );
 
+dimensionedScalar DAir
+(
+    transportProperties.lookup("DAir")
+);
+
 // Concentration fields alpha
-// Info<< "Reading field alpha\n" << endl;
-//
-// volScalarField alpha_air
-// (
-//     IOobject
-//     (
-//         "alpha_air",
-//         runTime.timeName(),
-//         mesh,
-//         IOobject::MUST_READ,
-//         IOobject::AUTO_WRITE
-//     ),
-//     mesh
-// );
+Info<< "Reading field alpha\n" << endl;
+
+volScalarField alpha_air
+(
+    IOobject
+    (
+        "alpha_air",
+        runTime.timeName(),
+        mesh,
+        IOobject::MUST_READ,
+        IOobject::AUTO_WRITE
+    ),
+    mesh
+);
 
 #include "createFvOptions.H"
 
