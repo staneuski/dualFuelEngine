@@ -18,9 +18,9 @@ dimensions      [0 1 -1 0 0 0 0]; // [kg m s K kg-mol cd]
 
 internalField   uniform (0 0 0);
 
-injection 		10;
+injection 		20;
 
-inlet 			10;
+inlet 			5;
 
 injectionMinus  #calc "-1.0*$injection";
 

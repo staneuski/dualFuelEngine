@@ -43,6 +43,11 @@ solvers
     {
 		$T;
     }
+	
+    alpha_gas
+    {
+		$alpha_air;
+    }
 }
 
 multiCompression

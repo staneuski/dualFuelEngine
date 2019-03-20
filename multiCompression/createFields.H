@@ -142,20 +142,8 @@ IOdictionary transportProperties
     )
 );
 
-Info<< "Reading diffusivity DT\n" << endl;
-
-dimensionedScalar DT
-(
-    transportProperties.lookup("DT")
-);
-
-dimensionedScalar DAir
-(
-    transportProperties.lookup("DAir")
-);
-
 // Concentration fields alpha
-Info<< "Reading field alpha\n" << endl;
+Info<< "Reading concentration fields alpha\n" << endl;
 
 volScalarField alpha_air
 (
@@ -168,6 +156,31 @@ volScalarField alpha_air
         IOobject::AUTO_WRITE
     ),
     mesh
+);
+	
+volScalarField alpha_gas
+(
+    IOobject
+    (
+        "alpha_gas",
+        runTime.timeName(),
+        mesh,
+        IOobject::MUST_READ,
+        IOobject::AUTO_WRITE
+    ),
+    mesh
+);
+
+Info<< "Reading diffusivities DT, DAir, Dgas and DExh\n" << endl;
+
+dimensionedScalar DT
+(
+    transportProperties.lookup("DT")
+);
+
+dimensionedScalar DAir
+(
+    transportProperties.lookup("DAir")
 );
 
 #include "createFvOptions.H"

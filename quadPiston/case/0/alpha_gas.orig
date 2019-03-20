@@ -10,7 +10,7 @@ FoamFile
     version     2.0;
     format      ascii;
     class       volScalarField;
-    object      alpha_air;
+    object      alpha_gas;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
@@ -18,50 +18,48 @@ dimensions      [0 0 0 0 0 0 0];
 
 internalField   uniform 0;
 
-// injection	 	0;
-
-inlet	 		1;
+injection	 	1;
 
 boundaryField
 {
     // Injection
 	injectionXMinus
     {
-        type            zeroGradient;
+        type            fixedValue;
+        value           uniform $injection;
     }
 	injectionXPlus
     {
-        type            zeroGradient;
+        type            fixedValue;
+        value           uniform $injection;
     }
 	injectionYMinus
     {
-        type            zeroGradient;
+        type            fixedValue;
+        value           uniform $injection;
     }
 	injectionYPlus
     {
-        type            zeroGradient;
+        type            fixedValue;
+        value           uniform $injection;
     }
 
 	// Inlet
 	inletXMinus
     {
-        type            fixedValue;
-        value           uniform $inlet;
+        type            zeroGradient;
     }
 	inletXPlus
     {
-        type            fixedValue;
-        value           uniform $inlet;
+        type            zeroGradient;
     }
 	inletYMinus
     {
-        type            fixedValue;
-        value           uniform $inlet;
+        type            zeroGradient;
     }
 	inletYPlus
     {
-        type            fixedValue;
-        value           uniform $inlet;
+        type            zeroGradient;
     }
 
 	// Other
