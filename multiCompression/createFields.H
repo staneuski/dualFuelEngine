@@ -15,7 +15,6 @@ volVectorField U
 
 U = dimensionedVector("0", U.dimensions(), Zero);
 
-
 // Field phi
 surfaceScalarField phi
 (
@@ -29,13 +28,6 @@ surfaceScalarField phi
     ),
     fvc::flux(U)
 );
-
-if (args.optionFound("initialiseUBCs"))
-{
-    U.correctBoundaryConditions();
-    phi = fvc::flux(U);
-}
-
 
 // Pressure field p
 wordList pBCTypes
@@ -128,20 +120,6 @@ volScalarField T
     mesh
 );
 
-Info<< "Reading transportProperties\n" << endl;
-
-IOdictionary transportProperties
-(
-    IOobject
-    (
-        "transportProperties",
-        runTime.constant(),
-        mesh,
-        IOobject::MUST_READ_IF_MODIFIED,
-        IOobject::NO_WRITE
-    )
-);
-
 // Concentration fields alpha
 Info<< "Reading concentration fields alpha\n" << endl;
 
@@ -157,7 +135,6 @@ volScalarField alpha_air
     ),
     mesh
 );
-	
 volScalarField alpha_gas
 (
     IOobject
@@ -169,6 +146,38 @@ volScalarField alpha_gas
         IOobject::AUTO_WRITE
     ),
     mesh
+);
+
+Info<< "Constructing exhaust concentration field alpha_exh" << nl << endl;
+volScalarField alpha_exh
+(
+    IOobject
+    (
+        "alpha_exh",
+        runTime.timeName(),
+        mesh,
+        IOobject::NO_READ,
+        IOobject::NO_WRITE
+    ),
+    mesh// ,
+//     dimensionedScalar("alpha_exh", dimless, 0)// ,
+// //     PhiBCTypes
+);
+
+alpha_exh = dimensionedScalar("0", dimless, 0);
+
+Info<< "Reading transportProperties\n" << endl;
+
+IOdictionary transportProperties
+(
+    IOobject
+    (
+        "transportProperties",
+        runTime.constant(),
+        mesh,
+        IOobject::MUST_READ_IF_MODIFIED,
+        IOobject::NO_WRITE
+    )
 );
 
 Info<< "Reading diffusivities DT, DAir, Dgas and DExh\n" << endl;

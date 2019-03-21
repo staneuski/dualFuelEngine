@@ -206,7 +206,7 @@ int main(int argc, char *argv[])
 	        TEqn.solve();
 			fvOptions.correct(T);
 			
-			// Intake air concentration
+			// Inlet air concentration
 	        fvScalarMatrix alphaEqn
 	        (
 	            fvm::ddt(alpha_air)
@@ -221,9 +221,9 @@ int main(int argc, char *argv[])
 	        alphaEqn.solve();
 			fvOptions.correct(alpha_air);
 			
-			// Imtake gas concentration
+			// Injection gas concentration
 	        fvScalarMatrix alphaGas
-	        (
+			(
 	            fvm::ddt(alpha_gas)
 	          + fvm::div(phi, alpha_gas)
 	          - fvm::laplacian(DGas, alpha_gas)
@@ -236,6 +236,13 @@ int main(int argc, char *argv[])
 	        alphaGas.solve();
 			fvOptions.correct(alpha_gas);
 			
+			// Exhaust gas concentration
+			volScalarField alpha_exh
+			(
+				dimensionedScalar("1", dimless, 1)
+			  - alpha_gas
+			  - alpha_air
+			);
 	    }
 		
 		runTime.write();
@@ -248,6 +255,7 @@ int main(int argc, char *argv[])
     T.write();
 	alpha_air.write();
 	alpha_gas.write();
+	alpha_exh.write();
 	
 	phi.write();
 	if(args.optionFound("writePhi"))
