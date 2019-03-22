@@ -157,14 +157,13 @@ volScalarField alpha_exh
         runTime.timeName(),
         mesh,
         IOobject::NO_READ,
-        IOobject::NO_WRITE
+        IOobject::AUTO_WRITE
     ),
-    mesh// ,
-//     dimensionedScalar("alpha_exh", dimless, 0)// ,
-// //     PhiBCTypes
+    mesh,
+	dimensionedScalar("alpha_exh", dimless, 2)
 );
 
-alpha_exh = dimensionedScalar("0", dimless, 0);
+// alpha_exh = dimensionedScalar("0", dimless, 0);
 
 Info<< "Reading transportProperties\n" << endl;
 

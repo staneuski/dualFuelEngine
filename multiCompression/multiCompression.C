@@ -236,14 +236,10 @@ int main(int argc, char *argv[])
 	        alphaGas.solve();
 			fvOptions.correct(alpha_gas);
 			
-			// Exhaust gas concentration
-			volScalarField alpha_exh
-			(
-				dimensionedScalar("1", dimless, 1)
-			  - alpha_gas
-			  - alpha_air
-			);
 	    }
+		
+		// Exhaust gas concentration
+		alpha_exh =	dimensionedScalar("1", dimless, 1) - alpha_gas - alpha_air;
 		
 		runTime.write();
 	}
@@ -252,11 +248,6 @@ int main(int argc, char *argv[])
 	// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 	Info<< nl << "Writing fields" << endl;	
 
-    T.write();
-	alpha_air.write();
-	alpha_gas.write();
-	alpha_exh.write();
-	
 	phi.write();
 	if(args.optionFound("writePhi"))
 	{
