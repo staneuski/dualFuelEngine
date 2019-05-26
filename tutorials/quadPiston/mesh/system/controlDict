@@ -15,37 +15,35 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-//Just dummy entries, don't worry
+application     	snappyHexMesh;
 
-application     potentialFoam;
+startFrom       	startTime;
 
-startFrom       startTime;
+startTime       	0;
 
-startTime       0;
+stopAt          	endTime;
 
-stopAt          endTime;
+endTime         	50;
 
-endTime         50;
+deltaT          	1;
 
-deltaT          1;
+writeControl    	timeStep;
 
-writeControl    timeStep;
+writeInterval   	20;
 
-writeInterval   20;
+purgeWrite      	0;
 
-purgeWrite      0;
+writeFormat     	ascii;
 
-writeFormat     ascii;
+writePrecision  	6;
 
-writePrecision  6;
+writeCompression 	uncompressed;
 
-writeCompression uncompressed;
+timeFormat      	general;
 
-timeFormat      general;
+timePrecision   	6;
 
-timePrecision   6;
-
-runTimeModifiable yes;
+runTimeModifiable 	yes;
 
 
 // ************************************************************************* //
