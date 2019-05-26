@@ -1,17 +1,18 @@
 #!/bin/sh
 cd ${0%/*} || exit 1 # Run from this directory
 
-# Копирование файлов сетки и постоянных
-mkdir -p constant
-cp -r ../case/constant/transportProperties constant
-cp -r ../mesh/constant/polyMesh constant/polyMesh
-
 # Копирование граничных условий из проекта с модифицированным ядром
 mkdir -p 0
 cp -r ../case/0/T.orig 0
 cp -r ../case/1/U 0
 
+# Копирование файлов сетки и постоянных
+mkdir -p constant
+cp -r ../case/constant/transportProperties constant
+cp -r ../mesh/constant/polyMesh constant/polyMesh
+
 # Копирование файлов system из проекта с модифицированным ядром
+mkdir -p system
 cp -r ../case/system/controlDict system
 cp -r ../case/system/fvSolution system
 cp -r ../case/system/fvSchemes system
