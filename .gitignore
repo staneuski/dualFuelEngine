@@ -5,31 +5,31 @@ doc/images/
 doc/inspection/
 doc/references/
 
-# tutorials_/
-# tutorials_/quadPiston
+# tutorials/
+# tutorials/quadPiston
 # geometry/
-tutorials_/quadPiston/geometry/*.stl
+tutorials/quadPiston/geometry/*.stl
 # mesh/
-tutorials_/quadPiston/mesh/constant/triSurface/*.eMesh
-tutorials_/quadPiston/mesh/constant/triSurface/*.stl
-tutorials_/quadPiston/mesh/constant/extendedFeatureEdgeMesh/*.obj
+tutorials/quadPiston/mesh/constant/triSurface/*.eMesh
+tutorials/quadPiston/mesh/constant/triSurface/*.stl
+tutorials/quadPiston/mesh/constant/extendedFeatureEdgeMesh/*.obj
 # case/
-tutorials_/quadPiston/case/constant/polyMesh
-tutorials_/quadPiston/case/VTK
-tutorials_/quadPiston/case/dynamicCode
-tutorials_/quadPiston/case/0.*
-tutorials_/quadPiston/case/1
+tutorials/quadPiston/case/constant/polyMesh
+tutorials/quadPiston/case/VTK
+tutorials/quadPiston/case/dynamicCode
+tutorials/quadPiston/case/0.*
+tutorials/quadPiston/case/1
 # casePotential/
-tutorials_/quadPiston/casePotential/constant
-tutorials_/quadPiston/casePotential/system/fvSolution
-tutorials_/quadPiston/casePotential/system/controlDict
-tutorials_/quadPiston/casePotential/dynamicCode
-tutorials_/quadPiston/casePotential/0/polyMesh
-tutorials_/quadPiston/casePotential/0.*
-tutorials_/quadPiston/casePotential/1
+tutorials/quadPiston/casePotential/constant
+tutorials/quadPiston/casePotential/system/fvSolution
+tutorials/quadPiston/casePotential/system/controlDict
+tutorials/quadPiston/casePotential/dynamicCode
+tutorials/quadPiston/casePotential/0/polyMesh
+tutorials/quadPiston/casePotential/0.*
+tutorials/quadPiston/casePotential/1
 # caseScalar/
-tutorials_/quadPiston/caseScalar/constant
-tutorials_/quadPiston/caseScalar/system/controlDict
-tutorials_/quadPiston/caseScalar/0
-tutorials_/quadPiston/caseScalar/0.*
-tutorials_/quadPiston/caseScalar/1
+tutorials/quadPiston/caseScalar/constant
+tutorials/quadPiston/caseScalar/system/controlDict
+tutorials/quadPiston/caseScalar/0
+tutorials/quadPiston/caseScalar/0.*
+tutorials/quadPiston/caseScalar/1
