@@ -5,7 +5,6 @@ doc/images/
 doc/inspection/
 doc/references/
 
-# tutorials/
 # tutorials/quadPiston
 # geometry/
 tutorials/quadPiston/geometry/*.stl
@@ -33,3 +32,6 @@ tutorials/quadPiston/caseScalar/system/controlDict
 tutorials/quadPiston/caseScalar/0
 tutorials/quadPiston/caseScalar/0.*
 tutorials/quadPiston/caseScalar/1
+
+# tutorials/prism
+tutorials/quadPiston/constant/polyMesh/
