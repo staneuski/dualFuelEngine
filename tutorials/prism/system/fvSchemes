@@ -17,10 +17,7 @@ FoamFile
 
 ddtSchemes
 {
-    default         steadyState;
-    ddt(T)          Euler;
-	ddt(alpha_air)  Euler;
-	ddt(alpha_gas)  Euler;
+    default         Euler;
 }
 
 gradSchemes
@@ -31,16 +28,13 @@ gradSchemes
 divSchemes
 {
     default         none;
-    div(phi,U)      bounded Gauss linear;
-    div(div(phi,U)) Gauss linear;
-	div(phi,T)      Gauss linearUpwind grad(T);
-	div(phi,alpha_air)      Gauss linearUpwind grad(alpha_air);
-	div(phi,alpha_gas)      Gauss linearUpwind grad(alpha_gas);
+    div(phi,T)      Gauss linearUpwind grad(T);
 }
 
 laplacianSchemes
 {
-    default         Gauss linear corrected;
+    default         none;
+    laplacian(DT,T) Gauss linear corrected;
 }
 
 interpolationSchemes
@@ -52,5 +46,6 @@ snGradSchemes
 {
     default         corrected;
 }
+
 
 // ************************************************************************* //

@@ -1,4 +1,6 @@
 *.gdoc
+*.log
+log.*
 
 # doc
 doc/images/
@@ -9,9 +11,9 @@ doc/references/
 # geometry/
 tutorials/quadPiston/geometry/*.stl
 # mesh/
-tutorials/quadPiston/mesh/constant/triSurface/*.eMesh
-tutorials/quadPiston/mesh/constant/triSurface/*.stl
-tutorials/quadPiston/mesh/constant/extendedFeatureEdgeMesh/*.obj
+tutorials/quadPiston/mesh/constant/polyMesh
+tutorials/quadPiston/mesh/constant/triSurface/*
+tutorials/quadPiston/mesh/constant/extendedFeatureEdgeMesh
 # case/
 tutorials/quadPiston/case/constant/polyMesh
 tutorials/quadPiston/case/VTK
@@ -19,19 +21,24 @@ tutorials/quadPiston/case/dynamicCode
 tutorials/quadPiston/case/0.*
 tutorials/quadPiston/case/1
 # casePotential/
+tutorials/quadPiston/casePotential/0
+tutorials/quadPiston/casePotential/0.*
+tutorials/quadPiston/casePotential/1
 tutorials/quadPiston/casePotential/constant
 tutorials/quadPiston/casePotential/system/fvSolution
 tutorials/quadPiston/casePotential/system/controlDict
 tutorials/quadPiston/casePotential/dynamicCode
-tutorials/quadPiston/casePotential/0/polyMesh
-tutorials/quadPiston/casePotential/0.*
-tutorials/quadPiston/casePotential/1
 # caseScalar/
-tutorials/quadPiston/caseScalar/constant
-tutorials/quadPiston/caseScalar/system/controlDict
 tutorials/quadPiston/caseScalar/0
 tutorials/quadPiston/caseScalar/0.*
 tutorials/quadPiston/caseScalar/1
+tutorials/quadPiston/caseScalar/constant
+tutorials/quadPiston/caseScalar/system/
 
 # tutorials/prism
-tutorials/quadPiston/constant/polyMesh/
+tutorials/prism/0.*
+tutorials/prism/constant/polyMesh/
+
+# tutorials/prism.Orig
+tutorials/prism.Orig/0.*
+tutorials/prism.Orig/constant/polyMesh/

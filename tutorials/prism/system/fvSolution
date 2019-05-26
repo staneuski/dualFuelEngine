@@ -17,20 +17,6 @@ FoamFile
 
 solvers
 {
-    Phi
-    {
-        solver          GAMG;
-        smoother        DIC;
-
-        tolerance       1e-06;
-        relTol          0.01;
-    }
-
-    p
-    {
-        $Phi;
-    }
-
     T
     {
         solver          PBiCGStab;
@@ -38,26 +24,12 @@ solvers
         tolerance       1e-06;
         relTol          0;
     }
-	
-    alpha_air
-    {
-		$T;
-    }
-	
-    alpha_gas
-    {
-		$alpha_air;
-    }
 }
 
-multiCompression
+SIMPLE
 {
-    nNonOrthogonalCorrectors 1;
+    nNonOrthogonalCorrectors 0;
 }
+
 
 // ************************************************************************* //
-
-
-
-
-
