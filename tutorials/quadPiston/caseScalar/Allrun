@@ -1,18 +1,10 @@
 #!/bin/sh
-#-----------------------------------------------------------------------------#
-# =========                 |
-# \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
-#  \\    /   O peration     | Website:  https://github.com/StasF1
-#   \\  /    A nd           | Version:  6
-#    \\/     M anipulation  |
-#------------------------------------------------------------------------------
-# Script
-#     firstSolve
-#
-# Description
-#     Скрипт для запуска расчёта
-#
-#-----------------------------------------------------------------------------#
+cd ${0%/*} || exit 1 # Run from this directory
+
+# Source tutorial run functions
+. $WM_PROJECT_DIR/bin/tools/RunFunctions
+
+application=$(getApplication)
 
 # Копирование файлов сетки и постоянных
 mkdir -p constant
@@ -31,16 +23,7 @@ cp -r ../case/system/fvSchemes system
 sed -i "s/multiCompression/scalarTransportFoam/g" system/controlDict
 cp -r ../case/system/fvSolution system
 sed -i "s/multiCompression/SIMPLE/g" system/fvSolution
-
 # Запуск расчёта
-scalarTransportFoam | tee case.log
+runApplication $application
 
-
-# ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~
-echo -ne '\007' # звуковой сигнал при выполнении задачи
-
-
-
-
-
-
+#------------------------------------------------------------------------------
