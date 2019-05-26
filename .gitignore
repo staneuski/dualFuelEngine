@@ -37,8 +37,10 @@ tutorials/quadPiston/caseScalar/system/
 
 # tutorials/prism
 tutorials/prism/0.*
+tutorials/prism/1
 tutorials/prism/constant/polyMesh/
 
 # tutorials/prism.Orig
 tutorials/prism.Orig/0.*
+tutorials/prism.Orig/q
 tutorials/prism.Orig/constant/polyMesh/
