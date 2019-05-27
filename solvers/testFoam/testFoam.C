@@ -48,10 +48,16 @@ int main(int argc, char *argv[])
 
 	while (simple.loop(runTime))
 	{
-	
-		z = x*y;
-		
-	    runTime.write();
+        fvScalarMatrix rhoEqn /* d(rho)/dt + div(rho*U) = 0*/
+        (
+            fvm::ddt(rho)
+		  + fvc::div(phi, rho)
+		);
+
+        rhoEqn.relax();
+        rhoEqn.solve();
+			
+		runTime.write();
 	}
 
     Info<< "End\n" << endl;

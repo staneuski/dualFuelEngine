@@ -1,10 +1,10 @@
-Info<< "Reading field x\n" << endl;
+Info<< "Reading field phi\n" << endl;
 
-volScalarField x
+surfaceScalarField phi
 (
     IOobject
     (
-        "x",
+        "phi",
         runTime.timeName(),
         mesh,
         IOobject::MUST_READ,
@@ -13,33 +13,17 @@ volScalarField x
     mesh
 );
 
-
-Info<< "Reading field y\n" << endl;
-
-volScalarField y
+Info<< "Constructing field rho\n" << endl;
+volScalarField rho
 (
     IOobject
     (
-        "y",
-        runTime.timeName(),
-        mesh,
-        IOobject::MUST_READ,
-        IOobject::AUTO_WRITE
-    ),
-    mesh
-);
-
-Info<< "Constructing field z\n" << endl;
-volScalarField z
-(
-    IOobject
-    (
-        "z",
+        "rho",
         runTime.timeName(),
         mesh,
         IOobject::NO_READ,
         IOobject::AUTO_WRITE
     ),
     mesh,
-    dimensionedScalar("z", dimless, 0)
+    dimensionedScalar("rho", dimDensity, 0) // dimMass/pow(dimLength, 3)
 );
