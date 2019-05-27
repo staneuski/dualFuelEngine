@@ -11,7 +11,8 @@ doc/references/
 solvers/multiCompression/Make/linux64GccDPInt32Opt
 solvers/testFoam/Make/linux64GccDPInt32Opt
 
-# tutorials/multiCompression/
+# tutorials/
+# multiCompression/
 # quadPiston/geometry/
 tutorials/multiCompression/quadPiston/geometry/*.stl
 # quadPiston/mesh/
@@ -25,7 +26,7 @@ tutorials/multiCompression/quadPiston/quadPiston/case/dynamicCode
 tutorials/multiCompression/quadPiston/quadPiston/case/0.*
 tutorials/multiCompression/quadPiston/quadPiston/case/1
 
-# tutorials/potentialFoam/
+# potentialFoam/
 # prism
 tutorials/testFoam/prism/0.*
 tutorials/testFoam/prism/1
@@ -39,7 +40,7 @@ tutorials/quadPiston/casePotential/system/fvSolution
 tutorials/quadPiston/casePotential/system/controlDict
 tutorials/quadPiston/casePotential/dynamicCode
 
-# tutorials/scalarTransportFoam/
+# scalarTransportFoam/
 # prism
 tutorials/testFoam/prism/0.*
 tutorials/testFoam/prism/1
@@ -51,7 +52,7 @@ tutorials/quadPiston/caseScalar/1
 tutorials/quadPiston/caseScalar/constant
 tutorials/quadPiston/caseScalar/system/
 
-# tutorials/testFoam/
+# testFoam/
 tutorials/testFoam/prism/0.*
 tutorials/testFoam/prism/1
 tutorials/testFoam/prism/constant/polyMesh/

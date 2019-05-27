@@ -1,0 +1,80 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  6
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    location    "0";
+    object      Phi;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 2 -1 0 0 0 0];
+
+internalField   uniform 0;
+
+boundaryField
+{
+    injectionXMinus
+    {
+        type            fixedValue;
+        value           uniform 50;
+    }
+    injectionXPlus
+    {
+        type            fixedValue;
+        value           uniform 50;
+    }
+    injectionYMinus
+    {
+        type            fixedValue;
+        value           uniform 50;
+    }
+    injectionYPlus
+    {
+        type            fixedValue;
+        value           uniform 50;
+    }
+    inletXMinus
+    {
+        type            fixedValue;
+        value           uniform 100;
+    }
+    inletXPlus
+    {
+        type            fixedValue;
+        value           uniform 100;
+    }
+    inletYMinus
+    {
+        type            fixedValue;
+        value           uniform 100;
+    }
+    inletYPlus
+    {
+        type            fixedValue;
+        value           uniform 100;
+    }
+    outlet
+    {
+        type            fixedValue;
+        value           uniform 100;
+    }
+    valve
+    {
+        type            zeroGradient;
+    }
+    walls
+    {
+        type            zeroGradient;
+    }
+}
+
+
+// ************************************************************************* //

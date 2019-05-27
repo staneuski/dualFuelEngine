@@ -1,0 +1,41 @@
+#!/bin/sh
+cd ${0%/*} || exit 1 # Run from this directory
+
+# Указание пути к файлам .stl для их копирования
+cp -r ../../../../doc/CATIA/quadPiston/*.stl ./
+
+# * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * #
+
+printf 'Running surfaceTransformPoints (scaling .stl files) on %s\n' "${PWD}"
+
+# Inlet
+export FILE="injectionXMinus.stl"
+surfaceTransformPoints -scale '(0.001 0.001 0.001)' $FILE $FILE > log.surfaceTransformPoints
+export FILE="injectionXPlus.stl"
+surfaceTransformPoints -scale '(0.001 0.001 0.001)' $FILE $FILE >> log.surfaceTransformPoints
+export FILE="injectionYMinus.stl"
+surfaceTransformPoints -scale '(0.001 0.001 0.001)' $FILE $FILE >> log.surfaceTransformPoints
+export FILE="injectionYPlus.stl"
+surfaceTransformPoints -scale '(0.001 0.001 0.001)' $FILE $FILE >> log.surfaceTransformPoints
+
+# Injection
+export FILE="inletXMinus.stl"
+surfaceTransformPoints -scale '(0.001 0.001 0.001)' $FILE $FILE >> log.surfaceTransformPoints
+export FILE="inletXPlus.stl"
+surfaceTransformPoints -scale '(0.001 0.001 0.001)' $FILE $FILE >> log.surfaceTransformPoints
+export FILE="inletYMinus.stl"
+surfaceTransformPoints -scale '(0.001 0.001 0.001)' $FILE $FILE >> log.surfaceTransformPoints
+export FILE="inletYPlus.stl"
+surfaceTransformPoints -scale '(0.001 0.001 0.001)' $FILE $FILE >> log.surfaceTransformPoints
+
+# Other
+export FILE="outlet.stl"
+surfaceTransformPoints -scale '(0.001 0.001 0.001)' $FILE $FILE >> log.surfaceTransformPoints
+export FILE="valve.stl"
+surfaceTransformPoints -scale '(0.001 0.001 0.001)' $FILE $FILE >> log.surfaceTransformPoints
+export FILE="valve.stl"
+surfaceTransformPoints -translate '(0 0 -0.25)' $FILE $FILE >> log.surfaceTransformPoints
+export FILE="walls.stl"
+surfaceTransformPoints -scale '(0.001 0.001 0.001)' $FILE $FILE >> log.surfaceTransformPoints
+
+# *************************************************************************** #
