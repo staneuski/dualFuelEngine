@@ -2,57 +2,31 @@
 *.log
 log.*
 
+0.*/
+1/
+dynamicCode/
+extendedFeatureEdgeMesh/
+polyMesh/
+linux64GccDPInt32Opt/
+VTK/
+
 # doc
 doc/images/
 doc/inspection/
 doc/references/
 
-# solvers
-solvers/multiCompression/Make/linux64GccDPInt32Opt
-solvers/testFoam/Make/linux64GccDPInt32Opt
-
 # tutorials/
 # multiCompression/
-# quadPiston/geometry/
 tutorials/multiCompression/quadPiston/geometry/*.stl
-# quadPiston/mesh/
-tutorials/multiCompression/quadPiston/mesh/constant/polyMesh
 tutorials/multiCompression/quadPiston/mesh/constant/triSurface/*
-tutorials/multiCompression/quadPiston/mesh/constant/extendedFeatureEdgeMesh
-# quadPiston/case/
-tutorials/multiCompression/quadPiston/quadPiston/case/constant/polyMesh
-tutorials/multiCompression/quadPiston/quadPiston/case/VTK
-tutorials/multiCompression/quadPiston/quadPiston/case/dynamicCode
-tutorials/multiCompression/quadPiston/quadPiston/case/0.*
-tutorials/multiCompression/quadPiston/quadPiston/case/1
 
-# potentialFoam/
-# prism
-tutorials/testFoam/prism/0.*
-tutorials/testFoam/prism/1
-tutorials/testFoam/prism/constant/polyMesh/
-# quadPiston
-tutorials/quadPiston/casePotential/0
-tutorials/quadPiston/casePotential/0.*
-tutorials/quadPiston/casePotential/1
-tutorials/quadPiston/casePotential/constant
-tutorials/quadPiston/casePotential/system/fvSolution
-tutorials/quadPiston/casePotential/system/controlDict
-tutorials/quadPiston/casePotential/dynamicCode
+# potentialFoam/quadPiston/
+tutorials/quadPiston/prism/0/
+tutorials/quadPiston/prism/constant/
+tutorials/quadPiston/prism/system/fvSolution
+tutorials/quadPiston/prism/system/controlDict
 
-# scalarTransportFoam/
-# prism
-tutorials/testFoam/prism/0.*
-tutorials/testFoam/prism/1
-tutorials/testFoam/prism/constant/polyMesh/
-# quadPiston
-tutorials/quadPiston/caseScalar/0
-tutorials/quadPiston/caseScalar/0.*
-tutorials/quadPiston/caseScalar/1
-tutorials/quadPiston/caseScalar/constant
-tutorials/quadPiston/caseScalar/system/
-
-# testFoam/
-tutorials/testFoam/prism/0.*
-tutorials/testFoam/prism/1
-tutorials/testFoam/prism/constant/polyMesh/
+# scalarTransportFoam/quadPiston/
+tutorials/scalarTransportFoam/quadPiston/0/
+tutorials/scalarTransportFoam/quadPiston/constant/
+tutorials/scalarTransportFoam/quadPiston/system/

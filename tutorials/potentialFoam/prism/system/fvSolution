@@ -17,19 +17,24 @@ FoamFile
 
 solvers
 {
-    rho
+    Phi
     {
-        solver          PBiCGStab;
-        preconditioner  DILU;
+        solver          GAMG;
+        smoother        DIC;
+
         tolerance       1e-06;
-        relTol          0;
+        relTol          0.01;
+    }
+
+    p
+    {
+        $Phi;
     }
 }
 
-SIMPLE
+potentialFlow
 {
-    nNonOrthogonalCorrectors 0;
+    nNonOrthogonalCorrectors 2;
 }
-
 
 // ************************************************************************* //

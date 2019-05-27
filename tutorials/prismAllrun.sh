@@ -26,17 +26,17 @@ cd potentialFoam/prism/
 printf '\n'
 
 # Решение проекта в scalarTransportFoam
-cd ../../../scalarTransportFoam/prism/
+cd ../../scalarTransportFoam/prism/
 ./Allclean && ./Allrun
 printf '\n'
 
 # Решение проекта в scalarTransportFoam
-cd ../../../testFoam/prism/
+cd ../../testFoam/prism/
 ./Allclean && ./Allrun
 printf '\n'
 
 # Отображение времени расчёта проекта
-cd ../
+cd ../../
 endProjectTime=`date +%s`
 solveProjectTime=$((endProjectTime-startProjectTime))
 printf 'Calculation time: %dh:%dm:%ds\n'\

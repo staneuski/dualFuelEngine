@@ -7,6 +7,12 @@ cd ${0%/*} || exit 1    # Run from this directory
 application=$(getApplication)
 
 runApplication blockMesh
-runApplication $application
+runApplication $application -writePhi -writep
+
+mkdir -p 1
+mv 0/U 1
+mv 0/p 1
+mv 0/phi 1
+mv 0/Phi 1
 
 #------------------------------------------------------------------------------
