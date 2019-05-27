@@ -1,10 +1,10 @@
-Info<< "Reading field phi\n" << endl;
+Info<< "Reading field U\n" << endl;
 
-surfaceScalarField phi
+volVectorField U
 (
     IOobject
     (
-        "phi",
+        "U",
         runTime.timeName(),
         mesh,
         IOobject::MUST_READ,
@@ -25,5 +25,7 @@ volScalarField rho
         IOobject::AUTO_WRITE
     ),
     mesh,
-    dimensionedScalar("rho", dimDensity, 0) // dimMass/pow(dimLength, 3)
+    dimensionedScalar("rho", dimDensity, 1.2041)
 );
+	
+#include "createPhi.H"
