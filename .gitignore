@@ -7,20 +7,30 @@ doc/images/
 doc/inspection/
 doc/references/
 
-# tutorials/quadPiston
-# geometry/
-tutorials/quadPiston/geometry/*.stl
-# mesh/
-tutorials/quadPiston/mesh/constant/polyMesh
-tutorials/quadPiston/mesh/constant/triSurface/*
-tutorials/quadPiston/mesh/constant/extendedFeatureEdgeMesh
-# case/
-tutorials/quadPiston/case/constant/polyMesh
-tutorials/quadPiston/case/VTK
-tutorials/quadPiston/case/dynamicCode
-tutorials/quadPiston/case/0.*
-tutorials/quadPiston/case/1
-# casePotential/
+# solvers
+solvers/multiCompression/Make/linux64GccDPInt32Opt
+solvers/testFoam/Make/linux64GccDPInt32Opt
+
+# tutorials/multiCompression/
+# quadPiston/geometry/
+tutorials/multiCompression/quadPiston/geometry/*.stl
+# quadPiston/mesh/
+tutorials/multiCompression/quadPiston/mesh/constant/polyMesh
+tutorials/multiCompression/quadPiston/mesh/constant/triSurface/*
+tutorials/multiCompression/quadPiston/mesh/constant/extendedFeatureEdgeMesh
+# quadPiston/case/
+tutorials/multiCompression/quadPiston/quadPiston/case/constant/polyMesh
+tutorials/multiCompression/quadPiston/quadPiston/case/VTK
+tutorials/multiCompression/quadPiston/quadPiston/case/dynamicCode
+tutorials/multiCompression/quadPiston/quadPiston/case/0.*
+tutorials/multiCompression/quadPiston/quadPiston/case/1
+
+# tutorials/potentialFoam/
+# prism
+tutorials/testFoam/prism/0.*
+tutorials/testFoam/prism/1
+tutorials/testFoam/prism/constant/polyMesh/
+# quadPiston
 tutorials/quadPiston/casePotential/0
 tutorials/quadPiston/casePotential/0.*
 tutorials/quadPiston/casePotential/1
@@ -28,19 +38,20 @@ tutorials/quadPiston/casePotential/constant
 tutorials/quadPiston/casePotential/system/fvSolution
 tutorials/quadPiston/casePotential/system/controlDict
 tutorials/quadPiston/casePotential/dynamicCode
-# caseScalar/
+
+# tutorials/scalarTransportFoam/
+# prism
+tutorials/testFoam/prism/0.*
+tutorials/testFoam/prism/1
+tutorials/testFoam/prism/constant/polyMesh/
+# quadPiston
 tutorials/quadPiston/caseScalar/0
 tutorials/quadPiston/caseScalar/0.*
 tutorials/quadPiston/caseScalar/1
 tutorials/quadPiston/caseScalar/constant
 tutorials/quadPiston/caseScalar/system/
 
-# tutorials/prism
-tutorials/prism/0.*
-tutorials/prism/1
-tutorials/prism/constant/polyMesh/
-
-# tutorials/prism.Orig
-tutorials/prism.Orig/0.*
-tutorials/prism.Orig/q
-tutorials/prism.Orig/constant/polyMesh/
+# tutorials/testFoam/
+tutorials/testFoam/prism/0.*
+tutorials/testFoam/prism/1
+tutorials/testFoam/prism/constant/polyMesh/
