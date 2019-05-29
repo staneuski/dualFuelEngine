@@ -21,11 +21,10 @@ volScalarField rho
         "rho",
         runTime.timeName(),
         mesh,
-        IOobject::NO_READ,
+        IOobject::MUST_READ,
         IOobject::AUTO_WRITE
     ),
-    mesh,
-    dimensionedScalar("rho", dimDensity, 1.2041)
+    mesh
 );
 	
 #include "createPhi.H"
