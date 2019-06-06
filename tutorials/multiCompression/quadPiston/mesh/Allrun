@@ -7,7 +7,7 @@ cd ${0%/*} || exit 1 # Run from this directory
 application=$(getApplication)
 
 # Копирование .stl файлов в mesh/ для генерации на их основе сетки
-cp ../geometry/*.stl constant/triSurface
+mkdir -p constant/triSurface && cp -r ../geometry/*.stl constant/triSurface
 
 # Построение сетки
 runApplication surfaceFeatureExtract
