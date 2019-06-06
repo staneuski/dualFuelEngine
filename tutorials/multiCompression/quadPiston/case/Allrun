@@ -10,7 +10,7 @@ application=$(getApplication)
 cp -r ../mesh/constant/polyMesh constant
 
 # Запуск расчёта
-runApplication $application -writep | tee -a case.log
+runApplication $application -writep
 
 # Перемещение файлов расчёта в папку 1 для возможности открытия в solved.foam
 mkdir -p 1

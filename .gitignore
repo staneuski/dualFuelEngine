@@ -1,12 +1,25 @@
+# files
 *.gdoc
 *.log
 log.*
 
+cellLevel
+cellZones
+faces
+faceZones
+level0Edge
+neighbour
+owner
+pointLevel
+points
+pointZones
+surfaceIndex
+
+# folders
 0.*/
 1/
 dynamicCode/
 extendedFeatureEdgeMesh/
-polyMesh/
 linux64GccDPInt32Opt/
 VTK/
 

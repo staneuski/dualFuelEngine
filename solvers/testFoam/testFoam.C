@@ -46,17 +46,27 @@ int main(int argc, char *argv[])
 
     // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
+
+	volScalarField X
+	(
+		"X",
+		rho*mag(U)
+	);
+
 	while (simple.loop(runTime))
 	{
-        fvScalarMatrix rhoEqn /* d(rho)/dt + div(rho*U) = 0*/
+		
+        fvScalarMatrix XEqn
         (
-            fvm::ddt(rho)
-		  + fvc::div(phi, rho)
+            fvm::ddt(X)
+		  + fvc::div(phi, X)
 		);
-
-        rhoEqn.relax();
-        rhoEqn.solve();
-			
+		
+        XEqn.relax();
+        XEqn.solve();
+		X.correctBoundaryConditions();
+		
+		X.write();
 		runTime.write();
 	}
 
