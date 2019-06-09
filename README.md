@@ -26,4 +26,4 @@
 ---
 # [Releases](https://github.com/StasF1/dualFuelEngine/releases)
 
-- [v0.1-alpha:](https://github.com/StasF1/dualFuelEngine/releases) Incompressible flow. Concentration fields.
+- [v0.1-alpha:](https://github.com/StasF1/dualFuelEngine/tree/v0.1-alpha) Incompressible flow. Concentration fields.
