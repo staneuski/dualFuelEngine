@@ -46,17 +46,37 @@ int main(int argc, char *argv[])
 
     // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-
+	wordList XBCTypes
+	(
+	    rho.boundaryField().size(),
+	    zeroGradientFvPatchScalarField::typeName
+	);
+	
+	// volScalarField X
+	// (
+	// 	"X",
+	// 	rho*mag(U)
+	// );
 	volScalarField X
 	(
-		"X",
-		rho*mag(U)
+	    IOobject
+	    (
+	        "X",
+	        runTime.timeName(),
+	        mesh,
+	        IOobject::NO_READ,
+	        IOobject::AUTO_WRITE
+	    ),
+	    rho*mag(U),
+	    XBCTypes
 	);
+	
+	// X.correctBoundaryConditions();
 
 	while (simple.loop(runTime))
 	{
-		
-        fvScalarMatrix XEqn
+
+		fvScalarMatrix XEqn
         (
             fvm::ddt(X)
 		  + fvc::div(phi, X)
@@ -64,9 +84,8 @@ int main(int argc, char *argv[])
 		
         XEqn.relax();
         XEqn.solve();
-		X.correctBoundaryConditions();
 		
-		X.write();
+		// X.write();
 		runTime.write();
 	}
 
