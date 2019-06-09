@@ -52,11 +52,6 @@ int main(int argc, char *argv[])
 	    zeroGradientFvPatchScalarField::typeName
 	);
 	
-	// volScalarField X
-	// (
-	// 	"X",
-	// 	rho*mag(U)
-	// );
 	volScalarField X
 	(
 	    IOobject
@@ -70,8 +65,6 @@ int main(int argc, char *argv[])
 	    rho*mag(U),
 	    XBCTypes
 	);
-	
-	// X.correctBoundaryConditions();
 
 	while (simple.loop(runTime))
 	{
