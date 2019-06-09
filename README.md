@@ -1,8 +1,4 @@
-### [Releases](https://github.com/StasF1/dualFuelEngine/releases)
-
-- [v0.1-alpha:](https://github.com/StasF1/dualFuelEngine/releases) Incompressible flow. Concentration fields.
-
-# [solvers/](solvers/)
+# solvers/
 ## [multiCompression/](solvers/multiCompression)
 **Ядро решателя**
 
@@ -17,12 +13,17 @@
 
 [createFields.H](solvers/multiCompression/createFields.H)
 
-# [tutorials/](tutorials/)
-## [multiCompression/quadPiston](tutorials/multiCompression/quadPiston)
+# tutorials/
+## [multiCompression/quadPiston/](tutorials/multiCompression/quadPiston)
 **Предварительная сетка для проверки работоспособности моделей**
 
-#[doc](doc/)
-## [CATIA](doc/CATIA)
+# doc/
+## [CATIA/](doc/CATIA)
 **3D модели для всех проектов**
 
 Файлы сохранены в папках с аналогичным названием подпроектов, как в формате _.CATPart_, так и в _.stl_ (неотмасшабированные).
+
+---
+# [Releases](https://github.com/StasF1/dualFuelEngine/releases)
+
+- [v0.1-alpha:](https://github.com/StasF1/dualFuelEngine/releases) Incompressible flow. Concentration fields.
