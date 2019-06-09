@@ -1,4 +1,8 @@
-#[solvers/](solvers/)
+### [Releases](https://github.com/StasF1/dualFuelEngine/releases)
+
+- [v0.1-alpha:](https://github.com/StasF1/dualFuelEngine/releases) Incompressible flow. Concentration fields.
+
+# [solvers/](solvers/)
 ## [multiCompression/](solvers/multiCompression)
 **Ядро решателя**
 
@@ -22,4 +26,3 @@
 **3D модели для всех проектов**
 
 Файлы сохранены в папках с аналогичным названием подпроектов, как в формате _.CATPart_, так и в _.stl_ (неотмасшабированные).
-
