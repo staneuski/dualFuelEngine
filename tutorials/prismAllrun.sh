@@ -1,9 +1,9 @@
 #!/bin/bash
 #------------------------------------------------------------------------------
 # =========                 |
-# \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
-#  \\    /   O peration     | Website:  https://github.com/StasF1
-#   \\  /    A nd           | Copyright (C) 2017 OpenFOAM Foundation
+# \\      /  F ield         | OpenFOAM: Addition to OpenFOAM v6
+#  \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
+#   \\  /    A nd           | Copyright (C) 2019 Stanislau Stasheuski
 #    \\/     M anipulation  |
 #------------------------------------------------------------------------------
 # Script

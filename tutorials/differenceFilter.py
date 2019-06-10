@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 #------------------------------------------------------------------------------
 # =========                 |
-# \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
-#  \\    /   O peration     | Website:  https://github.com/StasF1
-#   \\  /    A nd           | Copyright (C) 2017 OpenFOAM Foundation
+# \\      /  F ield         | OpenFOAM: OpenFOAM v6 addition
+#  \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
+#   \\  /    A nd           | Copyright (C) 2019 Stanislau Stasheuski
 #    \\/     M anipulation  |
 #------------------------------------------------------------------------------
 # Script
