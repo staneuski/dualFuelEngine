@@ -1,2 +1,0 @@
-cd ~/OpenFOAM/dualFuelEngine/solvers/testFoam/ && wmake && cd ~/OpenFOAM/dualFuelEngine/tutorials/testFoam/prism/ && ./Allclean && ./Allrun || cat log.testFoam
-
