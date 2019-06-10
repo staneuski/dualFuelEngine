@@ -1,25 +1,26 @@
 /*---------------------------------------------------------------------------*\
   =========                 |
-  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
-   \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Copyright (C) 2011-2018 OpenFOAM Foundation
+  \\      /  F ield         | OpenFOAM: Addition to OpenFOAM v6
+   \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
+    \\  /    A nd           | Copyright (C) 2019 Stanislau Stasheuski
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
 License
-    This file is part of OpenFOAM.
+    This file is not part of OpenFOAM, but part of dualFuelEngine – OpenFOAM
+	addition.
 
-    OpenFOAM is free software: you can redistribute it and/or modify it
-    under the terms of the GNU General Public License as published by
-    the Free Software Foundation, either version 3 of the License, or
-    (at your option) any later version.
+    dualFuelEngine (like OpenFOAM) is free software: you can redistribute it 
+	and/or modify it under the terms of the GNU General Public License as
+	published by the Free Software Foundation, either version 3 of the License,
+	or (at your option) any later version.
 
-    OpenFOAM is distributed in the hope that it will be useful, but WITHOUT
-    ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
-    FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License
-    for more details.
+    dualFuelEngine (like OpenFOAM) is distributed in the hope that it will be
+	useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+	See the GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with OpenFOAM.  If not, see <http://www.gnu.org/licenses/>.
+    along with this repository. If not, see <http://www.gnu.org/licenses/>.
 
 Application
     multiCompression
@@ -33,29 +34,9 @@ Description
     Navier-Stokes codes.
 
 Comments
-	MRF
-	Работа для различных зон. MRF zone definition based on cell zone and
-	parameters obtained from a control dictionary constructed from the given
-	stream. The rotation of the MRF region is defined by an origin	and axis
-	of rotation and an angular speed.
 
-	adjustPhi
-	For cases which do no have a pressure boundary adjust the balance of
-	fluxes to obey continuity.
-	Обеспечивает консервативность уравнений. ? - обеспечивает баланс ур-ний
-	неразрывности при отсутствии ГУ по давлению
-
-	fvScalarMatrix PhiEqn
-	Mass continuity for an incompressible fluid:
-		∇•U=0 | div(U) = 0 | du/dx+... = 0
-	Pressure equation for an incompressible, irrotational fluid assuming
-	steady-state conditions:
-		(∇^2)p = 0 | ∆p = 0 | d^2(p_x)/dx^2+... = 0 | laplacian(p) = 0
-	Phi - потенциал скорости (volScalarField):
-		U = ∇•Phi | U = grad(Phi) | U = d(Phi)/dx*i+...
-	phi - скороcть (?), м/с (surfaceScalarField)
-	fvm - неявный метод/дискретизация, возвращает контрольно-объёмную матрицу
-	fvc - явный метод/дискретизация, возвращает поле
+	fvc - явный метод,   возвращает поле
+	fvm - неявный метод, возвращает контрольно-объёмную матрицу
 
 \*---------------------------------------------------------------------------*/
 
