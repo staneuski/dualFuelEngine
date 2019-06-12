@@ -12,12 +12,6 @@ argList::addBoolOption
 
 argList::addBoolOption
 (
-    "withFunctionObjects",
-    "execute functionObjects"
-);
-
-argList::addBoolOption
-(
     "writedivphi",
     "Calculating divergence of phi"
 );

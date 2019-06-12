@@ -1,5 +1,5 @@
-// Velocity field U
 Info<< "Reading velocity field U\n" << endl;
+
 volVectorField U
 (
     IOobject
@@ -13,56 +13,41 @@ volVectorField U
     mesh
 );
 
-U = dimensionedVector("0", U.dimensions(), Zero);
-
-// Field phi
-surfaceScalarField phi
-(
-    IOobject
-    (
-        "phi",
-        runTime.timeName(),
-        mesh,
-        IOobject::NO_READ,
-        IOobject::AUTO_WRITE
-    ),
-    fvc::flux(U)
-);
+U = dimensionedVector("0", U.dimensions(), Zero); // ????????????????
 
 // Pressure field p
-wordList pBCTypes
-(
-    U.boundaryField().size(),
-    fixedValueFvPatchScalarField::typeName
-);
+Info<< "Reading pressure field p" << nl << endl;
 
-forAll(U.boundaryField(), patchi)
-{
-    if (U.boundaryField()[patchi].fixesValue())
-    {
-        pBCTypes[patchi] = zeroGradientFvPatchScalarField::typeName;
-    }
-}
-
-Info<< "Constructing pressure field p" << nl << endl;
 volScalarField p
 (
     IOobject
     (
         "p",
-        runTime.timeName(),
-        mesh,
-        IOobject::READ_IF_PRESENT,
-        IOobject::NO_WRITE
+		runTime.timeName(),
+		mesh,
+		IOobject::MUST_READ,
+		IOobject::AUTO_WRITE
     ),
-    mesh,
-    dimensionedScalar("p", sqr(dimVelocity), 0),
-    pBCTypes
+    mesh
 );
 
+Info<< "Reading pressure field rho" << nl << endl;
 
-// Potential field Phi
-// Infer the velocity potential boundary condicions from the pressure
+volScalarField rho
+(
+    IOobject
+    (
+        "rho",
+        runTime.timeName(),
+        mesh,
+        IOobject::MUST_READ,
+        IOobject::AUTO_WRITE
+    ),
+    mesh
+);
+
+Info<< "Constructing velocity potential field Phi\n" << endl;
+
 wordList PhiBCTypes
 (
     p.boundaryField().size(),
@@ -77,7 +62,6 @@ forAll(p.boundaryField(), patchi)
     }
 }
 
-Info<< "Constructing velocity potential field Phi\n" << endl;
 volScalarField Phi
 (
     IOobject
@@ -104,9 +88,9 @@ setRefCell
 );
 mesh.setFluxRequired(Phi.name());
 
-// Temperature field T
-Info<< "Reading field T\n" << endl;
+// SCALAR TRANSPORT FIELDS
 
+Info<< "Reading field T\n" << endl;
 volScalarField T
 (
     IOobject
@@ -120,9 +104,7 @@ volScalarField T
     mesh
 );
 
-// Concentration fields alpha
-Info<< "Reading concentration fields alpha\n" << endl;
-
+Info<< "Reading inlet air concentration field alpha_air\n" << endl;
 volScalarField alpha_air
 (
     IOobject
@@ -135,6 +117,8 @@ volScalarField alpha_air
     ),
     mesh
 );
+
+Info<< "Reading injectction gas concentration field alpha_gas\n" << endl;
 volScalarField alpha_gas
 (
     IOobject
@@ -160,10 +144,8 @@ volScalarField alpha_exh
         IOobject::AUTO_WRITE
     ),
     mesh,
-	dimensionedScalar("alpha_exh", dimless, 2)
+	dimensionedScalar("alpha_exh", dimless, 0)
 );
-
-// alpha_exh = dimensionedScalar("0", dimless, 0);
 
 Info<< "Reading transportProperties\n" << endl;
 
