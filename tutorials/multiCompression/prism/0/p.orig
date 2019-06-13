@@ -10,33 +10,29 @@ FoamFile
     version     2.0;
     format      ascii;
     class       volScalarField;
-    location    "1";
-    object      rho;
+    object      p;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      		[1 -3 0 0 0 0 0]; // kg/m^3
+dimensions      [1 -1 -2 0 0 0 0]; // [kg/m/s^2 = Pa]
 
-internalField   		uniform 1.204;
+internalField   uniform 0;
 
 boundaryField
 {
     inlet
     {
-        type            fixedValue;
-        value           uniform 1.204;
-		
+        type            zeroGradient;
     }
     outlet
     {
-        type            zeroGradient;
+        type            fixedValue;
+        value           uniform 0;
     }
-
     walls
     {
         type            zeroGradient;
     }
 }
-
 
 // ************************************************************************* //
