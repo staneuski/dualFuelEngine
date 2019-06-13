@@ -22,12 +22,13 @@ boundaryField
 {
     inlet
     {
-        type            zeroGradient;
+        type            fixedValue;
+        value           uniform 20e4; // 2 atm
     }
     outlet
     {
-        type            fixedValue;
-        value           uniform 0;
+
+        type            zeroGradient;
     }
     walls
     {
