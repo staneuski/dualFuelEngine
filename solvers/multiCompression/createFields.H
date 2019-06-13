@@ -15,7 +15,6 @@ volVectorField U
 
 U = dimensionedVector("0", U.dimensions(), Zero); // ????????????????
 
-// Pressure field p
 Info<< "Reading pressure field p" << nl << endl;
 
 volScalarField p
@@ -178,8 +177,3 @@ dimensionedScalar DGas
 );
 
 #include "createFvOptions.H"
-
-
-
-
-
