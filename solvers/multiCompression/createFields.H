@@ -1,5 +1,4 @@
 Info<< "Reading velocity field U\n" << endl;
-
 volVectorField U
 (
     IOobject
@@ -13,7 +12,20 @@ volVectorField U
     mesh
 );
 
-U = dimensionedVector("0", U.dimensions(), Zero); // ????????????????
+U = dimensionedVector("0", U.dimensions(), Zero); // ????
+
+surfaceScalarField phi
+(
+    IOobject
+    (
+        "phi",
+        runTime.timeName(),
+        mesh,
+        IOobject::NO_READ,
+        IOobject::AUTO_WRITE
+    ),
+    fvc::flux(U)
+);
 
 Info<< "Reading pressure field p" << nl << endl;
 
@@ -45,135 +57,96 @@ volScalarField rho
     mesh
 );
 
-Info<< "Constructing velocity potential field Phi\n" << endl;
+Info<< "Constructing specific energy field e" << nl << endl;
 
-wordList PhiBCTypes
+wordList eBCTypes
 (
-    p.boundaryField().size(),
-    zeroGradientFvPatchScalarField::typeName
+	rho.boundaryField().size(),
+	zeroGradientFvPatchScalarField::typeName
 );
 
-forAll(p.boundaryField(), patchi)
+forAll(rho.boundaryField(), patchi)
 {
-    if (p.boundaryField()[patchi].fixesValue())
+    if (rho.boundaryField()[patchi].fixesValue())
     {
-        PhiBCTypes[patchi] = fixedValueFvPatchScalarField::typeName;
+        eBCTypes[patchi] = fixedValueFvPatchScalarField::typeName;
     }
 }
 
-volScalarField Phi
+volScalarField e
 (
-    IOobject
-    (
-        "Phi",
-        runTime.timeName(),
-        mesh,
-        IOobject::READ_IF_PRESENT,
-		IOobject::AUTO_WRITE
-    ),
-    mesh,
-    dimensionedScalar("Phi", dimLength*dimVelocity, 0),
-    PhiBCTypes
+	IOobject
+	(
+	    "e",
+	    runTime.timeName(),
+	    mesh,
+	    IOobject::NO_READ,
+	    IOobject::AUTO_WRITE
+	),
+	p/(k - 1)*rho + sqr(phi)/2,
+    eBCTypes
 );
 
-label PhiRefCell = 0;
-scalar PhiRefValue = 0;
-setRefCell
-(
-    Phi,
-    multiCompression.dict(),
-    PhiRefCell,
-    PhiRefValue
-);
-mesh.setFluxRequired(Phi.name());
+Info<< "Constructing mass field M" << nl << endl;
 
-// SCALAR TRANSPORT FIELDS
-
-Info<< "Reading field T\n" << endl;
-volScalarField T
+wordList IntegralBCTypes
 (
-    IOobject
-    (
-        "T",
-        runTime.timeName(),
-        mesh,
-        IOobject::MUST_READ,
-        IOobject::AUTO_WRITE
-    ),
-    mesh
+	rho.boundaryField().size(),
+	zeroGradientFvPatchScalarField::typeName
 );
 
-Info<< "Reading inlet air concentration field alpha_air\n" << endl;
-volScalarField alpha_air
+forAll(rho.boundaryField(), patchi)
+{
+    if (rho.boundaryField()[patchi].fixesValue())
+    {
+        IntegralBCTypes[patchi] = fixedValueFvPatchScalarField::typeName;
+    }
+}
+
+volScalarField M
 (
-    IOobject
-    (
-        "alpha_air",
-        runTime.timeName(),
-        mesh,
-        IOobject::MUST_READ,
-        IOobject::AUTO_WRITE
-    ),
-    mesh
+	IOobject
+	(
+	    "M",
+	    runTime.timeName(),
+	    mesh,
+	    IOobject::NO_READ,
+	    IOobject::AUTO_WRITE
+	),
+	rho*phi*deltaT*F, // deltaT*F - ?
+    IntegralBCTypes
 );
 
-Info<< "Reading injectction gas concentration field alpha_gas\n" << endl;
-volScalarField alpha_gas
+Info<< "Constructing momentum field K" << nl << endl;
+
+volScalarField K
 (
-    IOobject
-    (
-        "alpha_gas",
-        runTime.timeName(),
-        mesh,
-        IOobject::MUST_READ,
-        IOobject::AUTO_WRITE
-    ),
-    mesh
+	IOobject
+	(
+	    "K",
+	    runTime.timeName(),
+	    mesh,
+	    IOobject::NO_READ,
+	    IOobject::AUTO_WRITE
+	),
+	M*phi,
+    IntegralBCTypes
 );
 
-Info<< "Constructing exhaust concentration field alpha_exh" << nl << endl;
-volScalarField alpha_exh
-(
-    IOobject
-    (
-        "alpha_exh",
-        runTime.timeName(),
-        mesh,
-        IOobject::NO_READ,
-        IOobject::AUTO_WRITE
-    ),
-    mesh,
-	dimensionedScalar("alpha_exh", dimless, 0)
-);
+Info<< "Constructing energy field E" << nl << endl;
 
-Info<< "Reading transportProperties\n" << endl;
-
-IOdictionary transportProperties
+volScalarField E
 (
-    IOobject
-    (
-        "transportProperties",
-        runTime.constant(),
-        mesh,
-        IOobject::MUST_READ_IF_MODIFIED,
-        IOobject::NO_WRITE
-    )
-);
-
-Info<< "Reading diffusivities DT, DAir, Dgas and DExh\n" << endl;
-
-dimensionedScalar DT
-(
-    transportProperties.lookup("DT")
-);
-
-dimensionedScalar DAir
-(
-    transportProperties.lookup("DAir")
-);
-dimensionedScalar DGas
-(
-    transportProperties.lookup("DGas")
+	IOobject
+	(
+	    "E",
+	    runTime.timeName(),
+	    mesh,
+	    IOobject::NO_READ,
+	    IOobject::AUTO_WRITE
+	),
+	M*e,
+    IntegralBCTypes
 );
 
 #include "createFvOptions.H"
