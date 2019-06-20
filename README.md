@@ -1,3 +1,26 @@
+# Stucture
+```
+dualFuelEngine-0.2-alpha
+├── doc
+│   └── CATIA
+│       └── quadPiston
+├── solvers
+│   ├── multiCompression
+│   └── testFoam
+└── tutorials
+    ├── multiCompression
+    │   ├── prism
+    │   └── quadPiston
+    ├── potentialFoam
+    │   ├── prism
+    │   └── quadPiston
+    ├── scalarTransportFoam
+    │   ├── prism
+    │   └── quadPiston
+    └── testFoam
+        └── quadPiston
+```
+---
 # solvers/
 ## [multiCompression/](solvers/multiCompression)
 **Ядро решателя**
@@ -25,5 +48,4 @@
 
 ---
 # [Releases](https://github.com/StasF1/dualFuelEngine/releases)
-
 - [v0.1-alpha:](https://github.com/StasF1/dualFuelEngine/tree/v0.1-alpha) Incompressible flow. Concentration fields.
