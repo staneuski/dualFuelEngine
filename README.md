@@ -1,6 +1,6 @@
 
 # About dualFuelEngine
-❔Description will be here.
+OpenFOAM solver based phenomenological compression model for dual-fuel ship engines.
 
 # Requirements
 - [OpenFOAM v6](https://openfoam.org/download/)
