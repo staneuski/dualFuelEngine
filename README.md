@@ -1,6 +1,9 @@
 
-# Description
+# About dualFuelEngine
 ❔Description will be here.
+
+# Requirements
+- [OpenFOAM v6](https://openfoam.org/download/)
 
 # [Releases](https://github.com/StasF1/dualFuelEngine/releases)
 
