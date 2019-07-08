@@ -1,152 +1,123 @@
 Info<< "Reading velocity field U\n" << endl;
 volVectorField U
 (
-    IOobject
-    (
-        "U",
-        runTime.timeName(),
-        mesh,
-        IOobject::MUST_READ,
-        IOobject::AUTO_WRITE
-    ),
-    mesh
-);
-
-U = dimensionedVector("0", U.dimensions(), Zero); // ????
-
-surfaceScalarField phi
-(
-    IOobject
-    (
-        "phi",
-        runTime.timeName(),
-        mesh,
-        IOobject::NO_READ,
-        IOobject::AUTO_WRITE
-    ),
-    fvc::flux(U)
-);
-
-Info<< "Reading pressure field p" << nl << endl;
-
-volScalarField p
-(
-    IOobject
-    (
-        "p",
+	IOobject
+	(
+		"U",
 		runTime.timeName(),
 		mesh,
 		IOobject::MUST_READ,
 		IOobject::AUTO_WRITE
-    ),
-    mesh
+	),
+	mesh
 );
 
-Info<< "Reading pressure field rho" << nl << endl;
+Info<< "Reading pressure field p\n" << nl << endl;
+
+volScalarField p
+(
+	IOobject
+	(
+		"p",
+		runTime.timeName(),
+		mesh,
+		IOobject::MUST_READ,
+		IOobject::AUTO_WRITE
+	),
+	mesh
+);
+
+Info<< "Reading pressure field rho\n" << nl << endl;
 
 volScalarField rho
 (
+	IOobject
+	(
+		"rho",
+		runTime.timeName(),
+		mesh,
+		IOobject::MUST_READ,
+		IOobject::AUTO_WRITE
+	),
+	mesh
+);
+
+Info<< "Reading temperure field T\n" << nl << endl;
+
+volScalarField T
+(
+	IOobject
+	(
+		"T",
+		runTime.timeName(),
+		mesh,
+		IOobject::MUST_READ,
+		IOobject::AUTO_WRITE
+	),
+	mesh
+);
+
+surfaceScalarField phi
+(
+	IOobject
+	(
+		"phi",
+		runTime.timeName(),
+		mesh,
+		IOobject::NO_READ,
+		IOobject::AUTO_WRITE
+	),
+	fvc::flux(rho*U) // FIXME phi with density makes dimensions not equal almost in every Eqn
+);
+
+Info<< "Reading thermophysical properties\n" << endl;
+
+IOdictionary thermophysicalProperties
+(
     IOobject
     (
-        "rho",
-        runTime.timeName(),
+        "thermophysicalProperties",
+        runTime.constant(),
         mesh,
-        IOobject::MUST_READ,
-        IOobject::AUTO_WRITE
-    ),
-    mesh
+        IOobject::MUST_READ_IF_MODIFIED,
+        IOobject::NO_WRITE
+    )
 );
 
-Info<< "Constructing specific energy field e" << nl << endl;
+Info<< "Reading diffusivity DT\n" << endl;
 
-wordList eBCTypes
+dimensionedScalar DT
 (
-	rho.boundaryField().size(),
-	zeroGradientFvPatchScalarField::typeName
+	thermophysicalProperties.lookup("DT")
 );
 
-forAll(rho.boundaryField(), patchi)
-{
-    if (rho.boundaryField()[patchi].fixesValue())
-    {
-        eBCTypes[patchi] = fixedValueFvPatchScalarField::typeName;
-    }
-}
+Info<< "Reading dinamic viscosity\n" << endl;
 
-volScalarField e
+dimensionedScalar MU
 (
-	IOobject
-	(
-	    "e",
-	    runTime.timeName(),
-	    mesh,
-	    IOobject::NO_READ,
-	    IOobject::AUTO_WRITE
-	),
-	p/(k - 1)*rho + sqr(phi)/2,
-    eBCTypes
+	thermophysicalProperties.lookup("MU")
 );
 
-Info<< "Constructing mass field M" << nl << endl;
+Info<< "Reading DIFFDENSITY\n" << endl;
 
-wordList IntegralBCTypes
+dimensionedScalar DIFFDENSITY
 (
-	rho.boundaryField().size(),
-	zeroGradientFvPatchScalarField::typeName
+	thermophysicalProperties.lookup("DIFFDENSITY")
 );
 
-forAll(rho.boundaryField(), patchi)
-{
-    if (rho.boundaryField()[patchi].fixesValue())
-    {
-        IntegralBCTypes[patchi] = fixedValueFvPatchScalarField::typeName;
-    }
-}
 
-volScalarField M
+Info<< "Reading heat capacity ratio\n" << endl;
+
+dimensionedScalar GAMMA
 (
-	IOobject
-	(
-	    "M",
-	    runTime.timeName(),
-	    mesh,
-	    IOobject::NO_READ,
-	    IOobject::AUTO_WRITE
-	),
-	rho*phi*deltaT*F, // deltaT*F - ?
-    IntegralBCTypes
+	thermophysicalProperties.lookup("GAMMA")
 );
 
-Info<< "Constructing momentum field K" << nl << endl;
+Info<< "Reading thermal conductivity\n" << endl;
 
-volScalarField K
+dimensionedScalar LAMBDA
 (
-	IOobject
-	(
-	    "K",
-	    runTime.timeName(),
-	    mesh,
-	    IOobject::NO_READ,
-	    IOobject::AUTO_WRITE
-	),
-	M*phi,
-    IntegralBCTypes
-);
-
-Info<< "Constructing energy field E" << nl << endl;
-
-volScalarField E
-(
-	IOobject
-	(
-	    "E",
-	    runTime.timeName(),
-	    mesh,
-	    IOobject::NO_READ,
-	    IOobject::AUTO_WRITE
-	),
-	M*e,
-    IntegralBCTypes
+	thermophysicalProperties.lookup("LAMBDA")
 );
 
 #include "createFvOptions.H"
