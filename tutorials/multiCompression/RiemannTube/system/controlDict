@@ -1,0 +1,49 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: Addition to OpenFOAM v6
+   \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
+    \\  /    A nd           | Version:  0.2-alpha
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+application     	  multiCompression;
+
+startFrom       	  startTime;
+
+startTime       	  0;
+
+stopAt          	  endTime;
+
+endTime         	  1.5e-03;
+
+deltaT          	  1.5e-05; //Co < 0.5 => deltaT < 0.5*deltaX/a = 0.5*1e-02/342
+
+writeControl    	  timeStep;
+
+writeInterval   	  5;
+
+purgeWrite      	  0;
+
+writeFormat     	  ascii;
+
+writePrecision  	  6;
+
+writeCompression 	  off;
+
+timeFormat      	  general;
+
+timePrecision   	  6;
+
+runTimeModifiable 	true;
+
+
+// ************************************************************************* //
