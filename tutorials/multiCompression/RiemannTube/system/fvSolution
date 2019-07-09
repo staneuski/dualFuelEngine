@@ -24,7 +24,7 @@ solvers
         tolerance       1e-06;
         relTol          0;
     }
-	"p|U|rho"
+	"rho|U|e"
     {
         solver          GAMG;
         smoother        DIC;
