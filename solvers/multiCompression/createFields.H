@@ -12,7 +12,7 @@ volVectorField U
 	mesh
 );
 
-Info<< "Reading pressure field p\n" << nl << endl;
+Info<< "Reading pressure field p" << nl << endl;
 
 volScalarField p
 (
@@ -27,7 +27,7 @@ volScalarField p
 	mesh
 );
 
-Info<< "Reading pressure field rho\n" << nl << endl;
+Info<< "Reading pressure field rho" << nl << endl;
 
 volScalarField rho
 (
@@ -42,7 +42,7 @@ volScalarField rho
 	mesh
 );
 
-Info<< "Reading temperure field T\n" << nl << endl;
+Info<< "Reading temperure field T" << nl << endl;
 
 volScalarField T
 (
@@ -70,7 +70,7 @@ surfaceScalarField phi
 	fvc::flux(rho*U) // FIXME phi with density makes dimensions not equal almost in every Eqn
 );
 
-Info<< "Reading thermophysical properties\n" << endl;
+Info<< "Reading thermophysical properties" << endl;
 
 IOdictionary thermophysicalProperties
 (
@@ -84,29 +84,21 @@ IOdictionary thermophysicalProperties
     )
 );
 
-Info<< "Reading diffusivity DT\n" << endl;
+Info<< "Reading diffusivity DT" << endl;
 
 dimensionedScalar DT
 (
 	thermophysicalProperties.lookup("DT")
 );
 
-Info<< "Reading dinamic viscosity\n" << endl;
+Info<< "Reading dinamic viscosity" << endl;
 
 dimensionedScalar MU
 (
 	thermophysicalProperties.lookup("MU")
 );
 
-Info<< "Reading DIFFDENSITY\n" << endl;
-
-dimensionedScalar DIFFDENSITY
-(
-	thermophysicalProperties.lookup("DIFFDENSITY")
-);
-
-
-Info<< "Reading heat capacity ratio\n" << endl;
+Info<< "Reading heat capacity ratio" << endl;
 
 dimensionedScalar GAMMA
 (

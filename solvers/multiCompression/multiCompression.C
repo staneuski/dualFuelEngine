@@ -60,15 +60,14 @@ int main(int argc, char *argv[])
     while (simple.loop(runTime))
     {
         Info<< "Time = " << runTime.timeName() << nl << endl;
-                
+        
         while (simple.correctNonOrthogonal())
         {
-			surfaceScalarField phiDiff(phi/DIFFDENSITY);
 			
             fvScalarMatrix TEqn
             (
                 fvm::ddt(T)
-              + fvm::div(phiDiff, T)
+              + fvm::div(phi, T)
               - fvm::laplacian(DT, T)
              ==
                 fvOptions(T)
@@ -82,7 +81,7 @@ int main(int argc, char *argv[])
             fvScalarMatrix rhoEqn
             (
                 fvm::ddt(rho)
-              + fvc::div(phiDiff, rho)
+              + fvc::div(phi, rho)
             );
 
             // rhoEqn.relax();
