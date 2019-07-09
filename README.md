@@ -2,7 +2,8 @@
 OpenFOAM solver based on phenomenological compression model for dual-fuel ship engines.
 
 # Requirements
-- [OpenFOAM v6](https://openfoam.org/download/)
+- OpenFOAM v6 (preferred)
+- OpenFOAM v5 (check [issue #6](https://github.com/StasF1/dualFuelEngine/issues/6)) 
 
 # [Releases](https://github.com/StasF1/dualFuelEngine/releases)
 |Version|Description|Documentation|Source code|
