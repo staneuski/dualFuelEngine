@@ -57,19 +57,6 @@ volScalarField T
 	mesh
 );
 
-surfaceScalarField phi
-(
-	IOobject
-	(
-		"phi",
-		runTime.timeName(),
-		mesh,
-		IOobject::NO_READ,
-		IOobject::AUTO_WRITE
-	),
-	fvc::flux(rho*U) // FIXME phi with density makes dimensions not equal almost in every Eqn
-);
-
 Info<< "Reading thermophysical properties" << endl;
 
 IOdictionary thermophysicalProperties
@@ -110,6 +97,36 @@ Info<< "Reading thermal conductivity\n" << endl;
 dimensionedScalar LAMBDA
 (
 	thermophysicalProperties.lookup("LAMBDA")
+);
+
+Info<< "Constructing field phi" << endl;
+
+surfaceScalarField phi
+(
+	IOobject
+	(
+		"phi",
+		runTime.timeName(),
+		mesh,
+		IOobject::NO_READ,
+		IOobject::AUTO_WRITE
+	),
+	fvc::flux(rho*U)
+);
+
+Info<< "Constructing energy field" << endl;
+
+volScalarField e
+(
+	IOobject
+	(
+		"e",
+		runTime.timeName(),
+		mesh,
+		IOobject::NO_READ,
+		IOobject::NO_WRITE
+	),
+	p/(GAMMA - 1)/rho + magSqr(U)/2
 );
 
 #include "createFvOptions.H"

@@ -66,28 +66,25 @@ int main(int argc, char *argv[])
 			
             fvScalarMatrix TEqn
             (
-                fvm::ddt(T)
+                fvm::ddt(rho, T)
               + fvm::div(phi, T)
-              - fvm::laplacian(DT, T)
-             ==
-                fvOptions(T)
+              - fvc::laplacian(DT, rho*T)
             );
 
-            TEqn.relax(); // FIXME What are these lines mean ?
+            // TEqn.relax(); //FIXME What are these lines (76 & 79) mean ?
             fvOptions.constrain(TEqn);
             TEqn.solve();
-            fvOptions.correct(T);
+            // fvOptions.correct(T);
             
             fvScalarMatrix rhoEqn
             (
                 fvm::ddt(rho)
-              + fvc::div(phi, rho)
+              + fvc::div(phi)
             );
 
-            // rhoEqn.relax();
-            // fvOptions.constrain(rhoEqn);
+            rhoEqn.relax();
             rhoEqn.solve();
-                        
+           
             fvVectorMatrix UEqn
             (
                 fvm::ddt(rho, U)
@@ -96,32 +93,31 @@ int main(int argc, char *argv[])
               - fvc::grad(p)
               + fvc::grad
                 (
-                    MU/3*fvc::div(U)
+                    (MU/3)*fvc::div(U)
                 )
-              + fvc::laplacian(U)
+              + MU*fvc::laplacian(U)
             );
 
-            // UEqn.relax();
-            // fvOptions.constrain(UEqn);
+            UEqn.relax();
             UEqn.solve();
 
-            // Calculate energy field
-            volScalarField e(p/(GAMMA - 1)/rho + magSqr(U)/2);
-
-            fvScalarMatrix pEqn
+            fvScalarMatrix eEqn
             (
                 fvm::ddt(rho, e)
+			  + fvc::div(phi, e)
              ==
               - fvc::div(p*U)
               + fvc::div(LAMBDA*fvc::grad(T))
               + ( U & (MU*fvc::laplacian(U) + fvc::grad(MU/3*fvc::div(U))) )
-            // rho*epsilon FIXME What is epsilon?
             // TODO Add mu*D
             );
 
-            // pEqn.relax();
-            // fvOptions.constrain(pEqn);
-            pEqn.solve();
+            eEqn.relax();
+            eEqn.solve();
+			
+			phi = fvc::flux(rho*U);
+			
+			p = rho*(GAMMA - 1)*(e - magSqr(U)/2);
             
         }
         
