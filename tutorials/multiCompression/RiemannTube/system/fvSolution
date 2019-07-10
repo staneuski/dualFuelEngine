@@ -24,10 +24,17 @@ solvers
         tolerance       1e-06;
         relTol          0;
     }
-	"rho|U|e"
+	"rho|U"
     {
         solver          GAMG;
         smoother        DIC;
+        tolerance       1e-06;
+        relTol          0.01;
+    }
+	e
+    {
+        solver          GAMG;
+        smoother        DILU;
         tolerance       1e-06;
         relTol          0.01;
     }
@@ -37,6 +44,5 @@ SIMPLE
 {
     nNonOrthogonalCorrectors 0;
 }
-
 
 // ************************************************************************* //
