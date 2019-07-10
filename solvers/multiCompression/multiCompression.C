@@ -97,11 +97,13 @@ int main(int argc, char *argv[])
 
 		UEqn.relax();
 		UEqn.solve();
-
+		
+		phi = fvc::flux(rho*U);
+		
 		fvScalarMatrix eEqn
 		(
 			fvm::ddt(rho, e)
-		  + fvc::div(phi, e)
+		  + fvm::div(phi, e)
 		 ==
 		  - fvc::div(p*U)
 		  + fvc::div(LAMBDA*fvc::grad(T))

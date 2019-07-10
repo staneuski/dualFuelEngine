@@ -27,7 +27,7 @@ volScalarField p
 	mesh
 );
 
-Info<< "Reading pressure field rho" << nl << endl;
+Info<< "Reading density field rho" << nl << endl;
 
 volScalarField rho
 (
@@ -99,7 +99,7 @@ dimensionedScalar LAMBDA
 	thermophysicalProperties.lookup("LAMBDA")
 );
 
-Info<< "Constructing field phi" << endl;
+Info<< "Constructing field phi\n" << endl;
 
 surfaceScalarField phi
 (
@@ -114,7 +114,21 @@ surfaceScalarField phi
 	fvc::flux(rho*U)
 );
 
-Info<< "Constructing energy field" << endl;
+wordList eBCTypes
+(
+    U.boundaryField().size(),
+    fixedValueFvPatchScalarField::typeName
+);
+
+forAll(U.boundaryField(), patchi)
+{
+    if (U.boundaryField()[patchi].fixesValue())
+    {
+        eBCTypes[patchi] = zeroGradientFvPatchScalarField::typeName;
+    }
+}
+
+Info<< "Constructing energy field e\n" << endl;
 
 volScalarField e
 (
@@ -124,9 +138,10 @@ volScalarField e
 		runTime.timeName(),
 		mesh,
 		IOobject::NO_READ,
-		IOobject::NO_WRITE
+		IOobject::AUTO_WRITE
 	),
-	p/(GAMMA - 1)/rho + magSqr(U)/2
+	p/(GAMMA - 1)/rho + magSqr(U)/2,
+	eBCTypes
 );
 
 #include "createFvOptions.H"
