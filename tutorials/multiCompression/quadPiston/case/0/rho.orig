@@ -10,73 +10,40 @@ FoamFile
     version     2.0;
     format      ascii;
     class       volScalarField;
-    object      alpha_air;
+    location    "0";
+    object      rho;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [0 0 0 0 0 0 0];
+dimensions				[1 -3 0 0 0 0 0]; // kg/m^3
 
-internalField   uniform 0;
-
-// injection	 	0;
-
-inlet	 		1;
+internalField   		uniform 1.787;
 
 boundaryField
 {
     // Injection
-	injectionXMinus
+	"injectionXMinus|injectionXPlus|injectionYMinus|injectionYPlus"
     {
         type            zeroGradient;
     }
-	injectionXPlus
+	
+    // Inlet
+	"inletXMinus|inletXPlus|inletYMinus|inletYPlus"
     {
         type            zeroGradient;
     }
-	injectionYMinus
-    {
-        type            zeroGradient;
-    }
-	injectionYPlus
-    {
-        type            zeroGradient;
-    }
-
-	// Inlet
-	inletXMinus
-    {
-        type            fixedValue;
-        value           uniform $inlet;
-    }
-	inletXPlus
-    {
-        type            fixedValue;
-        value           uniform $inlet;
-    }
-	inletYMinus
-    {
-        type            fixedValue;
-        value           uniform $inlet;
-    }
-	inletYPlus
-    {
-        type            fixedValue;
-        value           uniform $inlet;
-    }
-
+	
 	// Other
     outlet
     {
-        type            zeroGradient;
-    } // outlet
-    valve
+        type            fixedValue;
+        value           uniform 1.204;
+    }
+    "valve|walls"
     {
         type            zeroGradient;
-    } // valve
-    walls
-    {
-        type            zeroGradient;
-    } // walls
+    }
 }
+
 
 // ************************************************************************* //

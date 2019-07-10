@@ -14,17 +14,17 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [0 1 -1 0 0 0 0]; // [kg m s K kg-mol cd]
+dimensions      		[0 1 -1 0 0 0 0]; // [kg m s K kg-mol cd]
 
-internalField   uniform (0 0 0);
+internalField   		uniform (0 0 0);
 
-injection 		20;
+injection 				20;
 
-inlet 			5;
+inlet 					5;
 
-injectionMinus  #calc "-1.0*$injection";
+injectionMinus  		#calc "-1.0*$injection";
 
-inletMinus		#calc "-1.0*$inlet";
+inletMinus				#calc "-1.0*$inlet";
 	
 boundaryField
 {
@@ -76,15 +76,11 @@ boundaryField
     outlet
     {
         type            zeroGradient;
-    } // outlet
-    valve
+    }
+    "valve|walls"
     {
         type            noSlip;
-    } // valve
-    walls
-    {
-        type            noSlip;
-    } // walls
+    }
 }
 
 // ************************************************************************* //

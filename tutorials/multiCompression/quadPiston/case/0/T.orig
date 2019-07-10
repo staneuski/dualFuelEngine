@@ -18,69 +18,20 @@ dimensions      [0 0 0 1 0 0 0]; // K
 
 internalField   uniform 858.1;
 
-injection	 	400;
-
-inlet	 		293.15;
-
-// inlet (/*(time value)*/
-// 	(0 	 381)
-// 	(0.1 374.4)
-// 	(0.2 375.9)
-// 	(0.3 395.6)
-// 	(0.4 428.2)
-// 	(0.5 478.8)
-// 	(0.6 558.8)
-// 	(0.7 685.1)
-// 	(0.8 875.9)
-// 	(0.9 1574.8)
-// 	(1 	 1818.1)
-// );
-
 boundaryField
 {
     // Injection
-	injectionXMinus
+	"injectionXMinus|injectionXPlus|injectionYMinus|injectionYPlus"
     {
         type            uniformFixedValue;
-        uniformValue    uniform $injection;
-    }
-	injectionXPlus
-    {
-        type            uniformFixedValue;
-        uniformValue 	uniform $injection;
-    }
-	injectionYMinus
-    {
-        type            uniformFixedValue;
-        uniformValue 	uniform $injection;
-    }
-	injectionYPlus
-    {
-        type            uniformFixedValue;
-        uniformValue 	uniform $injection;
+        uniformValue    uniform 400;
     }
 
 	// Inlet
-	inletXMinus
+	"inletXMinus|inletXPlus|inletYMinus|inletYPlus"
     {
         type            uniformFixedValue;
-		uniformValue 	uniform $inlet;
-
-    }
-	inletXPlus
-    {
-        type            uniformFixedValue;
-        uniformValue 	uniform $inlet;
-    }
-	inletYMinus
-    {
-        type            uniformFixedValue;
-        uniformValue 	uniform $inlet;
-    }
-	inletYPlus
-    {
-        type            uniformFixedValue;
-        uniformValue 	uniform $inlet;
+		uniformValue 	uniform 293.15;
     }
 
 	// Other
@@ -88,14 +39,10 @@ boundaryField
     {
         type            zeroGradient;
     } // outlet
-    valve
+    "valve|walls"
     {
         type            zeroGradient;
-    } // valve
-    walls
-    {
-        type            zeroGradient;
-    } // walls
+    }
 }
 
 // ************************************************************************* //

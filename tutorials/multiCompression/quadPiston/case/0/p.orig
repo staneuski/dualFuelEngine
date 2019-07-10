@@ -14,46 +14,20 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [0 2 -2 0 0 0 0]; // m^2/s^2 = Pa/(kg/m^3)
-								  // Air density was taken as 1.2041
-internalField   uniform 0;
+dimensions      [1 -1 -2 0 0 0 0]; // Pa
+
+internalField   uniform 10e04;
 
 boundaryField
 {
     // Injection
-	injectionXMinus
-    {
-        type            zeroGradient;
-    }
-    injectionXPlus
-    {
-        type            zeroGradient;
-    }
-    injectionYMinus
-    {
-        type            zeroGradient;
-    }
-    injectionYPlus
+	"injectionXMinus|injectionXPlus|injectionYMinus|injectionYPlus"
     {
         type            zeroGradient;
     }
 	
     // Inlet
-	// ∆p_kin = ∆p/rho = 0.1(bar) / 1.2041(kg/m^3) =
-	// = 10000(Pa) / 1.2041(kg/m^3) = 8304.958 m^2/s^2
-	inletXMinus
-    {
-        type            zeroGradient;
-    }
-    inletXPlus
-    {
-        type            zeroGradient;
-    }
-    inletYMinus
-    {
-        type            zeroGradient;
-    }
-    inletYPlus
+	"inletXMinus|inletXPlus|inletYMinus|inletYPlus"
     {
         type            zeroGradient;
     }
@@ -62,13 +36,9 @@ boundaryField
     outlet
     {
         type            fixedValue;
-        value           uniform 0;	// атмосферное давление
+        value           uniform 10e04;
     }
-    valve
-    {
-        type            zeroGradient;
-    }
-    walls
+    "valve|walls"
     {
         type            zeroGradient;
     }
