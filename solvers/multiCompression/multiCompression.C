@@ -60,63 +60,54 @@ int main(int argc, char *argv[])
 	while (simple.loop(runTime))
 	{
 		Info<< "Time = " << runTime.timeName() << nl << endl;
-
-		fvScalarMatrix TEqn
-		(
-			fvm::ddt(rho, T)
-		  + fvm::div(phi, T)
-		  - fvc::laplacian(DT, rho*T)
-		);
-
-		// TEqn.relax(); //FIXME What are these lines (76 & 79) mean ?
-		fvOptions.constrain(TEqn);
-		TEqn.solve();
-		// fvOptions.correct(T);
 		
-		fvScalarMatrix rhoEqn
-		(
-			fvm::ddt(rho)
-		  + fvc::div(phi)
-		);
-
-		rhoEqn.relax();
-		rhoEqn.solve();
-	
-		fvVectorMatrix UEqn
-		(
-			fvm::ddt(rho, U)
-		  + fvc::div(phi, U)
-		 ==
-		  - fvc::grad(p)
-		  + fvc::grad
+		while (simple.correctNonOrthogonal())
+		{
+			fvScalarMatrix rhoEqn
 			(
-				(MU/3)*fvc::div(U)
-			)
-		  + MU*fvc::laplacian(U)
-		);
+				fvm::ddt(rho)
+			  + fvc::div(phi)
+			);
 
-		UEqn.relax();
-		UEqn.solve();
-		
-		phi = fvc::flux(rho*U);
-		
-		fvScalarMatrix eEqn
-		(
-			fvm::ddt(rho, e)
-		  + fvm::div(phi, e)
-		 ==
-		  - fvc::div(p*U)
-		  + fvc::div(LAMBDA*fvc::grad(T))
-		  + ( U & (MU*fvc::laplacian(U) + fvc::grad(MU/3*fvc::div(U))) )
-		// TODO Add mu*D
-		);
+			rhoEqn.relax();
+			rhoEqn.solve();
+				
+			fvVectorMatrix UEqn
+			(
+				fvm::ddt(rho, U)
+			  + fvc::div(phi, U)
+			 ==
+			  - fvc::grad(p)
+			  + fvc::grad
+				(
+					(MU/3)*fvc::div(U)
+				)
+			  + MU*fvc::laplacian(U)
+			);
 
-		eEqn.relax();
-		eEqn.solve();
+			UEqn.relax();
+			UEqn.solve();
+			
+			fvScalarMatrix eEqn
+			(
+				fvm::ddt(rho, e)
+			  + fvm::div(phi, e)
+			 ==
+			  - fvc::div(p*U)
+			  + fvc::div(LAMBDA*fvc::grad(T))
+			  + ( U & (MU*fvc::laplacian(U) + fvc::grad(MU/3*fvc::div(U))) )
+			//TODO Add mu*D
+			);
+
+			eEqn.relax();
+			eEqn.solve();
 		
-		phi = fvc::flux(rho*U);
+			phi = fvc::flux(rho*U);
 		
-		p = rho*(GAMMA - 1)*(e - magSqr(U)/2);
+			T = (e - magSqr(U)/2)/Cv;
+		
+			p = rho*R*T;
+		}
 		
 		runTime.write();
 

@@ -85,18 +85,39 @@ dimensionedScalar MU
 	thermophysicalProperties.lookup("MU")
 );
 
-Info<< "Reading heat capacity ratio" << endl;
-
-dimensionedScalar GAMMA
-(
-	thermophysicalProperties.lookup("GAMMA")
-);
-
-Info<< "Reading thermal conductivity\n" << endl;
+Info<< "Reading thermal conductivity" << endl;
 
 dimensionedScalar LAMBDA
 (
 	thermophysicalProperties.lookup("LAMBDA")
+);
+
+Info<< "Reading gas constant" << endl;
+
+dimensionedScalar R
+(
+	thermophysicalProperties.lookup("R")
+);
+
+Info<< "Read isobaric heat capacity" << endl;
+
+dimensionedScalar Cv
+(
+	thermophysicalProperties.lookup("Cv")
+);
+
+Info<< "Calculate isochoric heat capacity" << endl;
+
+dimensionedScalar Cp
+(
+	R + Cv
+);
+
+Info<< "Calculate heat capacity ratio" << endl;
+
+dimensionedScalar GAMMA
+(
+	Cp/Cv
 );
 
 Info<< "Constructing field phi\n" << endl;
@@ -143,5 +164,5 @@ volScalarField e
 	p/(GAMMA - 1)/rho + magSqr(U)/2,
 	eBCTypes
 );
-
+	
 #include "createFvOptions.H"
