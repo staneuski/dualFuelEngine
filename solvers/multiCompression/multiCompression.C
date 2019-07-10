@@ -61,7 +61,6 @@ int main(int argc, char *argv[])
 	{
 		Info<< "Time = " << runTime.timeName() << nl << endl;
 
-		
 		fvScalarMatrix TEqn
 		(
 			fvm::ddt(rho, T)
