@@ -53,13 +53,13 @@ int main(int argc, char *argv[])
 
 	// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 	
-	#include "CourantNo.H"
-	
 	Info<< "\nStarting time loop\n" << endl;
 	
 	while (simple.loop(runTime))
 	{
 		Info<< "Time = " << runTime.timeName() << nl << endl;
+		
+		#include "CourantNo.H"
 		
 		while (simple.correctNonOrthogonal())
 		{

@@ -99,21 +99,21 @@ dimensionedScalar R
 	thermophysicalProperties.lookup("R")
 );
 
-Info<< "Read isobaric heat capacity" << endl;
+Info<< "Read isobaric heat capacity\n" << endl;
 
 dimensionedScalar Cv
 (
 	thermophysicalProperties.lookup("Cv")
 );
 
-Info<< "Calculate isochoric heat capacity" << endl;
+Info<< "Calculate isochoric heat capacity\n" << endl;
 
 dimensionedScalar Cp
 (
 	R + Cv
 );
 
-Info<< "Calculate heat capacity ratio" << endl;
+Info<< "Calculate heat capacity ratio\n" << endl;
 
 dimensionedScalar GAMMA
 (
