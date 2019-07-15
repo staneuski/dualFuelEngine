@@ -4,18 +4,6 @@
 log.*
 .DS_Store
 
-cellLevel
-cellZones
-faces
-faceZones
-level0Edge
-neighbour
-owner
-pointLevel
-points
-pointZones
-surfaceIndex
-
 # folders
 *e-07/
 *e-06/
@@ -23,6 +11,9 @@ surfaceIndex
 0.*/
 1/
 dynamicCode/
+extendedFeatureEdgeMesh/
+polyMesh/
+triSurface/
 extendedFeatureEdgeMesh/
 linux64GccDPInt32Opt/
 VTK/
@@ -33,15 +24,14 @@ doc/inspection/
 doc/references/
 
 # tutorials/
-# multiCompression/
-tutorials/multiCompression/quadPiston/geometry/*.stl
-tutorials/multiCompression/quadPiston/mesh/constant/triSurface/*
+# quadPiston/
+tutorials/multiCompression/quadPiston/0/*Level
 
 # potentialFoam/quadPiston/
-tutorials/quadPiston/prism/0/
-tutorials/quadPiston/prism/constant/
-tutorials/quadPiston/prism/system/fvSolution
-tutorials/quadPiston/prism/system/controlDict
+tutorials/potentialFoam/quadPiston/0/
+tutorials/potentialFoam/quadPiston/constant/
+tutorials/potentialFoam/quadPiston/system/fvSolution
+tutorials/potentialFoam/quadPiston/system/controlDict
 
 # scalarTransportFoam/quadPiston/
 tutorials/scalarTransportFoam/quadPiston/0/

@@ -1,4 +1,4 @@
-Info<< "Reading velocity field U\n" << endl;
+Info<< "Reading velocity field U" << endl;
 volVectorField U
 (
 	IOobject
@@ -12,7 +12,7 @@ volVectorField U
 	mesh
 );
 
-Info<< "Reading pressure field p" << nl << endl;
+Info<< "\nReading pressure field p" << nl << endl;
 
 volScalarField p
 (
