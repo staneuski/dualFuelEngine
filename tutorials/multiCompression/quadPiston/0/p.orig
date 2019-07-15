@@ -14,29 +14,30 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [1 -1 -2 0 0 0 0]; // Pa
+dimensions      		[1 -1 -2 0 0 0 0]; // Pa
 
-internalField   uniform 10e04;
+internalField   		uniform 10e04;
 
 boundaryField
 {
     // Injection
 	"injectionXMinus|injectionXPlus|injectionYMinus|injectionYPlus"
     {
-        type            zeroGradient;
+        type            fixedValue;
+        value           uniform 15e04;
     }
 	
     // Inlet
 	"inletXMinus|inletXPlus|inletYMinus|inletYPlus"
     {
-        type            zeroGradient;
+        type            fixedValue;
+        value           uniform 15e04;
     }
 	
 	// Other
     outlet
     {
-        type            fixedValue;
-        value           uniform 10e04;
+        type            zeroGradient;
     }
     "valve|walls"
     {

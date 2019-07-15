@@ -18,11 +18,11 @@ dimensions      		[0 1 -1 0 0 0 0]; // [kg m s K kg-mol cd]
 
 internalField   		uniform (0 0 0);
 
-injection 				20;
+injection 				12;
 
-inlet 					5;
+inlet 					3;
 
-injectionMinus  		#calc "-1.0*$injection";
+injMinus  				#calc "-1.0*$injection";
 
 inletMinus				#calc "-1.0*$inlet";
 	
@@ -32,7 +32,7 @@ boundaryField
 	injectionXMinus
     {
 		type            uniformFixedValue;
-		uniformValue    constant ($injectionMinus 0 0);
+		uniformValue    constant ($injMinus 0 0);
     }
 	injectionXPlus
     {
@@ -42,7 +42,7 @@ boundaryField
 	injectionYMinus
     {
         type            uniformFixedValue;
-        uniformValue    constant (0 $injectionMinus 0);
+        uniformValue    constant (0 $injMinus 0);
     }
 	injectionYPlus
     {
@@ -54,32 +54,33 @@ boundaryField
 	inletXMinus
     {
         type            uniformFixedValue;
-        uniformValue    constant ($inletMinus 0 0);
+        uniformValue    constant ($inletMinus $inletMinus 0);
 	}
 	inletXPlus
     {
         type            uniformFixedValue;
-        uniformValue    constant ($inlet 0 0);
+        uniformValue    constant ($inlet $inlet 0);
     }
 	inletYMinus
     {
         type            uniformFixedValue;
-        uniformValue    constant (0 $inletMinus 0);
+        uniformValue    constant ($inlet $inletMinus 0);
     }
 	inletYPlus
     {
         type            uniformFixedValue;
-        uniformValue    constant (0 $inlet 0);
+        uniformValue    constant ($inletMinus $inlet 0);
     }
 
 	// Other
     outlet
     {
-        type            zeroGradient;
+		type            zeroGradient;
     }
     "valve|walls"
     {
-        type            noSlip;
+        type            uniformFixedValue;
+		uniformValue    constant (0 0 0);
     }
 }
 

@@ -14,9 +14,9 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [0 0 0 1 0 0 0]; // K
+dimensions      		[0 0 0 1 0 0 0]; // K
 
-internalField   uniform 858.1;
+internalField   		uniform 289.4;
 
 boundaryField
 {
@@ -24,14 +24,14 @@ boundaryField
 	"injectionXMinus|injectionXPlus|injectionYMinus|injectionYPlus"
     {
         type            uniformFixedValue;
-        uniformValue    uniform 400;
+        uniformValue    uniform 292.5;
     }
 
 	// Inlet
 	"inletXMinus|inletXPlus|inletYMinus|inletYPlus"
     {
         type            uniformFixedValue;
-		uniformValue 	uniform 293.15;
+		uniformValue 	uniform 292.5;
     }
 
 	// Other
