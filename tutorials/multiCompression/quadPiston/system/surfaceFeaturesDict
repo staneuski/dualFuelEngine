@@ -10,10 +10,25 @@ FoamFile
     version     2.0;
     format      ascii;
     class       dictionary;
-    object      meshQualityDict;
+    object      surfaceFeaturesDict;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-#includeEtc "caseDicts/mesh/generation/meshQualityDict.cfg"
+surfaces
+(
+	"injectionXMinus.stl"
+	"injectionXPlus.stl"
+	"injectionYMinus.stl"
+	"injectionYPlus.stl"
+	"inletXMinus.stl"
+	"inletXPlus.stl"
+	"inletYMinus.stl"
+	"inletYPlus.stl"
+	"outlet.stl"
+	"valve.stl"
+	"walls.stl"
+);
+
+#includeEtc "caseDicts/surface/surfaceFeaturesDict.cfg"
 
 // ************************************************************************* //

@@ -1,60 +1,60 @@
 #!/bin/sh
 cd ${0%/*} || exit 1    # Run from this directory
 
-# Source tutorial run functions
-. $WM_PROJECT_DIR/bin/tools/RunFunctions
-
-# Scaling .stl
+# Scale .stl
 printf 'Running surfaceTransformPoints on %s\n' "${PWD}"
 mkdir -p constant/triSurface
 
 # Injection
 surfaceTransformPoints -scale '(0.001 0.001 0.001)'\
 	geometry/injectionXMinus.stl constant/triSurface/injectionXMinus.stl\
-	> log.surfaceTransformPoints
+	> log.surfaceTransformPoints 2>&1
 surfaceTransformPoints -scale '(0.001 0.001 0.001)'\
 	geometry/injectionXPlus.stl constant/triSurface/injectionXPlus.stl\
-	>> log.surfaceTransformPoints
+	>> log.surfaceTransformPoints 2>&1
 surfaceTransformPoints -scale '(0.001 0.001 0.001)'\
 	geometry/injectionYMinus.stl constant/triSurface/injectionYMinus.stl\
-	>> log.surfaceTransformPoints
+	>> log.surfaceTransformPoints 2>&1
 surfaceTransformPoints -scale '(0.001 0.001 0.001)'\
 	geometry/injectionYPlus.stl constant/triSurface/injectionYPlus.stl\
-	>> log.surfaceTransformPoints
+	>> log.surfaceTransformPoints 2>&1
 
 # Inlet
 surfaceTransformPoints -scale '(0.001 0.001 0.001)'\
 	geometry/inletXMinus.stl constant/triSurface/inletXMinus.stl\
-	>> log.surfaceTransformPoints
+	>> log.surfaceTransformPoints 2>&1
 surfaceTransformPoints -scale '(0.001 0.001 0.001)'\
 	geometry/inletXPlus.stl constant/triSurface/inletXPlus.stl\
-	>> log.surfaceTransformPoints
+	>> log.surfaceTransformPoints 2>&1
 surfaceTransformPoints -scale '(0.001 0.001 0.001)'\
 	geometry/inletYMinus.stl constant/triSurface/inletYMinus.stl\
-	>> log.surfaceTransformPoints
+	>> log.surfaceTransformPoints 2>&1
 surfaceTransformPoints -scale '(0.001 0.001 0.001)'\
 	geometry/inletYPlus.stl constant/triSurface/inletYPlus.stl\
-	>> log.surfaceTransformPoints
+	>> log.surfaceTransformPoints 2>&1
 
 # Other
 surfaceTransformPoints -scale '(0.001 0.001 0.001)'\
 	geometry/outlet.stl constant/triSurface/outlet.stl\
-	>> log.surfaceTransformPoints
+	>> log.surfaceTransformPoints 2>&1
 surfaceTransformPoints -scale '(0.001 0.001 0.001)'\
 	geometry/valve.stl constant/triSurface/valve.stl\
-	>> log.surfaceTransformPoints
+	>> log.surfaceTransformPoints 2>&1
 surfaceTransformPoints -scale '(0.001 0.001 0.001)'\
 	geometry/walls.stl constant/triSurface/walls.stl\
-	>> log.surfaceTransformPoints
+	>> log.surfaceTransformPoints 2>&1
 
 # Moving valve
 surfaceTransformPoints -translate '(0 0 -0.25)'\
 	constant/triSurface/valve.stl constant/triSurface/valve.stl\
-	>> log.surfaceTransformPoints
+	>> log.surfaceTransformPoints 2>&1
+
+# Source tutorial run functions
+. $WM_PROJECT_DIR/bin/tools/RunFunctions
 
 # Meshing
-runApplication surfaceFeatureExtract
 runApplication blockMesh
+runApplication surfaceFeatures
 runApplication snappyHexMesh -overwrite
 runApplication checkMesh
 
