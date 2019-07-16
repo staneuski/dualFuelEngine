@@ -1,0 +1,105 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: Addition to OpenFOAM v6
+   \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
+    \\  /    A nd           | Version:  0.2-alpha
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+	version     2.0;
+	format      ascii;
+	class       dictionary;
+	object      blockMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+convertToMeters 0.01; // MAN 6S70ME-C8.2-GI-TII
+
+D		 70;
+
+S		 280;
+
+meshSize 10;
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+R #calc			"$D/2.0";
+
+Rcos #calc		"$D*cos(degToRad(45.0))"; // D*cos(45˚)
+
+zMeshSize #calc "$meshSize*($S/$D)";
+
+mR #calc 		"-1.0*$R";
+
+mRcos #calc 	"-1.0*$Rcos";
+
+vertices
+(
+	/*00*/ ($mR $mR 0)
+	/*01*/ ($R  $mR 0)
+	/*02*/ ($R  $R  0)
+	/*03*/ ($mR $R  0)
+
+	/*04*/ ($mR $mR $S)
+	/*05*/ ($R  $mR $S)
+	/*06*/ ($R  $R  $S)
+	/*07*/ ($mR $R  $S)
+
+	/*08*/ (0   0   0)
+	/*09*/ (0   0   $S)
+);
+
+blocks
+(
+	hex	(0 1 8 8 4 5 9 9) ($meshSize $meshSize $zMeshSize) simpleGrading (1 1 1)
+	hex	(1 2 8 8 5 6 9 9) ($meshSize $meshSize $zMeshSize) simpleGrading (1 1 1)
+	hex	(2 3 8 8 6 7 9 9) ($meshSize $meshSize $zMeshSize) simpleGrading (1 1 1)
+	hex	(3 0 8 8 7 4 9 9) ($meshSize $meshSize $zMeshSize) simpleGrading (1 1 1)
+);
+
+edges
+(
+    arc 0 1 (0      $mRcos 0)
+    arc 1 2 ($Rcos  0      0)
+    arc 2 3 (0      $Rcos  0)
+    arc 3 0 ($mRcos 0      0)
+	
+    arc 4 5 (0      $mRcos $S)
+    arc 5 6 ($Rcos  0      $S)
+    arc 7 6 (0      $Rcos  $S)
+    arc 7 4 ($mRcos 0      $S)
+);
+
+boundary
+(
+    walls
+    {
+        type wall;
+        faces
+        (
+			(0 1 5 4) // 1st quarter of cylinder
+			(1 2 6 5) // 2nd quarter of cylinder
+			(2 3 7 6) // 3rd quarter of cylinder
+			(3 0 4 7) // 4th quarter of cylinder
+			(4 5 9 9) // 1st quarter of upper wall
+			(5 6 9 9) // 2nd quarter of upper wall
+			(6 7 9 9) // 3rd quarter of upper wall
+			(7 4 9 9) // 4th quarter of upper wall
+			
+        );
+    }
+    piston
+    {
+        type patch;
+        faces
+		(
+        	(0 1 8 8) // 1st quarter of lower wall
+			(1 2 8 8) // 2nd quarter of lower wall
+			(2 3 8 8) // 3rd quarter of lower wall
+			(3 0 8 8) // 4th quarter of lower wall
+        );
+    }
+);
+
+// ************************************************************************* //

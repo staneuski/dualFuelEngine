@@ -48,6 +48,10 @@ potentialFoam/quadPiston/./Allrun 		|| cat log.potentialFoam
 scalarTransportFoam/quadPiston/./Allrun || cat log.scalarTransportFoam
 printf '\n'
 
+# cylPiston case
+multiCompression/cylPiston/./Allrun		|| cat log.blockMesh
+printf '\n'
+
 # Show evaluation time
 endAllrunTime=`date +%s` # stoping stopwatch
 solveAllrunTime=$((endAllrunTime-startAllrunTime))
