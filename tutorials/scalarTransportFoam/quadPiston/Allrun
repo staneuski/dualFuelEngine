@@ -1,31 +1,26 @@
 #!/bin/sh
 cd ${0%/*} || exit 1 # Run from this directory
 
-# Копирование граничных условий из проекта с модифицированным ядром
+# Copy BCs
 mkdir -p 0
-cp -r ../../multiCompression/quadPiston/case/0/T.orig 0
-cp -r ../../multiCompression/quadPiston/case/1/U 0
+cp -r ../../multiCompression/quadPiston/0/T.orig 0
+cp -r ../../potentialFoam/quadPiston/1/U 0
 
-# Копирование файлов сетки и постоянных
-mkdir -p constant
-cp -r ../../multiCompression/quadPiston/case/constant/transportProperties constant
-cp -r ../../multiCompression/quadPiston/mesh/constant/polyMesh constant/polyMesh
+# Copy mesh
+cp -r ../../multiCompression/quadPiston/constant/polyMesh constant/polyMesh
 
-# Копирование файлов system из проекта с модифицированным ядром
+# Copy system files & change them to run with scalarTransportFoam
 mkdir -p system
-cp -r ../../multiCompression/quadPiston/case/system/controlDict system
-cp -r ../../multiCompression/quadPiston/case/system/fvSolution system
-cp -r ../../multiCompression/quadPiston/case/system/fvSchemes system
+cp -r ../../multiCompression/quadPiston/system/controlDict system
+cp -r ../../multiCompression/quadPiston/system/fvSolution system
+cp -r ../../multiCompression/quadPiston/system/fvSchemes system
 sed -i "s/multiCompression/scalarTransportFoam/g" system/controlDict
-cp -r ../../multiCompression/quadPiston/case/system/fvSolution system
-sed -i "s/multiCompression/SIMPLE/g" system/fvSolution
 
 # Source tutorial run functions
 . $WM_PROJECT_DIR/bin/tools/RunFunctions
 
 application=$(getApplication)
 
-# Запуск расчёта
 runApplication $application
 
 #------------------------------------------------------------------------------

@@ -1,0 +1,19 @@
+#!/bin/sh
+cd ${0%/*} || exit 1    # Run from this directory
+
+# prism case
+potentialFoam/prism/./Allclean
+scalarTransportFoam/prism/./Allclean
+testFoam/prism/./Allclean
+
+# RiemannTube case
+multiCompression/RiemannTube/./Allclean
+
+# quadPiston case
+potentialFoam/quadPiston/./Allclean
+scalarTransportFoam/quadPiston/./Allclean
+multiCompression/quadPiston/./Allclean
+
+printf '\n'
+
+#------------------------------------------------------------------------------
