@@ -1,0 +1,29 @@
+#!/bin/sh
+
+cd ${0%/*} || exit 1 # Run from this directory
+
+# Edit multiCompression.C
+sed -i "s/setRootCaseLists.H/setRootCase.H/g"\
+	../solvers/multiCompression/multiCompression.C
+sed -i "s/simple.loop(runTime)/simple.loop()/g"\
+	../solvers/multiCompression/multiCompression.C
+
+# Remove .orig extenstions
+for i in ../tutorials/potentialFoam/prism/0/*.orig; do mv -i "$i" "${i%.orig}"; done
+for i in ../tutorials/scalarTransportFoam/prism/0/*.orig; do mv -i "$i" "${i%.orig}"; done
+
+for i in ../tutorials/multiCompression/RiemannTube/0/*.orig; do mv -i "$i" "${i%.orig}"; done
+
+# for i in tutorials/multiCompression/cylPiston/0/*.orig; do mv -i "$i" "${i%.orig}"; done
+for i in ../tutorials/multiCompression/quadPiston/0/*.orig; do mv -i "$i" "${i%.orig}"; done
+for i in ../tutorials/potentialFoam/quadPiston/0/*.orig; do mv -i "$i" "${i%.orig}"; done
+
+# Edit quadPiston case
+sed -i "s/surfaceFeatures/surfaceFeatureExtract/g"\
+	../tutorials/multiCompression/quadPiston/makeMesh
+mv ../tutorials/multiCompression/quadPiston/system/surfaceFeaturesDict\
+	../tutorials/multiCompression/quadPiston/system/surfaceFeatureExtractDict
+sed -i "s+mesh/generation/meshQualityDict.cfg+meshQualityDict+g"\
+	../tutorials/multiCompression/quadPiston/system/meshQualityDict
+
+#------------------------------------------------------------------------------
