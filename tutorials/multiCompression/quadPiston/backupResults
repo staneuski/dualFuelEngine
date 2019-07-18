@@ -1,0 +1,24 @@
+#!/bin/sh
+cd ${0%/*} || exit 1    # Run from this directory
+
+day=`date +%F`
+time=`date +%H-%M`
+
+printf 'Running tar on %s\n' "${PWD}/backups/$day"
+
+# Create backup folder
+mkdir -p    backups/$day/$time.bak
+
+# Copy all reslults & logs to the backup folder
+cp -r *.foam   backups/$day/$time.bak
+cp -r log.*    backups/$day/$time.bak
+cp -r constant backups/$day/$time.bak
+cp -r geometry backups/$day/$time.bak
+cp -r system   backups/$day/$time.bak
+for i in {0..9}; do cp -r $i* backups/$day/$time.bak 2>/dev/null; done
+
+# Archive the backup folder in delete it
+tar -C backups/$day -czf backups/$day/$time.tar.qz $time.bak\
+	&& rm -r backups/$day/$time.bak
+
+#------------------------------------------------------------------------------

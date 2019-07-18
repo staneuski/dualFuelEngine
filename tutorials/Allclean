@@ -18,6 +18,4 @@ multiCompression/quadPiston/./Allclean
 multiCompression/cylPiston/./Allclean
 printf '\n'
 
-printf '\n'
-
 #------------------------------------------------------------------------------
