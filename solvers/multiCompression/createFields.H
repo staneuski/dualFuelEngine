@@ -137,13 +137,29 @@ surfaceScalarField phi
 
 wordList eBCTypes
 (
-    U.boundaryField().size(),
+    p.boundaryField().size(),
     fixedValueFvPatchScalarField::typeName
 );
 
+forAll(p.boundaryField(), patchi)
+{
+    if (!p.boundaryField()[patchi].fixesValue())
+    {
+        eBCTypes[patchi] = zeroGradientFvPatchScalarField::typeName;
+    }
+}
+
+forAll(rho.boundaryField(), patchi)
+{
+    if (!rho.boundaryField()[patchi].fixesValue())
+    {
+        eBCTypes[patchi] = zeroGradientFvPatchScalarField::typeName;
+    }
+}
+
 forAll(U.boundaryField(), patchi)
 {
-    if (U.boundaryField()[patchi].fixesValue())
+    if (!U.boundaryField()[patchi].fixesValue())
     {
         eBCTypes[patchi] = zeroGradientFvPatchScalarField::typeName;
     }
