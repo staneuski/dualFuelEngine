@@ -1,0 +1,25 @@
+#!/bin/sh
+cd ${0%/*} || exit 1    # Run from this directory
+
+v='v0.2-alpha'
+
+day=`date +%F`
+time=`date +%H-%M`
+
+printf 'Backing up %s to %s\n' "${PWD##*/}" "${PWD}/backups/$v/$day/$time.tar.qz"
+
+# Create backup folder
+mkdir -p    backups/$v/$day/$time.bak
+
+# Copy all reslults & logs to the backup folder
+cp -r *.foam   backups/$v/$day/$time.bak
+cp -r log.*    backups/$v/$day/$time.bak
+cp -r constant backups/$v/$day/$time.bak
+cp -r system   backups/$v/$day/$time.bak
+for i in `seq 0 9`; do rsync -a $i* backups/$v/$day/$time.bak 2>/dev/null; done
+
+# Archive the backup folder in delete it
+tar -C backups/$v/$day -czf backups/$v/$day/$time.tar.qz $time.bak\
+	&& rm -r backups/$v/$day/$time.bak
+
+#------------------------------------------------------------------------------
