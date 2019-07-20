@@ -5,6 +5,7 @@ log.*
 .DS_Store
 
 # folders
+doc/
 *e-07/
 *e-06/
 *e-05/
@@ -18,11 +19,6 @@ extendedFeatureEdgeMesh/
 linux64GccDPInt32Opt/
 VTK/
 backups/
-
-# doc
-doc/images/
-doc/inspection/
-doc/references/
 
 # tutorials/
 # quadPiston/

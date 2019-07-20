@@ -28,7 +28,7 @@ OpenFOAM solver based on phenomenological compression model for dual-fuel ship e
 4. To compile with OpenFOAM v5.x
 	```bash
 	git clone https://github.com/StasF1/dualFuelEngine.git $FOAM_ADDITIONS/dualFuelEngine
-	$FOAM_ADDITIONS/dualFuelEngine/doc/./v5x-compile
+	$FOAM_ADDITIONS/dualFuelEngine/etc/./v5x-compile
 	$FOAM_ADDITIONS/dualFuelEngine/solvers/./Allwmake
 	```
 
@@ -60,8 +60,9 @@ dualFuelEngine-0.2-alpha
 │   └── testFoam
 └── tutorials
     ├── multiCompression
-    │   ├── RiemannTube
-    │   └── quadPiston
+    │   ├── cylPiston	
+    │   ├── quadPiston
+    │   └── RiemannTube
     ├── potentialFoam
     │   ├── prism
     │   └── quadPiston
