@@ -18,10 +18,13 @@ triSurface/
 extendedFeatureEdgeMesh/
 linux64GccDPInt32Opt/
 VTK/
-backups/
+backup/
 
 # tutorials/
-# quadPiston/
+# multiCompression/cylPiston/
+tutorials/multiCompression/cylPiston/system/blockMeshDict
+
+# multiCompression/quadPiston/
 tutorials/multiCompression/quadPiston/0/*Level
 
 # potentialFoam/quadPiston/
