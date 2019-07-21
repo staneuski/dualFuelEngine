@@ -1,109 +1,141 @@
 /*--------------------------------*- C++ -*----------------------------------*\
   =========                 |
-  \\      /  F ield         | OpenFOAM: Addition to OpenFOAM v6
-   \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
-    \\  /    A nd           | Version:  0.2-alpha
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  6
      \\/     M anipulation  |
 \*---------------------------------------------------------------------------*/
 FoamFile
 {
-	version     2.0;
-	format      ascii;
-	class       dictionary;
-	object      blockMeshDict;
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      blockMeshDict;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+// General m4 macros
 
-convertToMeters 0.01; // MAN 6S70ME-C8.2-GI-TII
 
-D				70;
 
-S				280;
 
-meshSize		5; // relative to S & D
+
+
+
+
+
+
+
+
+
+
+
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-R 35;//#calc				"$D/2.0";//35;//
+convertToMeters 0.01;
 
-Rcos 24.7487;//#calc			"$R*cos(degToRad(45.0))";//24.7487;//
 
-innerR 17.5;//#calc		"$D/4.0";//17.5;//
 
-innerRcos 12.3744;//#calc		"$innerR*cos(degToRad(45.0))";//12.3744;//
 
-rMeshSize 7;//#calc		"floor($R/$meshSize)";//7;//
 
-zMeshSize 56;//#calc		"floor($S/$meshSize)";//56;//
+ // relative to S & D
 
-// Calculation negative variables parameters
-mR -35;//#calc			"-1.0*$R";//-35;//
-mRcos -24.7487;//#calc			"-1.0*$Rcos";//-24.7487;//
-mInnerR -17.5;//#calc		"-1.0*$innerR";//-17.5;//
-mInnerRcos -12.3744;//#calc	"-1.0*$innerRcos";//-12.3744;//
+// ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ //
 
-vertices        
-(	
+
+
+
+
+
+
+
+	
+
+
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+	
+vertices
+(
 	// Inner of piston
-	/*00*/ ($innerR  0        0)
-	/*01*/ (0        $mInnerR 0)
-	/*02*/ ($mInnerR 0        0)
-	/*03*/ (0        $innerR  0)
+	/*00*/ (17.5 0 0) // Vertex cylIn0Down = 0 
+	/*01*/ (0 -17.5 0) // Vertex cylIn1Down = 1 
+	/*02*/ (-17.5 0 0) // Vertex cylIn2Down = 2 
+	/*03*/ (0 17.5 0) // Vertex cylIn3Down = 3 
 	
 	// Outer of piston
-	/*04*/ ($R  0   0)
-	/*05*/ (0   $mR 0)
-	/*06*/ ($mR 0   0)
-	/*07*/ (0   $R  0)
+	/*04*/ (35 0 0) // Vertex cylOut0Down = 4 
+	/*05*/ (0 -35 0) // Vertex cylOut1Down = 5 
+	/*06*/ (-35 0 0) // Vertex cylOut2Down = 6 
+	/*07*/ (0 35 0) // Vertex cylOut3Down = 7 
 	
-	// Upper inner block
-	/*08*/ ($innerR  0        $S)
-	/*09*/ (0        $mInnerR $S)
-	/*10*/ ($mInnerR 0        $S)
-	/*11*/ (0        $innerR  $S)
+	// Upper inner cylinder
+	/*08*/ (17.5 0 280) // Vertex cylIn0Up = 8 
+	/*09*/ (0 -17.5 280) // Vertex cylIn1Up = 9 
+	/*10*/ (-17.5 0 280) // Vertex cylIn2Up = 10 
+	/*11*/ (0 17.5 280) // Vertex cylIn3Up = 11 
 	
 	// Upper of cylinder
-	/*12*/ ($R  0   $S)
-	/*13*/ (0   $mR $S)
-	/*14*/ ($mR 0   $S)
-	/*15*/ (0   $R  $S)
+	/*12*/ (35 0 280) // Vertex cylOut0Up = 12 
+	/*13*/ (0 -35 280) // Vertex cylOut1Up = 13 
+	/*14*/ (-35 0 280) // Vertex cylOut2Up = 14 
+	/*15*/ (0 35 280) // Vertex cylOut3Up = 15 
 );
 
-blocks          
+blocks
 (
-    hex (8 9 10 11 0 1 2 3)   ($rMeshSize $rMeshSize $zMeshSize) simpleGrading (1 1 1) // Inner block
-	
-    hex (8 12 13 9 0 4 5 1)   ($rMeshSize $rMeshSize $zMeshSize) simpleGrading (1 1 1)   // 1st quarter of cylinder
-    hex (9 13 14 10 1 5 6 2)  ($rMeshSize $rMeshSize $zMeshSize) simpleGrading (1 1 1)  // 2nd quarter of cylinder
-    hex (10 14 15 11 2 6 7 3) ($rMeshSize $rMeshSize $zMeshSize) simpleGrading (1 1 1) // 3rd quarter of cylinder
-    hex (11 15 12 8 3 7 4 0)  ($rMeshSize $rMeshSize $zMeshSize) simpleGrading (1 1 1)  // 4th quarter of cylinder
+	// Inner cylinder block (8 9 10 11 0 1 2 3)
+    hex (8 9 10 11 0 1 2 3) /*block 0*/
+	(7 7 56)
+    simpleGrading (1 1 1)
+		
+	// 1st quarter of cylinder (8 12 13 9 0 4 5 1)
+    hex (8 12 13 9 0 4 5 1) /*block 1*/
+    (7 7 56)
+    simpleGrading (1 1 1)
+
+	// 2nd quarter of cylinder (9 13 14 10 1 5 6 2)
+	hex (9 13 14 10 1 5 6 2) /*block 2*/
+	(7 7 56)
+	simpleGrading (1 1 1)
+
+	// 3rd quarter of cylinder (10 14 15 11 2 6 7 3)
+    hex (10 14 15 11 2 6 7 3) /*block 3*/
+    (7 7 56)
+    simpleGrading (1 1 1)
+
+    // 4th quarter of cylinder (11 15 12 8 3 7 4 0)
+    hex (11 15 12 8 3 7 4 0) /*block 4*/
+    (7 7 56)
+    simpleGrading (1 1 1)
 );
 
-edges           
+edges
 (
 	// Bottom of cylinder
-	arc 4 5 ($Rcos  $mRcos 0)
-	arc 5 6 ($mRcos $mRcos 0)
-	arc 6 7 ($mRcos $Rcos  0)
-	arc 7 4 ($Rcos  $Rcos  0)
+	arc 4 5 (24.7487373637399 -24.7487373637399 0)
+	arc 5 6 (-24.7487373637399 -24.7487373637399 0)
+	arc 6 7 (-24.7487373637399 24.7487373637399 0)
+	arc 7 4 (24.7487373637399 24.7487373637399 0)
 		
 	// Inner of piston (comment to make inner block as prism)
-	arc 0 1 ($innerRcos  $mInnerRcos 0)
-	arc 1 2 ($mInnerRcos $mInnerRcos 0)
-	arc 2 3 ($mInnerRcos $innerRcos  0)
-	arc 3 0 ($innerRcos  $innerRcos  0)
+	arc 0 1 (12.3743686818699 -12.3743686818699 0)
+	arc 1 2 (-12.3743686818699 -12.3743686818699 0)
+	arc 2 3 (-12.3743686818699 12.3743686818699 0)
+	arc 3 0 (12.3743686818699 12.3743686818699 0)
 	
 	// Upper of upper wall
-	arc 12 13 ($Rcos  $mRcos $S)
-	arc 13 14 ($mRcos $mRcos $S)
-	arc 14 15 ($mRcos $Rcos  $S)
-	arc 15 12 ($Rcos  $Rcos  $S)
+	arc 12 13 (24.7487373637399 -24.7487373637399 280)
+	arc 13 14 (-24.7487373637399 -24.7487373637399 280)
+	arc 14 15 (-24.7487373637399 24.7487373637399 280)
+	arc 15 12 (24.7487373637399 24.7487373637399 280)
 		
 	// Inner of upper wall (comment to make inner block as prism)
-	arc 8  9  ($innerRcos  $mInnerRcos $S)
-	arc 9  10 ($mInnerRcos $mInnerRcos $S)
-	arc 10 11 ($mInnerRcos $innerRcos  $S)
-	arc 11 8  ($innerRcos  $innerRcos  $S)
+	arc 8 9 (12.3743686818699 -12.3743686818699 280)
+	arc 9 10 (-12.3743686818699 -12.3743686818699 280)
+	arc 10 11 (-12.3743686818699 12.3743686818699 280)
+	arc 11 8 (12.3743686818699 12.3743686818699 280)
 );
 
 boundary
@@ -113,17 +145,16 @@ boundary
         type wall;
         faces
         (
-			(8 9 10 11) // Upper inner
-			
-			(8 12 13 9)   // 1st quarter of upper wall
-			(9 13 14 10)  // 2nd quarter of upper wall
-			(10 14 15 11) // 3rd quarter of upper wall
-			(11 15 12 8)  // 4th quarter of upper wall
-
+			(8 9 11 10)  // Upper inner
 			(4 5 13 12) // 1st quarter of cylinder
 			(5 6 14 13) // 2nd quarter of cylinder
 			(6 7 15 14) // 3rd quarter of cylinder
 			(7 4 12 15) // 4th quarter of cylinder
+				
+			(8 12 9 13) // 1st quarter of upper wall
+			(9 13 10 14) // 2nd quarter of upper wall
+			(10 14 11 15) // 3rd quarter of upper wall
+			(11 15 8 12) // 4th quarter of upper wall
         );
     }
 	
@@ -132,14 +163,15 @@ boundary
         type wall;
         faces
         (
-			(0 1 2 3)
+			(0 1 3 2) // Piston inner
+				
+			(0 4 1 5) // 1st quarter of piston
+			(1 5 2 6) // 2nd quarter of piston
+			(2 6 3 7) // 3rd quarter of piston
+			(3 7 0 4) // 4th quarter of piston				
 			
-			(0 4 5 1)
-			(1 5 6 2)
-			(2 6 7 3)
-			(3 7 4 0)
         );
     }
 );
 
-// ************************************************************************* /
+// ************************************************************************* //
