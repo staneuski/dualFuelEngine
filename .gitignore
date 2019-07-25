@@ -5,7 +5,6 @@ log.*
 .DS_Store
 
 # folders
-doc/
 *e-07/
 *e-06/
 *e-05/
@@ -19,6 +18,10 @@ extendedFeatureEdgeMesh/
 linux64GccDPInt32Opt/
 VTK/
 backup/
+
+# doc/
+doc/inspection/
+doc/references/
 
 # tutorials/
 # multiCompression/cylPiston/

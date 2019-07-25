@@ -46,14 +46,15 @@ wmake $FOAM_ADDITIONS/dualFuelEngine/tutorials/./Allclean && $FOAM_ADDITIONS/dua
     ```bash
     wmake $FOAM_ADDITIONS/dualFuelEngine/solvers/multiCompression && $FOAM_ADDITIONS/dualFuelEngine/tutorials/multiCompression/quadPiston/./Allclean && $FOAM_ADDITIONS/dualFuelEngine/tutorials/multiCompression/quadPiston/./Allrun || cat $FOAM_ADDITIONS/dualFuelEngine/tutorials/multiCompression/quadPiston/log.multiCompression
     ```
-- cylPiston case
+- cylPiston case (only meshing now)
     ```bash
-    wmake $FOAM_ADDITIONS/dualFuelEngine/solvers/multiCompression && $FOAM_ADDITIONS/dualFuelEngine/tutorials/multiCompression/quadPiston/./Allclean && $FOAM_ADDITIONS/dualFuelEngine/tutorials/multiCompression/quadPiston/./Allrun || cat $FOAM_ADDITIONS/dualFuelEngine/tutorials/multiCompression/quadPiston/log.multiCompression
+    $FOAM_ADDITIONS/dualFuelEngine/tutorials/multiCompression/cylPiston/./Allclean && $FOAM_ADDITIONS/dualFuelEngine/tutorials/multiCompression/cylPiston/./Allrun || cat $FOAM_ADDITIONS/dualFuelEngine/tutorials/multiCompression/cylPiston/log.blockMesh
     ```
 
 # Structure
 ```gitignore
 dualFuelEngine-0.2-alpha
+├── doc
 ├── etc
 ├── solvers
 │   ├── multiCompression
