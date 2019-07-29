@@ -17,7 +17,7 @@ triSurface/
 extendedFeatureEdgeMesh/
 linux64GccDPInt32Opt/
 VTK/
-backup/
+backups/
 
 # doc/
 doc/inspection/
