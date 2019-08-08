@@ -230,16 +230,16 @@ edges
 		arc valveHead3Up valveHead0Up evert( innerRcos,  innerRcos, calc((S + chamfer) - valveStroke))
 
 		// Valve stem lower
-		arc valveStem0Down valveStem1Down evert( calc(valveStemD/2.0*cosd(45.0)), -calc(valveStemD/2.0*cosd(45.0)), calc((S + chamfer) - valveStroke + valveFilletR))
-		arc valveStem1Down valveStem2Down evert(-calc(valveStemD/2.0*cosd(45.0)), -calc(valveStemD/2.0*cosd(45.0)), calc((S + chamfer) - valveStroke + valveFilletR))
-		arc valveStem2Down valveStem3Down evert(-calc(valveStemD/2.0*cosd(45.0)),  calc(valveStemD/2.0*cosd(45.0)), calc((S + chamfer) - valveStroke + valveFilletR))
-		arc valveStem3Down valveStem0Down evert( calc(valveStemD/2.0*cosd(45.0)),  calc(valveStemD/2.0*cosd(45.0)), calc((S + chamfer) - valveStroke + valveFilletR))
+		arc valveStem0Down valveStem1Down evert( calc(valveStemD/2.0*cosd(45.0)), -calc(valveStemD/2.0*cosd(45.0)), calc((S + chamfer) + valveFilletRcos - valveStroke))
+		arc valveStem1Down valveStem2Down evert(-calc(valveStemD/2.0*cosd(45.0)), -calc(valveStemD/2.0*cosd(45.0)), calc((S + chamfer) + valveFilletRcos - valveStroke))
+		arc valveStem2Down valveStem3Down evert(-calc(valveStemD/2.0*cosd(45.0)),  calc(valveStemD/2.0*cosd(45.0)), calc((S + chamfer) + valveFilletRcos - valveStroke))
+		arc valveStem3Down valveStem0Down evert( calc(valveStemD/2.0*cosd(45.0)),  calc(valveStemD/2.0*cosd(45.0)), calc((S + chamfer) + valveFilletRcos - valveStroke))
 
 		// Valve fillet
-		arc valveHead0Up valveStem0Down evert( calc(innerR - valveFilletRcos), 0, calc((S + chamfer) - valveStroke + valveFilletRcos))
-		arc valveHead1Up valveStem1Down evert( 0,-calc(innerR - valveFilletRcos), calc((S + chamfer) - valveStroke + valveFilletRcos))
-		arc valveHead2Up valveStem2Down evert(-calc(innerR - valveFilletRcos), 0, calc((S + chamfer) - valveStroke + valveFilletRcos))
-		arc valveHead3Up valveStem3Down evert( 0, calc(innerR - valveFilletRcos), calc((S + chamfer) - valveStroke + valveFilletRcos))
+		arc valveHead0Up valveStem0Down evert( calc(innerR - valveFilletRcos), 0, calc((S + chamfer) + valveFilletRcos - valveStroke))
+		arc valveHead1Up valveStem1Down evert( 0,-calc(innerR - valveFilletRcos), calc((S + chamfer) + valveFilletRcos - valveStroke))
+		arc valveHead2Up valveStem2Down evert(-calc(innerR - valveFilletRcos), 0, calc((S + chamfer) + valveFilletRcos - valveStroke))
+		arc valveHead3Up valveStem3Down evert( 0, calc(innerR - valveFilletRcos), calc((S + chamfer) + valveFilletRcos - valveStroke))
 
 		// Valve stem upper
 		arc valveStem0Up valveStem1Up evert( calc(valveStemD/2.0*cosd(45.0)), -calc(valveStemD/2.0*cosd(45.0)), calc((S + chamfer) + outletH))
@@ -317,7 +317,7 @@ boundary
 			// 1st quarter of cylinder
 			sideQuad(cylOut0, cylOut1)
 			upQuad(cylIn0, cylOut0, cylOut1, cylIn1) // upper wall
-			// upQuad(cylIn0, cylIn1, pipe0, pipe1)
+			// (cylIn0Up cylIn1Up pipe1Up pipe0Up)
 
 			// 2nd quarter of cylinder
 			sideQuad(cylOut1, cylOut2)
