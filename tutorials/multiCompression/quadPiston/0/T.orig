@@ -39,7 +39,7 @@ boundaryField
     {
         type            zeroGradient;
     } // outlet
-    "valve|walls"
+    "piston|valve|walls"
     {
         type            zeroGradient;
     }

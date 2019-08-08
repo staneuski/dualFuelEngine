@@ -77,7 +77,7 @@ boundaryField
     {
 		type            zeroGradient;
     }
-    "valve|walls"
+    "piston|valve|walls"
     {
         type            slip;
     }
