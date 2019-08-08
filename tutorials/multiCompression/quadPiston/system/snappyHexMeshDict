@@ -15,7 +15,7 @@ FoamFile
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 // Which of the steps to run
-castellatedMesh true; //S: "LEGO" mesh
+castellatedMesh true;  //S: "LEGO" mesh
 snap            false; //S: создаёт сетку вплотную к геометрии на основе blockMeshDict
 addLayers       false; //S: создаёт слои для измельчения сетки
 
@@ -87,6 +87,11 @@ geometry
 	        type triSurfaceMesh;
 	        name walls;  //S: название файла, которое будет использоваться ниже (дублировать название файла .stl рекомендуется - удобнее)
 	    }
+        piston.stl
+        {
+            type triSurfaceMesh;
+            name piston;
+        }
 	
 		// Extra regions for refinement (if needed)
 	    // meanFlowArea // эффективное проходное сечение
@@ -165,12 +170,12 @@ castellatedMeshControls
 		{
 	            file "inletYPlus.eMesh";
 	            level 0;
-		}
+		} // inletYPlus
 
 		// Other 
 		{
 	            file "outlet.eMesh";
-	            level 0; // Cтепень укрупнения сетки по сранению с ячейкой blockMesh прямо на поверхности (refinement defined by features). Для простой геометрии (плоскостей) лучше не использовать, т.к. "налепливается" на диагонали создаваемые .stl файлами
+	            level 0;
 		} // outlet
 		{
 	            file "valve.eMesh";
@@ -178,9 +183,12 @@ castellatedMeshControls
 		} // valve
 		{
 				file "walls.eMesh";
-				level 0;
-		        	// levels ((0.002 3));
+				level 0; // levels ((0.002 3));
 		} // walls
+        {
+	            file "piston.eMesh";
+	            level 0; // levels ((0.002 3));
+		} // piston
 		
     );
 	
@@ -193,57 +201,27 @@ castellatedMeshControls
     refinementSurfaces
     {
 		// Injection
-		injectionXMinus
+		"injectionXMinus|injectionXPlus|injectionYMinus|injectionYPlus"
         {
-            level (0 0); // Surface-wise min and max refinement level
-        }
-		injectionXPlus
-        {
-            level (0 0); // Surface-wise min and max refinement level
-        }
-		injectionYMinus
-        {
-            level (0 0); // Surface-wise min and max refinement level
-        }
-		injectionYPlus
-        {
-            level (0 0); // Surface-wise min and max refinement level
+            level (0 0);
         }
 
 		// Inlet
-		inletXMinus
+		"inletXMinus|inletXPlus|inletYMinus|inletYPlus|"
         {
-            level (0 0); // Surface-wise min and max refinement level
+            level (0 0);
         }
-		inletXPlus
-        {
-            level (0 0); // Surface-wise min and max refinement level
-        }
-		inletYMinus
-        {
-            level (0 0); // Surface-wise min and max refinement level
-        }
-		inletYPlus
-        {
-            level (0 0); // Surface-wise min and max refinement level
-        }
-
+        
 		// Other surfaces
 		outlet
         {
-            // Surface-wise min and max refinement level
             level (0 0);
-        } // outlet
-		valve
+        }
+
+		"valve|walls|piston" /*Surface-wise min and max refinement level*/
 	    {
-	        // Surface-wise min and max refinement level
 	        level (0 0);
-	    } // valve
-		walls
-        {
-            // Surface-wise min and max refinement level
-            level (0 0);
-        } // walls
+	    }
     }
 
     resolveFeatureAngle 30;
@@ -330,14 +308,20 @@ addLayersControls //S: настройки измельчения сетки
     // Per final patch (so not geometry!) the layer information
     layers
     {
-        // Injection & Inlet
-		"injectionXMinus|injectionXPlus|injectionYMinus|injectionYPlus|inletXMinus|inletXPlus|inletYMinus|inletYPlus.*"
+        // Injection
+		"injectionXMinus|injectionXPlus|injectionYMinus|injectionYPlus.*"
+        {
+            nSurfaceLayers 0;
+        }
+
+        // Inlet 
+        "inletXMinus|inletXPlus|inletYMinus|inletYPlus.*"
         {
             nSurfaceLayers 0;
         }
 		
 		// Other geometry
-        "outlet|valve|walls.*"
+        "outlet|valve|walls|piston.*"
         {
             nSurfaceLayers 0;
         }

@@ -26,6 +26,7 @@ surfaces
 	"inletYPlus.stl"
 	"outlet.stl"
 	"valve.stl"
+	"piston.stl"
 	"walls.stl"
 );
 
