@@ -47,8 +47,6 @@ define(meshSize,    5) // relative to S & D
 
 define(valveStroke, 15) // valve stroke
 
-define(valveHead,   5) // valve head thickness
-
 define(valveStemD,  10)
 
 define(outletH,     40)
@@ -92,10 +90,10 @@ vertices
 		/*07*/ vert(0,  R, 0) vlabel(cylOut3Down)
 		
 		// Upper inner cylinder
-		/*08*/ vert(innerR,  0,      calc(S + chamfer)) vlabel(cylIn0Up)
-		/*09*/ vert(0,      -innerR, calc(S + chamfer)) vlabel(cylIn1Up)
-		/*10*/ vert(-innerR, 0,      calc(S + chamfer)) vlabel(cylIn2Up)
-		/*11*/ vert(0,       innerR, calc(S + chamfer)) vlabel(cylIn3Up)
+		/*08*/ vert(innerR,  0,      S) vlabel(cylIn0Up)
+		/*09*/ vert(0,      -innerR, S) vlabel(cylIn1Up)
+		/*10*/ vert(-innerR, 0,      S) vlabel(cylIn2Up)
+		/*11*/ vert(0,       innerR, S) vlabel(cylIn3Up)
 		
 		// Upper of cylinder
 		/*12*/ vert(R,  0, S) vlabel(cylOut0Up)
@@ -104,42 +102,42 @@ vertices
 		/*15*/ vert(0,  R, S) vlabel(cylOut3Up)
 
 	// Valve
-		// Valve head bottom
-		/*16*/ vert(innerR,  0,      calc((S + chamfer) - valveStroke)) vlabel(valveHead0Down)
-		/*17*/ vert(0,      -innerR, calc((S + chamfer) - valveStroke)) vlabel(valveHead1Down)
-		/*18*/ vert(-innerR, 0,      calc((S + chamfer) - valveStroke)) vlabel(valveHead2Down)
-		/*19*/ vert(0,       innerR, calc((S + chamfer) - valveStroke)) vlabel(valveHead3Down)
-
-		// Valve head upper
-		/*20*/ vert(innerR,  0,      calc((S + chamfer) - valveStroke + valveHead)) vlabel(valveHead0Up)
-		/*21*/ vert(0,      -innerR, calc((S + chamfer) - valveStroke + valveHead)) vlabel(valveHead1Up)
-		/*22*/ vert(-innerR, 0,      calc((S + chamfer) - valveStroke + valveHead)) vlabel(valveHead2Up)
-		/*23*/ vert(0,       innerR, calc((S + chamfer) - valveStroke + valveHead)) vlabel(valveHead3Up)
+		// Valve head
+		/*16*/ vert(innerR,  0,      calc((S + chamfer) - valveStroke)) vlabel(valveHead0Up)
+		/*17*/ vert(0,      -innerR, calc((S + chamfer) - valveStroke)) vlabel(valveHead1Up)
+		/*18*/ vert(-innerR, 0,      calc((S + chamfer) - valveStroke)) vlabel(valveHead2Up)
+		/*19*/ vert(0,       innerR, calc((S + chamfer) - valveStroke)) vlabel(valveHead3Up)
 
 		// Valve stem lower
-		/*24*/ vert(calc(valveStemD/2.0),   0,                    calc((S + chamfer) - valveStroke + valveFilletR)) vlabel(valveStem0Down)
-		/*25*/ vert(0,                     -calc(valveStemD/2.0), calc((S + chamfer) - valveStroke + valveFilletR)) vlabel(valveStem1Down)
-		/*26*/ vert(-calc(valveStemD/2.0),  0,                    calc((S + chamfer) - valveStroke + valveFilletR)) vlabel(valveStem2Down)
-		/*27*/ vert(0,                      calc(valveStemD/2.0), calc((S + chamfer) - valveStroke + valveFilletR)) vlabel(valveStem3Down)
+		/*20*/ vert(calc(valveStemD/2.0),   0,                    calc((S + chamfer) - valveStroke + valveFilletR)) vlabel(valveStem0Down)
+		/*21*/ vert(0,                     -calc(valveStemD/2.0), calc((S + chamfer) - valveStroke + valveFilletR)) vlabel(valveStem1Down)
+		/*22*/ vert(-calc(valveStemD/2.0),  0,                    calc((S + chamfer) - valveStroke + valveFilletR)) vlabel(valveStem2Down)
+		/*23*/ vert(0,                      calc(valveStemD/2.0), calc((S + chamfer) - valveStroke + valveFilletR)) vlabel(valveStem3Down)
 		
 		// Valve stem upper
-		/*28*/ vert(calc(valveStemD/2.0),   0,                    calc((S + chamfer) + outletH)) vlabel(valveStem0Up)
-		/*29*/ vert(0,                     -calc(valveStemD/2.0), calc((S + chamfer) + outletH)) vlabel(valveStem1Up)
-		/*30*/ vert(-calc(valveStemD/2.0),  0,                    calc((S + chamfer) + outletH)) vlabel(valveStem2Up)
-		/*31*/ vert(0,                      calc(valveStemD/2.0), calc((S + chamfer) + outletH)) vlabel(valveStem3Up)
+		/*24*/ vert(calc(valveStemD/2.0),   0,                    calc(S + outletH)) vlabel(valveStem0Up)
+		/*25*/ vert(0,                     -calc(valveStemD/2.0), calc(S + outletH)) vlabel(valveStem1Up)
+		/*26*/ vert(-calc(valveStemD/2.0),  0,                    calc(S + outletH)) vlabel(valveStem2Up)
+		/*27*/ vert(0,                      calc(valveStemD/2.0), calc(S + outletH)) vlabel(valveStem3Up)
 
 	// Outer pipe
-		/*32*/ vert(innerR,   0,      calc(S + outletH)) vlabel(pipe0Up)
-		/*33*/ vert(0,       -innerR, calc(S + outletH)) vlabel(pipe1Up)
-		/*34*/ vert(-innerR,  0,      calc(S + outletH)) vlabel(pipe2Up)
-		/*35*/ vert(0,        innerR, calc(S + outletH)) vlabel(pipe3Up) 
+		/*28*/ vert(innerR,   0,      calc(S + outletH)) vlabel(pipe0Up)
+		/*29*/ vert(0,       -innerR, calc(S + outletH)) vlabel(pipe1Up)
+		/*30*/ vert(-innerR,  0,      calc(S + outletH)) vlabel(pipe2Up)
+		/*31*/ vert(0,        innerR, calc(S + outletH)) vlabel(pipe3Up)
+
+	// Chamfer 
+		// /*34*/ vert(innerR,  0,      calc(S + chamfer)) vlabel(chamIn0Up)
+		// /*35*/ vert(0,      -innerR, calc(S + chamfer)) vlabel(chamIn1Up)
+		// /*36*/ vert(-innerR, 0,      calc(S + chamfer)) vlabel(chamIn2Up)
+		// /*37*/ vert(0,       innerR, calc(S + chamfer)) vlabel(chamIn3Up)
 );
 
 blocks
 (
 	// Cylinder
 		// Inner cylinder block (8 9 10 11 0 1 2 3)
-		hex (valveHead0Down valveHead1Down valveHead2Down valveHead3Down cylIn0Down cylIn1Down cylIn2Down cylIn3Down)
+		hex (valveHead0Up valveHead1Up valveHead2Up valveHead3Up cylIn0Down cylIn1Down cylIn2Down cylIn3Down)
 		cylinder /*block 0*/
 		(rMeshSize rMeshSize calc(zMeshSize - valveStroke/meshSize))
 		simpleGrading (1 1 1)
@@ -172,26 +170,29 @@ blocks
 		// 1st quarter of the (outer) pipe
 		hex (valveStem0Up pipe0Up pipe1Up valveStem1Up valveStem0Down valveHead0Up valveHead1Up valveStem1Down)
 		pipe /*block 8*/
-		(rMeshSize rMeshSize 10)
+		(rMeshSize rMeshSize 11)
 		simpleGrading (1 1 1)
 
 		// 2nd quarter of the (outer) pipe
 		hex (valveStem1Up pipe1Up pipe2Up valveStem2Up valveStem1Down valveHead1Up valveHead2Up valveStem2Down)
 		pipe /*block 9*/
-		(rMeshSize rMeshSize 10)
+		(rMeshSize rMeshSize 11)
 		simpleGrading (1 1 1)
 
 		// 3rd quarter of the (outer) pipe
 		hex (valveStem2Up pipe2Up pipe3Up valveStem3Up valveStem2Down valveHead2Up valveHead3Up valveStem3Down)
 		pipe /*block 10*/
-		(rMeshSize rMeshSize 10)
+		(rMeshSize rMeshSize 11)
 		simpleGrading (1 1 1)
 
 		// 4th quarter of the (outer) pipe
 		hex (valveStem3Up pipe3Up pipe0Up valveStem0Up valveStem3Down valveHead3Up valveHead0Up valveStem0Down)
 		pipe /*block 11*/
-		(rMeshSize rMeshSize 10)
+		(rMeshSize rMeshSize 11)
 		simpleGrading (1 1 1)
+	
+	// Chamfer
+
 );
 
 edges
@@ -222,17 +223,11 @@ edges
 		arc cylIn3Up cylIn0Up evert( innerRcos,  innerRcos, calc(S + chamfer))
 
 	// Valve
-		// Valve head bottom
-		arc valveHead0Down valveHead1Down evert( innerRcos, -innerRcos, calc(S + chamfer - valveStroke))
-		arc valveHead1Down valveHead2Down evert(-innerRcos, -innerRcos, calc(S + chamfer - valveStroke))
-		arc valveHead2Down valveHead3Down evert(-innerRcos,  innerRcos, calc(S + chamfer - valveStroke))
-		arc valveHead3Down valveHead0Down evert( innerRcos,  innerRcos, calc(S + chamfer - valveStroke))
-
-		// Valve head upper
-		arc valveHead0Up valveHead1Up evert( innerRcos, -innerRcos, calc((S + chamfer) - valveStroke + valveHead))
-		arc valveHead1Up valveHead2Up evert(-innerRcos, -innerRcos, calc((S + chamfer) - valveStroke + valveHead))
-		arc valveHead2Up valveHead3Up evert(-innerRcos,  innerRcos, calc((S + chamfer) - valveStroke + valveHead))
-		arc valveHead3Up valveHead0Up evert( innerRcos,  innerRcos, calc((S + chamfer) - valveStroke + valveHead))
+		// Valve head
+		arc valveHead0Up valveHead1Up evert( innerRcos, -innerRcos, calc((S + chamfer) - valveStroke))
+		arc valveHead1Up valveHead2Up evert(-innerRcos, -innerRcos, calc((S + chamfer) - valveStroke))
+		arc valveHead2Up valveHead3Up evert(-innerRcos,  innerRcos, calc((S + chamfer) - valveStroke))
+		arc valveHead3Up valveHead0Up evert( innerRcos,  innerRcos, calc((S + chamfer) - valveStroke))
 
 		// Valve stem lower
 		arc valveStem0Down valveStem1Down evert( calc(valveStemD/2.0*cosd(45.0)), -calc(valveStemD/2.0*cosd(45.0)), calc((S + chamfer) - valveStroke + valveFilletR))
@@ -292,7 +287,7 @@ boundary
 		type wall;
         faces
         (
-			downQuad(valveHead0, valveHead1, valveHead2, valveHead3) // valve head bottom
+			upQuad(valveHead0, valveHead1, valveHead2, valveHead3) // valve head
 
 			// 1st quarter of valve
 			// sideQuad(valveHead0, valveHead1)
