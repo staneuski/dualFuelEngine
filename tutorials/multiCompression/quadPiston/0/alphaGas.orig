@@ -1,8 +1,8 @@
 /*--------------------------------*- C++ -*----------------------------------*\
   =========                 |
-  \\      /  F ield         | OpenFOAM: Addition to OpenFOAM v6
-   \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
-    \\  /    A nd           | Version:  0.2-alpha
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  6
      \\/     M anipulation  |
 \*---------------------------------------------------------------------------*/
 FoamFile
@@ -10,13 +10,15 @@ FoamFile
     version     2.0;
     format      ascii;
     class       volScalarField;
-    object      p;
+    object      alphaGas;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      		[1 -1 -2 0 0 0 0]; // Pa
+dimensions      [0 0 0 0 0 0 0];
 
-internalField   		uniform 10e04;
+internalField   uniform 0;
+
+injection	 	1;
 
 boundaryField
 {
@@ -24,16 +26,15 @@ boundaryField
 	"injectionXMinus|injectionXPlus|injectionYMinus|injectionYPlus"
     {
         type            fixedValue;
-        value           uniform 15e04;
+        value           uniform $injection;
     }
-	
-    // Inlet
+
+	// Inlet
 	"inletXMinus|inletXPlus|inletYMinus|inletYPlus"
     {
-        type            fixedValue;
-        value           uniform 15e04;
+        type            zeroGradient;
     }
-	
+
 	// Outlet
     outlet
     {

@@ -96,7 +96,7 @@ int main(int argc, char *argv[])
 			  - fvc::div(p*U)
 			  + fvc::div(LAMBDA*fvc::grad(T))
 			  + ( U & (MU*fvc::laplacian(U) + fvc::grad(MU/3*fvc::div(U))) )
-			//TODO Add mu*D
+			  //TODO Add MU*D
 			);
 
 			eEqn.relax();
@@ -107,7 +107,31 @@ int main(int argc, char *argv[])
 			T = (e - magSqr(U)/2)/Cv;
 		
 			p = rho*R*T;
+			
+			fvScalarMatrix alphaAirEqn
+			(
+				fvm::ddt(rho, alphaAir)
+			  + fvm::div(phi, alphaAir)
+			  - fvc::laplacian(DAir, rho*alphaAir)
+			);
+
+			// TEqn.relax(); //FIXME What are these lines (118 & 121) mean?
+			fvOptions.constrain(alphaAirEqn);
+			alphaAirEqn.solve();
+			// fvOptions.correct(T);
+			
+			fvScalarMatrix alphaGasEqn
+			(
+				fvm::ddt(rho, alphaGas)
+			  + fvm::div(phi, alphaGas)
+			  - fvc::laplacian(DAir, rho*alphaGas)
+			);
+
+			fvOptions.constrain(alphaGasEqn);
+			alphaGasEqn.solve();
 		}
+		
+		alphaExh =	dimensionedScalar("1", dimless, 1) - alphaGas - alphaAir;
 		
 		runTime.write();
 

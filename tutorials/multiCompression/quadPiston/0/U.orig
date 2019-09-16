@@ -72,11 +72,13 @@ boundaryField
         uniformValue    constant ($inletMinus $inlet 0);
     }
 
-	// Other
+	// Outlet
     outlet
     {
 		type            zeroGradient;
     }
+	
+	// Walls
     "piston|valve|walls"
     {
         type            slip;

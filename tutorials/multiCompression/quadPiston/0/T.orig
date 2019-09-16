@@ -34,14 +34,16 @@ boundaryField
 		uniformValue 	uniform 292.5;
     }
 
-	// Other
+	// Outlet
     outlet
     {
-        type            zeroGradient;
-    } // outlet
+		type            zeroGradient;
+    }
+	
+	// Walls
     "piston|valve|walls"
     {
-        type            zeroGradient;
+        type            slip;
     }
 }
 

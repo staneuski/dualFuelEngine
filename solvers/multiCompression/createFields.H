@@ -57,6 +57,33 @@ volScalarField T
 	mesh
 );
 
+Info<< "Reading concentration fields\n" << endl;
+
+volScalarField alphaAir
+(
+    IOobject
+    (
+        "alphaAir",
+        runTime.timeName(),
+        mesh,
+        IOobject::MUST_READ,
+        IOobject::AUTO_WRITE
+    ),
+    mesh
+);
+volScalarField alphaGas
+(
+    IOobject
+    (
+        "alphaGas",
+        runTime.timeName(),
+        mesh,
+        IOobject::MUST_READ,
+        IOobject::AUTO_WRITE
+    ),
+    mesh
+);
+
 Info<< "Reading thermophysical properties" << endl;
 
 IOdictionary thermophysicalProperties
@@ -76,6 +103,20 @@ Info<< "Reading diffusivity DT" << endl;
 dimensionedScalar DT
 (
 	thermophysicalProperties.lookup("DT")
+);
+
+Info<< "Reading DAir" << endl;
+
+dimensionedScalar DAir
+(
+    thermophysicalProperties.lookup("DAir")
+);
+
+Info<< "Reading DGas" << endl;
+
+dimensionedScalar DGas
+(
+    thermophysicalProperties.lookup("DGas")
 );
 
 Info<< "Reading dinamic viscosity" << endl;
@@ -99,7 +140,7 @@ dimensionedScalar R
 	thermophysicalProperties.lookup("R")
 );
 
-Info<< "Read isobaric heat capacity\n" << endl;
+Info<< "Reading isobaric heat capacity\n" << endl;
 
 dimensionedScalar Cv
 (
@@ -118,6 +159,22 @@ Info<< "Calculate heat capacity ratio\n" << endl;
 dimensionedScalar GAMMA
 (
 	Cp/Cv
+);
+
+Info<< "Constructing exhaust concentration field" << endl;
+
+volScalarField alphaExh
+(
+    IOobject
+    (
+        "alphaExh",
+        runTime.timeName(),
+        mesh,
+        IOobject::NO_READ,
+        IOobject::AUTO_WRITE
+    ),
+    mesh,
+	dimensionedScalar("alphaExh", dimless, 0)
 );
 
 Info<< "Constructing field phi\n" << endl;
@@ -180,5 +237,5 @@ volScalarField e
 	p/(GAMMA - 1)/rho + magSqr(U)/2,
 	eBCTypes
 );
-	
+
 #include "createFvOptions.H"
