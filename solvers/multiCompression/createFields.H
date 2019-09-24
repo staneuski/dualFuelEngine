@@ -12,22 +12,7 @@ volVectorField U
 	mesh
 );
 
-Info<< "\nReading pressure field p" << nl << endl;
-
-volScalarField p
-(
-	IOobject
-	(
-		"p",
-		runTime.timeName(),
-		mesh,
-		IOobject::MUST_READ,
-		IOobject::AUTO_WRITE
-	),
-	mesh
-);
-
-Info<< "Reading density field rho" << nl << endl;
+Info<< "\nReading density field rho" << nl << endl;
 
 volScalarField rho
 (
@@ -42,7 +27,7 @@ volScalarField rho
 	mesh
 );
 
-Info<< "Reading temperure field T" << nl << endl;
+Info<< "Reading temperature field T" << nl << endl;
 
 volScalarField T
 (
@@ -57,7 +42,7 @@ volScalarField T
 	mesh
 );
 
-Info<< "Reading concentration fields\n" << endl;
+Info<< "Reading concentration fields" << endl;
 
 volScalarField alphaAir
 (
@@ -154,14 +139,14 @@ dimensionedScalar Cp
 	R + Cv
 );
 
-Info<< "Calculate heat capacity ratio\n" << endl;
+Info<< "Calculate heat capacity ratio" << endl;
 
 dimensionedScalar GAMMA
 (
 	Cp/Cv
 );
 
-Info<< "Constructing exhaust concentration field" << endl;
+Info<< "\nConstructing exhaust concentration field" << endl;
 
 volScalarField alphaExh
 (
@@ -177,7 +162,46 @@ volScalarField alphaExh
 	dimensionedScalar("alphaExh", dimless, 0)
 );
 
-Info<< "Constructing field phi\n" << endl;
+// Infer the pressure BCs from the temperature and the viscosity
+wordList pBCTypes
+(
+    T.boundaryField().size(),
+    fixedValueFvPatchScalarField::typeName
+);
+
+forAll(T.boundaryField(), patchi)
+{
+    if (!T.boundaryField()[patchi].fixesValue())
+    {
+        pBCTypes[patchi] = zeroGradientFvPatchScalarField::typeName;
+    }
+}
+
+forAll(rho.boundaryField(), patchi)
+{
+    if (!rho.boundaryField()[patchi].fixesValue())
+    {
+        pBCTypes[patchi] = zeroGradientFvPatchScalarField::typeName;
+    }
+}
+
+Info<< "\nConstructing pressure field p" << nl << endl;
+
+volScalarField p
+(
+	IOobject
+	(
+		"p",
+		runTime.timeName(),
+		mesh,
+		IOobject::NO_READ,
+		IOobject::AUTO_WRITE
+	),
+	rho*R*T,
+	pBCTypes
+);
+
+Info<< "Constructing field phi" << endl;
 
 surfaceScalarField phi
 (
@@ -192,27 +216,11 @@ surfaceScalarField phi
 	fvc::flux(rho*U)
 );
 
+// Infer the pressure BCs from the velocity and the pressure
 wordList eBCTypes
 (
-    p.boundaryField().size(),
-    fixedValueFvPatchScalarField::typeName
+    pBCTypes
 );
-
-forAll(p.boundaryField(), patchi)
-{
-    if (!p.boundaryField()[patchi].fixesValue())
-    {
-        eBCTypes[patchi] = zeroGradientFvPatchScalarField::typeName;
-    }
-}
-
-forAll(rho.boundaryField(), patchi)
-{
-    if (!rho.boundaryField()[patchi].fixesValue())
-    {
-        eBCTypes[patchi] = zeroGradientFvPatchScalarField::typeName;
-    }
-}
 
 forAll(U.boundaryField(), patchi)
 {
@@ -222,7 +230,7 @@ forAll(U.boundaryField(), patchi)
     }
 }
 
-Info<< "Constructing energy field e\n" << endl;
+Info<< "\nConstructing energy field e\n" << endl;
 
 volScalarField e
 (
