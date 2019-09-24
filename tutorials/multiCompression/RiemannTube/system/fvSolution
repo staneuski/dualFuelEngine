@@ -17,7 +17,7 @@ FoamFile
 
 solvers
 {
-    T
+    "alphaAir|alphaGas"
     {
         solver          PBiCGStab;
         preconditioner  DILU;

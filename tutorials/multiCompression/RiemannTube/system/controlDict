@@ -23,7 +23,7 @@ startTime       	  0;
 
 stopAt          	  endTime;
 
-endTime         	  7e-04;
+endTime         	  8e-04;
 
 deltaT          	  1.5e-05; //Co < 0.5 => deltaT < 0.5*deltaX/a = 0.5*1e-02/342
 

@@ -17,7 +17,7 @@ FoamFile
 dimensions			[1 -1 -2 0 0 0 0]; // [kg/m/s^2 = Pa]
 
 internalField		nonuniform List<scalar> 
-40
+60
 (
 	10e04
 	10e04
@@ -39,6 +39,26 @@ internalField		nonuniform List<scalar>
 	10e04
 	10e04
 	10e04
+	10e04
+	10e04
+	10e04
+	10e04
+	10e04
+	10e04
+	10e04
+	10e04
+	10e04
+	10e04
+	15e04
+	15e04
+	15e04
+	15e04
+	15e04
+	15e04
+	15e04
+	15e04
+	15e04
+	15e04
 	15e04
 	15e04
 	15e04
@@ -61,7 +81,6 @@ internalField		nonuniform List<scalar>
 	15e04
 )
 ;
-
 
 boundaryField
 {
