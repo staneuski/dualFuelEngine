@@ -23,13 +23,13 @@ startTime       		0;
 
 stopAt          		endTime;
 
-endTime         		5e-02;
+endTime         		2e-02;
 
-deltaT          		1e-05;
+deltaT          		5e-05; // 1.5e-05
 
 writeControl    		timeStep;
 
-writeInterval   		5; // writeStep = writeInterval*deltaT
+writeInterval   		5; // 5e-05*5 = .00025
 
 purgeWrite      		0;
 
@@ -37,7 +37,7 @@ writeFormat     		ascii;
 
 writePrecision  		6;
 
-writeCompression 		off;
+writeCompression 		on;
 
 timeFormat      		general;
 
