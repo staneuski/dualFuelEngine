@@ -10,39 +10,26 @@ FoamFile
     version     2.0;
     format      ascii;
     class       dictionary;
-    location    "system";
-    object      controlDict;
+    object      surfaceFeaturesDict;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-application     		multiCompression;
+surfaces
+(
+	"injectionXMinus.stl"
+	"injectionXPlus.stl"
+	"injectionYMinus.stl"
+	"injectionYPlus.stl"
+	"inletXMinus.stl"
+	"inletXPlus.stl"
+	"inletYMinus.stl"
+	"inletYPlus.stl"
+	"outlet.stl"
+	"valve.stl"
+	"piston.stl"
+	"walls.stl"
+);
 
-startFrom       		startTime;
-
-startTime       		0;
-
-stopAt          		endTime;
-
-endTime         		5e-02;
-
-deltaT          		1e-06;
-
-writeControl    		timeStep;
-
-writeInterval   		100; // writeStep = writeInterval*deltaT
-
-purgeWrite      		0;
-
-writeFormat     		ascii;
-
-writePrecision  		6;
-
-writeCompression 		off;
-
-timeFormat      		general;
-
-timePrecision   		6;
-
-runTimeModifiable		true;
+#includeEtc "caseDicts/surface/surfaceFeaturesDict.cfg"
 
 // ************************************************************************* //
