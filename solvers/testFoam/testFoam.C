@@ -26,7 +26,7 @@ Application
     testFoam
 
 Description
-    Solves the steady or transient transport equation for a passive scalar.
+	v0.1-alpha
 
 \*---------------------------------------------------------------------------*/
 

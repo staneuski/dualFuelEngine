@@ -26,7 +26,7 @@ Application
 	multiCompression
 
 Description
-	v0.2-alpha
+	v0.3-alpha
 
 Comments
 
@@ -63,6 +63,7 @@ int main(int argc, char *argv[])
 		
 		while (simple.correctNonOrthogonal())
 		{
+			
 			fvScalarMatrix rhoEqn
 			(
 				fvm::ddt(rho)
@@ -131,7 +132,7 @@ int main(int argc, char *argv[])
 			alphaGasEqn.solve();
 		}
 		
-		alphaExh =	dimensionedScalar("1", dimless, 1) - alphaGas - alphaAir;
+		alphaExh = dimensionedScalar("1", dimless, 1) - alphaGas - alphaAir;
 		
 		runTime.write();
 
