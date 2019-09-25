@@ -9,26 +9,42 @@ FoamFile
 {
     version     2.0;
     format      ascii;
-    class       dictionary;
-    location    "constant";
-    object      transportProperties;
+    class       volScalarField;
+    object      T;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-DT              DT [0 2 -1 0 0 0 0] 0.01; // m^2/s
+dimensions      		[0 0 0 1 0 0 0]; // K
 
-DAir			DAir [0 2 -1 0 0 0 0] 0.01; // m^2/s
+internalField   		uniform 289.4;
 
-DGas			DGas [0 2 -1 0 0 0 0] 0.01; // m^2/s
+boundaryField
+{
+    // Injection
+	"injectionXMinus|injectionXPlus|injectionYMinus|injectionYPlus"
+    {
+        type            uniformFixedValue;
+        uniformValue    uniform 292.5;
+    }
 
-MU              MU [1 -1 -1 0 0 0 0] 1e-02;
+	// Inlet
+	"inletXMinus|inletXPlus|inletYMinus|inletYPlus"
+    {
+        type            uniformFixedValue;
+		uniformValue 	uniform 292.5;
+    }
 
-LAMBDA          LAMBDA [1 1 -3 -1 0 0 0] 2e-02; // [kg·m/s^3/K = W/m/K]
-                                                // coefficient of thermal
-                                                // conductivity
-
-R				R [0 2 -2 -1 0 0 0] 287.3; // [m^2/s^2/K = J/kg/K], gas constant
-
-Cv				Cv [0 2 -2 -1 0 0 0] 718.25; // isobaric heat capacity
+	// Outlet
+    outlet
+    {
+		type            zeroGradient;
+    }
+	
+	// Walls
+    "piston|valve|walls"
+    {
+        type            slip;
+    }
+}
 
 // ************************************************************************* //

@@ -9,40 +9,43 @@ FoamFile
 {
     version     2.0;
     format      ascii;
-    class       dictionary;
-    location    "system";
-    object      controlDict;
+    class       volScalarField;
+    object      rho;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-application     		multiCompression;
+dimensions				[1 -3 0 0 0 0 0]; // kg/m^3
 
-startFrom       		startTime;
+internalField   		uniform 1.204;
 
-startTime       		0;
+boundaryField
+{
+    // Injection
+	"injectionXMinus|injectionXPlus|injectionYMinus|injectionYPlus"
+    {
+        type            fixedValue;
+        value           uniform 1.787;
+    }
+	
+    // Inlet
+	"inletXMinus|inletXPlus|inletYMinus|inletYPlus"
+    {
+        type            fixedValue;
+        value           uniform 1.787;
+    }
+	
+	// Outlet
+    outlet
+    {
+		type            zeroGradient;
+    }
+	
+	// Walls
+    "piston|valve|walls"
+    {
+        type            slip;
+    }
+}
 
-stopAt          		endTime;
-
-endTime         		5e-02;
-
-deltaT          		1e-05;
-
-writeControl    		timeStep;
-
-writeInterval   		5; // writeStep = writeInterval*deltaT
-
-purgeWrite      		0;
-
-writeFormat     		ascii;
-
-writePrecision  		6;
-
-writeCompression 		off;
-
-timeFormat      		general;
-
-timePrecision   		6;
-
-runTimeModifiable		true;
 
 // ************************************************************************* //

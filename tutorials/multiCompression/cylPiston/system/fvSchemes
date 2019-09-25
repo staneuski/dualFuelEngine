@@ -31,6 +31,8 @@ divSchemes
     default         Gauss cubic;
 	div(phi,U)      Gauss upwind; // UEqn
 	div(phi,e)      Gauss upwind; // eEqn
+	div(phi,alphaAir) Gauss upwind; // alphaAirEqn
+	div(phi,alphaGas) Gauss upwind; // alphaGasEqn
 }
 
 laplacianSchemes
