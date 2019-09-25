@@ -36,13 +36,17 @@ define(xyArc, ($1 $2 $3))
 
 convertToMeters 0.001;
 
-define(D, 		 1000) // cylinder bore
+define(D, 		  1000) // cylinder radial size
 
-define(S, 	  	 5000) // piston stroke
+define(S, 	  	  5000) // cylinder axial size
 
-define(valveD,	 306.742) // valve plate diameter
+define(valveD,	  306.742) // valve plate diameter
 
-define(meshSize, 50) // relative to S & D
+define(meshSize,  50) // relative to S & D
+
+define(rMeshSize, 5) // radial direction cells number (10)
+
+define(zMeshSize, 70) // radial direction cells number axial (100)
 
 // END OF (NORMAL) USER EDITABLE PART
 // ########################################################################## //
@@ -54,10 +58,6 @@ define(Rcos,	  calc( R*cos((PI/180)*45.0) ))
 define(innerR,	  calc( valveD/2.0 ))
 
 define(innerRcos, calc( innerR*cos((PI/180)*45.0) ))
-	
-define(rMeshSize, calc( R/meshSize ))
-
-define(zMeshSize, calc( S/meshSize ))
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 	
