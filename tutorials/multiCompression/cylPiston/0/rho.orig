@@ -43,9 +43,8 @@ boundaryField
 	// Walls
     "piston|valve|walls"
     {
-        type            slip;
+        type            zeroGradient;
     }
 }
-
 
 // ************************************************************************* //

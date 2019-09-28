@@ -162,26 +162,18 @@ volScalarField alphaExh
 	dimensionedScalar("alphaExh", dimless, 0)
 );
 
-// Infer the pressure BCs from the temperature and the viscosity
+// Infer the pressure BCs from the viscosity
 wordList pBCTypes
 (
-    T.boundaryField().size(),
-    fixedValueFvPatchScalarField::typeName
+    rho.boundaryField().size(),
+    zeroGradientFvPatchScalarField::typeName
 );
 
-forAll(T.boundaryField(), patchi)
+forAll(U.boundaryField(), patchi)
 {
-    if (!T.boundaryField()[patchi].fixesValue())
+    if (U.boundaryField().types()[patchi] == zeroGradientFvPatchScalarField::typeName)
     {
-        pBCTypes[patchi] = zeroGradientFvPatchScalarField::typeName;
-    }
-}
-
-forAll(rho.boundaryField(), patchi)
-{
-    if (!rho.boundaryField()[patchi].fixesValue())
-    {
-        pBCTypes[patchi] = zeroGradientFvPatchScalarField::typeName;
+        pBCTypes[patchi] = fixedValueFvPatchScalarField::typeName;
     }
 }
 
@@ -216,10 +208,11 @@ surfaceScalarField phi
 	fvc::flux(rho*U)
 );
 
-// Infer the pressure BCs from the velocity and the pressure
+// Infer the pressure BCs from the velocity
 wordList eBCTypes
 (
-    pBCTypes
+    p.boundaryField().size(),
+    fixedValueFvPatchScalarField::typeName
 );
 
 forAll(U.boundaryField(), patchi)

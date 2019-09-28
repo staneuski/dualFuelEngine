@@ -54,22 +54,22 @@ boundaryField
 	inletXMinus
     {
         type            uniformFixedValue;
-        uniformValue    constant ($inletMinus $inletMinus 0);
+        uniformValue    constant ($inletMinus 0 0);
 	}
 	inletXPlus
     {
         type            uniformFixedValue;
-        uniformValue    constant ($inlet $inlet 0);
+        uniformValue    constant ($inlet 0 0);
     }
 	inletYMinus
     {
         type            uniformFixedValue;
-        uniformValue    constant ($inlet $inletMinus 0);
+        uniformValue    constant (0 $inletMinus 0);
     }
 	inletYPlus
     {
         type            uniformFixedValue;
-        uniformValue    constant ($inletMinus $inlet 0);
+        uniformValue    constant (0 $inlet 0);
     }
 
 	// Outlet
