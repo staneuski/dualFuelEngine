@@ -23,7 +23,7 @@ startTime       	  0;
 
 stopAt          	  endTime;
 
-endTime         	  6e-03;
+endTime         	  2e-02;
 
 deltaT          	  2e-05; // Co <= 0.5
 
@@ -43,7 +43,7 @@ timeFormat      	  general;
 
 timePrecision   	  6;
 
-runTimeModifiable 	true;
+runTimeModifiable     true;
 
 
 // ************************************************************************* //
