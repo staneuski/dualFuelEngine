@@ -2,6 +2,7 @@
 *.gdoc
 *.log
 log.*
+*.gz
 .DS_Store
 cellLevel
 pointLevel
