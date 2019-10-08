@@ -1,23 +1,63 @@
 #!/bin/sh
+#----------------------------------*-sh-*--------------------------------------
+# =========					|
+# \\	  /	 F ield			| OpenFOAM: Addition to OpenFOAM v6
+#  \\	 /	 O peration		| Website:	https://github.com/StasF1/dualFuelEngine
+#   \\	/	 A nd			| Copyright (C) 2019 Stanislau Stasheuski
+#    \\/	 M anipulation	|
+#------------------------------------------------------------------------------
+# License
+#     This file is not part of OpenFOAM, but part of dualFuelEngine – OpenFOAM
+#     addition.
+#   
+#     dualFuelEngine (like OpenFOAM) is free software: you can redistribute it 
+#     and/or modify it under the terms of the GNU General Public License as
+#     published by the Free Software Foundation, either version 3 of the License,
+#     or (at your option) any later version.
+#   
+#     dualFuelEngine (like OpenFOAM) is distributed in the hope that it will be
+#     useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+#     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+#     See the GNU General Public License for more details.
+#   
+#     You should have received a copy of the GNU General Public License
+#     along with this repository. If not, see <http://www.gnu.org/licenses/>
+#
+# File
+#     etc/makeBackup
+#
+# Description
+#     Script to make backup of the OpenFOAM case.
+#     Usage (must be run from the case folder):
+#     $FOAM_ADDITIONS/dualFuelEngine/etc/./makeBackup <backupName(optional)>
+#
+#------------------------------------------------------------------------------
 
-v='v0.3-alpha'
+backupName=$1 # get passed name of the backup (optional) 
 
-day=`date +%F`
+# If backupName variable is empty set it as current date 
+if [[ ! -n "$backupName" ]]; then
+	day=`date +%F`
+	time=`date +%H%M`
+	backupName="${day}_${time}"
+fi
 
-printf 'Backing up %s to %s\n' "${PWD##*/}" "${PWD}/backups/$v/$day.tar.qz"
+################################################################################
+
+printf 'Backing up %s case to %s\n' "${PWD}" "$backupName.tar.qz"
 
 # Create backup folder
-mkdir -p backups/$v/$day.bak
+mkdir -p backups/$backupName.bak
 
-# Copy all results & logs to the backup folder
-cp -r *.foam   backups/$v/$day.bak
-cp -r log.*    backups/$v/$day.bak
-cp -r constant backups/$v/$day.bak
-cp -r system   backups/$v/$day.bak
-for i in `seq 0 9`; do rsync -a $i* backups/$v/$day.bak 2>/dev/null; done
+# Copy all reslults & logs to the backup folder
+cp -r *.foam   backups/$backupName.bak
+cp -r log.*    backups/$backupName.bak
+cp -r constant backups/$backupName.bak
+cp -r system   backups/$backupName.bak
+for i in `seq 0 9`; do rsync -a $i* backups/$backupName.bak 2>/dev/null; done
 
-# Archive the backup folder & delete it
-tar -C backups/$v -czf backups/$v/$day.tar.qz $day.bak\
-	&& rm -r backups/$v/$day.bak
+# Archive the backup folder in delete it
+tar -C backups -czf backups/$backupName.tar.qz $backupName.bak\
+	&& rm -r backups/$backupName.bak
 
 #------------------------------------------------------------------------------

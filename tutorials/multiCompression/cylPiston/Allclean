@@ -6,7 +6,7 @@ cd ${0%/*} || exit 1    # Run from this directory
 
 rm -rf constant/triSurface
 rm -rf constant/extendedFeatureEdgeMesh
-$FOAM_ADDITIONS/dualFuelEngine/etc/./makeBackup
+$FOAM_ADDITIONS/dualFuelEngine/etc/./makeBackup previousRun
 cleanCase
 
 #------------------------------------------------------------------------------
