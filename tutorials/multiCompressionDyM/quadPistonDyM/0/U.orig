@@ -1,0 +1,88 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: Addition to OpenFOAM v6
+   \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
+    \\  /    A nd           | Version:  0.3-alpha
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volVectorField;
+    object      U;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      		[0 1 -1 0 0 0 0]; // [kg m s K kg-mol cd]
+
+internalField   		uniform (0 0 0);
+
+injection 				12;
+
+inlet 					3;
+
+injMinus  				#calc "-1.0*$injection";
+
+inletMinus				#calc "-1.0*$inlet";
+	
+boundaryField
+{
+    // Injection
+	injectionXMinus
+    {
+		type            uniformFixedValue;
+		uniformValue    constant (0 0 $injMinus);
+    }
+	injectionXPlus
+    {
+        type            uniformFixedValue;
+        uniformValue    constant (0 0 $injection);
+    }
+	injectionYMinus
+    {
+        type            uniformFixedValue;
+        uniformValue    constant (0 $injMinus 0);
+    }
+	injectionYPlus
+    {
+        type            uniformFixedValue;
+        uniformValue    constant (0 $injection 0);
+    }
+
+	// Inlet
+	inletXMinus
+    {
+        type            uniformFixedValue;
+        uniformValue    constant ($inletMinus 0 $inletMinus);
+	}
+	inletXPlus
+    {
+        type            uniformFixedValue;
+        uniformValue    constant ($inlet 0 $inlet);
+    }
+	inletYMinus
+    {
+        type            uniformFixedValue;
+        uniformValue    constant ($inletMinus 0 $inlet);
+    }
+	inletYPlus
+    {
+        type            uniformFixedValue;
+        uniformValue    constant ($inlet 0 $inletMinus);
+    }
+
+	// Outlet
+    outlet
+    {
+		type            zeroGradient;
+    }
+	
+	// Walls
+    "piston|valve|walls"
+    {
+        type            slip;
+    }
+}
+
+// ************************************************************************* //
