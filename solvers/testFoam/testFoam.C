@@ -26,7 +26,7 @@ Application
     testFoam
 
 Description
-	v0.1-alpha
+	v0.1-alpha, solver just to test some OpenFOAM features
 
 \*---------------------------------------------------------------------------*/
 
