@@ -23,7 +23,7 @@ startTime       	  0;
 
 stopAt          	  endTime;
 
-endTime         	  2e-02;
+endTime         	  1.2e-02;
 
 deltaT          	  2e-05; // Co <= 0.5
 

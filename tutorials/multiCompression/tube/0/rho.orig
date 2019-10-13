@@ -1,40 +1,55 @@
 /*--------------------------------*- C++ -*----------------------------------*\
-  =========                 |
-  \\      /  F ield         | OpenFOAM: Addition to OpenFOAM v6
-   \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
-    \\  /    A nd           | Version:  0.3-alpha
-     \\/     M anipulation  |
+  =========					|
+  \\	  /	 F ield			| OpenFOAM: Addition to OpenFOAM v6
+   \\	 /	 O peration		| Website:	https://github.com/StasF1/dualFuelEngine
+	\\	/	 A nd			| Version:	0.3-alpha
+	 \\/	 M anipulation	|
 \*---------------------------------------------------------------------------*/
 FoamFile
 {
-    version     2.0;
-    format      ascii;
-    class       volScalarField;
-    object      rho;
+	version		2.0;
+	format		ascii;
+	class		volScalarField;
+	object		rho;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 dimensions				[1 -3 0 0 0 0 0]; // kg/m^3
 
-internalField   		uniform 1.204;
+internalField			uniform 1.160; // 1e05/287.3/300 = 1.16022740457129597401
 
 boundaryField
 {
-    inlet
-    {
-        type            fixedValue;
-        value           uniform 1.787;
-    }
+	inlet
+	{
+		type			codedFixedValue;
+		value			uniform 1.508; // 13e04/287.3/300 = 1.50829562594268476621
+		redirectType	rhoBCsCoordination;
+		code
+		#{
+			// Set gas constant from thethermophysicalProperties
+			scalar R = 287.3;
+		
+			// Get density & temperature fields
+			const fvPatchScalarField& p = patch().lookupPatchField<volScalarField, scalar>("p");
+			const fvPatchField& T = patch().lookupPatchField<volScalarField, scalar>("T");
+			
+			operator ==
+			(
+				p/R/T
+			);
+		#};
+	}
 	
 	outlet
-    {
-		type            zeroGradient;
-    }
+	{
+		type			zeroGradient;
+	}
 	
 	walls
 	{
-        type            zeroGradient;
-    }
+		type			zeroGradient;
+	}
 }
 
 // ************************************************************************* //
