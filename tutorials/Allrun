@@ -32,24 +32,16 @@ cd ${0%/*} || exit 1 # Run from this directory
 
 startAllrunTime=`date +%s` # starting stopwatch
 
-# prism case
-potentialFoam/prism/./Allrun            || cat log.potentialFoam
-scalarTransportFoam/prism/./Allrun      || cat log.scalarTransportFoam
-testFoam/prism/./Allrun                 || cat log.testFoam
+# testFoam
+testFoam/prism/./Allrun || cat log.testFoam
 printf '\n'
 
-# RiemannTube case
-multiCompression/RiemannTube/./Allrun   || cat log.multiCompression
-printf '\n'
-
-# quadPiston case
-multiCompression/quadPiston/./Allrun	|| cat log.multiCompression
-potentialFoam/quadPiston/./Allrun 		|| cat log.potentialFoam
-scalarTransportFoam/quadPiston/./Allrun || cat log.scalarTransportFoam
-printf '\n'
-
-# cylPiston case
-multiCompression/cylPiston/./Allrun		|| cat log.blockMesh
+# multiCompression
+multiCompression/RiemannTube/./Allrun    || cat log.multiCompression
+multiCompression/tube/./Allrun           || cat log.potentialFoam
+multiCompression/movingWallTube/./Allrun || cat log.potentialFoam
+multiCompression/quadPiston/./Allrun     || cat log.potentialFoam
+multiCompression/cylPiston/./Allrun      || cat log.potentialFoam
 printf '\n'
 
 # Show evaluation time
