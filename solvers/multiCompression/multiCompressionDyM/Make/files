@@ -1,3 +1,0 @@
-multiCompressionDyM.C
-
-EXE = $(FOAM_USER_APPBIN)/multiCompressionDyM
