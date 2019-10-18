@@ -1,4 +1,5 @@
-# files
+# Files
+# ~~~~~
 *.gdoc
 *.log
 log.*
@@ -7,7 +8,9 @@ log.*
 cellLevel
 pointLevel
 
-# folders
+
+# Folders
+# ~~~~~~~
 *e-07/
 *e-06/
 *e-05/
@@ -22,22 +25,13 @@ linux64GccDPInt32Opt/
 VTK/
 backups/
 
-# doc/
+
+# Definite files or folders
+# ~~~~~~~~~~~~~~~~~~~~~~~~~
+#- doc/
 doc/inspection/
 doc/references/
 
-# tutorials/
-# multiCompression/cylPiston/
+#- tutorials/
 tutorials/multiCompression/cylPiston/system/blockMeshDict
-
-# multiCompression/quadPiston/
-tutorials/multiCompression/quadPiston/0/*Level
-
-# potentialFoam/quadPiston/
-tutorials/potentialFoam/quadPiston/0/U.orig
-tutorials/potentialFoam/quadPiston/system/fvSolution
-tutorials/potentialFoam/quadPiston/system/controlDict
-
-# scalarTransportFoam/quadPiston/
-tutorials/scalarTransportFoam/quadPiston/0/
-tutorials/scalarTransportFoam/quadPiston/system/
+tutorials/multiCompression/testFoam/system/blockMeshDict
