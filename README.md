@@ -57,21 +57,22 @@ wmake $FOAM_ADDITIONS/dualFuelEngine/tutorials/./Allclean && $FOAM_ADDITIONS/dua
 dualFuelEngine-0.3-alpha
 ├── doc
 │   └── images
+│       ├── cylPiston
+│       └── quadPiston
 ├── etc
 ├── solvers
 │   ├── multiCompression
+│   │   └── Make
 │   └── testFoam
+│       └── Make
 └── tutorials
     ├── multiCompression
-    │   ├── cylPiston	
+    │   ├── RiemannTube
+    │   ├── cylPiston
+    │   ├── movingWallTube
     │   ├── quadPiston
-    │   └── RiemannTube
-    ├── potentialFoam
-    │   ├── prism
-    │   └── quadPiston
-    ├── scalarTransportFoam
-    │   ├── prism
-    │   └── quadPiston
+    │   └── tube
     └── testFoam
-        └── prism
+        ├── movingWallTube
+        └── cylPiston
 ```
