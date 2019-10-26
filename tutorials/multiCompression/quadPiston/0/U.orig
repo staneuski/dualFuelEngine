@@ -18,9 +18,9 @@ dimensions      		[0 1 -1 0 0 0 0]; // [kg m s K kg-mol cd]
 
 internalField   		uniform (0 0 0);
 
-injection 				12;
+injection 				150;
 
-inlet 					3;
+inlet 					75;
 
 injMinus  				#calc "-1.0*$injection";
 
@@ -54,22 +54,22 @@ boundaryField
 	inletXMinus
     {
         type            uniformFixedValue;
-        uniformValue    constant ($inletMinus $inletMinus 0);
+        uniformValue    constant ($inletMinus 0 $inlet);
 	}
 	inletXPlus
     {
         type            uniformFixedValue;
-        uniformValue    constant ($inlet $inlet 0);
+        uniformValue    constant ($inlet 0 $inlet);
     }
 	inletYMinus
     {
         type            uniformFixedValue;
-        uniformValue    constant ($inlet $inletMinus 0);
+        uniformValue    constant (0 $inletMinus $inlet);
     }
 	inletYPlus
     {
         type            uniformFixedValue;
-        uniformValue    constant ($inletMinus $inlet 0);
+        uniformValue    constant (0 $inlet $inlet);
     }
 
 	// Outlet
