@@ -14,24 +14,29 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      		[0 1 -1 0 0 0 0]; // [kg m s K kg-mol cd]
+dimensions              [0 1 -1 0 0 0 0]; // [kg m s K kg-mol cd]
 
-internalField   		uniform (0 0 0);
-	
+internalField           uniform (0 0 0);
+    
 boundaryField
 {
-	inlet
+    inlet
     {
-        type            uniformFixedValue;
-        uniformValue    constant (0 200 0);
-	}
-	
+        type            codedFixedValue;
+        value           uniform (0 0 0);
+        redirectType    U;
+        code
+        #{
+            #include "../../0/U.C"
+        #};
+    }
+
     outlet
     {
-		type            zeroGradient;
+        type            slip;
     }
-	
-	walls
+
+    walls
     {
         type            slip;
     }

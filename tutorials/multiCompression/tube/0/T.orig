@@ -14,45 +14,29 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      		[0 0 0 1 0 0 0]; // K
+dimensions              [0 0 0 1 0 0 0]; // K
 
-internalField   		uniform 300;
+internalField           uniform 300;
 
 boundaryField
 {
-	inlet
+    inlet
     {
-		type            codedFixedValue;
-		value        	uniform 300;
-		redirectType	TBCsCoordination;
-		code
-		#{
-			// Stagnation temperature
-			scalar TStagn = 300;
-
-			// Set gas constants from the thermophysicalProperties
-			scalar R = 287.3;
-			scalar GAMMA = 1.4;
-
-			// Get velocity field U
-			const fvPatchVectorField& U = patch().lookupPatchField<volVectorField, vector>("U");
-
-			scalar criticalSqrVelocity = 2*GAMMA/(GAMMA - 1)*R*TStagn;
-			
-			operator ==
-			(
-				TStagn*( 1 - (GAMMA - 1)/(GAMMA + 1)*magSqr(U)/criticalSqrVelocity )
-			);
-		#};
+        type            codedFixedValue;
+        value           uniform 300;
+        redirectType    T;
+        code
+        #{
+            #include "../../0/T.C"
+        #};
     }
-	
+    
     outlet
     {
-		type            fixedValue;
-		value 	        uniform 293.15;
+        type            zeroGradient;
     }
-		
-	walls
+        
+    walls
     {
         type            zeroGradient;
     }
