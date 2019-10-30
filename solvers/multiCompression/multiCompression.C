@@ -61,6 +61,8 @@ int main(int argc, char *argv[])
 		
 		#include "CourantNo.H"
 		
+        volScalarField pPrev(p);
+		
 		while (simple.correctNonOrthogonal())
 		{
 			
@@ -72,7 +74,11 @@ int main(int argc, char *argv[])
 
 			rhoEqn.relax();
 			rhoEqn.solve();
-				
+			
+            // Because there isn't any equation for p relaxation is done
+            // like that (per se this line as the same as pEqv.relax()):
+            p = 0.5*pPrev + 0.5*p;
+			
 			fvVectorMatrix UEqn
 			(
 				fvm::ddt(rho, U)
@@ -85,7 +91,7 @@ int main(int argc, char *argv[])
 				)
 			  + MU*fvc::laplacian(U)
 			);
-
+			
 			UEqn.relax();
 			UEqn.solve();
 			
@@ -102,11 +108,12 @@ int main(int argc, char *argv[])
 
 			eEqn.relax();
 			eEqn.solve();
-		
+			
 			phi = fvc::flux(rho*U);
 		
 			T = (e - magSqr(U)/2)/Cv;
-		
+			
+			pPrev = p;
 			p = rho*R*T;
 			
 			fvScalarMatrix alphaAirEqn
@@ -116,10 +123,10 @@ int main(int argc, char *argv[])
 			  - fvc::laplacian(DAir, rho*alphaAir)
 			);
 
-			// TEqn.relax(); //FIXME What are these lines (118 & 121) mean?
+            // alphaAirEqn.relax(); //FIXME What are these lines (126 & 129) mean?
 			fvOptions.constrain(alphaAirEqn);
 			alphaAirEqn.solve();
-			// fvOptions.correct(T);
+            // fvOptions.correct(alphaAir);
 			
 			fvScalarMatrix alphaGasEqn
 			(
