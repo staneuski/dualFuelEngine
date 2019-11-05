@@ -23,13 +23,13 @@ startTime            0;
 
 stopAt               endTime;
 
-endTime              1.2e-02;
+endTime              3e-02;
 
 deltaT               2e-05;
 
 writeControl         timeStep;
 
-writeInterval        1;
+writeInterval        5;
 
 purgeWrite           0;
 
@@ -39,7 +39,7 @@ writePrecision       6;
 
 writeCompression     off;
 
-timeFormat            general;
+timeFormat           general;
 
 timePrecision        6;
 
