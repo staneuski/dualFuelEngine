@@ -27,7 +27,8 @@ boundaryField
         redirectType    U;
         code
         #{
-            #include "../../constant/transportProperties.H" /* get variables */
+            vector directionU(0, 1, 0);
+            #include "../../constant/transportProperties.H"
             #include "../../../../../solvers/utilities/codedFixedValueBC/U.C"
         #};
     }
