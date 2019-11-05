@@ -23,11 +23,16 @@ boundaryField
     inlet
     {
         type            codedFixedValue;
-        value           uniform 300;
+        value           uniform 350;
         redirectType    T;
         code
         #{
-            #include "../../0/T.C"
+            #include "../../constant/transportProperties.H" /* get variables */
+            #include "../../../../../solvers/utilities/codedFixedValueBC/T.C"
+            
+            Info << "Calculated BC:  T = "
+                 << TStagn*( 1 - (GAMMA - 1)/(GAMMA + 1)*magSqr(U)/criticalSqrVelocity )
+                 << endl;
         #};
     }
     

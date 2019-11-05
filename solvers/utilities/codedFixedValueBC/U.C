@@ -34,20 +34,17 @@ Description
 
 #include <math.h> /* sqrt */
 
-#include "../../constant/transportProperties.H" /* get variables */
-
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 // Get patches & fields
 // ~~~~~~~~~~~~~~~~~~~~
 //- Patches
 const fvPatch& boundaryPatch = patch();
-const vectorField& Cf = boundaryPatch.Cf();
+const vectorField& Cf = boundaryPatch.Cf(); // face centroid field
 vectorField& field = *this;
 
 //- Fields
-// const fvPatchScalarField& p = patch().lookupPatchField<volScalarField, scalar>("p");
-#define p 101325*3.632 /* [Pa] static pressure */
+double p = patch().lookupPatchField<volScalarField, scalar>("p");
 
 
 // Variables reinitialisation
@@ -63,9 +60,11 @@ sqrt(
     2*GAMMA/(GAMMA + 1)*R*TStagn
 );
 
-double constant =
+// Without p convertion set type of eqvConstant as:
+// const Foam::tmp<Foam::Field<double>>&
+double eqvConstant =
 (
-    m*p/sqrt(TStagn) /*FIXME can't initialise p (which type is fvPatchScalarField) to double*/
+    m*p/sqrt(TStagn)
    *pow(
         (GAMMA + 1)/2*(1 - (GAMMA - 1)/(GAMMA + 1)),
         1/(GAMMA - 1)
@@ -76,16 +75,16 @@ double constant =
 
 // Finding the lambda with gas dynamic functions by Newton method
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-double lambda0 = tolerance;
+double lambda0 = 1;
 
-double lambda1 = /* initial residual */
+double lambda1 =/* initial residual */
 (
     lambda0
   - (
-        G - constant*pow(lambda0, GAMMA/(GAMMA - 1)) /* f(lambda) */
+        G - eqvConstant*pow(lambda0, GAMMA/(GAMMA - 1)) /* f(lambda) */
     )
    /(
-      - constant*GAMMA/(GAMMA - 1)*pow(lambda0, 1/(GAMMA - 1)) /* f'(lambda) */
+      - eqvConstant*GAMMA/(GAMMA - 1)*pow(lambda0, 1/(GAMMA - 1)) /* f'(lambda) */
     )
 );
 
@@ -96,18 +95,18 @@ Info << "Newton:  Solving for lambda, Initial residual = " << lambda1;
 while (fabs(lambda1 - lambda0) > tolerance)
 {
     lambda0 = lambda1;
-    
+
     lambda1 =
     (
         lambda1
       - (
-            G - constant*pow(lambda1, GAMMA/(GAMMA - 1)) /* f(lambda) */
+            G - eqvConstant*pow(lambda1, GAMMA/(GAMMA - 1)) /* f(lambda) */
         )
        /(
-          - constant*GAMMA/(GAMMA - 1)*pow(lambda1, 1/(GAMMA - 1)) /* f'(lambda) */
+          - eqvConstant*GAMMA/(GAMMA - 1)*pow(lambda1, 1/(GAMMA - 1)) /* f'(lambda) */
         )
     );
-    
+
     counter++;
 }
 

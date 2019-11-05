@@ -23,26 +23,21 @@ License
     along with this repository. If not, see <http://www.gnu.org/licenses/>.
 
 File
-    T.C
+    rho.C
 
 Description
-    Set temperature BC using inlet velocity and gas dynamic functions with
+    Coordination density BC with pressure and temperature BCs using
     codedFixedValue BC type
 
 \*---------------------------------------------------------------------------*/
 
-#include "../constant/transportProperties.H"
-
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
-// Get velocity field U
-const fvPatchVectorField& U = patch().lookupPatchField<volVectorField, vector>("U");
-
-scalar criticalSqrVelocity = 2*GAMMA/(GAMMA - 1)*R*TStagn;
+// Get density & temperature fields
+const fvPatchScalarField& p = patch().lookupPatchField<volScalarField, scalar>("p");
+const fvPatchField& T = patch().lookupPatchField<volScalarField, scalar>("T");
 
 operator ==
 (
-    TStagn*( 1 - (GAMMA - 1)/(GAMMA + 1)*magSqr(U)/criticalSqrVelocity )
+    p/R/T
 );
 
 // ************************************************************************* //

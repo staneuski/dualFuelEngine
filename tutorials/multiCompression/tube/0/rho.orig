@@ -27,7 +27,10 @@ boundaryField
         redirectType    rho;
         code
         #{
-            #include "../../0/rho.C"
+            #include "../../constant/transportProperties.H" /* get variables */
+            #include "../../../../../solvers/utilities/codedFixedValueBC/rho.C"
+            
+            Info << "Calculated BC:  rho = " << p/R/T << endl;
         #};
     }
     
