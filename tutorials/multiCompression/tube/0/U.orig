@@ -23,20 +23,18 @@ boundaryField
     inlet
     {
         type            codedFixedValue;
-        value           uniform (0 150 0);
+        value           uniform (0 200 0);
         redirectType    U;
         code
         #{
             #include "../../constant/transportProperties.H" /* get variables */
             #include "../../../../../solvers/utilities/codedFixedValueBC/U.C"
-            
-            Info << "Calculated BC:  p = " << p << endl;
         #};
     }
 
     outlet
     {
-        type            slip;
+        type            zeroGradient;
     }
 
     walls

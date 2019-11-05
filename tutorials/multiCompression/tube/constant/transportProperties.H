@@ -15,9 +15,9 @@ Description
 
 #define R 287.3 /* [J/kg/K] gas constant */
 
-#define TStagn 400 /* [K] stagnation temperature */
+#define TStagn 300 /* [K] stagnation temperature */
 
-#define G 60/0.6 /* [kg/s/m^2] mass flow rate to area relation */
+#define G 168//60/0.6 /* [kg/s/m^2] mass flow rate to area relation */
 
 #define tolerance 1e-03 /* tolerance & initial residual */
 

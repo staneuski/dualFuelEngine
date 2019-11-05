@@ -29,8 +29,6 @@ boundaryField
         #{
             #include "../../constant/transportProperties.H" /* get variables */
             #include "../../../../../solvers/utilities/codedFixedValueBC/rho.C"
-            
-            Info << "Calculated BC:  rho = " << p/R/T << endl;
         #};
     }
     
