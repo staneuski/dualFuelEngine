@@ -17,7 +17,7 @@ FoamFile
 dimensions              [0 1 -1 0 0 0 0]; // [kg m s K kg-mol cd]
 
 internalField           uniform (0 0 0);
-    
+
 boundaryField
 {
     inlet
@@ -27,7 +27,8 @@ boundaryField
         redirectType    U;
         code
         #{
-            #include "../../constant/transportProperties.H" /* get variables */
+            vector directionU(0, 1, 0);
+            #include "../../constant/transportProperties.H"
             #include "../../../../../solvers/utilities/codedFixedValueBC/U.C"
         #};
     }

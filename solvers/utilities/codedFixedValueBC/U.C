@@ -122,7 +122,12 @@ Info << ", Final residual = " << lambda1
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 forAll(Cf, faceI)
 {
-    field[faceI] = vector(0, lambda1*criticalVelocity, 0);
+    field[faceI] = vector
+    (
+        lambda1*criticalVelocity*directionU.x(),
+        lambda1*criticalVelocity*directionU.y(),
+        lambda1*criticalVelocity*directionU.z()
+    );
 }
 
 // ************************************************************************* //
