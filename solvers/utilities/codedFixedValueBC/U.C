@@ -44,7 +44,10 @@ const vectorField& Cf = boundaryPatch.Cf(); // face centroid field
 vectorField& field = *this;
 
 //- Fields
-double p = patch().lookupPatchField<volScalarField, scalar>("p");
+double p = /* convert fvPatchScalarField p to double by averaging the field */
+gAverage(
+    patch().lookupPatchField<volScalarField, scalar>("p")
+);
 
 
 // Variables reinitialisation
