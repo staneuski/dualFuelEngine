@@ -35,6 +35,7 @@ extendedFeatureEdgeMesh/
 linux64GccDPInt32Opt/
 VTK/
 backups/
+postProcessing/
 
 
 # Definite files or folders
