@@ -30,6 +30,10 @@ boundaryField
             vector directionU(0, 1, 0);
             #include "../../constant/transportProperties.H"
             #include "../../../../../solvers/utilities/codedFixedValueBC/U.C"
+            
+            Info << "p = " << patch().lookupPatchField<volScalarField, scalar>("p")
+                 << "gAverage(p) = " << p
+                 << endl;
         #};
     }
 
