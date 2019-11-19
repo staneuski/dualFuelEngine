@@ -2,48 +2,23 @@
 # Lines that start with '#' are comments.
 
 # Files - anywhere
-# ~~~~~~~~~~~~~~~~
-*.gdoc
-*.log
 log.*
 *.gz
-.DS_Store
-cellLevel
-pointLevel
-
+cell*
+point*
 
 # Folders - anywhere
-# ~~~~~~~~~~~~~~~~~~
-*e-07/
-*e-06/
-*e-05/
 0.*/
-1*/
-2*/
-3*/
-4*/
-5*/
-6*/
-7*/
-8*/
-9*/
+[1-9]*/
+backups/
 dynamicCode/
 extendedFeatureEdgeMesh/
 polyMesh/
 triSurface/
-extendedFeatureEdgeMesh/
-linux64GccDPInt32Opt/
-VTK/
-backups/
 postProcessing/
+VTK/
+linux*Gcc*/
 
-
-# Definite files or folders
-# ~~~~~~~~~~~~~~~~~~~~~~~~~
-#- doc/
-doc/inspection/
-doc/references/
-
-#- tutorials/
+# Files - local
 tutorials/multiCompression/cylPiston/system/blockMeshDict
 tutorials/multiCompression/testFoam/system/blockMeshDict
