@@ -36,8 +36,10 @@ Comments
 \*---------------------------------------------------------------------------*/
 
 #include "fvCFD.H"
+#include "dynamicFvMesh.H" // DyM
 #include "simpleControl.H"
 #include "fvOptions.H"
+#include "motionSolver.H" // DyM
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
@@ -45,7 +47,7 @@ int main(int argc, char *argv[])
 {
 	#include "setRootCaseLists.H"
 	#include "createTime.H"
-	#include "createMesh.H"
+    #include "createDynamicFvMesh.H" // DyM
 
 	simpleControl simple(mesh);
 
@@ -58,6 +60,8 @@ int main(int argc, char *argv[])
 	while (simple.loop(runTime))
 	{
 		Info<< "Time = " << runTime.timeName() << nl << endl;
+		
+        mesh.update(); // DyM, do any mesh changes
 		
 		#include "CourantNo.H"
 		
@@ -77,7 +81,10 @@ int main(int argc, char *argv[])
 			
             // Because there isn't any equation for p relaxation is done
             // like that (per se this line as the same as pEqv.relax()):
-            p = 0.5*pPrev + 0.5*p;
+            p =
+            (
+                (1 - 0.5)*pPrev + 0.5*p
+            );
 			
 			fvVectorMatrix UEqn
 			(
