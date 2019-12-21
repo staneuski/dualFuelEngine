@@ -15,64 +15,56 @@ OpenFOAM solver based on phenomenological compression model for dual-fuel ship e
 # Usage
 ## Installation
 1. Set path to install and save it as OpenFOAM variable (optional, if OpenFOAM installed by default requires sudo)
-	```bash
-	FOAM_ADDITIONS="\$HOME/\$WM_PROJECT" # path to install (~/OpenFOAM by default)
-	sudo sed -i "s+# Convenience+# Convenience\nexport FOAM_ADDITIONS=$FOAM_ADDITIONS+g" $WM_PROJECT_DIR/etc/config.sh/settings
-	```
+    ```sh
+    mkdir -p $WM_PROJECT_USER_DIR/additions
+    FOAM_ADD=$WM_PROJECT_USER_DIR/additions # path to install (~/OpenFOAM by default)
+    sudo sed -i "s+# Convenience+# Convenience\nexport FOAM_ADD=$FOAM_ADD+g" $WM_PROJECT_DIR/etc/config.sh/settings
+    ```
 
 3. To compile with OpenFOAM v6 or higher
-	```bash
-	git clone https://github.com/StasF1/dualFuelEngine.git $FOAM_ADDITIONS/dualFuelEngine
-	$FOAM_ADDITIONS/dualFuelEngine/solvers/./Allwmake
-	```
-	
+    ```sh
+    git clone https://github.com/StasF1/dualFuelEngine.git $FOAM_ADD/dualFuelEngine
+    $FOAM_ADD/dualFuelEngine/solvers/./Allwmake
+    ```
+    
 4. To compile with OpenFOAM v5.x
-	```bash
-	git clone https://github.com/StasF1/dualFuelEngine.git $FOAM_ADDITIONS/dualFuelEngine
-	$FOAM_ADDITIONS/dualFuelEngine/etc/./v5x-compile
-	$FOAM_ADDITIONS/dualFuelEngine/solvers/./Allwmake
-	```
+    ```sh
+    git clone https://github.com/StasF1/dualFuelEngine.git $FOAM_ADD/dualFuelEngine
+    $FOAM_ADD/dualFuelEngine/etc/./v5x-compile
+    $FOAM_ADD/dualFuelEngine/solvers/./Allwmake
+    ```
 
 ## Running
-```bash
-wmake $FOAM_ADDITIONS/dualFuelEngine/tutorials/./Allclean && $FOAM_ADDITIONS/dualFuelEngine/tutorials/./Allrun
+```sh
+wmake $FOAM_ADD/dualFuelEngine/tutorials/./Allclean && $FOAM_ADD/dualFuelEngine/tutorials/./Allrun
 ```
 
 ### Re-wmake and rerun by cases
 - RiemannTube case
-    ```bash
-    wmake $FOAM_ADDITIONS/dualFuelEngine/solvers/multiCompression && $FOAM_ADDITIONS/dualFuelEngine/tutorials/multiCompression/RiemannTube/./Allclean && $FOAM_ADDITIONS/dualFuelEngine/tutorials/multiCompression/RiemannTube/./Allrun || cat $FOAM_ADDITIONS/dualFuelEngine/tutorials/multiCompression/RiemannTube/log.multiCompression
+    ```sh
+    wmake $FOAM_ADD/dualFuelEngine/solvers/multiCompression && $FOAM_ADD/dualFuelEngine/tutorials/multiCompression/RiemannTube/./Allclean && $FOAM_ADD/dualFuelEngine/tutorials/multiCompression/RiemannTube/./Allrun || cat $FOAM_ADD/dualFuelEngine/tutorials/multiCompression/RiemannTube/log.multiCompression
     ```
 - quadPiston case
-    ```bash
-    wmake $FOAM_ADDITIONS/dualFuelEngine/solvers/multiCompression && $FOAM_ADDITIONS/dualFuelEngine/tutorials/multiCompression/quadPiston/./Allclean && $FOAM_ADDITIONS/dualFuelEngine/tutorials/multiCompression/quadPiston/./Allrun || cat $FOAM_ADDITIONS/dualFuelEngine/tutorials/multiCompression/quadPiston/log.multiCompression
+    ```sh
+    wmake $FOAM_ADD/dualFuelEngine/solvers/multiCompression && $FOAM_ADD/dualFuelEngine/tutorials/multiCompression/quadPiston/./Allclean && $FOAM_ADD/dualFuelEngine/tutorials/multiCompression/quadPiston/./Allrun || cat $FOAM_ADD/dualFuelEngine/tutorials/multiCompression/quadPiston/log.multiCompression
     ```
 - cylPiston case
-    ```bash
-    wmake $FOAM_ADDITIONS/dualFuelEngine/solvers/multiCompression && $FOAM_ADDITIONS/dualFuelEngine/tutorials/multiCompression/cylPiston/./Allclean && $FOAM_ADDITIONS/dualFuelEngine/tutorials/multiCompression/cylPiston/./Allrun || cat $FOAM_ADDITIONS/dualFuelEngine/tutorials/multiCompression/cylPiston/log.multiCompression
+    ```sh
+    wmake $FOAM_ADD/dualFuelEngine/solvers/multiCompression && $FOAM_ADD/dualFuelEngine/tutorials/multiCompression/cylPiston/./Allclean && $FOAM_ADD/dualFuelEngine/tutorials/multiCompression/cylPiston/./Allrun || cat $FOAM_ADD/dualFuelEngine/tutorials/multiCompression/cylPiston/log.multiCompression
     ```
 
 # Structure
 ```gitignore
 dualFuelEngine-0.3-alpha
-├── doc
-│   └── images
-│       ├── cylPiston
-│       └── quadPiston
 ├── etc
 ├── solvers
 │   ├── multiCompression
-│   │   └── Make
-│   └── testFoam
-│       └── Make
+│   └── Make
 └── tutorials
-    ├── multiCompression
-    │   ├── RiemannTube
-    │   ├── cylPiston
-    │   ├── movingWallTube
-    │   ├── quadPiston
-    │   └── tube
-    └── testFoam
+    └── multiCompression
+        ├── RiemannTube
+        ├── cylPiston
         ├── movingWallTube
-        └── cylPiston
+        ├── quadPiston
+        └── tube
 ```
