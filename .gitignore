@@ -20,4 +20,4 @@ VTK/
 linux*Gcc*/
 
 # Files - local
-tutorials/multiCompression/cylPiston/system/blockMeshDict
+tutorials/**/cylPiston/system/blockMeshDict
