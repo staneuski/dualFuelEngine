@@ -134,10 +134,17 @@ vertices
 
     // Outer pipe
     // ~~~~~~~~~
+    //- Outer pipe upper
     /*32*/ vert(innerR,   0,      calc(S + outletH)) vlabel(pipe0Up)
     /*33*/ vert(0,       -innerR, calc(S + outletH)) vlabel(pipe1Up)
     /*34*/ vert(-innerR,  0,      calc(S + outletH)) vlabel(pipe2Up)
-    /*35*/ vert(0,        innerR, calc(S + outletH)) vlabel(pipe3Up) 
+    /*35*/ vert(0,        innerR, calc(S + outletH)) vlabel(pipe3Up)
+
+    //- Outer pipe lower = upper inner cylinder
+    /*36*/ vert(innerR,  0,      calc(S + chamfer)) vlabel(pipe0Down)
+    /*37*/ vert(0,      -innerR, calc(S + chamfer)) vlabel(pipe1Down)
+    /*38*/ vert(-innerR, 0,      calc(S + chamfer)) vlabel(pipe2Down)
+    /*39*/ vert(0,       innerR, calc(S + chamfer)) vlabel(pipe3Down)
 );
 
 blocks
@@ -334,19 +341,22 @@ boundary
             // 1st quarter of cylinder
             sideQuad(cylOut0, cylOut1)
             upQuad(cylIn0, cylOut0, cylOut1, cylIn1) // upper wall
-            // upQuad(cylIn0, cylIn1, pipe0, pipe1)
+            // upQuad(cylIn0, cylIn1, pipe0, pipe1) // outer pipe side
 
             // 2nd quarter of cylinder
             sideQuad(cylOut1, cylOut2)
             upQuad(cylIn1, cylOut1, cylOut2, cylIn2) // upper wall
+            // upQuad(cylIn1, cylIn2, pipe1, pipe2) // outer pipe side
 
             // 3rd quarter of cylinder
             sideQuad(cylOut2, cylOut3) 
             upQuad(cylIn2, cylOut2, cylOut3, cylIn3) // upper wall
+            // upQuad(cylIn2, cylIn3, pipe2, pipe3) // outer pipe side
 
             // 4th quarter of cylinder
             sideQuad(cylOut3, cylOut0)
             upQuad(cylIn3, cylOut3, cylOut0, cylIn0) // upper wall
+            // upQuad(cylIn3, cylIn0, pipe3, pipe0) // outer pipe side
         );
     }
 );
