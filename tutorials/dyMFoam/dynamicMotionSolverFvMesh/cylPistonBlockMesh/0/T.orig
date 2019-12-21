@@ -9,40 +9,37 @@ FoamFile
 {
     version     2.0;
     format      ascii;
-    class       dictionary;
-    location    "system";
-    object      controlDict;
+    class       volScalarField;
+    object      T;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-application          dyMFoam;
+dimensions              [0 0 0 1 0 0 0]; // K
 
-startFrom            startTime;
+internalField           uniform 293.15; //1400;
 
-startTime            0;
+boundaryField
+{
 
-stopAt               endTime;
+    // Inlet
+    outlet
+    {
+        type            fixedValue;
+        value           uniform 293.15;
+    }
 
-endTime              7e-02;
-
-deltaT               4e-05;
-
-writeControl         timeStep;
-
-writeInterval        20;
-
-purgeWrite           0;
-
-writeFormat          ascii;
-
-writePrecision       6;
-
-writeCompression     off;
-
-timeFormat           general;
-
-timePrecision        6;
-
-runTimeModifiable    true;
+    // Outlet
+    piston
+    {
+        type            fixedValue;
+        value           uniform 293.15;
+    }
+    
+    // Walls
+    ".*"
+    {
+        type            zeroGradient;
+    }
+}
 
 // ************************************************************************* //

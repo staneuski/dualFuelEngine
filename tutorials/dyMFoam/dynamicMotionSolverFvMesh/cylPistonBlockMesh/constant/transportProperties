@@ -2,7 +2,7 @@
   =========                 |
   \\      /  F ield         | OpenFOAM: Addition to OpenFOAM v6
    \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
-    \\  /    A nd           | Version:  0.4-alpha
+    \\  /    A nd           | Version:  0.3-alpha
      \\/     M anipulation  |
 \*---------------------------------------------------------------------------*/
 FoamFile
@@ -16,6 +16,10 @@ FoamFile
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 DT              DT [0 2 -1 0 0 0 0] 0.01; // m^2/s
+
+DAir            DAir [0 2 -1 0 0 0 0] 0.01; // m^2/s
+
+DGas            DGas [0 2 -1 0 0 0 0] 0.01; // m^2/s
 
 MU              MU [1 -1 -1 0 0 0 0] 1e-02;
 

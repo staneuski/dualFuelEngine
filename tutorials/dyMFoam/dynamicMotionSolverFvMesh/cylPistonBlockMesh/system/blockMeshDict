@@ -1,0 +1,364 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: Addition to OpenFOAM v6
+   \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
+    \\  /    A nd           | Version:  0.3-alpha
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      blockMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+// General m4 macros
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// ########################################################################## //
+// USER EDITABLE PART
+
+convertToMeters     0.01;
+
+ // cylinder bore
+
+ // piston stroke
+
+ // cylinder chamfer
+
+ // relative to S & D
+
+ // valve head thickness
+
+
+
+
+
+// END OF (NORMAL) USER EDITABLE PART
+// ########################################################################## //
+
+
+
+
+
+ // also valve head diameter
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+vertices
+(
+    // Cylinder
+    // ~~~~~~~~
+    //- Inner of piston
+    (17.5 0 0) // Vertex cylIn0Down = 0 
+    (0 -17.5 0) // Vertex cylIn1Down = 1 
+    (-17.5 0 0) // Vertex cylIn2Down = 2 
+    (0 17.5 0) // Vertex cylIn3Down = 3 
+
+    //- Outer of piston
+    (35 0 0) // Vertex cylOut0Down = 4 
+    (0 -35 0) // Vertex cylOut1Down = 5 
+    (-35 0 0) // Vertex cylOut2Down = 6 
+    (0 35 0) // Vertex cylOut3Down = 7 
+
+    //- Upper inner cylinder
+    (17.5 0 290) // Vertex cylIn0Up = 8 
+    (0 -17.5 290) // Vertex cylIn1Up = 9 
+    (-17.5 0 290) // Vertex cylIn2Up = 10 
+    (0 17.5 290) // Vertex cylIn3Up = 11 
+
+    //- Upper of cylinder
+    (35 0 280) // Vertex cylOut0Up = 12 
+    (0 -35 280) // Vertex cylOut1Up = 13 
+    (-35 0 280) // Vertex cylOut2Up = 14 
+    (0 35 280) // Vertex cylOut3Up = 15 
+
+
+    // Valve
+    // ~~~~~
+    //- Valve head bottom
+    (17.5 0 277.5) // Vertex valveHead0Down = 16 
+    (0 -17.5 277.5) // Vertex valveHead1Down = 17 
+    (-17.5 0 277.5) // Vertex valveHead2Down = 18 
+    (0 17.5 277.5) // Vertex valveHead3Down = 19 
+
+    //- Valve head upper
+    (17.5 0 282.5) // Vertex valveHead0Up = 20 
+    (0 -17.5 282.5) // Vertex valveHead1Up = 21 
+    (-17.5 0 282.5) // Vertex valveHead2Up = 22 
+    (0 17.5 282.5) // Vertex valveHead3Up = 23 
+
+    //- Valve stem lower
+    (5 0 290) // Vertex valveStem0Down = 24 
+    (0 -5 290) // Vertex valveStem1Down = 25 
+    (-5 0 290) // Vertex valveStem2Down = 26 
+    (0 5 290) // Vertex valveStem3Down = 27 
+
+    //- Valve stem upper
+    (5 0 360) // Vertex valveStem0Up = 28 
+    (0 -5 360) // Vertex valveStem1Up = 29 
+    (-5 0 360) // Vertex valveStem2Up = 30 
+    (0 5 360) // Vertex valveStem3Up = 31 
+
+
+    // Outer pipe
+    // ~~~~~~~~~
+    //- Outer pipe upper
+    (17.5 0 360) // Vertex pipe0Up = 32 
+    (0 -17.5 360) // Vertex pipe1Up = 33 
+    (-17.5 0 360) // Vertex pipe2Up = 34 
+    (0 17.5 360) // Vertex pipe3Up = 35 
+
+    //- Outer pipe lower = upper inner cylinder
+    (17.5 0 290) // Vertex pipe0Down = 36 
+    (0 -17.5 290) // Vertex pipe1Down = 37 
+    (-17.5 0 290) // Vertex pipe2Down = 38 
+    (0 17.5 290) // Vertex pipe3Down = 39 
+);
+
+blocks
+(
+    // Cylinder
+    // ~~~~~~~~
+    //- Inner cylinder block (8 9 10 11 0 1 2 3)
+    hex (16 17 18 19 0 1 2 3)
+    cylinder /*block 0*/
+    (7 7 56)
+    simpleGrading (1 1 1)
+
+    //- 1st quarter of cylinder (8 12 13 9 0 4 5 1)
+    hex (8 12 13 9 0 4 5 1)
+    cylinder /*block 1*/
+    (7 7 56)
+    simpleGrading (1 1 1)
+
+    //- 2nd quarter of cylinder (9 13 14 10 1 5 6 2)
+    hex (9 13 14 10 1 5 6 2)
+    cylinder /*block 2*/
+    (7 7 56)
+    simpleGrading (1 1 1)
+
+    //- 3rd quarter of cylinder (10 14 15 11 2 6 7 3)
+    hex (10 14 15 11 2 6 7 3)
+    cylinder /*block 3*/
+    (7 7 56)
+    simpleGrading (1 1 1)
+
+    //- 4th quarter of cylinder (11 15 12 8 3 7 4 0)
+    hex (11 15 12 8 3 7 4 0)
+    cylinder /*block 4*/
+    (7 7 56)
+    simpleGrading (1 1 1)
+
+
+    // Outer pipe
+    // ~~~~~~~~~~
+    //- 1st quarter of the (outer) pipe
+    hex (28 32 33 29 24 20 21 25)
+    pipe /*block 8*/
+    (7 7 20)
+    simpleGrading (1 1 1)
+
+    //- 2nd quarter of the (outer) pipe
+    hex (29 33 34 30 25 21 22 26)
+    pipe /*block 9*/
+    (7 7 20)
+    simpleGrading (1 1 1)
+
+    //- 3rd quarter of the (outer) pipe
+    hex (30 34 35 31 26 22 23 27)
+    pipe /*block 10*/
+    (7 7 20)
+    simpleGrading (1 1 1)
+
+    //- 4th quarter of the (outer) pipe
+    hex (31 35 32 28 27 23 20 24)
+    pipe /*block 11*/
+    (7 7 20)
+    simpleGrading (1 1 1)
+);
+
+edges
+(
+    // Cylinder
+    // ~~~~~~~~
+    //- Bottom of cylinder
+    arc 4 5 (24.7487373637399 -24.7487373637399 0)
+    arc 5 6 (-24.7487373637399 -24.7487373637399 0)
+    arc 6 7 (-24.7487373637399 24.7487373637399 0)
+    arc 7 4 (24.7487373637399 24.7487373637399 0)
+
+    //- Inner of piston (comment to make inner block as prism)
+    arc 0 1 (12.3743686818699 -12.3743686818699 0)
+    arc 1 2 (-12.3743686818699 -12.3743686818699 0)
+    arc 2 3 (-12.3743686818699 12.3743686818699 0)
+    arc 3 0 (12.3743686818699 12.3743686818699 0)
+
+    //- Upper of upper wall
+    arc 12 13 (24.7487373637399 -24.7487373637399 280)
+    arc 13 14 (-24.7487373637399 -24.7487373637399 280)
+    arc 14 15 (-24.7487373637399 24.7487373637399 280)
+    arc 15 12 (24.7487373637399 24.7487373637399 280)
+
+    //- Inner of upper wall (comment to make inner block as prism)
+    arc 8 9 (12.3743686818699 -12.3743686818699 290)
+    arc 9 10 (-12.3743686818699 -12.3743686818699 290)
+    arc 10 11 (-12.3743686818699 12.3743686818699 290)
+    arc 11 8 (12.3743686818699 12.3743686818699 290)
+
+
+    // Valve
+    // ~~~~~
+    //- Valve head bottom
+    arc 16 17 (12.3743686818699 -12.3743686818699 277.5)
+    arc 17 18 (-12.3743686818699 -12.3743686818699 277.5)
+    arc 18 19 (-12.3743686818699 12.3743686818699 277.5)
+    arc 19 16 (12.3743686818699 12.3743686818699 277.5)
+
+    //- Valve head upper
+    arc 20 21 (12.3743686818699 -12.3743686818699 282.5)
+    arc 21 22 (-12.3743686818699 -12.3743686818699 282.5)
+    arc 22 23 (-12.3743686818699 12.3743686818699 282.5)
+    arc 23 20 (12.3743686818699 12.3743686818699 282.5)
+
+    //- Valve stem lower
+    arc 24 25 (3.5355339091057 -3.5355339091057 290)
+    arc 25 26 (-3.5355339091057 -3.5355339091057 290)
+    arc 26 27 (-3.5355339091057 3.5355339091057 290)
+    arc 27 24 (3.5355339091057 3.5355339091057 290)
+
+    //- Valve fillet
+    arc 20 24 (8.66116522723576 0 286.338834772764)
+    arc 21 25 (0 -8.66116522723576 286.338834772764)
+    arc 22 26 (-8.66116522723576 0 286.338834772764)
+    arc 23 27 (0 8.66116522723576 286.338834772764)
+
+    //- Valve stem upper
+    arc 28 29 (3.5355339091057 -3.5355339091057 360)
+    arc 29 30 (-3.5355339091057 -3.5355339091057 360)
+    arc 30 31 (-3.5355339091057 3.5355339091057 360)
+    arc 31 28 (3.5355339091057 3.5355339091057 360)
+
+
+    // Outer pipe
+    // ~~~~~~~~~~
+    arc 32 33 (12.3743686818699 -12.3743686818699 360)
+    arc 33 34 (-12.3743686818699 -12.3743686818699 360)
+    arc 34 35 (-12.3743686818699 12.3743686818699 360)
+    arc 35 32 (12.3743686818699 12.3743686818699 360)
+);
+
+boundary
+(
+    piston
+    {
+        type wall;
+        faces
+        (
+            (0 1 3 2) // Piston inner
+
+            (0 4 1 5) // 1st quarter of piston
+            (1 5 2 6) // 2nd quarter of piston
+            (2 6 3 7) // 3rd quarter of piston
+            (3 7 0 4) // 4th quarter of piston
+        );
+    }
+
+    outlet
+    {
+        type patch;
+        faces
+        (
+            (28 32 29 33) // 1st quarter of outlet
+            (29 33 30 34) // 2nd quarter of outlet
+            (30 34 31 35) // 3rd quarter of outlet
+            (31 35 28 32) // 4th quarter of outlet
+        );
+    }
+
+    valve
+    {
+        type wall;
+        faces
+        (
+            (16 17 19 18) // valve head bottom
+
+            // 1st quarter of valve
+            // sideQuad(valveHead0, valveHead1)
+            (20 24 21 25)
+            (24 25 29 28)
+
+            // 2nd quarter of valve
+            (21 25 22 26)
+            (25 26 30 29)
+
+            // 3rd quarter of valve
+            (22 26 23 27)
+            (26 27 31 30)
+
+            // 4th quarter of valve
+            (23 27 20 24)
+            (27 24 28 31)
+        );
+    }
+
+    walls
+    {
+        type wall;
+        faces
+        (
+            // 1st quarter of cylinder
+            (4 5 13 12)
+            (8 12 9 13) // upper wall
+            // upQuad(cylIn0, cylIn1, pipe0, pipe1) // outer pipe side
+
+            // 2nd quarter of cylinder
+            (5 6 14 13)
+            (9 13 10 14) // upper wall
+            // upQuad(cylIn1, cylIn2, pipe1, pipe2) // outer pipe side
+
+            // 3rd quarter of cylinder
+            (6 7 15 14) 
+            (10 14 11 15) // upper wall
+            // upQuad(cylIn2, cylIn3, pipe2, pipe3) // outer pipe side
+
+            // 4th quarter of cylinder
+            (7 4 12 15)
+            (11 15 8 12) // upper wall
+            // upQuad(cylIn3, cylIn0, pipe3, pipe0) // outer pipe side
+        );
+    }
+);
+
+// ************************************************************************* //

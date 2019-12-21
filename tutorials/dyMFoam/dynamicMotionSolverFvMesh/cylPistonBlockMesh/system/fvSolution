@@ -2,7 +2,7 @@
   =========                 |
   \\      /  F ield         | OpenFOAM: Addition to OpenFOAM v6
    \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
-    \\  /    A nd           | Version:  0.4-alpha
+    \\  /    A nd           | Version:  0.3-alpha
      \\/     M anipulation  |
 \*---------------------------------------------------------------------------*/
 FoamFile
@@ -17,7 +17,7 @@ FoamFile
 
 solvers
 {
-    T
+    "alphaAir|alphaGas"
     {
         solver          PBiCGStab;
         preconditioner  DILU;
@@ -42,7 +42,17 @@ solvers
 
 SIMPLE
 {
-    nNonOrthogonalCorrectors 2;
+    nNonOrthogonalCorrectors 2; // recalсulation No
+}
+
+relaxationFactors
+{
+    equations
+    {
+        rho             1;
+        U               1;
+        e               1;
+    }
 }
 
 // ************************************************************************* //
