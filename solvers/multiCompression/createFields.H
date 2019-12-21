@@ -71,11 +71,11 @@ volScalarField alphaGas
 
 Info<< "Reading thermophysical properties" << endl;
 
-IOdictionary thermophysicalProperties
+IOdictionary transportProperties
 (
     IOobject
     (
-        "thermophysicalProperties",
+        "transportProperties",
         runTime.constant(),
         mesh,
         IOobject::MUST_READ_IF_MODIFIED,
@@ -87,49 +87,49 @@ Info<< "Reading diffusivity DT" << endl;
 
 dimensionedScalar DT
 (
-	thermophysicalProperties.lookup("DT")
+	transportProperties.lookup("DT")
 );
 
 Info<< "Reading DAir" << endl;
 
 dimensionedScalar DAir
 (
-    thermophysicalProperties.lookup("DAir")
+    transportProperties.lookup("DAir")
 );
 
 Info<< "Reading DGas" << endl;
 
 dimensionedScalar DGas
 (
-    thermophysicalProperties.lookup("DGas")
+    transportProperties.lookup("DGas")
 );
 
 Info<< "Reading dinamic viscosity" << endl;
 
 dimensionedScalar MU
 (
-	thermophysicalProperties.lookup("MU")
+	transportProperties.lookup("MU")
 );
 
 Info<< "Reading thermal conductivity" << endl;
 
 dimensionedScalar LAMBDA
 (
-	thermophysicalProperties.lookup("LAMBDA")
+	transportProperties.lookup("LAMBDA")
 );
 
 Info<< "Reading gas constant" << endl;
 
 dimensionedScalar R
 (
-	thermophysicalProperties.lookup("R")
+	transportProperties.lookup("R")
 );
 
 Info<< "Reading isobaric heat capacity\n" << endl;
 
 dimensionedScalar Cv
 (
-	thermophysicalProperties.lookup("Cv")
+	transportProperties.lookup("Cv")
 );
 
 Info<< "Calculate isochoric heat capacity\n" << endl;
