@@ -16,18 +16,18 @@ FoamFile
 
 surfaces
 (
-	"injectionXMinus.stl"
-	"injectionXPlus.stl"
-	"injectionYMinus.stl"
-	"injectionYPlus.stl"
-	"inletXMinus.stl"
-	"inletXPlus.stl"
-	"inletYMinus.stl"
-	"inletYPlus.stl"
-	"outlet.stl"
-	"valve.stl"
-	"piston.stl"
-	"walls.stl"
+    "injectionXMinus.stl"
+    "injectionXPlus.stl"
+    "injectionYMinus.stl"
+    "injectionYPlus.stl"
+    "inletXMinus.stl"
+    "inletXPlus.stl"
+    "inletYMinus.stl"
+    "inletYPlus.stl"
+    "outlet.stl"
+    "valve.stl"
+    "piston.stl"
+    "walls.stl"
 );
 
 #includeEtc "caseDicts/surface/surfaceFeaturesDict.cfg"
