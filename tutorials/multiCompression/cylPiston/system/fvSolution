@@ -42,17 +42,7 @@ solvers
 
 SIMPLE
 {
-    nNonOrthogonalCorrectors 2; // recalсulation No
-}
-
-relaxationFactors
-{
-    equations
-    {
-        rho             1;
-        U               1;
-        e               1;
-    }
+    nNonOrthogonalCorrectors 2;
 }
 
 // ************************************************************************* //

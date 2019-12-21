@@ -10,40 +10,22 @@ FoamFile
     version     2.0;
     format      ascii;
     class       dictionary;
-    location    "system";
-    object      controlDict;
+    location    "constant";
+    object      dynamicMeshDict;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-application          multiCompression;
+dynamicFvMesh    dynamicInkJetFvMesh;
 
-startFrom            startTime;
+motionSolverLibs ("libfvMotionSolvers.so");
 
-startTime            0;
+dynamicInkJetFvMeshCoeffs
+{
+    amplitude 0.8; // relative to size from the edge to reference plane
 
-stopAt               endTime;
+    frequency 500; // 1/2/0.001 = 500
 
-endTime              0.001;
-
-deltaT               1e-06;
-
-writeControl         timeStep;
-
-writeInterval        25; // 1e-05*25 = .000125
-
-purgeWrite           0;
-
-writeFormat          ascii;
-
-writePrecision       6;
-
-writeCompression     off;
-
-timeFormat           general;
-
-timePrecision        6;
-
-runTimeModifiable    true;
-
+    refPlaneX 0; // reference plane
+}
 
 // ************************************************************************* //
