@@ -1,0 +1,35 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: Addition to OpenFOAM v6
+   \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
+    \\  /    A nd           | Version:  0.3-alpha
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      surfaceFeaturesDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+surfaces
+(
+	"injectionXMinus.stl"
+	"injectionXPlus.stl"
+	"injectionYMinus.stl"
+	"injectionYPlus.stl"
+	"inletXMinus.stl"
+	"inletXPlus.stl"
+	"inletYMinus.stl"
+	"inletYPlus.stl"
+	"outlet.stl"
+	"valve.stl"
+	"piston.stl"
+	"walls.stl"
+);
+
+#includeEtc "caseDicts/surface/surfaceFeaturesDict.cfg"
+
+// ************************************************************************* //
