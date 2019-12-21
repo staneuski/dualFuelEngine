@@ -22,9 +22,9 @@ motionSolverLibs ("libfvMotionSolvers.so");
 dynamicInkJetFvMeshCoeffs
 {
     amplitude 0.65; // relative to size from the edge to reference plane
-    
+
     frequency 1; // 1/2/0.5
-    
+
     refPlaneX 0; // reference plane
 }
 
