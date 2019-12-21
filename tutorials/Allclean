@@ -1,13 +1,9 @@
 #!/bin/sh
 cd ${0%/*} || exit 1    # Run from this directory
 
-# testFoam
-testFoam/prism/./Allclean
-
 # multiCompression
 multiCompression/RiemannTube/./Allclean
 multiCompression/tube/./Allclean
-multiCompression/movingWallTube/./Allclean
 multiCompression/quadPiston/./Allclean
 multiCompression/cylPiston/./Allclean
 
