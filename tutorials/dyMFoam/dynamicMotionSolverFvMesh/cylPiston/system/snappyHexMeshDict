@@ -134,17 +134,17 @@ castellatedMeshControls
 
     locationInMesh (0 0 3.5);
 
-    nCellsBetweenLevels 3;
+    nCellsBetweenLevels 1;
 }
 
 
-snapControls
+snapControls /* off */
 {
-//  explicitFeatureSnap    true;
-//  implicitFeatureSnap    false;
+    // explicitFeatureSnap    true;
+    // implicitFeatureSnap    false;
 }
 
-addLayersControls
+addLayersControls /* off */
 {
     layers
     {
@@ -171,14 +171,14 @@ addLayersControls
     expansionRatio      1.2;
     finalLayerThickness 0.5;
     minThickness        1e-3;
-//  firstLayerThickness 0.01;
+    //  firstLayerThickness 0.01;
 
-//  maxThicknessToMedialRatio 0.6;
+// maxThicknessToMedialRatio 0.6;
 }
 
 writeFlags
 (
-//    scalarLevels
+    // scalarLevels
     layerSets
     layerFields
 );
