@@ -65,14 +65,8 @@ int main(int argc, char *argv[])
 
 		while (simple.correctNonOrthogonal())
 		{
-			fvScalarMatrix rhoEqn
-			(
-				fvm::ddt(rho)
-			  + fvc::div(phi)
-			);
 
-			rhoEqn.relax();
-			rhoEqn.solve();
+            #include "rhoEqn.H"
 
             // Because there isn't any equation for p, so under-relaxation is
             // done like that (per se this line is the same as pEqv.relax()):
