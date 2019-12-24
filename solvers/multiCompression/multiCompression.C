@@ -59,7 +59,7 @@ int main(int argc, char *argv[])
 	{
 		Info<< "Time = " << runTime.timeName() << nl << endl;
 
-		#include "CourantNo.H"
+        #include "compressibleCourantNo.H"
 
 		while (simple.correctNonOrthogonal())
 		{
