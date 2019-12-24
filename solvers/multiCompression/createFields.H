@@ -193,20 +193,7 @@ volScalarField p
 	pBCTypes
 );
 
-Info<< "Constructing field phi" << endl;
-
-surfaceScalarField phi
-(
-	IOobject
-	(
-		"phi",
-		runTime.timeName(),
-		mesh,
-		IOobject::NO_READ,
-		IOobject::AUTO_WRITE
-	),
-	fvc::flux(rho*U)
-);
+#include "compressibleCreatePhi.H"
 
 // Infer the pressure BCs from the velocity
 wordList eBCTypes
@@ -223,7 +210,7 @@ forAll(U.boundaryField(), patchi)
     }
 }
 
-Info<< "\nConstructing energy field e\n" << endl;
+Info<< "Constructing energy field e\n" << endl;
 
 volScalarField e
 (
