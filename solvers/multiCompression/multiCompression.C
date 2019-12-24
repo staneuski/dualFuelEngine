@@ -63,7 +63,6 @@ int main(int argc, char *argv[])
 
 		while (simple.correctNonOrthogonal())
 		{
-
             #include "rhoEqn.H"
 
             // Explicitly relax pressure for UEqn
@@ -112,7 +111,10 @@ int main(int argc, char *argv[])
                /Cv
             );
 
-			p = rho*R*T;
+            p =
+            (
+                rho*R*T
+            );
 			
 			fvScalarMatrix alphaAirEqn
 			(
