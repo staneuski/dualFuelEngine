@@ -52,20 +52,19 @@ int main(int argc, char *argv[])
 	#include "createFields.H"
 
 	// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-	
+
 	Info<< "\nStarting time loop\n" << endl;
-	
+
 	while (simple.loop(runTime))
 	{
 		Info<< "Time = " << runTime.timeName() << nl << endl;
-		
+
 		#include "CourantNo.H"
-		
+
         volScalarField pPrev(p);
-		
+
 		while (simple.correctNonOrthogonal())
 		{
-			
 			fvScalarMatrix rhoEqn
 			(
 				fvm::ddt(rho)
@@ -74,11 +73,14 @@ int main(int argc, char *argv[])
 
 			rhoEqn.relax();
 			rhoEqn.solve();
-			
-            // Because there isn't any equation for p relaxation is done
-            // like that (per se this line as the same as pEqv.relax()):
-            p = 0.5*pPrev + 0.5*p;
-			
+
+            // Because there isn't any equation for p, so under-relaxation is
+            // done like that (per se this line is the same as pEqv.relax()):
+            p =
+            (
+                p + 0.5*(p - pPrev)
+            );
+
 			fvVectorMatrix UEqn
 			(
 				fvm::ddt(rho, U)
@@ -91,7 +93,7 @@ int main(int argc, char *argv[])
 				)
 			  + MU*fvc::laplacian(U)
 			);
-			
+
 			UEqn.relax();
 			UEqn.solve();
 			
@@ -102,17 +104,26 @@ int main(int argc, char *argv[])
 			 ==
 			  - fvc::div(p*U)
 			  + fvc::div(LAMBDA*fvc::grad(T))
-			  + ( U & (MU*fvc::laplacian(U) + fvc::grad(MU/3*fvc::div(U))) )
-			  //TODO Add MU*D
+              + (
+                     U & (
+                            MU*fvc::laplacian(U)
+                          + fvc::grad(MU/3*fvc::div(U))
+                         )
+                )
+              // + MU*D TODO
 			);
 
 			eEqn.relax();
 			eEqn.solve();
 			
 			phi = fvc::flux(rho*U);
-		
-			T = (e - magSqr(U)/2)/Cv;
-			
+
+            T =
+            (
+                (e - magSqr(U)/2)
+               /Cv
+            );
+
 			pPrev = p;
 			p = rho*R*T;
 			
@@ -127,7 +138,7 @@ int main(int argc, char *argv[])
 			fvOptions.constrain(alphaAirEqn);
 			alphaAirEqn.solve();
             // fvOptions.correct(alphaAir);
-			
+
 			fvScalarMatrix alphaGasEqn
 			(
 				fvm::ddt(rho, alphaGas)
