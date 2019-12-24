@@ -61,19 +61,13 @@ int main(int argc, char *argv[])
 
 		#include "CourantNo.H"
 
-        volScalarField pPrev(p);
-
 		while (simple.correctNonOrthogonal())
 		{
 
             #include "rhoEqn.H"
 
-            // Because there isn't any equation for p, so under-relaxation is
-            // done like that (per se this line is the same as pEqv.relax()):
-            p =
-            (
-                p + 0.5*(p - pPrev)
-            );
+            // Explicitly relax pressure for UEqn
+            p.relax();
 
 			fvVectorMatrix UEqn
 			(
@@ -118,7 +112,6 @@ int main(int argc, char *argv[])
                /Cv
             );
 
-			pPrev = p;
 			p = rho*R*T;
 			
 			fvScalarMatrix alphaAirEqn
@@ -128,10 +121,9 @@ int main(int argc, char *argv[])
 			  - fvc::laplacian(DAir, rho*alphaAir)
 			);
 
-            // alphaAirEqn.relax(); //FIXME What are these lines (126 & 129) mean?
 			fvOptions.constrain(alphaAirEqn);
 			alphaAirEqn.solve();
-            // fvOptions.correct(alphaAir);
+            // fvOptions.correct(alphaAir); //FIXME What does this line mean
 
 			fvScalarMatrix alphaGasEqn
 			(
@@ -143,9 +135,9 @@ int main(int argc, char *argv[])
 			fvOptions.constrain(alphaGasEqn);
 			alphaGasEqn.solve();
 		}
-		
+
 		alphaExh = dimensionedScalar("1", dimless, 1) - alphaGas - alphaAir;
-		
+
 		runTime.write();
 
 		Info<< "ExecutionTime = " << runTime.elapsedCpuTime() << " s"

@@ -47,6 +47,10 @@ SIMPLE
 
 relaxationFactors
 {
+    fields
+    {
+        p               0.5;
+    }
     equations
     {
         rho             1;
