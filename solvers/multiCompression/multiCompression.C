@@ -121,9 +121,7 @@ int main(int argc, char *argv[])
 			  - fvc::laplacian(DAir, rho*alphaAir)
 			);
 
-			fvOptions.constrain(alphaAirEqn);
 			alphaAirEqn.solve();
-            // fvOptions.correct(alphaAir); //FIXME What does this line mean
 
 			fvScalarMatrix alphaGasEqn
 			(
@@ -132,7 +130,6 @@ int main(int argc, char *argv[])
 			  - fvc::laplacian(DAir, rho*alphaGas)
 			);
 
-			fvOptions.constrain(alphaGasEqn);
 			alphaGasEqn.solve();
 		}
 
