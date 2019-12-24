@@ -112,7 +112,10 @@ int main(int argc, char *argv[])
                /Cv
             );
 
-			p = rho*R*T;
+            p =
+            (
+                rho*R*T
+            );
 			
 			fvScalarMatrix alphaAirEqn
 			(
