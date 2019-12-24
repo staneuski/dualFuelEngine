@@ -127,7 +127,7 @@ int main(int argc, char *argv[])
 			(
 				fvm::ddt(rho, alphaGas)
 			  + fvm::div(phi, alphaGas)
-			  - fvc::laplacian(DAir, rho*alphaGas)
+			  - fvc::laplacian(DGas, rho*alphaGas)
 			);
 
 			alphaGasEqn.solve();
