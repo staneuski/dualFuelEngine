@@ -19,12 +19,12 @@ convertToMeters 1;
 vertices
 (
     /*00*/ (0.5   0   0)
-    /*01*/ (1   0   0)
-    /*02*/ (1 0.4   0)
+    /*01*/ (  1   0   0)
+    /*02*/ (  1 0.4   0)
     /*03*/ (0.5 0.4   0)
     /*04*/ (0.5   0 0.1)
-    /*05*/ (1   0 0.1)
-    /*06*/ (1 0.4 0.1)
+    /*05*/ (  1   0 0.1)
+    /*06*/ (  1 0.4 0.1)
     /*07*/ (0.5 0.4 0.1)
 
     /*08*/ (1   0   0)
@@ -39,7 +39,7 @@ vertices
 
 blocks
 (
-   hex (0 1  2  3  4  5  6  7) (20 20 1) simpleGrading (1 1 1)
+   hex (0 1  2  3  4  5  6  7) (10 10 1) simpleGrading (1 1 1)
    hex (8 9 10 11 12 13 14 15) (30 50 1) simpleGrading (1 1 1)
 );
 
@@ -49,6 +49,16 @@ edges
 
 boundary
 (
+    /* Inlet channel block
+          6------7
+         /|     /|
+        3------2 |
+        | |    | |
+        | 4----|-5
+        |/     |/
+        0------1
+    */
+    
     inlet
     {
         type patch;
@@ -57,7 +67,77 @@ boundary
             (0 4 7 3)
         );
     }
+    channelFront
+    {
+        type wall; // wedge;
+        faces
+        (
+            (0 1 2 3)
+        );
+    }
+    channelBack
+    {
+        type wall; // wedge;
+        faces
+        (
+            (4 5 6 7)
+        );
+    }
+    channelTopAndBottom
+    {
+        type wall;
+        faces
+        (
+            (0 1 4 5)
+            (3 2 6 7)
+        );
+    }
+
+
+    /* Piston block
+         15------14
+         /|     /|
+       11------10|
+        | |    | |
+        | |    | |
+        | |    | |
+        |12----|-13
+        |/     |/
+        8------9
+    */
     outlet
+    {
+        type patch;
+        faces
+        (
+            (11 15 14 10)
+        );
+    }
+    piston
+    {
+        type wall;
+        faces
+        (
+            (9 13 12 8)
+        );
+    }
+    cylFront
+    {
+        type wall; // wedge;
+        faces
+        (
+            (8 9 10 11)
+        );
+    }
+    cylBack
+    {
+        type wall; // wedge;
+        faces
+        (
+            (12 13 14 15)
+        );
+    }
+    axis
     {
         type patch;
         faces
@@ -65,25 +145,10 @@ boundary
             (10 14 13 9)
         );
     }
-    movingWalls
-    {
-        type wall;
-        faces
-        (
-            (3 7 6 2)
-            (1 5 4 0)
-        );
-    }
-    fixedWalls
-    {
-        type wall;
-        faces
-        (
-            (11 15 14 10)
-            (9 13 12 8)
-        );
-    }
-    couple1
+
+
+    // ACMIs
+    couple1 /* inlet channel */
     {
         type patch;
         faces
@@ -91,7 +156,7 @@ boundary
             (2 6 5 1)
         );
     }
-    couple2
+    couple2  /* cylinder */
     {
         type patch;
         faces
