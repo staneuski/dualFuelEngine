@@ -20,13 +20,13 @@ internalField   uniform 0;
 
 boundaryField
 {
-    "(inlet|outlet|channelFront|channelBack|channelTopAndBottom|ACMI1_blockage|ACMI1_couple|ACMI2_couple|ACMI2_blockage)"
+    "(inlet|outlet|channelFront|channelBack|channelTopAndBottom)"
     {
         type            uniformFixedValue;
         uniformValue    constant 0;
     }
 
-    "(piston|cylFront|cylBack|axis)"
+    "(cylFront|cylBack|axis|ACMI1_couple|ACMI1_blockage|ACMI2_couple|ACMI2_blockage)"
     {
         type            slip;
     }
