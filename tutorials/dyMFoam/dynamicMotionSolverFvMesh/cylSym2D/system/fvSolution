@@ -16,67 +16,38 @@ FoamFile
 
 solvers
 {
-    "pcorr.*"
+    "alphaAir|alphaGas"
+    {
+        solver          PBiCGStab;
+        preconditioner  DILU;
+        tolerance       1e-06;
+        relTol          0;
+    }
+	"rho|U"
     {
         solver          GAMG;
-        tolerance       1e-2;
-        relTol          0;
-        smoother        GaussSeidel;
-        cacheAgglomeration no;
-        maxIter         50;
-    }
-
-    p
-    {
-        $pcorr;
-        tolerance       1e-5;
+        smoother        DIC;
+        tolerance       1e-06;
         relTol          0.01;
     }
-
-    pFinal
+	e
     {
-        $p;
-        tolerance       1e-6;
+        solver          GAMG;
+        smoother        DILU;
+        tolerance       1e-06;
+        relTol          0.01;
+    }
+    cellMotionUy
+    {
+        solver          PCG;
+        preconditioner  DIC;
+        tolerance       1e-08;
         relTol          0;
     }
-
-    "(U|k|epsilon)"
-    {
-        solver          smoothSolver;
-        smoother        symGaussSeidel;
-        tolerance       1e-6;
-        relTol          0.1;
-    }
-
-    "(U|k|epsilon)Final"
-    {
-        $U;
-        tolerance       1e-6;
-        relTol          0;
-    }
-}
-
-PIMPLE
-{
-    correctPhi          no;
-    nOuterCorrectors    1;
-    nCorrectors         2;
-    nNonOrthogonalCorrectors 0;
 }
 
 SIMPLE
 {
-    nNonOrthogonalCorrectors 2;
-}
-
-relaxationFactors
-{
-//    "(U|k|epsilon).*"   1;
-}
-
-cache
-{
-    grad(U);
 }
 
 // ************************************************************************* //

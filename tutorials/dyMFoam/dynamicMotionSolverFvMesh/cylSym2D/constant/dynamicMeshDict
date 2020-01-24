@@ -1,8 +1,8 @@
 /*--------------------------------*- C++ -*----------------------------------*\
   =========                 |
-  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
-   \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Version:  dev
+  \\      /  F ield         | OpenFOAM: Addition to OpenFOAM v6
+   \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
+    \\  /    A nd           | Version:  0.3-alpha
      \\/     M anipulation  |
 \*---------------------------------------------------------------------------*/
 FoamFile
@@ -19,14 +19,14 @@ dynamicFvMesh   dynamicMotionSolverFvMesh;
 
 motionSolverLibs ("libfvMotionSolvers.so");
 
-motionSolver    solidBody;
+motionSolver    velocityComponentLaplacian;
 
 cellZone        inletChannel;
 
-solidBodyMotionFunction  oscillatingLinearMotion;
-
-amplitude       (0 0.5 0);
-omega           31.4; // rad/s  (.5 rps)
-
+velocityComponentLaplacianCoeffs
+{
+    component       y;
+    diffusivity     uniform;
+}
 
 // ************************************************************************* //
