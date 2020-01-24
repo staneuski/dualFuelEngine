@@ -1,0 +1,42 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  6
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       pointScalarField;
+    object      pointMotionU;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 1 -1 0 0 0 0];
+
+internalField   uniform 0;
+
+boundaryField
+{
+    // "inlet|channel*|ACMI1*"
+    "inlet|channelFront|channelBack|channelTopAndBottom|ACMI1_blockage|ACMI1_couple"
+    {
+        type            uniformFixedValue;
+        uniformValue    constant 0;
+    }
+
+    "piston|cylFront|cylBack|axis|ACMI2_blockage|ACMI2_couple"
+    {
+        type            slip;
+    }
+
+    outlet
+    {
+        type            uniformFixedValue;
+        uniformValue    constant 0.5;
+    }
+}
+
+// ************************************************************************* //
