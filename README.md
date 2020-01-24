@@ -58,13 +58,22 @@ wmake $FOAM_ADD/dualFuelEngine/tutorials/./Allclean && $FOAM_ADD/dualFuelEngine/
 dualFuelEngine-0.3-alpha
 ├── etc
 ├── solvers
-│   ├── multiCompression
-│   └── Make
+│   ├── dyMFoam
+│   ├── multiCompression
+│   └── utilities
 └── tutorials
+    ├── dyMFoam
+    │   ├── dynamicInkJetFvMesh
+    │   │   ├── cylPiston
+    │   │   ├── quadPiston
+    │   │   └── tube
+    │   └── dynamicMotionSolverFvMesh
+    │       ├── cylPiston
+    │       ├── cylPistonBlockMesh
+    │       └── tube
     └── multiCompression
         ├── RiemannTube
         ├── cylPiston
-        ├── movingWallTube
         ├── quadPiston
         └── tube
 ```
