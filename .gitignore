@@ -4,8 +4,7 @@
 # Files - anywhere
 log.*
 *.gz
-cell*
-point*
+[cell,point]*Level
 
 # Folders - anywhere
 0.*/
