@@ -24,14 +24,14 @@ solvers
         tolerance       1e-06;
         relTol          0;
     }
-    "rho|U"
+	"rho|U"
     {
         solver          GAMG;
         smoother        DIC;
         tolerance       1e-06;
         relTol          0.01;
     }
-    e
+	e
     {
         solver          GAMG;
         smoother        DILU;

@@ -21,7 +21,12 @@ motionSolverLibs ("libfvMotionSolvers.so");
 
 motionSolver    velocityComponentLaplacian;
 
-component       x;
-diffusivity     uniform;
+cellZone        inletChannel;
+
+velocityComponentLaplacianCoeffs
+{
+    component       x;
+    diffusivity     uniform;
+}
 
 // ************************************************************************* //
