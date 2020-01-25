@@ -13,16 +13,16 @@ boundaryField
     }
 
     // Patches //
-    "(inlet|channelTopAndBottom|outlet|cylTop|defaultFaces)"
+    "(inlet|inlet_topAndBottom|injection|injection_topAndBottom|outlet|cylTop|defaultFaces)"
     {
         type            uniformFixedValue;
         uniformValue    constant 0;
     }
-    "(cylFront|cylBack|axis)"
+    axis
     {
         type            slip;
     }
-    "(channelFront|channelBack|cylFront|cylBack)"
+    "(inlet_front|inlet_back|injection_front|injection_back|cylFront|cylBack)"
     {
         type            wedge;
     }
