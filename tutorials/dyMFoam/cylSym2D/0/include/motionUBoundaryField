@@ -1,11 +1,23 @@
 boundaryField
 {
+    piston
+    {
+        type            uniformFixedValue;
+        uniformValue 
+        { 
+            type        sine; 
+            frequency   1;
+            amplitude   10; // max piston speed
+            level       0;  // offset
+        }
+    }
+
+    // Patches //
     "(inlet|channelTopAndBottom|outlet|cylTop|defaultFaces)"
     {
         type            uniformFixedValue;
         uniformValue    constant 0;
     }
-
     "(cylFront|cylBack|axis)"
     {
         type            slip;
@@ -13,12 +25,6 @@ boundaryField
     "(channelFront|channelBack|cylFront|cylBack)"
     {
         type            wedge;
-    }
-
-    piston
-    {
-        type            uniformFixedValue;
-        uniformValue    constant 6;
     }
 
     // Fixed ACMIs //
