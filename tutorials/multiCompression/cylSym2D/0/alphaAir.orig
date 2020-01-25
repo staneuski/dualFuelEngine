@@ -10,43 +10,47 @@ FoamFile
     version     2.0;
     format      ascii;
     class       volScalarField;
-    object      rho;
+    object      alphaAir;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions              [1 -3 0 0 0 0 0]; // kg/m^3
+dimensions      [0 0 0 0 0 0 0];
 
-internalField           uniform 1.160; // 1.160*287.3*293.15 = 97697.5142
+internalField   uniform 0;
 
 boundaryField
 {
-    // Injection
-    "injectionXMinus|injectionXPlus|injectionYMinus|injectionYPlus"
+    injection
     {
-        type            codedFixedValue;
-        value           uniform 1.508; // 25e04/287.3/380 = 2.28992250902229468554
-        redirectType    rho;
-        code
-        #{
-            #include "../../constant/transportProperties.H"
-            #include "../../../../../solvers/utilities/codedFixedValueBC/rho.C"
-        #};
+        type            zeroGradient;
     }
-    
-    // Inlet
-    "inletXMinus|inletXPlus|inletYMinus|inletYPlus"
+    inlet
     {
-        $injectionXMinus
+        type            fixedValue;
+        value           uniform 1;
     }
-    
-    // Outlet
     outlet
     {
         type            zeroGradient;
     }
-    
-    // Walls
-    "piston|valve|walls"
+    piston
+    {
+        type            zeroGradient;
+    }
+    "(cyl|injection|inlet)_(front|back)"
+    {   /* Sides */
+        type            zeroGradient; // wedge;
+    }
+    "cyl_top|(injection|inlet)_topAndBottom"
+    {   
+        type            zeroGradient;
+    }
+    "ACMI(1|2)_couple"
+    {
+        type            cyclicACMI;
+        value           uniform 0;
+    }
+    "ACMI(1|2)_blockage"
     {
         type            zeroGradient;
     }

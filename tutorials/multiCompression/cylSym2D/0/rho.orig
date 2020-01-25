@@ -20,33 +20,37 @@ internalField           uniform 1.160; // 1.160*287.3*293.15 = 97697.5142
 
 boundaryField
 {
-    // Injection
-    "injectionXMinus|injectionXPlus|injectionYMinus|injectionYPlus"
+    injection
     {
-        type            codedFixedValue;
+        type            fixedValue;
         value           uniform 1.508; // 25e04/287.3/380 = 2.28992250902229468554
-        redirectType    rho;
-        code
-        #{
-            #include "../../constant/transportProperties.H"
-            #include "../../../../../solvers/utilities/codedFixedValueBC/rho.C"
-        #};
     }
-    
-    // Inlet
-    "inletXMinus|inletXPlus|inletYMinus|inletYPlus"
+    inlet
     {
-        $injectionXMinus
+        $injection
     }
-    
-    // Outlet
     outlet
     {
         type            zeroGradient;
     }
-    
-    // Walls
-    "piston|valve|walls"
+    piston
+    {
+        type            zeroGradient;
+    }
+    "(cyl|injection|inlet)_(front|back)"
+    {   /* Sides */
+        type            zeroGradient; // wedge;
+    }
+    "cyl_top|(injection|inlet)_topAndBottom"
+    {   /* Other walls */
+        type            zeroGradient;
+    }
+    "ACMI(1|2)_couple"
+    {
+        type            cyclicACMI;
+        value           uniform 0;
+    }
+    "ACMI(1|2)_blockage"
     {
         type            zeroGradient;
     }

@@ -54,38 +54,24 @@ int main(int argc, char *argv[])
 	#include "createFields.H"
 
 	// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-	
+
 	Info<< "\nStarting time loop\n" << endl;
-	
+
 	while (simple.loop(runTime))
 	{
 		Info<< "Time = " << runTime.timeName() << nl << endl;
 		
         mesh.update(); // DyM, do any mesh changes
-		
-		#include "CourantNo.H"
-		
-        volScalarField pPrev(p);
-		
+
+        #include "compressibleCourantNo.H"
+
 		while (simple.correctNonOrthogonal())
 		{
-			
-			fvScalarMatrix rhoEqn
-			(
-				fvm::ddt(rho)
-			  + fvc::div(phi)
-			);
+            #include "rhoEqn.H"
 
-			rhoEqn.relax();
-			rhoEqn.solve();
-			
-            // Because there isn't any equation for p relaxation is done
-            // like that (per se this line as the same as pEqv.relax()):
-            p =
-            (
-                (1 - 0.5)*pPrev + 0.5*p
-            );
-			
+            // Explicitly relax pressure for UEqn
+            p.relax();
+
 			fvVectorMatrix UEqn
 			(
 				fvm::ddt(rho, U)
@@ -98,7 +84,7 @@ int main(int argc, char *argv[])
 				)
 			  + MU*fvc::laplacian(U)
 			);
-			
+
 			UEqn.relax();
 			UEqn.solve();
 			
@@ -109,19 +95,30 @@ int main(int argc, char *argv[])
 			 ==
 			  - fvc::div(p*U)
 			  + fvc::div(LAMBDA*fvc::grad(T))
-			  + ( U & (MU*fvc::laplacian(U) + fvc::grad(MU/3*fvc::div(U))) )
-			  //TODO Add MU*D
+              + (
+                     U & (
+                            MU*fvc::laplacian(U)
+                          + fvc::grad(MU/3*fvc::div(U))
+                         )
+                )
+              // + MU*D TODO
 			);
 
 			eEqn.relax();
 			eEqn.solve();
 			
 			phi = fvc::flux(rho*U);
-		
-			T = (e - magSqr(U)/2)/Cv;
-			
-			pPrev = p;
-			p = rho*R*T;
+
+            T =
+            (
+                (e - magSqr(U)/2)
+               /Cv
+            );
+
+            p =
+            (
+                rho*R*T
+            );
 			
 			fvScalarMatrix alphaAirEqn
 			(
@@ -130,24 +127,20 @@ int main(int argc, char *argv[])
 			  - fvc::laplacian(DAir, rho*alphaAir)
 			);
 
-            // alphaAirEqn.relax(); //FIXME What are these lines (126 & 129) mean?
-			fvOptions.constrain(alphaAirEqn);
 			alphaAirEqn.solve();
-            // fvOptions.correct(alphaAir);
-			
+
 			fvScalarMatrix alphaGasEqn
 			(
 				fvm::ddt(rho, alphaGas)
 			  + fvm::div(phi, alphaGas)
-			  - fvc::laplacian(DAir, rho*alphaGas)
+			  - fvc::laplacian(DGas, rho*alphaGas)
 			);
 
-			fvOptions.constrain(alphaGasEqn);
 			alphaGasEqn.solve();
 		}
-		
+
 		alphaExh = dimensionedScalar("1", dimless, 1) - alphaGas - alphaAir;
-		
+
 		runTime.write();
 
 		Info<< "ExecutionTime = " << runTime.elapsedCpuTime() << " s"

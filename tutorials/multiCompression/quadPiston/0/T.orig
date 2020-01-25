@@ -14,76 +14,39 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      		[0 0 0 1 0 0 0]; // K
+dimensions              [0 0 0 1 0 0 0]; // K
 
-internalField   		uniform 293.15; //1400;
+internalField           uniform 293.15; //1400;
 
 boundaryField
 {
     // Injection
-	"injectionXMinus|injectionXPlus|injectionYMinus|injectionYPlus"
+    "injectionXMinus|injectionXPlus|injectionYMinus|injectionYPlus"
     {
-        // type            fixedValue;
-		type            codedFixedValue;
-		value        	uniform 293.15; //380;
-		redirectType	TBCsCoordination;
-		code
-		#{
-			// Stagnation temperature
-			scalar TStagn = 292.5; //380;
-
-			// Set gas constants from the thermophysicalProperties
-			scalar R = 287.3;
-			scalar GAMMA = 1.4;
-
-			// Get velocity field U
-			const fvPatchVectorField& U = patch().lookupPatchField<volVectorField, vector>("U");
-
-			scalar criticalSqrVelocity = 2*GAMMA/(GAMMA - 1)*R*TStagn;
-			
-			operator ==
-			(
-				TStagn*( 1 - (GAMMA - 1)/(GAMMA + 1)*magSqr(U)/criticalSqrVelocity )
-			);
-		#};
+        type            codedFixedValue;
+        value           uniform 293.15; //380;
+        redirectType    T;
+        code
+        #{
+            #include "../../constant/transportProperties.H"
+            #include "../../../../../solvers/utilities/codedFixedValueBC/T.C"
+        #};
     }
 
-	// Inlet
-	"inletXMinus|inletXPlus|inletYMinus|inletYPlus"
+    // Inlet
+    "inletXMinus|inletXPlus|inletYMinus|inletYPlus"
     {
-        // type            fixedValue;
-		type            codedFixedValue;
-		value 	        uniform 293.15; //380;
-		redirectType	TBCsCoordination;
-		code
-		#{
-			// Stagnation temperature
-			scalar TStagn = 292.5; //380;
-
-			// Set gas constants from the thermophysicalProperties
-			scalar R = 287.3;
-			scalar GAMMA = 1.4;
-
-			// Get velocity field U
-			const fvPatchVectorField& U = patch().lookupPatchField<volVectorField, vector>("U");
-
-			scalar criticalSqrVelocity = 2*GAMMA/(GAMMA - 1)*R*TStagn;
-			
-			operator ==
-			(
-				TStagn*( 1 - (GAMMA - 1)/(GAMMA + 1)*magSqr(U)/criticalSqrVelocity )
-			);
-		#};
+        $injectionXMinus
     }
 
-	// Outlet
+    // Outlet
     outlet
     {
-		type            fixedValue;
-		value 	        uniform 293.15;
+        type            fixedValue;
+        value           uniform 293.15;
     }
-	
-	// Walls
+    
+    // Walls
     "piston|valve|walls"
     {
         type            zeroGradient;

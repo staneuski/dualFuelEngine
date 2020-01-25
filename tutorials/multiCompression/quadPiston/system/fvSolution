@@ -17,26 +17,25 @@ FoamFile
 
 solvers
 {
-    "alphaAir|alphaGas"
+    "(rho|U)"
     {
-        solver          PBiCGStab;
-        preconditioner  DILU;
-        tolerance       1e-06;
-        relTol          0;
+        solver          diagonal;
     }
-    "rho|U"
-    {
-        solver          GAMG;
-        smoother        DIC;
-        tolerance       1e-06;
-        relTol          0.01;
-    }
+
     e
     {
         solver          GAMG;
         smoother        DILU;
         tolerance       1e-06;
         relTol          0.01;
+    }
+
+    "(alphaAir|alphaGas)"
+    {
+        solver          PBiCGStab;
+        preconditioner  DILU;
+        tolerance       1e-06;
+        relTol          0;
     }
 }
 
@@ -47,9 +46,12 @@ SIMPLE
 
 relaxationFactors
 {
+    fields
+    {
+        p               0.5;
+    }
     equations
     {
-        rho             1;
         U               1;
         e               1;
     }

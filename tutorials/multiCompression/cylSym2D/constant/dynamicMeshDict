@@ -10,51 +10,21 @@ FoamFile
     version     2.0;
     format      ascii;
     class       dictionary;
-    location    "system";
-    object      fvSolution;
+    location    "constant";
+    object      dynamicMeshDict;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-solvers
+dynamicFvMesh    dynamicMotionSolverFvMesh;
+
+motionSolverLibs ("libfvMotionSolvers.so");
+
+motionSolver     velocityComponentLaplacian;
+
+velocityComponentLaplacianCoeffs
 {
-    "(rho|U)"
-    {
-        solver          diagonal;
-    }
-
-    e
-    {
-        solver          GAMG;
-        smoother        DILU;
-        tolerance       1e-06;
-        relTol          0.01;
-    }
-
-    "(alphaAir|alphaGas)"
-    {
-        solver          PBiCGStab;
-        preconditioner  DILU;
-        tolerance       1e-06;
-        relTol          0;
-    }
-}
-
-SIMPLE
-{
-    nNonOrthogonalCorrectors 2;
-}
-
-relaxationFactors
-{
-    fields
-    {
-        p               0.5;
-    }
-    equations
-    {
-        U               1;
-        e               1;
-    }
+    component    z;
+    diffusivity  uniform;
 }
 
 // ************************************************************************* //
