@@ -15,65 +15,16 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-// dynamicFvMesh    dynamicMotionSolverFvMesh;
-//
-// motionSolverLibs ("libfvMotionSolvers.so");
-//
-// motionSolver     velocityComponentLaplacian;
-//
-// velocityComponentLaplacianCoeffs
-// {
-//     component    y;
-//     diffusivity  uniform;
-// }
-
-// ************************************************************************* //
-
-dynamicFvMesh   dynamicMotionSolverFvMesh;
+dynamicFvMesh    dynamicMotionSolverFvMesh;
 
 motionSolverLibs ("libfvMotionSolvers.so");
 
-motionSolver    displacementLaplacian;
+motionSolver     velocityComponentLaplacian;
 
-diffusivity     uniform;
-
-// ************************************************************************* //
-
-// dynamicFvMesh   dynamicMotionSolverFvMesh;
-//
-// motionSolverLibs ("libfvMotionSolvers.so");
-//
-// motionSolver    solidBody;
-//
-// solidBodyCoeffs
-// {
-//     cellZone        cylinder;
-//
-//     solidBodyMotionFunction  oscillatingLinearMotion;
-//
-//     amplitude       (0 1 0);
-//     omega           5; // rad/s  (.5 rps)
-// }
-
-// ************************************************************************* //
-
-// dynamicFvMesh   dynamicMotionSolverFvMesh;
-//
-// motionSolver    displacementLinearMotion;
-//
-// displacementLinearMotionCoeffs
-// {
-//
-//     cellZone        cylinder;
-//
-//     axis            (0 1 0);
-//     xFixed          6;
-//     xMoving         0;
-//     displacement    table
-//     (
-//         (0 0)
-//         (0.5 5)
-//     );
-// }
+velocityComponentLaplacianCoeffs
+{
+    component    y;
+    diffusivity  uniform;
+}
 
 // ************************************************************************* //
