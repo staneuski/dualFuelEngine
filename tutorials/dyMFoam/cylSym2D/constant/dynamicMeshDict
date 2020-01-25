@@ -23,7 +23,7 @@ motionSolver     velocityComponentLaplacian;
 
 velocityComponentLaplacianCoeffs
 {
-    component    y;
+    component    z;
     diffusivity  uniform;
 }
 

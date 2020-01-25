@@ -1,6 +1,6 @@
 boundaryField
 {
-    "(inlet|outlet|channelFront|channelBack|channelTopAndBottom)"
+    "(inlet|channelFront|channelBack|channelTopAndBottom|outlet|cylTop|defaultFaces)"
     {
         type            uniformFixedValue;
         uniformValue    constant 0;
@@ -14,7 +14,7 @@ boundaryField
     piston
     {
         type            uniformFixedValue;
-        uniformValue    constant 5;
+        uniformValue    constant 6;
     }
 
     // Fixed ACMIs //
