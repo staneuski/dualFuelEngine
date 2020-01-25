@@ -11,45 +11,43 @@ FoamFile
     format      ascii;
     class       dictionary;
     location    "system";
-    object      fvSolution;
+    object      fvSchemes;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-solvers
+ddtSchemes
 {
-    "alphaAir|alphaGas"
-    {
-        solver          PBiCGStab;
-        preconditioner  DILU;
-        tolerance       1e-06;
-        relTol          0;
-    }
-	"rho|U"
-    {
-        solver          GAMG;
-        smoother        DIC;
-        tolerance       1e-06;
-        relTol          0.01;
-    }
-	e
-    {
-        solver          GAMG;
-        smoother        DILU;
-        tolerance       1e-06;
-        relTol          0.01;
-    }
-    cellMotionUx
-    {
-        solver          PCG;
-        preconditioner  DIC;
-        tolerance       1e-08;
-        relTol          0;
-    }
+    default         Euler;
 }
 
-SIMPLE
+gradSchemes
 {
-    nNonOrthogonalCorrectors 0;
+    default         Gauss linear;
+	grad(p)			cellLimited Gauss linear 0.9; // UEqn
+}
+
+divSchemes
+{
+    default         Gauss cubic;
+	div(phi,U)      Gauss upwind; // UEqn
+	div(phi,e)      Gauss upwind; // eEqn
+	div(phi,alphaAir) Gauss upwind; // alphaAirEqn
+	div(phi,alphaGas) Gauss upwind; // alphaGasEqn
+}
+
+laplacianSchemes
+{
+    default         Gauss linear corrected;
+}
+
+interpolationSchemes
+{
+    default         cubic;
+}
+
+snGradSchemes
+{
+    default         corrected;
 }
 
 // ************************************************************************* //

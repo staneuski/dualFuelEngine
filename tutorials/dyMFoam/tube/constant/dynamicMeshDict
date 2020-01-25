@@ -15,18 +15,27 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
+// dynamicFvMesh   dynamicMotionSolverFvMesh;
+
+// motionSolverLibs ("libfvMotionSolvers.so");
+
+// motionSolver    velocityComponentLaplacian;
+
+// velocityComponentLaplacianCoeffs
+// {
+//     component       x;
+//     diffusivity     uniform;
+// }
+
+// ************************************************************************* //
+
 dynamicFvMesh   dynamicMotionSolverFvMesh;
 
 motionSolverLibs ("libfvMotionSolvers.so");
 
-motionSolver    velocityComponentLaplacian;
+motionSolver    displacementLaplacian;
 
-cellZone        inletChannel;
-
-velocityComponentLaplacianCoeffs
-{
-    component       x;
-    diffusivity     uniform;
-}
+diffusivity     uniform;
 
 // ************************************************************************* //
+
