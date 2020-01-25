@@ -39,11 +39,11 @@ vertices
     /*      19      16 */ (150 -3  -40)
     /*     /|\      17 */ (  0  0  -40)
     /*    / | \     18 */ (  0  0 3400)
-    /*   21---18    19 */ (150 -3 3400)
-    /*   |  | |     20 */ (150  3  -40)
-    /*   | 16 |     21 */ (150  3 3400)
-    /*   | / \|        */
-    /*   |/   |        */
+    /*   21----18   19 */ (150 -3 3400)
+    /*   |  |  |    20 */ (150  3  -40)
+    /*   | 16  |    21 */ (150  3 3400)
+    /*   | / \ |       */
+    /*   |/   \|       */
     /*   20---17       */
 
     /*   25------24 22 */ (400 -9 1480)
@@ -70,7 +70,7 @@ edges
 
 boundary
 (
-    // Inlet channel
+    // Inlet channel //
     inlet
     {
         type patch;
@@ -81,7 +81,7 @@ boundary
     }
     inlet_front
     {
-        type wedge;
+        type wedge; // wall;
         faces
         (
             (0 1 2 3)
@@ -89,7 +89,7 @@ boundary
     }
     inlet_back
     {
-        type wedge;
+        type wedge; // wall;
         faces
         (
             (4 5 6 7)
@@ -105,7 +105,7 @@ boundary
         );
     }
 
-    // Injection channel
+    // Injection channel //
     injection
     {
         type patch;
@@ -116,7 +116,7 @@ boundary
     }
     injection_front
     {
-        type wedge;
+        type wedge; // wall;
         faces
         (
             (22 23 24 25)
@@ -124,7 +124,7 @@ boundary
     }
     injection_back
     {
-        type wedge;
+        type wedge; // wall;
         faces
         (
             (26 27 28 29)
@@ -140,7 +140,7 @@ boundary
         );
     }
 
-    // Cylinder
+    // Cylinder //
     axis
     {
         type patch;
@@ -149,7 +149,7 @@ boundary
             (17 18 18 17)
         );
     }
-    cylTop
+    cyl_top
     {
         type patch;
         faces
@@ -174,18 +174,18 @@ boundary
             (16 20 17 17)
         );
     }
-    cylBack
+    cyl_back
     {
-        type wedge;
+        type wedge; // wall;
         faces
         (
             ( 8  9 10 11)
             (16 17 18 19)
         );
     }
-    cylFront
+    cyl_front
     {
-        type wedge;
+        type wedge; // wall;
         faces
         (
             (12 13 14 15)
@@ -193,8 +193,8 @@ boundary
         );
     }
 
-    // ACMI couple
-    couple1 /* inlet channel */
+    // ACMIs //
+    couple1 /* inlet & injection channel outlets */
     {
         type patch;
         faces
@@ -203,7 +203,7 @@ boundary
             (24 28 27 23)
         );
     }
-    couple2  /* cylinder */
+    couple2  /* cylinder inlet */
     {
         type patch;
         faces

@@ -11,23 +11,16 @@ boundaryField
             level       0;  // offset
         }
     }
-
-    // Patches //
-    "(inlet|inlet_topAndBottom|injection|injection_topAndBottom|outlet|cylTop|defaultFaces)"
-    {
+    "inlet|injection|outlet|(inlet|injection)_topAndBottom|cyl_top|defaultFaces" // "(injection|inlet|outlet).*|cyl_top|defaultFaces" /* walls */
+    {   /* Fixed patches */
         type            uniformFixedValue;
         uniformValue    constant 0;
     }
-    axis
-    {
-        type            slip;
+    "(cyl|inlet|injection)_(front|back)" /* wedge */ // "cyl_(front|back)" /* walls */
+    {   /* Moving patches */
+        type            wedge; // slip;
     }
-    "(inlet_front|inlet_back|injection_front|injection_back|cylFront|cylBack)"
-    {
-        type            wedge;
-    }
-
-    // Fixed ACMIs //
+    /* Fixed ACMIs */
     ACMI1_couple
     {
         type            uniformFixedValue;
@@ -39,8 +32,7 @@ boundaryField
         type            uniformFixedValue;
         uniformValue    0;
     }
-
-    // Moving ACMIs //
+    /* Moving ACMIs */
     ACMI2_couple
     {
         type            slip;
