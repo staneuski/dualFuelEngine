@@ -1,0 +1,45 @@
+boundaryField
+{
+    "(inlet|outlet|channelFront|channelBack|channelTopAndBottom)"
+    {
+        type            uniformFixedValue;
+        uniformValue    constant 0;
+    }
+
+    "(cylFront|cylBack|axis)"
+    {
+        type            slip;
+    }
+
+    piston
+    {
+        type            uniformFixedValue;
+        uniformValue    constant 5;
+    }
+
+    // Fixed ACMIs //
+    ACMI1_couple
+    {
+        type            uniformFixedValue;
+        patchType       cyclicACMI;
+        uniformValue    0;
+    }
+    ACMI1_blockage
+    {
+        type            uniformFixedValue;
+        uniformValue    0;
+    }
+
+    // Moving ACMIs //
+    ACMI2_couple
+    {
+        type            slip;
+        patchType       cyclicACMI;
+        value           uniform 0;
+    }
+    ACMI2_blockage
+    {
+        type            slip;
+        value           uniform 0;
+    }
+}
