@@ -1,0 +1,45 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: Addition to OpenFOAM v6
+   \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
+    \\  /    A nd           | Version:  0.3-alpha
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       pointVectorField;
+    location    "0";
+    object      pointMotionU;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 1 0 0 0 0 0];
+
+internalField   uniform (0 0 0);
+
+boundaryField
+{
+    "(inlet|outlet|channelFront|channelBack|channelTopAndBottom|ACMI1_couple|ACMI1_blockage)"
+    {
+        type            uniformFixedValue;
+        uniformValue    (0 0 0);
+    }
+
+    "(cylFront|cylBack|axis|ACMI2_couple|ACMI2_blockage)"
+    {
+        type            fixedNormalSlip;
+        n               (0 0 0);
+    }
+
+    piston
+    {
+        type            oscillatingDisplacement;
+        amplitude       (0 7 0);
+        omega           1; // 1/2/0.5
+        value           uniform (0 0 0);
+    }
+}
+
+// ************************************************************************* //
