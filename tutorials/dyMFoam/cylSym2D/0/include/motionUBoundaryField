@@ -1,6 +1,6 @@
 boundaryField
 {
-    "(inlet|channelFront|channelBack|channelTopAndBottom|outlet|cylTop|defaultFaces)"
+    "(inlet|channelTopAndBottom|outlet|cylTop|defaultFaces)"
     {
         type            uniformFixedValue;
         uniformValue    constant 0;
@@ -9,6 +9,10 @@ boundaryField
     "(cylFront|cylBack|axis)"
     {
         type            slip;
+    }
+    "(channelFront|channelBack|cylFront|cylBack)"
+    {
+        type            wedge;
     }
 
     piston
