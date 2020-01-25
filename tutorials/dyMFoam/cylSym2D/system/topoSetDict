@@ -65,23 +65,23 @@ actions
 
     // Create cellZone for moving cells in inlet channel
     {
-        name    inletChannelCellSet;
+        name    cylinderCellSet;
         type    cellSet;
         action  new;
         source  boxToCell;
         sourceInfo
         {
-            box     (-100 -100 -100) (1.0001 100 100);
+            box     (1 0 0) (3 5 0.1);
         }
     }
     {
-        name    inletChannel;
+        name    cylinder;
         type    cellZoneSet;
         action  new;
         source  setToCellZone;
         sourceInfo
         {
-            set     inletChannelCellSet;
+            set     cylinderCellSet;
         }
     }
 );
