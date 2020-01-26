@@ -22,71 +22,105 @@ addLayers       off;
 
 geometry
 {
-        // Injection patches
-        injectionXMinus.stl
+    injection
+    {
+        type    triSurfaceMesh;
+        file    "injection.stl";
+        regions
         {
-            type triSurfaceMesh;
-            name injectionXMinus;
-        }
-        injectionXPlus.stl
-        {
-            type triSurfaceMesh;
-            name injectionXPlus;
-        }
-        injectionYMinus.stl
-        {
-            type triSurfaceMesh;
-            name injectionYMinus;
-        }
-        injectionYPlus.stl
-        {
-            type triSurfaceMesh;
-            name injectionYPlus;
-        }
+            XMinus
+            {
+                name    injectionXMinus;
+            }
+            YMinus
+            {
+                name    injectionYMinus;
+            }
+            XPlus
+            {
+                name    injectionXPlus;
+            }
+            YPlus
+            {
+                name    injectionYPlus;
+            }
 
-        // Inlet patches
-        inletXMinus.stl
-        {
-            type triSurfaceMesh;
-            name inletXMinus;
+            walls
+            {
+                name    injectionWalls;
+            }
+            couple1
+            {
+                name    couple1;
+            }
         }
-        inletXPlus.stl
-        {
-            type triSurfaceMesh;
-            name inletXPlus;
-        }
-        inletYMinus.stl
-        {
-            type triSurfaceMesh;
-            name inletYMinus;
-        }
-        inletYPlus.stl
-        {
-            type triSurfaceMesh;
-            name inletYPlus;
-        }
+    }
 
-        // Other geometry
-        outlet.stl
+    inlet
+    {
+        type    triSurfaceMesh;
+        file    "inlet.stl";
+        regions
         {
-            type triSurfaceMesh;
-            name outlet;
+            XMinus
+            {
+                name    inletXMinus;
+            }
+            YMinus
+            {
+                name    inletYMinus;
+            }
+            XPlus
+            {
+                name    inletXPlus;
+            }
+            YPlus
+            {
+                name    inletYPlus;
+            }
+
+            walls
+            {
+                name    inletWalls;
+            }
+            couple1
+            {
+                name    couple1;
+            }
         }
-        valve.stl
+    }
+
+    cylinder
+    {
+        type    triSurfaceMesh;
+        file    "cylinder.stl";
+        regions
         {
-            type triSurfaceMesh;
-            name valve;
+            outlet
+            {
+                name    outlet;
+            }
+            walls
+            {
+                name    cylWalls;
+            }
+            couple2
+            {
+                name    couple2;
+            }
         }
-        walls.stl
-        {
-            type triSurfaceMesh;
-            name walls;
-        }
-        piston.stl
-        {
-            type triSurfaceMesh;
-            name piston;
-        }
+    }
+    piston.stl
+    {
+        type    triSurfaceMesh;
+        name    piston;
+    }
+
+    valve.stl
+    {
+        type    triSurfaceMesh;
+        name    valve;
+    }
 };
 
 castellatedMeshControls
@@ -95,28 +129,50 @@ castellatedMeshControls
 
     refinementSurfaces
     {
-        // Injection
-        "injectionXMinus|injectionXPlus|injectionYMinus|injectionYPlus"
+        injection
         {
-            level (0 0);
             patchInfo { type patch; }
+            regions
+            {
+                injectionWalls
+                {
+                    level (0 0);
+                    patchInfo { type patch; }
+                }
+            }
+        }
+        inlet
+        {
+            patchInfo { type patch; }
+            regions
+            {
+                inletWalls
+                {
+                    level (0 0);
+                    patchInfo { type patch; }
+                }
+            }
         }
 
-        // Inlet
-        "inletXMinus|inletXPlus|inletYMinus|inletYPlus"
+        cylinder
         {
             level (0 0);
-            patchInfo { type patch; }
+            patchInfo { type wall; } // all patches has type 'wall' by default
+            regions
+            {
+                couple2
+                {
+                    level (0 0);
+                    patchInfo { type patch; }
+                }
+            }
         }
-
-        // Other surfaces
-        outlet
+        valve
         {
             level (0 0);
-            patchInfo { type patch; }
+            patchInfo { type wall; }
         }
-
-        "valve|walls|piston" /* surface-wise min and max refinement level */
+        piston
         {
             level (0 0);
             patchInfo { type wall; }
@@ -148,20 +204,24 @@ addLayersControls /* off */
 {
     layers
     {
-        // Injection
-        "injectionXMinus|injectionXPlus|injectionYMinus|injectionYPlus.*"
+        // Injection/Inlet
+        "(injection|inlet)(X|Y)(Plus|Minus)"
         {
             nSurfaceLayers 0;
         }
 
-        // Inlet 
-        "inletXMinus|inletXPlus|inletYMinus|inletYPlus.*"
+        // Other surfaces
+        outlet
         {
             nSurfaceLayers 0;
         }
-        
-        // Other geometry
-        "outlet|valve|walls|piston.*"
+        "valve|piston|walls(Cylinder|Injection|Inlet)"
+        {
+            nSurfaceLayers 0;
+        }
+
+        // ACMI surfaces
+        "couple(1|2)"
         {
             nSurfaceLayers 0;
         }
