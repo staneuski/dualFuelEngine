@@ -1,0 +1,41 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: Addition to OpenFOAM v6
+   \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
+    \\  /    A nd           | Version:  0.3-alpha
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      dynamicMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+// dynamicFvMesh   dynamicMotionSolverFvMesh;
+
+// motionSolverLibs ("libfvMotionSolvers.so");
+
+// motionSolver    velocityComponentLaplacian;
+
+// velocityComponentLaplacianCoeffs
+// {
+//     component       x;
+//     diffusivity     uniform;
+// }
+
+// ************************************************************************* //
+
+dynamicFvMesh   dynamicMotionSolverFvMesh;
+
+motionSolverLibs ("libfvMotionSolvers.so");
+
+motionSolver    displacementLaplacian;
+
+diffusivity     uniform;
+
+// ************************************************************************* //
+

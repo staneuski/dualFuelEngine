@@ -70,5 +70,7 @@ runApplication blockMesh
 runApplication surfaceFeatures
 runApplication snappyHexMesh -overwrite
 runApplication checkMesh
+transformPoints -translate '(0 0 -3.8)' -rollPitchYaw '(0 90 0)'\
+    > log.transformPoints
 
 #------------------------------------------------------------------------------
