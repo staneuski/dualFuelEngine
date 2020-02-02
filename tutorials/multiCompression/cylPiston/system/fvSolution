@@ -39,9 +39,9 @@ solvers
     }
 }
 
-SIMPLE
+PIMPLE
 {
-    nNonOrthogonalCorrectors 2; // recalсulation No
+    nCorrectors 2; // recalсulation No
 }
 
 relaxationFactors

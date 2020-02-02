@@ -17,12 +17,12 @@ FoamFile
 
 solvers
 {
-    "(rho|U)"
+    "(rho|U).*"
     {
         solver          diagonal;
     }
 
-    e
+    "e.*"
     {
         solver          GAMG;
         smoother        DILU;
@@ -30,7 +30,7 @@ solvers
         relTol          0.01;
     }
 
-    "(alphaAir|alphaGas)"
+    "(alphaAir|alphaGas).*"
     {
         solver          PBiCGStab;
         preconditioner  DILU;
@@ -39,9 +39,9 @@ solvers
     }
 }
 
-SIMPLE
+PIMPLE
 {
-    nNonOrthogonalCorrectors 2; // recalсulation No
+    nCorrectors 2; // recalсulation No
 }
 
 relaxationFactors

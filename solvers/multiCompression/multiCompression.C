@@ -36,8 +36,11 @@ Comments
 \*---------------------------------------------------------------------------*/
 
 #include "fvCFD.H"
-#include "simpleControl.H"
+#include "dynamicFvMesh.H" // DyM
+#include "pimpleControl.H"
+// #include "CorrectPhi.H" // DyM
 #include "fvOptions.H"
+#include "motionSolver.H" // DyM
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
@@ -45,23 +48,28 @@ int main(int argc, char *argv[])
 {
 	#include "setRootCaseLists.H"
 	#include "createTime.H"
-	#include "createMesh.H"
-
-	simpleControl simple(mesh);
-
+    #include "createDynamicFvMesh.H" // DyM
+    #include "createDyMControls.H" // pimpleControl pimple(mesh);
 	#include "createFields.H"
 
 	// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 	Info<< "\nStarting time loop\n" << endl;
 
-	while (simple.loop(runTime))
+	while (pimple.loop(runTime))
 	{
-		Info<< "Time = " << runTime.timeName() << nl << endl;
+        #include "readDyMControls.H"
 
         #include "compressibleCourantNo.H"
+        #include "setDeltaT.H"
 
-		while (simple.correctNonOrthogonal())
+        runTime++;
+
+        Info<< "Time = " << runTime.timeName() << nl << endl;
+
+        mesh.update(); // DyM, do any mesh changes
+
+		while (pimple.correct())
 		{
             #include "rhoEqn.H"
 
