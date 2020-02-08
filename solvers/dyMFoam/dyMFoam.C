@@ -32,9 +32,9 @@ Description
 
 #include "fvCFD.H"
 #include "dynamicFvMesh.H" // DyM
-#include "simpleControl.H"
+#include "pimpleControl.H"
+#include "CorrectPhi.H" // DyM
 #include "fvOptions.H"
-#include "motionSolver.H" // DyM
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
@@ -43,17 +43,20 @@ int main(int argc, char *argv[])
     #include "setRootCaseLists.H"
     #include "createTime.H"
     #include "createDynamicFvMesh.H" // DyM
-
-    simpleControl simple(mesh);
+    #include "createDyMControls.H" // pimpleControl pimple(mesh);
 
     // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
     
     Info<< "\nStarting time loop\n" << endl;
     
-    while (simple.loop(runTime))
+    while (pimple.loop(runTime))
     {
+        #include "readDyMControls.H"
+
+        runTime++;
+
         Info<< "Time = " << runTime.timeName() << nl << endl;
-        
+
         mesh.update(); // DyM, do any mesh changes
         
         runTime.write();
