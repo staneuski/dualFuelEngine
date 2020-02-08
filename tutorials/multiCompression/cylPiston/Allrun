@@ -11,4 +11,6 @@ application=$(getApplication)
 ./makeMesh
 runApplication $application
 
+cp ../../../etc/AllcleanAllrunAny.foam ${PWD##*/}.foam
+
 #------------------------------------------------------------------------------
