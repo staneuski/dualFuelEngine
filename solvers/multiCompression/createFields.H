@@ -198,7 +198,7 @@ volScalarField p
 // Infer the pressure BCs from the velocity
 wordList eBCTypes
 (
-    p.boundaryField().size(),
+    rho.boundaryField().size(),
     fixedValueFvPatchScalarField::typeName
 );
 
