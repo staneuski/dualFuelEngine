@@ -8,9 +8,9 @@ cd ${0%/*} || exit 1
 
 application=$(getApplication)
 
+cp ../../../etc/AllcleanAllrunAny.foam ${PWD##*/}.foam
+
 ./makeMesh
 runApplication $application
-
-cp ../../../etc/AllcleanAllrunAny.foam ${PWD##*/}.foam
 
 #------------------------------------------------------------------------------

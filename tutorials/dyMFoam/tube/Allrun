@@ -6,9 +6,9 @@ cd ${0%/*} || exit 1    # Run from this directory
 
 application=$(getApplication)
 
+cp ../../../etc/AllcleanAllrunAny.foam ${PWD##*/}.foam
+
 runApplication blockMesh
 runApplication $application
-
-cp ../../../etc/AllcleanAllrunAny.foam ${PWD##*/}.foam
 
 #------------------------------------------------------------------------------
