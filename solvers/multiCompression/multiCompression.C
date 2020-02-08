@@ -60,6 +60,19 @@ int main(int argc, char *argv[])
 	{
         #include "readDyMControls.H"
 
+        // Store divrhoU from the previous mesh so that it can be mapped
+        // and used in correctPhi to ensure the corrected phi has the
+        // same divergence
+        autoPtr<volScalarField> divrhoU;
+        if (correctPhi)
+        {
+            divrhoU = new volScalarField
+            (
+                "divrhoU",
+                fvc::div(fvc::absolute(phi, rho, U))
+            );
+        }
+
         #include "compressibleCourantNo.H"
         #include "setDeltaT.H"
 
@@ -68,6 +81,26 @@ int main(int argc, char *argv[])
         Info<< "Time = " << runTime.timeName() << nl << endl;
 
         mesh.update(); // DyM, do any mesh changes
+
+        if (mesh.changing())
+        {
+            if (correctPhi)
+            {
+                // Calculate absolute flux
+                // from the mapped surface velocity
+                phi = mesh.Sf() & rhoUf();
+
+                // #include "correctPhi.H"
+
+                // Make the fluxes relative to the mesh-motion
+                fvc::makeRelative(phi, rho, U);
+            }
+
+            if (checkMeshCourantNo)
+            {
+                #include "meshCourantNo.H"
+            }
+        }
 
 		while (pimple.correct())
 		{
