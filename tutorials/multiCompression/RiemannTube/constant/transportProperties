@@ -15,20 +15,7 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-DT              DT [0 2 -1 0 0 0 0] 0.01; // m^2/s
+DT              DT [0 2 -1 0 0 0 0] 0.01; // [m^2/s], it also sets DAir & DGas by now
 
-DAir			DAir [0 2 -1 0 0 0 0] 0.01; // m^2/s
-
-DGas			DGas [0 2 -1 0 0 0 0] 0.01; // m^2/s
-
-MU              MU [1 -1 -1 0 0 0 0] 1e-02;
-
-LAMBDA          LAMBDA [1 1 -3 -1 0 0 0] 2e-02; // [kg·m/s^3/K = W/m/K]
-                                                // coefficient of thermal
-                                                // conductivity
-
-R				R [0 2 -2 -1 0 0 0] 287.3; // [m^2/s^2/K = J/kg/K], gas constant
-
-Cv				Cv [0 2 -2 -1 0 0 0] 718.25; // isobaric heat capacity
 
 // ************************************************************************* //

@@ -1,45 +1,57 @@
+Info<< "Reading thermophysical properties\n" << endl;
+
+autoPtr<fluidThermo> pThermo
+(
+    fluidThermo::New(mesh)
+);
+fluidThermo& thermo = pThermo();
+thermo.validate(args.executable(), "h", "e");
+
+volScalarField& p = thermo.p();
+
 Info<< "Reading velocity field U" << endl;
 volVectorField U
 (
-	IOobject
-	(
-		"U",
-		runTime.timeName(),
-		mesh,
-		IOobject::MUST_READ,
-		IOobject::AUTO_WRITE
-	),
-	mesh
+    IOobject
+    (
+        "U",
+        runTime.timeName(),
+        mesh,
+        IOobject::MUST_READ,
+        IOobject::AUTO_WRITE
+    ),
+    mesh
 );
 
-Info<< "\nReading density field rho" << nl << endl;
+// Infer the density BCs from the pressure
+wordList rhoBCTypes
+(
+    p.boundaryField().size(),
+    zeroGradientFvPatchScalarField::typeName
+);
+
+forAll(U.boundaryField(), patchi)
+{
+    if (U.boundaryField().types()[patchi] == zeroGradientFvPatchScalarField::typeName)
+    {
+        rhoBCTypes[patchi] = fixedValueFvPatchScalarField::typeName;
+    }
+}
+
+Info<< "\nConstructing density field rho" << nl << endl;
 
 volScalarField rho
 (
-	IOobject
-	(
-		"rho",
-		runTime.timeName(),
-		mesh,
-		IOobject::MUST_READ,
-		IOobject::AUTO_WRITE
-	),
-	mesh
-);
-
-Info<< "Reading temperature field T" << nl << endl;
-
-volScalarField T
-(
-	IOobject
-	(
-		"T",
-		runTime.timeName(),
-		mesh,
-		IOobject::MUST_READ,
-		IOobject::AUTO_WRITE
-	),
-	mesh
+    IOobject
+    (
+        "rho",
+        runTime.timeName(),
+        mesh,
+        IOobject::READ_IF_PRESENT,
+        IOobject::AUTO_WRITE
+    ),
+    thermo.rho(),
+    rhoBCTypes
 );
 
 Info<< "Reading concentration fields" << endl;
@@ -69,7 +81,25 @@ volScalarField alphaGas
     mesh
 );
 
-Info<< "Reading thermophysical properties" << endl;
+Info<< "\nConstructing exhaust concentration field\n" << endl;
+
+volScalarField alphaExh
+(
+    IOobject
+    (
+        "alphaExh",
+        runTime.timeName(),
+        mesh,
+        IOobject::NO_READ,
+        IOobject::AUTO_WRITE
+    ),
+    mesh,
+    dimensionedScalar("alphaExh", dimless, 0)
+);
+
+#include "compressibleCreatePhi.H"
+
+Info<< "Reading transport properties\n" << endl;
 
 IOdictionary transportProperties
 (
@@ -87,143 +117,21 @@ Info<< "Reading diffusivity DT" << endl;
 
 dimensionedScalar DT
 (
-	transportProperties.lookup("DT")
+    transportProperties.lookup("DT")
 );
 
-Info<< "Reading DAir" << endl;
+Info<< "Reading DAir (equals diffusivity DT)" << endl;
 
 dimensionedScalar DAir
 (
-    transportProperties.lookup("DAir")
+    transportProperties.lookup("DT")
 );
 
-Info<< "Reading DGas" << endl;
+Info<< "Reading DGas (equals diffusivity DT)" << endl;
 
 dimensionedScalar DGas
 (
-    transportProperties.lookup("DGas")
-);
-
-Info<< "Reading dinamic viscosity" << endl;
-
-dimensionedScalar MU
-(
-	transportProperties.lookup("MU")
-);
-
-Info<< "Reading thermal conductivity" << endl;
-
-dimensionedScalar LAMBDA
-(
-	transportProperties.lookup("LAMBDA")
-);
-
-Info<< "Reading gas constant" << endl;
-
-dimensionedScalar R
-(
-	transportProperties.lookup("R")
-);
-
-Info<< "Reading isobaric heat capacity\n" << endl;
-
-dimensionedScalar Cv
-(
-	transportProperties.lookup("Cv")
-);
-
-Info<< "Calculate isochoric heat capacity\n" << endl;
-
-dimensionedScalar Cp
-(
-	R + Cv
-);
-
-Info<< "Calculate heat capacity ratio" << endl;
-
-dimensionedScalar GAMMA
-(
-	Cp/Cv
-);
-
-Info<< "\nConstructing exhaust concentration field" << endl;
-
-volScalarField alphaExh
-(
-    IOobject
-    (
-        "alphaExh",
-        runTime.timeName(),
-        mesh,
-        IOobject::NO_READ,
-        IOobject::AUTO_WRITE
-    ),
-    mesh,
-	dimensionedScalar("alphaExh", dimless, 0)
-);
-
-// Infer the pressure BCs from the viscosity
-wordList pBCTypes
-(
-    rho.boundaryField().size(),
-    zeroGradientFvPatchScalarField::typeName
-);
-
-forAll(U.boundaryField(), patchi)
-{
-    if (U.boundaryField().types()[patchi] == zeroGradientFvPatchScalarField::typeName)
-    {
-        pBCTypes[patchi] = fixedValueFvPatchScalarField::typeName;
-    }
-}
-
-Info<< "\nConstructing pressure field p" << nl << endl;
-
-volScalarField p
-(
-	IOobject
-	(
-		"p",
-		runTime.timeName(),
-		mesh,
-		IOobject::NO_READ,
-		IOobject::AUTO_WRITE
-	),
-	rho*R*T,
-	pBCTypes
-);
-
-#include "compressibleCreatePhi.H"
-
-// Infer the pressure BCs from the velocity
-wordList eBCTypes
-(
-    rho.boundaryField().size(),
-    fixedValueFvPatchScalarField::typeName
-);
-
-forAll(U.boundaryField(), patchi)
-{
-    if (!U.boundaryField()[patchi].fixesValue())
-    {
-        eBCTypes[patchi] = zeroGradientFvPatchScalarField::typeName;
-    }
-}
-
-Info<< "Constructing energy field e\n" << endl;
-
-volScalarField e
-(
-	IOobject
-	(
-		"e",
-		runTime.timeName(),
-		mesh,
-		IOobject::NO_READ,
-		IOobject::AUTO_WRITE
-	),
-	p/(GAMMA - 1)/rho + magSqr(U)/2,
-	eBCTypes
+    transportProperties.lookup("DT")
 );
 
 #include "createFvOptions.H"

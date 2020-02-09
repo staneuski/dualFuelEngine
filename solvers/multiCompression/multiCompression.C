@@ -37,6 +37,7 @@ Comments
 
 #include "fvCFD.H"
 #include "dynamicFvMesh.H" // DyM
+#include "fluidThermo.H"
 #include "pimpleControl.H"
 #include "CorrectPhi.H" // DyM
 #include "fvOptions.H"
@@ -49,7 +50,8 @@ int main(int argc, char *argv[])
 	#include "createTime.H"
     #include "createDynamicFvMesh.H" // DyM
     #include "createDyMControls.H" // pimpleControl pimple(mesh);
-	#include "createFields.H"
+    #include "createFields.H"
+    #include "createFieldRefs.H"
     #include "createRhoUfIfPresent.H" // rhoUf = rho*U
 
 	// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
@@ -117,9 +119,9 @@ int main(int argc, char *argv[])
 			  - fvc::grad(p)
 			  + fvc::grad
 				(
-					(MU/3)*fvc::div(U)
+					(mu/3)*fvc::div(U)
 				)
-			  + MU*fvc::laplacian(U)
+			  + mu*fvc::laplacian(U)
 			);
 
 			UEqn.relax();
@@ -131,14 +133,14 @@ int main(int argc, char *argv[])
 			  + fvm::div(phi, e)
 			 ==
 			  - fvc::div(p*U)
-			  + fvc::div(LAMBDA*fvc::grad(T))
+              + fvc::div(thermo.kappa()*fvc::grad(T))
               + (
                      U & (
-                            MU*fvc::laplacian(U)
-                          + fvc::grad(MU/3*fvc::div(U))
+                            mu*fvc::laplacian(U)
+                          + fvc::grad(mu/3*fvc::div(U))
                          )
                 )
-              //+ MU*D TODO
+              //+ mu*D TODO
 			);
 
 			eEqn.relax();
@@ -149,13 +151,10 @@ int main(int argc, char *argv[])
             T =
             (
                 (e - magSqr(U)/2)
-               /Cv
+               /thermo.Cv()
             );
 
-            p =
-            (
-                rho*R*T
-            );
+            p = rho/psi;
 			
 			fvScalarMatrix alphaAirEqn
 			(

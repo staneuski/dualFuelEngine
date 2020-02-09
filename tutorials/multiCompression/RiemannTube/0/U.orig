@@ -15,16 +15,16 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions			[0 1 -1 0 0 0 0];
+dimensions      [0 1 -1 0 0 0 0];
 
-internalField		uniform (0 0 0);
-	
+internalField   uniform (0 0 0);
+    
 boundaryField
 {
-	walls
-	{
-		type		slip;
-	}
+    ".*"
+    {
+        type    slip;
+    }
 }
 
 // ************************************************************************* //

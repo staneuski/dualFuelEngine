@@ -20,9 +20,9 @@ internalField   uniform 293.15;
 
 boundaryField
 {
-    walls
+    ".*"
     {
-        type            zeroGradient;
+        type    zeroGradient;
     }
 }
 
