@@ -14,16 +14,16 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions              [1 -3 0 0 0 0 0]; // kg/m^3
+dimensions      [1 -1 -2 0 0 0 0];
 
-internalField           uniform 1.160; // 1.160*287.3*293.15 = 97697.5142
+internalField   uniform 1e+05;
 
 boundaryField
 {
     injection
     {
-        type            fixedValue;
-        value           uniform 1.508; // 25e04/287.3/380 = 2.28992250902229468554
+        type    fixedValue;
+        value   uniform 25e04;
     }
     inlet
     {
@@ -31,28 +31,28 @@ boundaryField
     }
     outlet
     {
-        type            zeroGradient;
+        type    zeroGradient;
     }
     piston
     {
-        type            zeroGradient;
+        type    zeroGradient;
     }
     "(cyl|injection|inlet)_(front|back)"
     {   /* Sides */
-        type            zeroGradient; // wedge;
+        type    zeroGradient; // wedge;
     }
     "cyl_top|(injection|inlet)_topAndBottom"
     {   /* Other walls */
-        type            zeroGradient;
+        type    zeroGradient;
     }
     "ACMI(1|2)_couple"
     {
-        type            cyclicACMI;
-        value           uniform 0;
+        type    cyclicACMI;
+        value   $internalField;
     }
     "ACMI(1|2)_blockage"
     {
-        type            zeroGradient;
+        type    zeroGradient;
     }
 }
 

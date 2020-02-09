@@ -22,37 +22,37 @@ boundaryField
 {
     injection
     {
-        type            zeroGradient;
+        type    zeroGradient;
     }
     inlet
     {
-        type            fixedValue;
-        value           uniform 1;
+        type    fixedValue;
+        value   uniform 1;
     }
     outlet
     {
-        type            zeroGradient;
+        type    zeroGradient;
     }
     piston
     {
-        type            zeroGradient;
+        type    zeroGradient;
     }
     "(cyl|injection|inlet)_(front|back)"
     {   /* Sides */
-        type            zeroGradient; // wedge;
+        type    zeroGradient; // wedge;
     }
     "cyl_top|(injection|inlet)_topAndBottom"
     {   
-        type            zeroGradient;
+        type    zeroGradient;
     }
     "ACMI(1|2)_couple"
     {
-        type            cyclicACMI;
-        value           uniform 0;
+        type    cyclicACMI;
+        value   $internalField;
     }
     "ACMI(1|2)_blockage"
     {
-        type            zeroGradient;
+        type    zeroGradient;
     }
 }
 
