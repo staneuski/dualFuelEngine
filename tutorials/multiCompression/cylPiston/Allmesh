@@ -6,51 +6,51 @@ printf 'Running surfaceTransformPoints on %s\n' "${PWD}"
 mkdir -p constant/triSurface
 
 # Injection
-surfaceTransformPoints -scale '(0.001 0.001 0.001)'\
-    ../../resources/geometry/quadPiston/injection.stl constant/triSurface/injectionXMinus.stl\
+surfaceTransformPoints -translate '(0 0 3500)' -scale '(0.001 0.001 0.001)'\
+    ../../resources/geometry/cylPiston/staticMesh/injection.stl constant/triSurface/injectionXMinus.stl\
     > log.surfaceTransformPoints 2>&1
-surfaceTransformPoints -rollPitchYaw '(0 0 90)' -scale '(0.001 0.001 0.001)'\
-    ../../resources/geometry/quadPiston/injection.stl constant/triSurface/injectionYMinus.stl\
+surfaceTransformPoints -translate '(0 0 3500)' -rollPitchYaw '(0 0 90)' -scale '(0.001 0.001 0.001)'\
+    ../../resources/geometry/cylPiston/staticMesh/injection.stl constant/triSurface/injectionYMinus.stl\
     >> log.surfaceTransformPoints 2>&1
-surfaceTransformPoints -rollPitchYaw '(0 0 180)' -scale '(0.001 0.001 0.001)'\
-    ../../resources/geometry/quadPiston/injection.stl constant/triSurface/injectionXPlus.stl\
+surfaceTransformPoints -translate '(0 0 3500)' -rollPitchYaw '(0 0 180)' -scale '(0.001 0.001 0.001)'\
+    ../../resources/geometry/cylPiston/staticMesh/injection.stl constant/triSurface/injectionXPlus.stl\
     >> log.surfaceTransformPoints 2>&1
-surfaceTransformPoints -rollPitchYaw '(0 0 270)' -scale '(0.001 0.001 0.001)'\
-    ../../resources/geometry/quadPiston/injection.stl constant/triSurface/injectionYPlus.stl\
+surfaceTransformPoints -translate '(0 0 3500)' -rollPitchYaw '(0 0 270)' -scale '(0.001 0.001 0.001)'\
+    ../../resources/geometry/cylPiston/staticMesh/injection.stl constant/triSurface/injectionYPlus.stl\
     >> log.surfaceTransformPoints 2>&1
 
 # Inlet
-surfaceTransformPoints -scale '(0.001 0.001 0.001)'\
-    ../../resources/geometry/quadPiston/inlet.stl constant/triSurface/inletXMinus.stl\
+surfaceTransformPoints -translate '(0 0 3500)' -scale '(0.001 0.001 0.001)'\
+    ../../resources/geometry/cylPiston/staticMesh/inlet.stl constant/triSurface/inletXMinus.stl\
     >> log.surfaceTransformPoints 2>&1
-surfaceTransformPoints -rollPitchYaw '(0 0 90)' -scale '(0.001 0.001 0.001)'\
-    ../../resources/geometry/quadPiston/inlet.stl constant/triSurface/inletYMinus.stl\
+surfaceTransformPoints -translate '(0 0 3500)' -rollPitchYaw '(0 0 90)' -scale '(0.001 0.001 0.001)'\
+    ../../resources/geometry/cylPiston/staticMesh/inlet.stl constant/triSurface/inletYMinus.stl\
     >> log.surfaceTransformPoints 2>&1
-surfaceTransformPoints -rollPitchYaw '(0 0 180)' -scale '(0.001 0.001 0.001)'\
-    ../../resources/geometry/quadPiston/inlet.stl constant/triSurface/inletXPlus.stl\
+surfaceTransformPoints -translate '(0 0 3500)' -rollPitchYaw '(0 0 180)' -scale '(0.001 0.001 0.001)'\
+    ../../resources/geometry/cylPiston/staticMesh/inlet.stl constant/triSurface/inletXPlus.stl\
     >> log.surfaceTransformPoints 2>&1
-surfaceTransformPoints -rollPitchYaw '(0 0 270)' -scale '(0.001 0.001 0.001)'\
-    ../../resources/geometry/quadPiston/inlet.stl constant/triSurface/inletYPlus.stl\
+surfaceTransformPoints -translate '(0 0 3500)' -rollPitchYaw '(0 0 270)' -scale '(0.001 0.001 0.001)'\
+    ../../resources/geometry/cylPiston/staticMesh/inlet.stl constant/triSurface/inletYPlus.stl\
     >> log.surfaceTransformPoints 2>&1
 
 # Outlet
 surfaceTransformPoints -translate '(0 0 3500)' -scale '(0.001 0.001 0.001)'\
-    ../../resources/geometry/cylPiston/outlet.stl constant/triSurface/outlet.stl\
+    ../../resources/geometry/cylPiston/staticMesh/outlet.stl constant/triSurface/outlet.stl\
     >> log.surfaceTransformPoints 2>&1
 
 # Valve
 surfaceTransformPoints -translate '(0 0 3500)' -scale '(0.001 0.001 0.001)'\
-    ../../resources/geometry/cylPiston/valve.stl constant/triSurface/valve.stl\
+    ../../resources/geometry/cylPiston/staticMesh/valve.stl constant/triSurface/valve.stl\
     >> log.surfaceTransformPoints 2>&1
 
 # Piston
 surfaceTransformPoints -translate '(0 0 3500)' -scale '(0.001 0.001 0.001)'\
-    ../../resources/geometry/cylPiston/piston.stl constant/triSurface/piston.stl\
+    ../../resources/geometry/cylPiston/staticMesh/piston.stl constant/triSurface/piston.stl\
     >> log.surfaceTransformPoints 2>&1
 
 # Walls
 surfaceTransformPoints -translate '(0 0 3500)' -scale '(0.001 0.001 0.001)'\
-    ../../resources/geometry/cylPiston/walls.stl constant/triSurface/walls.stl\
+    ../../resources/geometry/cylPiston/staticMesh/walls.stl constant/triSurface/walls.stl\
     >> log.surfaceTransformPoints 2>&1
 
 # Moving valve & piston
@@ -70,7 +70,7 @@ runApplication blockMesh
 runApplication surfaceFeatures
 runApplication snappyHexMesh -overwrite
 runApplication checkMesh
-transformPoints -translate '(0 0 -3.8)' -rollPitchYaw '(0 90 0)'\
-    > log.transformPoints
+# transformPoints -translate '(0 0 -3.8)' -rollPitchYaw '(0 90 0)'\
+#     > log.transformPoints
 
 #------------------------------------------------------------------------------

@@ -10,7 +10,7 @@ application=$(getApplication)
 
 cp ../../../etc/AllcleanAllrunAny.foam ${PWD##*/}.foam
 
-./makeMesh
+./Allmesh
 runApplication $application
 
 #------------------------------------------------------------------------------
