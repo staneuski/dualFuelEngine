@@ -7,27 +7,27 @@ mkdir -p constant/triSurface
 
 # Injection
 surfaceTransformPoints -translate '(0 0 3500)' -scale '(0.001 0.001 0.001)'\
-    ../../resources/geometry/cylPiston/dynamicMesh/injection.stl constant/triSurface/injection.stl\
+    ../../resources/geometry/cylPiston/motionMesh/injection.stl constant/triSurface/injection.stl\
     > log.surfaceTransformPoints 2>&1
 
 # Inlet
 surfaceTransformPoints -translate '(0 0 3500)' -scale '(0.001 0.001 0.001)'\
-    ../../resources/geometry/cylPiston/dynamicMesh/inlet.stl constant/triSurface/inlet.stl\
+    ../../resources/geometry/cylPiston/motionMesh/inlet.stl constant/triSurface/inlet.stl\
     >> log.surfaceTransformPoints 2>&1
 
 # Piston
 surfaceTransformPoints -translate '(0 0 3500)' -scale '(0.001 0.001 0.001)'\
-    ../../resources/geometry/cylPiston/dynamicMesh/piston.stl constant/triSurface/piston.stl\
+    ../../resources/geometry/cylPiston/motionMesh/piston.stl constant/triSurface/piston.stl\
     >> log.surfaceTransformPoints 2>&1
 
 # Valve
 surfaceTransformPoints -translate '(0 0 3500)' -scale '(0.001 0.001 0.001)'\
-    ../../resources/geometry/cylPiston/dynamicMesh/valve.stl constant/triSurface/valve.stl\
+    ../../resources/geometry/cylPiston/motionMesh/valve.stl constant/triSurface/valve.stl\
     >> log.surfaceTransformPoints 2>&1
 
 # Walls
 surfaceTransformPoints -translate '(0 0 3500)' -scale '(0.001 0.001 0.001)'\
-    ../../resources/geometry/cylPiston/dynamicMesh/cylinder.stl constant/triSurface/cylinder.stl\
+    ../../resources/geometry/cylPiston/motionMesh/cylinder.stl constant/triSurface/cylinder.stl\
     >> log.surfaceTransformPoints 2>&1
 
 # Moving valve & piston
