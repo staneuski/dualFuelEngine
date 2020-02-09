@@ -14,33 +14,35 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions              [0 0 0 1 0 0 0]; // K
+dimensions      [0 0 0 1 0 0 0]; // K
 
-internalField           uniform 300;
+internalField   uniform 300;
 
 boundaryField
 {
     inlet
     {
-        type            codedFixedValue;
-        value           uniform 300;
-        redirectType    T;
-        code
-        #{
-            #include "../../constant/transportProperties.H" /* get variables */
-            #include "../../../../../solvers/utilities/codedFixedValueBC/T.C"
-        #};
+        type    fixedValue;
+        value   uniform 300;
+        // type            codedFixedValue;
+        // value           uniform 300;
+        // redirectType    T;
+        // code
+        // #{
+        //     #include "../../constant/transportProperties.H" /* get variables */
+        //     #include "../../../../../solvers/utilities/codedFixedValueBC/T.C"
+        // #};
     }
     
     outlet
     {
-        type            fixedValue;
-        value           uniform 300;
+        type    fixedValue;
+        value   uniform 300;
     }
         
     walls
     {
-        type            zeroGradient;
+        type    zeroGradient;
     }
 }
 

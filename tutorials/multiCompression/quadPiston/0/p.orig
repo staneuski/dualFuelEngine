@@ -10,36 +10,47 @@ FoamFile
     version     2.0;
     format      ascii;
     class       volScalarField;
-    object      alphaAir;
+    object      p;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions              [1 -3 0 0 0 0 0]; // kg/m^3
+dimensions      [1 -1 -2 0 0 0 0]; // [Pa]
 
-internalField           uniform 1.160; // 1e05/287.3/300 = 1.16022740457129597401
+internalField   uniform 1e+05;
 
 boundaryField
 {
-    inlet
+    // Injection
+    "injection(X|Y)(Minus|Plus)"
     {
-        type            codedFixedValue;
-        value           uniform 1.508; // 1.508*287.3*300 = 129974.52
-        redirectType    rho;
-        code
-        #{
-            #include "../../constant/transportProperties.H" /* get variables */
-            #include "../../../../../solvers/utilities/codedFixedValueBC/rho.C"
-        #};
+        type    fixedValue;
+        value   uniform 2.5e+05;
+        // type    codedFixedValue;
+        // value   uniform 2.5e+05;
+        // redirectType p;
+        // code
+        // #{
+        //     #include "../../constant/transportProperties.H"
+        //     #include "../../../../../solvers/utilities/codedFixedValueBC/p.C"
+        // #};
     }
     
+    // Inlet
+    "inlet(X|Y)(Minus|Plus)"
+    {
+        $injectionXMinus
+    }
+    
+    // Outlet
     outlet
     {
-        type            zeroGradient;
+        type    zeroGradient;
     }
     
-    walls
+    // Walls
+    "piston|valve|walls"
     {
-        type            zeroGradient;
+        type    zeroGradient;
     }
 }
 

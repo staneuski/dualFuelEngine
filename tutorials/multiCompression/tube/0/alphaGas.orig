@@ -22,17 +22,17 @@ boundaryField
 {
     inlet
     {
-        type            zeroGradient;
+        type    zeroGradient;
     }
-	
+
     outlet
     {
-		type            zeroGradient;
+        type    zeroGradient;
     }
-	
-	walls
+
+    walls
     {
-        type            zeroGradient;
+        type    zeroGradient;
     }
 }
 

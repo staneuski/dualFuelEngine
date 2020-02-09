@@ -16,25 +16,21 @@ FoamFile
 
 convertToMeters 0.01;
 
-//These vertices define the block below. It envelopes the stl files. The block can be even bigger than the stl files
-//Watch out if the stl files are created in mm or m!
-
 vertices
 (
-	( -125 -125 -180 )
-	( -125 125 -180 )
-	( -125 125 320 )
-	( -125 -125 320 )
-	( 125 -125 -180 )
-	( 125 125 -180 )
-	( 125 125 320 )
-	( 125 -125 320 )
-				
+    /*00*/ ( -125 -125 -180 )
+    /*01*/ ( -125  125 -180 )
+    /*02*/ ( -125  125  320 )
+    /*03*/ ( -125 -125  320 )
+    /*04*/ (  125 -125 -180 )
+    /*05*/ (  125  125 -180 )
+    /*06*/ (  125  125  320 )
+    /*07*/ (  125 -125  320 )
 );
 
 blocks
 ( 
-	hex (0 1 2 3 4 5 6 7) (25 50 25) simpleGrading (1 1 1) // scale 10:1, original - (2500 5000 2500) (100 200 100)
+    hex (0 1 2 3 4 5 6 7) (25 50 25) simpleGrading (1 1 1) // scale 10:1, original - (2500 5000 2500) (100 200 100)
 );
 
 edges
@@ -43,19 +39,6 @@ edges
 
 boundary
 (
-    allBoundary //Don't worry about these settings
-    {
-        type patch;
-        faces
-        (
-            (3 7 6 2)
-            (0 4 7 3)
-            (2 6 5 1)
-            (1 5 4 0)
-            (0 3 2 1)
-            (4 5 6 7)
-        );
-    }
 );
 
 // ************************************************************************* //

@@ -15,40 +15,41 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-application             multiCompression;
+application     multiCompression;
 
-startFrom               startTime;
+startFrom       startTime;
 
-startTime               0;
+startTime       0;
 
-stopAt                  endTime;
+stopAt          endTime;
 
-endTime                 5e-02;
+endTime         5e-02;
 
-deltaT                  5e-05;
+deltaT          1e-05;
 
-writeControl            timeStep; //runTime
+writeControl    timeStep; //runTime
 
-writeInterval           5; // clockTime = writeInterval*deltaT
+writeInterval   5; // clockTime = writeInterval*deltaT
 
-purgeWrite              0;
+purgeWrite      0;
 
-writeFormat             ascii;
+writeFormat     ascii;
 
-writePrecision          6;
+writePrecision  6;
 
-writeCompression        off;
+writeCompression false;
 
-timeFormat              general;
+timeFormat      general;
 
-timePrecision           6;
+timePrecision   6;
 
-runTimeModifiable       true;
+runTimeModifiable true;
 
-adjustTimeStep          yes;
+adjustTimeStep  false;
 
-maxCo                   0.1;
+maxCo           0.1;
 
-maxDeltaT               1e-02;
+maxDeltaT       1e-02;
+
 
 // ************************************************************************* //
