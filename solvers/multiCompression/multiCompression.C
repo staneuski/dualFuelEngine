@@ -58,8 +58,8 @@ int main(int argc, char *argv[])
 
 	Info<< "\nStarting time loop\n" << endl;
 
-	while (pimple.loop(runTime))
-	{
+    while (pimple.run(runTime))
+    {
         #include "readDyMControls.H"
 
         // Store divrhoU from the previous mesh so that it can be mapped
@@ -104,8 +104,8 @@ int main(int argc, char *argv[])
             }
         }
 
-		while (pimple.correct())
-		{
+        while (pimple.loop())
+        {
             #include "rhoEqn.H"
 
             // Explicitly relax pressure for UEqn
