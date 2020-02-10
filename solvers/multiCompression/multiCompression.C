@@ -92,7 +92,7 @@ int main(int argc, char *argv[])
                 // from the mapped surface velocity
                 phi = mesh.Sf() & rhoUf();
 
-                // #include "correctPhi.H"
+                #include "correctPhi.H"
 
                 // Make the fluxes relative to the mesh-motion
                 fvc::makeRelative(phi, rho, U);
