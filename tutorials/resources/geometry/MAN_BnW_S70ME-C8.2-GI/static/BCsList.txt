@@ -1,0 +1,48 @@
+// Patch names:
+
+//- Inlets:
+    /*
+    inletNo_xpXXXymYYY:
+        - No - number of the inlet from X to Y axis
+        - xpXXX - X coordinates of normal: +0.XXX
+        - ymYYY - Y coordinates of normal: -0.YYY
+    */
+    inlet0_xp950ym311
+    inlet1_xp996ym092
+    inlet2_xp991yp132
+    inlet3_xp937yp349
+    inlet4_xp836yp549
+    inlet5_xp693yp721
+    inlet6_xp515yp857
+
+    injection0_xp0ym1
+
+    or
+    "(injection|inlet)(0|1|2|3|5|6)_x(p|l)(0|950|996|991|937|836|693|515)_y(p|l)(1|311|092|132|349|549|721|857)|injection0_X0_Y-1"
+
+//- Outlet
+    outlet
+
+//- Symmeties:
+    symmetryXZ
+    symmetryYZ
+    or
+    "(symmetry(XZ|YZ)"
+
+//- Cyclic BCs:
+    cyclicXZ
+    cyclicYZ
+    or
+    "cyclic(XZ|YZ)"
+
+//- Walls:
+    walls
+    piston
+    valve
+    
+    or
+    "walls|piston|valve"
+
+//- Couples:
+    couple1
+    couple2
