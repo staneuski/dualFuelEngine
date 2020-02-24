@@ -1,4 +1,4 @@
-solid CATIASTL
+solid valve
  facet normal 0 0 1
   outer loop
    vertex 0 0.0403759 0.762052
@@ -23393,4 +23393,4 @@ solid CATIASTL
    vertex 0 -0.182923 0.200055
   endloop
  endfacet
-endsolid CATIASTL
+endsolid valve
