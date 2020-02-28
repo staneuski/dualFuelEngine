@@ -19,6 +19,7 @@ VTK/
 linux*Gcc*/
 
 # Files - local
+etc/FlowVision/MAN_BnW/*.backup
 tutorials/**/cylPiston/system/blockMeshDict
 
 # Folders - local

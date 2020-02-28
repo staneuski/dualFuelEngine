@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<FVGEOMPREP>
+  <ShowRegionScene>0</ShowRegionScene>
+  <OBJECT class="CMainGeomFolder" myid="-3" HasPlacementErrors="0" Visible="0" NeedPlacementCheck="0">
+    <VolumeBuilder>0</VolumeBuilder>
+    <OBJECT class="CSubRegionFolder" IsActual="0" myid="-2">
+      <SubRegionArray/>
+    </OBJECT>
+    <OBJECT class="CMainGeomObjects" myid="0">
+      <MeshObjects/>
+    </OBJECT>
+  </OBJECT>
+  <OBJECT class="CInitialGeomFolder" myid="-2" Visible="0">
+    <GeomFolders/>
+    <GeomObjects/>
+  </OBJECT>
+</FVGEOMPREP>

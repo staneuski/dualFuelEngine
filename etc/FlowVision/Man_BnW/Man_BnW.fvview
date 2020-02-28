@@ -1,0 +1,681 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<FVSCENE AppVersion="FlowVision PrePostProcessor, version 3.11.03-W64 build 20200210 changeset 40247" GridCoordSys="1">
+  <ShowTimeTitle>1</ShowTimeTitle>
+  <TextTitle FontSize="22" BgAlpha="100" ShowTime="1" BgColor="00FFFFFF" ShowIter="1" Color="00FFFFFF">
+    <Title>MAN B&amp;W S70ME-C8.2-Gi</Title>
+    <TimeFormat NumDigits="5" Scientific="0" SplitFormat="0"/>
+    <UserValueLines>
+      <ITEM>
+        <LineBegin>phi =</LineBegin>
+        <UserStopper>*-2.-5.-5.7</UserStopper>
+        <LineEnd>CA</LineEnd>
+        <Format NumDigits="2" Scientific="0"/>
+      </ITEM>
+    </UserValueLines>
+    <Position VAlign="VA_TOP" HShift="0" VShift="0" HAlign="HA_LEFT"/>
+  </TextTitle>
+  <OBJECT Lit="1" class="CSpaceObjectLayer" myid="0" Clipped="0" GUID="EEDBB747-3B66-44EF-B669-625733A1D151" Visible="1">
+    <Object>*-2.-2.0</Object>
+  </OBJECT>
+  <OBJECT class="CIntegralCharsLayer" myid="1">
+    <SaveData>
+      <Kind>NON</Kind>
+      <Time>0</Time>
+      <Iteration>1</Iteration>
+      <Filename>IntegralCharsLayer0.glo</Filename>
+      <Mode>APPEND</Mode>
+      <UpdateOnStop>0</UpdateOnStop>
+    </SaveData>
+    <Chars>*-2.-2.-99</Chars>
+  </OBJECT>
+  <OBJECT class="CPlaneEntity" shiftAlongNormal="0" myid="2" GUID="72CB4AE1-2E62-4639-8D42-9D87F21BBDDF" UIName="Плоскость #0">
+    <center x="0" y="0" z="0"/>
+    <normal x="1" y="0" z="0"/>
+  </OBJECT>
+  <OBJECT Lit="1" class="CPlaneObjectLayer" Clipper="0" myid="3" Clipped="0" GUID="09E3D6AA-2719-4970-83F3-297D6DE2067B" Visible="1" Mirror="0">
+    <Object>*-2.-4.2</Object>
+    <OBJECT Mode="WIRE" class="CCommonAppearance" myid="0">
+      <Lines Width="3" Color="00FFFF00"/>
+      <Fill Alpha="100" Color="00808000"/>
+    </OBJECT>
+  </OBJECT>
+  <OBJECT m_HPosition="eLeft" Lit="1" class="CCoordSystemLayer" myid="4" Clipped="0" m_ViewportPart="0.16250000000000001" GUID="F3D7BE2D-50FF-4E5B-B840-F94C41DF536E" Visible="1" m_VPosition="eBottom" m_InOrigin="0">
+    <Object>*-2.-2.0</Object>
+  </OBJECT>
+  <OBJECT Lit="1" class="CSolidGeometryLayer" myid="5" Clipped="1" GUID="36044EA6-E25B-4DB5-98F1-FCF05D97F374" Visible="1">
+    <Object>*-2.-2.0</Object>
+    <Outlines Width="4" Color="00FFFFFF"/>
+    <Outside UseInside="1">
+      <Appearance Fill="DEFAULT" Material="0" Wire="DEFAULT" Alpha="50" Color="00C0C0C0"/>
+    </Outside>
+    <OBJECT class="CVariantView" myid="-2">
+      <OBJECT class="CRegionView" myid="-2" Clipped="DEFAULT" Visible="DEFAULT">
+        <Style Fill="DEFAULT" Wire="DEFAULT" Outline="DEFAULT"/>
+        <Trans Enabled="DEFAULT" Alpha="50"/>
+        <OBJECT class="CSubregFolderView" myid="-2">
+          <OBJECT class="CSubregionView" myid="2" Clipped="DEFAULT" Visible="DEFAULT">
+            <Style Fill="DEFAULT" Wire="DEFAULT" Outline="DEFAULT"/>
+            <Trans Enabled="DEFAULT" Alpha="50"/>
+            <OBJECT class="CGeometryView" myid="-4" Clipped="DEFAULT" Visible="DEFAULT">
+              <Style Fill="DEFAULT" Wire="DEFAULT" Outline="DEFAULT"/>
+              <Trans Enabled="DEFAULT" Alpha="50"/>
+            </OBJECT>
+            <OBJECT class="CMBFolderView" myid="-3">
+              <OBJECT class="CMovingBodyView" myid="105" Clipped="DEFAULT" Visible="DEFAULT">
+                <Style Fill="DEFAULT" Wire="DEFAULT" Outline="DEFAULT"/>
+                <Trans Enabled="DEFAULT" Alpha="50"/>
+              </OBJECT>
+              <OBJECT class="CMovingBodyView" myid="120" Clipped="DEFAULT" Visible="DEFAULT">
+                <Style Fill="DEFAULT" Wire="DEFAULT" Outline="DEFAULT"/>
+                <Trans Enabled="DEFAULT" Alpha="50"/>
+              </OBJECT>
+            </OBJECT>
+            <OBJECT class="CBCFolderView" myid="-2">
+              <OBJECT Material="0" class="CBConditionView" myid="5" Clipped="DEFAULT" Visible="DEFAULT" Color="00BFBCBC">
+                <Style Fill="DEFAULT" Wire="DEFAULT" Outline="DEFAULT"/>
+                <Trans Enabled="DEFAULT" Alpha="50"/>
+              </OBJECT>
+              <OBJECT Material="0" class="CBConditionView" myid="106" Clipped="DEFAULT" Visible="DEFAULT" Color="00FF0000">
+                <Style Fill="DEFAULT" Wire="DEFAULT" Outline="DEFAULT"/>
+                <Trans Enabled="DEFAULT" Alpha="50"/>
+              </OBJECT>
+              <OBJECT Material="0" class="CBConditionView" myid="172" Clipped="DEFAULT" Visible="DEFAULT" Color="00FF0000">
+                <Style Fill="DEFAULT" Wire="DEFAULT" Outline="DEFAULT"/>
+                <Trans Enabled="DEFAULT" Alpha="50"/>
+              </OBJECT>
+              <OBJECT Material="0" class="CBConditionView" myid="177" Clipped="DEFAULT" Visible="DEFAULT" Color="00808080">
+                <Style Fill="DEFAULT" Wire="DEFAULT" Outline="DEFAULT"/>
+                <Trans Enabled="DEFAULT" Alpha="50"/>
+              </OBJECT>
+              <OBJECT Material="0" class="CBConditionView" myid="191" Clipped="DEFAULT" Visible="DEFAULT" Color="00808080">
+                <Style Fill="DEFAULT" Wire="DEFAULT" Outline="DEFAULT"/>
+                <Trans Enabled="DEFAULT" Alpha="50"/>
+              </OBJECT>
+              <OBJECT Material="0" class="CBConditionView" myid="226" Clipped="DEFAULT" Visible="DEFAULT" Color="00BFBCBC">
+                <Style Fill="DEFAULT" Wire="DEFAULT" Outline="DEFAULT"/>
+                <Trans Enabled="DEFAULT" Alpha="50"/>
+              </OBJECT>
+              <OBJECT Material="0" class="CBConditionView" myid="231" Clipped="DEFAULT" Visible="DEFAULT" Color="00BFBCBC">
+                <Style Fill="DEFAULT" Wire="DEFAULT" Outline="DEFAULT"/>
+                <Trans Enabled="DEFAULT" Alpha="50"/>
+              </OBJECT>
+            </OBJECT>
+          </OBJECT>
+        </OBJECT>
+      </OBJECT>
+    </OBJECT>
+  </OBJECT>
+  <OBJECT Lit="1" class="CIniGridLayer" Surface="1" myid="6" Clipped="0" GUID="DFC89E5B-CE6D-4112-8D73-383547F85C11" Visible="0">
+    <Object>*-2.-2.0</Object>
+    <Lines Width="1" Color="00FFFFFF"/>
+  </OBJECT>
+  <OBJECT Lit="1" class="CObjectLayer" myid="107" Clipped="0" GUID="A213E2CA-2592-4AF2-B892-557830CA2BE3" Visible="0">
+    <Object>*-2.-2.216</Object>
+    <OBJECT Mode="WIRE" class="CCommonAppearance" myid="0">
+      <Lines Width="3" Color="00FFFF00"/>
+      <Fill Alpha="100" Color="00808000"/>
+    </OBJECT>
+  </OBJECT>
+  <OBJECT Lit="1" class="CObjectLayer" myid="122" Clipped="0" GUID="9455CA63-9E62-4DD7-96F8-BF6B41775918" Visible="0">
+    <Object>*-2.-2.235</Object>
+    <OBJECT Mode="WIRE" class="CCommonAppearance" myid="0">
+      <Lines Width="3" Color="00FFFF00"/>
+      <Fill Alpha="100" Color="00808000"/>
+    </OBJECT>
+  </OBJECT>
+  <OBJECT Lit="0" Width="2" class="CScalarLayer" myid="11932" Clipped="0" GUID="3163E2F8-77EE-4730-8AAA-90FD422DCC8E" Visible="0" DrawMode="FLOOD" UIName="p">
+    <Object>*-2.-4.2</Object>
+    <Settings>
+      <Mode>UNASSIGNED</Mode>
+      <Parts/>
+    </Settings>
+    <Update>
+      <Kind>AUTO</Kind>
+      <Time>0</Time>
+      <Iteration>1</Iteration>
+    </Update>
+    <SaveData>
+      <Kind>AUTO</Kind>
+      <Time>0</Time>
+      <Iteration>1</Iteration>
+      <Filename>p.glo</Filename>
+      <Mode>APPEND</Mode>
+      <UpdateOnStop>0</UpdateOnStop>
+    </SaveData>
+    <Var Comp="SOURCE">
+      <Description Size="1" IDVar="PRES" IDPhase="-1" BlockType="CMotionProcess"/>
+      <Integration>
+        <Enabled>0</Enabled>
+        <IntegrationDir>NORMAL</IntegrationDir>
+        <CustomDir x="1" y="0" z="0"/>
+        <Inverted>0</Inverted>
+      </Integration>
+      <Interpolation>1</Interpolation>
+    </Var>
+    <SubRegion>0</SubRegion>
+    <Shift>0</Shift>
+    <RegularGrid>0</RegularGrid>
+    <Resolution Size1="100" Size2="100" LocalSystem="1" Size3="1"/>
+    <DoubleResolution>0</DoubleResolution>
+    <Mapping MappingMode="MANUAL" Min="0" Max="11000000"/>
+    <LogScale Limit="1.0000000000000001E-005" Enabled="0"/>
+    <Palette>
+      <Overlay HorzAlign="LEFT" Enabled="0" ShowTitle="0" Style="STYLE3" VertAlign="TOP" Gradations="11" Color="00FFFFFF"/>
+      <Gradations>0</Gradations>
+      <Colors>
+        <ITEM>000000FF</ITEM>
+        <ITEM>000064FF</ITEM>
+        <ITEM>0000B9FF</ITEM>
+        <ITEM>0000FFFF</ITEM>
+        <ITEM>0000FF9F</ITEM>
+        <ITEM>0000FF00</ITEM>
+        <ITEM>009FFF00</ITEM>
+        <ITEM>00FFFF00</ITEM>
+        <ITEM>00FFB900</ITEM>
+        <ITEM>00FF6400</ITEM>
+        <ITEM>00FF0000</ITEM>
+      </Colors>
+      <Values>
+        <ITEM>0</ITEM>
+        <ITEM>0.10000000000000001</ITEM>
+        <ITEM>0.20000000000000001</ITEM>
+        <ITEM>0.30000000000000004</ITEM>
+        <ITEM>0.40000000000000002</ITEM>
+        <ITEM>0.5</ITEM>
+        <ITEM>0.59999999999999998</ITEM>
+        <ITEM>0.69999999999999996</ITEM>
+        <ITEM>0.79999999999999993</ITEM>
+        <ITEM>0.89999999999999991</ITEM>
+        <ITEM>0.99999999999999989</ITEM>
+      </Values>
+      <Transparency Mode="CONSTANT" ConstAlpha="100">
+        <Alphas>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+        </Alphas>
+      </Transparency>
+    </Palette>
+    <OBJECT class="CPlaneConstraints" myid="-100" Enabled="0" Type="RECTANGLE" Size1="0.10000000000000001" Size2="0.10000000000000001"/>
+  </OBJECT>
+  <OBJECT Lit="0" Width="2" class="CScalarLayer" myid="11940" Clipped="0" GUID="EF45AF1C-1DBC-4AF5-971A-D26ADB1F09CE" Visible="0" DrawMode="FLOOD" UIName="T">
+    <Object>*-2.-4.2</Object>
+    <Settings>
+      <Mode>UNASSIGNED</Mode>
+      <Parts/>
+    </Settings>
+    <Update>
+      <Kind>AUTO</Kind>
+      <Time>0</Time>
+      <Iteration>1</Iteration>
+    </Update>
+    <SaveData>
+      <Kind>AUTO</Kind>
+      <Time>0</Time>
+      <Iteration>1</Iteration>
+      <Filename>T.glo</Filename>
+      <Mode>APPEND</Mode>
+      <UpdateOnStop>0</UpdateOnStop>
+    </SaveData>
+    <Var Comp="SOURCE">
+      <Description Size="1" IDVar="TEMP" IDPhase="-1" BlockType="CHeatXferProcess"/>
+      <Integration>
+        <Enabled>0</Enabled>
+        <IntegrationDir>NORMAL</IntegrationDir>
+        <CustomDir x="1" y="0" z="0"/>
+        <Inverted>0</Inverted>
+      </Integration>
+      <Interpolation>1</Interpolation>
+    </Var>
+    <SubRegion>0</SubRegion>
+    <Shift>0</Shift>
+    <RegularGrid>0</RegularGrid>
+    <Resolution Size1="100" Size2="100" LocalSystem="1" Size3="1"/>
+    <DoubleResolution>0</DoubleResolution>
+    <Mapping MappingMode="MANUAL" Min="0" Max="1000"/>
+    <LogScale Limit="1.0000000000000001E-005" Enabled="0"/>
+    <Palette>
+      <Overlay HorzAlign="LEFT" Enabled="0" ShowTitle="0" Style="STYLE3" VertAlign="TOP" Gradations="11" Color="00FFFFFF"/>
+      <Gradations>0</Gradations>
+      <Colors>
+        <ITEM>000000FF</ITEM>
+        <ITEM>000064FF</ITEM>
+        <ITEM>0000B9FF</ITEM>
+        <ITEM>0000FFFF</ITEM>
+        <ITEM>0000FF9F</ITEM>
+        <ITEM>0000FF00</ITEM>
+        <ITEM>009FFF00</ITEM>
+        <ITEM>00FFFF00</ITEM>
+        <ITEM>00FFB900</ITEM>
+        <ITEM>00FF6400</ITEM>
+        <ITEM>00FF0000</ITEM>
+      </Colors>
+      <Values>
+        <ITEM>0</ITEM>
+        <ITEM>0.10000000000000001</ITEM>
+        <ITEM>0.20000000000000001</ITEM>
+        <ITEM>0.30000000000000004</ITEM>
+        <ITEM>0.40000000000000002</ITEM>
+        <ITEM>0.5</ITEM>
+        <ITEM>0.59999999999999998</ITEM>
+        <ITEM>0.69999999999999996</ITEM>
+        <ITEM>0.79999999999999993</ITEM>
+        <ITEM>0.89999999999999991</ITEM>
+        <ITEM>0.99999999999999989</ITEM>
+      </Values>
+      <Transparency Mode="CONSTANT" ConstAlpha="100">
+        <Alphas>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+        </Alphas>
+      </Transparency>
+    </Palette>
+    <OBJECT class="CPlaneConstraints" myid="-100" Enabled="0" Type="RECTANGLE" Size1="0.10000000000000001" Size2="0.10000000000000001"/>
+  </OBJECT>
+  <OBJECT Lit="0" Width="2" class="CScalarLayer" myid="11948" Clipped="0" GUID="37DAED0B-D9E0-4391-B27B-32DE228F279F" Visible="0" DrawMode="FLOOD" UIName="alphaExh">
+    <Object>*-2.-4.2</Object>
+    <Settings>
+      <Mode>UNASSIGNED</Mode>
+      <Parts/>
+    </Settings>
+    <Update>
+      <Kind>AUTO</Kind>
+      <Time>0</Time>
+      <Iteration>1</Iteration>
+    </Update>
+    <SaveData>
+      <Kind>AUTO</Kind>
+      <Time>0</Time>
+      <Iteration>1</Iteration>
+      <Filename>alphaExh.glo</Filename>
+      <Mode>APPEND</Mode>
+      <UpdateOnStop>0</UpdateOnStop>
+    </SaveData>
+    <Var Comp="SOURCE">
+      <Description Size="1" IDVar="MASSFRACTIONS02" IDPhase="51" BlockType="CMassXferProcess"/>
+      <Integration>
+        <Enabled>0</Enabled>
+        <IntegrationDir>NORMAL</IntegrationDir>
+        <CustomDir x="1" y="0" z="0"/>
+        <Inverted>0</Inverted>
+      </Integration>
+      <Interpolation>1</Interpolation>
+    </Var>
+    <SubRegion>0</SubRegion>
+    <Shift>0</Shift>
+    <RegularGrid>0</RegularGrid>
+    <Resolution Size1="100" Size2="100" LocalSystem="1" Size3="1"/>
+    <DoubleResolution>0</DoubleResolution>
+    <Mapping MappingMode="MANUAL" Min="0" Max="1"/>
+    <LogScale Limit="1.0000000000000001E-005" Enabled="0"/>
+    <Palette>
+      <Overlay HorzAlign="LEFT" Enabled="0" ShowTitle="0" Style="STYLE3" VertAlign="TOP" Gradations="11" Color="00FFFFFF"/>
+      <Gradations>0</Gradations>
+      <Colors>
+        <ITEM>000000FF</ITEM>
+        <ITEM>000064FF</ITEM>
+        <ITEM>0000B9FF</ITEM>
+        <ITEM>0000FFFF</ITEM>
+        <ITEM>0000FF9F</ITEM>
+        <ITEM>0000FF00</ITEM>
+        <ITEM>009FFF00</ITEM>
+        <ITEM>00FFFF00</ITEM>
+        <ITEM>00FFB900</ITEM>
+        <ITEM>00FF6400</ITEM>
+        <ITEM>00FF0000</ITEM>
+      </Colors>
+      <Values>
+        <ITEM>0</ITEM>
+        <ITEM>0.10000000000000001</ITEM>
+        <ITEM>0.20000000000000001</ITEM>
+        <ITEM>0.30000000000000004</ITEM>
+        <ITEM>0.40000000000000002</ITEM>
+        <ITEM>0.5</ITEM>
+        <ITEM>0.59999999999999998</ITEM>
+        <ITEM>0.69999999999999996</ITEM>
+        <ITEM>0.79999999999999993</ITEM>
+        <ITEM>0.89999999999999991</ITEM>
+        <ITEM>0.99999999999999989</ITEM>
+      </Values>
+      <Transparency Mode="CONSTANT" ConstAlpha="100">
+        <Alphas>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+        </Alphas>
+      </Transparency>
+    </Palette>
+    <OBJECT class="CPlaneConstraints" myid="-100" Enabled="0" Type="RECTANGLE" Size1="0.10000000000000001" Size2="0.10000000000000001"/>
+  </OBJECT>
+  <OBJECT Lit="0" Width="2" class="CScalarLayer" myid="11956" Clipped="0" GUID="33F7D46A-7082-4D20-81E4-0B72344A54E0" Visible="0" DrawMode="FLOOD" UIName="alphaAir">
+    <Object>*-2.-4.2</Object>
+    <Settings>
+      <Mode>UNASSIGNED</Mode>
+      <Parts/>
+    </Settings>
+    <Update>
+      <Kind>AUTO</Kind>
+      <Time>0</Time>
+      <Iteration>1</Iteration>
+    </Update>
+    <SaveData>
+      <Kind>AUTO</Kind>
+      <Time>0</Time>
+      <Iteration>1</Iteration>
+      <Filename>alphaAir.glo</Filename>
+      <Mode>APPEND</Mode>
+      <UpdateOnStop>0</UpdateOnStop>
+    </SaveData>
+    <Var Comp="SOURCE">
+      <Description Size="1" IDVar="MASSFRACTIONS01" IDPhase="51" BlockType="CMassXferProcess"/>
+      <Integration>
+        <Enabled>0</Enabled>
+        <IntegrationDir>NORMAL</IntegrationDir>
+        <CustomDir x="1" y="0" z="0"/>
+        <Inverted>0</Inverted>
+      </Integration>
+      <Interpolation>1</Interpolation>
+    </Var>
+    <SubRegion>0</SubRegion>
+    <Shift>0</Shift>
+    <RegularGrid>0</RegularGrid>
+    <Resolution Size1="100" Size2="100" LocalSystem="1" Size3="1"/>
+    <DoubleResolution>0</DoubleResolution>
+    <Mapping MappingMode="MANUAL" Min="0" Max="1"/>
+    <LogScale Limit="1.0000000000000001E-005" Enabled="0"/>
+    <Palette>
+      <Overlay HorzAlign="LEFT" Enabled="0" ShowTitle="0" Style="STYLE3" VertAlign="TOP" Gradations="11" Color="00FFFFFF"/>
+      <Gradations>0</Gradations>
+      <Colors>
+        <ITEM>000000FF</ITEM>
+        <ITEM>000064FF</ITEM>
+        <ITEM>0000B9FF</ITEM>
+        <ITEM>0000FFFF</ITEM>
+        <ITEM>0000FF9F</ITEM>
+        <ITEM>0000FF00</ITEM>
+        <ITEM>009FFF00</ITEM>
+        <ITEM>00FFFF00</ITEM>
+        <ITEM>00FFB900</ITEM>
+        <ITEM>00FF6400</ITEM>
+        <ITEM>00FF0000</ITEM>
+      </Colors>
+      <Values>
+        <ITEM>0</ITEM>
+        <ITEM>0.10000000000000001</ITEM>
+        <ITEM>0.20000000000000001</ITEM>
+        <ITEM>0.30000000000000004</ITEM>
+        <ITEM>0.40000000000000002</ITEM>
+        <ITEM>0.5</ITEM>
+        <ITEM>0.59999999999999998</ITEM>
+        <ITEM>0.69999999999999996</ITEM>
+        <ITEM>0.79999999999999993</ITEM>
+        <ITEM>0.89999999999999991</ITEM>
+        <ITEM>0.99999999999999989</ITEM>
+      </Values>
+      <Transparency Mode="CONSTANT" ConstAlpha="100">
+        <Alphas>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+        </Alphas>
+      </Transparency>
+    </Palette>
+    <OBJECT class="CPlaneConstraints" myid="-100" Enabled="0" Type="RECTANGLE" Size1="0.10000000000000001" Size2="0.10000000000000001"/>
+  </OBJECT>
+  <OBJECT Lit="0" Width="2" class="CScalarLayer" myid="11964" Clipped="0" GUID="E410806B-99BA-406E-967F-55FC53468B6A" Visible="0" DrawMode="FLOOD" UIName="alphaGas">
+    <Object>*-2.-4.2</Object>
+    <Settings>
+      <Mode>UNASSIGNED</Mode>
+      <Parts/>
+    </Settings>
+    <Update>
+      <Kind>AUTO</Kind>
+      <Time>0</Time>
+      <Iteration>1</Iteration>
+    </Update>
+    <SaveData>
+      <Kind>AUTO</Kind>
+      <Time>0</Time>
+      <Iteration>1</Iteration>
+      <Filename>alphaGas.glo</Filename>
+      <Mode>APPEND</Mode>
+      <UpdateOnStop>0</UpdateOnStop>
+    </SaveData>
+    <Var Comp="SOURCE">
+      <Description Size="1" IDVar="MASSFRACTIONS00" IDPhase="51" BlockType="CMassXferProcess"/>
+      <Integration>
+        <Enabled>0</Enabled>
+        <IntegrationDir>NORMAL</IntegrationDir>
+        <CustomDir x="1" y="0" z="0"/>
+        <Inverted>0</Inverted>
+      </Integration>
+      <Interpolation>1</Interpolation>
+    </Var>
+    <SubRegion>0</SubRegion>
+    <Shift>0</Shift>
+    <RegularGrid>0</RegularGrid>
+    <Resolution Size1="100" Size2="100" LocalSystem="1" Size3="1"/>
+    <DoubleResolution>0</DoubleResolution>
+    <Mapping MappingMode="MANUAL" Min="0" Max="1"/>
+    <LogScale Limit="1.0000000000000001E-005" Enabled="0"/>
+    <Palette>
+      <Overlay HorzAlign="LEFT" Enabled="0" ShowTitle="0" Style="STYLE3" VertAlign="TOP" Gradations="11" Color="00FFFFFF"/>
+      <Gradations>0</Gradations>
+      <Colors>
+        <ITEM>000000FF</ITEM>
+        <ITEM>000064FF</ITEM>
+        <ITEM>0000B9FF</ITEM>
+        <ITEM>0000FFFF</ITEM>
+        <ITEM>0000FF9F</ITEM>
+        <ITEM>0000FF00</ITEM>
+        <ITEM>009FFF00</ITEM>
+        <ITEM>00FFFF00</ITEM>
+        <ITEM>00FFB900</ITEM>
+        <ITEM>00FF6400</ITEM>
+        <ITEM>00FF0000</ITEM>
+      </Colors>
+      <Values>
+        <ITEM>0</ITEM>
+        <ITEM>0.10000000000000001</ITEM>
+        <ITEM>0.20000000000000001</ITEM>
+        <ITEM>0.30000000000000004</ITEM>
+        <ITEM>0.40000000000000002</ITEM>
+        <ITEM>0.5</ITEM>
+        <ITEM>0.59999999999999998</ITEM>
+        <ITEM>0.69999999999999996</ITEM>
+        <ITEM>0.79999999999999993</ITEM>
+        <ITEM>0.89999999999999991</ITEM>
+        <ITEM>0.99999999999999989</ITEM>
+      </Values>
+      <Transparency Mode="CONSTANT" ConstAlpha="100">
+        <Alphas>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+        </Alphas>
+      </Transparency>
+    </Palette>
+    <OBJECT class="CPlaneConstraints" myid="-100" Enabled="0" Type="RECTANGLE" Size1="0.10000000000000001" Size2="0.10000000000000001"/>
+  </OBJECT>
+  <OBJECT Lit="1" class="CVectorLayer" myid="11979" Clipped="0" GUID="D086EF13-EBF5-42A0-8B22-C14B62641A8A" Visible="1" UIName="U">
+    <Object>*-2.-4.2</Object>
+    <Settings>
+      <Mode>UNASSIGNED</Mode>
+      <Parts/>
+    </Settings>
+    <Update>
+      <Kind>AUTO</Kind>
+      <Time>0</Time>
+      <Iteration>1</Iteration>
+    </Update>
+    <SaveData>
+      <Kind>AUTO</Kind>
+      <Time>0</Time>
+      <Iteration>1</Iteration>
+      <Filename>U.glo</Filename>
+      <Mode>APPEND</Mode>
+      <UpdateOnStop>1</UpdateOnStop>
+    </SaveData>
+    <Var Comp="SOURCE">
+      <Description Size="3" IDVar="VEL" IDPhase="-1" BlockType="CMotionProcess"/>
+      <Integration>
+        <Enabled>0</Enabled>
+        <IntegrationDir>NORMAL</IntegrationDir>
+        <CustomDir x="1" y="0" z="0"/>
+        <Inverted>0</Inverted>
+      </Integration>
+      <Interpolation>1</Interpolation>
+    </Var>
+    <SubRegion>0</SubRegion>
+    <Shift>0</Shift>
+    <RegularGrid>1</RegularGrid>
+    <Resolution Size1="10" Size2="10" LocalSystem="1" Size3="1"/>
+    <GridSelection OBL="1" Main="1" OBLChips="0"/>
+    <CoorSystem>
+      <Type>ABSOLUTE_CS</Type>
+      <LocalFrameRef>0</LocalFrameRef>
+      <Rotation>0</Rotation>
+      <Translation>0</Translation>
+      <Relativity>
+        <Linear x="0" y="0" z="0"/>
+        <Rotation x="0" y="0" z="0"/>
+        <Pivot x="0" y="0" z="0"/>
+      </Relativity>
+    </CoorSystem>
+    <Mapping ReferenceLen="0.001" MappingMode="LOCAL" ConstantLen="0" Max="0"/>
+    <Mode>FULL</Mode>
+    <Lines Width="1" Color="00FFFFFF"/>
+    <Arrows Angle="20" Mode="LINES" Size="20"/>
+    <Origins Show="0" Color="000000FF"/>
+    <Cover>
+      <Var Comp="SOURCE">
+        <Description Size="0" IDVar="" IDPhase="-1" BlockType="0"/>
+        <Integration>
+          <Enabled>0</Enabled>
+          <IntegrationDir>NORMAL</IntegrationDir>
+          <CustomDir x="1" y="0" z="0"/>
+          <Inverted>0</Inverted>
+        </Integration>
+      </Var>
+      <Mapping MappingMode="LOCAL" Min="0" Max="1"/>
+      <LogScale Limit="1.0000000000000001E-005" Enabled="0"/>
+      <Palette>
+        <Overlay HorzAlign="LEFT" Enabled="0" ShowTitle="0" Style="STYLE3" VertAlign="TOP" Gradations="11" Color="00FFFFFF"/>
+        <Gradations>0</Gradations>
+        <Colors>
+          <ITEM>000000FF</ITEM>
+          <ITEM>000064FF</ITEM>
+          <ITEM>0000B9FF</ITEM>
+          <ITEM>0000FFFF</ITEM>
+          <ITEM>0000FF9F</ITEM>
+          <ITEM>0000FF00</ITEM>
+          <ITEM>009FFF00</ITEM>
+          <ITEM>00FFFF00</ITEM>
+          <ITEM>00FFB900</ITEM>
+          <ITEM>00FF6400</ITEM>
+          <ITEM>00FF0000</ITEM>
+        </Colors>
+        <Values>
+          <ITEM>0</ITEM>
+          <ITEM>0.10000000000000001</ITEM>
+          <ITEM>0.20000000000000001</ITEM>
+          <ITEM>0.30000000000000004</ITEM>
+          <ITEM>0.40000000000000002</ITEM>
+          <ITEM>0.5</ITEM>
+          <ITEM>0.59999999999999998</ITEM>
+          <ITEM>0.69999999999999996</ITEM>
+          <ITEM>0.79999999999999993</ITEM>
+          <ITEM>0.89999999999999991</ITEM>
+          <ITEM>0.99999999999999989</ITEM>
+        </Values>
+      </Palette>
+    </Cover>
+    <OBJECT class="CPlaneConstraints" myid="-100" Enabled="0" Type="RECTANGLE" Size1="0.10000000000000001" Size2="0.10000000000000001"/>
+  </OBJECT>
+  <OBJECT Lit="1" class="CGridSectionLayer" myid="15265" Clipped="0" GUID="DBEE8F40-5391-47E7-A6A9-79CA00F1C78C" Visible="1" UIName="Сечение расчётной сетки #0 (Плоскость #0)">
+    <Object>*-2.-4.2</Object>
+    <Settings>
+      <Mode>UNASSIGNED</Mode>
+      <Parts/>
+    </Settings>
+    <SubRegion>0</SubRegion>
+    <Filter Small="0" Vacuum="0"/>
+    <Subdiv>WHOLE_GRID</Subdiv>
+    <Appearance Mode="BOTH">
+      <Lines Width="1" Color="00FFFFFF"/>
+      <Fill Alpha="100" Color="00808080"/>
+    </Appearance>
+    <Processors Mode="BOTH" Count="1">
+      <Visibility>0</Visibility>
+      <Lines>
+        <Color>
+          <ITEM>000000FF</ITEM>
+        </Color>
+        <Width>
+          <ITEM>1</ITEM>
+        </Width>
+      </Lines>
+      <Fill>
+        <Color>
+          <ITEM>000000E0</ITEM>
+        </Color>
+        <Alpha>
+          <ITEM>100</ITEM>
+        </Alpha>
+      </Fill>
+    </Processors>
+    <Hypercells Mode="WIRE" Count="0">
+      <Visibility>-</Visibility>
+      <Lines>
+        <Color/>
+        <Width/>
+      </Lines>
+      <Fill>
+        <Color/>
+        <Alpha/>
+      </Fill>
+      <Processor/>
+    </Hypercells>
+  </OBJECT>
+</FVSCENE>
