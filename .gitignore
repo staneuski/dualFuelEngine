@@ -20,3 +20,8 @@ linux*Gcc*/
 
 # Files - local
 tutorials/**/cylPiston/system/blockMeshDict
+
+# Folders - local
+etc/DRK2Py/__pycache__/
+etc/DRK2Py/*.res/
+etc/DRK2Py/tmp*/
