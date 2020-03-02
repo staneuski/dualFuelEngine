@@ -25,7 +25,7 @@ if cylParPlot == 'true':
     )
     plt.scatter(360 - EVO, p[360 - EVO], s = 100, marker = 'o')
     plt.grid( True );    plt.legend( loc = 'best', fontsize = 12 )
-    plt.xlabel( '$\\varphi$, deg' )
+    plt.xlabel( '$\\varphi$, deg CA' )
     plt.ylabel( 'p, Pa' )
 
     plt.subplot(122).set_title(
@@ -38,14 +38,14 @@ if cylParPlot == 'true':
     )
     plt.scatter(360 - EVO, T[360 - EVO], s = 100, marker = 'o')
     plt.grid( True );    plt.legend( loc = 'best', fontsize = 12 )
-    plt.xlabel( '$\\varphi$, deg' )
+    plt.xlabel( '$\\varphi$, deg CA' )
     plt.ylabel( 'T, K' )
 
     plt.savefig( 'DRK2Py.res/cylPars.png' )
 
 
 # Inlet & outlet parameters
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# ~~~~~~~~~~~~~~~~~~~~~~~~~
 if inOutParPlot == 'true':
     plt.figure(
         figsize = (10, 6)#, dpi = 80, facecolor = 'w', edgecolor = 'k'
@@ -67,7 +67,7 @@ if inOutParPlot == 'true':
         label = 'exhaust pipe'
     )
     plt.grid( True );    plt.legend( loc = 'best', fontsize = 12 )
-    plt.xlabel( '$\\varphi$, deg' )
+    plt.xlabel( '$\\varphi$, deg CA' )
     plt.ylabel( 'p, Pa' )
 
     plt.subplot(122).set_title(
@@ -85,7 +85,7 @@ if inOutParPlot == 'true':
         label = 'exhaust pipe'
     )
     plt.grid( True );    plt.legend( loc = 'best', fontsize = 12 )
-    plt.xlabel( '$\\varphi$, deg' )
+    plt.xlabel( '$\\varphi$, deg CA' )
     plt.ylabel( 'T, K' )
 
     plt.savefig( 'DRK2Py.res/inOutPars.png' )
@@ -116,9 +116,28 @@ if movingPartsPlot == 'true':
             linewidth = 2,
             label = 'valve'
         )
-        plt.axvspan(-IPO, IPO, alpha=0.18, color='grey')
+
+        plt.annotate(
+            '(BDC)', (1, 1),
+            xytext = (EVO/(EVO + 180)*1.19, -0.06), textcoords='axes fraction',
+            horizontalalignment='right', verticalalignment='top'
+        )
+        plt.annotate(
+            'IPC', xy=(-IPO, 0.8),  xycoords='data',
+            xytext=(0.1, 0.95), textcoords='axes fraction',
+            arrowprops=dict(arrowstyle="-", color="0.5", shrinkB=1),
+            horizontalalignment='left', verticalalignment='top'
+        )
+        plt.annotate(
+            'IPO', xy=(IPO, 0.8),  xycoords='data',
+            xytext=(0.58, 0.95), textcoords='axes fraction',
+            arrowprops=dict(arrowstyle="-", color="0.5", shrinkB=1),
+            horizontalalignment='right', verticalalignment='top'
+        )
+        plt.axvspan(-IPC, IPO, alpha=0.18, color='grey')
+        plt.axvline(x = 0, color='black', linestyle = '--')
         plt.grid( True );    plt.legend( loc = 'best', fontsize = 12 )
-        plt.xlabel( '$\\varphi$, deg' )
+        plt.xlabel( '$\\varphi$, deg CA' )
         plt.ylabel( 'Relative motion' )
 
 
@@ -140,9 +159,28 @@ if movingPartsPlot == 'true':
             linewidth = 2,
             label = 'valve'
         )
-        plt.axvspan(-IPO, IPO, alpha=0.18, color='grey')
+
+        plt.annotate(
+            '(BDC)', (1, 1),
+            xytext = (EVO/(EVO + 180)*1.19, -0.06), textcoords='axes fraction',
+            horizontalalignment='right', verticalalignment='top'
+        )
+        plt.annotate(
+            'IPC', xy=(-IPO, 12),  xycoords='data',
+            xytext=(0.1, 0.95), textcoords='axes fraction',
+            arrowprops=dict(arrowstyle="-", color="0.5", shrinkB=1),
+            horizontalalignment='left', verticalalignment='top',
+        )
+        plt.annotate(
+            'IPO', xy=(IPO, 12),  xycoords='data',
+            xytext=(0.58, 0.95), textcoords='axes fraction',
+            arrowprops=dict(arrowstyle="-", color="0.5", shrinkB=1),
+            horizontalalignment='right', verticalalignment='top',
+        )
+        plt.axvspan(-IPC, IPO, alpha=0.18, color='grey')
+        plt.axvline(x = 0, color='black', linestyle = '--')
         plt.grid( True );    plt.legend( loc = 'lower right', fontsize = 12 )
-        plt.xlabel( '$\\varphi$, deg' )
+        plt.xlabel( '$\\varphi$, deg CA' )
         plt.ylabel( 'U, m/s' )
     
 
@@ -172,7 +210,7 @@ if inletInjectionPlot == 'true':
 
     plt.axvspan(-IPO, IPO, alpha=0.18, color='grey')
     plt.grid( True );    plt.legend( loc = 'lower right', fontsize = 12 )
-    plt.xlabel( '$\\varphi$, deg' )
+    plt.xlabel( '$\\varphi$, deg CA' )
     plt.ylabel( 'U, m/s' )
 
     plt.savefig( 'DRK2Py.res/inletInjectionU.png' )

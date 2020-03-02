@@ -8,23 +8,23 @@
 
 n                  = 92 # RPM
 
-IPO                = 42 #˚ of CA before BDC
+IPO                = 42 # ˚CA before BDC
 
-IPC                = IPO #˚ of CA after BDC
+IPC                = IPO # ˚CA after BDC
 
-EVO                = 85 #˚ of CA before BDC
+EVO                = 85 # ˚CA before BDC
 
-EVC                = 46 #˚ of CA after BDC
+EVC                = 46 # ˚CA after BDC
 
 
 injG_max           = 1.2 # kg/s, q_injGas = 100 (g), t_injGas = 0.0815 (s))
 
-injCA2Max          = 10 #˚ of CA
+injCA2Max          = 10 # ˚CA
 
 
 terminalOutput     = 'false' # true or false
 
-saveFormat         = 'txt' # None, csv or txt (coordinates is writed in the .csv, velocities in the .txt)
+saveFormat         = 'txt' # None, csv or txt (coordinates is writen in the .csv, velocities in the .txt)
 
 cylParPlot         = 'false' # true or false
 

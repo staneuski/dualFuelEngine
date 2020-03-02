@@ -31,7 +31,7 @@ indMatrix = np.loadtxt(
     glob.glob('tmp*/*.ind')[0], skiprows = 19, encoding = "utf8"
 )
 
-alpha         = indMatrix[:,0] # CA
+alpha         = indMatrix[:,0]       # CA
 p             = indMatrix[:,1]*1e+05 # Pa, cylinder pressure
 T             = indMatrix[:,2]       # K, average cylinder temperature
 V             = indMatrix[:,3]       # m^3, cylinder volume
