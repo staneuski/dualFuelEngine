@@ -179,7 +179,7 @@ if movingPartsPlot == 'true':
         )
         plt.axvspan(-IPC, IPO, alpha=0.18, color='grey')
         plt.axvline(x = 0, color='black', linestyle = '--')
-        plt.grid( True );    plt.legend( loc = 'lower right', fontsize = 12 )
+        plt.grid( True );    plt.legend( loc = 'best', fontsize = 12 )
         plt.xlabel( '$\\varphi$, deg CA' )
         plt.ylabel( 'U, m/s' )
     
@@ -198,19 +198,22 @@ if inletInjectionPlot == 'true':
     plt.plot(
         range(-EVO, 180),
         G_inlet,
+        # rhoU_inlet,
         linewidth = 2,
         label = 'inlet'
     )
     plt.plot(
         range(-EVO, 180),
         G_injection,
+        # rhoU_injection,
         linewidth = 2,
         label = 'injection'
     )
 
     plt.axvspan(-IPO, IPO, alpha=0.18, color='grey')
-    plt.grid( True );    plt.legend( loc = 'lower right', fontsize = 12 )
+    plt.grid( True );    plt.legend( loc = 'best', fontsize = 12 )
     plt.xlabel( '$\\varphi$, deg CA' )
-    plt.ylabel( 'U, m/s' )
+    plt.ylabel( 'G, kg/s' )
+    # plt.ylabel( '$\\rho U$, kg/m/s' )
 
     plt.savefig( 'DRK2Py.res/inletInjectionU.png' )

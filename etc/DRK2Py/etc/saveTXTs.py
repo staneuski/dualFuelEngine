@@ -31,7 +31,7 @@ np.savetxt(
     "DRK2Py.res/inletVelocity.txt",
     np.array([
         np.arange(0, (EVO + 180)*degDeltaT, degDeltaT), # t
-        G_inlet
+        rhoU_inlet
     ]).T,
     fmt='%.5e', delimiter=' '
 )
@@ -39,7 +39,7 @@ np.savetxt(
     "DRK2Py.res/injectionVelocity.txt",
     np.array([
         np.arange(0, (EVO + 180)*degDeltaT, degDeltaT), # t
-        G_injection
+        rhoU_injection
     ]).T,
     fmt='%.5e', delimiter=' '
 )

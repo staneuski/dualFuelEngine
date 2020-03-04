@@ -74,16 +74,20 @@ valveCoord = valveCoordObj(np.arange(0, (EVO + 180)*degDeltaT, degDeltaT*valveCo
 
 valveU = np.gradient(valveCoord, np.arange(0, (EVO + 180)*degDeltaT, degDeltaT*valveCoordFrequency)) # dt/dt
 
-#- Create velocity arrays
+#- Create inlet/injection arrays
 G_injection = np.concatenate((
     np.zeros(EVO + EVC - 1),
     np.arange(0, injG_max + injG_max/injCA2Max, injG_max/injCA2Max),
     np.full(180 - (EVC + injCA2Max), injG_max)
 ))
+rhoU_injection = G_injection/injArea
 
 G_inlet = np.pad(
     G_inlet, (0, len(G_injection) - len(G_inlet)), 'constant'
 )
+G_inlet[G_inlet < -1.7] = -1 # -1.7 is more than right min, set less grad(G) to the left min
+
+rhoU_inlet = G_inlet/inletArea
 
 # * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
