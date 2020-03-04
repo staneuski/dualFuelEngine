@@ -1,63 +1,69 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<FVSTATUS ownIcingTime="0" totalCellsOBL="0" timeIter="9" slideTimeStep="3.4028234663852886E+038" current="0.00078251983346534586" expTimeStepFSI="0" timeStep="1.1707917297959436E-005" expTimeStep="2.3415834595918874E-007" totalCells="816773" surfTimeStep="0.00074432798807948339" calcCellsOBL="0" calcCells="428014" beadgrowthTimeStep="0" UIName="VarStatus" difTimeStep="9.1181558859655784E-005">
+<FVSTATUS ownIcingTime="0" totalCellsOBL="0" timeIter="406" slideTimeStep="3.4028234663852886E+038" current="0.078031032302068398" expTimeStepFSI="0" timeStep="5.7592674450495424E-007" expTimeStep="7.6790232600660573E-006" totalCells="11305" surfTimeStep="0.0017630625182920229" calcCellsOBL="0" calcCells="7371" beadgrowthTimeStep="0" UIName="VarStatus" difTimeStep="0.00016531903598667529">
   <UseOld Grid="1" Data="1" Mask="1"/>
   <eqResiduals>
-    <ITEM EqRes="0.0013885087754361826" Iters="6" Step="9" Name="Давление" IsOBL="0" MaxEqRes="115249.53740562985" LinRes="3.1390500720189395E-005">
+    <ITEM EqRes="0.48338404862678691" Iters="2" Step="406" Name="Давление" IsOBL="0" MaxEqRes="109.10163796520027" LinRes="3.7158932540389835E-008">
       <Var Size="1" IDModel="41" IDVar="PRES" IDPhase="51" BlockType="CMotionProcess"/>
     </ITEM>
-    <ITEM EqRes="0.009371036228958891" Iters="17" Step="9" Name="Скорость" IsOBL="0" MaxEqRes="244022.62151246704" LinRes="3.9692604311849861E-005">
+    <ITEM EqRes="0.14934456885677477" Iters="2" Step="406" Name="Скорость" IsOBL="0" MaxEqRes="1124.5566688647384" LinRes="4.6465202563823229E-007">
       <Var Size="3" IDModel="41" IDVar="VEL" IDPhase="51" BlockType="CMotionProcess"/>
     </ITEM>
-    <ITEM EqRes="0" Iters="1" Step="9" Name="Масс. доля [Природный газ_Газовая (равновесная)]" IsOBL="0" MaxEqRes="0" LinRes="0">
+    <ITEM EqRes="0.22185951438750287" Iters="2" Step="406" Name="ТурбЭнергия" IsOBL="0" MaxEqRes="241.36826231427162" LinRes="3.3887610162068862E-009">
+      <Var Size="1" IDModel="41" IDVar="KTURB" IDPhase="51" BlockType="CTurbulenceProcess"/>
+    </ITEM>
+    <ITEM EqRes="0.29250390523986397" Iters="2" Step="406" Name="ТурбДиссипация удельная" IsOBL="0" MaxEqRes="165.85861193547666" LinRes="2.7814247330295331E-009">
+      <Var Size="1" IDModel="41" IDVar="OMEGA" IDPhase="51" BlockType="CTurbulenceProcess"/>
+    </ITEM>
+    <ITEM EqRes="0" Iters="1" Step="406" Name="Масс. доля [Природный газ_Газовая (равновесная)]" IsOBL="0" MaxEqRes="0" LinRes="0">
       <Var Size="1" IDModel="41" IDVar="MASSFRACTIONS00" IDPhase="51" BlockType="CMassXferProcess"/>
     </ITEM>
-    <ITEM EqRes="0" Iters="1" Step="9" Name="Масс. доля [Воздух_Газовая (равновесная)]" IsOBL="0" MaxEqRes="0" LinRes="0">
+    <ITEM EqRes="0" Iters="1" Step="406" Name="Масс. доля [Воздух_Газовая (равновесная)]" IsOBL="0" MaxEqRes="0" LinRes="0">
       <Var Size="1" IDModel="41" IDVar="MASSFRACTIONS01" IDPhase="51" BlockType="CMassXferProcess"/>
     </ITEM>
-    <ITEM EqRes="0.055559101034683041" Iters="5" Step="9" Name="Энтальпия" IsOBL="0" MaxEqRes="149958.03449922372" LinRes="5.0938187559191726E-007">
+    <ITEM EqRes="0.48196155302305504" Iters="2" Step="406" Name="Энтальпия" IsOBL="0" MaxEqRes="32.192338358225449" LinRes="1.4448823391194613E-007">
       <Var Size="1" IDModel="41" IDVar="ENTH" IDPhase="51" BlockType="CHeatXferProcess"/>
     </ITEM>
   </eqResiduals>
   <stopperData>
-    <ITEM Stopper="*-2.-5.-5.7">
-      <History Mode="BY_TIME" MaxAvg="-83.568049051927133" MinAvg="-83.589126381679023" Iterations="1" Time="0" Min="-83.589126381679023" Max="-83.568049051927133">
+    <ITEM Stopper="*-2.-5.-5.16">
+      <History Mode="BY_TIME" MaxAvg="1" MinAvg="0.0051303975978304597" Iterations="1" Time="0" Min="0.0051303975978304597" Max="1">
         <Data>
-          <ITEM ID="9" Time="0.00078251983346534586" Value="-83.568049051927133"/>
+          <ITEM ID="406" Time="0.078031032302068398" Value="0.14934456885677477"/>
         </Data>
       </History>
     </ITEM>
-    <ITEM Stopper="*-2.-5.-5.15">
-      <History Mode="BY_TIME" MaxAvg="1" MinAvg="0.047310951396244236" Iterations="1" Time="0" Min="0.047310951396244236" Max="1">
+    <ITEM Stopper="*-2.-5.-5.17">
+      <History Mode="BY_TIME" MaxAvg="1" MinAvg="0.48338404862678691" Iterations="1" Time="0" Min="0.48338404862678691" Max="1">
         <Data>
-          <ITEM ID="9" Time="0.00078251983346534586" Value="0.055559101034683041"/>
+          <ITEM ID="406" Time="0.078031032302068398" Value="0.48338404862678691"/>
         </Data>
       </History>
     </ITEM>
     <ITEM Stopper="*-2.-5.-5.18">
       <History Mode="BY_TIME" MaxAvg="0" MinAvg="0" Iterations="1" Time="0" Min="0" Max="0">
         <Data>
-          <ITEM ID="9" Time="0.00078251983346534586" Value="0"/>
+          <ITEM ID="406" Time="0.078031032302068398" Value="0"/>
         </Data>
       </History>
     </ITEM>
-    <ITEM Stopper="*-2.-5.-5.16">
-      <History Mode="BY_TIME" MaxAvg="1" MinAvg="0.009371036228958891" Iterations="1" Time="0" Min="0.009371036228958891" Max="1">
+    <ITEM Stopper="*-2.-5.-5.15">
+      <History Mode="BY_TIME" MaxAvg="1" MinAvg="0.48196155302305504" Iterations="1" Time="0" Min="0.48196155302305504" Max="1">
         <Data>
-          <ITEM ID="9" Time="0.00078251983346534586" Value="0.009371036228958891"/>
-        </Data>
-      </History>
-    </ITEM>
-    <ITEM Stopper="*-2.-5.-5.17">
-      <History Mode="BY_TIME" MaxAvg="1" MinAvg="0.00063907564090131673" Iterations="1" Time="0" Min="0.00063907564090131673" Max="1">
-        <Data>
-          <ITEM ID="9" Time="0.00078251983346534586" Value="0.0013885087754361826"/>
+          <ITEM ID="406" Time="0.078031032302068398" Value="0.48196155302305504"/>
         </Data>
       </History>
     </ITEM>
     <ITEM Stopper="*-2.-5.-5.19">
       <History Mode="BY_TIME" MaxAvg="0" MinAvg="0" Iterations="1" Time="0" Min="0" Max="0">
         <Data>
-          <ITEM ID="9" Time="0.00078251983346534586" Value="0"/>
+          <ITEM ID="406" Time="0.078031032302068398" Value="0"/>
+        </Data>
+      </History>
+    </ITEM>
+    <ITEM Stopper="*-2.-5.-5.7">
+      <History Mode="BY_TIME" MaxAvg="-40.926870169258244" MinAvg="-83.75" Iterations="1" Time="0" Min="-83.75" Max="-40.926870169258244">
+        <Data>
+          <ITEM ID="406" Time="0.078031032302068398" Value="-40.926870169258244"/>
         </Data>
       </History>
     </ITEM>
@@ -67,20 +73,20 @@
   <OBJECT class="CActivationStatus" myid="0">
     <Context>*-2.-2.-97.-3</Context>
     <StructPath>Activation</StructPath>
-    <LastTime>0.00077081191616738647</LastTime>
-    <LastIter>8</LastIter>
+    <LastTime>0.078030456375323895</LastTime>
+    <LastIter>405</LastIter>
   </OBJECT>
   <OBJECT class="CActivationStatus" myid="1">
     <Context>*-2.-2.-97.-2</Context>
     <StructPath>Activation</StructPath>
-    <LastTime>0.00077081191616738647</LastTime>
-    <LastIter>8</LastIter>
+    <LastTime>0.078030456375323895</LastTime>
+    <LastIter>405</LastIter>
   </OBJECT>
   <OBJECT class="CActivationStatus" myid="2">
     <Context>*-2.-2.-97.-5</Context>
     <StructPath>Activation</StructPath>
-    <LastTime>0.00077081191616738647</LastTime>
-    <LastIter>8</LastIter>
+    <LastTime>0.078030456375323895</LastTime>
+    <LastIter>405</LastIter>
   </OBJECT>
   <OBJECT class="CActivationStatus" myid="3">
     <Context>*-2.-5.-3</Context>
@@ -95,51 +101,51 @@
     <LastIter>-2</LastIter>
   </OBJECT>
   <OBJECT class="CActivationStatus" myid="5">
-    <Context>*-2.-2.1.-3</Context>
+    <Context>*-2.-2.2.105</Context>
     <StructPath>Activation</StructPath>
-    <LastTime>-2</LastTime>
-    <LastIter>-2</LastIter>
+    <LastTime>0.078031032302068398</LastTime>
+    <LastIter>406</LastIter>
   </OBJECT>
   <OBJECT class="CActivationStatus" myid="6">
-    <Context>*-2.-2.2.-2</Context>
-    <StructPath>Activation</StructPath>
-    <LastTime>-2</LastTime>
-    <LastIter>-2</LastIter>
-  </OBJECT>
-  <OBJECT class="CActivationStatus" myid="7">
-    <Context>*-2.-2.2.-3</Context>
-    <StructPath>Activation</StructPath>
-    <LastTime>-2</LastTime>
-    <LastIter>-2</LastIter>
-  </OBJECT>
-  <OBJECT class="CActivationStatus" myid="8">
     <Context>*-2.-2.1.-2</Context>
     <StructPath>Activation</StructPath>
     <LastTime>-2</LastTime>
     <LastIter>-2</LastIter>
   </OBJECT>
-  <OBJECT class="CActivationStatus" myid="9">
-    <Context>*-2.-2.2.105</Context>
+  <OBJECT class="CActivationStatus" myid="7">
+    <Context>*-2.-2.2.-2</Context>
     <StructPath>Activation</StructPath>
-    <LastTime>0.00078251983346534586</LastTime>
-    <LastIter>9</LastIter>
+    <LastTime>-2</LastTime>
+    <LastIter>-2</LastIter>
+  </OBJECT>
+  <OBJECT class="CActivationStatus" myid="8">
+    <Context>*-2.-2.2.-3</Context>
+    <StructPath>Activation</StructPath>
+    <LastTime>-2</LastTime>
+    <LastIter>-2</LastIter>
+  </OBJECT>
+  <OBJECT class="CActivationStatus" myid="9">
+    <Context>*-2.-2.1.-3</Context>
+    <StructPath>Activation</StructPath>
+    <LastTime>-2</LastTime>
+    <LastIter>-2</LastIter>
   </OBJECT>
   <OBJECT class="CActivationStatus" myid="10">
     <Context>*-2.-2.2.120</Context>
     <StructPath>Activation</StructPath>
-    <LastTime>0.00078251983346534586</LastTime>
-    <LastIter>9</LastIter>
+    <LastTime>0.078031032302068398</LastTime>
+    <LastIter>406</LastIter>
   </OBJECT>
   <OBJECT class="CMovingBodyStatus" myid="11" EffMassCoef="1">
     <MBObject>*-2.-2.2.105</MBObject>
     <Location>
-      <Origin x="0" y="0" z="0.9155644827682532"/>
+      <Origin x="0" y="0" z="0.19833273000623949"/>
       <Ort0 x="1" y="0" z="0"/>
       <Ort1 x="0" y="1" z="0"/>
       <Ort2 x="0" y="0" z="1"/>
       <Scale>1</Scale>
     </Location>
-    <IntegralVelMov x="0" y="0" z="-12.652624187873084"/>
+    <IntegralVelMov x="0" y="0" z="-5.671897187333764"/>
     <IntegralVelRot x="0" y="0" z="0"/>
     <HydroForce x="0" y="0" z="0"/>
     <GravityForce x="0" y="0" z="0"/>
@@ -149,13 +155,13 @@
   <OBJECT class="CMovingBodyStatus" myid="12" EffMassCoef="1">
     <MBObject>*-2.-2.2.120</MBObject>
     <Location>
-      <Origin x="0" y="0" z="0.00018928377386070845"/>
+      <Origin x="0" y="0" z="-0.066720139036741399"/>
       <Ort0 x="1" y="0" z="0"/>
       <Ort1 x="0" y="1" z="0"/>
       <Ort2 x="0" y="0" z="1"/>
       <Scale>1</Scale>
     </Location>
-    <IntegralVelMov x="0" y="0" z="-0.39705895168961991"/>
+    <IntegralVelMov x="0" y="0" z="-0.075648858123145424"/>
     <IntegralVelRot x="0" y="0" z="0"/>
     <HydroForce x="0" y="0" z="0"/>
     <GravityForce x="0" y="0" z="0"/>

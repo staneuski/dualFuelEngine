@@ -45,6 +45,18 @@
             <MyNMVar>TEMP</MyNMVar>
             <MyBlockType>CHeatXferProcess</MyBlockType>
           </ITEM>
+          <ITEM>
+            <Limiter>1.0000000000000001E-009</Limiter>
+            <LimType>MINLIM</LimType>
+            <MyNMVar>LIM_NUTURBMIN</MyNMVar>
+            <MyBlockType>CTurbulenceProcess</MyBlockType>
+          </ITEM>
+          <ITEM>
+            <Limiter>1E+020</Limiter>
+            <LimType>MAXLIM</LimType>
+            <MyNMVar>LIM_NUTURBMAXNUMOL</MyNMVar>
+            <MyBlockType>CTurbulenceProcess</MyBlockType>
+          </ITEM>
         </CalcLim>
         <MyPhaseID>51</MyPhaseID>
         <SmallCellParameters DynamicCriteria="0.20000000000000001" Type="ABSOLUTE" Criteria="0.20000000000000001"/>
@@ -158,7 +170,7 @@
     <NonStationary>1</NonStationary>
     <Frequency>
       <Kind>BYTIME</Kind>
-      <Time>0.001</Time>
+      <Time>0.0018115900000000001</Time>
       <Iteration>50</Iteration>
     </Frequency>
     <EnSight Enabled="0" Binary="1"/>
@@ -213,19 +225,91 @@
     <OBJECT class="CFvValueConstant" Constant="1E+020" myid="5"/>
   </OBJECT>
   <OBJECT class="CTimeStep" DisConvergenceLimit="1E-010" myid="-2" Type="CFL">
-    <Step Source="*.0"/>
+    <Step Source="*.7"/>
     <CFL Source="*.1"/>
     <CFLSURF Source="*.2"/>
     <CFLDIFF Source="*.3"/>
     <CFLSLIDE Source="*.4"/>
-    <Maximum Source="*.5"/>
-    <Minimum Source="*.6"/>
-    <OBJECT class="CFvValueConstant" Constant="1" myid="0"/>
-    <OBJECT class="CFvValueConstant" Constant="50" myid="1"/>
+    <Maximum Source="*.8"/>
+    <Minimum Source="*.9"/>
+    <OBJECT class="CFvValueConstant" Constant="0.074999999999999997" myid="1"/>
     <OBJECT class="CFvValueConstant" Constant="1" myid="2"/>
     <OBJECT class="CFvValueConstant" Constant="1E+020" myid="3"/>
     <OBJECT class="CFvValueConstant" Constant="1" myid="4"/>
-    <OBJECT class="CFvValueConstant" Constant="0.050000000000000003" myid="5"/>
-    <OBJECT class="CFvValueConstant" Constant="9.9999999999999995E-021" myid="6"/>
+    <OBJECT class="CFvValueFormula" myid="7">
+      <Formula>60/n/360 * 0.25</Formula>
+      <Bindings>
+        <Constants/>
+        <Linkage>
+          <ITEM Type="USER" Id="0" Name="n" Comp="SOURCE" Index="0"/>
+        </Linkage>
+        <Physical/>
+        <Integral/>
+        <User>
+          <ITEM UV="*-2.-2.277"/>
+        </User>
+      </Bindings>
+      <Code MemorySize="0" ReturnSize="1" StackDepth="2" MachineID="513">
+        <Code>
+          <ITEM Opcode="PUSH" Value="60"/>
+          <ITEM Opcode="RESOLVE" Value="0"/>
+          <ITEM Opcode="DIV" Value="2"/>
+          <ITEM Opcode="PUSH" Value="360"/>
+          <ITEM Opcode="DIV" Value="2"/>
+          <ITEM Opcode="PUSH" Value="0.25"/>
+          <ITEM Opcode="MUL" Value="2"/>
+        </Code>
+      </Code>
+    </OBJECT>
+    <OBJECT class="CFvValueFormula" myid="8">
+      <Formula>60/n/360 * 0.25</Formula>
+      <Bindings>
+        <Constants/>
+        <Linkage>
+          <ITEM Type="USER" Id="0" Name="n" Comp="SOURCE" Index="0"/>
+        </Linkage>
+        <Physical/>
+        <Integral/>
+        <User>
+          <ITEM UV="*-2.-2.277"/>
+        </User>
+      </Bindings>
+      <Code MemorySize="0" ReturnSize="1" StackDepth="2" MachineID="513">
+        <Code>
+          <ITEM Opcode="PUSH" Value="60"/>
+          <ITEM Opcode="RESOLVE" Value="0"/>
+          <ITEM Opcode="DIV" Value="2"/>
+          <ITEM Opcode="PUSH" Value="360"/>
+          <ITEM Opcode="DIV" Value="2"/>
+          <ITEM Opcode="PUSH" Value="0.25"/>
+          <ITEM Opcode="MUL" Value="2"/>
+        </Code>
+      </Code>
+    </OBJECT>
+    <OBJECT class="CFvValueFormula" myid="9">
+      <Formula>60/n/360 * 1e-07</Formula>
+      <Bindings>
+        <Constants/>
+        <Linkage>
+          <ITEM Type="USER" Id="0" Name="n" Comp="SOURCE" Index="0"/>
+        </Linkage>
+        <Physical/>
+        <Integral/>
+        <User>
+          <ITEM UV="*-2.-2.277"/>
+        </User>
+      </Bindings>
+      <Code MemorySize="0" ReturnSize="1" StackDepth="2" MachineID="513">
+        <Code>
+          <ITEM Opcode="PUSH" Value="60"/>
+          <ITEM Opcode="RESOLVE" Value="0"/>
+          <ITEM Opcode="DIV" Value="2"/>
+          <ITEM Opcode="PUSH" Value="360"/>
+          <ITEM Opcode="DIV" Value="2"/>
+          <ITEM Opcode="PUSH" Value="9.9999999999999995e-008"/>
+          <ITEM Opcode="MUL" Value="2"/>
+        </Code>
+      </Code>
+    </OBJECT>
   </OBJECT>
 </FVSIMCTRL>
