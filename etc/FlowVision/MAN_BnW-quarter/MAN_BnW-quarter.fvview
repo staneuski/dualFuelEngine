@@ -2,7 +2,7 @@
 <FVSCENE AppVersion="FlowVision PrePostProcessor, version 3.11.03-W64 build 20200210 changeset 40247" GridCoordSys="1">
   <ShowTimeTitle>1</ShowTimeTitle>
   <TextTitle FontSize="22" BgAlpha="100" ShowTime="1" BgColor="00FFFFFF" ShowIter="1" Color="00FFFFFF">
-    <Title>MAN B&amp;W S70ME-C8.2-Gi</Title>
+    <Title>MAN B&amp;W S70ME-C8.2-Gi (1/4 domain)</Title>
     <TimeFormat NumDigits="5" Scientific="0" SplitFormat="0"/>
     <UserValueLines>
       <ITEM>
@@ -583,7 +583,7 @@
         <Pivot x="0" y="0" z="0"/>
       </Relativity>
     </CoorSystem>
-    <Mapping ReferenceLen="0.10000000000000001" MappingMode="LOCAL" ConstantLen="0" Max="1160.791259765625"/>
+    <Mapping ReferenceLen="0.10000000000000001" MappingMode="LOCAL" ConstantLen="0" Max="13.704789161682129"/>
     <Mode>FULL</Mode>
     <Lines Width="1" Color="00FFFFFF"/>
     <Arrows Angle="20" Mode="LINES" Size="20"/>
@@ -598,7 +598,7 @@
           <Inverted>0</Inverted>
         </Integration>
       </Var>
-      <Mapping MappingMode="LOCAL" Min="4.5835041999816895" Max="1160.7911376953125"/>
+      <Mapping MappingMode="LOCAL" Min="3.1892039231706804E-008" Max="13.704789161682129"/>
       <LogScale Limit="1.0000000000000001E-005" Enabled="0"/>
       <Palette>
         <Overlay HorzAlign="RIGHT" Enabled="1" ShowTitle="1" Style="STYLE1" VertAlign="TOP" Gradations="11" Color="00FFFFFF"/>
@@ -665,27 +665,29 @@
         </Alpha>
       </Fill>
     </Processors>
-    <Hypercells Mode="BOTH" Count="15">
-      <Visibility>0-14</Visibility>
+    <Hypercells Mode="BOTH" Count="16">
+      <Visibility>0-15</Visibility>
       <Lines>
         <Color>
-          <ITEM>002950D5</ITEM>
-          <ITEM>000960B7</ITEM>
-          <ITEM>000890D6</ITEM>
-          <ITEM>00C27803</ITEM>
-          <ITEM>004003C5</ITEM>
-          <ITEM>003C66CB</ITEM>
-          <ITEM>00213333</ITEM>
-          <ITEM>00F18E40</ITEM>
-          <ITEM>00752064</ITEM>
-          <ITEM>00763CE0</ITEM>
-          <ITEM>0056A6E7</ITEM>
-          <ITEM>00851C98</ITEM>
-          <ITEM>00C59572</ITEM>
-          <ITEM>00DB110B</ITEM>
-          <ITEM>00367079</ITEM>
+          <ITEM>00C525A8</ITEM>
+          <ITEM>0051DD90</ITEM>
+          <ITEM>00FC6733</ITEM>
+          <ITEM>002709E3</ITEM>
+          <ITEM>00FB3A50</ITEM>
+          <ITEM>004062BC</ITEM>
+          <ITEM>00B0E01F</ITEM>
+          <ITEM>003862FE</ITEM>
+          <ITEM>00EFD674</ITEM>
+          <ITEM>008031D5</ITEM>
+          <ITEM>00267952</ITEM>
+          <ITEM>003FBB58</ITEM>
+          <ITEM>0071E94F</ITEM>
+          <ITEM>00632717</ITEM>
+          <ITEM>00BFC8A4</ITEM>
+          <ITEM>00C4BBD5</ITEM>
         </Color>
         <Width>
+          <ITEM>1</ITEM>
           <ITEM>1</ITEM>
           <ITEM>1</ITEM>
           <ITEM>1</ITEM>
@@ -705,23 +707,25 @@
       </Lines>
       <Fill>
         <Color>
-          <ITEM>0014286A</ITEM>
-          <ITEM>0004305B</ITEM>
-          <ITEM>0004486B</ITEM>
-          <ITEM>00613C01</ITEM>
-          <ITEM>00200162</ITEM>
-          <ITEM>001E3365</ITEM>
-          <ITEM>00101919</ITEM>
-          <ITEM>00784720</ITEM>
-          <ITEM>003A1032</ITEM>
-          <ITEM>003B1E70</ITEM>
-          <ITEM>002B5373</ITEM>
-          <ITEM>00420E4C</ITEM>
-          <ITEM>00624A39</ITEM>
-          <ITEM>006D0805</ITEM>
-          <ITEM>001B383C</ITEM>
+          <ITEM>00621254</ITEM>
+          <ITEM>00286E48</ITEM>
+          <ITEM>007E3319</ITEM>
+          <ITEM>00130471</ITEM>
+          <ITEM>007D1D28</ITEM>
+          <ITEM>0020315E</ITEM>
+          <ITEM>0058700F</ITEM>
+          <ITEM>001C317F</ITEM>
+          <ITEM>00776B3A</ITEM>
+          <ITEM>0040186A</ITEM>
+          <ITEM>00133C29</ITEM>
+          <ITEM>001F5D2C</ITEM>
+          <ITEM>00387427</ITEM>
+          <ITEM>0031130B</ITEM>
+          <ITEM>005F6452</ITEM>
+          <ITEM>00625D6A</ITEM>
         </Color>
         <Alpha>
+          <ITEM>100</ITEM>
           <ITEM>100</ITEM>
           <ITEM>100</ITEM>
           <ITEM>100</ITEM>
@@ -740,6 +744,7 @@
         </Alpha>
       </Fill>
       <Processor>
+        <ITEM>0</ITEM>
         <ITEM>0</ITEM>
         <ITEM>0</ITEM>
         <ITEM>0</ITEM>
@@ -788,7 +793,7 @@
       <Lines Width="3" Color="00FF00FF"/>
       <Fill Alpha="100" Color="00800080"/>
     </Appearance>
-    <Mapping MappingMode="LOCAL" Min="0" Max="0"/>
+    <Mapping MappingMode="LOCAL" Min="2.0335690908979132E-009" Max="1.429013138931623E-007"/>
     <Palette>
       <Overlay HorzAlign="LEFT" Enabled="0" ShowTitle="0" Style="STYLE3" VertAlign="TOP" Gradations="11" Color="00FFFFFF"/>
       <Gradations>0</Gradations>

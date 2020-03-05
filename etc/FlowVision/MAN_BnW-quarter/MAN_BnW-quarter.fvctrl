@@ -131,7 +131,7 @@
       <Number>1000000</Number>
     </OBJECT>
     <OBJECT class="CFVTimeSpan" begin="0" end="0.47826099999999999" myid="-2"/>
-    <OBJECT Averaging="COMMON" class="CUserStopper" myid="7" GUID="886109F2-C3A7-40AE-9C81-7A5BABDB060E" Group="255" Comp="LENGTH" Object="*-2.-2.278" Level="0" UGV="255" UIName="phi" Color="000D6BF4">
+    <OBJECT Averaging="COMMON" class="CUserStopper" myid="7" GUID="886109F2-C3A7-40AE-9C81-7A5BABDB060E" Group="255" Comp="LENGTH" Object="*-2.-2.278" Level="0" UGV="255" UIName="phi" Color="00000000">
       <AveragingSettings>
         <Kind>BYTIME</Kind>
         <Time>0</Time>
@@ -173,28 +173,28 @@
         <Iteration>1</Iteration>
       </AveragingSettings>
     </OBJECT>
-    <OBJECT Averaging="COMMON" class="CUserStopper" myid="22" GUID="DACCE009-67AF-4315-A19D-7FB8650D7242" Group="255" Comp="LENGTH" Object="*-2.-2.411" Level="0" UGV="255" UIName="inletMassFlowRate" Color="0000FF00">
+    <OBJECT Averaging="COMMON" class="CUserStopper" myid="22" GUID="DACCE009-67AF-4315-A19D-7FB8650D7242" Group="255" Comp="LENGTH" Object="*-2.-2.411" Level="0" UGV="255" UIName="inletMassFlowRate" Color="00FFAA55">
       <AveragingSettings>
         <Kind>BYTIME</Kind>
         <Time>0</Time>
         <Iteration>1</Iteration>
       </AveragingSettings>
     </OBJECT>
-    <OBJECT Averaging="COMMON" class="CUserStopper" myid="25" GUID="F2A0ED8A-CBDA-4037-81F4-AEBF4B7FB338" Group="255" Comp="LENGTH" Object="*-2.-2.351" Level="0" UGV="255" UIName="injectionMassFlowRate" Color="00D1DB82">
+    <OBJECT Averaging="COMMON" class="CUserStopper" myid="25" GUID="F2A0ED8A-CBDA-4037-81F4-AEBF4B7FB338" Group="255" Comp="LENGTH" Object="*-2.-2.351" Level="0" UGV="255" UIName="injectionMassFlowRate" Color="007FAAFF">
       <AveragingSettings>
         <Kind>BYTIME</Kind>
         <Time>0</Time>
         <Iteration>1</Iteration>
       </AveragingSettings>
     </OBJECT>
-    <OBJECT Averaging="COMMON" class="CUserStopper" myid="48" GUID="E2F72F51-1C0E-415C-AAE7-3ADBB232EC89" Group="0" Comp="LENGTH" Object="*-2.-2.432" Level="0" UGV="2" UIName="volumeAvgP" Color="004DA63E">
+    <OBJECT Averaging="COMMON" class="CUserStopper" myid="48" GUID="E2F72F51-1C0E-415C-AAE7-3ADBB232EC89" Group="0" Comp="LENGTH" Object="*-2.-2.422" Level="0" UGV="2" UIName="volumeAvgP" Color="00FFAA00">
       <AveragingSettings>
         <Kind>BYTIME</Kind>
         <Time>0</Time>
         <Iteration>1</Iteration>
       </AveragingSettings>
     </OBJECT>
-    <OBJECT Averaging="COMMON" class="CUserStopper" myid="51" GUID="A10A4598-7BF3-4299-88F0-15DC16FBA54A" Group="0" Comp="LENGTH" Object="*-2.-2.432" Level="0" UGV="2" UIName="volumeAvgT" Color="004DA63E">
+    <OBJECT Averaging="COMMON" class="CUserStopper" myid="51" GUID="A10A4598-7BF3-4299-88F0-15DC16FBA54A" Group="0" Comp="LENGTH" Object="*-2.-2.432" Level="0" UGV="2" UIName="volumeAvgT" Color="007F55FF">
       <AveragingSettings>
         <Kind>BYTIME</Kind>
         <Time>0</Time>
@@ -215,14 +215,14 @@
         <Iteration>1</Iteration>
       </AveragingSettings>
     </OBJECT>
-    <OBJECT Averaging="COMMON" class="CUserStopper" myid="60" GUID="FD6ACAD3-9262-4F0F-8D5A-384FAE49DD45" Group="0" Comp="LENGTH" Object="*-2.-2.462" Level="0" UGV="2" UIName="volumeAvgAlphaExh" Color="004DA63E">
+    <OBJECT Averaging="COMMON" class="CUserStopper" myid="60" GUID="FD6ACAD3-9262-4F0F-8D5A-384FAE49DD45" Group="0" Comp="LENGTH" Object="*-2.-2.462" Level="0" UGV="2" UIName="volumeAvgAlphaExh" Color="000000FF">
       <AveragingSettings>
         <Kind>BYTIME</Kind>
         <Time>0</Time>
         <Iteration>1</Iteration>
       </AveragingSettings>
     </OBJECT>
-    <OBJECT Averaging="COMMON" class="CUserStopper" myid="63" GUID="42C7096D-B6F9-4B73-B1E1-9CB5A1FE7E72" Group="0" Comp="LENGTH" Object="*-2.-2.472" Level="0" UGV="2" UIName="volumeAvgAlphaGas" Color="004DA63E">
+    <OBJECT Averaging="COMMON" class="CUserStopper" myid="63" GUID="42C7096D-B6F9-4B73-B1E1-9CB5A1FE7E72" Group="0" Comp="LENGTH" Object="*-2.-2.472" Level="0" UGV="2" UIName="volumeAvgAlphaGas" Color="00FFAA00">
       <AveragingSettings>
         <Kind>BYTIME</Kind>
         <Time>0</Time>
@@ -234,7 +234,7 @@
     <NonStationary>1</NonStationary>
     <Frequency>
       <Kind>BYTIME</Kind>
-      <Time>0.0018115900000000001</Time>
+      <Time>0.00046270000000000003</Time>
       <Iteration>50</Iteration>
     </Frequency>
     <EnSight Enabled="0" Binary="1"/>
@@ -288,7 +288,7 @@
     <OBJECT class="CFvValueConstant" Constant="1E+020" myid="4"/>
     <OBJECT class="CFvValueConstant" Constant="1E+020" myid="5"/>
   </OBJECT>
-  <OBJECT class="CTimeStep" DisConvergenceLimit="1E-010" myid="-2" Type="CFL">
+  <OBJECT class="CTimeStep" DisConvergenceLimit="9.9999999999999998E-013" myid="-2" Type="CFL">
     <Step Source="*.7"/>
     <CFL Source="*.1"/>
     <CFLSURF Source="*.2"/>
@@ -301,7 +301,7 @@
     <OBJECT class="CFvValueConstant" Constant="1E+020" myid="3"/>
     <OBJECT class="CFvValueConstant" Constant="1" myid="4"/>
     <OBJECT class="CFvValueFormula" myid="7">
-      <Formula>60/n/360/*0.0018116*/*0.2</Formula>
+      <Formula>60/n/360/*0.0018116*/*0.1</Formula>
       <Bindings>
         <Constants/>
         <Linkage>
@@ -320,7 +320,7 @@
           <ITEM Opcode="DIV" Value="2"/>
           <ITEM Opcode="PUSH" Value="360"/>
           <ITEM Opcode="DIV" Value="2"/>
-          <ITEM Opcode="PUSH" Value="0.20000000000000001"/>
+          <ITEM Opcode="PUSH" Value="0.10000000000000001"/>
           <ITEM Opcode="MUL" Value="2"/>
         </Code>
       </Code>
