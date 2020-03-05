@@ -52,156 +52,97 @@
     <OBJECT class="CGridLines" myid="-100">
       <X>
         <ITEM>-2.8421710000000002E-017</ITEM>
-        <ITEM>0.004799999999999971</ITEM>
-        <ITEM>0.011736357248517428</ITEM>
-        <ITEM>0.021647843437523979</ITEM>
-        <ITEM>0.035585662117514405</ITEM>
-        <ITEM>0.05475190448361645</ITEM>
-        <ITEM>0.080318096747343637</ITEM>
-        <ITEM>0.11028818879327912</ITEM>
-        <ITEM>0.14685813973819611</ITEM>
-        <ITEM>0.19063454322514958</ITEM>
-        <ITEM>0.23635927458011968</ITEM>
-        <ITEM>0.28208400593508975</ITEM>
-        <ITEM>0.32780873729005983</ITEM>
-        <ITEM>0.3735334686450299</ITEM>
+        <ITEM>0.052407274999999975</ITEM>
+        <ITEM>0.10481454999999998</ITEM>
+        <ITEM>0.15722182499999998</ITEM>
+        <ITEM>0.20962909999999998</ITEM>
+        <ITEM>0.26203637499999993</ITEM>
+        <ITEM>0.31444364999999996</ITEM>
+        <ITEM>0.36685092499999999</ITEM>
         <ITEM>0.41925819999999997</ITEM>
       </X>
       <Y>
         <ITEM>-2.2408780000000001E-016</ITEM>
-        <ITEM>0.043489519999999803</ITEM>
-        <ITEM>0.086979039999999827</ITEM>
-        <ITEM>0.13046855999999984</ITEM>
-        <ITEM>0.17395807999999988</ITEM>
-        <ITEM>0.21744759999999999</ITEM>
-        <ITEM>0.26093712000000002</ITEM>
-        <ITEM>0.30442664000000003</ITEM>
-        <ITEM>0.34791616000000003</ITEM>
-        <ITEM>0.39140568000000003</ITEM>
+        <ITEM>0.05436189999999981</ITEM>
+        <ITEM>0.10872379999999984</ITEM>
+        <ITEM>0.16308569999999989</ITEM>
+        <ITEM>0.21744759999999991</ITEM>
+        <ITEM>0.27180949999999993</ITEM>
+        <ITEM>0.3261714</ITEM>
+        <ITEM>0.38053330000000002</ITEM>
         <ITEM>0.43489520000000004</ITEM>
       </Y>
       <Z>
         <ITEM>-3.2403820000000003</ITEM>
-        <ITEM>-3.1917245753698849</ITEM>
-        <ITEM>-3.1435859565541349</ITEM>
-        <ITEM>-3.0968875376070018</ITEM>
-        <ITEM>-3.0523345713830343</ITEM>
-        <ITEM>-3.0103971631443436</ITEM>
-        <ITEM>-2.971328278603917</ITEM>
-        <ITEM>-2.9352034598047565</ITEM>
-        <ITEM>-2.9019676805196202</ITEM>
-        <ITEM>-2.8714792945432741</ITEM>
-        <ITEM>-2.8435460445876704</ITEM>
-        <ITEM>-2.8172456388658667</ITEM>
-        <ITEM>-2.7931211831315714</ITEM>
-        <ITEM>-2.7709514482653637</ITEM>
-        <ITEM>-2.7512055497794767</ITEM>
-        <ITEM>-2.7328388632816858</ITEM>
-        <ITEM>-2.7157111616049741</ITEM>
-        <ITEM>-2.6996954019620309</ITEM>
-        <ITEM>-2.6846769803817323</ITEM>
-        <ITEM>-2.6705527794844262</ITEM>
-        <ITEM>-2.6572301304697188</ITEM>
-        <ITEM>-2.6446257655238488</ITEM>
-        <ITEM>-2.6326648064168978</ITEM>
-        <ITEM>-2.6212798147211354</ITEM>
-        <ITEM>-2.6104099157723564</ITEM>
-        <ITEM>-2.6000000000000005</ITEM>
-        <ITEM>-2.5899999999999999</ITEM>
-        <ITEM>-2.5800000000000001</ITEM>
-        <ITEM>-2.5682269107077822</ITEM>
-        <ITEM>-2.5543429657192158</ITEM>
-        <ITEM>-2.5379392100709866</ITEM>
-        <ITEM>-2.5185190932074875</ITEM>
-        <ITEM>-2.4954784850328142</ITEM>
-        <ITEM>-2.4680819293669489</ITEM>
-        <ITEM>-2.4358759115438002</ITEM>
-        <ITEM>-2.397425738014042</ITEM>
-        <ITEM>-2.3514599688591318</ITEM>
-        <ITEM>-2.302134178116892</ITEM>
-        <ITEM>-2.2528083873746523</ITEM>
-        <ITEM>-2.2034825966324125</ITEM>
-        <ITEM>-2.1541568058901728</ITEM>
-        <ITEM>-2.104831015147933</ITEM>
-        <ITEM>-2.0555052244056933</ITEM>
-        <ITEM>-2.0061794336634535</ITEM>
-        <ITEM>-1.956853642921214</ITEM>
-        <ITEM>-1.9075278521789745</ITEM>
-        <ITEM>-1.8582020614367349</ITEM>
-        <ITEM>-1.8088762706944954</ITEM>
-        <ITEM>-1.7595504799522559</ITEM>
-        <ITEM>-1.7102246892100164</ITEM>
-        <ITEM>-1.6608988984677768</ITEM>
-        <ITEM>-1.6115731077255373</ITEM>
-        <ITEM>-1.5622473169832978</ITEM>
-        <ITEM>-1.5129215262410582</ITEM>
-        <ITEM>-1.4635957354988187</ITEM>
-        <ITEM>-1.4142699447565792</ITEM>
-        <ITEM>-1.3649441540143397</ITEM>
-        <ITEM>-1.3156183632721001</ITEM>
-        <ITEM>-1.268872906287291</ITEM>
-        <ITEM>-1.235785831700009</ITEM>
-        <ITEM>-1.2125531898150812</ITEM>
-        <ITEM>-1.1966980067932389</ITEM>
-        <ITEM>-1.1859867951439815</ITEM>
-        <ITEM>-1.1787999999999998</ITEM>
-        <ITEM>-1.1739999999999999</ITEM>
-        <ITEM>-1.1692</ITEM>
-        <ITEM>-1.1596314766277829</ITEM>
-        <ITEM>-1.1407440816862493</ITEM>
-        <ITEM>-1.1053803164107763</ITEM>
-        <ITEM>-1.0570159246781816</ITEM>
-        <ITEM>-1.008651532945587</ITEM>
-        <ITEM>-0.96028714121299241</ITEM>
-        <ITEM>-0.91192274948039787</ITEM>
-        <ITEM>-0.86355835774780332</ITEM>
-        <ITEM>-0.81519396601520877</ITEM>
-        <ITEM>-0.76682957428261422</ITEM>
-        <ITEM>-0.71846518255001968</ITEM>
-        <ITEM>-0.67010079081742513</ITEM>
-        <ITEM>-0.62173639908483058</ITEM>
-        <ITEM>-0.57337200735223603</ITEM>
-        <ITEM>-0.52500761561964149</ITEM>
-        <ITEM>-0.47664322388704694</ITEM>
-        <ITEM>-0.42827883215445239</ITEM>
-        <ITEM>-0.37991444042185785</ITEM>
-        <ITEM>-0.3315500486892633</ITEM>
-        <ITEM>-0.28318565695666875</ITEM>
-        <ITEM>-0.23482126522407418</ITEM>
-        <ITEM>-0.1864568734914796</ITEM>
-        <ITEM>-0.13809248175888503</ITEM>
-        <ITEM>-0.089728090026290452</ITEM>
-        <ITEM>-0.041363698293695884</ITEM>
-        <ITEM>0.0057469401862959776</ITEM>
-        <ITEM>0.042981550490924704</ITEM>
-        <ITEM>0.072961281427116956</ITEM>
-        <ITEM>0.098352795623923919</ITEM>
-        <ITEM>0.11948929488871236</ITEM>
-        <ITEM>0.13734182170279047</ITEM>
-        <ITEM>0.15262186929970906</ITEM>
-        <ITEM>0.16585920369241919</ITEM>
-        <ITEM>0.17745440320584854</ITEM>
-        <ITEM>0.18771480467590368</ITEM>
-        <ITEM>0.19687945528194911</ITEM>
-        <ITEM>0.20513668918918865</ITEM>
-        <ITEM>0.21263668918918921</ITEM>
-        <ITEM>0.22047744565823446</ITEM>
-        <ITEM>0.22862304357543156</ITEM>
-        <ITEM>0.23712096772707966</ITEM>
-        <ITEM>0.24602191688588457</ITEM>
-        <ITEM>0.25538012723297987</ITEM>
-        <ITEM>0.2652535601590173</ITEM>
-        <ITEM>0.27570388495869363</ITEM>
-        <ITEM>0.28679615619264387</ITEM>
-        <ITEM>0.29859804627256936</ITEM>
-        <ITEM>0.31290970576871974</ITEM>
-        <ITEM>0.32825228989261723</ITEM>
-        <ITEM>0.34466559595018603</ITEM>
-        <ITEM>0.36215596483089085</ITEM>
-        <ITEM>0.38068251513980755</ITEM>
-        <ITEM>0.40014309859137065</ITEM>
-        <ITEM>0.42036285905082216</ITEM>
-        <ITEM>0.44108931608254592</ITEM>
+        <ITEM>-3.1874908571428575</ITEM>
+        <ITEM>-3.1345997142857147</ITEM>
+        <ITEM>-3.0817085714285719</ITEM>
+        <ITEM>-3.0288174285714291</ITEM>
+        <ITEM>-2.9759262857142859</ITEM>
+        <ITEM>-2.9230351428571431</ITEM>
+        <ITEM>-2.8701440000000003</ITEM>
+        <ITEM>-2.8172528571428574</ITEM>
+        <ITEM>-2.7643617142857146</ITEM>
+        <ITEM>-2.7114705714285718</ITEM>
+        <ITEM>-2.6585794285714286</ITEM>
+        <ITEM>-2.6056882857142858</ITEM>
+        <ITEM>-2.552797142857143</ITEM>
+        <ITEM>-2.4999060000000002</ITEM>
+        <ITEM>-2.4470148571428574</ITEM>
+        <ITEM>-2.3941237142857146</ITEM>
+        <ITEM>-2.3412325714285718</ITEM>
+        <ITEM>-2.288341428571429</ITEM>
+        <ITEM>-2.2354502857142862</ITEM>
+        <ITEM>-2.1825591428571434</ITEM>
+        <ITEM>-2.1296680000000006</ITEM>
+        <ITEM>-2.0767768571428573</ITEM>
+        <ITEM>-2.0238857142857145</ITEM>
+        <ITEM>-1.9709945714285717</ITEM>
+        <ITEM>-1.9181034285714289</ITEM>
+        <ITEM>-1.8652122857142861</ITEM>
+        <ITEM>-1.8123211428571431</ITEM>
+        <ITEM>-1.7594300000000003</ITEM>
+        <ITEM>-1.7065388571428575</ITEM>
+        <ITEM>-1.6536477142857144</ITEM>
+        <ITEM>-1.6007565714285716</ITEM>
+        <ITEM>-1.5478654285714288</ITEM>
+        <ITEM>-1.494974285714286</ITEM>
+        <ITEM>-1.4420831428571432</ITEM>
+        <ITEM>-1.3891920000000002</ITEM>
+        <ITEM>-1.3363008571428574</ITEM>
+        <ITEM>-1.2834097142857146</ITEM>
+        <ITEM>-1.2305185714285716</ITEM>
+        <ITEM>-1.1776274285714288</ITEM>
+        <ITEM>-1.124736285714286</ITEM>
+        <ITEM>-1.0718451428571432</ITEM>
+        <ITEM>-1.0189540000000004</ITEM>
+        <ITEM>-0.96606285714285756</ITEM>
+        <ITEM>-0.91317171428571431</ITEM>
+        <ITEM>-0.86028057142857151</ITEM>
+        <ITEM>-0.8073894285714287</ITEM>
+        <ITEM>-0.7544982857142859</ITEM>
+        <ITEM>-0.7016071428571431</ITEM>
+        <ITEM>-0.64871600000000029</ITEM>
+        <ITEM>-0.59582485714285749</ITEM>
+        <ITEM>-0.54293371428571469</ITEM>
+        <ITEM>-0.49004257142857188</ITEM>
+        <ITEM>-0.43715142857142864</ITEM>
+        <ITEM>-0.38426028571428583</ITEM>
+        <ITEM>-0.33136914285714303</ITEM>
+        <ITEM>-0.27847800000000023</ITEM>
+        <ITEM>-0.22558685714285742</ITEM>
+        <ITEM>-0.17269571428571462</ITEM>
+        <ITEM>-0.11980457142857182</ITEM>
+        <ITEM>-0.066913428571428568</ITEM>
+        <ITEM>-0.014022285714285765</ITEM>
+        <ITEM>0.038868857142857038</ITEM>
+        <ITEM>0.091759999999999842</ITEM>
+        <ITEM>0.14465114285714264</ITEM>
+        <ITEM>0.19754228571428545</ITEM>
+        <ITEM>0.25043342857142825</ITEM>
+        <ITEM>0.30332457142857105</ITEM>
+        <ITEM>0.35621571428571386</ITEM>
+        <ITEM>0.40910685714285711</ITEM>
         <ITEM>0.46199800000000002</ITEM>
       </Z>
       <editorData>
@@ -300,15 +241,19 @@
       </Activation>
       <Criteria>
         <ITEM>*-2.-2.-97.0</ITEM>
+        <ITEM>*-2.-2.-97.1</ITEM>
+        <ITEM>*-2.-2.-97.2</ITEM>
+        <ITEM>*-2.-2.-97.3</ITEM>
+        <ITEM>*-2.-2.-97.4</ITEM>
       </Criteria>
     </OBJECT>
-    <OBJECT class="CAdaptStatic" myid="0" Activation="0" UIName="Адаптация клапан">
-      <maxLevel Source="*.0"/>
+    <OBJECT class="CAdaptStatic" myid="0" Activation="1" UIName="Адаптация межклапанной щели (phi &lt; EVC)">
+      <maxLevel Source="*.86"/>
       <subregArray>
         <ITEM>*-2.-2.2</ITEM>
       </subregArray>
       <placeArray>
-        <ITEM>*.4</ITEM>
+        <ITEM>*.21</ITEM>
       </placeArray>
       <AdpStatType>DIVIDE</AdpStatType>
       <TwoChips>1</TwoChips>
@@ -318,18 +263,316 @@
       <AdpToCurvParams AddLevels="2" IsActive="0" SurfCurvMaxAngle="15" SurfCurvUpperLimit="120"/>
       <AdpToEdgeParams AddLevels="2" IsActive="0" SharpEdgeAngle="60"/>
       <layerCounts>
-        <ITEM Source="*.7"/>
+        <ITEM Source="*.64"/>
+        <ITEM Source="*.65"/>
+        <ITEM Source="*.66"/>
+        <ITEM Source="*.67"/>
       </layerCounts>
-      <OBJECT class="CFvValueConstant" Constant="1" myid="0"/>
-      <OBJECT class="CAdaptPlace" myid="4">
-        <Kind>BCOND</Kind>
-        <Place>*-2.-2.2.226</Place>
+      <OBJECT class="CAdaptPlace" myid="21">
+        <Kind>OBJECT</Kind>
+        <Place>*-2.-2.300</Place>
         <Settings>
-          <Mode>UNASSIGNED</Mode>
+          <Mode>WHOLE_SURFACE</Mode>
           <Parts/>
         </Settings>
       </OBJECT>
-      <OBJECT class="CFvValueConstant" Constant="1" myid="7"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="64"/>
+      <OBJECT class="CFvValueConstant" Constant="2" myid="65"/>
+      <OBJECT class="CFvValueConstant" Constant="4" myid="66"/>
+      <OBJECT class="CFvValueConstant" Constant="4" myid="67"/>
+      <OBJECT class="CFvValueFormula" myid="86">
+        <Formula>if (6*n*t - EVO &lt; 46; 4; 0)</Formula>
+        <Bindings>
+          <Constants/>
+          <Linkage>
+            <ITEM Type="USER" Id="0" Name="EVO" Comp="SOURCE" Index="0"/>
+            <ITEM Type="USER" Id="1" Name="n" Comp="SOURCE" Index="1"/>
+            <ITEM Type="INTEGRAL" Id="2" Name="t" Comp="SOURCE" Index="0"/>
+          </Linkage>
+          <Physical/>
+          <Integral>
+            <ITEM Chars="*-2.-2.-99" Group="0" UGV="0"/>
+          </Integral>
+          <User>
+            <ITEM UV="*-2.-2.249"/>
+            <ITEM UV="*-2.-2.277"/>
+          </User>
+        </Bindings>
+        <Code MemorySize="0" ReturnSize="1" StackDepth="3" MachineID="513">
+          <Code>
+            <ITEM Opcode="PUSH" Value="6"/>
+            <ITEM Opcode="RESOLVE" Value="1"/>
+            <ITEM Opcode="MUL" Value="2"/>
+            <ITEM Opcode="RESOLVE" Value="2"/>
+            <ITEM Opcode="MUL" Value="2"/>
+            <ITEM Opcode="RESOLVE" Value="0"/>
+            <ITEM Opcode="SUB" Value="2"/>
+            <ITEM Opcode="PUSH" Value="46"/>
+            <ITEM Opcode="LESS" Value="2"/>
+            <ITEM Opcode="PUSH" Value="4"/>
+            <ITEM Opcode="PUSH" Value="0"/>
+            <ITEM Opcode="IF" Value="3"/>
+          </Code>
+        </Code>
+      </OBJECT>
+    </OBJECT>
+    <OBJECT class="CAdaptStatic" myid="1" Activation="1" UIName="Адаптация: зона впрыска (phi > IPC)">
+      <maxLevel Source="*.31"/>
+      <subregArray>
+        <ITEM>*-2.-2.2</ITEM>
+      </subregArray>
+      <placeArray>
+        <ITEM>*.28</ITEM>
+      </placeArray>
+      <AdpStatType>DIVIDE</AdpStatType>
+      <TwoChips>1</TwoChips>
+      <Concavity>1</Concavity>
+      <OpSameBC>1</OpSameBC>
+      <OpDiffConj>1</OpDiffConj>
+      <AdpToCurvParams AddLevels="2" IsActive="0" SurfCurvMaxAngle="15" SurfCurvUpperLimit="120"/>
+      <AdpToEdgeParams AddLevels="2" IsActive="0" SharpEdgeAngle="60"/>
+      <layerCounts>
+        <ITEM Source="*.12"/>
+        <ITEM Source="*.42"/>
+      </layerCounts>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="12"/>
+      <OBJECT class="CAdaptPlace" myid="28">
+        <Kind>OBJECT</Kind>
+        <Place>*-2.-2.311</Place>
+        <Settings>
+          <Mode>VOLUME</Mode>
+          <Parts/>
+        </Settings>
+      </OBJECT>
+      <OBJECT class="CFvValueFormula" myid="31">
+        <Formula>if (6*n*t - EVO > 42; 3; 0)</Formula>
+        <Bindings>
+          <Constants/>
+          <Linkage>
+            <ITEM Type="USER" Id="1" Name="EVO" Comp="SOURCE" Index="0"/>
+            <ITEM Type="USER" Id="2" Name="n" Comp="SOURCE" Index="1"/>
+            <ITEM Type="INTEGRAL" Id="0" Name="t" Comp="SOURCE" Index="0"/>
+          </Linkage>
+          <Physical/>
+          <Integral>
+            <ITEM Chars="*-2.-2.-99" Group="0" UGV="0"/>
+          </Integral>
+          <User>
+            <ITEM UV="*-2.-2.249"/>
+            <ITEM UV="*-2.-2.277"/>
+          </User>
+        </Bindings>
+        <Code MemorySize="0" ReturnSize="1" StackDepth="3" MachineID="513">
+          <Code>
+            <ITEM Opcode="PUSH" Value="6"/>
+            <ITEM Opcode="RESOLVE" Value="2"/>
+            <ITEM Opcode="MUL" Value="2"/>
+            <ITEM Opcode="RESOLVE" Value="0"/>
+            <ITEM Opcode="MUL" Value="2"/>
+            <ITEM Opcode="RESOLVE" Value="1"/>
+            <ITEM Opcode="SUB" Value="2"/>
+            <ITEM Opcode="PUSH" Value="42"/>
+            <ITEM Opcode="GREATER" Value="2"/>
+            <ITEM Opcode="PUSH" Value="3"/>
+            <ITEM Opcode="PUSH" Value="0"/>
+            <ITEM Opcode="IF" Value="3"/>
+          </Code>
+        </Code>
+      </OBJECT>
+      <OBJECT class="CFvValueFormula" myid="42">
+        <Formula>if (6*n*t - EVO > 42; 8; 0)</Formula>
+        <Bindings>
+          <Constants/>
+          <Linkage>
+            <ITEM Type="USER" Id="0" Name="EVO" Comp="SOURCE" Index="0"/>
+            <ITEM Type="USER" Id="1" Name="n" Comp="SOURCE" Index="1"/>
+            <ITEM Type="INTEGRAL" Id="2" Name="t" Comp="SOURCE" Index="0"/>
+          </Linkage>
+          <Physical/>
+          <Integral>
+            <ITEM Chars="*-2.-2.-99" Group="0" UGV="0"/>
+          </Integral>
+          <User>
+            <ITEM UV="*-2.-2.249"/>
+            <ITEM UV="*-2.-2.277"/>
+          </User>
+        </Bindings>
+        <Code MemorySize="0" ReturnSize="1" StackDepth="3" MachineID="513">
+          <Code>
+            <ITEM Opcode="PUSH" Value="6"/>
+            <ITEM Opcode="RESOLVE" Value="1"/>
+            <ITEM Opcode="MUL" Value="2"/>
+            <ITEM Opcode="RESOLVE" Value="2"/>
+            <ITEM Opcode="MUL" Value="2"/>
+            <ITEM Opcode="RESOLVE" Value="0"/>
+            <ITEM Opcode="SUB" Value="2"/>
+            <ITEM Opcode="PUSH" Value="42"/>
+            <ITEM Opcode="GREATER" Value="2"/>
+            <ITEM Opcode="PUSH" Value="8"/>
+            <ITEM Opcode="PUSH" Value="0"/>
+            <ITEM Opcode="IF" Value="3"/>
+          </Code>
+        </Code>
+      </OBJECT>
+    </OBJECT>
+    <OBJECT class="CAdaptStatic" myid="2" Activation="1" UIName="Адаптация: &quot;форсунка&quot; (phi > IPC)">
+      <maxLevel Source="*.31"/>
+      <subregArray>
+        <ITEM>*-2.-2.2</ITEM>
+      </subregArray>
+      <placeArray>
+        <ITEM>*.40</ITEM>
+      </placeArray>
+      <AdpStatType>DIVIDE</AdpStatType>
+      <TwoChips>1</TwoChips>
+      <Concavity>1</Concavity>
+      <OpSameBC>1</OpSameBC>
+      <OpDiffConj>1</OpDiffConj>
+      <AdpToCurvParams AddLevels="2" IsActive="0" SurfCurvMaxAngle="15" SurfCurvUpperLimit="120"/>
+      <AdpToEdgeParams AddLevels="2" IsActive="0" SharpEdgeAngle="60"/>
+      <layerCounts>
+        <ITEM Source="*.12"/>
+      </layerCounts>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="12"/>
+      <OBJECT class="CFvValueFormula" myid="31">
+        <Formula>if (6*n*t - EVO > 42; 4; 0)</Formula>
+        <Bindings>
+          <Constants/>
+          <Linkage>
+            <ITEM Type="USER" Id="1" Name="EVO" Comp="SOURCE" Index="0"/>
+            <ITEM Type="USER" Id="2" Name="n" Comp="SOURCE" Index="1"/>
+            <ITEM Type="INTEGRAL" Id="0" Name="t" Comp="SOURCE" Index="0"/>
+          </Linkage>
+          <Physical/>
+          <Integral>
+            <ITEM Chars="*-2.-2.-99" Group="0" UGV="0"/>
+          </Integral>
+          <User>
+            <ITEM UV="*-2.-2.249"/>
+            <ITEM UV="*-2.-2.277"/>
+          </User>
+        </Bindings>
+        <Code MemorySize="0" ReturnSize="1" StackDepth="3" MachineID="513">
+          <Code>
+            <ITEM Opcode="PUSH" Value="6"/>
+            <ITEM Opcode="RESOLVE" Value="2"/>
+            <ITEM Opcode="MUL" Value="2"/>
+            <ITEM Opcode="RESOLVE" Value="0"/>
+            <ITEM Opcode="MUL" Value="2"/>
+            <ITEM Opcode="RESOLVE" Value="1"/>
+            <ITEM Opcode="SUB" Value="2"/>
+            <ITEM Opcode="PUSH" Value="42"/>
+            <ITEM Opcode="GREATER" Value="2"/>
+            <ITEM Opcode="PUSH" Value="4"/>
+            <ITEM Opcode="PUSH" Value="0"/>
+            <ITEM Opcode="IF" Value="3"/>
+          </Code>
+        </Code>
+      </OBJECT>
+      <OBJECT class="CAdaptPlace" myid="40">
+        <Kind>OBJECT</Kind>
+        <Place>*-2.-2.341</Place>
+        <Settings>
+          <Mode>WHOLE_SURFACE</Mode>
+          <Parts/>
+        </Settings>
+      </OBJECT>
+    </OBJECT>
+    <OBJECT class="CAdaptStatic" myid="3" Activation="1" UIName="Адаптация: зона впуска">
+      <maxLevel Source="*.34"/>
+      <subregArray>
+        <ITEM>*-2.-2.2</ITEM>
+      </subregArray>
+      <placeArray>
+        <ITEM>*.42</ITEM>
+      </placeArray>
+      <AdpStatType>DIVIDE</AdpStatType>
+      <TwoChips>1</TwoChips>
+      <Concavity>1</Concavity>
+      <OpSameBC>1</OpSameBC>
+      <OpDiffConj>1</OpDiffConj>
+      <AdpToCurvParams AddLevels="2" IsActive="0" SurfCurvMaxAngle="15" SurfCurvUpperLimit="120"/>
+      <AdpToEdgeParams AddLevels="2" IsActive="0" SharpEdgeAngle="60"/>
+      <layerCounts>
+        <ITEM Source="*.35"/>
+        <ITEM Source="*.36"/>
+        <ITEM Source="*.37"/>
+      </layerCounts>
+      <OBJECT class="CFvValueConstant" Constant="3" myid="34"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="35"/>
+      <OBJECT class="CFvValueConstant" Constant="8" myid="36"/>
+      <OBJECT class="CFvValueConstant" Constant="2" myid="37"/>
+      <OBJECT class="CAdaptPlace" myid="42">
+        <Kind>OBJECT</Kind>
+        <Place>*-2.-2.321</Place>
+        <Settings>
+          <Mode>VOLUME</Mode>
+          <Parts/>
+        </Settings>
+      </OBJECT>
+    </OBJECT>
+    <OBJECT class="CAdaptStatic" myid="4" Activation="1" UIName="Адаптация: слияние (phi > EVC)">
+      <maxLevel Source="*.85"/>
+      <subregArray>
+        <ITEM>*-2.-2.2</ITEM>
+      </subregArray>
+      <placeArray>
+        <ITEM>*.82</ITEM>
+      </placeArray>
+      <AdpStatType>MERGE</AdpStatType>
+      <TwoChips>1</TwoChips>
+      <Concavity>1</Concavity>
+      <OpSameBC>1</OpSameBC>
+      <OpDiffConj>1</OpDiffConj>
+      <AdpToCurvParams AddLevels="2" IsActive="0" SurfCurvMaxAngle="15" SurfCurvUpperLimit="120"/>
+      <AdpToEdgeParams AddLevels="2" IsActive="0" SharpEdgeAngle="60"/>
+      <layerCounts>
+        <ITEM Source="*.12"/>
+      </layerCounts>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="12"/>
+      <OBJECT class="CAdaptPlace" myid="82">
+        <Kind>OBJECT</Kind>
+        <Place>*-2.-2.331</Place>
+        <Settings>
+          <Mode>VOLUME</Mode>
+          <Parts/>
+        </Settings>
+      </OBJECT>
+      <OBJECT class="CFvValueFormula" myid="85">
+        <Formula>if (6*n*t - EVO > 46; 0; 4)</Formula>
+        <Bindings>
+          <Constants/>
+          <Linkage>
+            <ITEM Type="USER" Id="1" Name="EVO" Comp="SOURCE" Index="0"/>
+            <ITEM Type="USER" Id="2" Name="n" Comp="SOURCE" Index="1"/>
+            <ITEM Type="INTEGRAL" Id="0" Name="t" Comp="SOURCE" Index="0"/>
+          </Linkage>
+          <Physical/>
+          <Integral>
+            <ITEM Chars="*-2.-2.-99" Group="0" UGV="0"/>
+          </Integral>
+          <User>
+            <ITEM UV="*-2.-2.249"/>
+            <ITEM UV="*-2.-2.277"/>
+          </User>
+        </Bindings>
+        <Code MemorySize="0" ReturnSize="1" StackDepth="3" MachineID="513">
+          <Code>
+            <ITEM Opcode="PUSH" Value="6"/>
+            <ITEM Opcode="RESOLVE" Value="2"/>
+            <ITEM Opcode="MUL" Value="2"/>
+            <ITEM Opcode="RESOLVE" Value="0"/>
+            <ITEM Opcode="MUL" Value="2"/>
+            <ITEM Opcode="RESOLVE" Value="1"/>
+            <ITEM Opcode="SUB" Value="2"/>
+            <ITEM Opcode="PUSH" Value="46"/>
+            <ITEM Opcode="GREATER" Value="2"/>
+            <ITEM Opcode="PUSH" Value="0"/>
+            <ITEM Opcode="PUSH" Value="4"/>
+            <ITEM Opcode="IF" Value="3"/>
+          </Code>
+        </Code>
+      </OBJECT>
     </OBJECT>
   </OBJECT>
   <OBJECT class="CBinderLinks" myid="-96">
@@ -443,6 +686,12 @@
       <OBJECT class="CFvValueConstant" Constant="1" myid="24"/>
       <OBJECT class="CFvValueConstant" Constant="0" myid="25"/>
       <OBJECT class="CFvValueConstant" Constant="1" myid="26"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="27"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="28"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="29"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="30"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="31"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="32"/>
     </OBJECT>
     <OBJECT class="CFvValueConstant" Constant="0" myid="6"/>
     <OBJECT class="CFvValueConstant" Constant="0" myid="7"/>
@@ -494,6 +743,21 @@
     <OBJECT class="CFvValueConstant" Constant="0" myid="53"/>
     <OBJECT class="CFvValueConstant" Constant="0" myid="54"/>
     <OBJECT class="CFvValueConstant" Constant="0" myid="55"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="56"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="57"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="58"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="59"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="60"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="61"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="62"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="63"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="64"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="65"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="66"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="67"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="68"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="69"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="70"/>
   </OBJECT>
   <OBJECT class="CSubregion" myid="2" UIName="Подобласть #0">
     <Kind>CALCULATE</Kind>
@@ -611,6 +875,12 @@
       <OBJECT class="CBVarValueNearWall" myid="37">
         <Variable>*-2.-2.41.502</Variable>
       </OBJECT>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="38"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="39"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="40"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="41"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="42"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="43"/>
     </OBJECT>
     <OBJECT class="CIniDataTri" myid="44" GUID="4E411A97-5F0B-4AA6-95EE-1E69E208D91C" UIName="Нач. условие #0">
       <ViewObject>*-2.-2.0</ViewObject>
@@ -1067,7 +1337,7 @@
       <OBJECT class="CBVarConstant" myid="15">
         <Variable>*-2.-2.41.250</Variable>
         <WallValue Source="*.0"/>
-        <OBJECT class="CFvValueConstant" Constant="332" myid="0"/>
+        <OBJECT class="CFvValueConstant" Constant="59" myid="0"/>
       </OBJECT>
       <OBJECT class="CBVelMassNormal" myid="16">
         <Variable>*-2.-2.41.151</Variable>
@@ -1118,9 +1388,9 @@
             <ITEM arg="0.074275400000000005" value="0"/>
             <ITEM arg="0.076087000000000002" value="0"/>
             <ITEM arg="0.077898599999999998" value="0"/>
-            <ITEM arg="0.079710100000000006" value="-400"/>
-            <ITEM arg="0.081521700000000002" value="-915.75099999999998"/>
-            <ITEM arg="0.083333299999999999" value="-300"/>
+            <ITEM arg="0.079710100000000006" value="-1527.47"/>
+            <ITEM arg="0.081521700000000002" value="-2973.4400000000001"/>
+            <ITEM arg="0.083333299999999999" value="-4016.48"/>
             <ITEM arg="0.085144899999999996" value="42.472499999999997"/>
             <ITEM arg="0.086956500000000006" value="9349.8199999999997"/>
             <ITEM arg="0.088768100000000003" value="11932.200000000001"/>
@@ -1385,6 +1655,12 @@
         <WallValue Source="*.0"/>
         <OBJECT class="CFvValueConstant" Constant="0" myid="0"/>
       </OBJECT>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="37"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="38"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="39"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="40"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="41"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="42"/>
     </OBJECT>
     <OBJECT class="CMovingBody" InsideOut="0" myid="120" GUID="E2486E98-644B-4083-A1A8-4A6338DF3000" FormatVersion="1" UIName="Клапан">
       <Object>*-2.-2.235</Object>
@@ -1671,7 +1947,7 @@
       <OBJECT class="CBVarConstant" myid="15">
         <Variable>*-2.-2.41.250</Variable>
         <WallValue Source="*.0"/>
-        <OBJECT class="CFvValueConstant" Constant="315.80000000000001" myid="0"/>
+        <OBJECT class="CFvValueConstant" Constant="42.799999999999997" myid="0"/>
       </OBJECT>
       <OBJECT class="CBVelMassNormal" myid="16">
         <Variable>*-2.-2.41.151</Variable>
@@ -1722,227 +1998,227 @@
             <ITEM arg="0.074275400000000005" value="0"/>
             <ITEM arg="0.076087000000000002" value="0"/>
             <ITEM arg="0.077898599999999998" value="0"/>
-            <ITEM arg="0.079710100000000006" value="-2.7599999999999998"/>
-            <ITEM arg="0.081521700000000002" value="-4.3390000000000004"/>
-            <ITEM arg="0.083333299999999999" value="-4.3860000000000001"/>
-            <ITEM arg="0.085144899999999996" value="0.046379999999999998"/>
-            <ITEM arg="0.086956500000000006" value="10.210000000000001"/>
-            <ITEM arg="0.088768100000000003" value="13.029999999999999"/>
-            <ITEM arg="0.090579699999999999" value="17.219999999999999"/>
-            <ITEM arg="0.092391299999999996" value="21.149999999999999"/>
-            <ITEM arg="0.094202900000000006" value="24.969999999999999"/>
-            <ITEM arg="0.096014500000000003" value="28.5"/>
-            <ITEM arg="0.097826099999999999" value="31.829999999999998"/>
-            <ITEM arg="0.099637699999999996" value="34.939999999999998"/>
-            <ITEM arg="0.101449" value="37.710000000000001"/>
-            <ITEM arg="0.10326100000000001" value="40.229999999999997"/>
-            <ITEM arg="0.105072" value="42.399999999999999"/>
-            <ITEM arg="0.10688400000000001" value="44.210000000000001"/>
-            <ITEM arg="0.108696" value="45.770000000000003"/>
-            <ITEM arg="0.11050699999999999" value="46.990000000000002"/>
-            <ITEM arg="0.112319" value="47.880000000000003"/>
-            <ITEM arg="0.11413" value="48.670000000000002"/>
-            <ITEM arg="0.115942" value="49.299999999999997"/>
-            <ITEM arg="0.117754" value="49.609999999999999"/>
-            <ITEM arg="0.119565" value="49.619999999999997"/>
-            <ITEM arg="0.121377" value="49.32"/>
-            <ITEM arg="0.12318800000000001" value="48.759999999999998"/>
-            <ITEM arg="0.125" value="48.079999999999998"/>
-            <ITEM arg="0.12681200000000001" value="47.369999999999997"/>
-            <ITEM arg="0.12862299999999999" value="46.549999999999997"/>
-            <ITEM arg="0.130435" value="45.710000000000001"/>
-            <ITEM arg="0.132246" value="44.619999999999997"/>
-            <ITEM arg="0.13405800000000001" value="43.909999999999997"/>
-            <ITEM arg="0.13586999999999999" value="43.509999999999998"/>
-            <ITEM arg="0.137681" value="43.170000000000002"/>
-            <ITEM arg="0.13949300000000001" value="42.850000000000001"/>
-            <ITEM arg="0.14130400000000001" value="42.57"/>
-            <ITEM arg="0.14311599999999999" value="42.32"/>
-            <ITEM arg="0.144928" value="42.090000000000003"/>
-            <ITEM arg="0.14673900000000001" value="41.899999999999999"/>
-            <ITEM arg="0.14855099999999999" value="41.740000000000002"/>
-            <ITEM arg="0.150362" value="41.609999999999999"/>
-            <ITEM arg="0.152174" value="41.5"/>
-            <ITEM arg="0.15398600000000001" value="41.270000000000003"/>
-            <ITEM arg="0.15579699999999999" value="41.07"/>
-            <ITEM arg="0.157609" value="40.990000000000002"/>
-            <ITEM arg="0.15942000000000001" value="40.960000000000001"/>
-            <ITEM arg="0.16123199999999999" value="40.840000000000003"/>
-            <ITEM arg="0.16304299999999999" value="40.68"/>
-            <ITEM arg="0.164855" value="38.07"/>
-            <ITEM arg="0.16666700000000001" value="33.859999999999999"/>
-            <ITEM arg="0.16847799999999999" value="31.18"/>
-            <ITEM arg="0.17029" value="29.449999999999999"/>
-            <ITEM arg="0.172101" value="28.07"/>
-            <ITEM arg="0.17391300000000001" value="26.960000000000001"/>
-            <ITEM arg="0.17572499999999999" value="26.100000000000001"/>
-            <ITEM arg="0.177536" value="25.359999999999999"/>
-            <ITEM arg="0.17934800000000001" value="24.23"/>
-            <ITEM arg="0.18115899999999999" value="22.98"/>
-            <ITEM arg="0.18297099999999999" value="21.780000000000001"/>
-            <ITEM arg="0.184783" value="20.670000000000002"/>
-            <ITEM arg="0.18659400000000001" value="19.579999999999998"/>
-            <ITEM arg="0.18840599999999999" value="18.48"/>
-            <ITEM arg="0.190217" value="17.390000000000001"/>
-            <ITEM arg="0.19202900000000001" value="16.27"/>
-            <ITEM arg="0.19384100000000001" value="15.07"/>
-            <ITEM arg="0.19565199999999999" value="13.880000000000001"/>
-            <ITEM arg="0.197464" value="12.65"/>
-            <ITEM arg="0.19927500000000001" value="11.380000000000001"/>
-            <ITEM arg="0.20108699999999999" value="10.15"/>
-            <ITEM arg="0.202899" value="8.9749999999999996"/>
-            <ITEM arg="0.20471" value="7.835"/>
-            <ITEM arg="0.20652200000000001" value="6.7199999999999998"/>
-            <ITEM arg="0.20833299999999999" value="5.6210000000000004"/>
-            <ITEM arg="0.210145" value="4.5090000000000003"/>
-            <ITEM arg="0.21195700000000001" value="3.3919999999999999"/>
-            <ITEM arg="0.21376800000000001" value="1.9890000000000001"/>
-            <ITEM arg="0.21557999999999999" value="-0.50290000000000001"/>
-            <ITEM arg="0.217391" value="-1.4530000000000001"/>
-            <ITEM arg="0.21920300000000001" value="-1.524"/>
-            <ITEM arg="0.22101399999999999" value="-1.5660000000000001"/>
-            <ITEM arg="0.222826" value="-1.6379999999999999"/>
-            <ITEM arg="0.224638" value="-1.4810000000000001"/>
-            <ITEM arg="0.22644900000000001" value="-0.97609999999999997"/>
-            <ITEM arg="0.22826099999999999" value="-0.32529999999999998"/>
+            <ITEM arg="0.079710100000000006" value="0"/>
+            <ITEM arg="0.081521700000000002" value="0"/>
+            <ITEM arg="0.083333299999999999" value="0"/>
+            <ITEM arg="0.085144899999999996" value="0"/>
+            <ITEM arg="0.086956500000000006" value="0"/>
+            <ITEM arg="0.088768100000000003" value="0"/>
+            <ITEM arg="0.090579699999999999" value="0"/>
+            <ITEM arg="0.092391299999999996" value="0"/>
+            <ITEM arg="0.094202900000000006" value="0"/>
+            <ITEM arg="0.096014500000000003" value="0"/>
+            <ITEM arg="0.097826099999999999" value="0"/>
+            <ITEM arg="0.099637699999999996" value="0"/>
+            <ITEM arg="0.101449" value="0"/>
+            <ITEM arg="0.10326100000000001" value="0"/>
+            <ITEM arg="0.105072" value="0"/>
+            <ITEM arg="0.10688400000000001" value="0"/>
+            <ITEM arg="0.108696" value="0"/>
+            <ITEM arg="0.11050699999999999" value="0"/>
+            <ITEM arg="0.112319" value="0"/>
+            <ITEM arg="0.11413" value="0"/>
+            <ITEM arg="0.115942" value="0"/>
+            <ITEM arg="0.117754" value="0"/>
+            <ITEM arg="0.119565" value="0"/>
+            <ITEM arg="0.121377" value="0"/>
+            <ITEM arg="0.12318800000000001" value="0"/>
+            <ITEM arg="0.125" value="0"/>
+            <ITEM arg="0.12681200000000001" value="0"/>
+            <ITEM arg="0.12862299999999999" value="0"/>
+            <ITEM arg="0.130435" value="0"/>
+            <ITEM arg="0.132246" value="0"/>
+            <ITEM arg="0.13405800000000001" value="0"/>
+            <ITEM arg="0.13586999999999999" value="0"/>
+            <ITEM arg="0.137681" value="0"/>
+            <ITEM arg="0.13949300000000001" value="0"/>
+            <ITEM arg="0.14130400000000001" value="0"/>
+            <ITEM arg="0.14311599999999999" value="0"/>
+            <ITEM arg="0.144928" value="0"/>
+            <ITEM arg="0.14673900000000001" value="0"/>
+            <ITEM arg="0.14855099999999999" value="0"/>
+            <ITEM arg="0.150362" value="0"/>
+            <ITEM arg="0.152174" value="0"/>
+            <ITEM arg="0.15398600000000001" value="0"/>
+            <ITEM arg="0.15579699999999999" value="0"/>
+            <ITEM arg="0.157609" value="0"/>
+            <ITEM arg="0.15942000000000001" value="0"/>
+            <ITEM arg="0.16123199999999999" value="0"/>
+            <ITEM arg="0.16304299999999999" value="0"/>
+            <ITEM arg="0.164855" value="0"/>
+            <ITEM arg="0.16666700000000001" value="0"/>
+            <ITEM arg="0.16847799999999999" value="0"/>
+            <ITEM arg="0.17029" value="0"/>
+            <ITEM arg="0.172101" value="0"/>
+            <ITEM arg="0.17391300000000001" value="0"/>
+            <ITEM arg="0.17572499999999999" value="0"/>
+            <ITEM arg="0.177536" value="0"/>
+            <ITEM arg="0.17934800000000001" value="0"/>
+            <ITEM arg="0.18115899999999999" value="0"/>
+            <ITEM arg="0.18297099999999999" value="0"/>
+            <ITEM arg="0.184783" value="0"/>
+            <ITEM arg="0.18659400000000001" value="0"/>
+            <ITEM arg="0.18840599999999999" value="0"/>
+            <ITEM arg="0.190217" value="0"/>
+            <ITEM arg="0.19202900000000001" value="0"/>
+            <ITEM arg="0.19384100000000001" value="0"/>
+            <ITEM arg="0.19565199999999999" value="0"/>
+            <ITEM arg="0.197464" value="0"/>
+            <ITEM arg="0.19927500000000001" value="0"/>
+            <ITEM arg="0.20108699999999999" value="0"/>
+            <ITEM arg="0.202899" value="0"/>
+            <ITEM arg="0.20471" value="0"/>
+            <ITEM arg="0.20652200000000001" value="0"/>
+            <ITEM arg="0.20833299999999999" value="0"/>
+            <ITEM arg="0.210145" value="0"/>
+            <ITEM arg="0.21195700000000001" value="0"/>
+            <ITEM arg="0.21376800000000001" value="0"/>
+            <ITEM arg="0.21557999999999999" value="0"/>
+            <ITEM arg="0.217391" value="0"/>
+            <ITEM arg="0.21920300000000001" value="0"/>
+            <ITEM arg="0.22101399999999999" value="0"/>
+            <ITEM arg="0.222826" value="0"/>
+            <ITEM arg="0.224638" value="0"/>
+            <ITEM arg="0.22644900000000001" value="0"/>
+            <ITEM arg="0.22826099999999999" value="0"/>
             <ITEM arg="0.230072" value="0"/>
             <ITEM arg="0.23188400000000001" value="0"/>
             <ITEM arg="0.23369599999999999" value="0"/>
             <ITEM arg="0.23550699999999999" value="0"/>
-            <ITEM arg="0.237319" value="0"/>
-            <ITEM arg="0.23913000000000001" value="0"/>
-            <ITEM arg="0.24094199999999999" value="0"/>
-            <ITEM arg="0.242754" value="0"/>
-            <ITEM arg="0.244565" value="0"/>
-            <ITEM arg="0.24637700000000001" value="0"/>
-            <ITEM arg="0.24818799999999999" value="0"/>
-            <ITEM arg="0.25" value="0"/>
-            <ITEM arg="0.25181199999999998" value="0"/>
-            <ITEM arg="0.25362299999999999" value="0"/>
-            <ITEM arg="0.25543500000000002" value="0"/>
-            <ITEM arg="0.25724599999999997" value="0"/>
-            <ITEM arg="0.25905800000000001" value="0"/>
-            <ITEM arg="0.26086999999999999" value="0"/>
-            <ITEM arg="0.262681" value="0"/>
-            <ITEM arg="0.26449299999999998" value="0"/>
-            <ITEM arg="0.26630399999999999" value="0"/>
-            <ITEM arg="0.26811600000000002" value="0"/>
-            <ITEM arg="0.269928" value="0"/>
-            <ITEM arg="0.27173900000000001" value="0"/>
-            <ITEM arg="0.27355099999999999" value="0"/>
-            <ITEM arg="0.275362" value="0"/>
-            <ITEM arg="0.27717399999999998" value="0"/>
-            <ITEM arg="0.27898600000000001" value="0"/>
-            <ITEM arg="0.28079700000000002" value="0"/>
-            <ITEM arg="0.282609" value="0"/>
-            <ITEM arg="0.28442000000000001" value="0"/>
-            <ITEM arg="0.28623199999999999" value="0"/>
-            <ITEM arg="0.28804299999999999" value="0"/>
-            <ITEM arg="0.28985499999999997" value="0"/>
-            <ITEM arg="0.29166700000000001" value="0"/>
-            <ITEM arg="0.29347800000000002" value="0"/>
-            <ITEM arg="0.29529" value="0"/>
-            <ITEM arg="0.297101" value="0"/>
-            <ITEM arg="0.29891299999999998" value="0"/>
-            <ITEM arg="0.30072500000000002" value="0"/>
-            <ITEM arg="0.30253600000000003" value="0"/>
-            <ITEM arg="0.30434800000000001" value="0"/>
-            <ITEM arg="0.30615900000000001" value="0"/>
-            <ITEM arg="0.30797099999999999" value="0"/>
-            <ITEM arg="0.30978299999999998" value="0"/>
-            <ITEM arg="0.31159399999999998" value="0"/>
-            <ITEM arg="0.31340600000000002" value="0"/>
-            <ITEM arg="0.31521700000000002" value="0"/>
-            <ITEM arg="0.31702900000000001" value="0"/>
-            <ITEM arg="0.31884099999999999" value="0"/>
-            <ITEM arg="0.32065199999999999" value="0"/>
-            <ITEM arg="0.32246399999999997" value="0"/>
-            <ITEM arg="0.32427499999999998" value="0"/>
-            <ITEM arg="0.32608700000000002" value="0"/>
-            <ITEM arg="0.327899" value="0"/>
-            <ITEM arg="0.32971" value="0"/>
-            <ITEM arg="0.33152199999999998" value="0"/>
-            <ITEM arg="0.33333299999999999" value="0"/>
-            <ITEM arg="0.33514500000000003" value="0"/>
-            <ITEM arg="0.33695700000000001" value="0"/>
-            <ITEM arg="0.33876800000000001" value="0"/>
-            <ITEM arg="0.34057999999999999" value="0"/>
-            <ITEM arg="0.342391" value="0"/>
-            <ITEM arg="0.34420299999999998" value="0"/>
-            <ITEM arg="0.34601399999999999" value="0"/>
-            <ITEM arg="0.34782600000000002" value="0"/>
-            <ITEM arg="0.349638" value="0"/>
-            <ITEM arg="0.35144900000000001" value="0"/>
-            <ITEM arg="0.35326099999999999" value="0"/>
-            <ITEM arg="0.355072" value="0"/>
-            <ITEM arg="0.35688399999999998" value="0"/>
-            <ITEM arg="0.35869600000000001" value="0"/>
-            <ITEM arg="0.36050700000000002" value="0"/>
-            <ITEM arg="0.362319" value="0"/>
-            <ITEM arg="0.36413000000000001" value="0"/>
-            <ITEM arg="0.36594199999999999" value="0"/>
-            <ITEM arg="0.36775400000000003" value="0"/>
-            <ITEM arg="0.36956499999999998" value="0"/>
-            <ITEM arg="0.37137700000000001" value="0"/>
-            <ITEM arg="0.37318800000000002" value="0"/>
-            <ITEM arg="0.375" value="0"/>
-            <ITEM arg="0.37681199999999998" value="0"/>
-            <ITEM arg="0.37862299999999999" value="0"/>
-            <ITEM arg="0.38043500000000002" value="0"/>
-            <ITEM arg="0.38224599999999997" value="0"/>
-            <ITEM arg="0.38405800000000001" value="0"/>
-            <ITEM arg="0.38586999999999999" value="0"/>
-            <ITEM arg="0.387681" value="0"/>
-            <ITEM arg="0.38949299999999998" value="0"/>
-            <ITEM arg="0.39130399999999999" value="0"/>
-            <ITEM arg="0.39311600000000002" value="0"/>
-            <ITEM arg="0.394928" value="0"/>
-            <ITEM arg="0.39673900000000001" value="0"/>
-            <ITEM arg="0.39855099999999999" value="0"/>
-            <ITEM arg="0.400362" value="0"/>
-            <ITEM arg="0.40217399999999998" value="0"/>
-            <ITEM arg="0.40398600000000001" value="0"/>
-            <ITEM arg="0.40579700000000002" value="0"/>
-            <ITEM arg="0.407609" value="0"/>
-            <ITEM arg="0.40942000000000001" value="0"/>
-            <ITEM arg="0.41123199999999999" value="0"/>
-            <ITEM arg="0.41304299999999999" value="0"/>
-            <ITEM arg="0.41485499999999997" value="0"/>
-            <ITEM arg="0.41666700000000001" value="0"/>
-            <ITEM arg="0.41847800000000002" value="0"/>
-            <ITEM arg="0.42029" value="0"/>
-            <ITEM arg="0.422101" value="0"/>
-            <ITEM arg="0.42391299999999998" value="0"/>
-            <ITEM arg="0.42572500000000002" value="0"/>
-            <ITEM arg="0.42753600000000003" value="0"/>
-            <ITEM arg="0.42934800000000001" value="0"/>
-            <ITEM arg="0.43115900000000001" value="0"/>
-            <ITEM arg="0.43297099999999999" value="0"/>
-            <ITEM arg="0.43478299999999998" value="0"/>
-            <ITEM arg="0.43659399999999998" value="0"/>
-            <ITEM arg="0.43840600000000002" value="0"/>
-            <ITEM arg="0.44021700000000002" value="0"/>
-            <ITEM arg="0.44202900000000001" value="0"/>
-            <ITEM arg="0.44384099999999999" value="0"/>
-            <ITEM arg="0.44565199999999999" value="0"/>
-            <ITEM arg="0.44746399999999997" value="0"/>
-            <ITEM arg="0.44927499999999998" value="0"/>
-            <ITEM arg="0.45108700000000002" value="0"/>
-            <ITEM arg="0.452899" value="0"/>
-            <ITEM arg="0.45471" value="0"/>
-            <ITEM arg="0.45652199999999998" value="0"/>
-            <ITEM arg="0.45833299999999999" value="0"/>
-            <ITEM arg="0.46014500000000003" value="0"/>
-            <ITEM arg="0.46195700000000001" value="0"/>
-            <ITEM arg="0.46376800000000001" value="0"/>
-            <ITEM arg="0.46557999999999999" value="0"/>
-            <ITEM arg="0.467391" value="0"/>
-            <ITEM arg="0.46920299999999998" value="0"/>
-            <ITEM arg="0.47101399999999999" value="0"/>
-            <ITEM arg="0.47282600000000002" value="0"/>
-            <ITEM arg="0.474638" value="0"/>
-            <ITEM arg="0.47644900000000001" value="0"/>
-            <ITEM arg="0.47826099999999999" value="0"/>
+            <ITEM arg="0.237319" value="103093"/>
+            <ITEM arg="0.23913000000000001" value="206186"/>
+            <ITEM arg="0.24094199999999999" value="309278"/>
+            <ITEM arg="0.242754" value="412371"/>
+            <ITEM arg="0.244565" value="515464"/>
+            <ITEM arg="0.24637700000000001" value="618557"/>
+            <ITEM arg="0.24818799999999999" value="721649"/>
+            <ITEM arg="0.25" value="824742"/>
+            <ITEM arg="0.25181199999999998" value="927835"/>
+            <ITEM arg="0.25362299999999999" value="1030930"/>
+            <ITEM arg="0.25543500000000002" value="1030930"/>
+            <ITEM arg="0.25724599999999997" value="1030930"/>
+            <ITEM arg="0.25905800000000001" value="1030930"/>
+            <ITEM arg="0.26086999999999999" value="1030930"/>
+            <ITEM arg="0.262681" value="1030930"/>
+            <ITEM arg="0.26449299999999998" value="1030930"/>
+            <ITEM arg="0.26630399999999999" value="1030930"/>
+            <ITEM arg="0.26811600000000002" value="1030930"/>
+            <ITEM arg="0.269928" value="1030930"/>
+            <ITEM arg="0.27173900000000001" value="1030930"/>
+            <ITEM arg="0.27355099999999999" value="1030930"/>
+            <ITEM arg="0.275362" value="1030930"/>
+            <ITEM arg="0.27717399999999998" value="1030930"/>
+            <ITEM arg="0.27898600000000001" value="1030930"/>
+            <ITEM arg="0.28079700000000002" value="1030930"/>
+            <ITEM arg="0.282609" value="1030930"/>
+            <ITEM arg="0.28442000000000001" value="1030930"/>
+            <ITEM arg="0.28623199999999999" value="1030930"/>
+            <ITEM arg="0.28804299999999999" value="1030930"/>
+            <ITEM arg="0.28985499999999997" value="1030930"/>
+            <ITEM arg="0.29166700000000001" value="1030930"/>
+            <ITEM arg="0.29347800000000002" value="1030930"/>
+            <ITEM arg="0.29529" value="1030930"/>
+            <ITEM arg="0.297101" value="1030930"/>
+            <ITEM arg="0.29891299999999998" value="1030930"/>
+            <ITEM arg="0.30072500000000002" value="1030930"/>
+            <ITEM arg="0.30253600000000003" value="1030930"/>
+            <ITEM arg="0.30434800000000001" value="1030930"/>
+            <ITEM arg="0.30615900000000001" value="1030930"/>
+            <ITEM arg="0.30797099999999999" value="1030930"/>
+            <ITEM arg="0.30978299999999998" value="1030930"/>
+            <ITEM arg="0.31159399999999998" value="1030930"/>
+            <ITEM arg="0.31340600000000002" value="1030930"/>
+            <ITEM arg="0.31521700000000002" value="1030930"/>
+            <ITEM arg="0.31702900000000001" value="1030930"/>
+            <ITEM arg="0.31884099999999999" value="1030930"/>
+            <ITEM arg="0.32065199999999999" value="1030930"/>
+            <ITEM arg="0.32246399999999997" value="1030930"/>
+            <ITEM arg="0.32427499999999998" value="1030930"/>
+            <ITEM arg="0.32608700000000002" value="1030930"/>
+            <ITEM arg="0.327899" value="1030930"/>
+            <ITEM arg="0.32971" value="1030930"/>
+            <ITEM arg="0.33152199999999998" value="1030930"/>
+            <ITEM arg="0.33333299999999999" value="1030930"/>
+            <ITEM arg="0.33514500000000003" value="1030930"/>
+            <ITEM arg="0.33695700000000001" value="1030930"/>
+            <ITEM arg="0.33876800000000001" value="1030930"/>
+            <ITEM arg="0.34057999999999999" value="1030930"/>
+            <ITEM arg="0.342391" value="1030930"/>
+            <ITEM arg="0.34420299999999998" value="1030930"/>
+            <ITEM arg="0.34601399999999999" value="1030930"/>
+            <ITEM arg="0.34782600000000002" value="1030930"/>
+            <ITEM arg="0.349638" value="1030930"/>
+            <ITEM arg="0.35144900000000001" value="1030930"/>
+            <ITEM arg="0.35326099999999999" value="1030930"/>
+            <ITEM arg="0.355072" value="1030930"/>
+            <ITEM arg="0.35688399999999998" value="1030930"/>
+            <ITEM arg="0.35869600000000001" value="1030930"/>
+            <ITEM arg="0.36050700000000002" value="1030930"/>
+            <ITEM arg="0.362319" value="1030930"/>
+            <ITEM arg="0.36413000000000001" value="1030930"/>
+            <ITEM arg="0.36594199999999999" value="1030930"/>
+            <ITEM arg="0.36775400000000003" value="1030930"/>
+            <ITEM arg="0.36956499999999998" value="1030930"/>
+            <ITEM arg="0.37137700000000001" value="1030930"/>
+            <ITEM arg="0.37318800000000002" value="1030930"/>
+            <ITEM arg="0.375" value="1030930"/>
+            <ITEM arg="0.37681199999999998" value="1030930"/>
+            <ITEM arg="0.37862299999999999" value="1030930"/>
+            <ITEM arg="0.38043500000000002" value="1030930"/>
+            <ITEM arg="0.38224599999999997" value="1030930"/>
+            <ITEM arg="0.38405800000000001" value="1030930"/>
+            <ITEM arg="0.38586999999999999" value="1030930"/>
+            <ITEM arg="0.387681" value="1030930"/>
+            <ITEM arg="0.38949299999999998" value="1030930"/>
+            <ITEM arg="0.39130399999999999" value="1030930"/>
+            <ITEM arg="0.39311600000000002" value="1030930"/>
+            <ITEM arg="0.394928" value="1030930"/>
+            <ITEM arg="0.39673900000000001" value="1030930"/>
+            <ITEM arg="0.39855099999999999" value="1030930"/>
+            <ITEM arg="0.400362" value="1030930"/>
+            <ITEM arg="0.40217399999999998" value="1030930"/>
+            <ITEM arg="0.40398600000000001" value="1030930"/>
+            <ITEM arg="0.40579700000000002" value="1030930"/>
+            <ITEM arg="0.407609" value="1030930"/>
+            <ITEM arg="0.40942000000000001" value="1030930"/>
+            <ITEM arg="0.41123199999999999" value="1030930"/>
+            <ITEM arg="0.41304299999999999" value="1030930"/>
+            <ITEM arg="0.41485499999999997" value="1030930"/>
+            <ITEM arg="0.41666700000000001" value="1030930"/>
+            <ITEM arg="0.41847800000000002" value="1030930"/>
+            <ITEM arg="0.42029" value="1030930"/>
+            <ITEM arg="0.422101" value="1030930"/>
+            <ITEM arg="0.42391299999999998" value="1030930"/>
+            <ITEM arg="0.42572500000000002" value="1030930"/>
+            <ITEM arg="0.42753600000000003" value="1030930"/>
+            <ITEM arg="0.42934800000000001" value="1030930"/>
+            <ITEM arg="0.43115900000000001" value="1030930"/>
+            <ITEM arg="0.43297099999999999" value="1030930"/>
+            <ITEM arg="0.43478299999999998" value="1030930"/>
+            <ITEM arg="0.43659399999999998" value="1030930"/>
+            <ITEM arg="0.43840600000000002" value="1030930"/>
+            <ITEM arg="0.44021700000000002" value="1030930"/>
+            <ITEM arg="0.44202900000000001" value="1030930"/>
+            <ITEM arg="0.44384099999999999" value="1030930"/>
+            <ITEM arg="0.44565199999999999" value="1030930"/>
+            <ITEM arg="0.44746399999999997" value="1030930"/>
+            <ITEM arg="0.44927499999999998" value="1030930"/>
+            <ITEM arg="0.45108700000000002" value="1030930"/>
+            <ITEM arg="0.452899" value="1030930"/>
+            <ITEM arg="0.45471" value="1030930"/>
+            <ITEM arg="0.45652199999999998" value="1030930"/>
+            <ITEM arg="0.45833299999999999" value="1030930"/>
+            <ITEM arg="0.46014500000000003" value="1030930"/>
+            <ITEM arg="0.46195700000000001" value="1030930"/>
+            <ITEM arg="0.46376800000000001" value="1030930"/>
+            <ITEM arg="0.46557999999999999" value="1030930"/>
+            <ITEM arg="0.467391" value="1030930"/>
+            <ITEM arg="0.46920299999999998" value="1030930"/>
+            <ITEM arg="0.47101399999999999" value="1030930"/>
+            <ITEM arg="0.47282600000000002" value="1030930"/>
+            <ITEM arg="0.474638" value="1030930"/>
+            <ITEM arg="0.47644900000000001" value="1030930"/>
+            <ITEM arg="0.47826099999999999" value="1030930"/>
           </Table>
           <Var>
             <Physical/>
@@ -1989,6 +2265,12 @@
         <WallValue Source="*.0"/>
         <OBJECT class="CFvValueConstant" Constant="0" myid="0"/>
       </OBJECT>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="37"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="38"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="39"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="40"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="41"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="42"/>
     </OBJECT>
     <OBJECT class="CBCondition" myid="177" UIName="Выпуск" Color="00808080">
       <Type>FREEOUTLET</Type>
@@ -2022,7 +2304,7 @@
       <OBJECT class="CBVarConstant" myid="11">
         <Variable>*-2.-2.41.250</Variable>
         <WallValue Source="*.0"/>
-        <OBJECT class="CFvValueConstant" Constant="763.89999999999998" myid="0"/>
+        <OBJECT class="CFvValueConstant" Constant="490.89999999999998" myid="0"/>
       </OBJECT>
       <OBJECT class="CBVelOutlet" myid="12">
         <Variable>*-2.-2.41.151</Variable>
@@ -2051,6 +2333,12 @@
       <OBJECT class="CBVarZeroFlux" myid="30">
         <Variable>*-2.-2.41.502</Variable>
       </OBJECT>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="31"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="32"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="33"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="34"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="35"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="36"/>
     </OBJECT>
     <OBJECT class="CBCondition" myid="191" UIName="Симметрия" Color="00808080">
       <Type>SYMMETRY</Type>
@@ -2109,6 +2397,12 @@
       <OBJECT class="CBVarSymmetry" myid="32">
         <Variable>*-2.-2.41.502</Variable>
       </OBJECT>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="33"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="34"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="35"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="36"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="37"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="38"/>
     </OBJECT>
     <OBJECT class="CFvValueConstant" Constant="0" myid="192"/>
     <OBJECT class="CFvValueConstant" Constant="0" myid="193"/>
@@ -2180,6 +2474,12 @@
       <OBJECT class="CBVarValueNearWall" myid="37">
         <Variable>*-2.-2.41.502</Variable>
       </OBJECT>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="38"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="39"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="40"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="41"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="42"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="43"/>
     </OBJECT>
     <OBJECT class="CBCondition" myid="231" UIName="Стенки поршня" Color="00BFBCBC">
       <Type>WALL</Type>
@@ -2246,6 +2546,12 @@
       <OBJECT class="CBVarValueNearWall" myid="37">
         <Variable>*-2.-2.41.502</Variable>
       </OBJECT>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="38"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="39"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="40"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="41"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="42"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="43"/>
     </OBJECT>
     <OBJECT class="CFvValueConstant" Constant="0" myid="232"/>
     <OBJECT class="CFvValueConstant" Constant="0" myid="233"/>
@@ -2286,6 +2592,21 @@
     <OBJECT class="CFvValueConstant" Constant="0" myid="294"/>
     <OBJECT class="CFvValueConstant" Constant="0" myid="295"/>
     <OBJECT class="CFvValueConstant" Constant="0" myid="296"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="297"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="298"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="299"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="300"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="301"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="302"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="303"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="304"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="305"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="306"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="307"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="308"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="309"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="310"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="311"/>
   </OBJECT>
   <OBJECT class="CSubstance" myid="13" UIName="Азот_Газовая">
     <Type>database</Type>
@@ -2891,7 +3212,7 @@
       </OBJECT>
       <OBJECT class="CIniVarScalar" Variable="*-2.-2.41.250" myid="4">
         <Value Source="*.0"/>
-        <OBJECT class="CFvValueConstant" Constant="1208.8" myid="0"/>
+        <OBJECT class="CFvValueConstant" Constant="935.79999999999995" myid="0"/>
       </OBJECT>
       <OBJECT class="CIniVarScalar" Variable="*-2.-2.41.492" myid="10">
         <Value Source="*.0"/>
@@ -3006,7 +3327,7 @@
     <OBJECT class="CInitialData" myid="273" UIName="Нач. данные #1">
       <OBJECT class="CIniVarScalar" Variable="*-2.-2.41.250" myid="0">
         <Value Source="*.0"/>
-        <OBJECT class="CFvValueConstant" Constant="763.89999999999998" myid="0"/>
+        <OBJECT class="CFvValueConstant" Constant="490.89999999999998" myid="0"/>
       </OBJECT>
       <OBJECT class="CIniVarVector" Variable="*-2.-2.41.151" myid="1">
         <Value>
@@ -3039,7 +3360,7 @@
         <OBJECT class="CFvValueConstant" Constant="0" myid="0"/>
       </OBJECT>
     </OBJECT>
-    <OBJECT class="CGapModel" MaxGap="0.10000000000000001" MinGap="0.0001" myid="277"/>
+    <OBJECT class="CGapModel" MaxGap="0.14999999999999999" MinGap="0.0001" myid="277"/>
     <OBJECT class="CGapEqSys" myid="278"/>
     <OBJECT Obj="0" class="CFVScalarVariable" MainVar="0" ICell="-1" IDVar="CLEARANCE" myid="380" IDNum="2" IBVar="-1" Flag="16" avType="AV_VOL"/>
     <OBJECT Obj="*-2.-2.41.278" class="CFVScalarVariable" MainVar="0" ICell="88" IDVar="CLEARANCE" myid="381" IDNum="0" IBVar="-1" Flag="3" avType="AV_FITA_VOF_VOLUME"/>
@@ -18188,7 +18509,7 @@
   </OBJECT>
   <OBJECT class="CMeshEntity" myid="216" GUID="1E7B45A2-B309-4375-BA25-E41E8FB7E4E0" UIName="Импортированный объект #0">
     <Location>
-      <Origin x="0" y="0" z="0.19627844942748435"/>
+      <Origin x="0" y="0" z="0.64593139112837972"/>
       <Ort0 x="1" y="0" z="0"/>
       <Ort1 x="0" y="1" z="0"/>
       <Ort2 x="0" y="0" z="1"/>
@@ -18198,7 +18519,7 @@
   </OBJECT>
   <OBJECT class="CMeshEntity" myid="235" GUID="F17AD9C3-62C4-4C93-A019-BD589A44A2CE" UIName="Импортированный объект #1">
     <Location>
-      <Origin x="0" y="0" z="-0.066725074694447051"/>
+      <Origin x="0" y="0" z="-0.015804671763467813"/>
       <Ort0 x="1" y="0" z="0"/>
       <Ort1 x="0" y="1" z="0"/>
       <Ort2 x="0" y="0" z="1"/>
@@ -18249,7 +18570,7 @@
       </Code>
     </OBJECT>
   </OBJECT>
-  <OBJECT class="CConeEntity" myid="289" GUID="0820BE80-22EA-45B3-AC06-84B4ABF6B08C" UIName="Конус/цилиндр #0">
+  <OBJECT class="CConeEntity" myid="289" GUID="0820BE80-22EA-45B3-AC06-84B4ABF6B08C" UIName="Конус/цилиндр: выпускной канал">
     <Location>
       <Origin x="0" y="0" z="0.22"/>
       <Ort0 x="0" y="0" z="1"/>
@@ -18262,5 +18583,309 @@
       <Sector Width="360" Start="0"/>
     </Params>
     <Approx PerSector="0" Count="36"/>
+  </OBJECT>
+  <OBJECT class="CSupergroupEntity" myid="300" GUID="9F52400F-17F0-4651-B6EE-9A7A48743B8C" UIName="Супергруппа: межклапанная щель">
+    <GroupSets>
+      <ITEM GeomOwner="*-2.-2.235">
+        <Groups>
+          <ITEM>1</ITEM>
+        </Groups>
+      </ITEM>
+      <ITEM GeomOwner="*-2.-2">
+        <Groups>
+          <ITEM>3</ITEM>
+          <ITEM>4</ITEM>
+          <ITEM>5</ITEM>
+          <ITEM>1</ITEM>
+        </Groups>
+      </ITEM>
+    </GroupSets>
+  </OBJECT>
+  <OBJECT class="CConeEntity" myid="311" GUID="D64CCC3B-F97A-4EA9-B4E6-7B1665E304BD" UIName="Конус/цилиндр: зона впрыска">
+    <Location>
+      <Origin x="0" y="0" z="-1.25"/>
+      <Ort0 x="0" y="0" z="1"/>
+      <Ort1 x="0" y="1" z="-0"/>
+      <Ort2 x="-1" y="0" z="0"/>
+      <Scale>1</Scale>
+    </Location>
+    <Params Height="0.20000000000000001" Ratio="1" Channel="NONE" Radius1="0.45000000000000001" Radius2="0.45000000000000001" ChanRatio="0.5">
+      <Slant Angle="0" Direction="0"/>
+      <Sector Width="360" Start="0"/>
+    </Params>
+    <Approx PerSector="0" Count="36"/>
+  </OBJECT>
+  <OBJECT class="CConeEntity" myid="321" GUID="E3ADBFE4-5DC4-4746-B943-0C490E00317B" UIName="Конус/цилиндр: зона впуска">
+    <Location>
+      <Origin x="0" y="0" z="-2.7799999999999998"/>
+      <Ort0 x="0" y="0" z="1"/>
+      <Ort1 x="0" y="1" z="-0"/>
+      <Ort2 x="-1" y="0" z="0"/>
+      <Scale>1</Scale>
+    </Location>
+    <Params Height="0.20499999999999999" Ratio="1" Channel="NONE" Radius1="0.45000000000000001" Radius2="0.45000000000000001" ChanRatio="0.5">
+      <Slant Angle="0" Direction="0"/>
+      <Sector Width="360" Start="0"/>
+    </Params>
+    <Approx PerSector="0" Count="36"/>
+  </OBJECT>
+  <OBJECT class="CConeEntity" myid="331" GUID="D3675C76-EAE7-4F4F-BACA-3448CB2402A7" UIName="Конус/цилиндр: слияние ячеек">
+    <Location>
+      <Origin x="0" y="0" z="-0.25"/>
+      <Ort0 x="0" y="0" z="1"/>
+      <Ort1 x="0" y="1" z="-0"/>
+      <Ort2 x="-1" y="0" z="0"/>
+      <Scale>1</Scale>
+    </Location>
+    <Params Height="1" Ratio="1" Channel="NONE" Radius1="0.45000000000000001" Radius2="0.45000000000000001" ChanRatio="0.5">
+      <Slant Angle="0" Direction="0"/>
+      <Sector Width="360" Start="0"/>
+    </Params>
+    <Approx PerSector="0" Count="36"/>
+  </OBJECT>
+  <OBJECT class="CSupergroupEntity" myid="341" GUID="6EAE40BC-7659-463C-93E8-379F1637896E" UIName="Супергруппа: &quot;форсунка&quot;">
+    <GroupSets>
+      <ITEM GeomOwner="*-2.-2">
+        <Groups>
+          <ITEM>10</ITEM>
+          <ITEM>17</ITEM>
+        </Groups>
+      </ITEM>
+    </GroupSets>
+  </OBJECT>
+  <OBJECT class="CUserVarGlobalScalar" myid="351" GUID="B5E161B1-8177-4582-B6B6-2E7042A6389D" UIName="injectionMassFlowRate">
+    <Value Source="*.0"/>
+    <OBJECT class="CFvValueFormula" myid="0">
+      <Formula>inMassFlow - outMassFlow</Formula>
+      <Bindings>
+        <Constants/>
+        <Linkage>
+          <ITEM Type="INTEGRAL" Id="0" Name="inMassFlow" Comp="SOURCE" Index="0"/>
+          <ITEM Type="INTEGRAL" Id="1" Name="outMassFlow" Comp="SOURCE" Index="1"/>
+        </Linkage>
+        <Physical/>
+        <Integral>
+          <ITEM Chars="*-2.-2.401" Group="0" UGV="1"/>
+          <ITEM Chars="*-2.-2.401" Group="0" UGV="2"/>
+        </Integral>
+        <User/>
+      </Bindings>
+      <Code MemorySize="0" ReturnSize="1" StackDepth="2" MachineID="513">
+        <Code>
+          <ITEM Opcode="RESOLVE" Value="0"/>
+          <ITEM Opcode="RESOLVE" Value="1"/>
+          <ITEM Opcode="SUB" Value="2"/>
+        </Code>
+      </Code>
+    </OBJECT>
+  </OBJECT>
+  <OBJECT class="CSupergroupEntity" myid="352" GUID="057E5193-9BEE-413F-9823-EBE3496108D3" UIName="Супергруппа: &quot;Впуск&quot;">
+    <GroupSets>
+      <ITEM GeomOwner="*-2.-2">
+        <Groups>
+          <ITEM>6</ITEM>
+          <ITEM>7</ITEM>
+          <ITEM>8</ITEM>
+          <ITEM>9</ITEM>
+          <ITEM>11</ITEM>
+          <ITEM>12</ITEM>
+        </Groups>
+      </ITEM>
+    </GroupSets>
+  </OBJECT>
+  <OBJECT class="CIntegralCharacteristics" myid="362" GUID="CD26037D-309E-44C8-956E-87787DA6CF0B" IceSurface="0" SubRegion="*-2.-2.2" UIName="Характеристики - inletU">
+    <Object>*-2.-2.352</Object>
+    <Settings>
+      <Mode>WHOLE_SURFACE</Mode>
+      <Parts/>
+    </Settings>
+    <MomentPt>
+      <x Source="*.0"/>
+      <y Source="*.1"/>
+      <z Source="*.2"/>
+    </MomentPt>
+    <normal x="1" y="0" z="0"/>
+    <Var Comp="SOURCE">
+      <Description Size="3" IDVar="VEL" IDPhase="-1" BlockType="CMotionProcess"/>
+    </Var>
+    <EnclaveAnalysis VolThreshold="0" Enabled="0" SmallPolicy="KEEP"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="0"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="1"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="2"/>
+  </OBJECT>
+  <OBJECT class="CSupergroupEntity" myid="391" GUID="04D7241A-123B-43AA-92D4-D4D4FFAFBFFE" UIName="Супергруппа на &quot;Впрыск&quot;">
+    <GroupSets>
+      <ITEM GeomOwner="*-2.-2">
+        <Groups>
+          <ITEM>17</ITEM>
+        </Groups>
+      </ITEM>
+    </GroupSets>
+  </OBJECT>
+  <OBJECT class="CIntegralCharacteristics" myid="401" GUID="5F7B6DD3-24D4-4C2C-929B-4F1230EBC633" IceSurface="0" SubRegion="*-2.-2.2" UIName="Характеристики - injectionU">
+    <Object>*-2.-2.391</Object>
+    <Settings>
+      <Mode>WHOLE_SURFACE</Mode>
+      <Parts/>
+    </Settings>
+    <MomentPt>
+      <x Source="*.0"/>
+      <y Source="*.1"/>
+      <z Source="*.2"/>
+    </MomentPt>
+    <normal x="1" y="0" z="0"/>
+    <Var Comp="SOURCE">
+      <Description Size="3" IDVar="VEL" IDPhase="-1" BlockType="CMotionProcess"/>
+    </Var>
+    <EnclaveAnalysis VolThreshold="0" Enabled="0" SmallPolicy="KEEP"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="0"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="1"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="2"/>
+  </OBJECT>
+  <OBJECT class="CUserVarGlobalScalar" myid="411" GUID="8D37A4D3-6A76-4B90-A398-3C3F50871ACE" UIName="inletMassFlowRate">
+    <Value Source="*.0"/>
+    <OBJECT class="CFvValueFormula" myid="0">
+      <Formula>inMassFlow - outMassFlow</Formula>
+      <Bindings>
+        <Constants/>
+        <Linkage>
+          <ITEM Type="INTEGRAL" Id="0" Name="inMassFlow" Comp="SOURCE" Index="0"/>
+          <ITEM Type="INTEGRAL" Id="1" Name="outMassFlow" Comp="SOURCE" Index="1"/>
+        </Linkage>
+        <Physical/>
+        <Integral>
+          <ITEM Chars="*-2.-2.362" Group="0" UGV="1"/>
+          <ITEM Chars="*-2.-2.362" Group="0" UGV="2"/>
+        </Integral>
+        <User/>
+      </Bindings>
+      <Code MemorySize="0" ReturnSize="1" StackDepth="2" MachineID="513">
+        <Code>
+          <ITEM Opcode="RESOLVE" Value="0"/>
+          <ITEM Opcode="RESOLVE" Value="1"/>
+          <ITEM Opcode="SUB" Value="2"/>
+        </Code>
+      </Code>
+    </OBJECT>
+  </OBJECT>
+  <OBJECT class="CIntegralCharacteristics" myid="422" GUID="5846F2C6-32BD-4512-BEC2-F6CB12EB050E" IceSurface="0" SubRegion="0" UIName="Характеристики - volumeAvgP">
+    <Object>*-2.-2.0</Object>
+    <Settings>
+      <Mode>VOLUME</Mode>
+      <Parts/>
+    </Settings>
+    <MomentPt>
+      <x Source="*.0"/>
+      <y Source="*.1"/>
+      <z Source="*.2"/>
+    </MomentPt>
+    <normal x="1" y="0" z="0"/>
+    <Var Comp="SOURCE">
+      <Description Size="1" IDVar="PRES" IDPhase="-1" BlockType="CMotionProcess"/>
+    </Var>
+    <EnclaveAnalysis VolThreshold="0" Enabled="0" SmallPolicy="KEEP"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="0"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="1"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="2"/>
+  </OBJECT>
+  <OBJECT class="CIntegralCharacteristics" myid="432" GUID="051CA1F0-0F31-4B0B-B4E5-FE76D6DCCE14" IceSurface="0" SubRegion="0" UIName="Характеристики - volumeAvgT">
+    <Object>*-2.-2.0</Object>
+    <Settings>
+      <Mode>VOLUME</Mode>
+      <Parts/>
+    </Settings>
+    <MomentPt>
+      <x Source="*.0"/>
+      <y Source="*.1"/>
+      <z Source="*.2"/>
+    </MomentPt>
+    <normal x="1" y="0" z="0"/>
+    <Var Comp="SOURCE">
+      <Description Size="1" IDVar="TEMP" IDPhase="-1" BlockType="CHeatXferProcess"/>
+    </Var>
+    <EnclaveAnalysis VolThreshold="0" Enabled="0" SmallPolicy="KEEP"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="0"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="1"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="2"/>
+  </OBJECT>
+  <OBJECT class="CIntegralCharacteristics" myid="442" GUID="A8F994D4-3D57-4B71-8C85-0B7C7AE89778" IceSurface="0" SubRegion="0" UIName="Характеристики - volumeAvgU">
+    <Object>*-2.-2.0</Object>
+    <Settings>
+      <Mode>VOLUME</Mode>
+      <Parts/>
+    </Settings>
+    <MomentPt>
+      <x Source="*.0"/>
+      <y Source="*.1"/>
+      <z Source="*.2"/>
+    </MomentPt>
+    <normal x="1" y="0" z="0"/>
+    <Var Comp="LENGTH">
+      <Description Size="3" IDVar="VEL" IDPhase="-1" BlockType="CMotionProcess"/>
+    </Var>
+    <EnclaveAnalysis VolThreshold="0" Enabled="0" SmallPolicy="KEEP"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="0"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="1"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="2"/>
+  </OBJECT>
+  <OBJECT class="CIntegralCharacteristics" myid="452" GUID="0FBB8BE8-D1B0-417A-B271-66C5F86008C8" IceSurface="0" SubRegion="0" UIName="Характеристики - volumeAvgAlphaAir">
+    <Object>*-2.-2.0</Object>
+    <Settings>
+      <Mode>VOLUME</Mode>
+      <Parts/>
+    </Settings>
+    <MomentPt>
+      <x Source="*.0"/>
+      <y Source="*.1"/>
+      <z Source="*.2"/>
+    </MomentPt>
+    <normal x="1" y="0" z="0"/>
+    <Var Comp="SOURCE">
+      <Description Size="1" IDVar="MASSFRACTIONS01" IDPhase="51" BlockType="CMassXferProcess"/>
+    </Var>
+    <EnclaveAnalysis VolThreshold="0" Enabled="0" SmallPolicy="KEEP"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="0"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="1"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="2"/>
+  </OBJECT>
+  <OBJECT class="CIntegralCharacteristics" myid="462" GUID="F896C52B-4379-4818-A864-3E552EE2508B" IceSurface="0" SubRegion="0" UIName="Характеристики - volumeAvgAlphaExh">
+    <Object>*-2.-2.0</Object>
+    <Settings>
+      <Mode>VOLUME</Mode>
+      <Parts/>
+    </Settings>
+    <MomentPt>
+      <x Source="*.0"/>
+      <y Source="*.1"/>
+      <z Source="*.2"/>
+    </MomentPt>
+    <normal x="1" y="0" z="0"/>
+    <Var Comp="SOURCE">
+      <Description Size="1" IDVar="MASSFRACTIONS02" IDPhase="51" BlockType="CMassXferProcess"/>
+    </Var>
+    <EnclaveAnalysis VolThreshold="0" Enabled="0" SmallPolicy="KEEP"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="0"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="1"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="2"/>
+  </OBJECT>
+  <OBJECT class="CIntegralCharacteristics" myid="472" GUID="FACE7392-BEE3-4A8D-83FA-89BFCD34C458" IceSurface="0" SubRegion="0" UIName="Характеристики - volumeAvgAlphaGas">
+    <Object>*-2.-2.0</Object>
+    <Settings>
+      <Mode>VOLUME</Mode>
+      <Parts/>
+    </Settings>
+    <MomentPt>
+      <x Source="*.0"/>
+      <y Source="*.1"/>
+      <z Source="*.2"/>
+    </MomentPt>
+    <normal x="1" y="0" z="0"/>
+    <Var Comp="SOURCE">
+      <Description Size="1" IDVar="MASSFRACTIONS00" IDPhase="51" BlockType="CMassXferProcess"/>
+    </Var>
+    <EnclaveAnalysis VolThreshold="0" Enabled="0" SmallPolicy="KEEP"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="0"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="1"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="2"/>
   </OBJECT>
 </FVINPUT>

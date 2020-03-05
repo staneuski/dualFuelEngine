@@ -112,6 +112,14 @@
     </StopperResidual>
     <StopperUser>
       <ITEM>*.7</ITEM>
+      <ITEM>*.22</ITEM>
+      <ITEM>*.25</ITEM>
+      <ITEM>*.48</ITEM>
+      <ITEM>*.51</ITEM>
+      <ITEM>*.54</ITEM>
+      <ITEM>*.57</ITEM>
+      <ITEM>*.60</ITEM>
+      <ITEM>*.63</ITEM>
     </StopperUser>
     <Update>
       <Kind>BYTIME</Kind>
@@ -123,7 +131,7 @@
       <Number>1000000</Number>
     </OBJECT>
     <OBJECT class="CFVTimeSpan" begin="0" end="0.47826099999999999" myid="-2"/>
-    <OBJECT Averaging="COMMON" class="CUserStopper" myid="7" GUID="886109F2-C3A7-40AE-9C81-7A5BABDB060E" Group="255" Comp="LENGTH" Object="*-2.-2.278" Level="0" UGV="255" UIName="phi, CA" Color="000D6BF4">
+    <OBJECT Averaging="COMMON" class="CUserStopper" myid="7" GUID="886109F2-C3A7-40AE-9C81-7A5BABDB060E" Group="255" Comp="LENGTH" Object="*-2.-2.278" Level="0" UGV="255" UIName="phi" Color="000D6BF4">
       <AveragingSettings>
         <Kind>BYTIME</Kind>
         <Time>0</Time>
@@ -159,6 +167,62 @@
       </AveragingSettings>
     </OBJECT>
     <OBJECT Averaging="COMMON" class="CSolverStopperResidual" Variable="*-2.-2.41.213" myid="19" GUID="24661681-9A4F-4CD9-A8A8-ABCC2E868F53" Name="Масс. доля [Воздух_Газовая (равновесная)]" Level="0" Color="0029C74B">
+      <AveragingSettings>
+        <Kind>BYTIME</Kind>
+        <Time>0</Time>
+        <Iteration>1</Iteration>
+      </AveragingSettings>
+    </OBJECT>
+    <OBJECT Averaging="COMMON" class="CUserStopper" myid="22" GUID="DACCE009-67AF-4315-A19D-7FB8650D7242" Group="255" Comp="LENGTH" Object="*-2.-2.411" Level="0" UGV="255" UIName="inletMassFlowRate" Color="0000FF00">
+      <AveragingSettings>
+        <Kind>BYTIME</Kind>
+        <Time>0</Time>
+        <Iteration>1</Iteration>
+      </AveragingSettings>
+    </OBJECT>
+    <OBJECT Averaging="COMMON" class="CUserStopper" myid="25" GUID="F2A0ED8A-CBDA-4037-81F4-AEBF4B7FB338" Group="255" Comp="LENGTH" Object="*-2.-2.351" Level="0" UGV="255" UIName="injectionMassFlowRate" Color="00D1DB82">
+      <AveragingSettings>
+        <Kind>BYTIME</Kind>
+        <Time>0</Time>
+        <Iteration>1</Iteration>
+      </AveragingSettings>
+    </OBJECT>
+    <OBJECT Averaging="COMMON" class="CUserStopper" myid="48" GUID="E2F72F51-1C0E-415C-AAE7-3ADBB232EC89" Group="0" Comp="LENGTH" Object="*-2.-2.432" Level="0" UGV="2" UIName="volumeAvgP" Color="004DA63E">
+      <AveragingSettings>
+        <Kind>BYTIME</Kind>
+        <Time>0</Time>
+        <Iteration>1</Iteration>
+      </AveragingSettings>
+    </OBJECT>
+    <OBJECT Averaging="COMMON" class="CUserStopper" myid="51" GUID="A10A4598-7BF3-4299-88F0-15DC16FBA54A" Group="0" Comp="LENGTH" Object="*-2.-2.432" Level="0" UGV="2" UIName="volumeAvgT" Color="004DA63E">
+      <AveragingSettings>
+        <Kind>BYTIME</Kind>
+        <Time>0</Time>
+        <Iteration>1</Iteration>
+      </AveragingSettings>
+    </OBJECT>
+    <OBJECT Averaging="COMMON" class="CUserStopper" myid="54" GUID="E527FC65-49C1-453D-A690-8AECF26FFD0F" Group="0" Comp="LENGTH" Object="*-2.-2.442" Level="0" UGV="2" UIName="volumeAvgU" Color="004DA63E">
+      <AveragingSettings>
+        <Kind>BYTIME</Kind>
+        <Time>0</Time>
+        <Iteration>1</Iteration>
+      </AveragingSettings>
+    </OBJECT>
+    <OBJECT Averaging="COMMON" class="CUserStopper" myid="57" GUID="79198550-FAE0-40E3-B735-20E682834064" Group="0" Comp="LENGTH" Object="*-2.-2.452" Level="0" UGV="2" UIName="volumeAvgAlphaAir" Color="004DA63E">
+      <AveragingSettings>
+        <Kind>BYTIME</Kind>
+        <Time>0</Time>
+        <Iteration>1</Iteration>
+      </AveragingSettings>
+    </OBJECT>
+    <OBJECT Averaging="COMMON" class="CUserStopper" myid="60" GUID="FD6ACAD3-9262-4F0F-8D5A-384FAE49DD45" Group="0" Comp="LENGTH" Object="*-2.-2.462" Level="0" UGV="2" UIName="volumeAvgAlphaExh" Color="004DA63E">
+      <AveragingSettings>
+        <Kind>BYTIME</Kind>
+        <Time>0</Time>
+        <Iteration>1</Iteration>
+      </AveragingSettings>
+    </OBJECT>
+    <OBJECT Averaging="COMMON" class="CUserStopper" myid="63" GUID="42C7096D-B6F9-4B73-B1E1-9CB5A1FE7E72" Group="0" Comp="LENGTH" Object="*-2.-2.472" Level="0" UGV="2" UIName="volumeAvgAlphaGas" Color="004DA63E">
       <AveragingSettings>
         <Kind>BYTIME</Kind>
         <Time>0</Time>
@@ -232,12 +296,12 @@
     <CFLSLIDE Source="*.4"/>
     <Maximum Source="*.8"/>
     <Minimum Source="*.9"/>
-    <OBJECT class="CFvValueConstant" Constant="0.074999999999999997" myid="1"/>
+    <OBJECT class="CFvValueConstant" Constant="1" myid="1"/>
     <OBJECT class="CFvValueConstant" Constant="1" myid="2"/>
     <OBJECT class="CFvValueConstant" Constant="1E+020" myid="3"/>
     <OBJECT class="CFvValueConstant" Constant="1" myid="4"/>
     <OBJECT class="CFvValueFormula" myid="7">
-      <Formula>60/n/360 * 0.25</Formula>
+      <Formula>60/n/360/*0.0018116*/*0.2</Formula>
       <Bindings>
         <Constants/>
         <Linkage>
@@ -256,13 +320,13 @@
           <ITEM Opcode="DIV" Value="2"/>
           <ITEM Opcode="PUSH" Value="360"/>
           <ITEM Opcode="DIV" Value="2"/>
-          <ITEM Opcode="PUSH" Value="0.25"/>
+          <ITEM Opcode="PUSH" Value="0.20000000000000001"/>
           <ITEM Opcode="MUL" Value="2"/>
         </Code>
       </Code>
     </OBJECT>
     <OBJECT class="CFvValueFormula" myid="8">
-      <Formula>60/n/360 * 0.25</Formula>
+      <Formula>60/n/360/*0.0018116*/*0.2</Formula>
       <Bindings>
         <Constants/>
         <Linkage>
@@ -281,35 +345,11 @@
           <ITEM Opcode="DIV" Value="2"/>
           <ITEM Opcode="PUSH" Value="360"/>
           <ITEM Opcode="DIV" Value="2"/>
-          <ITEM Opcode="PUSH" Value="0.25"/>
+          <ITEM Opcode="PUSH" Value="0.20000000000000001"/>
           <ITEM Opcode="MUL" Value="2"/>
         </Code>
       </Code>
     </OBJECT>
-    <OBJECT class="CFvValueFormula" myid="9">
-      <Formula>60/n/360 * 1e-07</Formula>
-      <Bindings>
-        <Constants/>
-        <Linkage>
-          <ITEM Type="USER" Id="0" Name="n" Comp="SOURCE" Index="0"/>
-        </Linkage>
-        <Physical/>
-        <Integral/>
-        <User>
-          <ITEM UV="*-2.-2.277"/>
-        </User>
-      </Bindings>
-      <Code MemorySize="0" ReturnSize="1" StackDepth="2" MachineID="513">
-        <Code>
-          <ITEM Opcode="PUSH" Value="60"/>
-          <ITEM Opcode="RESOLVE" Value="0"/>
-          <ITEM Opcode="DIV" Value="2"/>
-          <ITEM Opcode="PUSH" Value="360"/>
-          <ITEM Opcode="DIV" Value="2"/>
-          <ITEM Opcode="PUSH" Value="9.9999999999999995e-008"/>
-          <ITEM Opcode="MUL" Value="2"/>
-        </Code>
-      </Code>
-    </OBJECT>
+    <OBJECT class="CFvValueConstant" Constant="9.9999999999999998E-013" myid="9"/>
   </OBJECT>
 </FVSIMCTRL>
