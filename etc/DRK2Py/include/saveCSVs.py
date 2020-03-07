@@ -1,45 +1,45 @@
 '''----------------------------------------------------------------------------
        ___       |
      _|˚_ |_     |   Language: Python
-    /  ___| \    |   Version:  3.7
-    \_| ____/    |   Website:  ¯\_(ツ)_/¯
+    /  ___| \    |   Version:  3.x
+    \_| ____/    |   Website:  https://github.com/StasF1/dualFuelEngine
       |__˚|      |
 ----------------------------------------------------------------------------'''
 
 if not os.path.exists('DRK2Py.res'):    os.makedirs('DRK2Py.res')
 
-#- Save U arrays
+#- Save Coord arrays
 np.savetxt(
-    "DRK2Py.res/pistonMotion.txt",
+    "DRK2Py.res/pistonMotion.csv",
     np.array([
         np.arange(0, (EVO + 180)*degDeltaT, degDeltaT), # t
-        pistonU
+        pistonCoord
     ]).T,
-    fmt='%.5e', delimiter=' '
+    fmt='%.5e', delimiter=',', header="time [s], Z [m]", comments=""
 )
 np.savetxt(
-    "DRK2Py.res/valveMotion.txt",
+    "DRK2Py.res/valveMotion.csv",
     np.array([
         np.arange(0, (EVO + 180)*degDeltaT, degDeltaT*valveCoordFrequency), # t
-        valveU
+        valveCoord
     ]).T,
-    fmt='%.5e', delimiter=' '
+    fmt='%.5e', delimiter=',', header="time [s], Z [m]", comments=""
 )
 
 #- Save velocity arrays
 np.savetxt(
-    "DRK2Py.res/inletVelocity.txt",
+    "DRK2Py.res/inletVelocity.csv",
     np.array([
         np.arange(0, (EVO + 180)*degDeltaT, degDeltaT), # t
-        rhoU_inlet
+        G_inlet
     ]).T,
-    fmt='%.5e', delimiter=' '
+    fmt='%.5e', delimiter=',', header="time [s], U [m/s]", comments=""
 )
 np.savetxt(
-    "DRK2Py.res/injectionVelocity.txt",
+    "DRK2Py.res/injectionVelocity.csv",
     np.array([
         np.arange(0, (EVO + 180)*degDeltaT, degDeltaT), # t
-        rhoU_injection
+        G_injection
     ]).T,
-    fmt='%.5e', delimiter=' '
+    fmt='%.5e', delimiter=',', header="time [s], U [m/s]", comments=""
 )

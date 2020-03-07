@@ -1,11 +1,26 @@
 #!/usr/bin/env python3
 '''----------------------------------------------------------------------------
        ___       |
-     _|˚_ |_     |   Language: Python
-    /  ___| \    |   Version:  3.7
-    \_| ____/    |   Website:  ¯\_(ツ)_/¯
-      |__˚|      |
+     _|o_ |_     |   Language: Python 3.x
+    /  ___| \    |   Website: https://github.com/StasF1/dualFuelEngine
+    \_| ____/    |   Copyright (C) 2019 Stanislau Stasheuski
+      |__o|      |
 -------------------------------------------------------------------------------
+License
+    This file is part of dualFuelEngine – OpenFOAM addition.
+
+    dualFuelEngine (like OpenFOAM) is free software: you can redistribute it 
+    and/or modify it under the terms of the GNU General Public License as
+    published by the Free Software Foundation, either version 3 of the License,
+    or (at your option) any later version.
+
+    dualFuelEngine (like OpenFOAM) is distributed in the hope that it will be
+    useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+    See the GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this repository. If not, see <http://www.gnu.org/licenses/>.
 
 File
     DRK2Python.py
@@ -28,7 +43,7 @@ from DRK2PyDict import *
 # Cylinder parameters
 # ~~~~~~~~~~~~~~~~~~~
 indMatrix = np.loadtxt(
-    glob.glob('tmp*/*.ind')[0], skiprows = 19, encoding = "utf8"
+    glob.glob(f'{tmpFolder}/*.ind')[0], skiprows = 19, encoding = 'cp1252'
 )
 
 alpha         = indMatrix[:,0]       # CA
@@ -45,7 +60,7 @@ x             = indMatrix[:,8]       # heat release fraction
 # Gas exchange parameters
 # ~~~~~~~~~~~~~~~~~~~~~~~
 gasMatrix = np.loadtxt(
-    glob.glob('tmp*/*.gas')[0], skiprows = 31
+    glob.glob(f'{tmpFolder}/*.gas')[0], skiprows = 31, encoding = 'cp1252'
 )
 
 p_exhPipe     = gasMatrix[:,5] *1e+05 # Pa, exhaust pipe pressure
@@ -94,12 +109,12 @@ rhoU_inlet = G_inlet/inletArea
 # Save files
 if saveFormat == 'csv':
     exec( open(
-        "etc/./saveCSVs.py"
+        "include/./saveCSVs.py"
     ).read() )
 
 elif saveFormat == 'txt':
     exec( open(
-        "etc/./saveTXTs.py"
+        "include/./saveTXTs.py"
     ).read() )
 
 elif saveFormat == 'None':
@@ -110,12 +125,12 @@ else:
 
 # Create plots
 exec( open(
-    "etc/./createPlots.py"
+    "include/./createPlots.py"
 ).read() )
 
 # Get the results
 exec( open(
-    "etc/./reportGenerator.py"
+    "include/./reportGenerator.py"
 ).read() )
 
 if (cylParPlot or inOutParPlot or movingPartsPlot or inletInjectionPlot == 'true'):

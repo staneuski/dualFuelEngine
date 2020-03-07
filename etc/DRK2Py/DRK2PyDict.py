@@ -1,16 +1,20 @@
 '''----------------------------------------------------------------------------
        ___       |
      _|˚_ |_     |   Language: Python
-    /  ___| \    |   Version:  3.7
-    \_| ____/    |   Website:  ¯\_(ツ)_/¯
+    /  ___| \    |   Version:  3.x
+    \_| ____/    |   Website:  https://github.com/StasF1/dualFuelEngine
       |__˚|      |
 ----------------------------------------------------------------------------'''
 
 from math import pi
 
+# * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * #
 
+tmpFolder          = 'tmp*' # path to Diesel-RK results folder
 
 n                  = 92 # RPM
+
+S                  = 2.7 # m
 
 IPO                = 42 # ˚CA before BDC
 
@@ -30,7 +34,7 @@ injCA2Max          = 10 # ˚CA
 injArea            = pi*pow(0.85e-03, 2)/4*2 # m^2, area of the two injector orifices d = 0.85 (mm)
 
 
-terminalOutput     = 'false' # true or false
+terminalOutput     = 'true' # true or false
 
 saveFormat         = 'txt' # None, csv or txt (coordinates is writen in the .csv, velocities in the .txt)
 
@@ -40,7 +44,7 @@ inOutParPlot       = 'false' # true or false
 
 movingPartsPlot    = 'false' # true or false
 
-inletInjectionPlot = 'true' # true or false
+inletInjectionPlot = 'false' # true or false
 
 
 # *************************************************************************** #
