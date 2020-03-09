@@ -9,7 +9,7 @@ License
 	This file is not part of OpenFOAM, but part of dualFuelEngine – OpenFOAM
 	addition.
 
-	dualFuelEngine (like OpenFOAM) is free software: you can redistribute it 
+	dualFuelEngine (like OpenFOAM) is free software: you can redistribute it
 	and/or modify it under the terms of the GNU General Public License as
 	published by the Free Software Foundation, either version 3 of the License,
 	or (at your option) any later version.
@@ -126,7 +126,7 @@ int main(int argc, char *argv[])
 
 			UEqn.relax();
 			UEqn.solve();
-			
+
 			fvScalarMatrix eEqn
 			(
 				fvm::ddt(rho, e)
@@ -145,17 +145,14 @@ int main(int argc, char *argv[])
 
 			eEqn.relax();
 			eEqn.solve();
-			
-			phi = fvc::flux(rho*U);
 
-            T =
-            (
-                (e - magSqr(U)/2)
-               /thermo.Cv()
-            );
+            // Upgrade values using field e
+            thermo.correct();
 
             p = rho/psi;
-			
+
+            phi = fvc::flux(rho*U);
+
 			fvScalarMatrix alphaAirEqn
 			(
 				fvm::ddt(rho, alphaAir)
