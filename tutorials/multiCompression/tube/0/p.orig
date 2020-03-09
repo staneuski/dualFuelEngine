@@ -14,9 +14,9 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [1 -1 -2 0 0 0 0]; // [MPa]
+dimensions      [1 -1 -2 0 0 0 0]; // [Pa]
 
-internalField   uniform 1e+05; // 1e05/287.3/300 = 1.16022740457129597401
+internalField   uniform 1e+06;
 
 boundaryField
 {
@@ -28,7 +28,7 @@ boundaryField
     outlet
     {
         type            fixedValue;
-        value           $internalField;
+        value           uniform 0.23e+06;
     }
 
     walls

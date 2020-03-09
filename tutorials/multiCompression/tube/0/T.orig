@@ -16,22 +16,23 @@ FoamFile
 
 dimensions      [0 0 0 1 0 0 0]; // K
 
-internalField   uniform 300;
+internalField   uniform 850;
 
 boundaryField
 {
     inlet
     {
         type            fixedValue;
-        value           $internalField;
+        value           750; //$internalField; // 332
     }
-    
+
     outlet
     {
-        type            fixedValue;
-        value           $internalFields;
+        type            inletOutlet;
+        inletValue      uniform 764;
+        value           $inletValue;
     }
-        
+
     walls
     {
         type            zeroGradient;
