@@ -14,7 +14,7 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [1 -1 -2 0 0 0 0]; // [Pa]
+dimensions      [1 -1 -2 0 0 0 0]; // [MPa]
 
 internalField   uniform 1e+05; // 1e05/287.3/300 = 1.16022740457129597401
 
@@ -22,26 +22,18 @@ boundaryField
 {
     inlet
     {
-        type    fixedValue;
-        value   uniform 1.3e+05;
-        // type            codedFixedValue;
-        // value           uniform 1.508; // 1.508*287.3*300 = 129974.52
-        // redirectType    rho;
-        // code
-        // #{
-        //     #include "../../constant/transportProperties.H" /* get variables */
-        //     #include "../../../../../solvers/utilities/codedFixedValueBC/rho.C"
-        // #};
+        type            zeroGradient;
     }
 
     outlet
     {
-        type    zeroGradient;
+        type            fixedValue;
+        value           $internalField;
     }
 
     walls
     {
-        type    zeroGradient;
+        type            zeroGradient;
     }
 }
 

@@ -22,27 +22,19 @@ boundaryField
 {
     inlet
     {
-        type    fixedValue;
-        value   uniform 300;
-        // type            codedFixedValue;
-        // value           uniform 300;
-        // redirectType    T;
-        // code
-        // #{
-        //     #include "../../constant/transportProperties.H" /* get variables */
-        //     #include "../../../../../solvers/utilities/codedFixedValueBC/T.C"
-        // #};
+        type            fixedValue;
+        value           $internalField;
     }
     
     outlet
     {
-        type    fixedValue;
-        value   uniform 300;
+        type            fixedValue;
+        value           $internalFields;
     }
         
     walls
     {
-        type    zeroGradient;
+        type            zeroGradient;
     }
 }
 
