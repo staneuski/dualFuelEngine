@@ -23,26 +23,26 @@ boundaryField
     // Injection
     "injection(X|Y)(Minus|Plus)"
     {
-        type    fixedValue;
-        value   uniform 1;
+        type            fixedValue;
+        value           uniform 1;
     }
 
     // Inlet
     "inlet(X|Y)(Minus|Plus)"
     {
-        type    zeroGradient;
+        type            zeroGradient;
     }
 
     // Outlet
     outlet
     {
-        type    zeroGradient;
+        type            zeroGradient;
     }
     
     // Walls
     "piston|valve|walls"
     {
-        type    zeroGradient;
+        type            zeroGradient;
     }
 }
 

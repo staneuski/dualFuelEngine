@@ -16,41 +16,33 @@ FoamFile
 
 dimensions      [1 -1 -2 0 0 0 0]; // [Pa]
 
-internalField   uniform 1e+05;
+internalField   uniform 1e+06;
 
 boundaryField
 {
     // Injection
     "injection(X|Y)(Minus|Plus)"
     {
-        type    fixedValue;
-        value   uniform 2.5e+05;
-        // type    codedFixedValue;
-        // value   uniform 2.5e+05;
-        // redirectType p;
-        // code
-        // #{
-        //     #include "../../constant/transportProperties.H"
-        //     #include "../../../../../solvers/utilities/codedFixedValueBC/p.C"
-        // #};
+        type            zeroGradient;
     }
-    
+
     // Inlet
     "inlet(X|Y)(Minus|Plus)"
     {
         $injectionXMinus
     }
-    
+
     // Outlet
     outlet
     {
-        type    zeroGradient;
+        type            fixedValue;
+        value           uniform 0.23e+06;
     }
-    
+
     // Walls
     "piston|valve|walls"
     {
-        type    zeroGradient;
+        type            zeroGradient;
     }
 }
 
