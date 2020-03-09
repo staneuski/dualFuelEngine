@@ -14,7 +14,7 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [0 1 -1 0 0 0 0]; // [kg m s K kg-mol cd]
+dimensions      [0 1 -1 0 0 0 0];
 
 internalField   uniform (0 0 0);
 
@@ -22,8 +22,15 @@ boundaryField
 {
     inlet
     {
-        type            fixedValue;
-        value           uniform (0 80 0);
+        type            uniformFixedValue;
+        // uniformValue    constant (0 80 0);
+        uniformValue    table 
+        (
+            (0          (0 0   0))
+            (2e-03      (0 100 0))
+            (5e-03      (0 100 0))
+            (9e-03      (0 20  0))
+        );
     }
 
     outlet

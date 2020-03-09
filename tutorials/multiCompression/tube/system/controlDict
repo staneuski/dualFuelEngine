@@ -23,7 +23,7 @@ startTime       0;
 
 stopAt          endTime;
 
-endTime         0.008;
+endTime         0.012;
 
 deltaT          5e-03;
 
@@ -51,6 +51,7 @@ maxCo           0.05;
 
 functions
 {
+    // #includeFunc residuals
     #includeFunc flowRatePatch(name=inlet)
 }
 
