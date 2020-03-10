@@ -1,0 +1,62 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: dualFuelEngline addition to OpenFOAM v7
+   \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
+    \\  /    A nd           | Version:  0.3-alpha
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volVectorField;
+    object      U;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 1 -1 0 0 0 0];
+
+internalField   uniform (0 0 0);
+
+boundaryField
+{
+    injection
+    {
+        type            fixedValue;
+        value           uniform (-50 0 0);
+    }
+    inlet
+    {
+        type            fixedValue;
+        value           uniform (-25 0 0);
+    }
+    outlet
+    {
+        type            pressureInletOutletVelocity;
+        value           uniform (0 0 0);
+    }
+    piston
+    {
+        type            movingWallVelocity;
+        value           $internalField;
+    }
+    "(cyl|injection|inlet)_(front|back)"
+    {   /* Sides */
+        type            slip; // wedge;
+    }
+    "cyl_top|(injection|inlet)_topAndBottom"
+    {   /* Other walls */
+        type            slip;
+    }
+    "ACMI(1|2)_blockage"
+    {
+        type            slip;
+    }
+    "ACMI(1|2)_couple"
+    {
+        type            cyclicACMI;
+        value           uniform (0 0 0);
+    }
+}
+
+// ************************************************************************* //
