@@ -1,11 +1,11 @@
 #!/bin/sh
 #----------------------------------*-sh-*--------------------------------------
-# =========					|
-# \\	  /	 F ield			| OpenFOAM: Addition to OpenFOAM v6
-#  \\	 /	 O peration		| Website:	https://github.com/StasF1/dualFuelEngine
-#   \\	/	 A nd			| Copyright (C) 2019 Stanislau Stasheuski
-#    \\/	 M anipulation	|
-#------------------------------------------------------------------------------
+#  =========                 |
+#  \\      /  F ield         | OpenFOAM: Addition to OpenFOAM v6
+#   \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
+#    \\  /    A nd           | Copyright (C) 2018-2020 Stanislau Stasheuski
+#     \\/     M anipulation  |
+# ----------------------------------------------------------------------------
 # License
 #     This file is not part of OpenFOAM, but part of dualFuelEngine – OpenFOAM
 #     addition.
@@ -35,48 +35,48 @@ cd ${0%/*} || exit 1 # Run from this directory
 
 # Corrections in the solvers/
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~
-#- Correct multiCompression.C
+#- Correct multiCompressionFoam.C
 sed -i "s/setRootCaseLists.H/setRootCase.H/g"\
-	../solvers/multiCompression/multiCompression.C
+    ../solvers/multiCompressionFoam/multiCompressionFoam.C
 sed -i "s/simple.loop(runTime)/simple.loop()/g"\
-	../solvers/multiCompression/multiCompression.C
+    ../solvers/multiCompressionFoam/multiCompressionFoam.C
 
-#- Correct multiCompressionDyM.C
+#- Correct multiCompressionFoamDyM.C
 sed -i "s/setRootCaseLists.H/setRootCase.H/g"\
-	../solvers/multiCompression/multiCompressionDyM/multiCompressionDyM.C
+    ../solvers/multiCompressionFoam/multiCompressionFoamDyM/multiCompressionFoamDyM.C
 sed -i "s/simple.loop(runTime)/simple.loop()/g"\
-	../solvers/multiCompression/multiCompressionDyM/multiCompressionDyM.C
+    ../solvers/multiCompressionFoam/multiCompressionFoamDyM/multiCompressionFoamDyM.C
 
 
-# Corrections in the tutorials/multiCompression/
+# Corrections in the tutorials/multiCompressionFoam/
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #- Remove .orig extenstions
-for i in ../tutorials/multiCompression/cylPiston/0/*.orig; do mv -i "$i" "${i%.orig}"; done
-for i in ../tutorials/multiCompression/quadPiston/0/*.orig; do mv -i "$i" "${i%.orig}"; done
-for i in ../tutorials/multiCompression/RiemannTube/0/*.orig; do mv -i "$i" "${i%.orig}"; done
-for i in ../tutorials/multiCompression/tube/0/*.orig; do mv -i "$i" "${i%.orig}"; done
+for i in ../tutorials/multiCompressionFoam/cylPiston/0/*.orig; do mv -i "$i" "${i%.orig}"; done
+for i in ../tutorials/multiCompressionFoam/quadPiston/0/*.orig; do mv -i "$i" "${i%.orig}"; done
+for i in ../tutorials/multiCompressionFoam/RiemannTube/0/*.orig; do mv -i "$i" "${i%.orig}"; done
+for i in ../tutorials/multiCompressionFoam/tube/0/*.orig; do mv -i "$i" "${i%.orig}"; done
 
 #- Correct quadPiston case
 sed -i "s/surfaceFeatures/surfaceFeatureExtract/g"\
-	../tutorials/multiCompression/quadPiston/makeMesh
-mv ../tutorials/multiCompression/quadPiston/system/surfaceFeaturesDict\
-	../tutorials/multiCompression/quadPiston/system/surfaceFeatureExtractDict
+    ../tutorials/multiCompressionFoam/quadPiston/makeMesh
+mv ../tutorials/multiCompressionFoam/quadPiston/system/surfaceFeaturesDict\
+    ../tutorials/multiCompressionFoam/quadPiston/system/surfaceFeatureExtractDict
 sed -i "s+mesh/generation/meshQualityDict.cfg+meshQualityDict+g"\
-	../tutorials/multiCompression/quadPiston/system/meshQualityDict
+    ../tutorials/multiCompressionFoam/quadPiston/system/meshQualityDict
 
 #- Correct cylPiston case
 sed -i "s/surfaceFeatures/surfaceFeatureExtract/g"\
-	../tutorials/multiCompression/cylPiston/makeMesh
-mv ../tutorials/multiCompression/cylPiston/system/surfaceFeaturesDict\
-	../tutorials/multiCompression/cylPiston/system/surfaceFeatureExtractDict
+    ../tutorials/multiCompressionFoam/cylPiston/makeMesh
+mv ../tutorials/multiCompressionFoam/cylPiston/system/surfaceFeaturesDict\
+    ../tutorials/multiCompressionFoam/cylPiston/system/surfaceFeatureExtractDict
 sed -i "s+mesh/generation/meshQualityDict.cfg+meshQualityDict+g"\
-	../tutorials/multiCompression/cylPiston/system/meshQualityDict
+    ../tutorials/multiCompressionFoam/cylPiston/system/meshQualityDict
 
 
-# Corrections in the tutorials/multiCompressionDyM
+# Corrections in the tutorials/multiCompressionFoamDyM
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #- Remove .orig extenstions
-for i in ../tutorials/multiCompressionDyM/movingWallTube/0/*.orig; do mv -i "$i" "${i%.orig}"; done
+for i in ../tutorials/multiCompressionFoamDyM/movingWallTube/0/*.orig; do mv -i "$i" "${i%.orig}"; done
 
 
 # Corrections in other folders (in the tutorials/)

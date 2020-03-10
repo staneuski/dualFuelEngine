@@ -8,7 +8,7 @@ OpenFOAM solver based on phenomenological compression model for dual-fuel ship e
 # [Releases](https://github.com/StasF1/dualFuelEngine/releases)
 |Version|Description|Doc|Source code 📥|
 |------:|:----------|:-:|:-------------|
-[v0.3-alpha](https://github.com/StasF1/dualFuelEngine/tree/v0.3-alpha)|Improved stability. Concentration fields are back. [cylPiston](https://github.com/StasF1/dualFuelEngine/tree/v0.3-alpha/tutorials/multiCompressionFoam/cylPiston) case can be run now.|-|[.tar.gz](https://github.com/StasF1/dualFuelEngine/archive/v0.3-alpha.tar.gz), [.zip](https://github.com/StasF1/dualFuelEngine/archive/v0.3-alpha.zip)|
+[v0.4-alpha](https://github.com/StasF1/dualFuelEngine/tree/v0.4-alpha)|Improved stability. Concentration fields are back. [cylPiston](https://github.com/StasF1/dualFuelEngine/tree/v0.4-alpha/tutorials/multiCompressionFoam/cylPiston) case can be run now.|-|[.tar.gz](https://github.com/StasF1/dualFuelEngine/archive/v0.4-alpha.tar.gz), [.zip](https://github.com/StasF1/dualFuelEngine/archive/v0.4-alpha.zip)|
 [v0.2-alpha](https://github.com/StasF1/dualFuelEngine/tree/v0.2-alpha)|Compressible flow. Solve Navier–Stokes equation and energy equation.|-|[.tar.gz](https://github.com/StasF1/dualFuelEngine/archive/v0.2-alpha.tar.gz), [.zip](https://github.com/StasF1/dualFuelEngine/archive/v0.2-alpha.zip)|
 [v0.1-alpha](https://github.com/StasF1/dualFuelEngine/tree/v0.1-alpha)|Incompressible flow. Concentration fields.|[.pdf](https://github.com/StasF1/dualFuelEngine/releases/download/v0.1-alpha/dualFuelEngine-0.1-alpha.pdf)|[.tar.gz](https://github.com/StasF1/dualFuelEngine/archive/v0.1-alpha.tar.gz), [.zip](https://github.com/StasF1/dualFuelEngine/archive/v0.1-alpha.zip)|
 

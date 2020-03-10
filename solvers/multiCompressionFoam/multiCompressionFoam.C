@@ -1,7 +1,7 @@
 /*---------------------------------------------------------------------------*\
   =========                 |
   \\      /  F ield         | OpenFOAM: Addition to OpenFOAM v6
-   \\    /   O peration     | Website:	https://github.com/StasF1/dualFuelEngine
+   \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
     \\  /    A nd           | Copyright (C) 2018-2020 Stanislau Stasheuski
      \\/     M anipulation  |
 -------------------------------------------------------------------------------

@@ -23,16 +23,16 @@ ddtSchemes
 gradSchemes
 {
     default         Gauss linear;
-	grad(p)			cellLimited Gauss linear 0.9; // UEqn
+    grad(p)         cellLimited Gauss linear 0.9; // UEqn
 }
 
 divSchemes
 {
     default         Gauss cubic;
-	div(phi,U)      Gauss upwind; // UEqn
-	div(phi,e)      Gauss upwind; // eEqn
-	div(phi,alphaAir) Gauss upwind; // alphaAirEqn
-	div(phi,alphaGas) Gauss upwind; // alphaGasEqn
+    div(phi,U)      Gauss upwind; // UEqn
+    div(phi,e)      Gauss upwind; // eEqn
+    div(phi,alphaAir) Gauss upwind; // alphaAirEqn
+    div(phi,alphaGas) Gauss upwind; // alphaGasEqn
 }
 
 laplacianSchemes
