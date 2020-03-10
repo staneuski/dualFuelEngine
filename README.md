@@ -8,7 +8,7 @@ OpenFOAM solver based on phenomenological compression model for dual-fuel ship e
 # [Releases](https://github.com/StasF1/dualFuelEngine/releases)
 |Version|Description|Doc|Source code 📥|
 |------:|:----------|:-:|:-------------|
-[v0.3-alpha](https://github.com/StasF1/dualFuelEngine/tree/v0.3-alpha)|Improved stability. Concentration fields are back. [cylPiston](https://github.com/StasF1/dualFuelEngine/tree/v0.3-alpha/tutorials/multiCompression/cylPiston) case can be run now.|-|[.tar.gz](https://github.com/StasF1/dualFuelEngine/archive/v0.3-alpha.tar.gz), [.zip](https://github.com/StasF1/dualFuelEngine/archive/v0.3-alpha.zip)|
+[v0.3-alpha](https://github.com/StasF1/dualFuelEngine/tree/v0.3-alpha)|Improved stability. Concentration fields are back. [cylPiston](https://github.com/StasF1/dualFuelEngine/tree/v0.3-alpha/tutorials/multiCompressionFoam/cylPiston) case can be run now.|-|[.tar.gz](https://github.com/StasF1/dualFuelEngine/archive/v0.3-alpha.tar.gz), [.zip](https://github.com/StasF1/dualFuelEngine/archive/v0.3-alpha.zip)|
 [v0.2-alpha](https://github.com/StasF1/dualFuelEngine/tree/v0.2-alpha)|Compressible flow. Solve Navier–Stokes equation and energy equation.|-|[.tar.gz](https://github.com/StasF1/dualFuelEngine/archive/v0.2-alpha.tar.gz), [.zip](https://github.com/StasF1/dualFuelEngine/archive/v0.2-alpha.zip)|
 [v0.1-alpha](https://github.com/StasF1/dualFuelEngine/tree/v0.1-alpha)|Incompressible flow. Concentration fields.|[.pdf](https://github.com/StasF1/dualFuelEngine/releases/download/v0.1-alpha/dualFuelEngine-0.1-alpha.pdf)|[.tar.gz](https://github.com/StasF1/dualFuelEngine/archive/v0.1-alpha.tar.gz), [.zip](https://github.com/StasF1/dualFuelEngine/archive/v0.1-alpha.zip)|
 
@@ -42,15 +42,15 @@ wmake $FOAM_ADD/dualFuelEngine/tutorials/./Allclean && $FOAM_ADD/dualFuelEngine/
 ### Re-wmake and rerun by cases
 - RiemannTube case
     ```sh
-    wmake $FOAM_ADD/dualFuelEngine/solvers/multiCompression && $FOAM_ADD/dualFuelEngine/tutorials/multiCompression/RiemannTube/./Allclean && $FOAM_ADD/dualFuelEngine/tutorials/multiCompression/RiemannTube/./Allrun || cat $FOAM_ADD/dualFuelEngine/tutorials/multiCompression/RiemannTube/log.multiCompression
+    wmake $FOAM_ADD/dualFuelEngine/solvers/multiCompressionFoam && $FOAM_ADD/dualFuelEngine/tutorials/multiCompressionFoam/RiemannTube/./Allclean && $FOAM_ADD/dualFuelEngine/tutorials/multiCompressionFoam/RiemannTube/./Allrun || cat $FOAM_ADD/dualFuelEngine/tutorials/multiCompressionFoam/RiemannTube/log.multiCompressionFoam
     ```
 - quadPiston case
     ```sh
-    wmake $FOAM_ADD/dualFuelEngine/solvers/multiCompression && $FOAM_ADD/dualFuelEngine/tutorials/multiCompression/quadPiston/./Allclean && $FOAM_ADD/dualFuelEngine/tutorials/multiCompression/quadPiston/./Allrun || cat $FOAM_ADD/dualFuelEngine/tutorials/multiCompression/quadPiston/log.multiCompression
+    wmake $FOAM_ADD/dualFuelEngine/solvers/multiCompressionFoam && $FOAM_ADD/dualFuelEngine/tutorials/multiCompressionFoam/quadPiston/./Allclean && $FOAM_ADD/dualFuelEngine/tutorials/multiCompressionFoam/quadPiston/./Allrun || cat $FOAM_ADD/dualFuelEngine/tutorials/multiCompressionFoam/quadPiston/log.multiCompressionFoam
     ```
 - cylPiston case
     ```sh
-    wmake $FOAM_ADD/dualFuelEngine/solvers/multiCompression && $FOAM_ADD/dualFuelEngine/tutorials/multiCompression/cylPiston/./Allclean && $FOAM_ADD/dualFuelEngine/tutorials/multiCompression/cylPiston/./Allrun || cat $FOAM_ADD/dualFuelEngine/tutorials/multiCompression/cylPiston/log.multiCompression
+    wmake $FOAM_ADD/dualFuelEngine/solvers/multiCompressionFoam && $FOAM_ADD/dualFuelEngine/tutorials/multiCompressionFoam/cylPiston/./Allclean && $FOAM_ADD/dualFuelEngine/tutorials/multiCompressionFoam/cylPiston/./Allrun || cat $FOAM_ADD/dualFuelEngine/tutorials/multiCompressionFoam/cylPiston/log.multiCompressionFoam
     ```
 
 # Structure
@@ -59,7 +59,7 @@ dualFuelEngine-0.3-alpha
 ├── etc
 ├── solvers
 │   ├── dyMFoam
-│   ├── multiCompression
+│   ├── multiCompressionFoam
 │   └── utilities
 └── tutorials
     ├── dyMFoam
@@ -71,7 +71,7 @@ dualFuelEngine-0.3-alpha
     │       ├── cylPiston
     │       ├── cylPistonBlockMesh
     │       └── tube
-    └── multiCompression
+    └── multiCompressionFoam
         ├── RiemannTube
         ├── cylPiston
         ├── quadPiston

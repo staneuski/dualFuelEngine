@@ -1,3 +1,0 @@
-multiCompression.C
-
-EXE = $(FOAM_USER_APPBIN)/multiCompression
