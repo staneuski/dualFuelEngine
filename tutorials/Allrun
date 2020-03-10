@@ -1,19 +1,8 @@
 #!/bin/sh
 cd ${0%/*} || exit 1    # Run from this directory
 
-# dyMFoam
-# ~~~~~~~
-#- dynamicInkJetFvMesh solver
-dyMFoam/dynamicInkJetFvMesh/tube/./Allrun || cat log.dyMFoam
-dyMFoam/dynamicInkJetFvMesh/quadPiston/./Allrun || cat log.dyMFoam
-dyMFoam/dynamicInkJetFvMesh/cylPiston/./Allrun || cat log.dyMFoam
-
-
-# multiCompression
-# ~~~~~~~~~~~~~~~~
-multiCompression/RiemannTube/./Allrun || cat log.multiCompression
-multiCompression/tube/./Allrun        || cat log.multiCompression
-multiCompression/quadPiston/./Allrun  || cat log.multiCompression
-multiCompression/cylPiston/./Allrun   || cat log.multiCompression
-
-#------------------------------------------------------------------------------
+for tutorialsDir in *Foam/; do
+    for tutorialsBySolverDir in $tutorialsDir*/; do
+        $tutorialsBySolverDir./Allrun || cat ${tutorialsBySolverDir}log.*
+    done
+done
