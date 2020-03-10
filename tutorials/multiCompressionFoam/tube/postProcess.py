@@ -3,7 +3,7 @@
        ___       |
      _|o_ |_     |   Language: Python 3.x
     /  ___| \    |   Website: https://github.com/StasF1/dualFuelEngine
-    \_| ____/    |   Copyright (C) 2019 Stanislau Stasheuski
+    \_| ____/    |   Copyright (C) 2018-2020 Stanislau Stasheuski
       |__o|      |
 -------------------------------------------------------------------------------
 
