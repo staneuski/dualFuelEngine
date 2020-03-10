@@ -15,38 +15,43 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-application          multiCompression;
+application     multiCompression;
 
-startFrom            startTime;
+startFrom       startTime;
 
-startTime            0;
+startTime       0;
 
-stopAt               endTime;
+stopAt          endTime;
 
-endTime              3e-02;
+endTime         0.012;
 
-deltaT               2e-05;
+deltaT          5e-03;
 
-writeControl         timeStep;
+writeControl    adjustableRunTime;
 
-writeInterval        5;
+writeInterval   5e-05;
 
-purgeWrite           0;
+purgeWrite      0;
 
-writeFormat          ascii;
+writeFormat     ascii;
 
-writePrecision       6;
+writePrecision  6;
 
-writeCompression     off;
+writeCompression false;
 
-timeFormat           general;
+timeFormat      general;
 
-timePrecision        6;
+timePrecision   6;
 
-runTimeModifiable    true;
+runTimeModifiable true;
+
+adjustTimeStep  true;
+
+maxCo           0.05;
 
 functions
 {
+    // #includeFunc residuals
     #includeFunc flowRatePatch(name=inlet)
 }
 

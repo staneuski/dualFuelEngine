@@ -14,7 +14,7 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [0 1 -1 0 0 0 0]; // [kg m s K kg-mol cd]
+dimensions      [0 1 -1 0 0 0 0];
 
 internalField   uniform (0 0 0);
 
@@ -22,26 +22,21 @@ boundaryField
 {
     inlet
     {
-        type    fixedValue;
-        value   uniform (0 20 0);
-        // type            codedFixedValue;
-        // value           uniform (0 200 0);
-        // redirectType    U;
-        // code
-        // #{
-        //     vector directionU(0, 1, 0);
-        //     #include "../../constant/transportProperties.H"
-        //     #include "../../../../../solvers/utilities/codedFixedValueBC/U.C"
-        //
-        //     Info << "p = " << patch().lookupPatchField<volScalarField, scalar>("p")
-        //          << "gAverage(p) = " << p
-        //          << endl;
-        // #};
+        type            uniformFixedValue;
+        // uniformValue    constant (0 80 0);
+        uniformValue    table 
+        (
+            (0          (0 0   0))
+            (2e-03      (0 100 0))
+            (5e-03      (0 100 0))
+            (9e-03      (0 20  0))
+        );
     }
 
     outlet
     {
-        type            zeroGradient;
+        type            pressureInletOutletVelocity;
+        value           uniform (0 0 0);
     }
 
     walls

@@ -16,14 +16,13 @@ FoamFile
 
 dimensions      [1 -1 -2 0 0 0 0];
 
-internalField   uniform 1e+05;
+internalField   uniform 1e+06;
 
 boundaryField
 {
     injection
     {
-        type    fixedValue;
-        value   uniform 25e04;
+        type            zeroGradient;
     }
     inlet
     {
@@ -31,24 +30,25 @@ boundaryField
     }
     outlet
     {
-        type    zeroGradient;
+        type            fixedValue;
+        value           uniform 0.23e+06;
     }
     piston
     {
-        type    zeroGradient;
+        type            zeroGradient;
     }
     "(cyl|injection|inlet)_(front|back)"
     {   /* Sides */
-        type    zeroGradient; // wedge;
+        type            zeroGradient; // wedge;
     }
     "cyl_top|(injection|inlet)_topAndBottom"
     {   /* Other walls */
-        type    zeroGradient;
+        type            zeroGradient;
     }
     "ACMI(1|2)_couple"
     {
-        type    cyclicACMI;
-        value   $internalField;
+        type            cyclicACMI;
+        value           $internalField;
     }
     "ACMI(1|2)_blockage"
     {

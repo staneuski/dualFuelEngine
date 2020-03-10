@@ -5,6 +5,9 @@
 log.*
 *.gz
 [cell,point]*Level
+*.foam
+!AllcleanAllrunAny.foam
+
 
 # Folders - anywhere
 0.*/
@@ -18,11 +21,13 @@ postProcessing/
 VTK/
 linux*Gcc*/
 
+
 # Files - local
 tutorials/**/cylPiston/system/blockMeshDict
 
 etc/FlowVision/**/*.backup
 etc/FlowVision/**/*_[00001-99999]*.fvstat
+
 
 # Folders - local
 etc/DRK2Py/__pycache__/

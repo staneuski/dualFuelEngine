@@ -16,7 +16,7 @@ FoamFile
 
 dimensions      [0 0 0 1 0 0 0]; // K
 
-internalField   uniform 293.15; //1400;
+internalField   uniform 850;
 
 boundaryField
 {
@@ -24,15 +24,7 @@ boundaryField
     "injection(X|Y)(Minus|Plus)"
     {
         type    fixedValue;
-        value   uniform 293.15;
-        // type    codedFixedValue;
-        // value   uniform 293.15; //380;
-        // redirectType T;
-        // code
-        // #{
-        //     #include "../../constant/transportProperties.H"
-        //     #include "../../../../../solvers/utilities/codedFixedValueBC/T.C"
-        // #};
+        value   $internalField; //uniform 400;
     }
 
     // Inlet
@@ -44,8 +36,9 @@ boundaryField
     // Outlet
     outlet
     {
-        type    fixedValue;
-        value   uniform 293.15;
+        type            inletOutlet;
+        inletValue      uniform 764;
+        value           $inletValue;
     }
     
     // Walls
