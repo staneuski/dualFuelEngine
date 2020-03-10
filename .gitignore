@@ -3,6 +3,7 @@
 
 # Files - anywhere
 log.*
+*.log
 *.gz
 [cell,point]*Level
 *.foam
@@ -25,8 +26,11 @@ linux*Gcc*/
 # Files - local
 tutorials/**/cylPiston/system/blockMeshDict
 
-etc/FlowVision/**/*.backup
 etc/FlowVision/**/*_[00001-99999]*.fvstat
+etc/FlowVision/**/*.backup
+etc/FlowVision/**/*.glo
+etc/FlowVision/**/*.err
+etc/FlowVision/**/*.sta
 
 
 # Folders - local
