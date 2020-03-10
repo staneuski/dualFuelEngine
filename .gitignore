@@ -1,43 +1,39 @@
-# files
-*.gdoc
-*.log
-log.*
-*.gz
-.DS_Store
-cellLevel
-pointLevel
+# git-ls-files --others --exclude-from=.git/info/exclude
+# Lines that start with '#' are comments.
 
-# folders
-*e-07/
-*e-06/
-*e-05/
+# Files - anywhere
+log.*
+*.log
+*.gz
+[cell,point]*Level
+*.foam
+!AllcleanAllrunAny.foam
+
+
+# Folders - anywhere
 0.*/
-1/
+[1-9]*/
+backups/
 dynamicCode/
 extendedFeatureEdgeMesh/
 polyMesh/
 triSurface/
-extendedFeatureEdgeMesh/
-linux64GccDPInt32Opt/
+postProcessing/
 VTK/
-backups/
+linux*Gcc*/
 
-# doc/
-doc/inspection/
-doc/references/
 
-# tutorials/
-# multiCompression/cylPiston/
-tutorials/multiCompression/cylPiston/system/blockMeshDict
+# Files - local
+tutorials/**/cylPiston/system/blockMeshDict
 
-# multiCompression/quadPiston/
-tutorials/multiCompression/quadPiston/0/*Level
+etc/FlowVision/**/*_[00001-99999]*.fvstat
+etc/FlowVision/**/*.backup
+etc/FlowVision/**/*.glo
+etc/FlowVision/**/*.err
+etc/FlowVision/**/*.sta
 
-# potentialFoam/quadPiston/
-tutorials/potentialFoam/quadPiston/0/U.orig
-tutorials/potentialFoam/quadPiston/system/fvSolution
-tutorials/potentialFoam/quadPiston/system/controlDict
 
-# scalarTransportFoam/quadPiston/
-tutorials/scalarTransportFoam/quadPiston/0/
-tutorials/scalarTransportFoam/quadPiston/system/
+# Folders - local
+etc/DRK2Py/__pycache__/
+etc/DRK2Py/*.res/
+etc/DRK2Py/tmp*/

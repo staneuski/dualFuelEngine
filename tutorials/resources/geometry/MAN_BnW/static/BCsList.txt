@@ -1,0 +1,37 @@
+// Patch names:
+
+//- Inlets:
+    /*
+    inletNo_xmXXXymYYY:
+        - No - number of the inlet from X to Y axis (anticlockwise)
+        - xmXXX - X coordinates of normal inlet velocity vector: -0.XXX
+        - ypYYY - Y coordinates of normal inlet velocity vector: +0.YYY
+    */
+    inlet0_xm921yp389
+    inlet1_xm990yp134
+    inlet2_xm993ym123
+    inlet3_xm927ym376
+    inlet4_xm798ym604
+    inlet5_xm641ym789
+
+    injection0_xp0ym1
+
+    or
+    "(injection|inlet)(0|1|2|3|5)_x(p|l)(0|990|993|927|798|641|921)_y(p|l)(1|134|123|376|604|789|389)"
+
+//- Outlet
+    outlet
+
+//- Symmeties:
+    symXZ
+    symYZ
+    or
+    "sym(XZ|YZ)"
+
+//- Walls:
+    walls
+    piston
+    valve
+
+    or
+    "walls|piston|valve"

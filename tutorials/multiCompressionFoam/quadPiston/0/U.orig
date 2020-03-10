@@ -1,0 +1,91 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: dualFuelEngline addition to OpenFOAM v7
+   \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
+    \\  /    A nd           | Version:  0.3-alpha
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volVectorField;
+    object      U;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+injection       300;
+
+inlet           200;
+
+dimensions      [0 1 -1 0 0 0 0];
+
+internalField   uniform (0 0 0);
+
+minInjection    #calc "-1.0*$injection";
+
+minInlet        #calc "-1.0*$inlet";
+
+boundaryField
+{
+    // Injection
+    injectionXMinus
+    {
+        type            fixedValue;
+        value           uniform ($minInjection 0 0);
+
+    }
+    injectionXPlus
+    {
+        type            fixedValue;
+        value           uniform ($injection 0 0);
+    }
+    injectionYMinus
+    {
+        type            fixedValue;
+        value           uniform (0 $minInjection 0);
+
+    }
+    injectionYPlus
+    {
+        type            fixedValue;
+        value           uniform (0 $injection 0);
+    }
+
+    // Inlet
+    inletXMinus
+    {
+        type            fixedValue;
+        value           uniform ($minInlet 0 $inlet);
+    }
+    inletXPlus
+    {
+        type            fixedValue;
+        value           uniform ($inlet 0 $inlet);
+    }
+    inletYMinus
+    {
+        type            fixedValue;
+        value           uniform (0 $minInlet $inlet);
+    }
+    inletYPlus
+    {
+        type            fixedValue;
+        value           uniform (0 $inlet $inlet);
+    }
+
+    // Outlet
+    outlet
+    {
+        type            pressureInletOutletVelocity;
+        value           uniform (0 0 0);
+    }
+    
+    // Walls
+    "piston|valve|walls"
+    {
+        type            slip;
+    }
+}
+
+// ************************************************************************* //
