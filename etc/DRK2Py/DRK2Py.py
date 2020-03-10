@@ -85,7 +85,9 @@ rhoU_injection = G_injection/injArea
 G_inlet = np.pad(
     G_inlet, (0, len(G_injection) - len(G_inlet)), 'constant'
 )
-G_inlet[G_inlet < -1.7] = -1 # -1.7 is more than right min, set less grad(G) to the left min
+
+# -1.7 is more than right min, set less grad(G) to the left min
+# G_inlet[G_inlet < -1.7] = -1
 
 rhoU_inlet = G_inlet/inletArea
 
