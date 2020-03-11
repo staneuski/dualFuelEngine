@@ -2,7 +2,7 @@
   =========                 |
   \\      /  F ield         | OpenFOAM: dualFuelEngline addition to OpenFOAM v7
    \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
-    \\  /    A nd           | Version:  0.3-alpha
+    \\  /    A nd           | Version:  0.4-alpha
      \\/     M anipulation  |
 \*---------------------------------------------------------------------------*/
 FoamFile
@@ -23,12 +23,13 @@ boundaryField
     inlet
     {
         type            uniformFixedValue;
-        uniformValue
-        {
-            type        sine;
+        uniformValue    // FIXME: sine has differrent members for of7x & of-dev
+        { 
+            type        sine; // of-dev
             frequency   1.4286; // n/60
             amplitude   3.13; // pi*S*n/60 = pi*0.65*92/60
             start       0.154; // EVO/6/n = -85/6/92
+            scale       1; // not required for of-dev
             level       0; // offset
         }
     }
