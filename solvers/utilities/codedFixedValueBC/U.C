@@ -6,8 +6,7 @@
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
 License
-    This file is not part of OpenFOAM, but part of dualFuelEngine – OpenFOAM
-    addition.
+    This file is not part of dualFuelEngine – OpenFOAM addition.
 
     dualFuelEngine (like OpenFOAM) is free software: you can redistribute it 
     and/or modify it under the terms of the GNU General Public License as
