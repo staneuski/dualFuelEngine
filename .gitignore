@@ -26,7 +26,7 @@ linux*Gcc*/
 # Files - local
 tutorials/**/cylPiston/system/blockMeshDict
 
-etc/FlowVision/**/*_[00001-99999]*.fvstat
+etc/FlowVision/**/*_[00001-99999]*.*[fvstat,fvinp]
 etc/FlowVision/**/*.backup
 etc/FlowVision/**/*.glo
 etc/FlowVision/**/*.err
