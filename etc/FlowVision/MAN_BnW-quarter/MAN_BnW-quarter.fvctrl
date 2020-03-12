@@ -120,6 +120,13 @@
       <ITEM>*.57</ITEM>
       <ITEM>*.60</ITEM>
       <ITEM>*.63</ITEM>
+      <ITEM>*.66</ITEM>
+      <ITEM>*.69</ITEM>
+      <ITEM>*.72</ITEM>
+      <ITEM>*.75</ITEM>
+      <ITEM>*.78</ITEM>
+      <ITEM>*.89</ITEM>
+      <ITEM>*.92</ITEM>
     </StopperUser>
     <Update>
       <Kind>BYTIME</Kind>
@@ -223,6 +230,55 @@
       </AveragingSettings>
     </OBJECT>
     <OBJECT Averaging="COMMON" class="CUserStopper" myid="63" GUID="42C7096D-B6F9-4B73-B1E1-9CB5A1FE7E72" Group="0" Comp="LENGTH" Object="*-2.-2.472" Level="0" UGV="2" UIName="volumeAvgAlphaGas" Color="00FFAA00">
+      <AveragingSettings>
+        <Kind>BYTIME</Kind>
+        <Time>0</Time>
+        <Iteration>1</Iteration>
+      </AveragingSettings>
+    </OBJECT>
+    <OBJECT Averaging="COMMON" class="CUserStopper" myid="66" GUID="A8FBDB0A-21D1-49FD-AE1E-F5D4AA31050B" Group="0" Comp="LENGTH" Object="*-2.-2.422" Level="0" UGV="5" UIName="maxP" Color="00FFAA00">
+      <AveragingSettings>
+        <Kind>BYTIME</Kind>
+        <Time>0</Time>
+        <Iteration>1</Iteration>
+      </AveragingSettings>
+    </OBJECT>
+    <OBJECT Averaging="COMMON" class="CUserStopper" myid="69" GUID="02DBB96F-CB02-4587-8505-58C3524F8C82" Group="0" Comp="LENGTH" Object="*-2.-2.432" Level="0" UGV="5" UIName="maxT" Color="007F55FF">
+      <AveragingSettings>
+        <Kind>BYTIME</Kind>
+        <Time>0</Time>
+        <Iteration>1</Iteration>
+      </AveragingSettings>
+    </OBJECT>
+    <OBJECT Averaging="COMMON" class="CUserStopper" myid="72" GUID="3278DC55-33F4-42E7-BDC9-EA87F19226E9" Group="0" Comp="LENGTH" Object="*-2.-2.442" Level="0" UGV="5" UIName="maxU" Color="00FFAA00">
+      <AveragingSettings>
+        <Kind>BYTIME</Kind>
+        <Time>0</Time>
+        <Iteration>1</Iteration>
+      </AveragingSettings>
+    </OBJECT>
+    <OBJECT Averaging="COMMON" class="CUserStopper" myid="75" GUID="41CC5C89-F6B5-4FAB-94C6-50D603491F4C" Group="0" Comp="LENGTH" Object="*-2.-2.637" Level="0" UGV="5" UIName="maxMachNo" Color="00FF00AA">
+      <AveragingSettings>
+        <Kind>BYTIME</Kind>
+        <Time>0</Time>
+        <Iteration>1</Iteration>
+      </AveragingSettings>
+    </OBJECT>
+    <OBJECT Averaging="COMMON" class="CUserStopper" myid="78" GUID="EB137120-D318-4E85-BFD1-4C583C5F8EDD" Group="0" Comp="LENGTH" Object="*-2.-2.637" Level="0" UGV="2" UIName="volumeAvgMachNo" Color="00FF00AA">
+      <AveragingSettings>
+        <Kind>BYTIME</Kind>
+        <Time>0</Time>
+        <Iteration>1</Iteration>
+      </AveragingSettings>
+    </OBJECT>
+    <OBJECT Averaging="COMMON" class="CUserStopper" myid="89" GUID="1AC12E36-B79D-45BE-B8D2-BAD2942728E8" Group="0" Comp="Z" Object="*-2.-2.752" Level="0" UGV="17" UIName="valveMotionUz" Color="00808080">
+      <AveragingSettings>
+        <Kind>BYTIME</Kind>
+        <Time>0</Time>
+        <Iteration>1</Iteration>
+      </AveragingSettings>
+    </OBJECT>
+    <OBJECT Averaging="COMMON" class="CUserStopper" myid="92" GUID="CB2D7085-101E-4377-ADA4-AB5C42749D31" Group="0" Comp="Z" Object="*-2.-2.800" Level="0" UGV="17" UIName="pistonMotionUz" Color="00808080">
       <AveragingSettings>
         <Kind>BYTIME</Kind>
         <Time>0</Time>

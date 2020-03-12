@@ -123,7 +123,7 @@
       <Fill Alpha="100" Color="00808000"/>
     </OBJECT>
   </OBJECT>
-  <OBJECT Lit="1" Width="2" class="CScalarLayer" myid="11932" Clipped="1" GUID="3163E2F8-77EE-4730-8AAA-90FD422DCC8E" Visible="0" DrawMode="FLOOD" UIName="p">
+  <OBJECT Lit="1" Width="2" class="CScalarLayer" myid="11932" Clipped="1" GUID="3163E2F8-77EE-4730-8AAA-90FD422DCC8E" Visible="1" DrawMode="FLOOD" UIName="p">
     <Object>*-2.-4.2</Object>
     <Settings>
       <Mode>UNASSIGNED</Mode>
@@ -157,7 +157,7 @@
     <RegularGrid>0</RegularGrid>
     <Resolution Size1="100" Size2="100" LocalSystem="1" Size3="1"/>
     <DoubleResolution>0</DoubleResolution>
-    <Mapping MappingMode="MANUAL" Min="130000" Max="1350000"/>
+    <Mapping MappingMode="GLOBAL" Min="151743.78125" Max="1341663.75"/>
     <LogScale Limit="1.0000000000000001E-005" Enabled="0"/>
     <Palette>
       <Overlay HorzAlign="RIGHT" Enabled="1" ShowTitle="1" Style="STYLE1" VertAlign="TOP" Gradations="11" Color="00FFFFFF"/>
@@ -583,7 +583,7 @@
         <Pivot x="0" y="0" z="0"/>
       </Relativity>
     </CoorSystem>
-    <Mapping ReferenceLen="0.01" MappingMode="LOCAL" ConstantLen="0" Max="991.99212646484375"/>
+    <Mapping ReferenceLen="0.050000000000000003" MappingMode="LOCAL" ConstantLen="0" Max="448.9482421875"/>
     <Mode>FULL</Mode>
     <Lines Width="1" Color="00FFFFFF"/>
     <Arrows Angle="20" Mode="LINES" Size="20"/>
@@ -598,7 +598,7 @@
           <Inverted>0</Inverted>
         </Integration>
       </Var>
-      <Mapping MappingMode="LOCAL" Min="0.10813071578741074" Max="991.9921875"/>
+      <Mapping MappingMode="LOCAL" Min="0.0072617209516465664" Max="448.9482421875"/>
       <LogScale Limit="1.0000000000000001E-005" Enabled="0"/>
       <Palette>
         <Overlay HorzAlign="RIGHT" Enabled="1" ShowTitle="1" Style="STYLE1" VertAlign="TOP" Gradations="11" Color="00FFFFFF"/>
@@ -633,7 +633,7 @@
     </Cover>
     <OBJECT class="CPlaneConstraints" myid="-100" Enabled="0" Type="RECTANGLE" Size1="0.10000000000000001" Size2="0.10000000000000001"/>
   </OBJECT>
-  <OBJECT Lit="1" class="CGridSectionLayer" myid="15265" Clipped="1" GUID="DBEE8F40-5391-47E7-A6A9-79CA00F1C78C" Visible="0" UIName="Сечение расчётной сетки #0 (Плоскость #0)">
+  <OBJECT Lit="1" class="CGridSectionLayer" myid="15265" Clipped="1" GUID="DBEE8F40-5391-47E7-A6A9-79CA00F1C78C" Visible="1" UIName="Сечение расчётной сетки #0 (Плоскость #0)">
     <Object>*-2.-4.2</Object>
     <Settings>
       <Mode>UNASSIGNED</Mode>
@@ -665,44 +665,22 @@
         </Alpha>
       </Fill>
     </Processors>
-    <Hypercells Mode="BOTH" Count="21">
-      <Visibility>0-20</Visibility>
+    <Hypercells Mode="BOTH" Count="10">
+      <Visibility>0-9</Visibility>
       <Lines>
         <Color>
-          <ITEM>00C525A8</ITEM>
-          <ITEM>0051DD90</ITEM>
-          <ITEM>00FC6733</ITEM>
-          <ITEM>002709E3</ITEM>
-          <ITEM>00FB3A50</ITEM>
-          <ITEM>004062BC</ITEM>
-          <ITEM>00B0E01F</ITEM>
-          <ITEM>003862FE</ITEM>
-          <ITEM>00EFD674</ITEM>
-          <ITEM>008031D5</ITEM>
-          <ITEM>00267952</ITEM>
-          <ITEM>003FBB58</ITEM>
-          <ITEM>0071E94F</ITEM>
-          <ITEM>00632717</ITEM>
-          <ITEM>00BFC8A4</ITEM>
-          <ITEM>00C4BBD5</ITEM>
-          <ITEM>002241BE</ITEM>
-          <ITEM>0009FC06</ITEM>
-          <ITEM>00CF6404</ITEM>
-          <ITEM>00ECABD2</ITEM>
-          <ITEM>009E52F7</ITEM>
+          <ITEM>00D799C0</ITEM>
+          <ITEM>0044D499</ITEM>
+          <ITEM>0055C224</ITEM>
+          <ITEM>00F79E56</ITEM>
+          <ITEM>0022669A</ITEM>
+          <ITEM>00BCA65A</ITEM>
+          <ITEM>00A4596D</ITEM>
+          <ITEM>0048FCEE</ITEM>
+          <ITEM>0023847A</ITEM>
+          <ITEM>004D049C</ITEM>
         </Color>
         <Width>
-          <ITEM>1</ITEM>
-          <ITEM>1</ITEM>
-          <ITEM>1</ITEM>
-          <ITEM>1</ITEM>
-          <ITEM>1</ITEM>
-          <ITEM>1</ITEM>
-          <ITEM>1</ITEM>
-          <ITEM>1</ITEM>
-          <ITEM>1</ITEM>
-          <ITEM>1</ITEM>
-          <ITEM>1</ITEM>
           <ITEM>1</ITEM>
           <ITEM>1</ITEM>
           <ITEM>1</ITEM>
@@ -717,40 +695,18 @@
       </Lines>
       <Fill>
         <Color>
-          <ITEM>00621254</ITEM>
-          <ITEM>00286E48</ITEM>
-          <ITEM>007E3319</ITEM>
-          <ITEM>00130471</ITEM>
-          <ITEM>007D1D28</ITEM>
-          <ITEM>0020315E</ITEM>
-          <ITEM>0058700F</ITEM>
-          <ITEM>001C317F</ITEM>
-          <ITEM>00776B3A</ITEM>
-          <ITEM>0040186A</ITEM>
-          <ITEM>00133C29</ITEM>
-          <ITEM>001F5D2C</ITEM>
-          <ITEM>00387427</ITEM>
-          <ITEM>0031130B</ITEM>
-          <ITEM>005F6452</ITEM>
-          <ITEM>00625D6A</ITEM>
-          <ITEM>0011205F</ITEM>
-          <ITEM>00047E03</ITEM>
-          <ITEM>00673202</ITEM>
-          <ITEM>00765569</ITEM>
-          <ITEM>004F297B</ITEM>
+          <ITEM>006B4C60</ITEM>
+          <ITEM>00226A4C</ITEM>
+          <ITEM>002A6112</ITEM>
+          <ITEM>007B4F2B</ITEM>
+          <ITEM>0011334D</ITEM>
+          <ITEM>005E532D</ITEM>
+          <ITEM>00522C36</ITEM>
+          <ITEM>00247E77</ITEM>
+          <ITEM>0011423D</ITEM>
+          <ITEM>0026024E</ITEM>
         </Color>
         <Alpha>
-          <ITEM>100</ITEM>
-          <ITEM>100</ITEM>
-          <ITEM>100</ITEM>
-          <ITEM>100</ITEM>
-          <ITEM>100</ITEM>
-          <ITEM>100</ITEM>
-          <ITEM>100</ITEM>
-          <ITEM>100</ITEM>
-          <ITEM>100</ITEM>
-          <ITEM>100</ITEM>
-          <ITEM>100</ITEM>
           <ITEM>100</ITEM>
           <ITEM>100</ITEM>
           <ITEM>100</ITEM>
@@ -764,17 +720,6 @@
         </Alpha>
       </Fill>
       <Processor>
-        <ITEM>0</ITEM>
-        <ITEM>0</ITEM>
-        <ITEM>0</ITEM>
-        <ITEM>0</ITEM>
-        <ITEM>0</ITEM>
-        <ITEM>0</ITEM>
-        <ITEM>0</ITEM>
-        <ITEM>0</ITEM>
-        <ITEM>0</ITEM>
-        <ITEM>0</ITEM>
-        <ITEM>0</ITEM>
         <ITEM>0</ITEM>
         <ITEM>0</ITEM>
         <ITEM>0</ITEM>
@@ -806,7 +751,7 @@
       <Fill Alpha="100" Color="00808000"/>
     </OBJECT>
   </OBJECT>
-  <OBJECT Coloring="0" Lit="1" class="CCellSetLayer" myid="21576" Clipped="0" GUID="AFD4E154-4A20-4BC0-86F4-6904683B3509" Type="GAP" Visible="1" UIName="Набор зазорных ячеек">
+  <OBJECT Coloring="0" Lit="1" class="CCellSetLayer" myid="21576" Clipped="0" GUID="AFD4E154-4A20-4BC0-86F4-6904683B3509" Type="GAP" Visible="0" UIName="Набор зазорных ячеек">
     <Object>*-2.-2.0</Object>
     <Settings>
       <Mode>VOLUME</Mode>
@@ -818,7 +763,7 @@
       <Lines Width="3" Color="00FF00FF"/>
       <Fill Alpha="100" Color="00800080"/>
     </Appearance>
-    <Mapping MappingMode="LOCAL" Min="0" Max="0"/>
+    <Mapping MappingMode="LOCAL" Min="3.0333152656325524E-010" Max="3.5659550867706002E-009"/>
     <Palette>
       <Overlay HorzAlign="LEFT" Enabled="0" ShowTitle="0" Style="STYLE3" VertAlign="TOP" Gradations="11" Color="00FFFFFF"/>
       <Gradations>0</Gradations>
@@ -1020,7 +965,7 @@
     <RegularGrid>0</RegularGrid>
     <Resolution Size1="100" Size2="100" LocalSystem="1" Size3="1"/>
     <DoubleResolution>0</DoubleResolution>
-    <Mapping MappingMode="LOCAL" Min="0.00065951567376032472" Max="1.9711569547653198"/>
+    <Mapping MappingMode="GLOBAL" Min="2.1094617750350153E-006" Max="0.91976630687713623"/>
     <LogScale Limit="1.0000000000000001E-005" Enabled="0"/>
     <Palette>
       <Overlay HorzAlign="RIGHT" Enabled="1" ShowTitle="1" Style="STYLE1" VertAlign="TOP" Gradations="11" Color="00FFFFFF"/>
@@ -1068,5 +1013,38 @@
       </Transparency>
     </Palette>
     <OBJECT class="CPlaneConstraints" myid="-100" Enabled="0" Type="RECTANGLE" Size1="0.10000000000000001" Size2="0.10000000000000001"/>
+  </OBJECT>
+  <OBJECT class="CIntegralCharsLayer" myid="25586">
+    <SaveData>
+      <Kind>AUTO</Kind>
+      <Time>0</Time>
+      <Iteration>1</Iteration>
+      <Filename>volumeMachNo.glo</Filename>
+      <Mode>APPEND</Mode>
+      <UpdateOnStop>0</UpdateOnStop>
+    </SaveData>
+    <Chars>*-2.-2.637</Chars>
+  </OBJECT>
+  <OBJECT class="CIntegralCharsLayer" myid="28777">
+    <SaveData>
+      <Kind>AUTO</Kind>
+      <Time>0</Time>
+      <Iteration>1</Iteration>
+      <Filename>valve.glo</Filename>
+      <Mode>APPEND</Mode>
+      <UpdateOnStop>0</UpdateOnStop>
+    </SaveData>
+    <Chars>*-2.-2.752</Chars>
+  </OBJECT>
+  <OBJECT class="CIntegralCharsLayer" myid="31496">
+    <SaveData>
+      <Kind>AUTO</Kind>
+      <Time>0</Time>
+      <Iteration>1</Iteration>
+      <Filename>piston.glo</Filename>
+      <Mode>APPEND</Mode>
+      <UpdateOnStop>0</UpdateOnStop>
+    </SaveData>
+    <Chars>*-2.-2.800</Chars>
   </OBJECT>
 </FVSCENE>
