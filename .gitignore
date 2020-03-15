@@ -14,6 +14,7 @@ cellToRegion
 # Folders - anywhere
 0.*/
 [1-9]*/
+processor*/
 backups/
 dynamicCode/
 extendedFeatureEdgeMesh/
