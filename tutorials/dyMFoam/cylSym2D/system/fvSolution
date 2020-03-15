@@ -55,6 +55,8 @@ solvers
 
 PIMPLE
 {
+    correctPhi          true;
+    checkMeshCourantNo  true;
 }
 
 // ************************************************************************* //

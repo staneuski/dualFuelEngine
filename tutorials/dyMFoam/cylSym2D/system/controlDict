@@ -15,7 +15,7 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-application          dyMFoam;//pimpleFoam;
+application          dyMFoam;
 
 startFrom            startTime;
 
@@ -23,13 +23,13 @@ startTime            0;
 
 stopAt               endTime;
 
-endTime              0.5;
+endTime              0.48;
 
-deltaT               0.01;//5e-03;
+deltaT               0.0018;
 
 writeControl         adjustableRunTime;
 
-writeInterval        0.01;//5e-03;
+writeInterval        $deltaT;
 
 purgeWrite           0;
 
@@ -45,7 +45,7 @@ timePrecision        6;
 
 runTimeModifiable    true;
 
-adjustTimeStep       true;
+adjustTimeStep       false;
 
 maxCo                0.3;
 
