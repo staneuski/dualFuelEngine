@@ -6,6 +6,7 @@ log.*
 *.log
 *.gz
 [cell,point]*Level
+cellToRegion
 *.foam
 !AllcleanAllrunAny.foam
 
