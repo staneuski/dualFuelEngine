@@ -1,0 +1,96 @@
+boundaryField
+{
+/* Inlet */
+    "(injection|inlet)(X|Y)(m|p)"
+    {
+        type            uniformFixedValue;
+        uniformValue    constant 0;
+    }
+
+/* Outlet */
+    outlet
+    {
+        $inletXm
+    }
+
+/* Walls */
+    piston
+    {
+        type            uniformFixedValue;
+        uniformValue
+        {
+            type        sine;
+            frequency   1.4286; // n/60
+            amplitude   23; // pi*S*n/30 = pi*2.7*92/30
+            start       0.154; // EVO/6/n = 85/6/92
+            level       0; // offset
+
+            scale       1; /* OpenFOAM v7 or lower */
+        }
+    }
+    valve
+    {
+        type            uniformFixedValue;
+        uniformValue    table
+        (
+            (0.08      -2)
+            (0.16       0)
+            (0.18       0)
+            (0.26       2)
+            (0.34       0)
+        );
+    }
+    walls
+    {
+        type            uniformFixedValue;
+        uniformValue    constant 0;
+    }
+
+/* ACMI patches */
+    // Inner ACMI patch
+    innerACMI1_couple
+    {
+        type            slip;
+        patchType       cyclicACMI;
+        uniformValue    0;
+    }
+    innerACMI1_blockage
+    {
+        type            slip;
+    }
+    innerACMI2_couple
+    {
+        type            slip;
+        patchType       cyclicACMI;
+        value           uniform 0;
+    }
+    innerACMI2_blockage
+    {
+        type            slip;
+        value           uniform 0;
+    }
+
+    // Outer ACMI patch
+    outerACMI1_couple
+    {
+        type            uniformFixedValue;
+        patchType       cyclicACMI;
+        uniformValue    0;
+    }
+    outerACMI1_blockage
+    {
+        type            uniformFixedValue;
+        uniformValue    0;
+    }
+    outerACMI2_couple
+    {
+        type            slip;
+        patchType       cyclicACMI;
+        value           uniform 0;
+    }
+    outerACMI2_blockage
+    {
+        type            slip;
+        value           uniform 0;
+    }
+}

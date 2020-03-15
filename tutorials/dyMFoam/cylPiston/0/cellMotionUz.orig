@@ -9,11 +9,15 @@ FoamFile
 {
     version     2.0;
     format      ascii;
-    class       dictionary;
-    object      meshQualityDict;
+    class       volScalarField;
+    object      pointMotionU;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-#includeEtc "caseDicts/mesh/generation/meshQualityDict.cfg"
+dimensions      [0 1 -1 0 0 0 0];
+
+internalField   uniform 0;
+
+#include "include/motionUBoundaryField"
 
 // ************************************************************************* //
