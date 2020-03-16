@@ -68,7 +68,7 @@ PIMPLE
     nCorrectors         2;
     correctPhi          true;
     checkMeshCourantNo  true;
-    
+
     nOuterCorrectors    1;
     nNonOrthogonalCorrectors 0;
     pRefCell            0;
