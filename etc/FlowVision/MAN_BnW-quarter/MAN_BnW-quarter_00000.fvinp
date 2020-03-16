@@ -732,6 +732,22 @@
       <OBJECT class="CFvValueConstant" Constant="1" myid="44"/>
       <OBJECT class="CFvValueConstant" Constant="0" myid="45"/>
       <OBJECT class="CFvValueConstant" Constant="1" myid="46"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="47"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="48"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="49"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="50"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="51"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="52"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="53"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="54"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="55"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="56"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="57"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="58"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="59"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="60"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="61"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="62"/>
     </OBJECT>
     <OBJECT class="CFvValueConstant" Constant="0" myid="6"/>
     <OBJECT class="CFvValueConstant" Constant="0" myid="7"/>
@@ -833,6 +849,46 @@
     <OBJECT class="CFvValueConstant" Constant="0" myid="103"/>
     <OBJECT class="CFvValueConstant" Constant="0" myid="104"/>
     <OBJECT class="CFvValueConstant" Constant="0" myid="105"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="106"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="107"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="108"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="109"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="110"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="111"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="112"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="113"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="114"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="115"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="116"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="117"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="118"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="119"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="120"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="121"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="122"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="123"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="124"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="125"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="126"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="127"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="128"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="129"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="130"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="131"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="132"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="133"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="134"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="135"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="136"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="137"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="138"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="139"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="140"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="141"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="142"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="143"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="144"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="145"/>
   </OBJECT>
   <OBJECT class="CSubregion" myid="2" UIName="Подобласть #0">
     <Kind>CALCULATE</Kind>
@@ -905,7 +961,7 @@
       <OBJECT class="CFvValueConstant" Constant="0" myid="1"/>
       <OBJECT class="CFvValueConstant" Constant="90" myid="2"/>
       <OBJECT class="CFvValueConstant" Constant="-1" myid="3"/>
-      <OBJECT class="CFvValueConstant" Constant="0.20000000000000001" myid="4"/>
+      <OBJECT class="CFvValueConstant" Constant="0.050000000000000003" myid="4"/>
       <OBJECT class="CFvValueConstant" Constant="0" myid="5"/>
       <OBJECT class="CFvValueConstant" Constant="1" myid="6"/>
       <OBJECT class="CFvValueConstant" Constant="0" myid="11"/>
@@ -970,6 +1026,22 @@
       <OBJECT class="CFvValueConstant" Constant="1" myid="55"/>
       <OBJECT class="CFvValueConstant" Constant="0" myid="56"/>
       <OBJECT class="CFvValueConstant" Constant="1" myid="57"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="58"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="59"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="60"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="61"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="62"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="63"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="64"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="65"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="66"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="67"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="68"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="69"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="70"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="71"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="72"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="73"/>
     </OBJECT>
     <OBJECT class="CIniDataTri" myid="44" GUID="4E411A97-5F0B-4AA6-95EE-1E69E208D91C" UIName="Нач. условие #0">
       <ViewObject>*-2.-2.0</ViewObject>
@@ -1765,6 +1837,22 @@
       <OBJECT class="CFvValueConstant" Constant="1" myid="54"/>
       <OBJECT class="CFvValueConstant" Constant="0" myid="55"/>
       <OBJECT class="CFvValueConstant" Constant="1" myid="56"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="57"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="58"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="59"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="60"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="61"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="62"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="63"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="64"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="65"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="66"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="67"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="68"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="69"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="70"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="71"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="72"/>
     </OBJECT>
     <OBJECT class="CMovingBody" InsideOut="0" myid="120" GUID="E2486E98-644B-4083-A1A8-4A6338DF3000" FormatVersion="1" UIName="Клапан">
       <Object>*-2.-2.235</Object>
@@ -1844,7 +1932,7 @@
         <Omega Source="*.29"/>
       </Rotation>
       <Location>
-        <Origin x="0" y="0" z="-0.00050000000000000001"/>
+        <Origin x="0" y="0" z="0.00025000000000000001"/>
         <Ort0 x="1" y="0" z="0"/>
         <Ort1 x="0" y="1" z="0"/>
         <Ort2 x="0" y="0" z="1"/>
@@ -2389,6 +2477,22 @@
       <OBJECT class="CFvValueConstant" Constant="1" myid="54"/>
       <OBJECT class="CFvValueConstant" Constant="0" myid="55"/>
       <OBJECT class="CFvValueConstant" Constant="1" myid="56"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="57"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="58"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="59"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="60"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="61"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="62"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="63"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="64"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="65"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="66"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="67"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="68"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="69"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="70"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="71"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="72"/>
     </OBJECT>
     <OBJECT class="CBCondition" myid="177" UIName="Выпуск" Color="00808080">
       <Type>FREEOUTLET</Type>
@@ -2471,6 +2575,22 @@
       <OBJECT class="CFvValueConstant" Constant="1" myid="48"/>
       <OBJECT class="CFvValueConstant" Constant="0" myid="49"/>
       <OBJECT class="CFvValueConstant" Constant="1" myid="50"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="51"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="52"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="53"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="54"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="55"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="56"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="57"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="58"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="59"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="60"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="61"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="62"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="63"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="64"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="65"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="66"/>
     </OBJECT>
     <OBJECT class="CBCondition" myid="191" UIName="Симметрия" Color="00808080">
       <Type>SYMMETRY</Type>
@@ -2549,6 +2669,22 @@
       <OBJECT class="CFvValueConstant" Constant="1" myid="50"/>
       <OBJECT class="CFvValueConstant" Constant="0" myid="51"/>
       <OBJECT class="CFvValueConstant" Constant="1" myid="52"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="53"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="54"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="55"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="56"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="57"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="58"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="59"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="60"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="61"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="62"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="63"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="64"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="65"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="66"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="67"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="68"/>
     </OBJECT>
     <OBJECT class="CFvValueConstant" Constant="0" myid="192"/>
     <OBJECT class="CFvValueConstant" Constant="0" myid="193"/>
@@ -2575,7 +2711,7 @@
       <OBJECT class="CFvValueConstant" Constant="0" myid="1"/>
       <OBJECT class="CFvValueConstant" Constant="90" myid="2"/>
       <OBJECT class="CFvValueConstant" Constant="-1" myid="3"/>
-      <OBJECT class="CFvValueConstant" Constant="0.20000000000000001" myid="4"/>
+      <OBJECT class="CFvValueConstant" Constant="0.050000000000000003" myid="4"/>
       <OBJECT class="CFvValueConstant" Constant="0" myid="5"/>
       <OBJECT class="CFvValueConstant" Constant="1" myid="6"/>
       <OBJECT class="CFvValueConstant" Constant="0" myid="11"/>
@@ -2640,6 +2776,22 @@
       <OBJECT class="CFvValueConstant" Constant="1" myid="55"/>
       <OBJECT class="CFvValueConstant" Constant="0" myid="56"/>
       <OBJECT class="CFvValueConstant" Constant="1" myid="57"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="58"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="59"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="60"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="61"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="62"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="63"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="64"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="65"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="66"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="67"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="68"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="69"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="70"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="71"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="72"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="73"/>
     </OBJECT>
     <OBJECT class="CBCondition" myid="231" UIName="Стенки поршня" Color="00BFBCBC">
       <Type>WALL</Type>
@@ -2726,6 +2878,22 @@
       <OBJECT class="CFvValueConstant" Constant="1" myid="55"/>
       <OBJECT class="CFvValueConstant" Constant="0" myid="56"/>
       <OBJECT class="CFvValueConstant" Constant="1" myid="57"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="58"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="59"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="60"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="61"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="62"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="63"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="64"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="65"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="66"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="67"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="68"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="69"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="70"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="71"/>
+      <OBJECT class="CFvValueConstant" Constant="0" myid="72"/>
+      <OBJECT class="CFvValueConstant" Constant="1" myid="73"/>
     </OBJECT>
     <OBJECT class="CFvValueConstant" Constant="0" myid="232"/>
     <OBJECT class="CFvValueConstant" Constant="0" myid="233"/>
@@ -2817,6 +2985,46 @@
     <OBJECT class="CFvValueConstant" Constant="0" myid="344"/>
     <OBJECT class="CFvValueConstant" Constant="0" myid="345"/>
     <OBJECT class="CFvValueConstant" Constant="0" myid="346"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="347"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="348"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="349"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="350"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="351"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="352"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="353"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="354"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="355"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="356"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="357"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="358"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="359"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="360"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="361"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="362"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="363"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="364"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="365"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="366"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="367"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="368"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="369"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="370"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="371"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="372"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="373"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="374"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="375"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="376"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="377"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="378"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="379"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="380"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="381"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="382"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="383"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="384"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="385"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="386"/>
   </OBJECT>
   <OBJECT class="CSubstance" myid="13" UIName="Азот_Газовая">
     <Type>database</Type>
@@ -3551,19 +3759,7 @@
       </OBJECT>
       <OBJECT class="CIniVarScalar" Variable="*-2.-2.41.155" myid="2">
         <Value Source="*.0"/>
-        <OBJECT class="CFvValueTable1" myid="0" VarType="PHYSICAL" VarComp="Z" Extrapolation="BOUND">
-          <Table>
-            <ITEM arg="0.24199999999999999" value="1341000"/>
-            <ITEM arg="0.94199999999999995" value="500000"/>
-          </Table>
-          <Var>
-            <Physical>
-              <ITEM Size="3" IDVar="COORD" IDPhase="-1" BlockType="0"/>
-            </Physical>
-            <Integral/>
-            <User/>
-          </Var>
-        </OBJECT>
+        <OBJECT class="CFvValueConstant" Constant="132000" myid="0"/>
       </OBJECT>
       <OBJECT class="CIniVarScalar" Variable="*-2.-2.41.209" myid="3">
         <Value Source="*.0"/>
@@ -3598,7 +3794,7 @@
     <OBJECT Obj="*-2.-2.51.0.3" class="CFVScalarVariable" MainVar="*-2.-2.41.501" ICell="85" IDVar="KTURB_CURR" myid="503" IDNum="49" IBVar="-1" Flag="1" avType="AV_DENS_VOF_VOL"/>
     <OBJECT Obj="*-2.-2.51.0.3" class="CFVScalarVariable" MainVar="*-2.-2.41.502" ICell="86" IDVar="OMEGA_CURR" myid="504" IDNum="51" IBVar="-1" Flag="1" avType="AV_DENS_VOF_VOL"/>
     <OBJECT Obj="*-2.-2.51.0.3" class="CFVScalarVariable" MainVar="0" ICell="87" IDVar="F1_VALUE" myid="505" IDNum="52" IBVar="-1" Flag="1" avType="AV_DENS_VOF_VOL"/>
-    <OBJECT class="CGapModel" MaxGap="0.29999999999999999" MinGap="5.0000000000000002E-005" myid="593"/>
+    <OBJECT class="CGapModel" MaxGap="1" MinGap="5.0000000000000002E-005" myid="593"/>
     <OBJECT class="CGapEqSys" myid="594"/>
     <OBJECT Obj="0" class="CFVScalarVariable" MainVar="0" ICell="-1" IDVar="CLEARANCE" myid="712" IDNum="2" IBVar="-1" Flag="16" avType="AV_VOL"/>
     <OBJECT Obj="*-2.-2.41.594" class="CFVScalarVariable" MainVar="0" ICell="88" IDVar="CLEARANCE" myid="713" IDNum="0" IBVar="-1" Flag="3" avType="AV_FITA_VOF_VOLUME"/>
@@ -18731,7 +18927,7 @@
   </OBJECT>
   <OBJECT class="CMeshEntity" myid="216" GUID="1E7B45A2-B309-4375-BA25-E41E8FB7E4E0" UIName="Импортированный объект #0">
     <Location>
-      <Origin x="0" y="0" z="0.83928203317306804"/>
+      <Origin x="0" y="0" z="0.75929917256232871"/>
       <Ort0 x="1" y="0" z="0"/>
       <Ort1 x="0" y="1" z="0"/>
       <Ort2 x="0" y="0" z="1"/>
@@ -18741,7 +18937,7 @@
   </OBJECT>
   <OBJECT class="CMeshEntity" myid="235" GUID="F17AD9C3-62C4-4C93-A019-BD589A44A2CE" UIName="Импортированный объект #1">
     <Location>
-      <Origin x="0" y="0" z="-0.0032914509031939242"/>
+      <Origin x="0" y="0" z="-0.0065842960173594861"/>
       <Ort0 x="1" y="0" z="0"/>
       <Ort1 x="0" y="1" z="0"/>
       <Ort2 x="0" y="0" z="1"/>
@@ -19164,6 +19360,26 @@
     <normal x="1" y="0" z="0"/>
     <Var Comp="SOURCE">
       <Description Size="3" IDVar="COORD" IDPhase="-1" BlockType="0"/>
+    </Var>
+    <EnclaveAnalysis VolThreshold="0" Enabled="0" SmallPolicy="KEEP"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="0"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="1"/>
+    <OBJECT class="CFvValueConstant" Constant="0" myid="2"/>
+  </OBJECT>
+  <OBJECT class="CIntegralCharacteristics" myid="811" GUID="4050AB50-AE1B-4314-9E3D-3AAD7202C3C6" IceSurface="0" SubRegion="0" UIName="Характеристики: volumeRho">
+    <Object>*-2.-2.0</Object>
+    <Settings>
+      <Mode>VOLUME</Mode>
+      <Parts/>
+    </Settings>
+    <MomentPt>
+      <x Source="*.0"/>
+      <y Source="*.1"/>
+      <z Source="*.2"/>
+    </MomentPt>
+    <normal x="1" y="0" z="0"/>
+    <Var Comp="SOURCE">
+      <Description Size="1" IDVar="DENSITY" IDPhase="-1" BlockType="0"/>
     </Var>
     <EnclaveAnalysis VolThreshold="0" Enabled="0" SmallPolicy="KEEP"/>
     <OBJECT class="CFvValueConstant" Constant="0" myid="0"/>

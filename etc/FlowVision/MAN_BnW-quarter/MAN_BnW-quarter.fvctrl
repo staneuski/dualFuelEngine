@@ -10,37 +10,37 @@
       <OBJECT class="CPhaseCalcLims" myid="5">
         <CalcLim>
           <ITEM>
-            <Limiter>1E-010</Limiter>
+            <Limiter>0.001</Limiter>
             <LimType>MINLIM</LimType>
             <MyNMVar>DENSITY</MyNMVar>
             <MyBlockType>0</MyBlockType>
           </ITEM>
           <ITEM>
-            <Limiter>1E+020</Limiter>
+            <Limiter>1000</Limiter>
             <LimType>MAXLIM</LimType>
             <MyNMVar>VEL</MyNMVar>
             <MyBlockType>CMotionProcess</MyBlockType>
           </ITEM>
           <ITEM>
-            <Limiter>-1E+020</Limiter>
+            <Limiter>60000</Limiter>
             <LimType>MINLIM</LimType>
             <MyNMVar>PRES</MyNMVar>
             <MyBlockType>CMotionProcess</MyBlockType>
           </ITEM>
           <ITEM>
-            <Limiter>1E+020</Limiter>
+            <Limiter>20000000</Limiter>
             <LimType>MAXLIM</LimType>
             <MyNMVar>PRES</MyNMVar>
             <MyBlockType>CMotionProcess</MyBlockType>
           </ITEM>
           <ITEM>
-            <Limiter>0</Limiter>
+            <Limiter>273</Limiter>
             <LimType>MINLIM</LimType>
             <MyNMVar>TEMP</MyNMVar>
             <MyBlockType>CHeatXferProcess</MyBlockType>
           </ITEM>
           <ITEM>
-            <Limiter>1E+020</Limiter>
+            <Limiter>1800</Limiter>
             <LimType>MAXLIM</LimType>
             <MyNMVar>TEMP</MyNMVar>
             <MyBlockType>CHeatXferProcess</MyBlockType>
@@ -59,7 +59,7 @@
           </ITEM>
         </CalcLim>
         <MyPhaseID>51</MyPhaseID>
-        <SmallCellParameters DynamicCriteria="0.20000000000000001" Type="ABSOLUTE" Criteria="0.20000000000000001"/>
+        <SmallCellParameters DynamicCriteria="0.20000000000000001" Type="RELATIVE" Criteria="0.20000000000000001"/>
       </OBJECT>
     </OBJECT>
   </OBJECT>
@@ -135,7 +135,7 @@
     </Update>
     <StartSettings StartTime="0" StartIter="0" CheckMode="CHECKITER"/>
     <OBJECT class="CFVIterations" myid="-3">
-      <Number>1000000</Number>
+      <Number>100000000</Number>
     </OBJECT>
     <OBJECT class="CFVTimeSpan" begin="0" end="0.47826099999999999" myid="-2"/>
     <OBJECT Averaging="COMMON" class="CUserStopper" myid="7" GUID="886109F2-C3A7-40AE-9C81-7A5BABDB060E" Group="255" Comp="LENGTH" Object="*-2.-2.278" Level="0" UGV="255" UIName="phi" Color="00000000">
@@ -250,7 +250,7 @@
         <Iteration>1</Iteration>
       </AveragingSettings>
     </OBJECT>
-    <OBJECT Averaging="COMMON" class="CUserStopper" myid="72" GUID="3278DC55-33F4-42E7-BDC9-EA87F19226E9" Group="0" Comp="LENGTH" Object="*-2.-2.442" Level="0" UGV="5" UIName="maxU" Color="00FFAA00">
+    <OBJECT Averaging="COMMON" class="CUserStopper" myid="72" GUID="3278DC55-33F4-42E7-BDC9-EA87F19226E9" Group="0" Comp="LENGTH" Object="*-2.-2.442" Level="0" UGV="5" UIName="maxU" Color="0000AA00">
       <AveragingSettings>
         <Kind>BYTIME</Kind>
         <Time>0</Time>
@@ -296,7 +296,7 @@
     <EnSight Enabled="0" Binary="1"/>
   </OBJECT>
   <OBJECT SmoothDiffFluxes="0" class="CAdvancedSettings" CheckGrid="0" myid="-3">
-    <Scheme VeryViscouseFlow="0" PresGrad="Simple" SideGradAppr="1" Skew="0" Type="Smooth" OffSpeed="0" AddSmoothByAdapt="0" PresTotal="PtotSimple" SchemeType="Implicit">
+    <Scheme VeryViscouseFlow="0" PresGrad="Simple" SideGradAppr="1" Skew="0" Type="Upwind" OffSpeed="0" AddSmoothByAdapt="0" PresTotal="PtotSimple" SchemeType="Implicit">
       <SkewBypassAlg>EDGE</SkewBypassAlg>
       <TimeStepping Method="Standard" NumCoupling="1"/>
     </Scheme>
@@ -344,8 +344,8 @@
     <OBJECT class="CFvValueConstant" Constant="1E+020" myid="4"/>
     <OBJECT class="CFvValueConstant" Constant="1E+020" myid="5"/>
   </OBJECT>
-  <OBJECT class="CTimeStep" DisConvergenceLimit="9.9999999999999998E-013" myid="-2" Type="CFL">
-    <Step Source="*.7"/>
+  <OBJECT class="CTimeStep" DisConvergenceLimit="9.9999999999999998E-013" myid="-2" Type="User">
+    <Step Source="*.10"/>
     <CFL Source="*.1"/>
     <CFLSURF Source="*.2"/>
     <CFLDIFF Source="*.3"/>
@@ -356,8 +356,8 @@
     <OBJECT class="CFvValueConstant" Constant="1" myid="2"/>
     <OBJECT class="CFvValueConstant" Constant="1E+020" myid="3"/>
     <OBJECT class="CFvValueConstant" Constant="1" myid="4"/>
-    <OBJECT class="CFvValueFormula" myid="7">
-      <Formula>60/n/360/*0.0018116*/*0.1</Formula>
+    <OBJECT class="CFvValueFormula" myid="8">
+      <Formula>60/n/360/*0.0018116*/</Formula>
       <Bindings>
         <Constants/>
         <Linkage>
@@ -376,12 +376,11 @@
           <ITEM Opcode="DIV" Value="2"/>
           <ITEM Opcode="PUSH" Value="360"/>
           <ITEM Opcode="DIV" Value="2"/>
-          <ITEM Opcode="PUSH" Value="0.10000000000000001"/>
-          <ITEM Opcode="MUL" Value="2"/>
         </Code>
       </Code>
     </OBJECT>
-    <OBJECT class="CFvValueFormula" myid="8">
+    <OBJECT class="CFvValueConstant" Constant="9.9999999999999998E-013" myid="9"/>
+    <OBJECT class="CFvValueFormula" myid="10">
       <Formula>60/n/360/*0.0018116*/*0.2</Formula>
       <Bindings>
         <Constants/>
@@ -406,6 +405,5 @@
         </Code>
       </Code>
     </OBJECT>
-    <OBJECT class="CFvValueConstant" Constant="9.9999999999999998E-013" myid="9"/>
   </OBJECT>
 </FVSIMCTRL>

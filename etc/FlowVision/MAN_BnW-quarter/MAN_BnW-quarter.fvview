@@ -157,7 +157,7 @@
     <RegularGrid>0</RegularGrid>
     <Resolution Size1="100" Size2="100" LocalSystem="1" Size3="1"/>
     <DoubleResolution>0</DoubleResolution>
-    <Mapping MappingMode="GLOBAL" Min="-53340.44921875" Max="1341006.125"/>
+    <Mapping MappingMode="LOCAL" Min="-92006.9140625" Max="1220677.375"/>
     <LogScale Limit="1.0000000000000001E-005" Enabled="0"/>
     <Palette>
       <Overlay HorzAlign="RIGHT" Enabled="1" ShowTitle="1" Style="STYLE1" VertAlign="TOP" Gradations="11" Color="00FFFFFF"/>
@@ -583,7 +583,7 @@
         <Pivot x="0" y="0" z="0"/>
       </Relativity>
     </CoorSystem>
-    <Mapping ReferenceLen="0.050000000000000003" MappingMode="LOCAL" ConstantLen="0" Max="1016.1925048828125"/>
+    <Mapping ReferenceLen="0.050000000000000003" MappingMode="LOCAL" ConstantLen="0" Max="1199.893798828125"/>
     <Mode>FULL</Mode>
     <Lines Width="1" Color="00FFFFFF"/>
     <Arrows Angle="20" Mode="LINES" Size="20"/>
@@ -598,7 +598,7 @@
           <Inverted>0</Inverted>
         </Integration>
       </Var>
-      <Mapping MappingMode="LOCAL" Min="0.0016401978209614754" Max="1016.1925659179687"/>
+      <Mapping MappingMode="LOCAL" Min="0.071766503155231476" Max="1199.893798828125"/>
       <LogScale Limit="1.0000000000000001E-005" Enabled="0"/>
       <Palette>
         <Overlay HorzAlign="RIGHT" Enabled="1" ShowTitle="1" Style="STYLE1" VertAlign="TOP" Gradations="11" Color="00FFFFFF"/>
@@ -665,8 +665,8 @@
         </Alpha>
       </Fill>
     </Processors>
-    <Hypercells Mode="BOTH" Count="8">
-      <Visibility>0-7</Visibility>
+    <Hypercells Mode="BOTH" Count="11">
+      <Visibility>0-10</Visibility>
       <Lines>
         <Color>
           <ITEM>00C39FD0</ITEM>
@@ -677,8 +677,14 @@
           <ITEM>0039CF3F</ITEM>
           <ITEM>00C02E1F</ITEM>
           <ITEM>00335B3D</ITEM>
+          <ITEM>005C12A9</ITEM>
+          <ITEM>006082D2</ITEM>
+          <ITEM>0020C4C6</ITEM>
         </Color>
         <Width>
+          <ITEM>1</ITEM>
+          <ITEM>1</ITEM>
+          <ITEM>1</ITEM>
           <ITEM>1</ITEM>
           <ITEM>1</ITEM>
           <ITEM>1</ITEM>
@@ -699,8 +705,14 @@
           <ITEM>001C671F</ITEM>
           <ITEM>0060170F</ITEM>
           <ITEM>00192D1E</ITEM>
+          <ITEM>002E0954</ITEM>
+          <ITEM>00304169</ITEM>
+          <ITEM>00106263</ITEM>
         </Color>
         <Alpha>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
           <ITEM>100</ITEM>
           <ITEM>100</ITEM>
           <ITEM>100</ITEM>
@@ -712,6 +724,9 @@
         </Alpha>
       </Fill>
       <Processor>
+        <ITEM>0</ITEM>
+        <ITEM>0</ITEM>
+        <ITEM>0</ITEM>
         <ITEM>0</ITEM>
         <ITEM>0</ITEM>
         <ITEM>0</ITEM>
@@ -753,7 +768,7 @@
       <Lines Width="3" Color="00FF00FF"/>
       <Fill Alpha="100" Color="00800080"/>
     </Appearance>
-    <Mapping MappingMode="LOCAL" Min="1.51203705112124E-009" Max="3.7525258456128086E-009"/>
+    <Mapping MappingMode="LOCAL" Min="0" Max="0"/>
     <Palette>
       <Overlay HorzAlign="LEFT" Enabled="0" ShowTitle="0" Style="STYLE3" VertAlign="TOP" Gradations="11" Color="00FFFFFF"/>
       <Gradations>0</Gradations>
@@ -955,7 +970,7 @@
     <RegularGrid>0</RegularGrid>
     <Resolution Size1="100" Size2="100" LocalSystem="1" Size3="1"/>
     <DoubleResolution>0</DoubleResolution>
-    <Mapping MappingMode="GLOBAL" Min="1.942393055287539E-006" Max="2.2838888168334961"/>
+    <Mapping MappingMode="GLOBAL" Min="0.00022994229220785201" Max="2.5362060070037842"/>
     <LogScale Limit="1.0000000000000001E-005" Enabled="0"/>
     <Palette>
       <Overlay HorzAlign="RIGHT" Enabled="1" ShowTitle="1" Style="STYLE1" VertAlign="TOP" Gradations="11" Color="00FFFFFF"/>
@@ -1036,5 +1051,99 @@
       <UpdateOnStop>0</UpdateOnStop>
     </SaveData>
     <Chars>*-2.-2.800</Chars>
+  </OBJECT>
+  <OBJECT Lit="1" Width="2" class="CScalarLayer" myid="35011" Clipped="1" GUID="512E4659-EAC7-49EF-8047-8FB1596F928B" Visible="0" DrawMode="FLOOD" UIName="rho">
+    <Object>*-2.-4.2</Object>
+    <Settings>
+      <Mode>UNASSIGNED</Mode>
+      <Parts/>
+    </Settings>
+    <Update>
+      <Kind>AUTO</Kind>
+      <Time>0</Time>
+      <Iteration>1</Iteration>
+    </Update>
+    <SaveData>
+      <Kind>AUTO</Kind>
+      <Time>0</Time>
+      <Iteration>1</Iteration>
+      <Filename>ScalarLayer1.glo</Filename>
+      <Mode>APPEND</Mode>
+      <UpdateOnStop>0</UpdateOnStop>
+    </SaveData>
+    <Var Comp="SOURCE">
+      <Description Size="1" IDVar="DENSITY" IDPhase="-1" BlockType="0"/>
+      <Integration>
+        <Enabled>0</Enabled>
+        <IntegrationDir>NORMAL</IntegrationDir>
+        <CustomDir x="1" y="0" z="0"/>
+        <Inverted>0</Inverted>
+      </Integration>
+      <Interpolation>1</Interpolation>
+    </Var>
+    <SubRegion>0</SubRegion>
+    <Shift>0</Shift>
+    <RegularGrid>0</RegularGrid>
+    <Resolution Size1="100" Size2="100" LocalSystem="1" Size3="1"/>
+    <DoubleResolution>0</DoubleResolution>
+    <Mapping MappingMode="GLOBAL" Min="0.031999193131923676" Max="3.7638382911682129"/>
+    <LogScale Limit="1.0000000000000001E-005" Enabled="0"/>
+    <Palette>
+      <Overlay HorzAlign="RIGHT" Enabled="1" ShowTitle="1" Style="STYLE1" VertAlign="TOP" Gradations="11" Color="00FFFFFF"/>
+      <Gradations>0</Gradations>
+      <Colors>
+        <ITEM>000000FF</ITEM>
+        <ITEM>000064FF</ITEM>
+        <ITEM>0000B9FF</ITEM>
+        <ITEM>0000FFFF</ITEM>
+        <ITEM>0000FF9F</ITEM>
+        <ITEM>0000FF00</ITEM>
+        <ITEM>009FFF00</ITEM>
+        <ITEM>00FFFF00</ITEM>
+        <ITEM>00FFB900</ITEM>
+        <ITEM>00FF6400</ITEM>
+        <ITEM>00FF0000</ITEM>
+      </Colors>
+      <Values>
+        <ITEM>0</ITEM>
+        <ITEM>0.10000000000000001</ITEM>
+        <ITEM>0.20000000000000001</ITEM>
+        <ITEM>0.30000000000000004</ITEM>
+        <ITEM>0.40000000000000002</ITEM>
+        <ITEM>0.5</ITEM>
+        <ITEM>0.59999999999999998</ITEM>
+        <ITEM>0.69999999999999996</ITEM>
+        <ITEM>0.79999999999999993</ITEM>
+        <ITEM>0.89999999999999991</ITEM>
+        <ITEM>0.99999999999999989</ITEM>
+      </Values>
+      <Transparency Mode="CONSTANT" ConstAlpha="100">
+        <Alphas>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+          <ITEM>100</ITEM>
+        </Alphas>
+      </Transparency>
+    </Palette>
+    <OBJECT class="CPlaneConstraints" myid="-100" Enabled="0" Type="RECTANGLE" Size1="0.10000000000000001" Size2="0.10000000000000001"/>
+  </OBJECT>
+  <OBJECT class="CIntegralCharsLayer" myid="35033">
+    <SaveData>
+      <Kind>AUTO</Kind>
+      <Time>0</Time>
+      <Iteration>1</Iteration>
+      <Filename>volumeRho.glo</Filename>
+      <Mode>APPEND</Mode>
+      <UpdateOnStop>0</UpdateOnStop>
+    </SaveData>
+    <Chars>*-2.-2.811</Chars>
   </OBJECT>
 </FVSCENE>
