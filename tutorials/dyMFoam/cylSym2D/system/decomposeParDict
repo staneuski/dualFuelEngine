@@ -10,43 +10,14 @@ FoamFile
     version     2.0;
     format      ascii;
     class       dictionary;
-    location    "system";
-    object      controlDict;
+    location    "constant";
+    object      decomposeParDict;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-application          dyMFoam; // dyMFoam \ pimpleFoam
+numberOfSubdomains 4;
 
-startFrom            startTime;
+method          scotch;
 
-startTime            0;
-
-stopAt               endTime;
-
-endTime              0.326;
-
-deltaT               1e-03; // 0.009 \ 1e-05
-
-writeControl         adjustableRunTime;
-
-writeInterval        0.0018;
-
-purgeWrite           0;
-
-writeFormat          ascii;
-
-writePrecision       6;
-
-writeCompression     off;
-
-timeFormat           general;
-
-timePrecision        6;
-
-runTimeModifiable    true;
-
-adjustTimeStep       true;
-
-maxCo                0.5;
 
 // ************************************************************************* //

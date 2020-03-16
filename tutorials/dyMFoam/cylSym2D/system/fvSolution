@@ -1,8 +1,8 @@
 /*--------------------------------*- C++ -*----------------------------------*\
   =========                 |
-  \\      /  F ield         | OpenFOAM: dualFuelEngline addition to OpenFOAM v7
-   \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
-    \\  /    A nd           | Version:  0.4-alpha
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  dev
      \\/     M anipulation  |
 \*---------------------------------------------------------------------------*/
 FoamFile
@@ -16,26 +16,43 @@ FoamFile
 
 solvers
 {
-    "alphaAir|alphaGas"
+    "pcorr.*"
     {
-        solver          PBiCGStab;
-        preconditioner  DILU;
-        tolerance       1e-06;
+        solver          GAMG;
+        tolerance       1e-2;
+        relTol          0;
+        smoother        GaussSeidel;
+        cacheAgglomeration no;
+        maxIter         50;
+    }
+
+    p
+    {
+        $pcorr;
+        tolerance       1e-5;
+        relTol          0.01;
+    }
+
+    pFinal
+    {
+        $p;
+        tolerance       1e-6;
         relTol          0;
     }
-    "rho|U"
+
+    "(U|k|epsilon)"
     {
-        solver          GAMG;
-        smoother        DIC;
-        tolerance       1e-06;
-        relTol          0.01;
+        solver          smoothSolver;
+        smoother        symGaussSeidel;
+        tolerance       1e-6;
+        relTol          0.1;
     }
-    e
+
+    "(U|k|epsilon)Final"
     {
-        solver          GAMG;
-        smoother        DILU;
-        tolerance       1e-06;
-        relTol          0.01;
+        $U;
+        tolerance       1e-6;
+        relTol          0;
     }
     "cellMotionU.*"
     {
@@ -44,19 +61,22 @@ solvers
         tolerance       1e-08;
         relTol          0;
     }
-    "cellDisplacement.*"
-    {
-        solver          GAMG;
-        tolerance       1e-5;
-        relTol          0;
-        smoother        GaussSeidel;
-    }
 }
 
 PIMPLE
 {
+    nCorrectors         2;
     correctPhi          true;
     checkMeshCourantNo  true;
+    
+    nOuterCorrectors    1;
+    nNonOrthogonalCorrectors 0;
+    pRefCell            0;
+    pRefValue           0;
+}
+
+relaxationFactors
+{
 }
 
 // ************************************************************************* //

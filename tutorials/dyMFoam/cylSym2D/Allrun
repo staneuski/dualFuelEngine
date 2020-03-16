@@ -9,4 +9,8 @@ cp ../../../etc/AllcleanAllrunAny.foam ${PWD##*/}.foam
 ./Allmesh
 runApplication $(getApplication)
 
+# runApplication decomposePar
+# runParallel $(getApplication)
+# runApplication reconstructPar
+
 # -----------------------------------------------------------------------------

@@ -1,8 +1,8 @@
 /*--------------------------------*- C++ -*----------------------------------*\
   =========                 |
-  \\      /  F ield         | OpenFOAM: dualFuelEngline addition to OpenFOAM v7
+  \\      /  F ield         | OpenFOAM: Addition to OpenFOAM v6
    \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
-    \\  /    A nd           | Version:  0.4-alpha
+    \\  /    A nd           | Version:  0.3-alpha
      \\/     M anipulation  |
 \*---------------------------------------------------------------------------*/
 FoamFile
@@ -42,7 +42,7 @@ baffles
                 matchTolerance  0.0001;
                 neighbourPatch  ACMI2_couple;
                 nonOverlapPatch ACMI1_blockage;
-                // transform       noOrdering; /* OpenFOAM v7 or lower */
+                // transform       noOrdering;
             }
             slave // not used since we're manipulating a boundary patch
             {
@@ -82,7 +82,7 @@ baffles
                 matchTolerance  0.0001;
                 neighbourPatch  ACMI1_couple;
                 nonOverlapPatch ACMI2_blockage;
-                // transform       noOrdering; /* OpenFOAM v7 or lower */
+                // transform       noOrdering;
             }
             slave // not used since we're manipulating a boundary patch
             {
