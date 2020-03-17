@@ -23,3 +23,5 @@ else
     (runApplication blockMesh && runApplication $(getApplication))\
     || cat log.$(getApplication)
 fi
+
+# -----------------------------------------------------------------------------

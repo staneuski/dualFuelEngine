@@ -8,11 +8,12 @@ cd ${0%/*} || exit 1
 
 application=$(getApplication)
 
-cp ../../../etc/AllcleanAllrunAny.foam ${PWD##*/}.foam
-
 ./Allmesh
 
+#- Run serial
 runApplication $application
+
+#- Run parallel
 # runApplication decomposePar -force
 # runParallel $application
 # runApplication reconstructPar

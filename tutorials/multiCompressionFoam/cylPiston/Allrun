@@ -6,11 +6,8 @@ cd ${0%/*} || exit 1
 # Source tutorial run functions
 . $WM_PROJECT_DIR/bin/tools/RunFunctions
 
-application=$(getApplication)
-
-cp ../../../etc/AllcleanAllrunAny.foam ${PWD##*/}.foam
-
 ./Allmesh
-runApplication $application
+
+runApplication $(getApplication)
 
 #------------------------------------------------------------------------------

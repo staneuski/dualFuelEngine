@@ -11,4 +11,6 @@ runApplication topoSet -constant
 # Split the mesh to generate the ACMI coupled patches
 runApplication createBaffles -overwrite
 
+cp ../../../etc/AllcleanAllrunAny.foam ${PWD##*/}.foam
+
 #------------------------------------------------------------------------------

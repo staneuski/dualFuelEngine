@@ -1,11 +1,16 @@
 #!/bin/sh
 cd ${0%/*} || exit 1    # Run from this directory
 
-# Scale & transfer .stl files
+# Source tutorial run functions
+. $WM_PROJECT_DIR/bin/tools/RunFunctions
+
+cp ../../../etc/AllcleanAllrunAny.foam ${PWD##*/}.foam
+
+# Scale & move .stl files
 printf 'Running surfaceTransformPoints on %s\n' "${PWD}"
 mkdir -p constant/triSurface
 
-# Injection
+#- Injection
 surfaceTransformPoints -translate '(0 0 3500)' -scale '(0.001 0.001 0.001)'\
     ../../resources/geometry/cylPiston/staticMesh/injection.stl constant/triSurface/injectionXMinus.stl\
     > log.surfaceTransformPoints 2>&1
@@ -19,7 +24,7 @@ surfaceTransformPoints -translate '(0 0 3500)' -rollPitchYaw '(0 0 270)' -scale 
     ../../resources/geometry/cylPiston/staticMesh/injection.stl constant/triSurface/injectionYPlus.stl\
     >> log.surfaceTransformPoints 2>&1
 
-# Inlet
+#- Inlet
 surfaceTransformPoints -translate '(0 0 3500)' -scale '(0.001 0.001 0.001)'\
     ../../resources/geometry/cylPiston/staticMesh/inlet.stl constant/triSurface/inletXMinus.stl\
     >> log.surfaceTransformPoints 2>&1
@@ -33,36 +38,33 @@ surfaceTransformPoints -translate '(0 0 3500)' -rollPitchYaw '(0 0 270)' -scale 
     ../../resources/geometry/cylPiston/staticMesh/inlet.stl constant/triSurface/inletYPlus.stl\
     >> log.surfaceTransformPoints 2>&1
 
-# Outlet
+#- Outlet
 surfaceTransformPoints -translate '(0 0 3500)' -scale '(0.001 0.001 0.001)'\
     ../../resources/geometry/cylPiston/staticMesh/outlet.stl constant/triSurface/outlet.stl\
     >> log.surfaceTransformPoints 2>&1
 
-# Valve
+#- Valve
 surfaceTransformPoints -translate '(0 0 3500)' -scale '(0.001 0.001 0.001)'\
     ../../resources/geometry/cylPiston/staticMesh/valve.stl constant/triSurface/valve.stl\
     >> log.surfaceTransformPoints 2>&1
 
-# Piston
+#- Piston
 surfaceTransformPoints -translate '(0 0 3500)' -scale '(0.001 0.001 0.001)'\
     ../../resources/geometry/cylPiston/staticMesh/piston.stl constant/triSurface/piston.stl\
     >> log.surfaceTransformPoints 2>&1
 
-# Walls
+#- Walls
 surfaceTransformPoints -translate '(0 0 3500)' -scale '(0.001 0.001 0.001)'\
     ../../resources/geometry/cylPiston/staticMesh/walls.stl constant/triSurface/walls.stl\
     >> log.surfaceTransformPoints 2>&1
 
-# Moving valve & piston
+#- Moving valve & piston
 surfaceTransformPoints -translate '(0 0 -0.3)'\
     constant/triSurface/valve.stl constant/triSurface/valve.stl\
     >> log.surfaceTransformPoints 2>&1
 surfaceTransformPoints -translate '(0 0 0.42)'\
     constant/triSurface/piston.stl constant/triSurface/piston.stl\
     >> log.surfaceTransformPoints 2>&1
-
-# Source tutorial run functions
-. $WM_PROJECT_DIR/bin/tools/RunFunctions
 
 # Meshing
 m4 < system/blockMeshDict.m4 > system/blockMeshDict
