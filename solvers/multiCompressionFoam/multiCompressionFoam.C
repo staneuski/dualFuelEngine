@@ -25,7 +25,7 @@ Application
     multiCompressionFoam
 
 Description
-    v0.4-alpha
+    v0.4.1-alpha
 
 Comments
     Phenomenological multicomponent compressible solver (multiCompressionFoam
@@ -124,6 +124,7 @@ int main(int argc, char *argv[])
 
             UEqn.relax();
             UEqn.solve();
+            fvOptions.correct(U);
 
             fvScalarMatrix eEqn
             (
@@ -133,16 +134,18 @@ int main(int argc, char *argv[])
               - fvc::div(p*U)
               + fvc::div(thermo.kappa()*fvc::grad(T))
               + (
-                     U & (
+                    U & (
                             mu*fvc::laplacian(U)
                           + fvc::grad(mu/3*fvc::div(U))
-                         )
+                        )
                 )
               //+ mu*D TODO
             );
 
             eEqn.relax();
             eEqn.solve();
+
+            fvOptions.correct(e);
 
             // Upgrade values using field e
             thermo.correct();

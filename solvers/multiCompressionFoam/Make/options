@@ -15,4 +15,5 @@ EXE_LIBS = \
     -ltopoChangerFvMesh \
     -lmeshTools \
     -lcompressibleTransportModels \
-    -lfluidThermophysicalModels
+    -lfluidThermophysicalModels \
+    -lfvOptions
