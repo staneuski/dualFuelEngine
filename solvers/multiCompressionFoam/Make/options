@@ -6,7 +6,7 @@ EXE_INC = \
     -I$(LIB_SRC)/finiteVolume/cfdTools \
     -I$(LIB_SRC)/transportModels/compressible/lnInclude \
     -I$(LIB_SRC)/thermophysicalModels/basic/lnInclude \
-    -I$(LIB_SRC)/../applications/solvers/compressible/rhoPimpleFoam
+    -I$(FOAM_SOLVERS)/compressible/rhoPimpleFoam
 
 EXE_LIBS = \
     -lfiniteVolume \
