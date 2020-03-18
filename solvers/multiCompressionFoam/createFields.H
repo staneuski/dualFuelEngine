@@ -54,6 +54,8 @@ volScalarField rho
     rhoBCTypes
 );
 
+#include "compressibleCreatePhi.H"
+
 Info<< "Reading concentration fields" << endl;
 
 volScalarField alphaAir
@@ -96,8 +98,6 @@ volScalarField alphaExh
     mesh,
     dimensionedScalar("alphaExh", dimless, 0)
 );
-
-#include "compressibleCreatePhi.H"
 
 Info<< "Reading transport properties\n" << endl;
 
