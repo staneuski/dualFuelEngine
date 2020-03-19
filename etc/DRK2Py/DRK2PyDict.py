@@ -14,7 +14,7 @@ tmpFolder          = 'tmp*' # path to Diesel-RK results folder
 
 n                  = 92 # RPM
 
-S                  = 2.7 # m
+S                  = 2.8 # m
 
 IPO                = 42 # ˚CA before BDC
 

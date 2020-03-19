@@ -21,13 +21,13 @@ internalField   uniform (0 0 0);
 
 boundaryField
 {
-    "(inlet|outlet|channelFront|channelBack|channelTopAndBottom|ACMI1_couple|ACMI1_blockage)"
+    "(injection|inlet|(injection|inlet)_(topAndBottom|front|back)|outlet|cyl_top)"
     {
         type            uniformFixedValue;
         uniformValue    (0 0 0);
     }
 
-    "(cylFront|cylBack|axis|ACMI2_couple|ACMI2_blockage)"
+    "axis|cyl_(front|back)|ACMI2_couple|ACMI2_blockage)"
     {
         type            fixedNormalSlip;
         n               (0 0 0);
