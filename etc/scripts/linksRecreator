@@ -1,24 +1,24 @@
 #!/bin/sh
 #----------------------------------*-sh-*--------------------------------------
 #  =========                 |
-#  \\      /  F ield         | OpenFOAM: OpenFOAM v7 dualFuelEngline addition
+#  \\      /  F ield         | OpenFOAM: dualFuelEngline addition to OpenFOAM v7
 #   \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
-#    \\  /    A nd           | Copyright (C) 2018-2020 Stanislau Stasheuski
+#    \\  /    A nd           | Copyright (C) 2020 Stanislau Stasheuski
 #     \\/     M anipulation  |
 # -----------------------------------------------------------------------------
 # License
 #     This file part of dualFuelEngine – OpenFOAM addition.
-#   
+#
 #     dualFuelEngine (like OpenFOAM) is free software: you can redistribute it 
 #     and/or modify it under the terms of the GNU General Public License as
 #     published by the Free Software Foundation, either version 3 of the License,
 #     or (at your option) any later version.
-#   
+#
 #     dualFuelEngine (like OpenFOAM) is distributed in the hope that it will be
 #     useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
 #     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 #     See the GNU General Public License for more details.
-#   
+#
 #     You should have received a copy of the GNU General Public License
 #     along with this repository. If not, see <http://www.gnu.org/licenses/>
 #
@@ -26,9 +26,7 @@
 #     etc/linksRecreator
 #
 # Description
-#     Script to make backup of the OpenFOAM case.
-#     Usage (must be run from the case folder):
-#     $FOAM_ADDITIONS/dualFuelEngine/etc/./makeBackup <backupName(optional)>
+#     Script to recreate symbolic links to run tutorials using Ubuntu WSL
 #
 #------------------------------------------------------------------------------
 
@@ -36,12 +34,25 @@ cd ${0%/*} || exit 1    # Run from this directory
 
 cd ../tutorials/multiCompressionFoam
 
-# closedPipe
-cd closedPipe # && pwd
-cd 0 && rm -r T alpha*
+#- tube
+cd tube && printf 'Running linksRecreator on %s\n' "${PWD}"
+
+cd constant # && rm -r *Properties
+ln -sf ../../RiemannTube/constant/thermophysicalProperties thermophysicalProperties
+ln -sf ../../RiemannTube/constant/transportProperties transportProperties
+
+cd ../system # && rm -r fvSchemes
+ln -sf ../../RiemannTube/system/fvSchemes fvSchemes
+ln -sf ../../RiemannTube/system/fvSolution fvSolution
+
+
+#- closedPipe
+cd ../../closedPipe && printf 'Running linksRecreator on %s\n' "${PWD}"
+
+cd 0 # && rm -r T alpha*
 ln -sf ../../RiemannTube/0/T.orig T
 ln -sf ../../RiemannTube/0/alphaAir.orig alphaAir
-ln -sf ../../RiemannTube/0/alphaAir.orig alphaAir
+ln -sf ../../RiemannTube/0/alphaGas.orig alphaGas
 
 cd ../constant # && rm -r *Properties
 ln -sf ../../RiemannTube/constant/thermophysicalProperties thermophysicalProperties
@@ -51,9 +62,10 @@ cd ../system # && rm -r fvSchemes
 ln -sf ../../RiemannTube/system/fvSchemes fvSchemes
 
 
-# cylPiston
-cd ../../cylPiston && pwd
-cd 0 && rm -r T U alpha* p
+#- cylPiston
+cd ../../cylPiston && printf 'Running linksRecreator on %s\n' "${PWD}"
+
+cd 0 # && rm -r T U alpha* p
 ln -sf ../../quadPiston/0/T.orig T
 ln -sf ../../quadPiston/0/U.orig U
 ln -sf ../../quadPiston/0/alphaAir.orig alphaAir
@@ -72,8 +84,9 @@ ln -sf ../../quadPiston/system/snappyHexMeshDict snappyHexMeshDict
 ln -sf ../../quadPiston/system/surfaceFeaturesDict surfaceFeaturesDict
 
 
-# cylSym2D
-cd ../../cylSym2D && pwd # && rm -r Allclean Allmesh
+#- cylSym2D
+cd ../../cylSym2D && printf 'Running linksRecreator on %s\n' "${PWD}"
+# rm -r Allclean Allmesh
 ln -sf ../../../dyMFoam/cylSym2D/Allclean Allclean
 ln -sf ../../../dyMFoam/cylSym2D/Allmesh Allmesh
 
@@ -95,9 +108,10 @@ ln -sf ../../../dyMFoam/cylSym2D/system/createBafflesDict
 ln -sf ../../../dyMFoam/cylSym2D/system/topoSetDict
 
 
-# quadPiston
-cd ../../quadPiston && pwd
-cd constant && rm -r *Properties
+#- quadPiston
+cd ../../quadPiston && printf 'Running linksRecreator on %s\n' "${PWD}"
+
+cd constant # && rm -r *Properties
 ln -sf ../../RiemannTube/constant/thermophysicalProperties thermophysicalProperties
 ln -sf ../../RiemannTube/constant/transportProperties transportProperties
 
@@ -105,4 +119,4 @@ cd ../system # && rm -r fv*
 ln -sf ../../RiemannTube/system/fvSchemes fvSchemes
 ln -sf ../../RiemannTube/system/fvSolution fvSolution
 
-cd ../../
+#------------------------------------------------------------------------------

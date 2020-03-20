@@ -24,7 +24,7 @@ OpenFOAM solver based on phenomenological compression model for dual-fuel ship e
 4. To compile with OpenFOAM v5.x (not tested on version [0.4-alpha](https://github.com/StasF1/dualFuelEngine/releases/tag/v0.4-alpha))
     ```sh
     git clone https://github.com/StasF1/dualFuelEngine.git $FOAM_ADD/dualFuelEngine
-    $FOAM_ADD/dualFuelEngine/etc/./v5x-compile
+    $FOAM_ADD/dualFuelEngine/etc/scripts/./v5x-compile
     $FOAM_ADD/dualFuelEngine/solvers/./Allwmake
     ```
 
