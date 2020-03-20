@@ -17,6 +17,7 @@ backups/
 dynamicCode/
 extendedFeatureEdgeMesh/
 polyMesh/
+*.res/
 triSurface/
 postProcessing/
 VTK/
