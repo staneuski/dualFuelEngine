@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<FVVIEWPORT puffFog="0" bkColor="00005500" upGradientColor="00FFFFFF" backType="eBackUnicolor" downGradientColor="00456407">
+<FVVIEWPORT puffFog="0" bkColor="00000000" upGradientColor="00FFFFFF" backType="eBackUnicolor" downGradientColor="00456407">
   <matScale>
     <_0_0>1</_0_0>
     <_1_0>0</_1_0>
@@ -18,12 +18,12 @@
     <_2_3>0</_2_3>
     <_3_3>1</_3_3>
   </matScale>
-  <boostCamera>39.990921163972892</boostCamera>
-  <radius>3.4854384371097318</radius>
+  <boostCamera>39.99129180190149</boostCamera>
+  <radius>3.4854707403336884</radius>
   <visualVolumeExpander>1</visualVolumeExpander>
-  <rotationCenter x="0" y="0" z="-2.013886422829315"/>
+  <rotationCenter x="0" y="0" z="-2.013854052359938"/>
   <curSight UIName="Вдоль X">
-    <subRect width="0.19292601799670855" height="0.19292601799670855" y0="0.40353699100164564" x0="0.40353699100164564"/>
+    <subRect width="0.34638463788303081" height="0.34638463788303081" y0="0.32680768105848457" x0="0.32680768105848457"/>
     <matRotate>
       <_0_0>0</_0_0>
       <_1_0>0</_1_0>
@@ -55,12 +55,12 @@
       <_1_2>0</_1_2>
       <_2_2>1</_2_2>
       <_3_2>0</_3_2>
-      <_0_3>-2.1481285095214844</_0_3>
-      <_1_3>-0.087272763252258301</_1_3>
+      <_0_3>-1.0400025844573975</_0_3>
+      <_1_3>-0.31663590669631958</_1_3>
       <_2_3>0</_2_3>
       <_3_3>1</_3_3>
     </matTranslate>
-    <viewAngle>1.933988882421217</viewAngle>
+    <viewAngle>3.4716036595232085</viewAngle>
     <deltaX>0</deltaX>
     <deltaY>0</deltaY>
     <deltaZ>0</deltaZ>
@@ -84,7 +84,7 @@
   </backPalette>
   <DrawBox>
     <ldn x="-0.5" y="-0.5" z="-5.3570209606469001"/>
-    <ruf x="0.5" y="0.5" z="1.3292481149882702"/>
+    <ruf x="0.5" y="0.5" z="1.3293128559270242"/>
   </DrawBox>
   <PolyFill>1</PolyFill>
   <PolyBack>0</PolyBack>

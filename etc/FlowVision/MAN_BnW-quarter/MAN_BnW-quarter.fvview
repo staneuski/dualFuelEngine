@@ -123,7 +123,7 @@
       <Fill Alpha="100" Color="00808000"/>
     </OBJECT>
   </OBJECT>
-  <OBJECT Lit="1" Width="2" class="CScalarLayer" myid="11932" Clipped="1" GUID="3163E2F8-77EE-4730-8AAA-90FD422DCC8E" Visible="1" DrawMode="FLOOD" UIName="p">
+  <OBJECT Lit="1" Width="2" class="CScalarLayer" myid="11932" Clipped="1" GUID="3163E2F8-77EE-4730-8AAA-90FD422DCC8E" Visible="0" DrawMode="FLOOD" UIName="p">
     <Object>*-2.-4.2</Object>
     <Settings>
       <Mode>UNASSIGNED</Mode>
@@ -157,7 +157,7 @@
     <RegularGrid>0</RegularGrid>
     <Resolution Size1="100" Size2="100" LocalSystem="1" Size3="1"/>
     <DoubleResolution>0</DoubleResolution>
-    <Mapping MappingMode="LOCAL" Min="-92006.9140625" Max="1220677.375"/>
+    <Mapping MappingMode="LOCAL" Min="0" Max="0"/>
     <LogScale Limit="1.0000000000000001E-005" Enabled="0"/>
     <Palette>
       <Overlay HorzAlign="RIGHT" Enabled="1" ShowTitle="1" Style="STYLE1" VertAlign="TOP" Gradations="11" Color="00FFFFFF"/>
@@ -455,7 +455,7 @@
     </Palette>
     <OBJECT class="CPlaneConstraints" myid="-100" Enabled="0" Type="RECTANGLE" Size1="0.10000000000000001" Size2="0.10000000000000001"/>
   </OBJECT>
-  <OBJECT Lit="1" Width="2" class="CScalarLayer" myid="11964" Clipped="1" GUID="E410806B-99BA-406E-967F-55FC53468B6A" Visible="0" DrawMode="FLOOD" UIName="alphaGas">
+  <OBJECT Lit="1" Width="2" class="CScalarLayer" myid="11964" Clipped="1" GUID="E410806B-99BA-406E-967F-55FC53468B6A" Visible="1" DrawMode="FLOOD" UIName="alphaGas">
     <Object>*-2.-4.2</Object>
     <Settings>
       <Mode>UNASSIGNED</Mode>
@@ -583,7 +583,7 @@
         <Pivot x="0" y="0" z="0"/>
       </Relativity>
     </CoorSystem>
-    <Mapping ReferenceLen="0.050000000000000003" MappingMode="LOCAL" ConstantLen="0" Max="1199.893798828125"/>
+    <Mapping ReferenceLen="0.050000000000000003" MappingMode="LOCAL" ConstantLen="0" Max="0"/>
     <Mode>FULL</Mode>
     <Lines Width="1" Color="00FFFFFF"/>
     <Arrows Angle="20" Mode="LINES" Size="20"/>
@@ -598,7 +598,7 @@
           <Inverted>0</Inverted>
         </Integration>
       </Var>
-      <Mapping MappingMode="LOCAL" Min="0.071766503155231476" Max="1199.893798828125"/>
+      <Mapping MappingMode="LOCAL" Min="0.014567150734364986" Max="416.24822998046875"/>
       <LogScale Limit="1.0000000000000001E-005" Enabled="0"/>
       <Palette>
         <Overlay HorzAlign="RIGHT" Enabled="1" ShowTitle="1" Style="STYLE1" VertAlign="TOP" Gradations="11" Color="00FFFFFF"/>
@@ -646,96 +646,28 @@
       <Lines Width="1" Color="00FFFFFF"/>
       <Fill Alpha="100" Color="00808080"/>
     </Appearance>
-    <Processors Mode="BOTH" Count="1">
-      <Visibility>0</Visibility>
+    <Processors Mode="BOTH" Count="0">
+      <Visibility>-</Visibility>
       <Lines>
-        <Color>
-          <ITEM>000000FF</ITEM>
-        </Color>
-        <Width>
-          <ITEM>1</ITEM>
-        </Width>
+        <Color/>
+        <Width/>
       </Lines>
       <Fill>
-        <Color>
-          <ITEM>000000E0</ITEM>
-        </Color>
-        <Alpha>
-          <ITEM>100</ITEM>
-        </Alpha>
+        <Color/>
+        <Alpha/>
       </Fill>
     </Processors>
-    <Hypercells Mode="BOTH" Count="11">
-      <Visibility>0-10</Visibility>
+    <Hypercells Mode="BOTH" Count="0">
+      <Visibility>-</Visibility>
       <Lines>
-        <Color>
-          <ITEM>00C39FD0</ITEM>
-          <ITEM>00A40B76</ITEM>
-          <ITEM>008C1F49</ITEM>
-          <ITEM>00044940</ITEM>
-          <ITEM>00132C19</ITEM>
-          <ITEM>0039CF3F</ITEM>
-          <ITEM>00C02E1F</ITEM>
-          <ITEM>00335B3D</ITEM>
-          <ITEM>005C12A9</ITEM>
-          <ITEM>006082D2</ITEM>
-          <ITEM>0020C4C6</ITEM>
-        </Color>
-        <Width>
-          <ITEM>1</ITEM>
-          <ITEM>1</ITEM>
-          <ITEM>1</ITEM>
-          <ITEM>1</ITEM>
-          <ITEM>1</ITEM>
-          <ITEM>1</ITEM>
-          <ITEM>1</ITEM>
-          <ITEM>1</ITEM>
-          <ITEM>1</ITEM>
-          <ITEM>1</ITEM>
-          <ITEM>1</ITEM>
-        </Width>
+        <Color/>
+        <Width/>
       </Lines>
       <Fill>
-        <Color>
-          <ITEM>00614F68</ITEM>
-          <ITEM>0052053B</ITEM>
-          <ITEM>00460F24</ITEM>
-          <ITEM>00022420</ITEM>
-          <ITEM>0009160C</ITEM>
-          <ITEM>001C671F</ITEM>
-          <ITEM>0060170F</ITEM>
-          <ITEM>00192D1E</ITEM>
-          <ITEM>002E0954</ITEM>
-          <ITEM>00304169</ITEM>
-          <ITEM>00106263</ITEM>
-        </Color>
-        <Alpha>
-          <ITEM>100</ITEM>
-          <ITEM>100</ITEM>
-          <ITEM>100</ITEM>
-          <ITEM>100</ITEM>
-          <ITEM>100</ITEM>
-          <ITEM>100</ITEM>
-          <ITEM>100</ITEM>
-          <ITEM>100</ITEM>
-          <ITEM>100</ITEM>
-          <ITEM>100</ITEM>
-          <ITEM>100</ITEM>
-        </Alpha>
+        <Color/>
+        <Alpha/>
       </Fill>
-      <Processor>
-        <ITEM>0</ITEM>
-        <ITEM>0</ITEM>
-        <ITEM>0</ITEM>
-        <ITEM>0</ITEM>
-        <ITEM>0</ITEM>
-        <ITEM>0</ITEM>
-        <ITEM>0</ITEM>
-        <ITEM>0</ITEM>
-        <ITEM>0</ITEM>
-        <ITEM>0</ITEM>
-        <ITEM>0</ITEM>
-      </Processor>
+      <Processor/>
     </Hypercells>
   </OBJECT>
   <OBJECT Lit="1" class="CObjectLayer" myid="15322" Clipped="0" GUID="05F45A7D-6744-4DF1-8A7E-F90DC599C677" Visible="0">
@@ -936,7 +868,7 @@
     </SaveData>
     <Chars>*-2.-2.472</Chars>
   </OBJECT>
-  <OBJECT Lit="1" Width="2" class="CScalarLayer" myid="23827" Clipped="1" GUID="9A0DADC1-6747-4DB7-B871-A8B2480EEB38" Visible="1" DrawMode="ISOLINES" UIName="Mach">
+  <OBJECT Lit="1" Width="2" class="CScalarLayer" myid="23827" Clipped="1" GUID="9A0DADC1-6747-4DB7-B871-A8B2480EEB38" Visible="0" DrawMode="ISOLINES" UIName="Mach">
     <Object>*-2.-4.2</Object>
     <Settings>
       <Mode>UNASSIGNED</Mode>
@@ -970,7 +902,7 @@
     <RegularGrid>0</RegularGrid>
     <Resolution Size1="100" Size2="100" LocalSystem="1" Size3="1"/>
     <DoubleResolution>0</DoubleResolution>
-    <Mapping MappingMode="GLOBAL" Min="0.00022994229220785201" Max="2.5362060070037842"/>
+    <Mapping MappingMode="GLOBAL" Min="0" Max="0"/>
     <LogScale Limit="1.0000000000000001E-005" Enabled="0"/>
     <Palette>
       <Overlay HorzAlign="RIGHT" Enabled="1" ShowTitle="1" Style="STYLE1" VertAlign="TOP" Gradations="11" Color="00FFFFFF"/>
@@ -1086,7 +1018,7 @@
     <RegularGrid>0</RegularGrid>
     <Resolution Size1="100" Size2="100" LocalSystem="1" Size3="1"/>
     <DoubleResolution>0</DoubleResolution>
-    <Mapping MappingMode="GLOBAL" Min="0.031999193131923676" Max="3.7638382911682129"/>
+    <Mapping MappingMode="GLOBAL" Min="0" Max="0"/>
     <LogScale Limit="1.0000000000000001E-005" Enabled="0"/>
     <Palette>
       <Overlay HorzAlign="RIGHT" Enabled="1" ShowTitle="1" Style="STYLE1" VertAlign="TOP" Gradations="11" Color="00FFFFFF"/>

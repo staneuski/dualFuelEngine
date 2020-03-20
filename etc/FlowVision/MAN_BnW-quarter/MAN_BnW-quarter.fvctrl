@@ -28,7 +28,7 @@
             <MyBlockType>CMotionProcess</MyBlockType>
           </ITEM>
           <ITEM>
-            <Limiter>20000000</Limiter>
+            <Limiter>25000000</Limiter>
             <LimType>MAXLIM</LimType>
             <MyNMVar>PRES</MyNMVar>
             <MyBlockType>CMotionProcess</MyBlockType>
@@ -40,7 +40,7 @@
             <MyBlockType>CHeatXferProcess</MyBlockType>
           </ITEM>
           <ITEM>
-            <Limiter>1800</Limiter>
+            <Limiter>2000</Limiter>
             <LimType>MAXLIM</LimType>
             <MyNMVar>TEMP</MyNMVar>
             <MyBlockType>CHeatXferProcess</MyBlockType>
@@ -381,7 +381,7 @@
     </OBJECT>
     <OBJECT class="CFvValueConstant" Constant="9.9999999999999998E-013" myid="9"/>
     <OBJECT class="CFvValueFormula" myid="10">
-      <Formula>60/n/360/*0.0018116*/*0.2</Formula>
+      <Formula>60/n/360/*0.0018116*/*0.02</Formula>
       <Bindings>
         <Constants/>
         <Linkage>
@@ -400,7 +400,7 @@
           <ITEM Opcode="DIV" Value="2"/>
           <ITEM Opcode="PUSH" Value="360"/>
           <ITEM Opcode="DIV" Value="2"/>
-          <ITEM Opcode="PUSH" Value="0.20000000000000001"/>
+          <ITEM Opcode="PUSH" Value="0.02"/>
           <ITEM Opcode="MUL" Value="2"/>
         </Code>
       </Code>
