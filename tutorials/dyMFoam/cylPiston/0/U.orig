@@ -14,9 +14,9 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-injection       50;
+injection       20;
 
-inlet           25;
+inlet           10;
 
 dimensions      [0 1 -1 0 0 0 0];
 

@@ -21,7 +21,7 @@ boundaryField
         {
             type        sine;
             frequency   1.4286; // n/60
-            amplitude   23; // pi*S*n/30 = pi*2.7*92/30
+            amplitude   23; // pi*S*n/30 = pi*2.8*92/30 = 26.96
             start       0.154; // EVO/6/n = 85/6/92
             level       0; // offset
 

@@ -1,8 +1,8 @@
 /*--------------------------------*- C++ -*----------------------------------*\
   =========                 |
-  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
-   \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Version:  dev
+  \\      /  F ield         | OpenFOAM: dualFuelEngline addition to OpenFOAM v7
+   \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
+    \\  /    A nd           | Version:  0.4-alpha
      \\/     M anipulation  |
 \*---------------------------------------------------------------------------*/
 FoamFile
@@ -10,14 +10,13 @@ FoamFile
     version     2.0;
     format      ascii;
     class       volScalarField;
-    location    "0";
-    object      k;
+    object      p;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [0 2 -2 0 0 0 0];
+dimensions      [0 0 0 1 0 0 0];
 
-internalField   uniform 3.75e-3;
+internalField   uniform 380; // 850
 
 boundaryField
 {
@@ -25,15 +24,15 @@ boundaryField
     "(injection|inlet)(X|Y)(m|p)"
     {
         type            fixedValue;
-        value           $internalField;
+        value           uniform 332; // 332
     }
 
 /* Outlet */
     outlet
     {
         type            inletOutlet;
-        inletValue      $internalField;
-        value           $internalField;
+        inletValue      uniform 350; // 764
+        value           $inletValue;
     }
 
 /* Walls */
@@ -45,8 +44,7 @@ boundaryField
 /* ACMI patches */
     "(inner|outer)ACMI(1|2)_blockage"
     {
-        type            kqRWallFunction;
-        value           $internalField;
+        type            zeroGradient;
     }
     "(inner|outer)ACMI(1|2)_couple"
     {
@@ -54,6 +52,5 @@ boundaryField
         value           $internalField;
     }
 }
-
 
 // ************************************************************************* //
