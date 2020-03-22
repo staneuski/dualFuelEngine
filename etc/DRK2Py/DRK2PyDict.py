@@ -10,20 +10,22 @@ from math import pi
 
 # * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
-tmpFolder          = 'tmp*' # path to Diesel-RK results folder
+tmpFolder          = 'tmp2020-02*' # path to Diesel-RK results folder
 
+terminalOutput     = 'false' # 'true' \ 'false', output log in the Terminal window
 
-terminalOutput     = 'true' # true or false
+cylParPlot         = 'false' # 'true' \ 'false', integral cylinder parameters plot
 
-saveFormat         = 'txt' # None, csv or txt (coordinates is writen in the .csv, velocities in the .txt)
+inOutParPlot       = 'false' # 'true' \ 'false', integral manifolds parameters plot
 
-cylParPlot         = 'false' # true or false
+inletInjectionPlot = 'true' # 'true' \ 'false', inlet & injection mass flow rate
 
-inOutParPlot       = 'false' # true or false
+massFlowRatePar    = 'rhoU' # 'rhoU' \ 'G', mass flow rate to plot (relative or not)
 
-movingPartsPlot    = 'false' # true or false
+# Moving parts coordinates are writen in the .csv, velocities in the .txt
+saveFormat         = 'txt' # 'None' \ 'csv' \ 'txt'
 
-inletInjectionPlot = 'false' # true or false
+movingPartsPlot    = 'false' # 'true' \ 'false', moving parts (valve, piston) scheme
 
 # * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
@@ -40,10 +42,10 @@ EVO                = 85 # ˚CA before BDC
 
 EVC                = 46 # ˚CA after BDC
 
-inletArea          = 1.092e-03 # m^2
+inletArea          = 1092*191*1e-6 # m^2
 
 
-injG_max           = 1 # kg/s, q_injGas = 95 (g), t_injGas = 0.0815 (s)
+injG_max           = 0.095/0.0815/20 # kg/s: q_injGas = 95 (g), t_injGas = 0.0815 (s)
 
 injCA2Max          = 10 # ˚CA
 
