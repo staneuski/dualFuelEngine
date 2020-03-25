@@ -29,33 +29,33 @@ movingPartsPlot    = 'false' # 'true' \ 'false', moving parts (valve, piston) sc
 
 # * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
-n                  = 92 # RPM
+n           = 92 # RPM
 
-S                  = 2.7 # m
-
-
-IPO                = 42 # ˚CA before BDC
-
-IPC                = IPO # ˚CA after BDC
-
-EVO                = 85 # ˚CA before BDC
-
-EVC                = 46 # ˚CA after BDC
-
-inletArea          = 1092*191*1e-6 # m^2
+S           = 2.7 # m
 
 
-injG_max           = 0.095/0.0815/20 # kg/s: q_injGas = 95 (g), t_injGas = 0.0815 (s)
+IPO         = 42 # ˚CA before BDC
 
-injCA2Max          = 10 # ˚CA
+IPC         = IPO # ˚CA after BDC
 
-injArea            = pi*pow(3.75e-03, 2)/4*2 # m^2, area which equals of the two injector orifices d = 3.75 (mm)
+EVO         = 85 # ˚CA before BDC
 
-injT               = 380 # K (estimated)
+EVC         = 46 # ˚CA after BDC
 
-injP               = 150e+05 # Pa (estimated)
+inletArea   = 1092*191*1e-6 # m^2
 
-injR               = 518.3 # J/mol/K specific gas constant
+
+injG_max    = 0.0983/0.0815/20 # kg/s, q_injGas/t_injGas
+
+injCA2Max   = 10 # ˚CA
+
+injDuration = 80 - 2*injCA2Max # ˚CA
+
+injArea     = pi*pow(3.75e-03, 2)/4*2 # m^2, area which equals of the two injector orifices d = 3.75 (mm)
+
+injT        = 380 # K (estimated)
+
+injR        = 518.3 # J/mol/K specific gas constant
 
 
 # *****************************************************************************

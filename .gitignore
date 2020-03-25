@@ -11,6 +11,8 @@ log.*
 
 
 # Folders - anywhere
+__pycache__/
+.ipynb_checkpoints/
 0.*/
 [1-9]*/
 backups/
@@ -35,6 +37,4 @@ etc/FlowVision/**/*.sta
 
 
 # Folders - local
-etc/DRK2Py/__pycache__/
-etc/DRK2Py/*.res/
 etc/DRK2Py/tmp*/

@@ -20,12 +20,12 @@ Initial conditions:
 
 Boundary conditions:
 - Inlet port mean parameters:
-    Pressure: {round(np.mean(p_IP)*1e-06, 4)} MPa
+    Pressure: {round(np.mean(p_IP)*1e-06, 1)} MPa
     Temperature: {round(np.mean(T_IP), 4)} K
 
 - Injection estimated (!) parameters:
-    Velocity: {round(injG_max*injR*injT/injP/injArea, 4)} m/s (max)
-    Pressure: {injP*1e-06} MPa
+    Velocity: {round(injG_max*287*injT/p[EVC]/injArea/2, 1)} m/s (max)
+    Pressure: {p[EVC]*1e-06} MPa
     Temperature: {injT} K
 
 - Exhaust pipe mean parameters:
