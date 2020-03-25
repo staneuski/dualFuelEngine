@@ -1,4 +1,4 @@
-solid CATIASTL
+solid cylinder
  facet normal -0.730974 0.565017 -0.382666
   outer loop
    vertex 0.0669318 0.343541 -2.60115
@@ -23883,4 +23883,4 @@ solid CATIASTL
    vertex -0.349674 0.0151 -3.24038
   endloop
  endfacet
-endsolid CATIASTL
+endsolid cylinder
