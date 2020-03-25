@@ -1,174 +1,259 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<FVSTATUS ownIcingTime="0" totalCellsOBL="0" timeIter="13200" slideTimeStep="3.4028234663852886E+038" current="0.47826099999999999" expTimeStepFSI="0" timeStep="3.6275362282067736E-005" expTimeStep="1.6669929482443841E-005" totalCells="230170" surfTimeStep="0.11083428875379468" calcCellsOBL="0" calcCells="5729" beadgrowthTimeStep="0" UIName="VarStatus" difTimeStep="1.1430467544728482E-005">
+<FVSTATUS ownIcingTime="0" totalCellsOBL="0" timeIter="10559" slideTimeStep="3.4028234663852886E+038" current="0.47821566666665827" expTimeStepFSI="0" timeStep="4.5333333341751603E-005" expTimeStep="0.0012938637096684556" totalCells="88662" surfTimeStep="0.10957350632025989" calcCellsOBL="0" calcCells="698" beadgrowthTimeStep="0" UIName="VarStatus" difTimeStep="5.112917588763044E-005">
   <UseOld Grid="1" Data="1" Mask="1"/>
   <eqResiduals>
-    <ITEM EqRes="0.25824883125273668" Iters="16" Step="13200" Name="Pressure" IsOBL="0" MaxEqRes="259.87715620033578" LinRes="7.529540550081148E-005">
+    <ITEM EqRes="0.080333640741143256" Iters="6" Step="10559" Name="Pressure" IsOBL="0" MaxEqRes="35.324440060733835" LinRes="2.3893039489681425E-005">
       <Var Size="1" IDModel="41" IDVar="PRES" IDPhase="51" BlockType="CMotionProcess"/>
     </ITEM>
-    <ITEM EqRes="0.0057280083091829966" Iters="3" Step="13200" Name="Velocity" IsOBL="0" MaxEqRes="1949.298082112829" LinRes="8.9820870554184556E-007">
+    <ITEM EqRes="0.0061124477843952831" Iters="2" Step="10559" Name="Velocity" IsOBL="0" MaxEqRes="1965.808799762937" LinRes="1.7578524629938527E-008">
       <Var Size="3" IDModel="41" IDVar="VEL" IDPhase="51" BlockType="CMotionProcess"/>
     </ITEM>
-    <ITEM EqRes="0.006858185812807953" Iters="2" Step="13200" Name="TurbEnergy" IsOBL="0" MaxEqRes="1337.7857140796043" LinRes="4.4965778294006762E-007">
-      <Var Size="1" IDModel="41" IDVar="KTURB" IDPhase="51" BlockType="CTurbulenceProcess"/>
-    </ITEM>
-    <ITEM EqRes="0.001826133422904866" Iters="2" Step="13200" Name="TurbDissipation specific" IsOBL="0" MaxEqRes="4935.8751642204106" LinRes="7.2469867365616273E-007">
-      <Var Size="1" IDModel="41" IDVar="OMEGA" IDPhase="51" BlockType="CTurbulenceProcess"/>
-    </ITEM>
-    <ITEM EqRes="0.43658481950820882" Iters="3" Step="13200" Name="Mass frac. [Природный газ_Газовая (равновесная)]" IsOBL="0" MaxEqRes="45.52039973253504" LinRes="3.7916291813694568E-006">
+    <ITEM EqRes="0.015538143656938586" Iters="2" Step="10559" Name="Mass frac. [Природный газ_Газовая (равновесная)]" IsOBL="0" MaxEqRes="48.235728943502373" LinRes="1.1461112341803604E-007">
       <Var Size="1" IDModel="41" IDVar="MASSFRACTIONS00" IDPhase="51" BlockType="CMassXferProcess"/>
     </ITEM>
-    <ITEM EqRes="0.10592295763770006" Iters="3" Step="13200" Name="Mass frac. [Воздух_Газовая (равновесная)]" IsOBL="0" MaxEqRes="443.25320441797913" LinRes="1.6290791462551772E-005">
+    <ITEM EqRes="0.00042474052865582572" Iters="2" Step="10559" Name="Mass frac. [Воздух_Газовая (равновесная)]" IsOBL="0" MaxEqRes="310.64715167751302" LinRes="2.8693269710726973E-006">
       <Var Size="1" IDModel="41" IDVar="MASSFRACTIONS01" IDPhase="51" BlockType="CMassXferProcess"/>
     </ITEM>
-    <ITEM EqRes="0.023470370785559615" Iters="2" Step="13200" Name="Enthalpy" IsOBL="0" MaxEqRes="218.77379162279544" LinRes="1.4832601419834171E-005">
+    <ITEM EqRes="0.039015337024367762" Iters="2" Step="10559" Name="Enthalpy" IsOBL="0" MaxEqRes="25.931984343399321" LinRes="2.2610105948021993E-009">
       <Var Size="1" IDModel="41" IDVar="ENTH" IDPhase="51" BlockType="CHeatXferProcess"/>
     </ITEM>
   </eqResiduals>
   <stopperData>
-    <ITEM Stopper="*-2.-5.-5.22">
-      <History Mode="BY_TIME" MaxAvg="1984.7954128454371" MinAvg="-22.468743938862012" Iterations="1" Time="0" Min="-22.468743938862012" Max="1984.7954128454371">
+    <ITEM Stopper="*-2.-5.-5.92">
+      <History Mode="BY_TIME" MaxAvg="0.12236990820107299" MinAvg="0.1035262984573276" Iterations="1" Time="0" Min="0.1035262984573276" Max="0.12236990820107299">
         <Data>
-          <ITEM ID="13200" Time="0.47826099999999999" Value="0"/>
+          <ITEM ID="10559" Time="0.47821566666665827" Value="0.1035262984573276"/>
+        </Data>
+      </History>
+    </ITEM>
+    <ITEM Stopper="*-2.-5.-5.75">
+      <History Mode="BY_TIME" MaxAvg="2.9264875516352493" MinAvg="0.019742368013320414" Iterations="1" Time="0" Min="0.019742368013320414" Max="2.9264875516352493">
+        <Data>
+          <ITEM ID="10559" Time="0.47821566666665827" Value="0.019742368013320414"/>
+        </Data>
+      </History>
+    </ITEM>
+    <ITEM Stopper="*-2.-5.-5.66">
+      <History Mode="BY_TIME" MaxAvg="31726166.246154267" MinAvg="132385.38607581903" Iterations="1" Time="0" Min="132385.38607581903" Max="31726166.246154267">
+        <Data>
+          <ITEM ID="10559" Time="0.47821566666665827" Value="11312017.245230015"/>
+        </Data>
+      </History>
+    </ITEM>
+    <ITEM Stopper="*-2.-5.-5.72">
+      <History Mode="BY_TIME" MaxAvg="1250.0000000000005" MinAvg="10.814741642496044" Iterations="1" Time="0" Min="10.814741642496044" Max="1250.0000000000005">
+        <Data>
+          <ITEM ID="10559" Time="0.47821566666665827" Value="10.814741642496044"/>
+        </Data>
+      </History>
+    </ITEM>
+    <ITEM Stopper="*-2.-5.-5.89">
+      <History Mode="BY_TIME" MaxAvg="0.10806224872724154" MinAvg="0.096839456912642161" Iterations="1" Time="0" Min="0.096839456912642161" Max="0.10806224872724154">
+        <Data>
+          <ITEM ID="10559" Time="0.47821566666665827" Value="0.096839456912642174"/>
+        </Data>
+      </History>
+    </ITEM>
+    <ITEM Stopper="*-2.-5.-5.106">
+      <History Mode="BY_TIME" MaxAvg="24.635024386003728" MinAvg="1.0523242607920933" Iterations="1" Time="0" Min="1.0523242607920933" Max="24.635024386003728">
+        <Data>
+          <ITEM ID="10559" Time="0.47821566666665827" Value="24.635024386003728"/>
+        </Data>
+      </History>
+    </ITEM>
+    <ITEM Stopper="*-2.-5.-5.69">
+      <History Mode="BY_TIME" MaxAvg="1588.1447036440281" MinAvg="246.10826551428909" Iterations="1" Time="0" Min="246.10826551428909" Max="1588.1447036440281">
+        <Data>
+          <ITEM ID="10559" Time="0.47821566666665827" Value="1049.0061629622105"/>
+        </Data>
+      </History>
+    </ITEM>
+    <ITEM Stopper="*-2.-5.-5.78">
+      <History Mode="BY_TIME" MaxAvg="0.11133249241356594" MinAvg="0.0053243758137703949" Iterations="1" Time="0" Min="0.0053243758137703949" Max="0.11133249241356594">
+        <Data>
+          <ITEM ID="10559" Time="0.47821566666665827" Value="0.0053243758137703949"/>
+        </Data>
+      </History>
+    </ITEM>
+    <ITEM Stopper="*-2.-5.-5.54">
+      <History Mode="BY_TIME" MaxAvg="42.167408738837601" MinAvg="0.25956965098899837" Iterations="1" Time="0" Min="0.25956965098899837" Max="42.167408738837601">
+        <Data>
+          <ITEM ID="10559" Time="0.47821566666665827" Value="2.1442920214765722"/>
+        </Data>
+      </History>
+    </ITEM>
+    <ITEM Stopper="*-2.-5.-5.109">
+      <History Mode="BY_TIME" MaxAvg="0.95940565687259072" MinAvg="0" Iterations="1" Time="0" Min="0" Max="0.95940565687259072">
+        <Data>
+          <ITEM ID="10559" Time="0.47821566666665827" Value="0.9118825951022983"/>
         </Data>
       </History>
     </ITEM>
     <ITEM Stopper="*-2.-5.-5.18">
       <History Mode="BY_TIME" MaxAvg="1" MinAvg="0" Iterations="1" Time="0" Min="0" Max="1">
         <Data>
-          <ITEM ID="13200" Time="0.47826099999999999" Value="0.43658481950820882"/>
+          <ITEM ID="10559" Time="0.47821566666665827" Value="0.015538143656938586"/>
         </Data>
       </History>
     </ITEM>
-    <ITEM Stopper="*-2.-5.-5.60">
-      <History Mode="BY_TIME" MaxAvg="1" MinAvg="0.12388570101234539" Iterations="1" Time="0" Min="0.12388570101234539" Max="1">
+    <ITEM Stopper="*-2.-5.-5.16">
+      <History Mode="BY_TIME" MaxAvg="1" MinAvg="0.0015426417550323071" Iterations="1" Time="0" Min="0.0015426417550323071" Max="1">
         <Data>
-          <ITEM ID="13200" Time="0.47826099999999999" Value="0.39357318168175104"/>
-        </Data>
-      </History>
-    </ITEM>
-    <ITEM Stopper="*-2.-5.-5.54">
-      <History Mode="BY_TIME" MaxAvg="388.33322770218444" MinAvg="3.9412634849579233" Iterations="1" Time="0" Min="3.9412634849579233" Max="388.33322770218444">
-        <Data>
-          <ITEM ID="13200" Time="0.47826099999999999" Value="9.399175077640578"/>
-        </Data>
-      </History>
-    </ITEM>
-    <ITEM Stopper="*-2.-5.-5.25">
-      <History Mode="BY_TIME" MaxAvg="1.6976201936300637" MinAvg="0" Iterations="1" Time="0" Min="0" Max="1.6976201936300637">
-        <Data>
-          <ITEM ID="13200" Time="0.47826099999999999" Value="0"/>
-        </Data>
-      </History>
-    </ITEM>
-    <ITEM Stopper="*-2.-5.-5.51">
-      <History Mode="BY_TIME" MaxAvg="911.60970976611998" MinAvg="134.85705006367888" Iterations="1" Time="0" Min="134.85705006367888" Max="911.60970976611998">
-        <Data>
-          <ITEM ID="13200" Time="0.47826099999999999" Value="585.48468507087466"/>
-        </Data>
-      </History>
-    </ITEM>
-    <ITEM Stopper="*-2.-5.-5.63">
-      <History Mode="BY_TIME" MaxAvg="0.0014215332051428823" MinAvg="0" Iterations="1" Time="0" Min="0" Max="0.0014215332051428823">
-        <Data>
-          <ITEM ID="13200" Time="0.47826099999999999" Value="0.00057238666949634067"/>
-        </Data>
-      </History>
-    </ITEM>
-    <ITEM Stopper="*-2.-5.-5.48">
-      <History Mode="BY_TIME" MaxAvg="23770553.228881054" MinAvg="146081.89279530587" Iterations="1" Time="0" Min="146081.89279530587" Max="23770553.228881054">
-        <Data>
-          <ITEM ID="13200" Time="0.47826099999999999" Value="15427272.679165188"/>
-        </Data>
-      </History>
-    </ITEM>
-    <ITEM Stopper="*-2.-5.-5.57">
-      <History Mode="BY_TIME" MaxAvg="0.87611429898754978" MinAvg="0" Iterations="1" Time="0" Min="0" Max="0.87611429898754978">
-        <Data>
-          <ITEM ID="13200" Time="0.47826099999999999" Value="0.60585443164875141"/>
+          <ITEM ID="10559" Time="0.47821566666665827" Value="0.0061124477843952831"/>
         </Data>
       </History>
     </ITEM>
     <ITEM Stopper="*-2.-5.-5.19">
       <History Mode="BY_TIME" MaxAvg="1" MinAvg="0" Iterations="1" Time="0" Min="0" Max="1">
         <Data>
-          <ITEM ID="13200" Time="0.47826099999999999" Value="0.10592295763770006"/>
+          <ITEM ID="10559" Time="0.47821566666665827" Value="0.00042474052865582572"/>
         </Data>
       </History>
     </ITEM>
-    <ITEM Stopper="*-2.-5.-5.89">
-      <History Mode="BY_TIME" MaxAvg="0.00024288388875519178" MinAvg="-0.067037203867186826" Iterations="1" Time="0" Min="-0.067037203867186826" Max="0.00024288388875519178">
+    <ITEM Stopper="*-2.-5.-5.25">
+      <History Mode="BY_TIME" MaxAvg="0.28786760873197198" MinAvg="0" Iterations="1" Time="0" Min="0" Max="0.28786760873197198">
         <Data>
-          <ITEM ID="13200" Time="0.47826099999999999" Value="0.00024288388875519178"/>
+          <ITEM ID="10559" Time="0.47821566666665827" Value="0"/>
         </Data>
       </History>
     </ITEM>
-    <ITEM Stopper="*-2.-5.-5.66">
-      <History Mode="BY_TIME" MaxAvg="24898999.999858301" MinAvg="154614.70376502702" Iterations="1" Time="0" Min="154614.70376502702" Max="24898999.999858301">
+    <ITEM Stopper="*-2.-5.-5.48">
+      <History Mode="BY_TIME" MaxAvg="11292546.943564566" MinAvg="127822.38137308256" Iterations="1" Time="0" Min="127822.38137308256" Max="11292546.943564566">
         <Data>
-          <ITEM ID="13200" Time="0.47826099999999999" Value="24898997.094894208"/>
-        </Data>
-      </History>
-    </ITEM>
-    <ITEM Stopper="*-2.-5.-5.69">
-      <History Mode="BY_TIME" MaxAvg="1727" MinAvg="286.26740045545421" Iterations="1" Time="0" Min="286.26740045545421" Max="1727">
-        <Data>
-          <ITEM ID="13200" Time="0.47826099999999999" Value="1727"/>
-        </Data>
-      </History>
-    </ITEM>
-    <ITEM Stopper="*-2.-5.-5.75">
-      <History Mode="BY_TIME" MaxAvg="137.97768210570393" MinAvg="0.12441517171352916" Iterations="1" Time="0" Min="0.12441517171352916" Max="137.97768210570393">
-        <Data>
-          <ITEM ID="13200" Time="0.47826099999999999" Value="1.1489993459166008"/>
-        </Data>
-      </History>
-    </ITEM>
-    <ITEM Stopper="*-2.-5.-5.78">
-      <History Mode="BY_TIME" MaxAvg="0.89018246130571277" MinAvg="0.0059052989475175373" Iterations="1" Time="0" Min="0.0059052989475175373" Max="0.89018246130571277">
-        <Data>
-          <ITEM ID="13200" Time="0.47826099999999999" Value="0.012854952166396916"/>
-        </Data>
-      </History>
-    </ITEM>
-    <ITEM Stopper="*-2.-5.-5.92">
-      <History Mode="BY_TIME" MaxAvg="2.7994464609030913" MinAvg="-0.00021575133389461834" Iterations="1" Time="0" Min="-0.00021575133389461834" Max="2.7994464609030913">
-        <Data>
-          <ITEM ID="13200" Time="0.47826099999999999" Value="2.7994464609030913"/>
-        </Data>
-      </History>
-    </ITEM>
-    <ITEM Stopper="*-2.-5.-5.72">
-      <History Mode="BY_TIME" MaxAvg="1000.0000000000003" MinAvg="69.814763285835085" Iterations="1" Time="0" Min="69.814763285835085" Max="1000.0000000000003">
-        <Data>
-          <ITEM ID="13200" Time="0.47826099999999999" Value="996.68843243607625"/>
-        </Data>
-      </History>
-    </ITEM>
-    <ITEM Stopper="*-2.-5.-5.16">
-      <History Mode="BY_TIME" MaxAvg="1" MinAvg="0.0012486304096837081" Iterations="1" Time="0" Min="0.0012486304096837081" Max="1">
-        <Data>
-          <ITEM ID="13200" Time="0.47826099999999999" Value="0.0057280083091829966"/>
-        </Data>
-      </History>
-    </ITEM>
-    <ITEM Stopper="*-2.-5.-5.17">
-      <History Mode="BY_TIME" MaxAvg="1" MinAvg="0.011154630410694569" Iterations="1" Time="0" Min="0.011154630410694569" Max="1">
-        <Data>
-          <ITEM ID="13200" Time="0.47826099999999999" Value="0.25824883125273668"/>
-        </Data>
-      </History>
-    </ITEM>
-    <ITEM Stopper="*-2.-5.-5.7">
-      <History Mode="BY_TIME" MaxAvg="180.00007199999999" MinAvg="-83.980000000000004" Iterations="1" Time="0" Min="-83.980000000000004" Max="180.00007199999999">
-        <Data>
-          <ITEM ID="13200" Time="0.47826099999999999" Value="180.00007199999999"/>
+          <ITEM ID="10559" Time="0.47821566666665827" Value="11292546.943564566"/>
         </Data>
       </History>
     </ITEM>
     <ITEM Stopper="*-2.-5.-5.15">
-      <History Mode="BY_TIME" MaxAvg="1" MinAvg="0.00093576010622120859" Iterations="1" Time="0" Min="0.00093576010622120859" Max="1">
+      <History Mode="BY_TIME" MaxAvg="1" MinAvg="0.039015337024367762" Iterations="1" Time="0" Min="0.039015337024367762" Max="1">
         <Data>
-          <ITEM ID="13200" Time="0.47826099999999999" Value="0.023470370785559615"/>
+          <ITEM ID="10559" Time="0.47821566666665827" Value="0.039015337024367762"/>
+        </Data>
+      </History>
+    </ITEM>
+    <ITEM Stopper="*-2.-5.-5.17">
+      <History Mode="BY_TIME" MaxAvg="1" MinAvg="0.015086664676327089" Iterations="1" Time="0" Min="0.015086664676327089" Max="1">
+        <Data>
+          <ITEM ID="10559" Time="0.47821566666665827" Value="0.080333640741143256"/>
+        </Data>
+      </History>
+    </ITEM>
+    <ITEM Stopper="*-2.-5.-5.7">
+      <History Mode="BY_TIME" MaxAvg="179.97504799999535" MinAvg="-83.974999999999994" Iterations="1" Time="0" Min="-83.974999999999994" Max="179.97504799999535">
+        <Data>
+          <ITEM ID="10559" Time="0.47821566666665827" Value="179.97504799999535"/>
+        </Data>
+      </History>
+    </ITEM>
+    <ITEM Stopper="*-2.-5.-5.22">
+      <History Mode="BY_TIME" MaxAvg="10.395390764761071" MinAvg="-0.11809732120560609" Iterations="1" Time="0" Min="-0.11809732120560609" Max="10.395390764761071">
+        <Data>
+          <ITEM ID="10559" Time="0.47821566666665827" Value="0"/>
+        </Data>
+      </History>
+    </ITEM>
+    <ITEM Stopper="*-2.-5.-5.51">
+      <History Mode="BY_TIME" MaxAvg="935.68875958735259" MinAvg="73.313511775870779" Iterations="1" Time="0" Min="73.313511775870779" Max="935.68875958735259">
+        <Data>
+          <ITEM ID="10559" Time="0.47821566666665827" Value="703.60412352684898"/>
+        </Data>
+      </History>
+    </ITEM>
+    <ITEM Stopper="*-2.-5.-5.135">
+      <History Mode="BY_TIME" MaxAvg="102.65974161796464" MinAvg="1.1500516920229567" Iterations="1" Time="0" Min="1.1500516920229567" Max="102.65974161796464">
+        <Data>
+          <ITEM ID="10559" Time="0.47821566666665827" Value="39.788402832800855"/>
+        </Data>
+      </History>
+    </ITEM>
+    <ITEM Stopper="*-2.-5.-5.138">
+      <History Mode="BY_TIME" MaxAvg="14.028055632590759" MinAvg="-3.3005846454118299" Iterations="1" Time="0" Min="-3.3005846454118299" Max="14.028055632590759">
+        <Data>
+          <ITEM ID="10559" Time="0.47821566666665827" Value="0.0020830986004525751"/>
+        </Data>
+      </History>
+    </ITEM>
+    <ITEM Stopper="*-2.-5.-5.141">
+      <History Mode="BY_TIME" MaxAvg="1.5369502506130392" MinAvg="0.20749211080441174" Iterations="1" Time="0" Min="0.20749211080441174" Max="1.5369502506130392">
+        <Data>
+          <ITEM ID="10559" Time="0.47821566666665827" Value="1.054006076023549"/>
+        </Data>
+      </History>
+    </ITEM>
+    <ITEM Stopper="*-2.-5.-5.115">
+      <History Mode="BY_TIME" MaxAvg="1.0000000000000004" MinAvg="0.037548840921861872" Iterations="1" Time="0" Min="0.037548840921861872" Max="1.0000000000000004">
+        <Data>
+          <ITEM ID="10559" Time="0.47821566666665827" Value="0.043963320303215196"/>
+        </Data>
+      </History>
+    </ITEM>
+    <ITEM Stopper="*-2.-5.-5.144">
+      <History Mode="BY_TIME" MaxAvg="542.30425554882527" MinAvg="0" Iterations="1" Time="0" Min="0" Max="542.30425554882527">
+        <Data>
+          <ITEM ID="10559" Time="0.47821566666665827" Value="100.61570126682318"/>
+        </Data>
+      </History>
+    </ITEM>
+    <ITEM Stopper="*-2.-5.-5.123">
+      <History Mode="BY_TIME" MaxAvg="0.99999999850658017" MinAvg="0" Iterations="1" Time="0" Min="0" Max="0.99999999850658017">
+        <Data>
+          <ITEM ID="10559" Time="0.47821566666665827" Value="0.93141880396437537"/>
+        </Data>
+      </History>
+    </ITEM>
+    <ITEM Stopper="*-2.-5.-5.126">
+      <History Mode="BY_TIME" MaxAvg="1" MinAvg="0" Iterations="1" Time="0" Min="0" Max="1">
+        <Data>
+          <ITEM ID="10559" Time="0.47821566666665827" Value="0.051775064324645133"/>
+        </Data>
+      </History>
+    </ITEM>
+    <ITEM Stopper="*-2.-5.-5.132">
+      <History Mode="BY_TIME" MaxAvg="0.79756844943586391" MinAvg="0.29170780065679974" Iterations="1" Time="0" Min="0.29170780065679974" Max="0.79756844943586391">
+        <Data>
+          <ITEM ID="10559" Time="0.47821566666665827" Value="0.71527213505983467"/>
+        </Data>
+      </History>
+    </ITEM>
+    <ITEM Stopper="*-2.-5.-5.112">
+      <History Mode="BY_TIME" MaxAvg="0.044520871509908515" MinAvg="0" Iterations="1" Time="0" Min="0" Max="0.044520871509908515">
+        <Data>
+          <ITEM ID="10559" Time="0.47821566666665827" Value="0.044041541676820631"/>
+        </Data>
+      </History>
+    </ITEM>
+    <ITEM Stopper="*-2.-5.-5.129">
+      <History Mode="BY_TIME" MaxAvg="1.0000000000000002" MinAvg="0.36719818442440361" Iterations="1" Time="0" Min="0.36719818442440361" Max="1.0000000000000002">
+        <Data>
+          <ITEM ID="10559" Time="0.47821566666665827" Value="0.99979756210527837"/>
+        </Data>
+      </History>
+    </ITEM>
+    <ITEM Stopper="*-2.-5.-5.147">
+      <History Mode="BY_TIME" MaxAvg="134227.40706012148" MinAvg="-40999.958999999995" Iterations="1" Time="0" Min="-40999.958999999995" Max="134227.40706012148">
+        <Data>
+          <ITEM ID="10559" Time="0.47821566666665827" Value="131993.33620144226"/>
+        </Data>
+      </History>
+    </ITEM>
+    <ITEM Stopper="*-2.-5.-5.153">
+      <History Mode="BY_TIME" MaxAvg="1251.08625367019" MinAvg="0" Iterations="1" Time="0" Min="0" Max="1251.08625367019">
+        <Data>
+          <ITEM ID="10559" Time="0.47821566666665827" Value="0"/>
+        </Data>
+      </History>
+    </ITEM>
+    <ITEM Stopper="*-2.-5.-5.156">
+      <History Mode="BY_TIME" MaxAvg="8.8888766003153972" MinAvg="-3.3005846454118299" Iterations="1" Time="0" Min="-3.3005846454118299" Max="8.8888766003153972">
+        <Data>
+          <ITEM ID="10559" Time="0.47821566666665827" Value="0.0020830986004525751"/>
+        </Data>
+      </History>
+    </ITEM>
+    <ITEM Stopper="*-2.-5.-5.150">
+      <History Mode="BY_TIME" MaxAvg="86.22653616160413" MinAvg="-18.133052669898884" Iterations="1" Time="0" Min="-18.133052669898884" Max="86.22653616160413">
+        <Data>
+          <ITEM ID="10559" Time="0.47821566666665827" Value="0"/>
         </Data>
       </History>
     </ITEM>
@@ -178,20 +263,20 @@
   <OBJECT class="CActivationStatus" myid="0">
     <Context>*-2.-2.-97.-3</Context>
     <StructPath>Activation</StructPath>
-    <LastTime>0.47822472463771792</LastTime>
-    <LastIter>13199</LastIter>
+    <LastTime>0.47817033333331649</LastTime>
+    <LastIter>10558</LastIter>
   </OBJECT>
   <OBJECT class="CActivationStatus" myid="1">
-    <Context>*-2.-5.-10</Context>
-    <StructPath>Start</StructPath>
-    <LastTime>-2</LastTime>
-    <LastIter>-2</LastIter>
-  </OBJECT>
-  <OBJECT class="CActivationStatus" myid="2">
     <Context>*-2.-2.-97.-2</Context>
     <StructPath>Activation</StructPath>
-    <LastTime>0.47822472463771792</LastTime>
-    <LastIter>13199</LastIter>
+    <LastTime>0.47817033333331649</LastTime>
+    <LastIter>10558</LastIter>
+  </OBJECT>
+  <OBJECT class="CActivationStatus" myid="2">
+    <Context>*-2.-2.-97.-5</Context>
+    <StructPath>Activation</StructPath>
+    <LastTime>0.47817033333331649</LastTime>
+    <LastIter>10558</LastIter>
   </OBJECT>
   <OBJECT class="CActivationStatus" myid="3">
     <Context>*-2.-5.-3</Context>
@@ -200,10 +285,10 @@
     <LastIter>-2</LastIter>
   </OBJECT>
   <OBJECT class="CActivationStatus" myid="4">
-    <Context>*-2.-2.-97.-5</Context>
-    <StructPath>Activation</StructPath>
-    <LastTime>0.47822472463771792</LastTime>
-    <LastIter>13199</LastIter>
+    <Context>*-2.-5.-10</Context>
+    <StructPath>Start</StructPath>
+    <LastTime>-2</LastTime>
+    <LastIter>-2</LastIter>
   </OBJECT>
   <OBJECT class="CActivationStatus" myid="5">
     <Context>*-2.-2.1.-2</Context>
@@ -232,25 +317,25 @@
   <OBJECT class="CActivationStatus" myid="9">
     <Context>*-2.-2.2.105</Context>
     <StructPath>Activation</StructPath>
-    <LastTime>0.47826099999999999</LastTime>
-    <LastIter>13200</LastIter>
+    <LastTime>0.47821566666665827</LastTime>
+    <LastIter>10559</LastIter>
   </OBJECT>
   <OBJECT class="CActivationStatus" myid="10">
     <Context>*-2.-2.2.120</Context>
     <StructPath>Activation</StructPath>
-    <LastTime>0.47826099999999999</LastTime>
-    <LastIter>13200</LastIter>
+    <LastTime>0.47821566666665827</LastTime>
+    <LastIter>10559</LastIter>
   </OBJECT>
   <OBJECT class="CMovingBodyStatus" myid="11" EffMassCoef="1">
     <MBObject>*-2.-2.2.105</MBObject>
     <Location>
-      <Origin x="0" y="0" z="2.7994464609030913"/>
+      <Origin x="0" y="0" z="2.7993628742894017"/>
       <Ort0 x="1" y="0" z="0"/>
       <Ort1 x="0" y="1" z="0"/>
       <Ort2 x="0" y="0" z="1"/>
       <Scale>1</Scale>
     </Location>
-    <IntegralVelMov x="0" y="0" z="0.52400594260133904"/>
+    <IntegralVelMov x="0" y="0" z="0.52920877704355318"/>
     <IntegralVelRot x="0" y="0" z="0"/>
     <HydroForce x="0" y="0" z="0"/>
     <GravityForce x="0" y="0" z="0"/>
@@ -260,13 +345,13 @@
   <OBJECT class="CMovingBodyStatus" myid="12" EffMassCoef="1">
     <MBObject>*-2.-2.2.120</MBObject>
     <Location>
-      <Origin x="0" y="0" z="0.00024288388875519178"/>
+      <Origin x="0" y="0" z="0.00024108552933340132"/>
       <Ort0 x="1" y="0" z="0"/>
       <Ort1 x="0" y="1" z="0"/>
       <Ort2 x="0" y="0" z="1"/>
       <Scale>1</Scale>
     </Location>
-    <IntegralVelMov x="0" y="0" z="-1.5637184043452771E-090"/>
+    <IntegralVelMov x="0" y="0" z="-3.9083589090361239E-090"/>
     <IntegralVelRot x="0" y="0" z="0"/>
     <HydroForce x="0" y="0" z="0"/>
     <GravityForce x="0" y="0" z="0"/>
