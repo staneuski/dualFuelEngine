@@ -32,7 +32,7 @@
     <center x="0.00050000000000000001" y="0" z="0"/>
     <normal x="1" y="0" z="0"/>
   </OBJECT>
-  <OBJECT Lit="1" class="CPlaneObjectLayer" Clipper="1" myid="3" Clipped="0" GUID="09E3D6AA-2719-4970-83F3-297D6DE2067B" Visible="1" Mirror="0">
+  <OBJECT Lit="1" class="CPlaneObjectLayer" Clipper="1" myid="3" Clipped="0" GUID="09E3D6AA-2719-4970-83F3-297D6DE2067B" Visible="0" Mirror="0">
     <Object>*-2.-4.2</Object>
     <OBJECT Mode="WIRE" class="CCommonAppearance" myid="0">
       <Lines Width="3" Color="00FFFF00"/>
@@ -61,11 +61,11 @@
               <Trans Enabled="DEFAULT" Alpha="50"/>
             </OBJECT>
             <OBJECT class="CMBFolderView" myid="-3">
-              <OBJECT class="CMovingBodyView" myid="105" Clipped="DEFAULT" Visible="DEFAULT">
+              <OBJECT class="CMovingBodyView" myid="105" Clipped="DEFAULT" Visible="NO">
                 <Style Fill="DEFAULT" Wire="DEFAULT" Outline="DEFAULT"/>
                 <Trans Enabled="DEFAULT" Alpha="50"/>
               </OBJECT>
-              <OBJECT class="CMovingBodyView" myid="120" Clipped="DEFAULT" Visible="DEFAULT">
+              <OBJECT class="CMovingBodyView" myid="120" Clipped="DEFAULT" Visible="NO">
                 <Style Fill="DEFAULT" Wire="DEFAULT" Outline="DEFAULT"/>
                 <Trans Enabled="DEFAULT" Alpha="50"/>
               </OBJECT>
@@ -157,7 +157,7 @@
     <RegularGrid>0</RegularGrid>
     <Resolution Size1="100" Size2="100" LocalSystem="1" Size3="1"/>
     <DoubleResolution>0</DoubleResolution>
-    <Mapping MappingMode="LOCAL" Min="91819.7578125" Max="156981.5"/>
+    <Mapping MappingMode="LOCAL" Min="131999.859375" Max="11666437"/>
     <LogScale Limit="1.0000000000000001E-005" Enabled="0"/>
     <Palette>
       <Overlay HorzAlign="RIGHT" Enabled="1" ShowTitle="1" Style="STYLE1" VertAlign="TOP" Gradations="11" Color="00808080"/>
@@ -489,7 +489,7 @@
     <RegularGrid>0</RegularGrid>
     <Resolution Size1="100" Size2="100" LocalSystem="1" Size3="1"/>
     <DoubleResolution>0</DoubleResolution>
-    <Mapping MappingMode="MANUAL" Min="0" Max="1"/>
+    <Mapping MappingMode="MANUAL" Min="0" Max="0.055"/>
     <LogScale Limit="1.0000000000000001E-005" Enabled="0"/>
     <Palette>
       <Overlay HorzAlign="RIGHT" Enabled="1" ShowTitle="1" Style="STYLE1" VertAlign="TOP" Gradations="11" Color="00808080"/>
@@ -583,7 +583,7 @@
         <Pivot x="0" y="0" z="0"/>
       </Relativity>
     </CoorSystem>
-    <Mapping ReferenceLen="0.10000000000000001" MappingMode="LOCAL" ConstantLen="0" Max="233.54234313964844"/>
+    <Mapping ReferenceLen="0.10000000000000001" MappingMode="LOCAL" ConstantLen="0" Max="4.1732029914855957"/>
     <Mode>FULL</Mode>
     <Lines Width="1" Color="00FFFFFF"/>
     <Arrows Angle="20" Mode="LINES" Size="20"/>
@@ -598,7 +598,7 @@
           <Inverted>0</Inverted>
         </Integration>
       </Var>
-      <Mapping MappingMode="LOCAL" Min="4.898808479309082" Max="233.54232788085937"/>
+      <Mapping MappingMode="LOCAL" Min="0.069727860391139984" Max="4.1732029914855957"/>
       <LogScale Limit="1.0000000000000001E-005" Enabled="0"/>
       <Palette>
         <Overlay HorzAlign="RIGHT" Enabled="1" ShowTitle="1" Style="STYLE1" VertAlign="TOP" Gradations="11" Color="00808080"/>
@@ -665,85 +665,25 @@
         </Alpha>
       </Fill>
     </Processors>
-    <Hypercells Mode="BOTH" Count="13">
-      <Visibility>0-12</Visibility>
+    <Hypercells Mode="BOTH" Count="1">
+      <Visibility>0</Visibility>
       <Lines>
         <Color>
           <ITEM>00A418F0</ITEM>
-          <ITEM>00B89C77</ITEM>
-          <ITEM>0087A502</ITEM>
-          <ITEM>0008056B</ITEM>
-          <ITEM>002BAC94</ITEM>
-          <ITEM>0008DBCC</ITEM>
-          <ITEM>008ADC5E</ITEM>
-          <ITEM>007D741A</ITEM>
-          <ITEM>00438DF8</ITEM>
-          <ITEM>002A8490</ITEM>
-          <ITEM>00B5E7DC</ITEM>
-          <ITEM>00E8C269</ITEM>
-          <ITEM>002951CF</ITEM>
         </Color>
         <Width>
-          <ITEM>1</ITEM>
-          <ITEM>1</ITEM>
-          <ITEM>1</ITEM>
-          <ITEM>1</ITEM>
-          <ITEM>1</ITEM>
-          <ITEM>1</ITEM>
-          <ITEM>1</ITEM>
-          <ITEM>1</ITEM>
-          <ITEM>1</ITEM>
-          <ITEM>1</ITEM>
-          <ITEM>1</ITEM>
-          <ITEM>1</ITEM>
           <ITEM>1</ITEM>
         </Width>
       </Lines>
       <Fill>
         <Color>
           <ITEM>00520C78</ITEM>
-          <ITEM>005C4E3B</ITEM>
-          <ITEM>00435201</ITEM>
-          <ITEM>00040235</ITEM>
-          <ITEM>0015564A</ITEM>
-          <ITEM>00046D66</ITEM>
-          <ITEM>00456E2F</ITEM>
-          <ITEM>003E3A0D</ITEM>
-          <ITEM>0021467C</ITEM>
-          <ITEM>00154248</ITEM>
-          <ITEM>005A736E</ITEM>
-          <ITEM>00746134</ITEM>
-          <ITEM>00142867</ITEM>
         </Color>
         <Alpha>
-          <ITEM>100</ITEM>
-          <ITEM>100</ITEM>
-          <ITEM>100</ITEM>
-          <ITEM>100</ITEM>
-          <ITEM>100</ITEM>
-          <ITEM>100</ITEM>
-          <ITEM>100</ITEM>
-          <ITEM>100</ITEM>
-          <ITEM>100</ITEM>
-          <ITEM>100</ITEM>
-          <ITEM>100</ITEM>
-          <ITEM>100</ITEM>
           <ITEM>100</ITEM>
         </Alpha>
       </Fill>
       <Processor>
-        <ITEM>0</ITEM>
-        <ITEM>0</ITEM>
-        <ITEM>0</ITEM>
-        <ITEM>0</ITEM>
-        <ITEM>0</ITEM>
-        <ITEM>0</ITEM>
-        <ITEM>0</ITEM>
-        <ITEM>0</ITEM>
-        <ITEM>0</ITEM>
-        <ITEM>0</ITEM>
-        <ITEM>0</ITEM>
-        <ITEM>0</ITEM>
         <ITEM>0</ITEM>
       </Processor>
     </Hypercells>
@@ -755,7 +695,7 @@
       <Fill Alpha="100" Color="00808000"/>
     </OBJECT>
   </OBJECT>
-  <OBJECT Coloring="0" Lit="1" class="CCellSetLayer" myid="21576" Clipped="0" GUID="AFD4E154-4A20-4BC0-86F4-6904683B3509" Type="GAP" Visible="1" UIName="Набор зазорных ячеек">
+  <OBJECT Coloring="0" Lit="1" class="CCellSetLayer" myid="21576" Clipped="0" GUID="AFD4E154-4A20-4BC0-86F4-6904683B3509" Type="GAP" Visible="0" UIName="Набор зазорных ячеек">
     <Object>*-2.-2.0</Object>
     <Settings>
       <Mode>VOLUME</Mode>
@@ -767,7 +707,7 @@
       <Lines Width="3" Color="00FF00FF"/>
       <Fill Alpha="100" Color="00800080"/>
     </Appearance>
-    <Mapping MappingMode="LOCAL" Min="0" Max="0"/>
+    <Mapping MappingMode="LOCAL" Min="1.1738279681594577E-007" Max="3.0793304176768288E-005"/>
     <Palette>
       <Overlay HorzAlign="LEFT" Enabled="0" ShowTitle="0" Style="STYLE3" VertAlign="TOP" Gradations="11" Color="00FFFFFF"/>
       <Gradations>0</Gradations>
@@ -936,7 +876,7 @@
     <RegularGrid>0</RegularGrid>
     <Resolution Size1="100" Size2="100" LocalSystem="1" Size3="1"/>
     <DoubleResolution>0</DoubleResolution>
-    <Mapping MappingMode="GLOBAL" Min="0.0029194706585258245" Max="0.61161470413208008"/>
+    <Mapping MappingMode="GLOBAL" Min="5.9415878439494918E-008" Max="0.0090643167495727539"/>
     <LogScale Limit="1.0000000000000001E-005" Enabled="0"/>
     <Palette>
       <Overlay HorzAlign="RIGHT" Enabled="1" ShowTitle="1" Style="STYLE1" VertAlign="TOP" Gradations="11" Color="00808080"/>
@@ -1030,7 +970,7 @@
     <RegularGrid>0</RegularGrid>
     <Resolution Size1="100" Size2="100" LocalSystem="1" Size3="1"/>
     <DoubleResolution>0</DoubleResolution>
-    <Mapping MappingMode="GLOBAL" Min="1.4322924613952637" Max="2.7127249240875244"/>
+    <Mapping MappingMode="GLOBAL" Min="1.0543615818023682" Max="40.665725708007812"/>
     <LogScale Limit="1.0000000000000001E-005" Enabled="0"/>
     <Palette>
       <Overlay HorzAlign="RIGHT" Enabled="1" ShowTitle="1" Style="STYLE1" VertAlign="TOP" Gradations="11" Color="00808080"/>
@@ -1214,7 +1154,7 @@
     <center x="0" y="0" z="-2.625"/>
     <normal x="0" y="0" z="1"/>
   </OBJECT>
-  <OBJECT Lit="1" class="CPlaneObjectLayer" Clipper="0" myid="39243" Clipped="0" GUID="E70F3142-12C6-4C95-AECA-78AFD687BFC1" Visible="1" Mirror="0">
+  <OBJECT Lit="1" class="CPlaneObjectLayer" Clipper="0" myid="39243" Clipped="0" GUID="E70F3142-12C6-4C95-AECA-78AFD687BFC1" Visible="0" Mirror="0">
     <Object>*-2.-4.39242</Object>
     <OBJECT Mode="WIRE" class="CCommonAppearance" myid="0">
       <Lines Width="3" Color="00FFFF00"/>
@@ -1255,7 +1195,7 @@
     <RegularGrid>0</RegularGrid>
     <Resolution Size1="100" Size2="100" LocalSystem="1" Size3="1"/>
     <DoubleResolution>0</DoubleResolution>
-    <Mapping MappingMode="LOCAL" Min="149120.546875" Max="152214.53125"/>
+    <Mapping MappingMode="LOCAL" Min="0" Max="0"/>
     <LogScale Limit="1.0000000000000001E-005" Enabled="0"/>
     <Palette>
       <Overlay HorzAlign="RIGHT" Enabled="1" ShowTitle="1" Style="STYLE1" VertAlign="TOP" Gradations="11" Color="00808080"/>
@@ -1338,7 +1278,7 @@
     <RegularGrid>0</RegularGrid>
     <Resolution Size1="100" Size2="100" LocalSystem="1" Size3="1"/>
     <DoubleResolution>0</DoubleResolution>
-    <Mapping MappingMode="LOCAL" Min="52.390880584716797" Max="58.859840393066406"/>
+    <Mapping MappingMode="LOCAL" Min="0" Max="0"/>
     <LogScale Limit="1.0000000000000001E-005" Enabled="0"/>
     <Palette>
       <Overlay HorzAlign="RIGHT" Enabled="1" ShowTitle="1" Style="STYLE1" VertAlign="TOP" Gradations="11" Color="00808080"/>
@@ -1598,7 +1538,7 @@
         <Pivot x="0" y="0" z="0"/>
       </Relativity>
     </CoorSystem>
-    <Mapping ReferenceLen="0.10000000000000001" MappingMode="LOCAL" ConstantLen="0" Max="41.143318176269531"/>
+    <Mapping ReferenceLen="0.10000000000000001" MappingMode="LOCAL" ConstantLen="0" Max="0"/>
     <Mode>FULL</Mode>
     <Lines Width="1" Color="00FFFFFF"/>
     <Arrows Angle="20" Mode="LINES" Size="20"/>
@@ -1613,7 +1553,7 @@
           <Inverted>0</Inverted>
         </Integration>
       </Var>
-      <Mapping MappingMode="LOCAL" Min="8.9201555252075195" Max="41.143318176269531"/>
+      <Mapping MappingMode="LOCAL" Min="0" Max="0"/>
       <LogScale Limit="1.0000000000000001E-005" Enabled="0"/>
       <Palette>
         <Overlay HorzAlign="RIGHT" Enabled="1" ShowTitle="1" Style="STYLE1" VertAlign="TOP" Gradations="11" Color="00808080"/>
@@ -1648,7 +1588,7 @@
     </Cover>
     <OBJECT class="CPlaneConstraints" myid="-100" Enabled="0" Type="RECTANGLE" Size1="0.10000000000000001" Size2="0.10000000000000001"/>
   </OBJECT>
-  <OBJECT Lit="1" class="CGridSectionLayer" myid="39313" Clipped="0" GUID="D3BEC36D-9057-4374-B14A-2E9F5DAFBCC4" Visible="1" UIName="Mesh cut XY, inlet">
+  <OBJECT Lit="1" class="CGridSectionLayer" myid="39313" Clipped="0" GUID="D3BEC36D-9057-4374-B14A-2E9F5DAFBCC4" Visible="0" UIName="Mesh cut XY, inlet">
     <Object>*-2.-4.39242</Object>
     <Settings>
       <Mode>UNASSIGNED</Mode>
@@ -1680,57 +1620,17 @@
         </Alpha>
       </Fill>
     </Processors>
-    <Hypercells Mode="BOTH" Count="7">
-      <Visibility>0-6</Visibility>
+    <Hypercells Mode="BOTH" Count="0">
+      <Visibility>-</Visibility>
       <Lines>
-        <Color>
-          <ITEM>000B25D9</ITEM>
-          <ITEM>00C283E4</ITEM>
-          <ITEM>00E42412</ITEM>
-          <ITEM>00512518</ITEM>
-          <ITEM>0026AF2C</ITEM>
-          <ITEM>0066ECCA</ITEM>
-          <ITEM>0025474F</ITEM>
-        </Color>
-        <Width>
-          <ITEM>1</ITEM>
-          <ITEM>1</ITEM>
-          <ITEM>1</ITEM>
-          <ITEM>1</ITEM>
-          <ITEM>1</ITEM>
-          <ITEM>1</ITEM>
-          <ITEM>1</ITEM>
-        </Width>
+        <Color/>
+        <Width/>
       </Lines>
       <Fill>
-        <Color>
-          <ITEM>0005126C</ITEM>
-          <ITEM>00614172</ITEM>
-          <ITEM>00721209</ITEM>
-          <ITEM>0028120C</ITEM>
-          <ITEM>00135716</ITEM>
-          <ITEM>00337665</ITEM>
-          <ITEM>00122327</ITEM>
-        </Color>
-        <Alpha>
-          <ITEM>100</ITEM>
-          <ITEM>100</ITEM>
-          <ITEM>100</ITEM>
-          <ITEM>100</ITEM>
-          <ITEM>100</ITEM>
-          <ITEM>100</ITEM>
-          <ITEM>100</ITEM>
-        </Alpha>
+        <Color/>
+        <Alpha/>
       </Fill>
-      <Processor>
-        <ITEM>0</ITEM>
-        <ITEM>0</ITEM>
-        <ITEM>0</ITEM>
-        <ITEM>0</ITEM>
-        <ITEM>0</ITEM>
-        <ITEM>0</ITEM>
-        <ITEM>0</ITEM>
-      </Processor>
+      <Processor/>
     </Hypercells>
   </OBJECT>
   <OBJECT class="CPlaneEntity" shiftAlongNormal="0" myid="39321" GUID="CF12366E-CC3F-4A37-8E50-0B7A4BF59692" UIName="Плоскость XY: injection">
@@ -1744,7 +1644,7 @@
       <Fill Alpha="100" Color="00808000"/>
     </OBJECT>
   </OBJECT>
-  <OBJECT Lit="1" class="CGridSectionLayer" myid="39337" Clipped="0" GUID="813D07E4-B3EC-4796-9F57-A7C33FD0CEC8" Visible="1" UIName="Mesh cut XY, injection">
+  <OBJECT Lit="1" class="CGridSectionLayer" myid="39337" Clipped="0" GUID="813D07E4-B3EC-4796-9F57-A7C33FD0CEC8" Visible="0" UIName="Mesh cut XY, injection">
     <Object>*-2.-4.39321</Object>
     <Settings>
       <Mode>UNASSIGNED</Mode>
@@ -1776,27 +1676,17 @@
         </Alpha>
       </Fill>
     </Processors>
-    <Hypercells Mode="BOTH" Count="1">
-      <Visibility>0</Visibility>
+    <Hypercells Mode="BOTH" Count="0">
+      <Visibility>-</Visibility>
       <Lines>
-        <Color>
-          <ITEM>0032D969</ITEM>
-        </Color>
-        <Width>
-          <ITEM>1</ITEM>
-        </Width>
+        <Color/>
+        <Width/>
       </Lines>
       <Fill>
-        <Color>
-          <ITEM>00196C34</ITEM>
-        </Color>
-        <Alpha>
-          <ITEM>100</ITEM>
-        </Alpha>
+        <Color/>
+        <Alpha/>
       </Fill>
-      <Processor>
-        <ITEM>0</ITEM>
-      </Processor>
+      <Processor/>
     </Hypercells>
   </OBJECT>
   <OBJECT Lit="1" class="CVectorLayer" myid="39345" Clipped="0" GUID="2798C979-A55A-4DF7-9E02-6F0169B873CE" Visible="0" UIName="U, injection">
@@ -1844,7 +1734,7 @@
         <Pivot x="0" y="0" z="0"/>
       </Relativity>
     </CoorSystem>
-    <Mapping ReferenceLen="0.10000000000000001" MappingMode="LOCAL" ConstantLen="0" Max="25.919742584228516"/>
+    <Mapping ReferenceLen="0.5" MappingMode="LOCAL" ConstantLen="0" Max="0"/>
     <Mode>FULL</Mode>
     <Lines Width="1" Color="00FFFFFF"/>
     <Arrows Angle="20" Mode="LINES" Size="20"/>
@@ -1859,7 +1749,7 @@
           <Inverted>0</Inverted>
         </Integration>
       </Var>
-      <Mapping MappingMode="LOCAL" Min="8.0162982940673828" Max="25.919740676879883"/>
+      <Mapping MappingMode="LOCAL" Min="0" Max="0"/>
       <LogScale Limit="1.0000000000000001E-005" Enabled="0"/>
       <Palette>
         <Overlay HorzAlign="RIGHT" Enabled="1" ShowTitle="1" Style="STYLE1" VertAlign="TOP" Gradations="11" Color="00808080"/>
@@ -1928,7 +1818,7 @@
     <RegularGrid>0</RegularGrid>
     <Resolution Size1="100" Size2="100" LocalSystem="1" Size3="1"/>
     <DoubleResolution>0</DoubleResolution>
-    <Mapping MappingMode="LOCAL" Min="154143.34375" Max="154410.703125"/>
+    <Mapping MappingMode="LOCAL" Min="0" Max="0"/>
     <LogScale Limit="1.0000000000000001E-005" Enabled="0"/>
     <Palette>
       <Overlay HorzAlign="RIGHT" Enabled="1" ShowTitle="1" Style="STYLE1" VertAlign="TOP" Gradations="11" Color="00808080"/>
@@ -2011,7 +1901,7 @@
     <RegularGrid>0</RegularGrid>
     <Resolution Size1="100" Size2="100" LocalSystem="1" Size3="1"/>
     <DoubleResolution>0</DoubleResolution>
-    <Mapping MappingMode="LOCAL" Min="55.618556976318359" Max="78.248298645019531"/>
+    <Mapping MappingMode="LOCAL" Min="0" Max="0"/>
     <LogScale Limit="1.0000000000000001E-005" Enabled="0"/>
     <Palette>
       <Overlay HorzAlign="RIGHT" Enabled="1" ShowTitle="1" Style="STYLE1" VertAlign="TOP" Gradations="11" Color="00808080"/>
@@ -2080,7 +1970,7 @@
       <UpdateOnStop>0</UpdateOnStop>
     </SaveData>
     <Var Comp="SOURCE">
-      <Description Size="1" IDVar="MASSFRACTIONS_WALL01" IDPhase="51" BlockType="CMassXferProcess"/>
+      <Description Size="1" IDVar="MASSFRACTIONS01" IDPhase="51" BlockType="CMassXferProcess"/>
       <Integration>
         <Enabled>0</Enabled>
         <IntegrationDir>NORMAL</IntegrationDir>
@@ -2246,7 +2136,7 @@
       <UpdateOnStop>0</UpdateOnStop>
     </SaveData>
     <Var Comp="SOURCE">
-      <Description Size="1" IDVar="MASSFRACTIONS_WALL00" IDPhase="51" BlockType="CMassXferProcess"/>
+      <Description Size="1" IDVar="MASSFRACTIONS00" IDPhase="51" BlockType="CMassXferProcess"/>
       <Integration>
         <Enabled>0</Enabled>
         <IntegrationDir>NORMAL</IntegrationDir>
@@ -2354,7 +2244,7 @@
         <Pivot x="0" y="0" z="0"/>
       </Relativity>
     </CoorSystem>
-    <Mapping ReferenceLen="0.5" MappingMode="LOCAL" ConstantLen="0" Max="189.76278686523437"/>
+    <Mapping ReferenceLen="0.5" MappingMode="LOCAL" ConstantLen="0" Max="4.3435916900634766"/>
     <Mode>FULL</Mode>
     <Lines Width="1" Color="00FFFFFF"/>
     <Arrows Angle="20" Mode="LINES" Size="20"/>
@@ -2369,7 +2259,7 @@
           <Inverted>0</Inverted>
         </Integration>
       </Var>
-      <Mapping MappingMode="LOCAL" Min="3.1242220401763916" Max="189.76278686523437"/>
+      <Mapping MappingMode="LOCAL" Min="0.27523905038833618" Max="4.3435916900634766"/>
       <LogScale Limit="1.0000000000000001E-005" Enabled="1"/>
       <Palette>
         <Overlay HorzAlign="RIGHT" Enabled="1" ShowTitle="1" Style="STYLE1" VertAlign="TOP" Gradations="11" Color="00808080"/>
