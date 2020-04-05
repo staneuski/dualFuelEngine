@@ -44,6 +44,7 @@ define(D, 70)             // Cylinder bore
 define(S, 300)            // Cylinder Z size (> piston stroke)
 define(chamfer, 15)       // Cylinder chamfer
 define(pistonInit, 92.55) // Initial piston position
+define(pistonChamber, 10) // Piston chamber depth
 
 define(vlvS, 0)           // Initial valve stroke
 define(vlvD, calc(D/2))   // Valve head diameter
@@ -70,7 +71,8 @@ define(Nz, 20)            // Number of cells in the length dimension
 define(R, calc(D/2))                       // Cylinder radius
 define(Rcos, calc(R*cosd(45)))             // Cylinder radius middle point
 
-define(chS, calc(chamfer + S))
+define(chS, calc(chamfer + S))             // Cylinder Z size with chamfer
+define(pistonChamberZ, calc(pistonInit - pistonChamber)) // Piston chamber Z coordinate
 
 /* Valve */
 define(vlvR, calc(vlvD/2))                 // Valve radius
@@ -108,14 +110,14 @@ vertices
 (
 /* Cylinder */
     // Cylinder\Piston inner
-    /*00*/ vert(vlvR,  0,    pistonInit) vlabel(cylIn0b)
-    /*01*/ vert(0,    -vlvR, pistonInit) vlabel(cylIn1b)
-    /*02*/ vert(-vlvR, 0,    pistonInit) vlabel(cylIn2b)
-    /*03*/ vert(0,     vlvR, pistonInit) vlabel(cylIn3b)
-    /*04*/ vert(vlvR,  0,    chS)        vlabel(cylIn0t)
-    /*05*/ vert(0,    -vlvR, chS)        vlabel(cylIn1t)
-    /*06*/ vert(-vlvR, 0,    chS)        vlabel(cylIn2t)
-    /*07*/ vert(0,     vlvR, chS)        vlabel(cylIn3t)
+    /*00*/ vert(vlvR,  0,    pistonChamberZ) vlabel(cylIn0b)
+    /*01*/ vert(0,    -vlvR, pistonChamberZ) vlabel(cylIn1b)
+    /*02*/ vert(-vlvR, 0,    pistonChamberZ) vlabel(cylIn2b)
+    /*03*/ vert(0,     vlvR, pistonChamberZ) vlabel(cylIn3b)
+    /*04*/ vert(vlvR,  0,    chS)            vlabel(cylIn0t)
+    /*05*/ vert(0,    -vlvR, chS)            vlabel(cylIn1t)
+    /*06*/ vert(-vlvR, 0,    chS)            vlabel(cylIn2t)
+    /*07*/ vert(0,     vlvR, chS)            vlabel(cylIn3t)
 
     // Cylinder\Piston outer
     /*08*/ vert(R,  0, pistonInit) vlabel(cylOut0b)
@@ -326,10 +328,10 @@ edges
     arc cylOut3t cylOut0t evert( Rcos,  Rcos, S)
 
     // Cylinder\Piston inner (comment to make inner block prismatic)
-    arc cylIn0b cylIn1b evert( vlvRcos, -vlvRcos, pistonInit)
-    arc cylIn1b cylIn2b evert(-vlvRcos, -vlvRcos, pistonInit)
-    arc cylIn2b cylIn3b evert(-vlvRcos,  vlvRcos, pistonInit)
-    arc cylIn3b cylIn0b evert( vlvRcos,  vlvRcos, pistonInit)
+    arc cylIn0b cylIn1b evert( vlvRcos, -vlvRcos, pistonChamberZ)
+    arc cylIn1b cylIn2b evert(-vlvRcos, -vlvRcos, pistonChamberZ)
+    arc cylIn2b cylIn3b evert(-vlvRcos,  vlvRcos, pistonChamberZ)
+    arc cylIn3b cylIn0b evert( vlvRcos,  vlvRcos, pistonChamberZ)
     arc cylIn0t cylIn1t evert( vlvRcos, -vlvRcos, chS)
     arc cylIn1t cylIn2t evert(-vlvRcos, -vlvRcos, chS)
     arc cylIn2t cylIn3t evert(-vlvRcos,  vlvRcos, chS)
