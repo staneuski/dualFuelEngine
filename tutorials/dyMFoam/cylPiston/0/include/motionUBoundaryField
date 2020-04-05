@@ -28,7 +28,7 @@ boundaryField
             scale       1; /* OpenFOAM v7 or lower */
         }
     }
-    valve
+    valveHead
     {
         type            uniformFixedValue;
         uniformValue    table
@@ -39,6 +39,10 @@ boundaryField
             (0.26       2)
             (0.34       0)
         );
+    }
+    valveStem
+    {
+        type            slip;
     }
     walls
     {

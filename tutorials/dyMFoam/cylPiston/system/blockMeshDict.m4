@@ -552,22 +552,28 @@ boundary
             botQuad(cylIn3, cylOut3, cylOut0, cylIn0) // 4th quarter
         );
     }
-    /*FIXME Valve stem moves the edge of the outlet patch*/
-    valve
+    valveHead
     {
         type            wall;
         faces
         (
             botQuad(vlvHd0, vlvHd1, vlvHd2, vlvHd3) // valve head bottom
 
-            (vlvHd0t vlvSt0b vlvHd1t vlvSt1b) // 1st quarter of valve
-            quad2D(vlvSt0, vlvSt1)
-            (vlvHd1t vlvSt1b vlvHd2t vlvSt2b) // 2nd quarter of valve
-            quad2D(vlvSt1, vlvSt2)
-            (vlvHd2t vlvSt2b vlvHd3t vlvSt3b) // 3rd quarter of valve
-            quad2D(vlvSt2, vlvSt3)
-            (vlvHd3t vlvSt3b vlvHd0t vlvSt0b) // 4th quarter of valve
-            quad2D(vlvSt3, vlvSt0)
+            (vlvHd0t vlvSt0b vlvHd1t vlvSt1b) // 1st quarter of valve head
+            (vlvHd1t vlvSt1b vlvHd2t vlvSt2b) // 2nd quarter of valve head
+            (vlvHd2t vlvSt2b vlvHd3t vlvSt3b) // 3rd quarter of valve head
+            (vlvHd3t vlvSt3b vlvHd0t vlvSt0b) // 4th quarter of valve head
+        );
+    }
+    valveStem
+    {
+        type            wall;
+        faces
+        (
+            quad2D(vlvSt0, vlvSt1) // 1st quarter of valve stem
+            quad2D(vlvSt1, vlvSt2) // 2nd quarter of valve stem
+            quad2D(vlvSt2, vlvSt3) // 3rd quarter of valve stem
+            quad2D(vlvSt3, vlvSt0) // 4th quarter of valve stem
         );
     }
 );

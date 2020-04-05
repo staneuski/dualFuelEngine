@@ -36,7 +36,7 @@ boundaryField
     }
 
 /* Walls */
-    "piston|valve|walls"
+    "piston|valve(Head|Stem)|walls"
     {
         type            zeroGradient;
     }

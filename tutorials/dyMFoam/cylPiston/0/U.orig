@@ -71,7 +71,12 @@ boundaryField
     }
 
 /* Walls */
-    "piston|valve|walls"
+    "piston|valveHead"
+    {
+        type            movingWallVelocity;
+        value           $internalField;
+    }
+    "valveStem|walls"
     {
         type            slip;
     }
