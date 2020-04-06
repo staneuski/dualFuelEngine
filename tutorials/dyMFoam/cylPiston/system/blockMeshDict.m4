@@ -46,7 +46,7 @@ define(chamfer, 15)       // Cylinder chamfer
 define(pistonInit, 92.55) // Initial piston position
 define(pistonChamber, 10) // Piston chamber depth
 
-define(vlvS, 0)           // Initial valve stroke
+define(vlvInit, 0)        // Initial valve stroke
 define(vlvD, calc(D/2))   // Valve head diameter
 define(vlvHd, 3)          // Valve head thickness
 define(vlvStD, 8)         // Valve stem diameter
@@ -84,7 +84,7 @@ define(vlvStRcos, calc(vlvStR*cosd(45)))   // Valve stem radius middle point
 define(vlvFltR, calc(vlvR - vlvStR))       // Valve fillet radius
 define(vlvFltRcos, calc(vlvFltR*cosd(45))) // Valve fillet radius middle point
 
-define(vlvHdBot, calc(chS - vlvS))         // Valve head bottom Z coordinate
+define(vlvHdBot, calc(chS - vlvInit))      // Valve head bottom Z coordinate
 define(vlvHdTop, calc(vlvHdBot + vlvHd))   // Valve head top Z coordinate
 define(vlvStBot, calc(vlvHdBot + vlvFltR)) // Valve stem bottom Z coordinate
 define(vlvStTop, calc(S + outletH))        // Valve stem top & outer pipe top Z coordinate
