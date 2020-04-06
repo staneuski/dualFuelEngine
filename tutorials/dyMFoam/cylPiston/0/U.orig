@@ -14,9 +14,9 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-injection       20;
+injection       100;
 
-inlet           10;
+inlet           50;
 
 dimensions      [0 1 -1 0 0 0 0];
 
@@ -31,36 +31,71 @@ boundaryField
 /* Injection */
     injectionXm
     {
-        type            fixedValue;
-        value           uniform ($mInjection 0 0);
-
+        type            uniformFixedValue;
+        uniformValue    table
+        (
+            (0.25      (0           0 0))
+            (0.26      ($mInjection 0 0))
+            (0.36      ($mInjection 0 0))
+            (0.37      (0           0 0))
+        );
     }
     injectionXp
     {
-        type            fixedValue;
-        value           uniform ($injection 0 0);
+        type            uniformFixedValue;
+        uniformValue    table
+        (
+            (0.25      (0           0 0))
+            (0.26      ($injection  0 0))
+            (0.36      ($injection  0 0))
+            (0.37      (0           0 0))
+        );
     }
 
 /* Inlet */
     inletXm
     {
-        type            fixedValue;
-        value           uniform ($mInlet 0 0);
+        type            uniformFixedValue;
+        uniformValue    table
+        (
+            (0.072      (0       0 0))
+            (0.075      ($mInlet 0 0))
+            (0.215      ($mInlet 0 0))
+            (0.216      (0       0 0))
+        );
     }
     inletXp
     {
-        type            fixedValue;
-        value           uniform ($inlet 0 0);
+        type            uniformFixedValue;
+        uniformValue    table
+        (
+            (0.072      (0       0 0))
+            (0.075      ($inlet  0 0))
+            (0.215      ($inlet  0 0))
+            (0.216      (0       0 0))
+        );
     }
     inletYm
     {
-        type            fixedValue;
-        value           uniform (0 $mInlet 0);
+        type            uniformFixedValue;
+        uniformValue    table
+        (
+            (0.072      (0 0       0))
+            (0.075      (0 $mInlet 0))
+            (0.215      (0 $mInlet 0))
+            (0.216      (0 0       0))
+        );
     }
     inletYp
     {
-        type            fixedValue;
-        value           uniform (0 $inlet 0);
+        type            uniformFixedValue;
+        uniformValue    table
+        (
+            (0.072      (0 0       0))
+            (0.075      (0 $inlet  0))
+            (0.215      (0 $inlet  0))
+            (0.216      (0 0       0))
+        );
     }
 
 /* Outlet */

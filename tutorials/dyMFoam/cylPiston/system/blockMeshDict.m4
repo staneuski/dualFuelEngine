@@ -62,7 +62,7 @@ define(injL, 10)          // Injector length from the cylinder wall
 define(injZ, 180)         // Distance from the injector to the bottom of inlet port
 
 define(Nr, 5)             // Number of cells in the radius dimension
-define(Nz, 20)            // Number of cells in the length dimension
+define(Nz, 30)            // Number of cells in the length dimension
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 // Derived parameters
@@ -82,12 +82,12 @@ define(vlvStR, calc(vlvStD/2))             // Valve stem radius
 define(vlvStRcos, calc(vlvStR*cosd(45)))   // Valve stem radius middle point
 
 define(vlvFltR, calc(vlvR - vlvStR))       // Valve fillet radius
-define(vlvFltRcos, calc(vlvFltR*cosd(45))) // Valve fillet radius middle point
-
-define(vlvHdBot, calc(chS - vlvInit))      // Valve head bottom Z coordinate
-define(vlvHdTop, calc(vlvHdBot + vlvHd))   // Valve head top Z coordinate
-define(vlvStBot, calc(vlvHdBot + vlvFltR)) // Valve stem bottom Z coordinate
+define(vlvHdTop, calc(chS - vlvInit))      // Valve head top Z coordinate
+define(vlvHdBot, calc(vlvHdTop - vlvHd))   // Valve head bottom Z coordinate
+define(vlvStBot, calc(vlvHdTop + vlvFltR)) // Valve stem bottom Z coordinate
 define(vlvStTop, calc(S + outletH))        // Valve stem top & outer pipe top Z coordinate
+define(vlvFltRcos, calc(vlvStR + vlvFltR*(1 - cosd(45)))) // Valve fillet radius middle point X\Y coordinate
+define(vlvFltRZcos, calc(vlvHdTop + vlvFltR*(1 - cosd(45)))) // Valve fillet radius middle point Z coordinate
 
 /* Inlet ports */
 /*FIXME arc middle point is incorrect for (inl|inj)W < 10*/
@@ -359,10 +359,10 @@ edges
     arc vlvSt3t vlvSt0t evert( vlvStRcos,  vlvStRcos, vlvStTop)
 
     // Valve fillet
-    arc vlvHd0t vlvSt0b evert( calc(vlvR - vlvFltRcos), 0, calc(vlvHdBot + vlvFltRcos))
-    arc vlvHd1t vlvSt1b evert( 0,-calc(vlvR - vlvFltRcos), calc(vlvHdBot + vlvFltRcos))
-    arc vlvHd2t vlvSt2b evert(-calc(vlvR - vlvFltRcos), 0, calc(vlvHdBot + vlvFltRcos))
-    arc vlvHd3t vlvSt3b evert( 0, calc(vlvR - vlvFltRcos), calc(vlvHdBot + vlvFltRcos))
+    arc vlvHd0t vlvSt0b evert( vlvFltRcos,  0,          vlvFltRZcos)
+    arc vlvHd1t vlvSt1b evert( 0,          -vlvFltRcos, vlvFltRZcos)
+    arc vlvHd2t vlvSt2b evert(-vlvFltRcos,  0,          vlvFltRZcos)
+    arc vlvHd3t vlvSt3b evert( 0,           vlvFltRcos, vlvFltRZcos)
 
 /* Outer pipe */
     arc pipe0t pipe1t evert( vlvRcos, -vlvRcos, vlvStTop)
