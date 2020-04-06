@@ -35,11 +35,11 @@ mixture
     thermodynamics
     {
         Cp          1007;
-        Hf          2.544e+06;
+        Hf          1;
     }
     transport
     {
-        mu          1e-02;
+        mu          2.2e-05;
         Pr          0.7;
     }
 }

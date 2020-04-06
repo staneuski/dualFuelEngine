@@ -44,7 +44,7 @@ define(D, 70)             // Cylinder bore
 define(S, 300)            // Cylinder Z size (> piston stroke)
 define(chamfer, 15)       // Cylinder chamfer
 define(pistonInit, 92.55) // Initial piston position
-define(pistonChamber, 10) // Piston chamber depth
+define(pistonChamber, 0)  // Piston chamber depth
 
 define(vlvInit, 0)        // Initial valve stroke
 define(vlvD, calc(D/2))   // Valve head diameter
