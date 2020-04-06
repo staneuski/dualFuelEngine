@@ -10,15 +10,17 @@ from math import pi
 
 # * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
-tmpFolder          = 'tmp2020-02*' # path to Diesel-RK results folder
+# Download MAN_BnW.drkres.zip file from the source code of the 0.5-alpha
+# version and extract it at etc/DRK2Py/ as MAN_BnW-DieselRK.fvres/ folder
+tmpFolder          = 'MAN_BnW-DieselRK.res/tmp2020-02*' # path to Diesel-RK results folder
 
-terminalOutput     = 'false' # 'true' \ 'false', output log in the Terminal window
+terminalOutput     = 'true' # 'true' \ 'false', output log in the Terminal window
 
 cylParPlot         = 'false' # 'true' \ 'false', integral cylinder parameters plot
 
 inOutParPlot       = 'false' # 'true' \ 'false', integral manifolds parameters plot
 
-inletInjectionPlot = 'true' # 'true' \ 'false', inlet & injection mass flow rate
+inletInjectionPlot = 'false' # 'true' \ 'false', inlet & injection mass flow rate
 
 massFlowRatePar    = 'rhoU' # 'rhoU' \ 'G', mass flow rate to plot (relative or not)
 
