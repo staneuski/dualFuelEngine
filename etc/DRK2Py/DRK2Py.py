@@ -26,7 +26,11 @@ File
     DRK2Python.py
 
 Description
-    Converter data from Diesel-RK to Python 3
+    Process data from Diesel-RK to get boundary & initial conditions for
+    further CFD calculations
+    ( Diesel-RK is COMMERCIAL software for thermodynamical engine simulation
+    and optimisation. Diesel-RK is also free for academic use.
+    For more information see <https://diesel-rk.bmstu.ru> )
 
 ----------------------------------------------------------------------------'''
 
