@@ -14,7 +14,6 @@ if cylParPlot == 'true':
     ).suptitle(
         'Paramaters in the cylinder', fontweight='bold', fontsize = 14
     )
-
     plt.subplot(121).set_title(
         f'Pressure', fontweight = 'bold', fontsize = 12
     )
@@ -52,7 +51,6 @@ if inOutParPlot == 'true':
     ).suptitle(
         'Paramaters in the inlet & outlet ports', fontweight='bold', fontsize = 14
     )
-
     plt.subplot(121).set_title(
         'Inlet port & exhaust pipe pressures', fontweight = 'bold', fontsize = 12
     )
@@ -73,7 +71,6 @@ if inOutParPlot == 'true':
     plt.subplot(122).set_title(
         'Inlet port & exhaust pipe temperatures', fontweight = 'bold', fontsize = 12
     )
-    
     plt.plot(
         T_IP,
         linewidth = 2,
@@ -91,6 +88,46 @@ if inOutParPlot == 'true':
     plt.savefig( 'DRK2Py.res/inOutPars.png' )
 
 
+# Inlet & injection mass flow rate
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+if inletInjectionPlot == 'true':
+
+    if massFlowRatePar == 'rhoU':
+        yLabel = '$\\rho U$, kg/m/s'
+        yG_inlet     = rhoU_inlet
+        yG_injection = rhoU_injection
+
+    elif massFlowRatePar == 'G':
+        yLabel = 'G, kg/s'
+        yG_inlet     = G_inlet
+        yG_injection = G_injection
+    else:
+        exit('Error: massFlowRatePar variable is incorrect!')
+
+    plt.figure()
+    plt.subplot().set_title(
+        'Inlet & injection mass flow rate', fontweight = 'bold', fontsize = 12
+    )
+    plt.plot(
+        range(-EVO, 180),
+        yG_inlet,
+        linewidth = 2,
+        label = 'inlet'
+    )
+    plt.plot(
+        range(-EVO, 180),
+        yG_injection,
+        linewidth = 2,
+        label = 'injection'
+    )
+    plt.axvspan(-IPO, IPO, alpha=0.18, color='grey')
+    plt.grid( True );    plt.legend( loc = 'best', fontsize = 12 )
+    plt.xlabel( '$\\varphi$, deg CA' )
+    plt.ylabel( yLabel )
+
+    plt.savefig( 'DRK2Py.res/inletInjectionU.png' )
+
+
 # Valve & piston positions
 # ~~~~~~~~~~~~~~~~~~~~~~~~
 if movingPartsPlot == 'true':
@@ -101,7 +138,6 @@ if movingPartsPlot == 'true':
         plt.subplot().set_title(
             'Valve & piston relative positions', fontweight = 'bold', fontsize = 12
         )
-
         plt.plot(
             range(-EVO, 180),
             pistonCoord
@@ -116,7 +152,6 @@ if movingPartsPlot == 'true':
             linewidth = 2,
             label = 'valve'
         )
-
         plt.annotate(
             '(BDC)', (1, 1),
             xytext = (EVO/(EVO + 180)*1.19, -0.06), textcoords='axes fraction',
@@ -146,7 +181,6 @@ if movingPartsPlot == 'true':
         plt.subplot().set_title(
             'Valve & piston velocity', fontweight = 'bold', fontsize = 12
         )
-
         plt.plot(
             range(-EVO, 180),
             pistonU,
@@ -159,7 +193,6 @@ if movingPartsPlot == 'true':
             linewidth = 2,
             label = 'valve'
         )
-
         plt.annotate(
             '(BDC)', (1, 1),
             xytext = (EVO/(EVO + 180)*1.19, -0.06), textcoords='axes fraction',
@@ -182,38 +215,5 @@ if movingPartsPlot == 'true':
         plt.grid( True );    plt.legend( loc = 'best', fontsize = 12 )
         plt.xlabel( '$\\varphi$, deg CA' )
         plt.ylabel( 'U, m/s' )
-    
 
     plt.savefig( 'DRK2Py.res/motionParts.png' )
-
-
-# Inlet & injection mass flow rate
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-if inletInjectionPlot == 'true':
-    plt.figure()
-    plt.subplot().set_title(
-        'Inlet & injection mass flow rate', fontweight = 'bold', fontsize = 12
-    )
-
-    plt.plot(
-        range(-EVO, 180),
-        G_inlet,
-        # rhoU_inlet,
-        linewidth = 2,
-        label = 'inlet'
-    )
-    plt.plot(
-        range(-EVO, 180),
-        G_injection,
-        # rhoU_injection,
-        linewidth = 2,
-        label = 'injection'
-    )
-
-    plt.axvspan(-IPO, IPO, alpha=0.18, color='grey')
-    plt.grid( True );    plt.legend( loc = 'best', fontsize = 12 )
-    plt.xlabel( '$\\varphi$, deg CA' )
-    plt.ylabel( 'G, kg/s' )
-    # plt.ylabel( '$\\rho U$, kg/m/s' )
-
-    plt.savefig( 'DRK2Py.res/inletInjectionU.png' )

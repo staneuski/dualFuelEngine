@@ -13,17 +13,22 @@ Piston velocity during scavenging:
     Mean: {S*n/30} m/s
 
 Initial conditions:
-- Parameters at EVO = {360 - EVO}˚ CA:
+- Parameters at EVO = {360 - EVO} deg CA:
     Pressure: {round(p[360 - EVO]*1e-06, 4)} MPa
     Temperature: {T[360 - EVO]} K
     Piston displacement: {abs(min(pistonCoord))} m from BDC
 
 Boundary conditions:
-- Mean parameters in the inlet port:
-    Pressure: {round(np.mean(p_IP)*1e-06, 4)} MPa
+- Inlet port mean parameters:
+    Pressure: {round(np.mean(p_IP)*1e-06, 1)} MPa
     Temperature: {round(np.mean(T_IP), 4)} K
 
-- Mean parameters in the exhaust pipe:
+- Injection estimated (!) parameters:
+    Velocity: {round(injG_max*287*injT/p[EVC]/injArea/2, 1)} m/s (max)
+    Pressure: {p[EVC]*1e-06} MPa
+    Temperature: {injT} K
+
+- Exhaust pipe mean parameters:
     Pressure: {round(np.mean(p_exhPipe)*1e-06, 4)} MPa
     Temperature: {round(np.mean(T_exhPipe), 4)} K
 

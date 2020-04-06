@@ -12,6 +12,8 @@ cellToRegion
 
 
 # Folders - anywhere
+__pycache__/
+.ipynb_checkpoints/
 0.*/
 [1-9]*/
 processor*/
@@ -19,6 +21,7 @@ backups/
 dynamicCode/
 extendedFeatureEdgeMesh/
 polyMesh/
+*.res/
 triSurface/
 postProcessing/
 VTK/
@@ -29,7 +32,7 @@ linux*Gcc*/
 tutorials/**/cylPiston/0/Ma
 tutorials/**/cylPiston/system/blockMeshDict
 
-etc/FlowVision/**/*_[00001-99999]*.fvstat
+etc/FlowVision/**/*_[00001-99999]*.*[fvstat,fvinp]
 etc/FlowVision/**/*.backup
 etc/FlowVision/**/*.glo
 etc/FlowVision/**/*.err
@@ -37,6 +40,4 @@ etc/FlowVision/**/*.sta
 
 
 # Folders - local
-etc/DRK2Py/__pycache__/
-etc/DRK2Py/*.res/
 etc/DRK2Py/tmp*/
