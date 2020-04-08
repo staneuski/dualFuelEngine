@@ -25,11 +25,11 @@ Application
     multiCompressionFoam
 
 Description
-    v0.4.1-alpha
+    v0.4.2-alpha
 
 Comments
-    Phenomenological multicomponent compressible solver (multiCompressionFoam
-    stands for multicomponent compressible flow).
+    Density-based phenomenological multicomponent compressible flow solver
+    (multiCompressionFoam stands for multicomponent compressible flow).
 
 \*---------------------------------------------------------------------------*/
 
@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
     #include "createDyMControls.H" // pimpleControl pimple(mesh);
     #include "createFields.H"
     #include "createFieldRefs.H"
-    #include "createRhoUfIfPresent.H" // rhoUf = rho*U
+    #include "createRhoUfIfPresent.H"
 
     // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
@@ -126,10 +126,10 @@ int main(int argc, char *argv[])
             UEqn.solve();
             fvOptions.correct(U);
 
-            fvScalarMatrix eEqn
+            fvScalarMatrix EEqn
             (
-                fvm::ddt(rho, e)
-              + fvm::div(phi, e)
+                fvm::ddt(rho, e) + fvm::div(phi, e)
+              + fvc::ddt(rho, K) + fvc::div(phi, K)
              ==
               - fvc::div(p*U)
               + fvc::div(thermo.kappa()*fvc::grad(T))
@@ -142,12 +142,12 @@ int main(int argc, char *argv[])
               //+ mu*D TODO
             );
 
-            eEqn.relax();
-            eEqn.solve();
+            EEqn.relax();
+            EEqn.solve();
 
             fvOptions.correct(e);
 
-            // Upgrade values using field e
+            // Upgrade temperature using internal energy field
             thermo.correct();
 
             p = rho/psi;

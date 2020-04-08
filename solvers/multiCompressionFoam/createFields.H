@@ -7,7 +7,9 @@ autoPtr<fluidThermo> pThermo
 fluidThermo& thermo = pThermo();
 thermo.validate(args.executable(), "h", "e");
 
-volScalarField& p = thermo.p();
+volScalarField& e = thermo.he(); /*FIXME thermo.he() creates negative enengy*/
+
+volScalarField& p = thermo.p(); // Ref
 
 Info<< "Reading velocity field U" << endl;
 volVectorField U
@@ -133,5 +135,8 @@ dimensionedScalar DGas
 (
     transportProperties.lookup("DT")
 );
+
+Info<< "Creating field kinetic energy K\n" << endl;
+volScalarField K("K", 0.5*magSqr(U));
 
 #include "createFvOptions.H"
