@@ -90,7 +90,6 @@ define(vlvFltRcos, calc(vlvStR + vlvFltR*(1 - cosd(45)))) // Valve fillet radius
 define(vlvFltRZcos, calc(vlvHdTop + vlvFltR*(1 - cosd(45)))) // Valve fillet radius middle point Z coordinate
 
 /* Inlet ports */
-/*FIXME arc middle point is incorrect for (inl|inj)W < 10*/
 define(inlRL, calc(R + inlL))              // Inlet patch coordinate
 define(inlRmW, calc(sqrt(sqr(R) - sqr(inlW)))) // Inlet port outlet patch X point
 define(inlRcos, calc(sqrt(sqr(R) - sqr(inlW/2)))) // Inlet port outlet patch X middle point
@@ -255,26 +254,26 @@ blocks
     // 1st quarter outlet pipe block
     hex (vlvSt0t pipe0t pipe1t vlvSt1t vlvSt0b vlvHd0t vlvHd1t vlvSt1b)
     pipe /*block 8*/
-    (Nr Nr Nr)
-    simpleGrading (1 1 1)
+    (Nr Nr calc(2*Nr))
+    simpleGrading (1 1 0.5)
 
     // 2nd quarter outlet pipe block
     hex (vlvSt1t pipe1t pipe2t vlvSt2t vlvSt1b vlvHd1t vlvHd2t vlvSt2b)
     pipe /*block 9*/
-    (Nr Nr Nr)
-    simpleGrading (1 1 1)
+    (Nr Nr calc(2*Nr))
+    simpleGrading (1 1 0.5)
 
     // 3rd quarter outlet pipe block
     hex (vlvSt2t pipe2t pipe3t vlvSt3t vlvSt2b vlvHd2t vlvHd3t vlvSt3b)
     pipe /*block 10*/
-    (Nr Nr Nr)
-    simpleGrading (1 1 1)
+    (Nr Nr calc(2*Nr))
+    simpleGrading (1 1 0.5)
 
     // 4th quarter outlet pipe block
     hex (vlvSt3t pipe3t pipe0t vlvSt0t vlvSt3b vlvHd3t vlvHd0t vlvSt0b)
     pipe /*block 11*/
-    (Nr Nr Nr)
-    simpleGrading (1 1 1)
+    (Nr Nr calc(2*Nr))
+    simpleGrading (1 1 0.5)
 
 /* Inlet ports */
     // xMinus inlet port
