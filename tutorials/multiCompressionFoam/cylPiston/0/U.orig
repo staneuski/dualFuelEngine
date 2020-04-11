@@ -1,0 +1,131 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: dualFuelEngline addition to OpenFOAM v7
+   \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
+    \\  /    A nd           | Version:  0.4-alpha
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volVectorField;
+    object      U;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+injection       50;
+
+inlet           25;
+
+dimensions      [0 1 -1 0 0 0 0];
+
+internalField   uniform (0 0 0);
+
+mInjection      #calc "-1.0*$injection";
+
+mInlet          #calc "-1.0*$inlet";
+
+boundaryField
+{
+/* Injection */
+    injectionXm
+    {
+        type            uniformFixedValue;
+        uniformValue    table
+        (
+            (0.25      (0           0 0))
+            (0.26      ($mInjection 0 0))
+            (0.36      ($mInjection 0 0))
+            (0.37      (0           0 0))
+        );
+    }
+    injectionXp
+    {
+        type            uniformFixedValue;
+        uniformValue    table
+        (
+            (0.25      (0           0 0))
+            (0.26      ($injection  0 0))
+            (0.36      ($injection  0 0))
+            (0.37      (0           0 0))
+        );
+    }
+
+/* Inlet */
+    inletXm
+    {
+        type            uniformFixedValue;
+        uniformValue    table
+        (
+            (0.072      (0       0 0))
+            (0.075      ($mInlet 0 0))
+            (0.215      ($mInlet 0 0))
+            (0.216      (0       0 0))
+        );
+    }
+    inletXp
+    {
+        type            uniformFixedValue;
+        uniformValue    table
+        (
+            (0.072      (0       0 0))
+            (0.075      ($inlet  0 0))
+            (0.215      ($inlet  0 0))
+            (0.216      (0       0 0))
+        );
+    }
+    inletYm
+    {
+        type            uniformFixedValue;
+        uniformValue    table
+        (
+            (0.072      (0 0       0))
+            (0.075      (0 $mInlet 0))
+            (0.215      (0 $mInlet 0))
+            (0.216      (0 0       0))
+        );
+    }
+    inletYp
+    {
+        type            uniformFixedValue;
+        uniformValue    table
+        (
+            (0.072      (0 0       0))
+            (0.075      (0 $inlet  0))
+            (0.215      (0 $inlet  0))
+            (0.216      (0 0       0))
+        );
+    }
+
+/* Outlet */
+    outlet
+    {
+        type            pressureInletOutletVelocity;
+        value           uniform (0 0 0);
+    }
+
+/* Walls */
+    "piston|valveHead"
+    {
+        type            movingWallVelocity;
+        value           $internalField;
+    }
+    "valveStem|walls"
+    {
+        type            slip;
+    }
+
+/* ACMI patches */
+    "(inner|outer)ACMI(1|2)_blockage"
+    {
+        type            slip;
+    }
+    "(inner|outer)ACMI(1|2)_couple"
+    {
+        type            cyclicACMI;
+        value           uniform (0 0 0);
+    }
+}
+
+// ************************************************************************* //

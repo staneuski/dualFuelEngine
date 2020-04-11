@@ -6,8 +6,8 @@ log.*
 *.log
 *.gz
 *.foam
-[cell,point]*[Level,ToRegion]
-
+[cell,point]*ToRegion
+[cell,point]*Level
 
 # Folders - anywhere
 __pycache__/
@@ -32,6 +32,7 @@ etc/FlowVision/**/*_[00001-99999]*.*[fvstat,fvinp]
 
 tutorials/**/cylPiston/0/Ma
 tutorials/**/cylPiston/system/blockMeshDict
+tutorials/**/RiemannTube/0/*[p,T,alphaAir,alphaGas]
 
 # Folders - local
 etc/**/*.*[drk,fv,*]res/
