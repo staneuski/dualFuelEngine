@@ -23,14 +23,14 @@ boundaryField
     inlet
     {
         type            uniformFixedValue;
-        // uniformValue    constant (0 80 0);
-        uniformValue    table 
-        (
-            (0          (0 0   0))
-            (2e-03      (0 100 0))
-            (5e-03      (0 100 0))
-            (9e-03      (0 20  0))
-        );
+        uniformValue    constant (0 400 0);
+        // uniformValue    table
+        // (
+        //     (0          (0 0   0))
+        //     (2e-03      (0 400 0))
+        //     (5e-03      (0 400 0))
+        //     (9e-03      (0 25  0))
+        // );
     }
 
     outlet
