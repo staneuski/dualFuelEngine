@@ -49,13 +49,14 @@ printf 'Backing up %s case to %s\n' "${PWD}" "$backupName.tar.qz"
 mkdir -p backups/$backupName.bak
 
 # Copy all reslults & logs to the backup folder
-cp -r *.foam   backups/$backupName.bak
-cp -r log.*    backups/$backupName.bak
-cp -r constant backups/$backupName.bak
-cp -r system   backups/$backupName.bak
+cp -r *.foam         backups/$backupName.bak
+cp -r log.*          backups/$backupName.bak
+cp -r constant       backups/$backupName.bak
+cp -r system         backups/$backupName.bak
+cp -r postProcessing backups/$backupName.bak 2>/dev/null
 for i in `seq 0 9`; do rsync -a $i* backups/$backupName.bak 2>/dev/null; done
 
-# Archive the backup folder in delete it
+# Archive the backup folder and delete it
 tar -C backups -czf backups/$backupName.tar.qz $backupName.bak\
     && rm -r backups/$backupName.bak
 
