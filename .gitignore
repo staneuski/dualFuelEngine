@@ -8,6 +8,7 @@ log.*
 *.foam
 [cell,point]*ToRegion
 [cell,point]*Level
+Ma
 
 # Folders - anywhere
 __pycache__/
@@ -30,7 +31,6 @@ VTK/
 etc/FlowVision/**/*.*[backup,glo,err,sta]
 etc/FlowVision/**/*_[00001-99999]*.*[fvstat,fvinp]
 
-tutorials/**/cylPiston/0/Ma
 tutorials/**/cylPiston/system/blockMeshDict
 tutorials/**/RiemannTube/0/*[p,T,alphaAir,alphaGas]
 

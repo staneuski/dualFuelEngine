@@ -23,7 +23,7 @@ startTime       0;
 
 stopAt          endTime;
 
-endTime         0.0015;
+endTime         0.002;
 
 deltaT          2e-05;
 
@@ -47,11 +47,19 @@ runTimeModifiable true;
 
 adjustTimeStep  true;
 
-maxCo           0.1;
+maxCo           0.5;
 
 functions
 {
     #includeFunc flowRatePatch(name=inlet)
+
+    libs                ("libfieldFunctionObjects.so");
+    Ma
+    {
+        type            MachNo;
+        executeControl  writeTime;
+        writeControl    writeTime;
+    }
 
     volFieldValue // https://github.com/OpenFOAM/OpenFOAM-dev/blob/master/src/functionObjects/field/fieldValues/volFieldValue/volFieldValue.H
     {
