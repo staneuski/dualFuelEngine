@@ -17,23 +17,22 @@ FoamFile
 
 defaultFieldValues
 (
-    volScalarFieldValue p 1e+05
-    volScalarFieldValue T 293.15
+    volScalarFieldValue p 0.23e+06
+    volScalarFieldValue T 332
     volScalarFieldValue alphaAir 1
     volScalarFieldValue alphaGas 0
 );
 
 regions
 (
-    boxToCell // right part
+    boxToCell
     {
-        box (0 0.3 0) (1 0.6 1);
+        box (0 0.3 0) (1 0.6 1); // m, right part
         fieldValues
         (
-            volScalarFieldValue p 1.5e+05
-            volScalarFieldValue T 500
+            volScalarFieldValue p 1.442e+06
+            volScalarFieldValue T 1208.8 // 1208.8 \ 850
             volScalarFieldValue alphaAir 0
-            volScalarFieldValue alphaGas 1
         );
     }
 );
