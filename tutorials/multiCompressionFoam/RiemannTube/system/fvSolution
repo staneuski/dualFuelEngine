@@ -57,7 +57,7 @@ relaxationFactors
 {
     fields
     {
-        p               0.5;
+        p               1;
     }
     equations
     {
