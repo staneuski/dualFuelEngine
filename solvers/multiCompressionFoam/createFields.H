@@ -56,6 +56,14 @@ volScalarField rho
 
 #include "compressibleCreatePhi.H"
 
+pressureControl pressureControl
+(
+    p,
+    rho,
+    pimple.dict(),
+    thermo.incompressible()
+);
+
 Info<< "Reading concentration fields" << endl;
 
 volScalarField alphaAir

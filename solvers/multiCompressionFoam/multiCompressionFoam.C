@@ -25,7 +25,7 @@ Application
     multiCompressionFoam
 
 Description
-    v0.4.2-alpha
+    v0.4.3-alpha
 
 Comments
     Density-based phenomenological multicomponent compressible flow solver
@@ -37,6 +37,7 @@ Comments
 #include "dynamicFvMesh.H" // DyM
 #include "fluidThermo.H"
 #include "pimpleControl.H"
+#include "pressureControl.H"
 #include "CorrectPhi.H" // DyM
 #include "fvOptions.H"
 
