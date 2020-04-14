@@ -124,7 +124,9 @@ int main(int argc, char *argv[])
 
             UEqn.relax();
             UEqn.solve();
+
             fvOptions.correct(U);
+            K = 0.5*magSqr(U);
 
             fvScalarMatrix EEqn
             (

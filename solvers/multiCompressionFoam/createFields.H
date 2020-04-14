@@ -7,8 +7,6 @@ autoPtr<fluidThermo> pThermo
 fluidThermo& thermo = pThermo();
 thermo.validate(args.executable(), "h", "e");
 
-volScalarField& e = thermo.he(); /*FIXME thermo.he() creates negative enengy*/
-
 volScalarField& p = thermo.p(); // Ref
 
 Info<< "Reading velocity field U" << endl;
