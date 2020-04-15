@@ -26,38 +26,87 @@
 #     etc/scripts/makeBackup
 #
 # Description
-#     Script to make backup of the OpenFOAM case.
-#     Usage (must be run from the case folder):
-#     $FOAM_ADDITIONS/dualFuelEngine/scripts/etc/./makeBackup <backupName(optional)>
+#     Script to make backup of the OpenFOAM case
 #
 #------------------------------------------------------------------------------
 
-backupName=$1 # get passed name of the backup (optional) 
+usage () {
+    exec 1>&2
+    while [ "$#" -ge 1 ]; do echo "$1"; shift; done
+    cat <<USAGE
 
-# If backupName variable is empty set it as current date 
-if [[ ! -n "$backupName" ]]; then
+Usage: ${0##*/} [OPTIONS]
+options:
+  -c | -case <dir>     specify alternate case directory, default is the cwd (full path required)
+  -n | -name <name>    specify backup name, default is the YYYY-MM-DD_TIME
+  -a | -archive        create archive
+  -h | --help          help
+
+USAGE
+    exit 1
+}
+
+while [ "$#" -gt 0 ]
+do
+   case "$1" in
+   -c | -case)
+      [ "$#" -ge 2 ] || usage "'$1' option requires an argument"
+      CASE_DIR=$2
+      shift 2
+      ;;
+   -n | -name)
+      [ "$#" -ge 2 ] || usage "'$1' option requires an argument"
+      BACKUP_NAME=$2
+      shift 2
+      ;;
+   -a | -archive)
+      archive=yes
+      shift
+      ;;
+   -h | --help)
+     usage
+     ;;
+   *)
+      usage "Invalid option '$1'"
+      ;;
+    esac
+done
+
+# If $CASE_DIR variable is empty set it as current directory 
+if [[ ! -n "$CASE_DIR" ]]; then
+    CASE_DIR=${PWD}
+fi
+
+# If $BACKUP_NAME variable is empty set it as current date 
+if [[ ! -n "$BACKUP_NAME" ]]; then
     day=`date +%F`
     time=`date +%H%M`
-    backupName="${day}_${time}"
+    BACKUP_NAME="${day}_${time}"
 fi
 
 ################################################################################
 
-printf 'Backing up %s case to %s\n' "${PWD}" "$backupName.tar.qz"
+printf 'Backing up %s case to %s\n' "$CASE_DIR" "$BACKUP_NAME.bak"
 
 # Create backup folder
-mkdir -p backups/$backupName.bak
+BACKUP_PATH=${CASE_DIR}/backups/${BACKUP_NAME}
+mkdir -p $BACKUP_PATH.bak
 
-# Copy all reslults & logs to the backup folder
-cp -r *.foam         backups/$backupName.bak
-cp -r log.*          backups/$backupName.bak
-cp -r constant       backups/$backupName.bak
-cp -r system         backups/$backupName.bak
-cp -r postProcessing backups/$backupName.bak 2>/dev/null
-for i in `seq 0 9`; do rsync -a $i* backups/$backupName.bak 2>/dev/null; done
+# Copy all results & logs to the backup folder
+for i in `seq 0 9`; do
+    rsync -a $CASE_DIR/$i*     $BACKUP_PATH.bak 2>/dev/null;
+done
+
+cp -r $CASE_DIR/*.foam         $BACKUP_PATH.bak
+cp -r $CASE_DIR/log.*          $BACKUP_PATH.bak
+cp -r $CASE_DIR/constant       $BACKUP_PATH.bak
+cp -r $CASE_DIR/system         $BACKUP_PATH.bak
+cp -r $CASE_DIR/postProcessing $BACKUP_PATH.bak 2>/dev/null
 
 # Archive the backup folder and delete it
-tar -C backups -czf backups/$backupName.tar.qz $backupName.bak\
-    && rm -r backups/$backupName.bak
+if [[ "$archive" ]]; then
+    tar -C $CASE_DIR/backups -czf $BACKUP_PATH.tar.qz $BACKUP_NAME.bak\
+        && rm -r $BACKUP_PATH.bak
+fi
 
 #------------------------------------------------------------------------------
