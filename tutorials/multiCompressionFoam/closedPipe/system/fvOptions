@@ -17,7 +17,7 @@ FoamFile
 limitU
 {
     type            limitVelocity;
-    active          yes;
+    active          no;
     selectionMode   all;
     max             25;
 }
@@ -25,7 +25,7 @@ limitU
 limitT
 {
     type            limitTemperature;
-    active          yes;
+    active          no;
     selectionMode   all;
     min             200;
     max             400;

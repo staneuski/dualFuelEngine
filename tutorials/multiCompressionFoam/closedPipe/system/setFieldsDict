@@ -1,1 +1,41 @@
-../../RiemannTube/system/setFieldsDict
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  dev
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      setFieldsDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+defaultFieldValues
+(
+    volScalarFieldValue p 0.23e+06
+    volScalarFieldValue T 332
+    volScalarFieldValue alphaAir 1
+    volScalarFieldValue alphaGas 0
+);
+
+regions
+(
+    boxToCell
+    {
+        box (0 -1 -1) (0.3 1 1); // m, right part
+        fieldValues
+        (
+            volScalarFieldValue p 1.442e+06
+            volScalarFieldValue T 1208.8 // 1208.8 \ 850
+            volScalarFieldValue alphaAir 0
+        );
+    }
+);
+
+
+// ************************************************************************* //

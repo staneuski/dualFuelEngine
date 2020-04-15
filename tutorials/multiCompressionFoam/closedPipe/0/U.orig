@@ -23,8 +23,9 @@ boundaryField
 {
     inlet
     {
-        type    movingWallVelocity;
-        value   $internalField;
+        // type    movingWallVelocity;
+        // value   $internalField;
+        type    slip;
     }
     "walls|outlet"
     {
