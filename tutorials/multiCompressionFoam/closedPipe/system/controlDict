@@ -21,7 +21,7 @@ EVO = 85, deg CA
 deltaDeg = 1/6/n = 0.0018116, s
 */
 
-application     multiCompressionFoam; // dyMFoam;
+application     multiCompressionFoam; // multiCompressionFoam \ dyMFoam
 
 startFrom       startTime;
 
@@ -31,11 +31,11 @@ stopAt          endTime;
 
 endTime         0.48; // (EVO + 180)/6/n
 
-deltaT          1.81e-05; // 0.01 [deg CA]
+deltaT          2e-5;
 
 writeControl    adjustableRunTime;
 
-writeInterval   1.81e-04; // 1.81e-04 (0.1 [deg CA]) | 4.53e-04 (0.25 [deg CA])
+writeInterval   1.81e-3; // 1.81e-3 (1 [deg CA]) | 9e-4 (0.5 [deg CA]) | 4.53e-4 (0.25 [deg CA])
 
 purgeWrite      0;
 
@@ -53,7 +53,7 @@ runTimeModifiable true;
 
 adjustTimeStep  true;
 
-maxCo           0.25;
+maxCo           0.1;
 
 functions
 {
