@@ -25,7 +25,7 @@ stopAt          endTime;
 
 endTime         0.0125;
 
-deltaT          3e-05;
+deltaT          2e-05;
 
 writeControl    adjustableRunTime;
 
@@ -51,7 +51,13 @@ maxCo           0.1;
 
 functions
 {
-    #includeFunc residuals //$ foamMonitor -title "Residuals" $FOAM_ADD/dualFuelEngine/tutorials/multiCompressionFoam/RiemannTube/postProcessing/residuals/0/residuals.dat
+    libs                ("libfieldFunctionObjects.so");
+    Ma
+    {
+        type            MachNo;
+        executeControl  writeTime;
+        writeControl    writeTime;
+    }
 }
 
 
