@@ -23,21 +23,22 @@ boundaryField
     // Injection
     "injection(X|Y)(Minus|Plus)"
     {
-        type    fixedValue;
-        value   $internalField; //uniform 400;
+        type            fixedValue;
+        value           uniform 380;
     }
 
     // Inlet
     "inlet(X|Y)(Minus|Plus)"
     {
-        $injectionXMinus
+        type            fixedValue;
+        value           uniform 332;
     }
 
     // Outlet
     outlet
     {
         type            inletOutlet;
-        inletValue      uniform 764;
+        inletValue      uniform 769.3;
         value           $inletValue;
     }
     
