@@ -7,7 +7,58 @@ autoPtr<fluidThermo> pThermo
 fluidThermo& thermo = pThermo();
 thermo.validate(args.executable(), "h", "e");
 
-volScalarField& p = thermo.p(); // Ref
+volScalarField& p = thermo.p();
+
+// Infer the density BCs from the pressure
+wordList rhoTypes
+(
+    p.boundaryField().size()
+);
+
+// Set the same type BCs of rho as for T and set them to zero-gradient for
+// patches at which p and T is fixed
+forAll(p.boundaryField(), patchi)
+{
+    if
+    (
+        (
+            p.boundaryField()[patchi].fixesValue()
+         && thermo.T().boundaryField()[patchi].fixesValue()
+        )
+     ||
+        (
+            p.boundaryField().types()[patchi]
+         ==
+            zeroGradientFvPatchScalarField::typeName
+        &&
+            thermo.T().boundaryField().types()[patchi]
+         ==
+            zeroGradientFvPatchScalarField::typeName
+        )
+    )
+    {
+        rhoTypes[patchi] = zeroGradientFvPatchScalarField::typeName;
+    }
+    else
+    {
+        rhoTypes[patchi] = thermo.T().boundaryField().types()[patchi];
+    }
+}
+
+Info<< "\nConstructing density field rho" << nl << endl;
+volScalarField rho
+(
+    IOobject
+    (
+        "rho",
+        runTime.timeName(),
+        mesh,
+        IOobject::READ_IF_PRESENT,
+        IOobject::AUTO_WRITE
+    ),
+    thermo.rho(),
+    rhoTypes
+);
 
 Info<< "Reading velocity field U" << endl;
 volVectorField U
@@ -21,37 +72,6 @@ volVectorField U
         IOobject::AUTO_WRITE
     ),
     mesh
-);
-
-// Infer the density BCs from the pressure
-wordList rhoBCTypes
-(
-    p.boundaryField().size(),
-    zeroGradientFvPatchScalarField::typeName
-);
-
-forAll(U.boundaryField(), patchi)
-{
-    if (U.boundaryField().types()[patchi] == zeroGradientFvPatchScalarField::typeName)
-    {
-        rhoBCTypes[patchi] = fixedValueFvPatchScalarField::typeName;
-    }
-}
-
-Info<< "\nConstructing density field rho" << nl << endl;
-
-volScalarField rho
-(
-    IOobject
-    (
-        "rho",
-        runTime.timeName(),
-        mesh,
-        IOobject::READ_IF_PRESENT,
-        IOobject::AUTO_WRITE
-    ),
-    thermo.rho(),
-    rhoBCTypes
 );
 
 #include "compressibleCreatePhi.H"
@@ -92,7 +112,6 @@ volScalarField alphaGas
 );
 
 Info<< "\nConstructing exhaust concentration field\n" << endl;
-
 volScalarField alphaExh
 (
     IOobject
@@ -108,7 +127,6 @@ volScalarField alphaExh
 );
 
 Info<< "Reading transport properties\n" << endl;
-
 IOdictionary transportProperties
 (
     IOobject
@@ -122,21 +140,18 @@ IOdictionary transportProperties
 );
 
 Info<< "Reading diffusivity DT" << endl;
-
 dimensionedScalar DT
 (
     transportProperties.lookup("DT")
 );
 
 Info<< "Reading DAir (equals diffusivity DT)" << endl;
-
 dimensionedScalar DAir
 (
     transportProperties.lookup("DT")
 );
 
 Info<< "Reading DGas (equals diffusivity DT)" << endl;
-
 dimensionedScalar DGas
 (
     transportProperties.lookup("DT")

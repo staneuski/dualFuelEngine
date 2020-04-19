@@ -25,11 +25,10 @@ Application
     multiCompressionFoam
 
 Description
-    v0.4.3-alpha
+    Density-based phenomenological multicomponent compressible flow solver.
 
-Comments
-    Density-based phenomenological multicomponent compressible flow solver
     (multiCompressionFoam stands for multicomponent compressible flow).
+    Current version: 0.4.4-alpha
 
 \*---------------------------------------------------------------------------*/
 
@@ -48,7 +47,7 @@ int main(int argc, char *argv[])
     #include "setRootCaseLists.H"
     #include "createTime.H"
     #include "createDynamicFvMesh.H" // DyM
-    #include "createDyMControls.H" // pimpleControl pimple(mesh);
+    #include "createDyMControls.H"
     #include "createFields.H"
     #include "createFieldRefs.H"
     #include "createRhoUfIfPresent.H"
