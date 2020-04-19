@@ -2,8 +2,8 @@
 # Lines that start with '#' are comments.
 
 # Files - anywhere
-log.*
-*.log
+*log*
+test*
 *.gz
 *.foam
 [cell,point]*ToRegion
