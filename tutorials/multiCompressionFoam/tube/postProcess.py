@@ -35,7 +35,7 @@ massFlowRate = np.loadtxt(
 )
 
 volFieldValues = np.loadtxt(
-    'postProcessing/volFieldValue/0/volFieldValue.dat',
+    'postProcessing/volAverageFieldValues/0/volFieldValue.dat',
     skiprows = 4,
     encoding = 'utf-8'
 )

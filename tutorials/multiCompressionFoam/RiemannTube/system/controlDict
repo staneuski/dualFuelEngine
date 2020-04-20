@@ -51,12 +51,31 @@ maxCo           0.1;
 
 functions
 {
-    libs                ("libfieldFunctionObjects.so");
-    Ma
+    #includeFunc MachNo
+
+    internalEnergy
     {
-        type            MachNo;
-        executeControl  writeTime;
+        type            writeObjects;
+        libs            ("libutilityFunctionObjects.so");
         writeControl    writeTime;
+        objects
+        (
+            e
+        );
+    }
+    volAverageFieldValues
+    {
+        type            volFieldValue;
+        libs            ("libfieldFunctionObjects.so");
+        writeControl    timeStep;
+        writeInterval   1;
+        log             true;
+        writeFields     false;
+        operation       volAverage;
+        fields
+        (
+            p T e rho alphaAir alphaGas alphaExh
+        );
     }
 }
 

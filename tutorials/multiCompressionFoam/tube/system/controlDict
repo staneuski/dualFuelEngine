@@ -52,26 +52,26 @@ maxCo           0.1;
 functions
 {
     #includeFunc flowRatePatch(name=inlet)
+    #includeFunc MachNo
 
-    libs                ("libfieldFunctionObjects.so");
-    Ma
+    internalEnergy
     {
-        type            MachNo;
-        executeControl  writeTime;
+        type            writeObjects;
+        libs            ("libutilityFunctionObjects.so");
         writeControl    writeTime;
+        objects
+        (
+            e
+        );
     }
-
-    volFieldValue // https://github.com/OpenFOAM/OpenFOAM-dev/blob/master/src/functionObjects/field/fieldValues/volFieldValue/volFieldValue.H
+    volAverageFieldValues
     {
         type            volFieldValue;
         libs            ("libfieldFunctionObjects.so");
-
         writeControl    timeStep;
         writeInterval   1;
-
-        writeFields     false;
         log             true;
-
+        writeFields     false;
         operation       volAverage;
         fields
         (
