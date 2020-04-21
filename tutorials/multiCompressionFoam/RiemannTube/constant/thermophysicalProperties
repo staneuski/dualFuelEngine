@@ -26,7 +26,7 @@ thermoType
     energy          sensibleInternalEnergy;
 }
 
-mixture
+mixture // air at room temperature (293 K)
 {
     specie
     {
@@ -34,13 +34,13 @@ mixture
     }
     thermodynamics
     {
-        Cp          1007;
-        Hf          1;
+        Cp          1005;
+        Hf          0;
     }
     transport
     {
-        mu          2.2e-05;
-        Pr          0.7;
+        mu          1.82e-05;
+        Pr          0.71;
     }
 }
 
