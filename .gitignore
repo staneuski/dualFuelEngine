@@ -8,6 +8,7 @@ test*
 *.foam
 [cell,point]*ToRegion
 [cell,point]*Level
+e
 Ma
 
 # Folders - anywhere
@@ -22,6 +23,7 @@ linux*Gcc*/
 polyMesh/
 postProcessing/
 processor*/
+uniform/
 triSurface/
 VTK/
 
