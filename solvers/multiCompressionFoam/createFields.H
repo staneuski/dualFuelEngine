@@ -5,7 +5,6 @@ autoPtr<fluidThermo> pThermo
     fluidThermo::New(mesh)
 );
 fluidThermo& thermo = pThermo();
-thermo.validate(args.executable(), "h", "e");
 
 volScalarField& p = thermo.p();
 
@@ -137,12 +136,6 @@ IOdictionary transportProperties
         IOobject::MUST_READ_IF_MODIFIED,
         IOobject::NO_WRITE
     )
-);
-
-Info<< "Reading diffusivity DT" << endl;
-dimensionedScalar DT
-(
-    transportProperties.lookup("DT")
 );
 
 Info<< "Reading DAir (equals diffusivity DT)" << endl;

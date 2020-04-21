@@ -25,10 +25,10 @@ Application
     multiCompressionFoam
 
 Description
-    Density-based phenomenological multicomponent compressible flow solver.
-
+    Density-based phenomenological multicomponent compressible flow solver
     (multiCompressionFoam stands for multicomponent compressible flow).
-    Current version: 0.4.4-alpha
+
+    Current version: v0.4.5-alpha
 
 \*---------------------------------------------------------------------------*/
 
@@ -111,8 +111,7 @@ int main(int argc, char *argv[])
 
             fvVectorMatrix UEqn
             (
-                fvm::ddt(rho, U)
-              + fvc::div(phi, U)
+                fvm::ddt(rho, U) + fvc::div(phi, U)
              ==
               - fvc::grad(p)
               + fvc::grad
@@ -154,7 +153,7 @@ int main(int argc, char *argv[])
 
             p = rho/psi;
 
-            phi = fvc::flux(rho*U);
+            phi = fvc::flux(rho*U); /*FIXME phi isn't corrected for scalar transport equations if mesh moving*/
 
             fvScalarMatrix alphaAirEqn
             (
