@@ -23,13 +23,13 @@ boundaryField
     inlet
     {
         type            uniformFixedValue;
-        // uniformValue    constant (0 200 0);
+        // uniformValue    constant (0 400 0);
         uniformValue    table
         (
-            (0          (0 250 0)) /* +U   •-•        */
-            (0.0005     (0 400 0)) /*  |  /   \       */
-            (0.0010     (0 400 0)) /*  | •     \      */
-            (0.0015     (0 250 0)) /* 25        •---• */
+            (0          (0 100 0)) /* +U    •--•       */
+            (0.0005     (0 400 0)) /*  |   /    \      */
+            (0.0010     (0 400 0)) /*  |  •      \     */
+            (0.0015     (0 50  0)) /* 50          •--• */
         );
     }
 
