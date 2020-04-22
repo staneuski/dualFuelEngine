@@ -20,26 +20,26 @@ internalField   uniform 1.442e+06;
 
 boundaryField
 {
-    // Injection
+/* Injection */
     "injection(X|Y)(Minus|Plus)"
     {
         type            zeroGradient;
     }
 
-    // Inlet
+/* Inlet */
     "inlet(X|Y)(Minus|Plus)"
     {
         $injectionXMinus
     }
 
-    // Outlet
+/* Outlet */
     outlet
     {
         type            fixedValue;
         value           uniform 0.23e+06;
     }
 
-    // Walls
+/* Walls */
     "piston|valve|walls"
     {
         type            zeroGradient;
