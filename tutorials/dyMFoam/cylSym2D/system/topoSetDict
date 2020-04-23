@@ -1,8 +1,8 @@
 /*--------------------------------*- C++ -*----------------------------------*\
   =========                 |
-  \\      /  F ield         | OpenFOAM: Addition to OpenFOAM v6
+  \\      /  F ield         | OpenFOAM: dualFuelEngline addition to OpenFOAM v7
    \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
-    \\  /    A nd           | Version:  0.3-alpha
+    \\  /    A nd           | Version:  0.4-alpha
      \\/     M anipulation  |
 \*---------------------------------------------------------------------------*/
 FoamFile
@@ -16,72 +16,94 @@ FoamFile
 
 actions
 (
-    // Get both sides of ami
+    // Get both sides of AMI
     // ~~~~~~~~~~~~~~~~~~~~~
 
-    // Create faceZone for patch couple1
+    // Create faceZone for patch innerCouple1
     {
-        name    couple1FaceSet;
+        name    innerCouple1FaceSet;
         type    faceSet;
         action  new;
         source  patchToFace;
         sourceInfo
         {
-            name    couple1;
+            name    innerCouple1;
         }
     }
     {
-        name    couple1Faces;
+        name    innerCouple1Faces;
         type    faceZoneSet;
         action  new;
         source  setToFaceZone;
         sourceInfo
         {
-            faceSet couple1FaceSet;
+            faceSet innerCouple1FaceSet;
         }
     }
 
-    // Create faceZone for patch couple2
+    // Create faceZone for patch innerCouple2
     {
-        name    couple2FaceSet;
+        name    innerCouple2FaceSet;
         type    faceSet;
         action  new;
         source  patchToFace;
         sourceInfo
         {
-            name    couple2;
+            name    innerCouple2;
         }
     }
     {
-        name    couple2Faces;
+        name    innerCouple2Faces;
         type    faceZoneSet;
         action  new;
         source  setToFaceZone;
         sourceInfo
         {
-            faceSet couple2FaceSet;
+            faceSet innerCouple2FaceSet;
         }
     }
 
-    // Create cellZone for moving cells in inlet channel
+    // Create faceZone for patch outerCouple1
     {
-        name    cylinderCellSet;
-        type    cellSet;
+        name    outerCouple1FaceSet;
+        type    faceSet;
         action  new;
-        source  boxToCell;
+        source  patchToFace;
         sourceInfo
         {
-            box     (1 0 0) (3 5 0.1);
+            name    outerCouple1;
         }
     }
     {
-        name    cylinder;
-        type    cellZoneSet;
+        name    outerCouple1Faces;
+        type    faceZoneSet;
         action  new;
-        source  setToCellZone;
+        source  setToFaceZone;
         sourceInfo
         {
-            set     cylinderCellSet;
+            faceSet outerCouple1FaceSet;
+        }
+    }
+
+    // Create faceZone for patch outerCouple2
+    {
+        name    outerCouple2FaceSet;
+        type    faceSet;
+        action  new;
+        source  patchToFace;
+        sourceInfo
+        {
+            name    outerCouple2;
+        }
+    }
+    {
+        name    outerCouple2Faces;
+        type    faceZoneSet;
+        action  new;
+        source  setToFaceZone;
+        sourceInfo
+        {
+            faceSet outerCouple2FaceSet;
         }
     }
 );

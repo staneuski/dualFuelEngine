@@ -14,23 +14,25 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [1 -1 -2 0 0 0 0];
+dimensions      [0 0 0 1 0 0 0];
 
-internalField   uniform 1e+05;
+internalField   uniform 380;
 
 boundaryField
 {
 /* Inlet */
     "injection|inlet"
     {
-        type            zeroGradient;
+        type            fixedValue;
+        value           uniform 332;
     }
 
 /* Outlet */
     outlet
     {
-        type            fixedValue;
-        value           uniform 0.23e+06;
+        type            inletOutlet;
+        inletValue      uniform 769.3;
+        value           $inletValue;
     }
 
 /* Walls */

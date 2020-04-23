@@ -1,8 +1,6 @@
 boundaryField
 {
-    #includeEtc "caseDicts/setConstraintTypes"
-
-/* Inlet & Injection */
+/* Inlet */
     "injection|inlet"
     {
         type            uniformFixedValue;
@@ -20,45 +18,80 @@ boundaryField
     {
         type            uniformFixedValue;
         uniformValue
-        { 
+        {
             type        sine;
-            frequency   1.4286; // n/60
-            amplitude   25; // pi*S*n/30 = pi*2.7*92/30
-            start       0; // .154 // EVO/6/n = 85/6/92
+            frequency   1.4286; // n/60 = 92/60
+            amplitude   11; // pi*S*n/30 = pi*2.8*92/30 = 26.96
+            start       0.154; // EVO/6/n = 85/6/92
             level       0; // offset
 
             scale       1; /* OpenFOAM v7 or lower */
         }
     }
-    axis
+    valveHead
+    {
+        type            uniformFixedValue;
+        uniformValue    table
+        (
+            (0          0)
+            (0.045     -2) /* +U           •   */
+            (0.091      0) /*  |          / \  */
+            (0.136      0) /*  0 •   •---•   • */
+            (0.181      2) /*  |  \ /          */
+            (0.226      0) /* -U   •           */
+        );
+    }
+    valveStem
     {
         type            slip;
     }
-    "cyl_top|(injection|inlet)_(topAndBottom|back|front)"
+    walls
     {
         type            uniformFixedValue;
         uniformValue    constant 0;
     }
 
 /* ACMI & cyclic patches */
-    ACMI1_couple
-    {
-        type            uniformFixedValue;
-        patchType       cyclicACMI;
-        uniformValue    0;
-    }
-    ACMI1_blockage
-    {
-        type            uniformFixedValue;
-        uniformValue    0;
-    }
-    ACMI2_couple
+    #includeEtc "caseDicts/setConstraintTypes"
+
+    // Inner ACMI patch
+    innerACMI1_couple
     {
         type            slip;
         patchType       cyclicACMI;
-        value           uniform 0;
     }
-    ACMI2_blockage
+    innerACMI1_blockage
+    {
+        type            slip;
+    }
+    innerACMI2_couple
+    {
+        type            slip;
+        patchType       cyclicACMI;
+    }
+    innerACMI2_blockage
+    {
+        type            slip;
+    }
+
+    // Outer ACMI patch
+    outerACMI1_couple
+    {
+        type            uniformFixedValue;
+        patchType       cyclicACMI;
+        uniformValue    0;
+    }
+    outerACMI1_blockage
+    {
+        type            uniformFixedValue;
+        uniformValue    0;
+    }
+    outerACMI2_couple
+    {
+        type            slip;
+        patchType       cyclicACMI;
+    }
+    outerACMI2_blockage
     {
         type            slip;
         value           uniform 0;

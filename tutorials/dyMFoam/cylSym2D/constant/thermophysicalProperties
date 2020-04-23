@@ -11,20 +11,38 @@ FoamFile
     format      ascii;
     class       dictionary;
     location    "constant";
-    object      dynamicMeshDict;
+    object      thermophysicalProperties;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dynamicFvMesh    dynamicMotionSolverFvMesh;
-
-motionSolverLibs ("libfvMotionSolvers.so");
-
-motionSolver     velocityComponentLaplacian;
-
-velocityComponentLaplacianCoeffs
+thermoType
 {
-    component    z;
-    diffusivity  uniform;
+    type            hePsiThermo;
+    mixture         pureMixture;
+    transport       const;
+    thermo          hConst;
+    equationOfState perfectGas;
+    specie          specie;
+    energy          sensibleInternalEnergy;
 }
+
+mixture
+{
+    specie
+    {
+        molWeight   28.9;
+    }
+    thermodynamics
+    {
+        Cp          1007;
+        Hf          0;
+    }
+    transport
+    {
+        mu          2.2e-05;
+        Pr          0.7;
+    }
+}
+
 
 // ************************************************************************* //

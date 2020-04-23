@@ -1,8 +1,8 @@
 /*--------------------------------*- C++ -*----------------------------------*\
   =========                 |
-  \\      /  F ield         | OpenFOAM: Addition to OpenFOAM v6
+  \\      /  F ield         | OpenFOAM: dualFuelEngline addition to OpenFOAM v7
    \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
-    \\  /    A nd           | Version:  0.3-alpha
+    \\  /    A nd           | Version:  0.4-alpha
      \\/     M anipulation  |
 \*---------------------------------------------------------------------------*/
 FoamFile
@@ -26,81 +26,160 @@ baffles
     // NOTE: cyclicAMI patches MUST BE defined PRIOR to their associted
     //       blockage patches
 
-    ACMI1
+    innerACMI1
     {
         //- Use predefined faceZone to select faces and orientation.
         type        faceZone;
-        zoneName    couple1Faces;
+        zoneName    innerCouple1Faces;
 
         patches
         {
             master
             {
                 //- Master side patch
-                name            ACMI1_couple;
+                name            innerACMI1_couple;
                 type            cyclicACMI;
                 matchTolerance  0.0001;
-                neighbourPatch  ACMI2_couple;
-                nonOverlapPatch ACMI1_blockage;
-                // transform       noOrdering;
+                neighbourPatch  innerACMI2_couple;
+                nonOverlapPatch innerACMI1_blockage;
+                // transform       noOrdering; /* OpenFOAM v7 or lower */
             }
             slave // not used since we're manipulating a boundary patch
             {
                 //- Slave side patch
-                name            ACMI1_couple;
+                name            innerACMI1_couple;
                 type            patch;
             }
 
             master2
             {
                 //- Master side patch
-                name            ACMI1_blockage;
+                name            innerACMI1_blockage;
                 type            wall;
             }
             slave2 // not used since we're manipulating a boundary patch
             {
                 //- Slave side patch
-                name            ACMI1_blockage;
+                name            innerACMI1_blockage;
                 type            wall;
             }
 
         }
     }
-    ACMI2
+    innerACMI2
     {
         //- Use predefined faceZone to select faces and orientation.
         type        faceZone;
-        zoneName    couple2Faces;
+        zoneName    innerCouple2Faces;
 
         patches
         {
             master
             {
                 //- Master side patch
-                name            ACMI2_couple;
+                name            innerACMI2_couple;
                 type            cyclicACMI;
                 matchTolerance  0.0001;
-                neighbourPatch  ACMI1_couple;
-                nonOverlapPatch ACMI2_blockage;
-                // transform       noOrdering;
+                neighbourPatch  innerACMI1_couple;
+                nonOverlapPatch innerACMI2_blockage;
+                // transform       noOrdering; /* OpenFOAM v7 or lower */
             }
             slave // not used since we're manipulating a boundary patch
             {
                 //- Slave side patch
-                name            ACMI2_couple;
+                name            innerACMI2_couple;
                 type            patch;
             }
 
             master2
             {
                 //- Master side patch
-                name            ACMI2_blockage;
+                name            innerACMI2_blockage;
                 type            wall;
             }
             slave2 // not used since we're manipulating a boundary patch
             {
                 //- Slave side patch
-                name            ACMI2_blockage;
+                name            innerACMI2_blockage;
+                type            wall;
+            }
+        }
+    }
+
+    outerACMI1
+    {
+        //- Use predefined faceZone to select faces and orientation.
+        type        faceZone;
+        zoneName    outerCouple1Faces;
+
+        patches
+        {
+            master
+            {
+                //- Master side patch
+                name            outerACMI1_couple;
+                type            cyclicACMI;
+                matchTolerance  0.0001;
+                neighbourPatch  outerACMI2_couple;
+                nonOverlapPatch outerACMI1_blockage;
+                // transform       noOrdering; /* OpenFOAM v7 or lower */
+            }
+            slave // not used since we're manipulating a boundary patch
+            {
+                //- Slave side patch
+                name            outerACMI1_couple;
+                type            patch;
+            }
+
+            master2
+            {
+                //- Master side patch
+                name            outerACMI1_blockage;
+                type            wall;
+            }
+            slave2 // not used since we're manipulating a boundary patch
+            {
+                //- Slave side patch
+                name            outerACMI1_blockage;
+                type            wall;
+            }
+
+        }
+    }
+    outerACMI2
+    {
+        //- Use predefined faceZone to select faces and orientation.
+        type        faceZone;
+        zoneName    outerCouple2Faces;
+
+        patches
+        {
+            master
+            {
+                //- Master side patch
+                name            outerACMI2_couple;
+                type            cyclicACMI;
+                matchTolerance  0.0001;
+                neighbourPatch  outerACMI1_couple;
+                nonOverlapPatch outerACMI2_blockage;
+                // transform       noOrdering; /* OpenFOAM v7 or lower */
+            }
+            slave // not used since we're manipulating a boundary patch
+            {
+                //- Slave side patch
+                name            outerACMI2_couple;
+                type            patch;
+            }
+
+            master2
+            {
+                //- Master side patch
+                name            outerACMI2_blockage;
+                type            wall;
+            }
+            slave2 // not used since we're manipulating a boundary patch
+            {
+                name            outerACMI2_blockage;
                 type            wall;
             }
         }

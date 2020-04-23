@@ -2,7 +2,7 @@
   =========                 |
   \\      /  F ield         | OpenFOAM: Addition to OpenFOAM v6
    \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
-    \\  /    A nd           | Version:  0.3-alpha
+    \\  /    A nd           | Version:  0.4-alpha
      \\/     M anipulation  |
 \*---------------------------------------------------------------------------*/
 FoamFile
@@ -15,38 +15,38 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-application          dyMFoam; // dyMFoam \ pimpleFoam
+application     rhoPimpleFoam; // dyMFoam \ rhoPimpleFoam
 
-startFrom            startTime;
+startFrom       startTime;
 
-startTime            0;
+startTime       0;
 
-stopAt               endTime;
+stopAt          endTime;
 
-endTime              0.326;
+endTime         0.48;
 
-deltaT               1e-03; // 0.009 \ 1e-05
+deltaT          0.0009;
 
-writeControl         adjustableRunTime;
+writeControl    adjustableRunTime;
 
-writeInterval        0.0018;
+writeInterval   0.0018;
 
-purgeWrite           0;
+purgeWrite      0;
 
-writeFormat          ascii;
+writeFormat     ascii;
 
-writePrecision       6;
+writePrecision  6;
 
-writeCompression     off;
+writeCompression false;
 
-timeFormat           general;
+timeFormat      general;
 
-timePrecision        6;
+timePrecision   6;
 
-runTimeModifiable    true;
+runTimeModifiable true;
 
-adjustTimeStep       true;
+adjustTimeStep  true;
 
-maxCo                0.5;
+maxCo           0.5;
 
 // ************************************************************************* //

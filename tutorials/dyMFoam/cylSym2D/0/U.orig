@@ -1,8 +1,8 @@
 /*--------------------------------*- C++ -*----------------------------------*\
   =========                 |
-  \\      /  F ield         | OpenFOAM: Addition to OpenFOAM v6
+  \\      /  F ield         | OpenFOAM: dualFuelEngline addition to OpenFOAM v7
    \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
-    \\  /    A nd           | Version:  0.3-alpha
+    \\  /    A nd           | Version:  0.4-alpha
      \\/     M anipulation  |
 \*---------------------------------------------------------------------------*/
 FoamFile
@@ -14,24 +14,42 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions              [0 1 -1 0 0 0 0]; // [kg m s K kg-mol cd]
+injection       100;
 
-internalField           uniform (0 0 0);
+inlet           50;
+
+dimensions      [0 1 -1 0 0 0 0];
+
+internalField   uniform (0 0 0);
+
+mInjection      #calc "-1.0*$injection";
+
+mInlet          #calc "-1.0*$inlet";
 
 boundaryField
 {
-    #includeEtc "caseDicts/setConstraintTypes"
-
-/* Inlet & Injection */
+/* Inlet */
     injection
     {
-        type            fixedValue;
-        value           uniform (-100 0 0);
+        type            uniformFixedValue;
+        uniformValue    table
+        (
+            (0.25      (0           0 0))
+            (0.26      ($mInjection 0 0))
+            (0.36      ($mInjection 0 0))
+            (0.37      (0           0 0))
+        );
     }
     inlet
     {
-        type            fixedValue;
-        value           uniform (-50 20 0);
+        type            uniformFixedValue;
+        uniformValue    table
+        (
+            (0.072      (0       0 0))
+            (0.075      ($mInlet 0 0))
+            (0.215      ($mInlet 0 0))
+            (0.216      (0       0 0))
+        );
     }
 
 /* Outlet */
@@ -42,22 +60,24 @@ boundaryField
     }
 
 /* Walls */
-    piston
+    "piston|valveHead"
     {
         type            movingWallVelocity;
         value           $internalField;
     }
-    "cyl_top|(injection|inlet)_(back|front|topAndBottom)"
+    "valveStem|walls"
     {
         type            slip;
     }
 
-/* ACMI patches */
-    "ACMI(1|2)_blockage"
+/* ACMI & cyclic patches */
+    #includeEtc "caseDicts/setConstraintTypes"
+
+    "(inner|outer)ACMI(1|2)_blockage"
     {
         type            slip;
     }
-    "ACMI(1|2)_couple"
+    "(inner|outer)ACMI(1|2)_couple"
     {
         type            cyclicACMI;
         value           uniform (0 0 0);
