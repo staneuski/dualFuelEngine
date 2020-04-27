@@ -33,7 +33,7 @@ VTK/
 etc/FlowVision/**/*.*[backup,glo,err,sta]
 etc/FlowVision/**/*_[00001-99999]*.*[fvstat,fvinp]
 
-tutorials/**/*[cylPiston,cylSym2D]/system/blockMeshDict
+tutorials/resources/blockMesh/*[cylPiston,cylCyclic2D,shockTube,tube]
 tutorials/**/*[closedPipe,RiemannTube,cylPiston,cylSym2D,shockTube]/**/0/*[p,T,U,alphaAir,alphaGas]
 
 # Folders - local

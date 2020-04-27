@@ -14,10 +14,18 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
+// Whether to convert internal faces only (so leave boundary faces intact).
+// This is only relevant if your face selection type can pick up boundary
+// faces.
 internalFacesOnly false;
 
+
+// Baffles to create.
 baffles
 {
+    // NOTE: cyclicAMI patches MUST BE defined PRIOR to their associted
+    //       blockage patches
+
     innerACMI1
     {
         //- Use predefined faceZone to select faces and orientation.
