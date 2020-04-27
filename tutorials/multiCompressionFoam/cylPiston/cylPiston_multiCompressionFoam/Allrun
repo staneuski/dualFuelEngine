@@ -11,11 +11,11 @@ application=$(getApplication)
 ./Allmesh
 
 #- Run serial
-# runApplication $application
+runApplication $application
 
 #- Run parallel
-runApplication decomposePar -force
-runParallel $application
-runApplication reconstructPar
+# runApplication decomposePar -force
+# runParallel $application
+# runApplication reconstructPar
 
 #------------------------------------------------------------------------------

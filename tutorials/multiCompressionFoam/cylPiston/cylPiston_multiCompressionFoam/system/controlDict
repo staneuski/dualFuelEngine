@@ -15,7 +15,7 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-application     multiCompressionFoam; // dyMFoam \ multiCompressionFoam
+application     dyMFoam; // multiCompressionFoam \ dyMfoam
 
 startFrom       startTime;
 
@@ -45,22 +45,9 @@ timePrecision   6;
 
 runTimeModifiable true;
 
-adjustTimeStep  true;
+adjustTimeStep  false; // true \ false
 
 maxCo           1;
-
-functions
-{
-    #includeFunc        residuals //$ foamMonitor -l postProcessing/residuals/0/residuals.dat
-
-    libs                ("libfieldFunctionObjects.so");
-    Ma
-    {
-        type            MachNo;
-        executeControl  writeTime;
-        writeControl    writeTime;
-    }
-}
 
 
 // ************************************************************************* //
