@@ -1,0 +1,34 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: dualFuelEngline addition to OpenFOAM v7
+   \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
+    \\  /    A nd           | Version:  0.4-alpha
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      fvOptions;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+limitU
+{
+    type            limitVelocity;
+    active          false;
+    selectionMode   all;
+    max             25;
+}
+
+limitT
+{
+    type            limitTemperature;
+    active          false;
+    selectionMode   all;
+    min             50;
+    max             2500;
+}
+
+//************************************************************************** //
