@@ -14,17 +14,25 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-injection       100;
+injection       300;
 
-inlet           50;
+inlet           450;
+
+inlRAngle       25; //25; // Inlet port radius angle, deg
+
+inlZAngle       45; // Inlet port Z angle, deg
 
 dimensions      [0 1 -1 0 0 0 0];
 
 internalField   uniform (0 0 0);
 
-mInjection      #calc "-1.0*$injection";
+injectionX      #calc "-1.0*$injection";
 
-mInlet          #calc "-1.0*$inlet";
+inletX          #calc "-1.0*$inlet*cos(degToRad($inlRAngle))";
+
+inletY          #calc "$inlet*sin(degToRad($inlRAngle))";
+
+inletZ          #calc "$inlet*sin(degToRad($inlZAngle))";
 
 boundaryField
 {
@@ -32,23 +40,25 @@ boundaryField
     injection
     {
         type            uniformFixedValue;
+        // uniformValue    constant ($injectionX 0 0);
         uniformValue    table
         (
-            (0.25      (0           0 0))
-            (0.26      ($mInjection 0 0))
-            (0.36      ($mInjection 0 0))
-            (0.37      (0           0 0))
+            (0.25       (0           0 0))
+            (0.26       ($injectionX 0 0))
+            (0.36       ($injectionX 0 0))
+            (0.37       (0           0 0))
         );
     }
     inlet
     {
         type            uniformFixedValue;
+        // uniformValue    constant ($inletX $inletY $inletZ);
         uniformValue    table
         (
-            (0.072      (0       0 0))
-            (0.075      ($mInlet 0 0))
-            (0.215      ($mInlet 0 0))
-            (0.216      (0       0 0))
+            (0.072      (0       0       0))
+            (0.075      ($inletX $inletY $inletZ))
+            (0.215      ($inletX $inletY $inletZ))
+            (0.216      (0       0       0))
         );
     }
 
