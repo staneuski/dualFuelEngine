@@ -11,7 +11,7 @@ runApplication setFields -dict ../cylCyclic2D_multiCompressionFoam/system/setFie
 runApplication $(getApplication)
 
 #- Run parallel
-# runApplication decomposePar -force -dict ../cylCyclic2D_multiCompressionFoam/system/decomposeParDict
+# runApplication decomposePar
 # runParallel $(getApplication)
 # runApplication reconstructPar
 

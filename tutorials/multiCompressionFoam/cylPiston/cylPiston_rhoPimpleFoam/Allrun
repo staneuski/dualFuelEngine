@@ -12,11 +12,11 @@ application=$(getApplication)
 runApplication setFields
 
 #- Run serial
-runApplication $application
+# runApplication $application
 
 #- Run parallel
-# runApplication decomposePar -dict ../cylPiston_multiCompressionFoam/system/decomposeParDict -force
-# runParallel $application
-# runApplication reconstructPar
+runApplication decomposePar
+runParallel $application
+runApplication reconstructPar
 
 #------------------------------------------------------------------------------
