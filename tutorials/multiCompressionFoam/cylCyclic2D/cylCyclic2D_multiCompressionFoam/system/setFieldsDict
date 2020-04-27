@@ -24,7 +24,7 @@ inlH            0.25; // Inlet port height
 
 defaultFieldValues // inlet port
 (
-    // volScalarFieldValue p 0.3102e+06
+    volScalarFieldValue p 0.3102e+06
     volScalarFieldValue T 332
     volScalarFieldValue alphaAir 1
     volScalarFieldValue alphaGas 0
