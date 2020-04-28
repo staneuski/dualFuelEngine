@@ -8,8 +8,12 @@ test*
 *.foam
 [cell,point]*ToRegion
 [cell,point]*Level
+Co
 e
+K
 Ma
+V
+
 
 # Folders - anywhere
 __pycache__/

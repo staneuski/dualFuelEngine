@@ -1,6 +1,6 @@
 /*--------------------------------*- C++ -*----------------------------------*\
   =========                 |
-  \\      /  F ield         | OpenFOAM: Addition to OpenFOAM v6
+  \\      /  F ield         | OpenFOAM: dualFuelEngline addition to OpenFOAM v7
    \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
     \\  /    A nd           | Version:  0.4-alpha
      \\/     M anipulation  |
@@ -52,18 +52,11 @@ maxCo           0.5;
 functions
 {
     #includeFunc MachNo
+    #includeFunc CourantNo
+    #includeFunc writeObjects(e, K)
+    // #includeFunc writeCellVolumes
 
-    internalEnergy
-    {
-        type            writeObjects;
-        libs            ("libutilityFunctionObjects.so");
-        writeControl    writeTime;
-        objects
-        (
-            e
-        );
-    }
-    volAverageFieldValues
+    cylinderVolAverageFieldValues
     {
         type            volFieldValue;
         libs            ("libfieldFunctionObjects.so");
@@ -71,10 +64,13 @@ functions
         writeInterval   1;
         log             true;
         writeFields     false;
+        writeVolume     true; //FIXME #0003489: https://bugs.openfoam.org/view.php?id=3489
+        regionType      cellZone;
+        name            cylinder;
         operation       volAverage;
         fields
         (
-            p T e rho alphaAir alphaGas alphaExh
+            p T rho e K
         );
     }
 }
