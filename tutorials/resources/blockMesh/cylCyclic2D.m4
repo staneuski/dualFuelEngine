@@ -57,8 +57,8 @@ define(outletH, 50)       // Outer pipe height
 define(inlW, 5)           // Inlet port width
 define(inlH, 25)          // Inlet port height
 define(inlL, 10)          // Inlet port length from the cylinder wall
-define(inlRAngle, 25)     // Inlet port radius angle, deg
-define(inlZAngle, 45)     // Inlet port Z angle, deg
+define(inlRAngle, 0)      // Inlet port radius angle, deg
+define(inlZAngle, 10)     // Inlet port Z angle, deg
 
 define(injW, 2.5)         // Injector width
 define(injH, 2.5)         // Injector height

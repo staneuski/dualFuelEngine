@@ -14,13 +14,13 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-injection       300;
+injection       100;
 
-inlet           450;
+inlet           50;
 
-inlRAngle       25; //25; // Inlet port radius angle, deg
+inlRAngle       0; // Inlet port radius angle, deg
 
-inlZAngle       45; // Inlet port Z angle, deg
+inlZAngle       10; // Inlet port Z angle, deg
 
 dimensions      [0 1 -1 0 0 0 0];
 
