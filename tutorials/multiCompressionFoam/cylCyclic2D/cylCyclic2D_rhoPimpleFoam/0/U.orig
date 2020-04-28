@@ -14,11 +14,11 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-injection       100;
+injection       100; // Injection velocity magnitude
 
-inlet           50;
+inlet           50; // Inlet velocity magnitude
 
-inlRAngle       0; // Inlet port radius angle, deg
+inlRAngle       25; // Inlet port radius angle, deg
 
 inlZAngle       10; // Inlet port Z angle, deg
 
@@ -26,13 +26,13 @@ dimensions      [0 1 -1 0 0 0 0];
 
 internalField   uniform (0 0 0);
 
-injectionX      #calc "-1.0*$injection";
+injectionX #calc "-1*$injection";
 
-inletX          #calc "-1.0*$inlet*cos(degToRad($inlRAngle))";
+inletX     #calc "-1*$inlet*cos(degToRad($inlRAngle))*cos(degToRad($inlZAngle))";
 
-inletY          #calc "$inlet*sin(degToRad($inlRAngle))";
+inletY     #calc "$inlet*sin(degToRad($inlRAngle))*cos(degToRad($inlZAngle))";
 
-inletZ          #calc "$inlet*sin(degToRad($inlZAngle))";
+inletZ     #calc "$inlet*sin(degToRad($inlZAngle))";
 
 boundaryField
 {
