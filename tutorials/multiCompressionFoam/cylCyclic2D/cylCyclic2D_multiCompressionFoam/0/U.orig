@@ -26,8 +26,6 @@ dimensions      [0 1 -1 0 0 0 0];
 
 internalField   uniform (0 0 0);
 
-injectionX #calc "-1*$injection";
-
 inletX     #calc "-1*$inlet*cos(degToRad($inlRAngle))*cos(degToRad($inlZAngle))";
 
 inletY     #calc "$inlet*sin(degToRad($inlRAngle))*cos(degToRad($inlZAngle))";
@@ -40,13 +38,13 @@ boundaryField
     injection
     {
         type            uniformFixedValue;
-        // uniformValue    constant ($injectionX 0 0);
+        // uniformValue    constant (#neg $injection 0 0);
         uniformValue    table
         (
-            (0.25       (0           0 0))
-            (0.26       ($injectionX 0 0))
-            (0.36       ($injectionX 0 0))
-            (0.37       (0           0 0))
+            (0.25       (0               0 0))
+            (0.26       (#neg $injection 0 0))
+            (0.36       (#neg $injection 0 0))
+            (0.37       (0               0 0))
         );
     }
     inlet
