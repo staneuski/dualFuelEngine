@@ -56,14 +56,14 @@ define(outletH, 50)       // Outer pipe height
 
 define(inlW, 5)           // Inlet port width
 define(inlH, 25)          // Inlet port height
-define(inlL, 10)          // Inlet port length from the cylinder wall
-define(inlRAngle, 25)     // Inlet port radius angle, deg
-define(inlZAngle, 10)     // Inlet port Z angle, deg
+define(inlL, 5)           // Inlet port closest length from the cylinder wall
+define(inlTiltXZ, 33)     // Inlet port tilting to the XZ plane, deg
+define(inlTiltXY, 0)      // Inlet port tilting to the XY plane, deg
 
 define(injW, 2.5)         // Injector width
 define(injH, 2.5)         // Injector height
 define(injL, 10)          // Injector length from the cylinder wall
-define(injZ, 180)         // Distance from the injector to the bottom of inlet port outlet patch
+define(injz, 180)         // Distance from the injector to the bottom of inlet port outlet patch
 
 define(Nr, 2)             // Number of cells in the radius dimension
 define(Nz, 50)            // Number of cells in the length dimension
@@ -77,6 +77,7 @@ define(Rsin, calc(R*sind(theta)))          // Cylinder radius middle point
 
 define(chS, calc(chamfer + S))             // Cylinder Z size with chamfer
 define(pistonChamberZ, calc(pistonInit - pistonChamber)) // Piston chamber Z coordinate
+
 
 /* Valve */
 define(vlvR, calc(vlvD/2))                 // Valve radius
@@ -94,19 +95,32 @@ define(vlvFltRcos, calc(vlvStR + vlvFltR*(1 - cosd(45)))) // Valve fillet radius
 define(vlvFltRSym, calc(vlvFltRcos*sind(theta/2))) // Valve fillet radius middle point Y coordinate
 define(vlvFltRZcos, calc(vlvHdTop + vlvFltR*(1 - cosd(45)))) // Valve fillet radius middle point Z coordinate
 
-/* Inlet ports */
-define(inlWHalf, calc(inlW/2))             // Inlet port width half
-define(inlWHalfL, calc(inlWHalf - inlL*sind(inlRAngle))) // Inlet port inlet patch left half coordinate
-define(inlWHalfR, calc(inlWHalf + inlL*sind(inlRAngle))) // Inlet port inlet patch right half coordinate
-define(inlRL, calc(R + inlL))              // Inlet patch coordinate
-define(inlZ, calc(inlH*sind(inlZAngle)))   // Inlet port inlet patch lower coordinate
-define(inlZH, calc(-inlZ + inlH))          // Inlet port inlet patch upper coordinate
+
+/* Inlet port */
+define(inlWHf, calc(inlW/2))               // Inlet port width half
+define(inlLt, calc(inlH*sind(inlTiltXY)*cosd(inlTiltXY) + inlL))
+
+//- Inlet patch bottom
+define(inlLbx, calc((inlL - inlWHf*sind(inlTiltXZ))*cosd(inlTiltXZ) + R))
+define(inlRbx, calc((inlL + inlWHf*sind(inlTiltXZ))*cosd(inlTiltXZ) + R))
+define(inlLby, calc((inlL - inlWHf*sind(inlTiltXZ))*sind(inlTiltXZ) + inlWHf*cosd(inlTiltXZ)))
+define(inlRby, calc((inlL + inlWHf*sind(inlTiltXZ))*sind(inlTiltXZ) - inlWHf*cosd(inlTiltXZ)))
+
+//- Inlet patch top
+define(inlLtx, calc((inlLt - inlWHf*sind(inlTiltXZ))*cosd(inlTiltXZ) + R))
+define(inlRtx, calc((inlLt + inlWHf*sind(inlTiltXZ))*cosd(inlTiltXZ) + R))
+define(inlLty, calc((inlLt - inlWHf*sind(inlTiltXZ))*sind(inlTiltXZ) + inlWHf*cosd(inlTiltXZ)))
+define(inlRty, calc((inlLt + inlWHf*sind(inlTiltXZ))*sind(inlTiltXZ) - inlWHf*cosd(inlTiltXZ)))
+
+define(inlz, calc(inlL*sind(inlTiltXY)))   // Inlet patch lower Z coordinate
+define(inlHz, calc(inlH*sqr(cosd(inlTiltXY)) - inlz)) // Inlet patch upper Z coordinate
+
 
 /* Injectors */
-define(injWHalf, calc(injW/2))             // Injector width half
-define(injRL, calc(R + injL))              // Injector patch coordinate
+define(injWHf, calc(injW/2))               // Injector width half
+define(injx, calc(R + injL))               // Injector patch coordinate
 define(injRmW, calc(sqrt(sqr(R) - sqr(injW)))) // Injector outlet patch X point
-define(injZH, calc(injZ + injH))           // Injector top coordinate
+define(injHz, calc(injz + injH))           // Injector top coordinate
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 // Parametric description
@@ -146,24 +160,24 @@ vertices
     /*19*/ vert(vlvR, -vlvRsin, vlvStTop) vlabel(pipe1t)
 
 /* Inlet port */
-    /*20*/ vert(R,      inlWHalf,  0)  vlabel(inlXm0b)
-    /*21*/ vert(inlRL,  inlWHalfL, -inlZ)  vlabel(inlXm1b)
-    /*22*/ vert(inlRL, -inlWHalfR, -inlZ)  vlabel(inlXm2b)
-    /*23*/ vert(R,     -inlWHalf,  0)  vlabel(inlXm3b)
-    /*24*/ vert(R,      inlWHalf,  inlH)  vlabel(inlXm0t)
-    /*25*/ vert(inlRL,  inlWHalfL,  inlZH) vlabel(inlXm1t)
-    /*26*/ vert(inlRL, -inlWHalfR,  inlZH)  vlabel(inlXm2t)
-    /*27*/ vert(R,     -inlWHalf,  inlH) vlabel(inlXm3t)
+    /*20*/ vert(R,       inlWHf,  0)     vlabel(inlXm0b)
+    /*21*/ vert(inlLbx,  inlLby, -inlz)  vlabel(inlXm1b)
+    /*22*/ vert(inlRbx,  inlRby, -inlz)  vlabel(inlXm2b)
+    /*23*/ vert(R,      -inlWHf,  0)     vlabel(inlXm3b)
+    /*24*/ vert(R,       inlWHf,  inlH)  vlabel(inlXm0t)
+    /*25*/ vert(inlLtx,  inlLty,  inlHz) vlabel(inlXm1t)
+    /*26*/ vert(inlRtx,  inlRty,  inlHz) vlabel(inlXm2t)
+    /*27*/ vert(R,      -inlWHf,  inlH)  vlabel(inlXm3t)
 
 /* Injectors */
-    /*28*/ vert(R,      injWHalf, injZ)  vlabel(injXm0b)
-    /*29*/ vert(injRL,  injWHalf, injZ)  vlabel(injXm1b)
-    /*30*/ vert(injRL, -injWHalf, injZ)  vlabel(injXm2b)
-    /*31*/ vert(R,     -injWHalf, injZ)  vlabel(injXm3b)
-    /*32*/ vert(R,      injWHalf, injZH) vlabel(injXm0t)
-    /*33*/ vert(injRL,  injWHalf, injZH) vlabel(injXm1t)
-    /*34*/ vert(injRL, -injWHalf, injZH) vlabel(injXm2t)
-    /*35*/ vert(R,     -injWHalf, injZH) vlabel(injXm3t)
+    /*28*/ vert(R,     injWHf, injz)  vlabel(injXm0b)
+    /*29*/ vert(injx,  injWHf, injz)  vlabel(injXm1b)
+    /*30*/ vert(injx, -injWHf, injz)  vlabel(injXm2b)
+    /*31*/ vert(R,    -injWHf, injz)  vlabel(injXm3b)
+    /*32*/ vert(R,     injWHf, injHz) vlabel(injXm0t)
+    /*33*/ vert(injx,  injWHf, injHz) vlabel(injXm1t)
+    /*34*/ vert(injx, -injWHf, injHz) vlabel(injXm2t)
+    /*35*/ vert(R,    -injWHf, injHz) vlabel(injXm3t)
 );
 
 
