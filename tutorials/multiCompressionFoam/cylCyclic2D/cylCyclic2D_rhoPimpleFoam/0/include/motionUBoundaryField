@@ -1,3 +1,13 @@
+#include        "../../constant/engineProperties"
+
+rpmFrequency     #calc "$rpm/60.0";
+
+maxPistonU       11; // #calc "3.14*$S*$rpm/30";
+
+initialPistonPosition #calc "$EVO*$deltaTCA";
+
+maxValveU        2;
+
 boundaryField
 {
 /* Inlet */
@@ -20,10 +30,10 @@ boundaryField
         uniformValue
         {
             type        sine;
-            frequency   1.4286; // n/60 = 92/60
-            amplitude   11; // pi*S*n/30 = pi*2.8*92/30 = 26.96
-            start       0.154; // EVO/6/n = 85/6/92
-            level       0; // offset
+            frequency   $rpmFrequency;
+            amplitude   $maxPistonU;
+            start       $initialPistonPosition;
+            level       0;
 
             scale       1; /* OpenFOAM v7 or lower */
         }
@@ -33,12 +43,12 @@ boundaryField
         type            uniformFixedValue;
         uniformValue    table
         (
-            (0          0)
-            (0.045     -2) /* +U           •   */
-            (0.091      0) /*  |          / \  */
-            (0.136      0) /*  0 •   •---•   • */
-            (0.181      2) /*  |  \ /          */
-            (0.226      0) /* -U   •           */
+            (0          0         )
+            (0.045 #neg $maxValveU) /* +U           •   */
+            (0.091      0         ) /*  |          / \  */
+            (0.136      0         ) /*  0 •   •---•   • */
+            (0.181      $maxValveU) /*  |  \ /          */
+            (0.226      0         ) /* -U   •           */
         );
     }
     valveStem

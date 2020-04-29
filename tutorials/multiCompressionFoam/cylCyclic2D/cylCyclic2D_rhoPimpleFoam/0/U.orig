@@ -14,52 +14,57 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-injection       100; // Injection velocity magnitude
+#include        "../constant/engineProperties"
 
-inlet           50; // Inlet velocity magnitude
+injValue        0.3; // Maximum injection mass flow rate [kg/m^3]
 
-inlRAngle       25; // Inlet port radius angle, deg
+injDelay        20; // Injection delay after EVC [˚CA]
 
-inlZAngle       10; // Inlet port Z angle, deg
+injDuration     30; // Injection duration [˚CA]
+
+injLinearRamp   8; // Maximum injection mass flow rate reaching time [˚CA]
+
+injReverseRamp  8; // Min injection mass flow rate reaching time [˚CA]
 
 dimensions      [0 1 -1 0 0 0 0];
 
 internalField   uniform (0 0 0);
 
-injectionX #calc "-1*$injection";
+injStart        #calc "($EVO + $EVC + $injDelay)*$deltaTCA";
 
-inletX     #calc "-1*$inlet*cos(degToRad($inlRAngle))*cos(degToRad($inlZAngle))";
+injLinearRampT  #calc "$injStart + $injLinearRamp*$deltaTCA";
 
-inletY     #calc "$inlet*sin(degToRad($inlRAngle))*cos(degToRad($inlZAngle))";
+injReverseRampT #calc "$injLinearRampT + ($injDuration - $injLinearRamp - $injReverseRamp)*$deltaTCA";
 
-inletZ     #calc "$inlet*sin(degToRad($inlZAngle))";
+injFinish       #calc "$injReverseRampT + $injReverseRamp*$deltaTCA";
 
 boundaryField
 {
 /* Inlet */
     injection
     {
-        type            uniformFixedValue;
-        // uniformValue    constant ($injectionX 0 0);
-        uniformValue    table
+        type            flowRateInletVelocity;
+        massFlowRate    table
         (
-            (0.25       (0           0 0))
-            (0.26       ($injectionX 0 0))
-            (0.36       ($injectionX 0 0))
-            (0.37       (0           0 0))
+            ($injStart        0        ) /*    •────•     ├─ injValue */
+            ($injLinearRampT  $injValue) /*   /      \    │           */
+            ($injReverseRampT $injValue) /*  /        \   │           */
+            ($injFinish       0        ) /* •          •  0           */
         );
     }
     inlet
     {
-        type            uniformFixedValue;
-        // uniformValue    constant ($inletX $inletY $inletZ);
-        uniformValue    table
-        (
-            (0.072      (0       0       0))
-            (0.075      ($inletX $inletY $inletZ))
-            (0.215      ($inletX $inletY $inletZ))
-            (0.216      (0       0       0))
-        );
+        type            flowRateInletVelocity;
+        massFlowRate
+        {
+            type             tableFile;
+            format           csv;
+            nHeaderLine      1;
+            refColumn        0;
+            componentColumns (1);
+            mergeSeparators  no;
+            file             "0/include/massFlowRate.csv";
+        }
     }
 
 /* Outlet */

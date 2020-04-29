@@ -15,6 +15,11 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
+#include        "../constant/engineProperties"
+
+endTimeCA       #calc "($EVO + 180)*$deltaTCA";
+
+
 application     rhoPimpleFoam; // dyMFoam \ rhoPimpleFoam
 
 startFrom       startTime;
@@ -23,13 +28,13 @@ startTime       0;
 
 stopAt          endTime;
 
-endTime         0.48;
+endTime         $endTimeCA;
 
-deltaT          0.0009;
+deltaT          $deltaTCA;
 
 writeControl    adjustableRunTime;
 
-writeInterval   0.0018;
+writeInterval   $deltaT;
 
 purgeWrite      0;
 
@@ -47,10 +52,13 @@ runTimeModifiable true;
 
 adjustTimeStep  true;
 
-maxCo           0.5;
+maxCo           0.25;
 
 functions
 {
+    #includeFunc flowRatePatch(name=inlet)
+    #includeFunc flowRatePatch(name=injection)
+
     #includeFunc MachNo
     #includeFunc CourantNo
     #includeFunc writeObjects(e, K)
