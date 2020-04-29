@@ -10,36 +10,28 @@ if not os.path.exists('DRK2Py.res'):    os.makedirs('DRK2Py.res')
 
 #- Save Coord arrays
 np.savetxt(
-    "DRK2Py.res/pistonMotion.csv",
+    "DRK2Py.res/pistonMotionUz.csv",
     np.array([
         np.arange(0, (EVO + 180)*degDeltaT, degDeltaT), # t
-        pistonCoord
+        pistonU
     ]).T,
-    fmt='%.5e', delimiter=',', header="time [s], Z [m]", comments=""
-)
+    fmt='%.5e', delimiter = ',', header = "Time [s], Uz [m/s]"
+) 
 np.savetxt(
-    "DRK2Py.res/valveMotion.csv",
+    "DRK2Py.res/valveMotionUz.csv",
     np.array([
         np.arange(0, (EVO + 180)*degDeltaT, degDeltaT*valveCoordFrequency), # t
-        valveCoord
+        valveU
     ]).T,
-    fmt='%.5e', delimiter=',', header="time [s], Z [m]", comments=""
+    fmt='%.5e', delimiter = ',', header = "Time [s], Uz [m/s]"
 )
 
 #- Save velocity arrays
 np.savetxt(
-    "DRK2Py.res/inletVelocity.csv",
+    "DRK2Py.res/massFlowRate.csv",
     np.array([
         np.arange(0, (EVO + 180)*degDeltaT, degDeltaT), # t
         G_inlet
     ]).T,
-    fmt='%.5e', delimiter=',', header="time [s], U [m/s]", comments=""
-)
-np.savetxt(
-    "DRK2Py.res/injectionVelocity.csv",
-    np.array([
-        np.arange(0, (EVO + 180)*degDeltaT, degDeltaT), # t
-        G_injection
-    ]).T,
-    fmt='%.5e', delimiter=',', header="time [s], U [m/s]", comments=""
+    fmt='%.5e', delimiter = ',', header = "Time [s], inlet [kg/m^3]"
 )

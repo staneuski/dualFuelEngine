@@ -114,12 +114,12 @@ if inletInjectionPlot == 'true':
         linewidth = 2,
         label = 'inlet'
     )
-    plt.plot(
-        range(-EVO, 180),
-        yG_injection,
-        linewidth = 2,
-        label = 'injection'
-    )
+    # plt.plot(
+    #     range(-EVO, 180),
+    #     yG_injection,
+    #     linewidth = 2,
+    #     label = 'injection'
+    # )
     plt.axvspan(-IPO, IPO, alpha=0.18, color='grey')
     plt.grid( True );    plt.legend( loc = 'best', fontsize = 12 )
     plt.xlabel( '$\\varphi$, deg CA' )
@@ -132,88 +132,43 @@ if inletInjectionPlot == 'true':
 # ~~~~~~~~~~~~~~~~~~~~~~~~
 if movingPartsPlot == 'true':
 
-    if saveFormat == 'csv':
-        
-        plt.figure()
-        plt.subplot().set_title(
-            'Valve & piston relative positions', fontweight = 'bold', fontsize = 12
-        )
-        plt.plot(
-            range(-EVO, 180),
-            pistonCoord
-           /max(pistonCoord),
-            linewidth = 2,
-            label = 'piston'
-        )
-        plt.plot(
-            range(-EVO, 180, valveCoordFrequency),
-          - valveCoord
-           /min(valveCoord),
-            linewidth = 2,
-            label = 'valve'
-        )
-        plt.annotate(
-            '(BDC)', (1, 1),
-            xytext = (EVO/(EVO + 180)*1.19, -0.06), textcoords='axes fraction',
-            horizontalalignment='right', verticalalignment='top'
-        )
-        plt.annotate(
-            'IPC', xy=(-IPO, 0.8),  xycoords='data',
-            xytext=(0.1, 0.95), textcoords='axes fraction',
-            arrowprops=dict(arrowstyle="-", color="0.5", shrinkB=1),
-            horizontalalignment='left', verticalalignment='top'
-        )
-        plt.annotate(
-            'IPO', xy=(IPO, 0.8),  xycoords='data',
-            xytext=(0.58, 0.95), textcoords='axes fraction',
-            arrowprops=dict(arrowstyle="-", color="0.5", shrinkB=1),
-            horizontalalignment='right', verticalalignment='top'
-        )
-        plt.axvspan(-IPC, IPO, alpha=0.18, color='grey')
-        plt.axvline(x = 0, color='black', linestyle = '--')
-        plt.grid( True );    plt.legend( loc = 'best', fontsize = 12 )
-        plt.xlabel( '$\\varphi$, deg CA' )
-        plt.ylabel( 'Relative motion' )
-
-
-    else: # (if saveFormat == 'txt')
-        plt.figure()
-        plt.subplot().set_title(
-            'Valve & piston velocity', fontweight = 'bold', fontsize = 12
-        )
-        plt.plot(
-            range(-EVO, 180),
-            pistonU,
-            linewidth = 2,
-            label = 'piston'
-        )
-        plt.plot(
-            range(-EVO, 180, valveCoordFrequency),
-            valveU,
-            linewidth = 2,
-            label = 'valve'
-        )
-        plt.annotate(
-            '(BDC)', (1, 1),
-            xytext = (EVO/(EVO + 180)*1.19, -0.06), textcoords='axes fraction',
-            horizontalalignment='right', verticalalignment='top'
-        )
-        plt.annotate(
-            'IPC', xy=(-IPO, 12),  xycoords='data',
-            xytext=(0.1, 0.95), textcoords='axes fraction',
-            arrowprops=dict(arrowstyle="-", color="0.5", shrinkB=1),
-            horizontalalignment='left', verticalalignment='top',
-        )
-        plt.annotate(
-            'IPO', xy=(IPO, 12),  xycoords='data',
-            xytext=(0.58, 0.95), textcoords='axes fraction',
-            arrowprops=dict(arrowstyle="-", color="0.5", shrinkB=1),
-            horizontalalignment='right', verticalalignment='top',
-        )
-        plt.axvspan(-IPC, IPO, alpha=0.18, color='grey')
-        plt.axvline(x = 0, color='black', linestyle = '--')
-        plt.grid( True );    plt.legend( loc = 'best', fontsize = 12 )
-        plt.xlabel( '$\\varphi$, deg CA' )
-        plt.ylabel( 'U, m/s' )
+    plt.figure()
+    plt.subplot().set_title(
+        'Valve & piston velocity', fontweight = 'bold', fontsize = 12
+    )
+    plt.plot(
+        range(-EVO, 180),
+        pistonU,
+        linewidth = 2,
+        label = 'piston'
+    )
+    plt.plot(
+        range(-EVO, 180, valveCoordFrequency),
+        valveU,
+        linewidth = 2,
+        label = 'valve'
+    )
+    plt.annotate(
+        '(BDC)', (1, 1),
+        xytext = (EVO/(EVO + 180)*1.19, -0.06), textcoords='axes fraction',
+        horizontalalignment='right', verticalalignment='top'
+    )
+    plt.annotate(
+        'IPC', xy=(-IPO, 12),  xycoords='data',
+        xytext=(0.1, 0.95), textcoords='axes fraction',
+        arrowprops=dict(arrowstyle="-", color="0.5", shrinkB=1),
+        horizontalalignment='left', verticalalignment='top',
+    )
+    plt.annotate(
+        'IPO', xy=(IPO, 12),  xycoords='data',
+        xytext=(0.58, 0.95), textcoords='axes fraction',
+        arrowprops=dict(arrowstyle="-", color="0.5", shrinkB=1),
+        horizontalalignment='right', verticalalignment='top',
+    )
+    plt.axvspan(-IPC, IPO, alpha=0.18, color='grey')
+    plt.axvline(x = 0, color='black', linestyle = '--')
+    plt.grid( True );    plt.legend( loc = 'best', fontsize = 12 )
+    plt.xlabel( '$\\varphi$, deg CA' )
+    plt.ylabel( 'U, m/s' )
 
     plt.savefig( 'DRK2Py.res/motionParts.png' )
