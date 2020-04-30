@@ -52,7 +52,7 @@ runTimeModifiable true;
 
 adjustTimeStep  true;
 
-maxCo           0.25;
+maxCo           0.5;
 
 functions
 {
@@ -62,7 +62,7 @@ functions
     #includeFunc MachNo
     #includeFunc CourantNo
     #includeFunc writeObjects(e, K)
-    // #includeFunc writeCellVolumes
+    #includeFunc writeCellVolumes
 
     cylinderVolAverageFieldValues
     {
@@ -72,7 +72,7 @@ functions
         writeInterval   1;
         log             true;
         writeFields     false;
-        writeVolume     true; //FIXME #0003489: https://bugs.openfoam.org/view.php?id=3489
+        writeVolume     true; /*FIXME #0003489: https://bugs.openfoam.org/view.php?id=3489 */
         regionType      cellZone;
         name            cylinder;
         operation       volAverage;

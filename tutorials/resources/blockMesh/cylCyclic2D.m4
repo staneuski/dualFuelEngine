@@ -38,32 +38,36 @@ define(evert, ($1 $2 $3))
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 // User-defined parameters
 
-convertToMeters 0.01;     // MAN 6S70ME-C8.2-GI-TII
+convertToMeters 0.01;
 
-define(theta, 7)          // wedge angle, deg
+// MAN 6S70ME-C8.2-GI-TII
+define(theta, calc(360/24)) // Wedge/periodic angle [deg]
 
-define(D, 70)             // Cylinder bore
-define(S, 300)            // Cylinder Z size (> piston stroke)
-define(chamfer, 15)       // Cylinder chamfer
+define(bore, 70)          // Cylinder bore
+define(stroke, 280)       // Piston stroke
+define(clearance, 5.75)   // Clearance to the chamfer at TDC
+define(chamfer, 13.75)    // Cylinder chamfer
 define(pistonInit, 92.55) // Initial piston position
-define(pistonChamber, 0)  // Piston chamber depth
+define(pistonChamber, 10.4) // Piston chamber depth
 
 define(vlvInit, 0)        // Initial valve stroke
-define(vlvD, calc(D/2))   // Valve head diameter
+define(vlvD, 34.5)        // Valve head diameter
 define(vlvHd, 3)          // Valve head thickness
-define(vlvStD, 8)         // Valve stem diameter
-define(outletH, 50)       // Outer pipe height
+define(vlvStD, 8.25)      // Valve stem diameter
+define(outletH, 40)       // Outer pipe height
 
-define(inlW, 5)           // Inlet port width
-define(inlH, 25)          // Inlet port height
-define(inlL, 5)           // Inlet port closest length from the cylinder wall
-define(inlTiltXZ, 33)     // Inlet port tilting to the XZ plane, deg
-define(inlTiltXY, 0)      // Inlet port tilting to the XY plane, deg
+define(inlW, 5.15)        // Inlet port width
+define(inlH, 19.2)        // Inlet port height
+define(inlL, inlW)        // Inlet port closest length from the cylinder wall
+define(inlTiltXZ, 37.9)   // Inlet port tilting to the XZ plane [deg]
+define(inlTiltXY, 0)      // Inlet port tilting to the XY plane [deg]
 
-define(injW, 2.5)         // Injector width
-define(injH, 2.5)         // Injector height
-define(injL, 10)          // Injector length from the cylinder wall
-define(injz, 180)         // Distance from the injector to the bottom of inlet port outlet patch
+define(injW, 2)           // Injector width
+define(injH, injW)        // Injector height
+define(injL, inlL)        // Injector length from the cylinder wall
+define(injz, 159.4)       // Distance from the injector to the bottom of
+                          // the inlet port outlet patch
+
 
 define(Nr, 2)             // Number of cells in the radius dimension
 define(Nz, 50)            // Number of cells in the length dimension
@@ -72,7 +76,8 @@ define(Nz, 50)            // Number of cells in the length dimension
 // Derived parameters
 
 /* Cylinder */
-define(R, calc(D/2))                       // Cylinder radius
+define(S, calc(stroke + clearance))        // Cylinder Z size
+define(R, calc(bore/2))                    // Cylinder radius
 define(Rsin, calc(R*sind(theta)))          // Cylinder radius middle point
 
 define(chS, calc(chamfer + S))             // Cylinder Z size with chamfer
@@ -90,10 +95,13 @@ define(vlvFltR, calc(vlvR - vlvStR))       // Valve fillet radius
 define(vlvHdTop, calc(chS - vlvInit))      // Valve head top Z coordinate
 define(vlvHdBot, calc(vlvHdTop - vlvHd))   // Valve head bottom Z coordinate
 define(vlvStBot, calc(vlvHdTop + vlvFltR)) // Valve stem bottom Z coordinate
-define(vlvStTop, calc(S + outletH))        // Valve stem top & outer pipe top Z coordinate
-define(vlvFltRcos, calc(vlvStR + vlvFltR*(1 - cosd(45)))) // Valve fillet radius middle point X coordinate
-define(vlvFltRSym, calc(vlvFltRcos*sind(theta/2))) // Valve fillet radius middle point Y coordinate
-define(vlvFltRZcos, calc(vlvHdTop + vlvFltR*(1 - cosd(45)))) // Valve fillet radius middle point Z coordinate
+define(vlvStTop, calc(S + outletH))        // Valve stem & outer pipe top Z coordinate
+define(vlvFltRcos, calc(vlvStR + vlvFltR*(1 - cosd(45)))) // Valve fillet
+                                           // radius middle point X coordinate
+define(vlvFltRSym, calc(vlvFltRcos*sind(theta/2))) // Valve fillet radius
+                                           // middle point Y coordinate
+define(vlvFltRZcos, calc(vlvHdTop + vlvFltR*(1 - cosd(45)))) // Valve fillet
+                                           //radius middle point Z coordinate
 
 
 /* Inlet port */
@@ -113,7 +121,8 @@ define(inlLty, calc((inlLt - inlWHf*sind(inlTiltXZ))*sind(inlTiltXZ) + inlWHf*co
 define(inlRty, calc((inlLt + inlWHf*sind(inlTiltXZ))*sind(inlTiltXZ) - inlWHf*cosd(inlTiltXZ)))
 
 define(inlz, calc(inlL*sind(inlTiltXY)))   // Inlet patch lower Z coordinate
-define(inlHz, calc(inlH*sqr(cosd(inlTiltXY)) - inlz)) // Inlet patch upper Z coordinate
+define(inlHz, calc(inlH*sqr(cosd(inlTiltXY)) - inlz)) // Inlet patch upper 
+                                           // Z coordinate
 
 
 /* Injectors */
@@ -188,7 +197,7 @@ blocks
     hex (vlvHd0b vlvHd1b vlvHd2b vlvHd2b cylIn0b cylIn1b cylIn2b cylIn2b)
     cylinder /*block 0*/
     (1 Nr Nz)
-    simpleGrading (1 1.2 0.4)
+    simpleGrading (1 1.2 1.2)
 
     // Outer cylinder
     hex2D(cylIn0, cylOut0, cylOut1, cylIn1)
@@ -288,7 +297,7 @@ boundary
     {
         type            cyclic;
         neighbourPatch  cyclicFront;
-        matchTolerance  0.0002;
+        matchTolerance  0.00035;
         faces
         (
             botQuad(cylIn0, cylIn2, vlvHd2, vlvHd0) // inner cylinder
@@ -300,7 +309,7 @@ boundary
     {
         type            cyclic;
         neighbourPatch  cyclicBack;
-        matchTolerance  0.0002;
+        matchTolerance  0.00035;
         faces
         (
             botQuad(cylIn1, cylIn2, vlvHd2, vlvHd1) // inner cylinder
