@@ -46,26 +46,33 @@ rhoPimpleFoam = [
         encoding = 'utf-8'
     ),
     np.loadtxt(
+        "cylCyclic2D_rhoPimpleFoam/postProcessing/flowRatePatch(name=outlet)/0/surfaceFieldValue.dat",
+        skiprows = 4,
+        encoding = 'utf-8'
+    ),
+    np.loadtxt(
         "cylCyclic2D_rhoPimpleFoam/postProcessing/volAverageFieldValues/0/volFieldValue.dat",
         skiprows = 4,
         encoding = 'utf-8'
     )
 ]
 
-# np.append(rhoPimpleFoam[2], rhoPimpleFoam[2][:,4] + rhoPimpleFoam[2][:,5]) # E = e + K
+# np.append(rhoPimpleFoam[3], rhoPimpleFoam[3][:,4] + rhoPimpleFoam[3][:,5]) # E = e + K
 
 # Create plots
 # ~~~~~~~~~~~~
 #- Mass flow rates
 plt.figure(
-    figsize = (15, 10)
+    figsize = (15, 8)
 ).suptitle(
     'Mass flow rates', fontweight = 'bold'
 )
 
-# rhoPimpleFoam
+plt.subplot(121).set_title(
+    'Inlet & Injection', fontweight = 'bold'
+)
 plt.plot(
-    rhoPimpleFoam[1][:,0]*6*rpm - 180 - EVO,
+    rhoPimpleFoam[0][:,0]*6*rpm - 180 - EVO,
   - rhoPimpleFoam[0][:,1],
     linewidth = 2,
     label = 'rhoPimpleFoam (inlet)'
@@ -82,12 +89,40 @@ plt.axvline(x = -180, color = 'black', linestyle = '--', linewidth = 1)
 plt.axvline(x = 0, color = 'black', linestyle = '--', linewidth = 1)
 plt.annotate(
     '(BDC)', (1, 1),
-    xytext = (EVO/(EVO + 180)*1.11, -0.026), textcoords = 'axes fraction',
+    xytext = (EVO/(EVO + 180)*1.18, -0.04), textcoords = 'axes fraction',
     horizontalalignment = 'right', verticalalignment = 'top'
 )
 plt.annotate(
     '(TDC)', (1, 1),
-    xytext = (0.975, -0.026), textcoords = 'axes fraction',
+    xytext = (1, -0.04), textcoords = 'axes fraction',
+    horizontalalignment = 'right', verticalalignment = 'top'
+)
+plt.axvspan(-IPO - 180, IPO - 180, alpha = 0.18, color = 'grey')
+plt.legend( loc = 'best' )
+plt.grid( True )
+plt.xlabel( '$\\theta$, CA˚' )
+plt.ylabel( '$\\varphi$, kg/s' )
+
+
+plt.subplot(122).set_title(
+    'Outlet', fontweight = 'bold'
+)
+plt.plot(
+    rhoPimpleFoam[2][:,0]*6*rpm - 180 - EVO,
+    rhoPimpleFoam[2][:,1],
+    linewidth = 2,
+    label = 'rhoPimpleFoam'
+)
+plt.axvline(x = -180, color = 'black', linestyle = '--', linewidth = 1)
+plt.axvline(x = 0, color = 'black', linestyle = '--', linewidth = 1)
+plt.annotate(
+    '(BDC)', (1, 1),
+    xytext = (EVO/(EVO + 180)*1.18, -0.04), textcoords = 'axes fraction',
+    horizontalalignment = 'right', verticalalignment = 'top'
+)
+plt.annotate(
+    '(TDC)', (1, 1),
+    xytext = (1, -0.04), textcoords = 'axes fraction',
     horizontalalignment = 'right', verticalalignment = 'top'
 )
 plt.axvspan(-IPO - 180, IPO - 180, alpha = 0.18, color = 'grey')
@@ -97,6 +132,7 @@ plt.xlabel( '$\\theta$, CA˚' )
 plt.ylabel( '$\\varphi$, kg/s' )
 
 plt.savefig( 'cylCyclic2D_rhoPimpleFoam/postProcessing/massFlowRate.png' )
+
 
 # - Mean parameters
 plt.figure(
@@ -111,9 +147,8 @@ for i in range (0, len(fields) - 2):
     )
     if fields[i] != "e, J/kg":
         plt.plot(
-            # np.flip( - rhoPimpleFoam[2][:, 0]*6*rpm),
-            rhoPimpleFoam[2][:, 0]*6*rpm - 180 - EVO,
-            rhoPimpleFoam[2][:, i + 1],
+            rhoPimpleFoam[3][:, 0]*6*rpm - 180 - EVO,
+            rhoPimpleFoam[3][:, i + 1],
             linewidth = 2,
             label = 'rhoPimpleFoam'
         )
@@ -121,8 +156,8 @@ for i in range (0, len(fields) - 2):
     else:
         for j in range(0, 2):
             plt.plot(
-                rhoPimpleFoam[2][:, 0]*6*rpm - 180 - EVO,
-                rhoPimpleFoam[2][:, i + j + 1],
+                rhoPimpleFoam[3][:, 0]*6*rpm - 180 - EVO,
+                rhoPimpleFoam[3][:, i + j + 1],
                 linewidth = 2,
                 label = f'rhoPimpleFoam ({fields[i + j]})'
             )
