@@ -64,7 +64,7 @@ functions
     #includeFunc writeObjects(e, K)
     #includeFunc writeCellVolumes
 
-    cylinderVolAverageFieldValues
+    volAverageFieldValues
     {
         type            volFieldValue;
         libs            ("libfieldFunctionObjects.so");
@@ -80,6 +80,17 @@ functions
         (
             p T rho e K
         );
+    }
+
+    totalEnergy
+    {
+        type            add;
+        libs            ("libfieldFunctionObjects.so");
+
+        fields          (e K);
+
+        executeControl  writeTime;
+        writeControl    writeTime;
     }
 }
 
