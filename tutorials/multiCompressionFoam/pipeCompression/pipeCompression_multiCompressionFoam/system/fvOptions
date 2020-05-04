@@ -14,21 +14,21 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-limitU
-{
-    type            limitVelocity;
-    active          false;
-    selectionMode   all;
-    max             25;
-}
+// limitU
+// {
+//     type            limitVelocity;
+//     active          no;
+//     selectionMode   all;
+//     max             25;
+// }
 
-limitT
-{
-    type            limitTemperature;
-    active          false;
-    selectionMode   all;
-    min             200;
-    max             400;
-}
+// limitT
+// {
+//     type            limitTemperature;
+//     active          no;
+//     selectionMode   all;
+//     min             200;
+//     max             400;
+// }
 
 //************************************************************************** //

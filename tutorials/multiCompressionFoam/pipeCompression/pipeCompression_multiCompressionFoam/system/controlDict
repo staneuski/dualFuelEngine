@@ -15,13 +15,7 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-/*
-n = 92, RPM
-EVO = 85, deg CA
-deltaDeg = 1/6/n = 0.0018116, s
-*/
-
-application     multiCompressionFoam; // multiCompressionFoam \ dyMFoam
+application     multiCompressionFoam;
 
 startFrom       startTime;
 
@@ -29,13 +23,13 @@ startTime       0;
 
 stopAt          endTime;
 
-endTime         0.48; // (EVO + 180)/6/n
+endTime         0.65;
 
 deltaT          2e-5;
 
 writeControl    adjustableRunTime;
 
-writeInterval   1.81e-3; // 1.81e-3 (1 [deg CA]) | 9e-4 (0.5 [deg CA]) | 4.53e-4 (0.25 [deg CA])
+writeInterval   0.005;
 
 purgeWrite      0;
 
@@ -58,17 +52,33 @@ maxCo           0.1;
 functions
 {
     #includeFunc MachNo
+    #includeFunc CourantNo
+    #includeFunc writeObjects(e, K)
+    #includeFunc writeCellVolumes
 
-    internalEnergy
+    totalEnergy
     {
-        type            writeObjects;
-        libs            ("libutilityFunctionObjects.so");
+        type            add;
+        libs            ("libfieldFunctionObjects.so");
+
+        fields          (e K);
+
+        executeControl  writeTime;
         writeControl    writeTime;
-        objects
-        (
-            e
-        );
     }
+
+    mass
+    {
+        type            volFieldValue;
+        libs            ("libfieldFunctionObjects.so");
+        writeControl    timeStep;
+        writeInterval   1;
+        log             true;
+        writeFields     false;
+        operation       volIntegrate;
+        fields          (rho);
+    }
+
     volAverageFieldValues
     {
         type            volFieldValue;
@@ -80,9 +90,10 @@ functions
         operation       volAverage;
         fields
         (
-            p T e rho alphaAir alphaGas alphaExh
+            p T rho e K
         );
     }
 }
+
 
 // ************************************************************************* //

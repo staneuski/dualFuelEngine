@@ -26,12 +26,12 @@ boundaryField
         uniformValue
         { 
             type        sine;
-            frequency   1.4286; // n/60
-            amplitude   3.13; // pi*S*n/60 = pi*0.65*92/60
-            start       0.154; // EVO/6/n = -85/6/92
-            level       0; // offset
+            frequency   1; // 1/endTime
+            amplitude   2;
+            start       0.15;
+            level       0;
 
-            scale       1; /* OpenFOAM v7 or lower */
+            // scale       1; /* OpenFOAM v7 or lower */
         }
     }
 
