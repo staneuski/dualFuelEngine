@@ -8,6 +8,7 @@ test*
 *.foam
 [cell,point]*ToRegion
 [cell,point]*Level
+add(*)
 Co
 e
 K
