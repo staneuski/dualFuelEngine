@@ -20,7 +20,7 @@ fieldNames = [
     "Energy"
 ]
 
-fields = ["p, Pa", "T, K", "rho, kg/m^3", "e, J/kg", "K, J/kg", "E, J/kg"]
+fields = ["p, Pa", "T, K", "$\\rho, kg/m^3$", "e, J/kg", "K, J/kg", "E, J/kg"]
 
 # * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
@@ -46,6 +46,18 @@ rhoPimpleFoam = [
     ),
     np.loadtxt(
         "pipeCompression_rhoPimpleFoam/postProcessing/mass/0/volFieldValue.dat",
+        skiprows = 4,
+        encoding = 'utf-8'
+    )
+]
+rhoCentralFoam = [
+    np.loadtxt(
+        "pipeCompression_rhoCentralFoam/postProcessing/volAverageFieldValues/0/volFieldValue.dat",
+        skiprows = 4,
+        encoding = 'utf-8'
+    ),
+    np.loadtxt(
+        "pipeCompression_rhoCentralFoam/postProcessing/mass/0/volFieldValue.dat",
         skiprows = 4,
         encoding = 'utf-8'
     )
@@ -102,6 +114,15 @@ for i in range (0, len(fields) - 2):
             )
         plt.ylabel( fields[i] )
 
+    if fields[i] != "e, J/kg":
+        plt.plot(
+            rhoCentralFoam[0][:, 0],
+            rhoCentralFoam[0][:, i + 1],
+            linewidth = 2,
+            label = 'rhoCentralFoam'
+        )
+        plt.ylabel( fields[i] )
+
     plt.legend( loc = 'best' )
     plt.grid( True )
     plt.xlabel( '$\\theta$, s' )
@@ -113,24 +134,32 @@ plt.savefig( 'pipeCompression_multiCompressionFoam/postProcessing/volFieldValues
 plt.figure(
     figsize = (15, 10)
 ).suptitle(
-    'Mass in the pipe', fontweight = 'bold'
+    'Mass in the domain', fontweight = 'bold'
 )
 plt.plot(
     multiCompressionFoam[1][:, 0],
-    multiCompressionFoam[1][:, 1],
+    multiCompressionFoam[1][:, 1]*100,
     linewidth = 2,
     label = 'multiCompressionFoam'
 )
 plt.plot(
     rhoPimpleFoam[1][:, 0],
-    rhoPimpleFoam[1][:, 1],
+    rhoPimpleFoam[1][:, 1]*100,
     linewidth = 2,
     label = 'rhoPimpleFoam'
+)
+plt.plot(
+    rhoCentralFoam[1][:, 0],
+    rhoCentralFoam[1][:, 1]*100,
+    linewidth = 2,
+    label = 'rhoCentralFoam'
 )
 plt.legend( loc = 'best' )
 plt.grid( True )
 plt.xlabel( '$\\theta$, s' )
-plt.ylabel( 'Mass, kg' )
+plt.ylabel( 'M, g' )
+
+plt.savefig( 'pipeCompression_multiCompressionFoam/postProcessing/masses.png' )
 
 exit(plt.show())
 
