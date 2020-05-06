@@ -5,17 +5,15 @@
     \\  /    A nd           | Version:  0.4-alpha
      \\/     M anipulation  |
 \*---------------------------------------------------------------------------*/
-FoamFile
-{
-    version     2.0;
-    format      ascii;
-    class       dictionary;
-    location    "constant";
-    object      transportProperties;
-}
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-DT              DT [0 2 -1 0 0 0 0] 0.01; // [m^2/s], it also sets DAir & DGas by now
+rpm             92; // [1/min]
 
+stroke          2.8; // Piston stroke [m]
+
+EVO             85; // Exhaust valve opening [˚CA before BDC]
+
+EVC             46; // Exhaust valve closing [˚CA after BDC]
+
+deltaTCA        #calc "1/6.0/$rpm"; // 1 [˚CA]
 
 // ************************************************************************* //

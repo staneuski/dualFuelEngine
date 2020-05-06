@@ -27,7 +27,7 @@ limitT
     type            limitTemperature;
     active          false;
     selectionMode   all;
-    min             50;
+    min             200;
     max             2500;
 }
 

@@ -1,6 +1,6 @@
 /*--------------------------------*- C++ -*----------------------------------*\
   =========                 |
-  \\      /  F ield         | OpenFOAM: Addition to OpenFOAM v6
+  \\      /  F ield         | OpenFOAM: dualFuelEngline addition to OpenFOAM v7
    \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
     \\  /    A nd           | Version:  0.4-alpha
      \\/     M anipulation  |
@@ -15,6 +15,10 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
+#include        "../constant/engineProperties"
+
+endTimeCA       #calc "($EVO + 180)*$deltaTCA";
+
 application     dyMFoam; // multiCompressionFoam \ dyMFoam
 
 startFrom       startTime;
@@ -23,13 +27,13 @@ startTime       0;
 
 stopAt          endTime;
 
-endTime         0.48;
+endTime         $endTimeCA;
 
-deltaT          0.0018; // 1e-6 \ 0.0018
+deltaT          5e-4;
 
 writeControl    adjustableRunTime;
 
-writeInterval   $deltaT; // 0.00018 \ $deltaT
+writeInterval   1;
 
 purgeWrite      0;
 
@@ -45,9 +49,38 @@ timePrecision   6;
 
 runTimeModifiable true;
 
-adjustTimeStep  false; // true \ false
+adjustTimeStep  false;
 
 maxCo           0.1;
+
+functions
+{
+    #includeFunc flowRatePatch(name=inlet)
+    #includeFunc flowRatePatch(name=injection)
+
+    #includeFunc MachNo
+    #includeFunc CourantNo
+    #includeFunc writeObjects(e, K)
+    #includeFunc writeCellVolumes
+
+    cylinderVolAverageFieldValues
+    {
+        type            volFieldValue;
+        libs            ("libfieldFunctionObjects.so");
+        writeControl    timeStep;
+        writeInterval   1;
+        log             true;
+        writeFields     false;
+        writeVolume     true; /*FIXME #0003489: https://bugs.openfoam.org/view.php?id=3489 */
+        regionType      cellZone;
+        name            cylinder;
+        operation       volAverage;
+        fields
+        (
+            p T rho e K
+        );
+    }
+}
 
 
 // ************************************************************************* //
