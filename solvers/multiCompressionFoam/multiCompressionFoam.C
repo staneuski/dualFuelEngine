@@ -28,7 +28,7 @@ Description
     Density-based phenomenological multicomponent compressible flow solver
     (multiCompressionFoam stands for multicomponent compressible flow).
 
-    Current version: v0.4.5-alpha
+    v0.4.6-alpha
 
 \*---------------------------------------------------------------------------*/
 
@@ -79,6 +79,8 @@ int main(int argc, char *argv[])
         runTime++;
 
         Info<< "Time = " << runTime.timeName() << nl << endl;
+
+        phi = fvc::flux(rho*U);
 
         mesh.update(); // DyM, do any mesh changes
 
@@ -152,27 +154,22 @@ int main(int argc, char *argv[])
             thermo.correct();
 
             p = rho/psi;
-
-            phi = fvc::flux(rho*U); /*FIXME phi isn't corrected for scalar transport equations if mesh moving*/
-
-            fvScalarMatrix alphaAirEqn
-            (
-                fvm::ddt(rho, alphaAir)
-              + fvm::div(phi, alphaAir)
-              - fvc::laplacian(DAir, rho*alphaAir)
-            );
-
-            alphaAirEqn.solve();
-
-            fvScalarMatrix alphaGasEqn
-            (
-                fvm::ddt(rho, alphaGas)
-              + fvm::div(phi, alphaGas)
-              - fvc::laplacian(DGas, rho*alphaGas)
-            );
-
-            alphaGasEqn.solve();
         }
+
+        // --- Solve concentrations
+        solve
+        (
+            fvm::ddt(rho, alphaAir)
+          + fvm::div(phi, alphaAir)
+          - fvc::laplacian(DAir, rho*alphaAir)
+        );
+
+        solve
+        (
+            fvm::ddt(rho, alphaGas)
+          + fvm::div(phi, alphaGas)
+          - fvc::laplacian(DGas, rho*alphaGas)
+        );
 
         alphaExh = dimensionedScalar("1", dimless, 1) - alphaGas - alphaAir;
 
