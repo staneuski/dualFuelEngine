@@ -14,9 +14,9 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-injection       250;
+injection       50;
 
-inlet           450;
+inlet           400;
 
 dimensions      [0 1 -1 0 0 0 0];
 
@@ -33,7 +33,6 @@ boundaryField
     {
         type            fixedValue;
         value           uniform ($minInjection 0 0);
-
     }
     injectionXPlus
     {

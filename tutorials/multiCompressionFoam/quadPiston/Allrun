@@ -9,11 +9,11 @@ cp ../../../etc/scripts/AllcleanAllrunAny ${PWD##*/}.foam
 ./Allmesh
 
 #- Run serial
-# runApplication $(getApplication)
+runApplication $(getApplication)
 
 #- Run parallel
-runApplication decomposePar -force
-runParallel $(getApplication)
-runApplication reconstructPar
+# runApplication decomposePar -force
+# runParallel $(getApplication)
+# runApplication reconstructPar
 
 #------------------------------------------------------------------------------
