@@ -158,6 +158,7 @@ plt.legend( loc = 'best' )
 plt.grid( True )
 plt.xlabel( '$\\theta$, s' )
 plt.ylabel( 'M, g' )
+# plt.ylim(0.0196, 0.0197)
 
 plt.savefig( 'pipeCompression_multiCompressionFoam/postProcessing/masses.png' )
 

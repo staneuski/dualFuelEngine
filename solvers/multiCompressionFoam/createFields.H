@@ -29,7 +29,7 @@ forAll(p.boundaryField(), patchi)
             p.boundaryField().types()[patchi]
          ==
             zeroGradientFvPatchScalarField::typeName
-        &&
+         &&
             thermo.T().boundaryField().types()[patchi]
          ==
             zeroGradientFvPatchScalarField::typeName
@@ -74,14 +74,6 @@ volVectorField U
 );
 
 #include "compressibleCreatePhi.H"
-
-pressureControl pressureControl
-(
-    p,
-    rho,
-    pimple.dict(),
-    thermo.incompressible()
-);
 
 Info<< "Reading concentration fields" << endl;
 

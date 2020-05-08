@@ -28,16 +28,14 @@ Description
     Density-based phenomenological multicomponent compressible flow solver
     (multiCompressionFoam stands for multicomponent compressible flow).
 
-    v0.4.6-alpha
+    v0.4.7-alpha
 
 \*---------------------------------------------------------------------------*/
 
 #include "fvCFD.H"
-#include "dynamicFvMesh.H" // DyM
+#include "dynamicFvMesh.H"
 #include "fluidThermo.H"
 #include "pimpleControl.H"
-#include "pressureControl.H"
-#include "CorrectPhi.H" // DyM
 #include "fvOptions.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
@@ -46,11 +44,10 @@ int main(int argc, char *argv[])
 {
     #include "setRootCaseLists.H"
     #include "createTime.H"
-    #include "createDynamicFvMesh.H" // DyM
+    #include "createDynamicFvMesh.H"
     #include "createDyMControls.H"
     #include "createFields.H"
     #include "createFieldRefs.H"
-    #include "createRhoUfIfPresent.H"
 
     // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
@@ -59,20 +56,6 @@ int main(int argc, char *argv[])
     while (pimple.run(runTime))
     {
         #include "readDyMControls.H"
-
-        // Store divrhoU from the previous mesh so that it can be mapped
-        // and used in correctPhi to ensure the corrected phi has the
-        // same divergence
-        autoPtr<volScalarField> divrhoU;
-        if (correctPhi)
-        {
-            divrhoU = new volScalarField
-            (
-                "divrhoU",
-                fvc::div(fvc::absolute(phi, rho, U))
-            );
-        }
-
         #include "compressibleCourantNo.H"
         #include "setDeltaT.H"
 
@@ -82,21 +65,12 @@ int main(int argc, char *argv[])
 
         phi = fvc::flux(rho*U);
 
-        mesh.update(); // DyM, do any mesh changes
+        mesh.update();
 
-        if (mesh.changing())
+        if (mesh.moving())
         {
-            if (correctPhi)
-            {
-                // Calculate absolute flux
-                // from the mapped surface velocity
-                phi = mesh.Sf() & rhoUf();
-
-                #include "correctPhi.H"
-
-                // Make the fluxes relative to the mesh-motion
-                fvc::makeRelative(phi, rho, U);
-            }
+            // Make flux relative to the mesh-motion
+            phi -= mesh.phi()*fvc::interpolate(rho);
 
             if (checkMeshCourantNo)
             {
