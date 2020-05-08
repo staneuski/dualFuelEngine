@@ -28,7 +28,7 @@ Description
     Density-based phenomenological multicomponent compressible flow solver
     (multiCompressionFoam stands for multicomponent compressible flow).
 
-    v0.4.7-alpha
+    v0.4.8-alpha
 
 \*---------------------------------------------------------------------------*/
 
@@ -107,16 +107,12 @@ int main(int argc, char *argv[])
             (
                 fvm::ddt(rho, e) + fvm::div(phi, e)
               + fvc::ddt(rho, K) + fvc::div(phi, K)
-             ==
-              - fvc::div(p*U)
-              + fvc::div(thermo.kappa()*fvc::grad(T))
-              + (
-                    U & (
-                            mu*fvc::laplacian(U)
-                          + fvc::grad(mu/3*fvc::div(U))
-                        )
+              + fvc::div
+                (
+                    fvc::absolute(phi/fvc::interpolate(rho), U),
+                    p,
+                    "div(phiv,p)"
                 )
-              //+ mu*D TODO
             );
 
             EEqn.relax();
