@@ -51,19 +51,33 @@ maxCo           0.1;
 
 functions
 {
-    #includeFunc flowRatePatch(name=inlet)
     #includeFunc MachNo
+    #includeFunc CourantNo
+    #includeFunc writeObjects(e, K)
 
-    internalEnergy
+    totalEnergy
     {
-        type            writeObjects;
-        libs            ("libutilityFunctionObjects.so");
+        type            add;
+        libs            ("libfieldFunctionObjects.so");
+
+        fields          (e K);
+
+        executeControl  writeTime;
         writeControl    writeTime;
-        objects
-        (
-            e
-        );
     }
+
+    mass
+    {
+        type            volFieldValue;
+        libs            ("libfieldFunctionObjects.so");
+        writeControl    timeStep;
+        writeInterval   1;
+        log             true;
+        writeFields     false;
+        operation       volIntegrate;
+        fields          (rho);
+    }
+
     volAverageFieldValues
     {
         type            volFieldValue;
@@ -75,9 +89,10 @@ functions
         operation       volAverage;
         fields
         (
-            p T e rho alphaAir alphaGas alphaExh
+            p T rho e K alphaAir alphaExh alphaGas
         );
     }
+}
 }
 
 
