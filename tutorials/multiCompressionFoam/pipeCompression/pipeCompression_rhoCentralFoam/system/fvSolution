@@ -1,8 +1,8 @@
 /*--------------------------------*- C++ -*----------------------------------*\
   =========                 |
-  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
-   \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Version:  dev
+  \\      /  F ield         | OpenFOAM: dualFuelEngline addition to OpenFOAM v7
+   \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
+    \\  /    A nd           | Version:  0.4-alpha
      \\/     M anipulation  |
 \*---------------------------------------------------------------------------*/
 FoamFile
@@ -17,25 +17,18 @@ FoamFile
 
 solvers
 {
-    "(rho|rhoU|rhoE)"
+    "rho|rhoU|rhoE"
     {
         solver          diagonal;
     }
 
-    U
+    "U|e"
     {
         solver          smoothSolver;
         smoother        GaussSeidel;
         nSweeps         2;
         tolerance       1e-09;
         relTol          0.01;
-    }
-
-    e
-    {
-        $U;
-        tolerance       1e-10;
-        relTol          0;
     }
 
     cellMotionUx

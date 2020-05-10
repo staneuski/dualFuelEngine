@@ -17,21 +17,20 @@ FoamFile
 
 solvers
 {
-    "(rho|U).*"
+    "rho|U"
     {
         solver          diagonal;
     }
 
-    "e.*"
+    e
     {
         solver          smoothSolver;
         smoother        GaussSeidel;
         tolerance       1e-09;
         relTol          0.01;
     }
-    
 
-    "(alphaAir|alphaGas).*"
+    "alpha.*"
     {
         solver          PBiCGStab;
         preconditioner  DILU;
@@ -39,7 +38,7 @@ solvers
         relTol          0;
     }
 
-    "pcorrFinal|cellMotionU.*"
+    "cellMotionU.*"
     {
         solver          PCG;
         preconditioner  DIC;

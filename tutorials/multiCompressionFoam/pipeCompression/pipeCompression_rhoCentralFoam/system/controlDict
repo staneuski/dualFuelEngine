@@ -53,6 +53,7 @@ functions
 {
     #includeFunc MachNo
     #includeFunc CourantNo
+    #includeFunc writeObjects(e)
     #includeFunc writeCellVolumes
 
     mass
@@ -78,7 +79,7 @@ functions
         operation       volAverage;
         fields
         (
-            p T rho
+            p T rho e
         );
     }
 }

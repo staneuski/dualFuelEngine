@@ -60,11 +60,9 @@ functions
     {
         type            add;
         libs            ("libfieldFunctionObjects.so");
-
-        fields          (e K);
-
         executeControl  writeTime;
         writeControl    writeTime;
+        fields          (e K);
     }
 
     mass
