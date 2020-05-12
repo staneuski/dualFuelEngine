@@ -20,7 +20,7 @@ FoamFile
 endTimeCA       #calc "($EVO + 180)*$deltaTCA";
 
 
-application     rhoPimpleFoam; // dyMFoam \ rhoPimpleFoam
+application     rhoPimpleFoam; // moveMesh \ rhoPimpleFoammoveMesh;
 
 startFrom       startTime;
 

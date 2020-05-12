@@ -15,7 +15,7 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-application     dyMFoam; // multiCompressionFoam \ dyMfoam
+application     moveMesh; // multiCompressionFoam \ moveMesh
 
 startFrom       startTime;
 

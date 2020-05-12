@@ -63,9 +63,9 @@ int main(int argc, char *argv[])
 
         Info<< "Time = " << runTime.timeName() << nl << endl;
 
-        phi = fvc::flux(rho*U);
-
         mesh.update();
+
+        phi = fvc::flux(rho*U);
 
         if (mesh.moving())
         {
