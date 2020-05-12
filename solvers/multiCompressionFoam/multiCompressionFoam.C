@@ -28,7 +28,7 @@ Description
     Density-based phenomenological multicomponent compressible flow solver
     (multiCompressionFoam stands for multicomponent compressible flow).
 
-    v0.4.8-alpha
+    v0.4.9-alpha
 
 \*---------------------------------------------------------------------------*/
 
@@ -70,7 +70,7 @@ int main(int argc, char *argv[])
         if (mesh.moving())
         {
             // Make flux relative to the mesh-motion
-            phi -= mesh.phi()*fvc::interpolate(rho);
+            phi = fvc::relative(phi, rho, U);
 
             if (checkMeshCourantNo)
             {
@@ -124,6 +124,7 @@ int main(int argc, char *argv[])
             thermo.correct();
 
             p = rho/psi;
+            p.correctBoundaryConditions();
         }
 
         // --- Solve concentrations
