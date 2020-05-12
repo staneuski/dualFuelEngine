@@ -9,11 +9,6 @@ test*
 [cell,point]*ToRegion
 [cell,point]*Level
 [add,mag]*(*)
-Co
-e
-K
-Ma
-V
 
 
 # Folders - anywhere
@@ -38,8 +33,9 @@ VTK/
 etc/FlowVision/**/*.*[backup,glo,err,sta]
 etc/FlowVision/**/*_[00001-99999]*.*[fvstat,fvinp]
 
-tutorials/resources/blockMesh/*[cylPiston,cylCyclic2D]
-tutorials/**/*[closedPipe,RiemannTube,cylPiston,cylSym2D,shockTube]/**/0/*[p,T,U,alphaAir,alphaGas]
+tutorials/resources/blockMesh/cylCyclic2D
+tutorials/resources/blockMesh/cylPiston
+tutorials/**/0/*[alphaAir,alphaGas,Co,e,K,Ma,p,T,U,V]
 
 # Folders - local
 etc/**/*.*[drk,fv,*]res/
