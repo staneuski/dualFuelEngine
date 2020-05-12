@@ -17,12 +17,12 @@ FoamFile
 
 solvers
 {
-    "rho|U"
+    "(rho|U).*"
     {
         solver          diagonal;
     }
 
-    e
+    "e.*"
     {
         solver          smoothSolver;
         smoother        GaussSeidel;

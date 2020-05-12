@@ -15,7 +15,7 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-application     rhoPimpleFoam; // dyMFoam \ rhoPimpleFoam
+application     rhoPimpleFoam; // moveMesh \ rhoPimpleFoam
 
 startFrom       startTime;
 
