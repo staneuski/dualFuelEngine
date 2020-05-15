@@ -14,17 +14,13 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-injection       50;
+inj             100; // injection velocity magnitude
 
-inlet           400;
+inl             30; // inlet velocity components
 
 dimensions      [0 1 -1 0 0 0 0];
 
 internalField   uniform (0 0 0);
-
-minInjection    #calc "-1.0*$injection";
-
-minInlet        #calc "-1.0*$inlet";
 
 boundaryField
 {
@@ -32,45 +28,45 @@ boundaryField
     injectionXMinus
     {
         type            fixedValue;
-        value           uniform ($minInjection 0 0);
+        value           uniform (#neg $inj  0  0);
     }
     injectionXPlus
     {
         type            fixedValue;
-        value           uniform ($injection 0 0);
+        value           uniform ($inj  0  0);
     }
     injectionYMinus
     {
         type            fixedValue;
-        value           uniform (0 $minInjection 0);
+        value           uniform (0  #neg $inj  0);
 
     }
     injectionYPlus
     {
         type            fixedValue;
-        value           uniform (0 $injection 0);
+        value           uniform (0  $inj  0);
     }
 
 /* Inlet */
     inletXMinus
     {
         type            fixedValue;
-        value           uniform ($minInlet $inlet $inlet);
+        value           uniform (#neg $inl  $inl  $inl);
     }
     inletXPlus
     {
         type            fixedValue;
-        value           uniform ($inlet $minInlet $inlet);
+        value           uniform ($inl  #neg $inl  $inl);
     }
     inletYMinus
     {
         type            fixedValue;
-        value           uniform ($minInlet $minInlet $inlet);
+        value           uniform (#neg $inl  #neg $inl  $inl);
     }
     inletYPlus
     {
         type            fixedValue;
-        value           uniform ($inlet $inlet $inlet);
+        value           uniform ($inl  $inl  $inl);
     }
 
 /* Outlet */

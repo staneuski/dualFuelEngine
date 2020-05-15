@@ -23,13 +23,13 @@ startTime       0;
 
 stopAt          endTime;
 
-endTime         0.02;
+endTime         0.25;
 
-deltaT          1e-5;
+deltaT          0.001;
 
 writeControl    adjustableRunTime;
 
-writeInterval   5e-4;
+writeInterval   $deltaT;
 
 purgeWrite      0;
 
@@ -47,33 +47,35 @@ runTimeModifiable true;
 
 adjustTimeStep  true;
 
-maxCo           0.5;
+maxCo           1;
 
 functions
 {
     #includeFunc MachNo
+    #includeFunc CourantNo
+    #includeFunc writeObjects(e, K)
 
-    internalEnergy
+    totalEnergy
     {
-        type            writeObjects;
-        libs            ("libutilityFunctionObjects.so");
+        type            add;
+        libs            ("libfieldFunctionObjects.so");
+        executeControl  writeTime;
         writeControl    writeTime;
-        objects
-        (
-            e
-        );
+        fields          (e K);
     }
+
     volAverageFieldValues
     {
         type            volFieldValue;
         libs            ("libfieldFunctionObjects.so");
+        executeControl  writeTime;
         writeControl    writeTime;
         log             true;
         writeFields     false;
         operation       volAverage;
         fields
         (
-            p T e rho alphaAir alphaGas alphaExh
+            p T rho e K alphaAir alphaExh alphaGas
         );
     }
 }
