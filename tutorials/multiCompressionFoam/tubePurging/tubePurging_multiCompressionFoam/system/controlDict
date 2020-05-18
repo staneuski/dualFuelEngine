@@ -52,6 +52,7 @@ maxCo           0.1;
 functions
 {
     #includeFunc flowRatePatch(name=inlet)
+    #includeFunc flowRatePatch(name=outlet)
     #includeFunc MachNo
     #includeFunc CourantNo
     #includeFunc writeObjects(e, K)
