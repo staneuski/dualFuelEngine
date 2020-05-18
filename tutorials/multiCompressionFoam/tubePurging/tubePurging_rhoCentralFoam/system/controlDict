@@ -15,7 +15,7 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-application     multiCompressionFoam;
+application     rhoCentralFoam;
 
 startFrom       startTime;
 
@@ -55,18 +55,7 @@ functions
     #includeFunc flowRatePatch(name=outlet)
     #includeFunc MachNo
     #includeFunc CourantNo
-    #includeFunc writeObjects(e, K)
-
-    totalEnergy
-    {
-        type            add;
-        libs            ("libfieldFunctionObjects.so");
-
-        fields          (e K);
-
-        executeControl  writeTime;
-        writeControl    writeTime;
-    }
+    #includeFunc writeObjects(e)
 
     mass
     {
@@ -91,7 +80,7 @@ functions
         operation       volAverage;
         fields
         (
-            p T rho e K alphaAir alphaExh alphaGas
+            p T rho e
         );
     }
 }

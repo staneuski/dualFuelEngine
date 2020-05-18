@@ -49,6 +49,54 @@ multiCompressionFoam = [
     )
 ]
 
+#- rhoPimpleFoam
+rhoPimpleFoam = [
+    np.loadtxt(
+        'tubePurging_rhoPimpleFoam/postProcessing/volAverageFieldValues/0/volFieldValue.dat',
+        skiprows = 4,
+        encoding = 'utf-8'
+    ),
+    np.loadtxt(
+        'tubePurging_rhoPimpleFoam/postProcessing/flowRatePatch(name=inlet)/0/surfaceFieldValue.dat',
+        skiprows = 4,
+        encoding = 'utf-8'
+    ),
+    np.loadtxt(
+        'tubePurging_rhoPimpleFoam/postProcessing/flowRatePatch(name=outlet)/0/surfaceFieldValue.dat',
+        skiprows = 4,
+        encoding = 'utf-8'
+    ),
+    np.loadtxt(
+        "tubePurging_rhoPimpleFoam/postProcessing/mass/0/volFieldValue.dat",
+        skiprows = 4,
+        encoding = 'utf-8'
+    )
+]
+
+#- rhoCentralFoam
+rhoCentralFoam = [
+    np.loadtxt(
+        'tubePurging_rhoCentralFoam/postProcessing/volAverageFieldValues/0/volFieldValue.dat',
+        skiprows = 4,
+        encoding = 'utf-8'
+    ),
+    np.loadtxt(
+        'tubePurging_rhoCentralFoam/postProcessing/flowRatePatch(name=inlet)/0/surfaceFieldValue.dat',
+        skiprows = 4,
+        encoding = 'utf-8'
+    ),
+    np.loadtxt(
+        'tubePurging_rhoCentralFoam/postProcessing/flowRatePatch(name=outlet)/0/surfaceFieldValue.dat',
+        skiprows = 4,
+        encoding = 'utf-8'
+    ),
+    np.loadtxt(
+        "tubePurging_rhoCentralFoam/postProcessing/mass/0/volFieldValue.dat",
+        skiprows = 4,
+        encoding = 'utf-8'
+    )
+]
+
 
 # Create plots
 # ~~~~~~~~~~~~
@@ -86,6 +134,39 @@ for i in range (0, len(fields) - 2):
             )
         plt.ylabel( fields[i] )
 
+    #- rhoPimpleFoam
+    if fields[i] != "e, J/kg":
+        plt.plot(
+            rhoPimpleFoam[0][:, 0]*1e+03,
+            rhoPimpleFoam[0][:, i + 1],
+            label = 'rhoPimpleFoam',
+            linewidth = 2
+        )
+        plt.ylabel( fields[i] )
+    else:
+        for j in range(0, 2):
+            if j == 0: lineType = '-'  # e
+            else:      lineType = '--' # K
+            plt.plot(
+                rhoPimpleFoam[0][:, 0]*1e+03,
+                rhoPimpleFoam[0][:, i + j + 1],
+                label = f'rhoPimpleFoam ({fields[i + j]})',
+                linestyle = lineType,
+                color = 'C1',
+                linewidth = 2
+            )
+        plt.ylabel( fields[i] )
+
+    #- rhoCentralFoam
+    plt.plot(
+        rhoCentralFoam[0][:, 0]*1e+03,
+        rhoCentralFoam[0][:, i + 1],
+        label = 'rhoCentralFoam',
+        color = 'C2',
+        linewidth = 2
+    )
+    plt.ylabel( fields[i] )
+
     plt.grid( True )
     plt.legend( loc = 'best' )
     plt.xlabel( '$\\tau$, ms' )
@@ -93,25 +174,42 @@ plt.savefig( 'tubePurging_multiCompressionFoam/postProcessing/volFieldValues.png
 
 #- Inlet patch mass flow rate
 plt.figure(
-    figsize = (15, 5)
+    figsize = (15, 10)
 ).suptitle(
-    'Mass flow rate through patches', fontweight = 'bold'
+    'Mass flow rates', fontweight = 'bold'
 )
 for i in range (0, 2):
     if i == 0:
-        subplotName = 'Inlet'
+        subplotName = 'inlet'
         flipPlot = -1 # flip plot around Y axis = 'true'
+        lineType = '-'
     else:
-        subplotName = 'Outlet'
+        subplotName = 'outlet'
         flipPlot = 1 # flip plot around Y axis = 'false'
+        lineType = '--'
 
-    plt.subplot(121 + i).set_title(
-        f'{subplotName}', fontweight = 'bold'
+    plt.plot(
+        multiCompressionFoam[i + 1][:, 0]*1e+03,
+        multiCompressionFoam[i + 1][:, 1]*flipPlot,
+        label = f'multiCompressionFoam ({subplotName})',
+        linestyle = lineType,
+        color = 'C0',
+        linewidth = 2
     )
     plt.plot(
-        multiCompressionFoam[i + 1][:,0]*1e+03,
-        multiCompressionFoam[i + 1][:,1]*flipPlot,
-        label = 'multiCompressionFoam',
+        rhoPimpleFoam[i + 1][:, 0]*1e+03,
+        rhoPimpleFoam[i + 1][:, 1]*flipPlot,
+        label = f'rhoPimpleFoam ({subplotName})',
+        linestyle = lineType,
+        color = 'C1',
+        linewidth = 2
+    )
+    plt.plot(
+        rhoCentralFoam[i + 1][:, 0]*1e+03,
+        rhoCentralFoam[i + 1][:, 1]*flipPlot,
+        label = f'rhoCentralFoam ({subplotName})',
+        linestyle = lineType,
+        color = 'C2',
         linewidth = 2
     )
 
@@ -121,22 +219,35 @@ for i in range (0, 2):
     plt.ylabel( '$\\varphi$, kg/s' )
 plt.savefig( 'tubePurging_multiCompressionFoam/postProcessing/massFlowRates.png' )
 
-#- Mass
-plt.figure().suptitle(
-    'Mass in the domain', fontweight = 'bold'
-)
-plt.plot(
-    multiCompressionFoam[3][:, 0]*1e+03,
-    multiCompressionFoam[3][:, 1]*100,
-    linewidth = 2,
-    label = 'multiCompressionFoam'
-)
-
-plt.legend( loc = 'best' )
-plt.grid( True )
-plt.xlabel( '$\\tau$, ms' )
-plt.ylabel( 'M, g' )
-plt.savefig( 'tubePurging_multiCompressionFoam/postProcessing/masses.png' )
+# #- Mass
+# plt.figure(
+#     figsize = (15, 10)
+# ).suptitle(
+#     'Mass in the domain', fontweight = 'bold'
+# )
+# plt.plot(
+#     multiCompressionFoam[3][:, 0]*1e+03,
+#     multiCompressionFoam[3][:, 1]*100,
+#     label = 'multiCompressionFoam',
+#     linewidth = 2
+# )
+# plt.plot(
+#     rhoPimpleFoam[3][:, 0]*1e+03,
+#     rhoPimpleFoam[3][:, 1]*100,
+#     label = 'multiCompressionFoam',
+#     linewidth = 2
+# )
+# plt.plot(
+#     rhoCentralFoam[3][:, 0]*1e+03,
+#     rhoCentralFoam[3][:, 1]*100,
+#     label = 'multiCompressionFoam',
+#     linewidth = 2
+# )
+# plt.legend( loc = 'best' )
+# plt.grid( True )
+# plt.xlabel( '$\\tau$, ms' )
+# plt.ylabel( 'M, g' )
+# plt.savefig( 'tubePurging_multiCompressionFoam/postProcessing/masses.png' )
 
 exit(plt.show())
 

@@ -15,7 +15,7 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-application     multiCompressionFoam;
+application     rhoPimpleFoam;
 
 startFrom       startTime;
 
@@ -45,10 +45,6 @@ timePrecision   6;
 
 runTimeModifiable true;
 
-adjustTimeStep  true;
-
-maxCo           0.5;
-
 functions
 {
     #includeFunc flowRatePatch(name=inlet)
@@ -61,11 +57,9 @@ functions
     {
         type            add;
         libs            ("libfieldFunctionObjects.so");
-
-        fields          (e K);
-
         executeControl  writeTime;
         writeControl    writeTime;
+        fields          (e K);
     }
 
     mass
@@ -91,10 +85,9 @@ functions
         operation       volAverage;
         fields
         (
-            p T rho e K alphaAir alphaExh alphaGas
+            p T rho e K
         );
     }
-}
 }
 
 

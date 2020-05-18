@@ -23,6 +23,8 @@ boundaryField
     inlet
     {
         type            flowRateInletVelocity;
+        rho             rho;
+        rhoInlet        4.0;
         // massFlowRate    0.01;
         massFlowRate    table
         (
