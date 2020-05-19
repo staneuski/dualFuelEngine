@@ -4,7 +4,8 @@
 # Files - anywhere
 *log*
 test*
-*.gz
+*.bak
+*.tar
 *.foam
 [cell,point]*ToRegion
 [cell,point]*Level

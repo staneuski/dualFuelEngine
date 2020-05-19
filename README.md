@@ -19,6 +19,11 @@ OpenFOAM solver based on phenomenological compression model for dual-fuel ship e
     $FOAM_ADD/dualFuelEngine/solvers/./Allwmake
     ```
 
+1. Add makeBackup script as a link to the OpenFOAM-?/bin
+    ```sh
+    sudo ln -s $FOAM_ADD/dualFuelEngine/etc/scripts/foamBackup $FOAM_APP/../bin/foamBackup
+    ```
+
 ## Run
 - Run all cases
     ```sh
