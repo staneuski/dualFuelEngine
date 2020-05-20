@@ -3,11 +3,11 @@
        ___       |
      _|o_ |_     |   Language: Python 3.x
     /  ___| \    |   Website: https://github.com/StasF1/dualFuelEngine
-    \_| ____/    |   Copyright (C) 2018-2020 Stanislau Stasheuski
+    \_| ____/    |   Copyright (C) 2020 Stanislau Stasheuski
       |__o|      |
 ----------------------------------------------------------------------------'''
 
-import glob
+import re
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -27,7 +27,6 @@ ticksFontSize  = 12
 linewidthHeavy = 2
 linewidthLight = 1
 
-
 fieldNames = [
     "Pressure",
     "Temperature",
@@ -36,7 +35,20 @@ fieldNames = [
 ]
 fields = ["p, Pa", "T, K", "$\\rho, kg/m^3$", "e, J/kg", "K, J/kg", "E, J/kg"]
 
+solvers = [ "multiCompressionFoam", "rhoPimpleFoam", "rhoCentralFoam"]
+
 # * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+def getExecutionTime( solver ):
+    ''' Get execution time from the log '''
+
+    for grep in open(f"tubePurging_{solver}/log.{solver}"):
+        if "ExecutionTime" in grep:
+            ExecutionTime = re.findall('(\d+.\d+)', grep)
+    print(f"{solver} execution time: {ExecutionTime[0]} s")
+
+    return float(ExecutionTime[0])
+
 
 # Get data
 # ~~~~~~~~
@@ -99,6 +111,13 @@ rhoCentralFoam = [
         skiprows = 4
     )
 ]
+
+#- Execution time for all solvers
+ExecutionTimes = [ ]
+solverColors   = [ ]
+for i in range(len(solvers)):
+    ExecutionTimes.append(getExecutionTime( solvers[i] ))
+    solverColors.append(f"C{i}")
 
 
 # Create plots
@@ -176,6 +195,7 @@ for i in range (0, len(fields) - 2):
     plt.xticks( fontsize = ticksFontSize );  plt.yticks( fontsize = ticksFontSize )
 plt.savefig( 'tubePurging_multiCompressionFoam/postProcessing/volFieldValues.png' )
 
+
 #- Mass flow rates
 plt.figure(
     figsize = (xFigSize, yFigSize)
@@ -224,6 +244,7 @@ for i in range (0, 2):
     plt.xticks( fontsize = ticksFontSize );  plt.yticks(fontsize = ticksFontSize )
 plt.savefig( 'tubePurging_multiCompressionFoam/postProcessing/massFlowRates.png' )
 
+
 # #- Mass
 # plt.figure(
 #     figsize = (xFigSize, yFigSize)
@@ -255,6 +276,24 @@ plt.savefig( 'tubePurging_multiCompressionFoam/postProcessing/massFlowRates.png'
 # plt.xticks( fontsize = ticksFontSize );  plt.yticks( fontsize = ticksFontSize )
 # plt.savefig( 'tubePurging_multiCompressionFoam/postProcessing/masses.png' )
 
-exit(plt.show())
+
+#- Execution time bar plot
+plt.figure(
+    figsize = (xFigSize, yFigSize*0.65)
+).suptitle(
+    'Execution time by solver', fontweight = 'bold', fontsize = subplotFontSize
+)
+plt.bar(
+    range(len(ExecutionTimes)), ExecutionTimes,
+    color = solverColors,
+    zorder = 3
+)
+plt.grid( zorder = 0 )
+plt.xticks( range(len(ExecutionTimes)), solvers, fontsize = labelFontSize )
+plt.yticks( fontsize = ticksFontSize )
+plt.ylabel( '$\\tau$, s', fontsize = labelFontSize )
+plt.savefig( 'tubePurging_multiCompressionFoam/postProcessing/executionTimes.png' )
+
+exit( plt.show() )
 
 # *****************************************************************************

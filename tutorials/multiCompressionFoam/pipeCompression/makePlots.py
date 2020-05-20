@@ -3,11 +3,11 @@
        ___       |
      _|o_ |_     |   Language: Python 3.x
     /  ___| \    |   Website: https://github.com/StasF1/dualFuelEngine
-    \_| ____/    |   Copyright (C) 2018-2020 Stanislau Stasheuski
+    \_| ____/    |   Copyright (C) 2020 Stanislau Stasheuski
       |__o|      |
 ----------------------------------------------------------------------------'''
 
-import glob
+import re
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -27,6 +27,17 @@ ticksFontSize  = 12
 linewidthHeavy = 2
 linewidthLight = 1
 
+fieldNames = [
+    "Pressure",
+    "Temperature",
+    "Density",
+    "Energy"
+]
+fields = ["p, Pa", "T, K", "$\\rho, kg/m^3$", "e, J/kg", "K, J/kg", "E, J/kg"]
+
+solvers = [ "multiCompressionFoam", "rhoPimpleFoam", "rhoCentralFoam"]
+
+
 #- Adiabatic compression paarmeters
 frequency     = 1 # [s]
 
@@ -43,15 +54,18 @@ Cv            = Cp - 287 # [J/kg/K]
 l             = 0.6 # [m]
 
 
-fieldNames = [
-    "Pressure",
-    "Temperature",
-    "Density",
-    "Energy"
-]
-fields = ["p, Pa", "T, K", "$\\rho, kg/m^3$", "e, J/kg", "K, J/kg", "E, J/kg"]
-
 # * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+def getExecutionTime( solver ):
+    ''' Get execution time from the log '''
+
+    for grep in open(f"pipeCompression_{solver}/log.{solver}"):
+        if "ExecutionTime" in grep:
+            ExecutionTime = re.findall('(\d+.\d+)', grep)
+    print(f"{solver} execution time: {ExecutionTime[0]} s")
+
+    return float(ExecutionTime[0])
+
 
 # Get data
 # ~~~~~~~~
@@ -111,6 +125,13 @@ adiabaticProcess = [
     t, p, T, rho, e
 ]
 
+#- Execution time for all solvers
+ExecutionTimes = [ ]
+solverColors   = [ ]
+for i in range(len(solvers)):
+    ExecutionTimes.append(getExecutionTime( solvers[i] ))
+    solverColors.append(f"C{i}")
+
 
 # Create plots
 # ~~~~~~~~~~~~
@@ -126,7 +147,7 @@ for i in range (0, len(fields) - 2):
         f'{fieldNames[i]}', fontweight = 'bold', fontsize = subplotFontSize
     )
 
-    # - multiCompressionFoam
+    #- multiCompressionFoam
     if fields[i] != "e, J/kg":
         plt.plot(
             multiCompressionFoam[0][:, 0],
@@ -230,6 +251,24 @@ plt.ylabel( 'M, g', fontsize = labelFontSize )
 plt.xticks( fontsize = ticksFontSize );  plt.yticks( fontsize = ticksFontSize )
 plt.savefig( 'pipeCompression_multiCompressionFoam/postProcessing/masses.png' )
 
-exit(plt.show())
+
+#- Execution time bar plot
+plt.figure(
+    figsize = (xFigSize, yFigSize*0.75)
+).suptitle(
+    'Execution time by solver', fontweight = 'bold', fontsize = subplotFontSize
+)
+plt.bar(
+    range(len(ExecutionTimes)), np.array(ExecutionTimes)/60,
+    color = solverColors,
+    zorder = 3
+)
+plt.grid( zorder = 0 )
+plt.xticks( range(len(ExecutionTimes)), solvers, fontsize = labelFontSize )
+plt.yticks( fontsize = ticksFontSize )
+plt.ylabel( '$\\tau$, min', fontsize = labelFontSize )
+plt.savefig( 'pipeCompression_multiCompressionFoam/postProcessing/executionTimes.png' )
+
+exit( plt.show() )
 
 # *****************************************************************************
