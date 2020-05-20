@@ -12,22 +12,36 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+# User-defined parameters
 
-frequency =     1 # [s]
+#- Plot parameters
+xFigSize       = 10
+yFigSize       = 8
 
-amplitude =     2 # [m/s]
+titleFontSize  = 16
+subplotFontSize= 14
+labelFontSize  = 16
+legendFontSize = 12
+ticksFontSize  = 12
 
-start     =     0.15 # [s]
+linewidthHeavy = 2
+linewidthLight = 1
 
-area      =     1e-4 # [m^2]
+#- Adiabatic compression paarmeters
+frequency     = 1 # [s]
 
-Cp        =     1005 # [J/kg/K]
+amplitude     = 2 # [m/s]
 
-Cv        =     Cp - 287 # [J/kg/K]
+start         = 0.15 # [s]
 
-l         =     0.6 # [m]
+area          = 1e-4 # [m^2]
 
-# * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+Cp            = 1005 # [J/kg/K]
+
+Cv            = Cp - 287 # [J/kg/K]
+
+l             = 0.6 # [m]
+
 
 fieldNames = [
     "Pressure",
@@ -35,8 +49,9 @@ fieldNames = [
     "Density",
     "Energy"
 ]
-
 fields = ["p, Pa", "T, K", "$\\rho, kg/m^3$", "e, J/kg", "K, J/kg", "E, J/kg"]
+
+# * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
 # Get data
 # ~~~~~~~~
@@ -44,13 +59,11 @@ fields = ["p, Pa", "T, K", "$\\rho, kg/m^3$", "e, J/kg", "K, J/kg", "E, J/kg"]
 multiCompressionFoam = [
     np.loadtxt(
         "pipeCompression_multiCompressionFoam/postProcessing/volAverageFieldValues/0/volFieldValue.dat",
-        skiprows = 4,
-        encoding = 'utf-8'
+        skiprows = 4
     ),
     np.loadtxt(
         "pipeCompression_multiCompressionFoam/postProcessing/mass/0/volFieldValue.dat",
-        skiprows = 4,
-        encoding = 'utf-8'
+        skiprows = 4
     )
 ]
 
@@ -58,13 +71,11 @@ multiCompressionFoam = [
 rhoPimpleFoam = [
     np.loadtxt(
         "pipeCompression_rhoPimpleFoam/postProcessing/volAverageFieldValues/0/volFieldValue.dat",
-        skiprows = 4,
-        encoding = 'utf-8'
+        skiprows = 4
     ),
     np.loadtxt(
         "pipeCompression_rhoPimpleFoam/postProcessing/mass/0/volFieldValue.dat",
-        skiprows = 4,
-        encoding = 'utf-8'
+        skiprows = 4
     )
 ]
 # np.append(rhoPimpleFoam[3], rhoPimpleFoam[3][:,4] + rhoPimpleFoam[3][:,5]) # E = e + K
@@ -73,13 +84,11 @@ rhoPimpleFoam = [
 rhoCentralFoam = [
     np.loadtxt(
         "pipeCompression_rhoCentralFoam/postProcessing/volAverageFieldValues/0/volFieldValue.dat",
-        skiprows = 4,
-        encoding = 'utf-8'
+        skiprows = 4
     ),
     np.loadtxt(
         "pipeCompression_rhoCentralFoam/postProcessing/mass/0/volFieldValue.dat",
-        skiprows = 4,
-        encoding = 'utf-8'
+        skiprows = 4
     )
 ]
 
@@ -98,21 +107,23 @@ T   = multiCompressionFoam[0][0, 2]*pow(v[0]/v, Cp/Cv - 1) # T_IC*(V_IC/V)^(Cp/C
 rho = multiCompressionFoam[0][0, 3]*v[0]/v                 # rho_IC*(V_IC/V)
 e   = multiCompressionFoam[0][0, 4]*pow(v[0]/v, Cp/Cv - 1) # e_IC*(V_IC/V)^(Cp/Cv - 1)
 
-adiabaticProcess = [t, p, T, rho, e]
+adiabaticProcess = [
+    t, p, T, rho, e
+]
 
 
 # Create plots
 # ~~~~~~~~~~~~
 #- Mean parameters
 plt.figure(
-    figsize = (15, 10)
+    figsize = (xFigSize*2, yFigSize*2)
 ).suptitle(
-    'Mean parameters', fontweight = 'bold'
+    'Mean parameters', fontweight = 'bold', fontsize = titleFontSize
 )
 
 for i in range (0, len(fields) - 2):
     plt.subplot(221 + i).set_title(
-        f'{fieldNames[i]}', fontweight = 'bold'
+        f'{fieldNames[i]}', fontweight = 'bold', fontsize = subplotFontSize
     )
 
     # - multiCompressionFoam
@@ -121,9 +132,9 @@ for i in range (0, len(fields) - 2):
             multiCompressionFoam[0][:, 0],
             multiCompressionFoam[0][:, i + 1],
             label = 'multiCompressionFoam',
-            linewidth = 2
+            linewidth = linewidthHeavy
         )
-        plt.ylabel( fields[i] )
+        plt.ylabel( fields[i], fontsize = labelFontSize )
     else:
         for j in range(0, 2):
             if j == 0: lineType = '-'  # e
@@ -133,10 +144,10 @@ for i in range (0, len(fields) - 2):
                 multiCompressionFoam[0][:, i + j + 1],
                 label = f'multiCompressionFoam ({fields[i + j]})',
                 linestyle = lineType,
-                color = 'C0',
-                linewidth = 2
+                linewidth = linewidthLight,
+                color = 'C0'
             )
-        plt.ylabel( fields[i] )
+        plt.ylabel( fields[i], fontsize = labelFontSize )
 
     #- rhoPimpleFoam
     if fields[i] != "e, J/kg":
@@ -144,9 +155,9 @@ for i in range (0, len(fields) - 2):
             rhoPimpleFoam[0][:, 0],
             rhoPimpleFoam[0][:, i + 1],
             label = 'rhoPimpleFoam',
-            linewidth = 2
+            linewidth = linewidthLight
         )
-        plt.ylabel( fields[i] )
+        plt.ylabel( fields[i], fontsize = labelFontSize )
     else:
         for j in range(0, 2):
             if j == 0: lineType = '-'  # e
@@ -156,67 +167,67 @@ for i in range (0, len(fields) - 2):
                 rhoPimpleFoam[0][:, i + j + 1],
                 label = f'rhoPimpleFoam ({fields[i + j]})',
                 linestyle = lineType,
-                color = 'C1',
-                linewidth = 2
+                linewidth = linewidthLight,
+                color = 'C1'
             )
-        plt.ylabel( fields[i] )
+        plt.ylabel( fields[i], fontsize = labelFontSize )
 
     #- rhoCentralFoam
     plt.plot(
         rhoCentralFoam[0][:, 0],
         rhoCentralFoam[0][:, i + 1],
         label = 'rhoCentralFoam',
-        color = 'C2',
-        linewidth = 2
+        linewidth = linewidthLight,
+        color = 'C2'
     )
-    plt.ylabel( fields[i] )
+    plt.ylabel( fields[i], fontsize = labelFontSize )
 
     #- Adiabatic compression
     plt.plot(
         adiabaticProcess[0],
         adiabaticProcess[i + 1],
         label = 'adiabatic compression',
+        linewidth = linewidthLight,
         color = 'C3'
     )
-    plt.ylabel( fields[i] )
+    plt.ylabel( fields[i], fontsize = labelFontSize )
 
-    plt.legend( loc = 'best' )
     plt.grid( True )
-    plt.xlabel( '$\\theta$, s' )
-
+    plt.legend( loc = 'best', fontsize = legendFontSize )
+    plt.xlabel( '$\\tau$, s', fontsize = labelFontSize )
 plt.savefig( 'pipeCompression_multiCompressionFoam/postProcessing/volFieldValues.png' )
 
 
 #- Mass
 plt.figure(
-    figsize = (15, 10)
+    figsize = (xFigSize, yFigSize)
 ).suptitle(
-    'Mass in the domain', fontweight = 'bold'
+    'Mass in the domain', fontweight = 'bold',  fontsize = titleFontSize
 )
 plt.plot(
     multiCompressionFoam[1][:, 0],
     multiCompressionFoam[1][:, 1]*100,
-    linewidth = 2,
-    label = 'multiCompressionFoam'
+    label = 'multiCompressionFoam',
+    linewidth = linewidthHeavy
 )
 plt.plot(
     rhoPimpleFoam[1][:, 0],
     rhoPimpleFoam[1][:, 1]*100,
-    linewidth = 2,
-    label = 'rhoPimpleFoam'
+    label = 'rhoPimpleFoam',
+    linewidth = linewidthLight
 )
 plt.plot(
     rhoCentralFoam[1][:, 0],
     rhoCentralFoam[1][:, 1]*100,
-    linewidth = 2,
-    label = 'rhoCentralFoam'
+    label = 'rhoCentralFoam',
+    linewidth = linewidthLight
 )
-plt.legend( loc = 'best' )
-plt.grid( True )
-plt.xlabel( '$\\theta$, s' )
-plt.ylabel( 'M, g' )
 # plt.ylim(0.0196, 0.0197)
-
+plt.grid( True )
+plt.legend( loc = 'best', fontsize = legendFontSize )
+plt.xlabel( '$\\tau$, s', fontsize = labelFontSize )
+plt.ylabel( 'M, g', fontsize = labelFontSize )
+plt.xticks( fontsize = ticksFontSize );  plt.yticks( fontsize = ticksFontSize )
 plt.savefig( 'pipeCompression_multiCompressionFoam/postProcessing/masses.png' )
 
 exit(plt.show())
