@@ -33,7 +33,7 @@ deltaT          5e-4;
 
 writeControl    adjustableRunTime;
 
-writeInterval   1;
+writeInterval   $deltaTCA;
 
 purgeWrite      0;
 
