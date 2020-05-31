@@ -20,20 +20,20 @@ jobs:
 
     - name: RiemannTube
       run: foamRunTutorials
-      working-directory: tutorials/RiemannTube
+      working-directory: tutorials/multiCompressionFoam/RiemannTube
 
     - name: shockTube
       run: foamRunTutorials
-      working-directory: tutorials/shockTube/shockTube_multiCompressionFoam
+      working-directory: tutorials/multiCompressionFoam/shockTube/shockTube_multiCompressionFoam
 
     - name: tubePurging
       run: foamRunTutorials
-      working-directory: tutorials/tubePurging/tubePurging_multiCompressionFoam
+      working-directory: tutorials/multiCompressionFoam/tubePurging/tubePurging_multiCompressionFoam
 
     - name: pipeCompression
       run: foamRunTutorials
-      working-directory: tutorials/pipeCompression/pipeCompression_multiCompressionFoam
+      working-directory: tutorials/multiCompressionFoam/pipeCompression/pipeCompression_multiCompressionFoam
 
     - name: quadPiston
       run: foamRunTutorials
-      working-directory: tutorials/quadPiston
+      working-directory: tutorials/multiCompressionFoam/quadPiston
