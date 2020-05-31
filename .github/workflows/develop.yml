@@ -1,21 +1,13 @@
 name: Test dualFuelEngine-dev
 
-on:
-  push:
-    branches: [ develop ]
-  pull_request:
-    branches: [ master ]
-
-#   push:
-#     branches:
-#       - 'develop'
+on: push
 
 jobs:
   tutorials-tubes:
     runs-on: ubuntu-18.04
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v1
       
     - name: Install OpenFOAM-dev
       run: |
@@ -23,24 +15,23 @@ jobs:
         sudo add-apt-repository "http://dl.openfoam.org/ubuntu dev"
         sudo apt update
         sudo apt install -y openfoam-dev
-        . /opt/openfoam-dev/etc/bashrc && tutorials/RiemannTube/./Allrun
 
     - name: RiemannTube
-      run: |
-        cat README.md
-        . /opt/openfoam-dev/etc/bashrc
-        foamVersion
-        tutorials/RiemannTube/./Allrun
+      run: . /opt/openfoam-dev/etc/bashrc && foamRunTutorials
+      working-directory: tutorials/RiemannTube
 
     - name: shockTube
-      run: . /opt/openfoam-dev/etc/bashrc && tutorials/shockTube/shockTube_multiCompressionFoam/./Allrun
+      run: . /opt/openfoam-dev/etc/bashrc && foamRunTutorials
+      working-directory: tutorials/shockTube/shockTube_multiCompressionFoam
 
     - name: tubePurging
-      run: . /opt/openfoam-dev/etc/bashrc && tutorials/tubePurging/tubePurging_multiCompressionFoam/./Allrun
+      run: . /opt/openfoam-dev/etc/bashrc && foamRunTutorials
+      working-directory: tutorials/tubePurging/tubePurging_multiCompressionFoam
 
     - name: pipeCompression
-      run: . /opt/openfoam-dev/etc/bashrc && tutorials/pipeCompression/pipeCompression_multiCompressionFoam/./Allrun
+      run: foamRunTutorials
+      working-directory: tutorials/pipeCompression/pipeCompression_multiCompressionFoam
 
     - name: quadPiston
-      run: . /opt/openfoam-dev/etc/bashrc && tutorials/quadPiston/./Allrun
-    
+      run: foamRunTutorials
+      working-directory: tutorials/quadPiston
