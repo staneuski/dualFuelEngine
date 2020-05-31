@@ -22,10 +22,13 @@ jobs:
     - uses: actions/checkout@v2
       
     - name: Install OpenFOAM-dev
-      run: sudo apt install -y openfoam-dev
+      run: |
+        sudo apt install -y openfoam-dev
+        source /opt/openfoam-dev/etc/bashrc && echo $WM_PROJECT-$WM_PROJECT_VERSION is installed!
+        
 
     - name: wmake solver(s)
-      run: solvers/./Allwmake && echo "wmake is finished successfull!"
+      run: solvers/./Allwmake && echo wmake is finished successfull!
       
     - name: Test tutorials using Allrun script 
-      run: tutorials/./Allrun && echo "Allrun is finished!"
+      run: tutorials/./Allrun && echo Allrun is finished!
