@@ -3,6 +3,9 @@ name: Test dualFuelEngine-dev
 on:
   push:
     branches: [ develop ]
+  pull_request:
+    branches: [ test ]
+
 
 jobs:
   fastAllrun:
