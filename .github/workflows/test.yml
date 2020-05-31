@@ -20,23 +20,22 @@ jobs:
         sudo add-apt-repository "http://dl.openfoam.org/ubuntu dev"
         sudo apt update
         sudo apt install -y openfoam-dev
-        source /opt/openfoam-dev/etc/bashrc && echo $WM_PROJECT-$WM_PROJECT_VERSION is installed!
 
     - name: wmake solver
-      run: solvers/./Allwmake && echo wmake is finished successfull!
+      run: . /opt/openfoam-dev/etc/bashrc && solvers/./Allwmake && echo wmake is finished successfull!
 
     - name: RiemannTube
-      run: tutorials/RiemannTube/./Allrun
+      run: . /opt/openfoam-dev/etc/bashrc && tutorials/RiemannTube/./Allrun
     - name: shockTube
-      run: tutorials/shockTube/shockTube_multiCompressionFoam/./Allrun
+      run: . /opt/openfoam-dev/etc/bashrc && tutorials/shockTube/shockTube_multiCompressionFoam/./Allrun
     - name: tubePurging
-      run: tutorials/tubePurging/tubePurging_multiCompressionFoam/./Allrun
+      run: . /opt/openfoam-dev/etc/bashrc && tutorials/tubePurging/tubePurging_multiCompressionFoam/./Allrun
     - name: pipeCompression
-      run: tutorials/pipeCompression/pipeCompression_multiCompressionFoam/./Allrun
+      run: . /opt/openfoam-dev/etc/bashrc && tutorials/pipeCompression/pipeCompression_multiCompressionFoam/./Allrun
     - name: quadPiston
-      run: tutorials/quadPiston/./Allrun
+      run: . /opt/openfoam-dev/etc/bashrc && tutorials/quadPiston/./Allrun
     - name: cylCyclic2D
-      run: tutorials/cylCyclic2D/cylCyclic2D_multiCompressionFoam/./Allrun
+      run: . /opt/openfoam-dev/etc/bashrc && tutorials/cylCyclic2D/cylCyclic2D_multiCompressionFoam/./Allrun
     - name: cylPiston
-      run: tutorials/cylPiston/cylPiston_multiCompressionFoam/./Allrun
+      run: . /opt/openfoam-dev/etc/bashrc && tutorials/cylPiston/cylPiston_multiCompressionFoam/./Allrun
     
