@@ -6,9 +6,12 @@ on:
   pull_request:
     branches: [ test ]
 
+#   push:
+#     branches:
+#       - 'develop'
 
 jobs:
-  fastAllrun:
+  tutorials-tubes:
     runs-on: ubuntu-18.04
 
     steps:
@@ -20,22 +23,24 @@ jobs:
         sudo add-apt-repository "http://dl.openfoam.org/ubuntu dev"
         sudo apt update
         sudo apt install -y openfoam-dev
-
-    - name: wmake solver
-      run: . /opt/openfoam-dev/etc/bashrc && solvers/./Allwmake && echo wmake is finished successfull!
+        . /opt/openfoam-dev/etc/bashrc && tutorials/RiemannTube/./Allrun
 
     - name: RiemannTube
-      run: . /opt/openfoam-dev/etc/bashrc && tutorials/RiemannTube/./Allrun
+      run: |
+        cat README.md
+        . /opt/openfoam-dev/etc/bashrc
+        foamVersion
+        tutorials/RiemannTube/./Allrun
+
     - name: shockTube
       run: . /opt/openfoam-dev/etc/bashrc && tutorials/shockTube/shockTube_multiCompressionFoam/./Allrun
+
     - name: tubePurging
       run: . /opt/openfoam-dev/etc/bashrc && tutorials/tubePurging/tubePurging_multiCompressionFoam/./Allrun
+
     - name: pipeCompression
       run: . /opt/openfoam-dev/etc/bashrc && tutorials/pipeCompression/pipeCompression_multiCompressionFoam/./Allrun
+
     - name: quadPiston
       run: . /opt/openfoam-dev/etc/bashrc && tutorials/quadPiston/./Allrun
-    - name: cylCyclic2D
-      run: . /opt/openfoam-dev/etc/bashrc && tutorials/cylCyclic2D/cylCyclic2D_multiCompressionFoam/./Allrun
-    - name: cylPiston
-      run: . /opt/openfoam-dev/etc/bashrc && tutorials/cylPiston/cylPiston_multiCompressionFoam/./Allrun
     
