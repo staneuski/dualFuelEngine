@@ -1,0 +1,40 @@
+name: Test dualFuelEngine-dev
+
+on: push
+
+jobs:
+  tutorials-tubes:
+    runs-on: ubuntu-18.04
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+    - uses: actions/checkout@v1
+      
+    - name: Install OpenFOAM-dev
+      run: |
+        sudo sh -c "wget -O - http://dl.openfoam.org/gpg.key | apt-key add -"
+        sudo add-apt-repository "http://dl.openfoam.org/ubuntu dev"
+        sudo apt update
+        sudo apt install -y openfoam-dev
+
+    - name: RiemannTube
+      run: . /opt/openfoam-dev/etc/bashrc && foamRunTutorials
+      working-directory: tutorials/multiCompressionFoam/RiemannTube
+
+    - name: shockTube
+      run: . /opt/openfoam-dev/etc/bashrc && foamRunTutorials
+      working-directory: tutorials/multiCompressionFoam/shockTube/shockTube_multiCompressionFoam
+
+    - name: tubePurging
+      run: . /opt/openfoam-dev/etc/bashrc && foamRunTutorials
+      working-directory: tutorials/multiCompressionFoam/tubePurging/tubePurging_multiCompressionFoam
+
+    - name: pipeCompression
+      run: . /opt/openfoam-dev/etc/bashrc && foamRunTutorials
+      working-directory: tutorials/multiCompressionFoam/pipeCompression/pipeCompression_multiCompressionFoam
+
+    - name: quadPiston
+      run: . /opt/openfoam-dev/etc/bashrc && foamRunTutorials
+      working-directory: tutorials/multiCompressionFoam/quadPiston
