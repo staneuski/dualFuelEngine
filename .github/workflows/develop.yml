@@ -1,6 +1,9 @@
-name: Test only multiCompressionFoam's simple tutorials
+name: simpleTutorials
 
-on: push
+on:
+  push:
+    tags-ignore:
+      - v*
 
 jobs:
   simpleTutorials:
