@@ -46,31 +46,25 @@ boundaryField
         type            flowRateInletVelocity;
         massFlowRate    table
         (
-            ($injStart        0.1    )   /*    •────•     ├─ injValue */
+            ($injStart        0        ) /*    •────•     ├─ injValue */
             ($injLinearRampT  $injValue) /*   /      \    │           */
             ($injReverseRampT $injValue) /*  /        \   │           */
-            ($injFinish       0.1    )   /* •          •  0           */
+            ($injFinish       0        ) /* •          •  0           */
         );
     }
     inlet
     {
         type            flowRateInletVelocity;
-        // massFlowRate
-        // {
-        //     type             tableFile;
-        //     format           csv;
-        //     nHeaderLine      1;
-        //     refColumn        0;
-        //     componentColumns (1);
-        //     mergeSeparators  no;
-        //     file             "0/include/massFlowRate.csv";
-        // }
-        massFlowRate    table
-        (
-            (0.083          0.5)
-            (0.12           2.1)
-            (0.23           0.5)
-        );
+        massFlowRate
+        {
+            type             tableFile;
+            format           csv;
+            nHeaderLine      1;
+            refColumn        0;
+            componentColumns (1);
+            mergeSeparators  no;
+            file             "0/include/massFlowRate.csv";
+        }
     }
 
 /* Outlet */

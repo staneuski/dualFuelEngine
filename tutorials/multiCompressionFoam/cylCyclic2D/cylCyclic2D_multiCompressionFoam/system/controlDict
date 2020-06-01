@@ -1,6 +1,6 @@
 /*--------------------------------*- C++ -*----------------------------------*\
   =========                 |
-  \\      /  F ield         | OpenFOAM: dualFuelEngline addition to OpenFOAM v7
+  \\      /  F ield         | OpenFOAM: dualFuelEngine addition to OpenFOAM v8
    \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
     \\  /    A nd           | Version:  0.4-alpha
      \\/     M anipulation  |
@@ -19,7 +19,8 @@ FoamFile
 
 endTimeCA       #calc "($EVO + 180)*$deltaTCA";
 
-application     moveMesh; // multiCompressionFoam \ moveMesh
+
+application     multiCompressionFoam; // multiCompressionFoam \ moveMesh
 
 startFrom       startTime;
 
@@ -29,7 +30,7 @@ stopAt          endTime;
 
 endTime         $endTimeCA;
 
-deltaT          5e-4;
+deltaT          1e-5;
 
 writeControl    adjustableRunTime;
 
@@ -51,19 +52,20 @@ runTimeModifiable true;
 
 adjustTimeStep  false;
 
-maxCo           0.1;
+maxCo           0.5;
 
 functions
 {
     #includeFunc flowRatePatch(name=inlet)
     #includeFunc flowRatePatch(name=injection)
+    #includeFunc flowRatePatch(name=outlet)
 
     #includeFunc MachNo
     #includeFunc CourantNo
     #includeFunc writeObjects(e, K)
     #includeFunc writeCellVolumes
 
-    cylinderVolAverageFieldValues
+    volAverageFieldValues
     {
         type            volFieldValue;
         libs            ("libfieldFunctionObjects.so");
@@ -77,8 +79,19 @@ functions
         operation       volAverage;
         fields
         (
-            p T rho e K
+            p T rho e K alphaAir alphaExh alphaGas
         );
+    }
+
+    totalEnergy
+    {
+        type            add;
+        libs            ("libfieldFunctionObjects.so");
+
+        fields          (e K);
+
+        executeControl  writeTime;
+        writeControl    writeTime;
     }
 }
 
