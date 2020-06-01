@@ -6,6 +6,7 @@ jobs:
   tutorials-tubes:
     runs-on: ubuntu-18.04
     defaults:
+      uses: actions/upload-artifact@v1
       run:
         shell: bash
 
@@ -20,21 +21,38 @@ jobs:
         sudo apt install -y openfoam-dev
 
     - name: RiemannTube
+      run: . /opt/openfoam-dev/etc/bashrc && blockMesh && setFields && multiCompressionFoam
+      working-directory: tutorials/multiCompressionFoam/RiemannTube
+      with:
+        name: RiemannTube log
+        path: log.multiCompressionFoam
+
+    - name: RiemannTube
+      run: . /opt/openfoam-dev/etc/bashrc && ./Allrun
+      working-directory: tutorials/multiCompressionFoam/RiemannTube
+      with:
+        name: RiemannTube log
+        path: log.multiCompressionFoam
+
+    - name: RiemannTube
       run: . /opt/openfoam-dev/etc/bashrc && foamRunTutorials
       working-directory: tutorials/multiCompressionFoam/RiemannTube
+      with:
+        name: RiemannTube log
+        path: log.multiCompressionFoam
 
-    - name: shockTube
-      run: . /opt/openfoam-dev/etc/bashrc && foamRunTutorials
-      working-directory: tutorials/multiCompressionFoam/shockTube/shockTube_multiCompressionFoam
-
-    - name: tubePurging
-      run: . /opt/openfoam-dev/etc/bashrc && foamRunTutorials
-      working-directory: tutorials/multiCompressionFoam/tubePurging/tubePurging_multiCompressionFoam
-
-    - name: pipeCompression
-      run: . /opt/openfoam-dev/etc/bashrc && foamRunTutorials
-      working-directory: tutorials/multiCompressionFoam/pipeCompression/pipeCompression_multiCompressionFoam
-
-    - name: quadPiston
-      run: . /opt/openfoam-dev/etc/bashrc && foamRunTutorials
-      working-directory: tutorials/multiCompressionFoam/quadPiston
+    # - name: shockTube
+    #   run: . /opt/openfoam-dev/etc/bashrc && foamRunTutorials
+    #   working-directory: tutorials/multiCompressionFoam/shockTube/shockTube_multiCompressionFoam
+    #
+    # - name: tubePurging
+    #   run: . /opt/openfoam-dev/etc/bashrc && foamRunTutorials
+    #   working-directory: tutorials/multiCompressionFoam/tubePurging/tubePurging_multiCompressionFoam
+    #
+    # - name: pipeCompression
+    #   run: . /opt/openfoam-dev/etc/bashrc && foamRunTutorials
+    #   working-directory: tutorials/multiCompressionFoam/pipeCompression/pipeCompression_multiCompressionFoam
+    #
+    # - name: quadPiston
+    #   run: . /opt/openfoam-dev/etc/bashrc && foamRunTutorials
+    #   working-directory: tutorials/multiCompressionFoam/quadPiston
