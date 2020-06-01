@@ -1,0 +1,38 @@
+name: Test all dualFuelEngine tutorials
+
+on:
+  pull_request:
+    branches: [ master ]
+  tags:
+    - v*
+
+jobs:
+  allrun:
+    runs-on: ubuntu-18.04
+
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+
+    - name: Install OpenFOAM-dev
+      run: |
+        sudo sh -c "wget -O - http://dl.openfoam.org/gpg.key | apt-key add -"
+        sudo add-apt-repository "http://dl.openfoam.org/ubuntu dev"
+        sudo apt update
+        sudo apt install -y openfoam-dev
+
+    # wmake multiCompressionFoam solver
+    - name: Compile solvers
+      run: . /opt/openfoam-dev/etc/bashrc && solvers/./Allwmake
+
+    # Run Alltest & Allrun scripts in tutorials/
+    - name: Test tutorials
+      run: . /opt/openfoam-dev/etc/bashrc && tutorials/./Alltest
+    - name: Run tutorials
+      run: . /opt/openfoam-dev/etc/bashrc && tutorials/./Allrun
+
+    # Save log.* as artifacts
+    - uses: actions/upload-artifact@v2
+      with:
+        name: All logs
+        path: tutorials/**/log.*
