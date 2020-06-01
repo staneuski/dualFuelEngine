@@ -6,13 +6,14 @@ jobs:
   tutorials-tubes:
     runs-on: ubuntu-18.04
     defaults:
-      uses: actions/upload-artifact@v1
       run:
         shell: bash
 
     steps:
-    - uses: actions/checkout@v1
-      
+    - uses: |
+        actions/checkout@v1
+        actions/upload-artifact@v1
+
     - name: Install OpenFOAM-dev
       run: |
         sudo sh -c "wget -O - http://dl.openfoam.org/gpg.key | apt-key add -"
