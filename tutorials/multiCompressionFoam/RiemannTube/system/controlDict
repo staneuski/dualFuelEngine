@@ -1,6 +1,6 @@
 /*--------------------------------*- C++ -*----------------------------------*\
   =========                 |
-  \\      /  F ield         | OpenFOAM: dualFuelEngline addition to OpenFOAM v7
+  \\      /  F ield         | OpenFOAM: dualFuelEngine addition to OpenFOAM v8
    \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
     \\  /    A nd           | Version:  0.4-alpha
      \\/     M anipulation  |
@@ -52,17 +52,9 @@ maxCo           0.1;
 functions
 {
     #includeFunc MachNo
+    #includeFunc CourantNo
+    #includeFunc writeObjects(e, K)
 
-    internalEnergy
-    {
-        type            writeObjects;
-        libs            ("libutilityFunctionObjects.so");
-        writeControl    writeTime;
-        objects
-        (
-            e
-        );
-    }
     volAverageFieldValues
     {
         type            volFieldValue;
@@ -74,8 +66,17 @@ functions
         operation       volAverage;
         fields
         (
-            p T e rho alphaAir alphaGas alphaExh
+            p T rho e K
         );
+    }
+
+    totalEnergy
+    {
+        type            add;
+        libs            ("libfieldFunctionObjects.so");
+        executeControl  writeTime;
+        writeControl    writeTime;
+        fields          (e K);
     }
 }
 
