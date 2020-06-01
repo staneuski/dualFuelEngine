@@ -1,15 +1,15 @@
-name: allrun
+name: allTutorials
 
 on:
   push:
     tags:
-      - v*
+      - '**'
   pull_request:
     branches:
       - master
 
 jobs:
-  allrun:
+  allTutorials:
     runs-on: ubuntu-18.04
 
     steps:
@@ -27,14 +27,19 @@ jobs:
     - name: Compile solvers
       run: . /opt/openfoam-dev/etc/bashrc && solvers/./Allwmake
 
-    # Run Alltest & Allrun scripts in tutorials/
-    - name: Test tutorials
-      run: . /opt/openfoam-dev/etc/bashrc && tutorials/./Alltest
-    - name: Run tutorials
-      run: . /opt/openfoam-dev/etc/bashrc && tutorials/./Allrun
+    # Run Allrun scripts in tutorials/
+    - name: tutorials
+      run: . /opt/openfoam-dev/etc/bashrc && ./Allrun
+      working-directory: tutorials
 
-    # Save log.* as artifacts
+    # Get logs
     - uses: actions/upload-artifact@v2
+      if: always()
       with:
-        name: All logs
-        path: tutorials/**/log.*
+        name: tutorials_logs
+        path: tutorials/multiCompressionFoam/**/log.*
+    - uses: actions/upload-artifact@v2
+      if: always()
+      with:
+        name: testLoopReport
+        path: tutorials/testLoopReport
