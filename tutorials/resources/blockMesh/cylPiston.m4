@@ -1,6 +1,6 @@
 /*--------------------------------*- C++ -*----------------------------------*\
   =========                 |
-  \\      /  F ield         | OpenFOAM: dualFuelEngline addition to OpenFOAM v7
+  \\      /  F ield         | OpenFOAM: dualFuelEngine addition to OpenFOAM v8
    \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
     \\  /    A nd           | Version:  0.4-alpha
      \\/     M anipulation  |
@@ -40,26 +40,30 @@ define(evert, ($1 $2 $3))
 
 convertToMeters 0.01;
 
-define(D, 70)             // Cylinder bore
-define(S, 300)            // Cylinder Z size (> piston stroke)
-define(chamfer, 15)       // Cylinder chamfer
-define(pistonInit, 92.55) // Initial piston position
-define(pistonChamber, 0)  // Piston chamber depth
+// MAN B&W 6S70ME-C8.2-GI-TII
+define(bore, 70)          // Cylinder bore
+define(stroke, 280)       // Piston stroke
+define(clearance, 5.75)   // Clearance to the chamfer at TDC
+define(chamfer, 13.75)    // Cylinder chamfer
+define(pistonInit, 91.4)  // Initial piston position
+define(pistonChamber, 10.4) // Piston chamber depth
 
 define(vlvInit, 0)        // Initial valve stroke
-define(vlvD, calc(D/2))   // Valve head diameter
+define(vlvD, 34.5)        // Valve head diameter
 define(vlvHd, 3)          // Valve head thickness
-define(vlvStD, 8)         // Valve stem diameter
-define(outletH, 50)       // Outer pipe height
+define(vlvStD, 8.25)      // Valve stem diameter
+define(outletH, 40)       // Outer pipe height
 
-define(inlW, 15)          // Inlet port width
-define(inlH, 25)          // Inlet port height
+define(inlW, 30.9)        // Inlet port width
+define(inlH, 19.2)        // Inlet port height
 define(inlL, 10)          // Inlet port length from the cylinder wall
 
-define(injW, 2.5)         // Injector width
-define(injH, 2.5)         // Injector height
-define(injL, 10)          // Injector length from the cylinder wall
-define(injZ, 180)         // Distance from the injector to the bottom of inlet port
+define(injW, 2)           // Injector width
+define(injH, injW)        // Injector height
+define(injL, inlL)        // Injector length from the cylinder wall
+define(injZ, 159.4)       // Distance from the injector to the bottom of 
+                          // the inlet port
+
 
 define(Nr, 5)             // Number of cells in the radius dimension
 define(Nz, 30)            // Number of cells in the length dimension
@@ -68,7 +72,8 @@ define(Nz, 30)            // Number of cells in the length dimension
 // Derived parameters
 
 /* Cylinder */
-define(R, calc(D/2))                       // Cylinder radius
+define(S, calc(stroke + clearance))        // Cylinder Z size
+define(R, calc(bore/2))                    // Cylinder radius
 define(Rcos, calc(R*cosd(45)))             // Cylinder radius middle point
 
 define(chS, calc(chamfer + S))             // Cylinder Z size with chamfer
