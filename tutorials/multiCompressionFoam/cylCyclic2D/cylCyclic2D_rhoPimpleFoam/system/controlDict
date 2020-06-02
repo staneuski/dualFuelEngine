@@ -15,12 +15,12 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-#include        "../constant/engineProperties"
+#include        "../../../../resources/engineProperties/MAN-BW"
 
 endTimeCA       #calc "($EVO + 180)*$deltaTCA";
 
 
-application     rhoPimpleFoam; // moveMesh \ rhoPimpleFoammoveMesh;
+application     rhoPimpleFoam; // rhoPimpleFoam \ moveMesh
 
 startFrom       startTime;
 
@@ -30,11 +30,11 @@ stopAt          endTime;
 
 endTime         $endTimeCA;
 
-deltaT          $deltaTCA;
+deltaT          1e-5;
 
 writeControl    adjustableRunTime;
 
-writeInterval   $deltaT;
+writeInterval   #calc "$deltaTCA/2";
 
 purgeWrite      0;
 

@@ -14,7 +14,7 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-#include        "../constant/engineProperties"
+#include        "../../../../resources/engineProperties/MAN-BW"
 
 injValue        0.3; // Maximum injection mass flow rate [kg/m^3]
 
