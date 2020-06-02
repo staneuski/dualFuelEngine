@@ -63,7 +63,7 @@ boundaryField
             refColumn        0;
             componentColumns (1);
             mergeSeparators  no;
-            file             "0/include/massFlowRate.csv";
+            file             "../massFlowRate.csv";
         }
     }
 

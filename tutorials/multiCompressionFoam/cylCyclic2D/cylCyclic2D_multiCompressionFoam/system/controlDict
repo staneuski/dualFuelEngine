@@ -20,7 +20,7 @@ FoamFile
 endTimeCA       #calc "($EVO + 180)*$deltaTCA";
 
 
-application     moveMesh; // multiCompressionFoam \ moveMesh
+application     multiCompressionFoam; // multiCompressionFoam \ moveMesh
 
 startFrom       startTime;
 

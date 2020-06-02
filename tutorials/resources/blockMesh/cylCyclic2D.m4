@@ -48,7 +48,7 @@ define(stroke, 280)       // Piston stroke
 define(clearance, 5.75)   // Clearance to the chamfer at TDC
 define(chamfer, 13.75)    // Cylinder chamfer
 define(pistonInit, 92.55) // Initial piston position
-define(pistonChamber, 0)  // Piston chamber depth
+define(pistonChamber, 10.4) // Piston chamber depth
 
 define(vlvInit, 0)        // Initial valve stroke
 define(vlvD, 34.5)        // Valve head diameter
@@ -131,6 +131,8 @@ define(injx, calc(R + injL))               // Injector patch coordinate
 define(injRmW, calc(sqrt(sqr(R) - sqr(injW)))) // Injector outlet patch X point
 define(injHz, calc(injz + injH))           // Injector top coordinate
 
+define(Nr2, calc(Nr*2))
+
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 // Parametric description
 
@@ -209,14 +211,14 @@ blocks
     // outlet pipe block
     hex (vlvSt0t pipe0t pipe1t vlvSt1t vlvSt0b vlvHd0t vlvHd1t vlvSt1b)
     pipe /*block 2*/
-    (calc(2*Nr) 1 calc(2*Nr))
+    (Nr2 2 Nr2)
     simpleGrading (0.5 1 0.75)
 
-/* Inlet ports */
+/* Inlet port */
     // xMinus inlet port
     hex2D(inlXm0, inlXm1, inlXm2, inlXm3)
     inlet /*block 3*/
-    (calc(2*Nr) Nr calc(2*Nr))
+    (Nr Nr Nr2)
     simpleGrading (1 1 1)
 
 /* Injectors */
