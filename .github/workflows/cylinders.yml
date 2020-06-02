@@ -1,0 +1,64 @@
+name: cylinders
+
+on:
+  push:
+    paths:
+      - 'tutorials/multiCompressionFoam/cyl*/**'
+    paths-ignore:
+      - 'solvers/**'
+
+jobs:
+  cylCyclic2D:
+    runs-on: ubuntu-18.04
+
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+
+    - name: Install OpenFOAM-dev
+      run: |
+        sudo sh -c "wget -O - http://dl.openfoam.org/gpg.key | apt-key add -"
+        sudo add-apt-repository "http://dl.openfoam.org/ubuntu dev"
+        sudo apt update
+        sudo apt install -y openfoam-dev
+
+    # wmake multiCompressionFoam solver
+    - name: Compile solvers
+      run: . /opt/openfoam-dev/etc/bashrc && solvers/./Allwmake
+
+    - name: cylCyclic2D
+      if: always()
+      run: . /opt/openfoam-dev/etc/bashrc && foamRunTutorials
+      working-directory: tutorials/multiCompressionFoam/cylCyclic2D/cylCyclic2D_multiCompressionFoam
+    - uses: actions/upload-artifact@v2
+      if: always()
+      with:
+        name: logs_cylCyclic2D
+        path: tutorials/multiCompressionFoam/cylCyclic2D/cylCyclic2D_multiCompressionFoam/**/log.*
+
+  cylPiston:
+    runs-on: ubuntu-18.04
+
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+
+    - name: Install OpenFOAM-dev
+      run: |
+        sudo sh -c "wget -O - http://dl.openfoam.org/gpg.key | apt-key add -"
+        sudo add-apt-repository "http://dl.openfoam.org/ubuntu dev"
+        sudo apt update
+        sudo apt install -y openfoam-dev
+
+    - name: Compile solvers
+      run: . /opt/openfoam-dev/etc/bashrc && solvers/./Allwmake
+
+    - name: cylPiston
+      if: always()
+      run: . /opt/openfoam-dev/etc/bashrc && foamRunTutorials
+      working-directory: tutorials/multiCompressionFoam/cylPiston/cylPiston_multiCompressionFoam
+    - uses: actions/upload-artifact@v2
+      if: always()
+      with:
+        name: logs_cylPiston
+        path: tutorials/multiCompressionFoam/cylPiston/cylPiston_multiCompressionFoam/**/log.*

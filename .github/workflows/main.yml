@@ -1,9 +1,9 @@
-name: allTutorials
+name: main
 
 on:
   push:
-    tags:
-      - '**'
+    paths:
+      - 'solvers/**'
   pull_request:
     branches:
       - master

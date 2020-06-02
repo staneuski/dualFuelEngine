@@ -1,14 +1,18 @@
-name: simpleTutorials
+name: develop
 
 on:
   push:
-    branches:
-      - '*'
-    tags-ignore:
-      - '**'
+    paths:
+      - 'tutorials/multiCompressionFoam/RiemannTube/**'
+      - 'tutorials/multiCompressionFoam/shockTube/**'
+      - 'tutorials/multiCompressionFoam/tubePurging/**'
+      - 'tutorials/multiCompressionFoam/pipeCompression/**'
+      - 'tutorials/multiCompressionFoam/quadPiston/**'
+    paths-ignore:
+      - 'solvers/**'
 
 jobs:
-  simpleTutorials:
+  1D:
     runs-on: ubuntu-18.04
     # container: openfoam/openfoam-dev-graphical-apps
 
@@ -40,14 +44,14 @@ jobs:
       if: always()
       run: . /opt/openfoam-dev/etc/bashrc && foamRunTutorials
       working-directory: tutorials/multiCompressionFoam/tubePurging/tubePurging_multiCompressionFoam
-    - name: quadPiston
-      if: always()
-      run: . /opt/openfoam-dev/etc/bashrc && foamRunTutorials
-      working-directory: tutorials/multiCompressionFoam/quadPiston
     - name: pipeCompression
       if: always()
       run: . /opt/openfoam-dev/etc/bashrc && foamRunTutorials
       working-directory: tutorials/multiCompressionFoam/pipeCompression/pipeCompression_multiCompressionFoam
+    - name: quadPiston
+      if: always()
+      run: . /opt/openfoam-dev/etc/bashrc && foamRunTutorials
+      working-directory: tutorials/multiCompressionFoam/quadPiston
 
     # Get all multiCompressionFoam logs
     - uses: actions/upload-artifact@v2
