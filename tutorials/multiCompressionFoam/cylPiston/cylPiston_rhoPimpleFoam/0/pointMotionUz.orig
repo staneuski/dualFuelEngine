@@ -18,6 +18,6 @@ dimensions      [0 1 -1 0 0 0 0];
 
 internalField   uniform 0;
 
-#include "include/motionUBoundaryField"
+#include "../../cylPiston_multiCompressionFoam/0/include/motionUBoundaryField"
 
 // ************************************************************************* //

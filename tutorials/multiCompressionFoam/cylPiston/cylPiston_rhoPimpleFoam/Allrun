@@ -9,14 +9,14 @@ cd ${0%/*} || exit 1
 application=$(getApplication)
 
 ./Allmesh
-runApplication setFields
+runApplication setFields -dict ../cylPiston_multiCompressionFoam/system/setFieldsDict
 
 #- Run serial
-# runApplication $application
+runApplication $application
 
 #- Run parallel
-runApplication decomposePar
-runParallel $application
-runApplication reconstructPar
+# runApplication decomposePar
+# runParallel $application
+# runApplication reconstructPar
 
 #------------------------------------------------------------------------------

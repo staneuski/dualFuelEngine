@@ -25,7 +25,7 @@ boundaryField
             refColumn        0;
             componentColumns (1);
             mergeSeparators  no;
-            file             "0/include/pistonMotionUz.csv";
+            file             "../pistonMotionUz.csv";
         }
     }
     valveHead
@@ -39,7 +39,7 @@ boundaryField
             refColumn        0;
             componentColumns (1);
             mergeSeparators  no;
-            file             "0/include/valveMotionUz.csv";
+            file             "../valveMotionUz.csv";
         }
     }
     valveStem

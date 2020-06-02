@@ -5,6 +5,7 @@
 *log*
 test*
 *.bak
+*.res
 *.tar
 *.foam
 [cell,point]*ToRegion
@@ -41,6 +42,5 @@ tutorials/**/0/*[alphaAir,alphaGas,Co,e,K,Ma,p,T,U,V]
 
 # Folders - local
 etc/**/*.*[drk,fv,*]res/
-etc/**/*.res/
 !tutorials/**/0/include/
 tutorials/multiCompressionFoam/shockTube/**/*.png

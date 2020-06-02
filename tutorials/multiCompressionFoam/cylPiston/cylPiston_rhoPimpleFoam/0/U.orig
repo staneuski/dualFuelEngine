@@ -14,88 +14,57 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-injection       100;
+#include        "../../../../resources/engineProperties/MAN-BW"
 
-inlet           50;
+injValue        0.3; // Maximum injection mass flow rate [kg/m^3]
+
+injDelay        20; // Injection delay after EVC [˚CA]
+
+injDuration     30; // Injection duration [˚CA]
+
+injLinearRamp   8; // Maximum injection mass flow rate reaching time [˚CA]
+
+injReverseRamp  8; // Min injection mass flow rate reaching time [˚CA]
 
 dimensions      [0 1 -1 0 0 0 0];
 
 internalField   uniform (0 0 0);
 
-mInjection      #calc "-1.0*$injection";
+injStart        #calc "($EVO + $EVC + $injDelay)*$deltaTCA";
 
-mInlet          #calc "-1.0*$inlet";
+injLinearRampT  #calc "$injStart + $injLinearRamp*$deltaTCA";
+
+injReverseRampT #calc "$injLinearRampT + ($injDuration - $injLinearRamp - $injReverseRamp)*$deltaTCA";
+
+injFinish       #calc "$injReverseRampT + $injReverseRamp*$deltaTCA";
 
 boundaryField
 {
-/* Injection */
-    injectionXm
-    {
-        type            uniformFixedValue;
-        uniformValue    table
-        (
-            (0.25      (0           0 0))
-            (0.26      ($mInjection 0 0))
-            (0.36      ($mInjection 0 0))
-            (0.37      (0           0 0))
-        );
-    }
-    injectionXp
-    {
-        type            uniformFixedValue;
-        uniformValue    table
-        (
-            (0.25      (0           0 0))
-            (0.26      ($injection  0 0))
-            (0.36      ($injection  0 0))
-            (0.37      (0           0 0))
-        );
-    }
-
 /* Inlet */
-    inletXm
+    "injection(X|Y)(m|p)"
     {
-        type            uniformFixedValue;
-        uniformValue    table
+        type            flowRateInletVelocity;
+        massFlowRate    table
         (
-            (0.072      (0       0 0))
-            (0.075      ($mInlet 0 0))
-            (0.215      ($mInlet 0 0))
-            (0.216      (0       0 0))
+            ($injStart        0        ) /*    •────•     ├─ injValue */
+            ($injLinearRampT  $injValue) /*   /      \    │           */
+            ($injReverseRampT $injValue) /*  /        \   │           */
+            ($injFinish       0        ) /* •          •  0           */
         );
     }
-    inletXp
+    "inlet(X|Y)(m|p)"
     {
-        type            uniformFixedValue;
-        uniformValue    table
-        (
-            (0.072      (0       0 0))
-            (0.075      ($inlet  0 0))
-            (0.215      ($inlet  0 0))
-            (0.216      (0       0 0))
-        );
-    }
-    inletYm
-    {
-        type            uniformFixedValue;
-        uniformValue    table
-        (
-            (0.072      (0 0       0))
-            (0.075      (0 $mInlet 0))
-            (0.215      (0 $mInlet 0))
-            (0.216      (0 0       0))
-        );
-    }
-    inletYp
-    {
-        type            uniformFixedValue;
-        uniformValue    table
-        (
-            (0.072      (0 0       0))
-            (0.075      (0 $inlet  0))
-            (0.215      (0 $inlet  0))
-            (0.216      (0 0       0))
-        );
+        type            flowRateInletVelocity;
+        massFlowRate
+        {
+            type             tableFile;
+            format           csv;
+            nHeaderLine      1;
+            refColumn        0;
+            componentColumns (1);
+            mergeSeparators  no;
+            file             "../massFlowRate.csv";
+        }
     }
 
 /* Outlet */

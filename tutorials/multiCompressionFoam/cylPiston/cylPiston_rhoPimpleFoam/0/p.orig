@@ -21,7 +21,7 @@ internalField   uniform 1e+05;
 boundaryField
 {
 /* Inlet */
-    "(injection|inlet)(X|Y)(m|p)"
+    "(injection|inlet).*"
     {
         type            zeroGradient;
     }

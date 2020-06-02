@@ -1,6 +1,6 @@
 /*--------------------------------*- C++ -*----------------------------------*\
   =========                 |
-  \\      /  F ield         | OpenFOAM: dualFuelEngline addition to OpenFOAM v7
+  \\      /  F ield         | OpenFOAM: dualFuelEngine addition to OpenFOAM v7
    \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
     \\  /    A nd           | Version:  0.4-alpha
      \\/     M anipulation  |
@@ -18,6 +18,6 @@ dimensions      [0 1 -1 0 0 0 0];
 
 internalField   uniform 0;
 
-#include "include/motionUBoundaryField"
+#include "../../cylCyclic2D_multiCompressionFoam/0/include/motionUBoundaryField"
 
 // ************************************************************************* //

@@ -21,7 +21,7 @@ internalField   uniform 380;
 boundaryField
 {
 /* Inlet */
-    "(injection|inlet)(X|Y)(m|p)"
+    "(injection|inlet).*"
     {
         type            fixedValue;
         value           uniform 332;
