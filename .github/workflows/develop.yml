@@ -8,8 +8,6 @@ on:
       - 'tutorials/multiCompressionFoam/tubePurging/**'
       - 'tutorials/multiCompressionFoam/pipeCompression/**'
       - 'tutorials/multiCompressionFoam/quadPiston/**'
-    paths-ignore:
-      - 'solvers/**'
 
 jobs:
   1D:

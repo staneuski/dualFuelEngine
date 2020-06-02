@@ -4,8 +4,6 @@ on:
   push:
     paths:
       - 'tutorials/multiCompressionFoam/cyl*/**'
-    paths-ignore:
-      - 'solvers/**'
 
 jobs:
   cylCyclic2D:
