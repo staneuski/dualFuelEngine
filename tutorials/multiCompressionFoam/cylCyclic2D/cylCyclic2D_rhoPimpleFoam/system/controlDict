@@ -34,7 +34,7 @@ deltaT          1e-5;
 
 writeControl    adjustableRunTime;
 
-writeInterval   #calc "$deltaTCA/2";
+writeInterval   $deltaTCA;
 
 purgeWrite      0;
 
@@ -52,7 +52,7 @@ runTimeModifiable true;
 
 adjustTimeStep  true;
 
-maxCo           0.5;
+maxCo           0.4;
 
 functions
 {

@@ -20,7 +20,7 @@ FoamFile
 endTimeCA       #calc "($EVO + 180)*$deltaTCA";
 
 
-application     multiCompressionFoam; // multiCompressionFoam \ moveMesh
+application     moveMesh; // multiCompressionFoam \ moveMesh
 
 startFrom       startTime;
 
@@ -34,7 +34,7 @@ deltaT          1e-6;
 
 writeControl    adjustableRunTime;
 
-writeInterval   #calc "$deltaTCA/2";
+writeInterval   $deltaTCA;
 
 purgeWrite      0;
 
@@ -87,11 +87,10 @@ functions
     {
         type            add;
         libs            ("libfieldFunctionObjects.so");
-
-        fields          (e K);
-
         executeControl  writeTime;
         writeControl    writeTime;
+
+        fields          (e K);
     }
 }
 

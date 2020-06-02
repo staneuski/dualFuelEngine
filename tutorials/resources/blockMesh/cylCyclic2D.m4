@@ -48,7 +48,7 @@ define(stroke, 280)       // Piston stroke
 define(clearance, 5.75)   // Clearance to the chamfer at TDC
 define(chamfer, 13.75)    // Cylinder chamfer
 define(pistonInit, 92.55) // Initial piston position
-define(pistonChamber, 10.4) // Piston chamber depth
+define(pistonChamber, 0)  // Piston chamber depth
 
 define(vlvInit, 0)        // Initial valve stroke
 define(vlvD, 34.5)        // Valve head diameter

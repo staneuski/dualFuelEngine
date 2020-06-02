@@ -1,8 +1,8 @@
 /*--------------------------------*- C++ -*----------------------------------*\
   =========                 |
-  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
-   \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Version:  dev
+  \\      /  F ield         | OpenFOAM: dualFuelEngine addition to OpenFOAM v8
+   \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
+    \\  /    A nd           | Version:  0.4-alpha
      \\/     M anipulation  |
 \*---------------------------------------------------------------------------*/
 FoamFile
@@ -17,14 +17,14 @@ FoamFile
 
 R               0.35; // Cylinder bore radius
 
-chS             3.15; // Cylinder Z size + chamfer size
+chS             2.995; // Cylinder stroke, clearance & chamfer size
 
-inlH            0.25; // Inlet port height
+inlH            0.192; // Inlet port height
 
 
 defaultFieldValues // inlet ports
 (
-    volScalarFieldValue p 0.3102e+05
+    volScalarFieldValue p 0.3102e+06
     volScalarFieldValue T 332
     volScalarFieldValue alphaAir 0
     volScalarFieldValue alphaGas 0
@@ -41,24 +41,24 @@ regions
             volScalarFieldValue alphaAir 1
         );
     }
-    cylinderToCell // outlet pipe
-    {
-        p1 (0 0 $chS); p2 (0 0 10);
-        radius 5;
-        fieldValues
-        (
-            volScalarFieldValue p 0.23e+05 // 0.23e+06
-            volScalarFieldValue T 350 // 769.3
-        );
-    }
     cylinderToCell // engine stroke volume
     {
         p1 (0 0 -5); p2 (0 0 $chS);
         radius $R;
         fieldValues
         (
-            volScalarFieldValue p 1e+05 // 1e+06
-            volScalarFieldValue T 380 // 850
+            volScalarFieldValue p 1.442e6
+            volScalarFieldValue T 1208.8
+        );
+    }
+    cylinderToCell // outlet pipe
+    {
+        p1 (0 0 $chS); p2 (0 0 10);
+        radius 5;
+        fieldValues
+        (
+            volScalarFieldValue p 0.23e+06
+            volScalarFieldValue T 769.3
         );
     }
 );

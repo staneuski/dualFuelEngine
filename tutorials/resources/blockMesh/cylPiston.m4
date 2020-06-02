@@ -65,8 +65,8 @@ define(injZ, 159.4)       // Distance from the injector to the bottom of
                           // the inlet port
 
 
-define(Nr, 5)             // Number of cells in the radius dimension
-define(Nz, 30)            // Number of cells in the length dimension
+define(Nr, 4)             // Number of cells in the radius dimension
+define(Nz, 50)            // Number of cells in the length dimension
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 // Derived parameters
@@ -106,6 +106,8 @@ define(injRmW, calc(sqrt(sqr(R) - sqr(injW)))) // Injector outlet patch X point
 define(injRcos, calc(sqrt(sqr(R) - sqr(injW/2)))) // Injector outlet patch X middle point
 define(injRsin, calc(injL/2))              // Injector outlet patch Y middle point
 define(injZH, calc(injZ + injH))           // Injector top coordinate
+
+define(Nr2, calc(Nr*2))
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 // Parametric description
@@ -228,7 +230,7 @@ blocks
     // Inner cylinder block
     hex (vlvHd0b vlvHd1b vlvHd2b vlvHd3b cylIn0b cylIn1b cylIn2b cylIn3b)
     cylinder /*block 0*/
-    (Nr Nr Nz)
+    (Nr2 Nr2 Nz)
     simpleGrading (1 1 1)
 
     // 1st quarter outer cylinder block
@@ -258,61 +260,61 @@ blocks
 /* Outlet pipe */
     // 1st quarter outlet pipe block
     hex (vlvSt0t pipe0t pipe1t vlvSt1t vlvSt0b vlvHd0t vlvHd1t vlvSt1b)
-    pipe /*block 8*/
-    (Nr Nr calc(2*Nr))
-    simpleGrading (1 1 0.5)
+    pipe /*block 5*/
+    (Nr Nr Nr)
+    simpleGrading (0.5 1 0.75)
 
     // 2nd quarter outlet pipe block
     hex (vlvSt1t pipe1t pipe2t vlvSt2t vlvSt1b vlvHd1t vlvHd2t vlvSt2b)
-    pipe /*block 9*/
-    (Nr Nr calc(2*Nr))
-    simpleGrading (1 1 0.5)
+    pipe /*block 6*/
+    (Nr Nr Nr)
+    simpleGrading (0.5 1 0.75)
 
     // 3rd quarter outlet pipe block
     hex (vlvSt2t pipe2t pipe3t vlvSt3t vlvSt2b vlvHd2t vlvHd3t vlvSt3b)
-    pipe /*block 10*/
-    (Nr Nr calc(2*Nr))
-    simpleGrading (1 1 0.5)
+    pipe /*block 7*/
+    (Nr Nr Nr)
+    simpleGrading (0.5 1 0.75)
 
     // 4th quarter outlet pipe block
     hex (vlvSt3t pipe3t pipe0t vlvSt0t vlvSt3b vlvHd3t vlvHd0t vlvSt0b)
-    pipe /*block 11*/
-    (Nr Nr calc(2*Nr))
-    simpleGrading (1 1 0.5)
+    pipe /*block 8*/
+    (Nr Nr Nr)
+    simpleGrading (0.5 1 0.75)
 
 /* Inlet ports */
     // xMinus inlet port
     hex2D(inlXm0, inlXm1, inlXm2, inlXm3)
-    inletXm /*block 12*/
-    (Nr Nr Nr)
+    inletXm /*block 9*/
+    (Nr2 Nr2 Nr)
     simpleGrading (1 1 1)
     // xPlus inlet port
     hex2D(inlXp0, inlXp1, inlXp2, inlXp3)
-    inletXp /*block 13*/
-    (Nr Nr Nr)
+    inletXp /*block 10*/
+    (Nr2 Nr2 Nr)
     simpleGrading (1 1 1)
 
     // yMinus inlet port
     hex2D(inlYm0, inlYm1, inlYm2, inlYm3)
-    inletYm /*block 14*/
-    (Nr Nr Nr)
+    inletYm /*block 11*/
+    (Nr2 Nr2 Nr)
     simpleGrading (1 1 1)
 
     // yPlus inlet port
     hex2D(inlYp0, inlYp1, inlYp2, inlYp3)
-    inletYp /*block 14*/
-    (Nr Nr Nr)
+    inletYp /*block 12*/
+    (Nr2 Nr2 Nr)
     simpleGrading (1 1 1)
 
 /* Injectors */
     // xMinus injector
     hex2D(injXm0, injXm1, injXm2, injXm3)
-    injectorXm /*block 15*/
+    injectorXm /*block 13*/
     (2 1 1)
     simpleGrading (1 1 1)
     // xPlus injector
     hex2D(injXp0, injXp1, injXp2, injXp3)
-    injectorXp /*block 16*/
+    injectorXp /*block 14*/
     (2 1 1)
     simpleGrading (1 1 1)
 );
