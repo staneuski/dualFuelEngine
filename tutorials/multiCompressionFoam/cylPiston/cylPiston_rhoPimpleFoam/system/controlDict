@@ -56,8 +56,8 @@ maxCo           0.5;
 
 functions
 {
-    #includeFunc flowRatePatch(name=inlet)
-    #includeFunc flowRatePatch(name=injection)
+    #includeFunc flowRatePatch(name=inletXm)
+    #includeFunc flowRatePatch(name=injectionXm)
     #includeFunc flowRatePatch(name=outlet)
 
     #includeFunc residuals

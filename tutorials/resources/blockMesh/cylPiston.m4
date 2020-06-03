@@ -66,7 +66,7 @@ define(injZ, 159.4)       // Distance from the injector to the bottom of
 
 
 define(Nr, 4)             // Number of cells in the radius dimension
-define(Nz, 50)            // Number of cells in the length dimension
+define(Nz, 28)            // Number of cells in the length dimension
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 // Derived parameters
@@ -286,24 +286,24 @@ blocks
     // xMinus inlet port
     hex2D(inlXm0, inlXm1, inlXm2, inlXm3)
     inletXm /*block 9*/
-    (Nr2 Nr2 Nr)
+    (Nr Nr Nr)
     simpleGrading (1 1 1)
     // xPlus inlet port
     hex2D(inlXp0, inlXp1, inlXp2, inlXp3)
     inletXp /*block 10*/
-    (Nr2 Nr2 Nr)
+    (Nr Nr Nr)
     simpleGrading (1 1 1)
 
     // yMinus inlet port
     hex2D(inlYm0, inlYm1, inlYm2, inlYm3)
     inletYm /*block 11*/
-    (Nr2 Nr2 Nr)
+    (Nr Nr Nr)
     simpleGrading (1 1 1)
 
     // yPlus inlet port
     hex2D(inlYp0, inlYp1, inlYp2, inlYp3)
     inletYp /*block 12*/
-    (Nr2 Nr2 Nr)
+    (Nr Nr Nr)
     simpleGrading (1 1 1)
 
 /* Injectors */
