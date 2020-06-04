@@ -15,8 +15,6 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-R               0.35; // Cylinder bore radius
-
 chS             2.995; // Cylinder stroke, clearance & chamfer size
 
 inlH            0.192; // Inlet port height
@@ -43,8 +41,8 @@ regions
     }
     cylinderToCell // engine stroke volume
     {
-        p1 (0 0 -5); p2 (0 0 $chS);
-        radius $R;
+        p1 (0 0 $inlH); p2 (0 0 $chS);
+        radius 0.5;
         fieldValues
         (
             volScalarFieldValue p 1.442e6

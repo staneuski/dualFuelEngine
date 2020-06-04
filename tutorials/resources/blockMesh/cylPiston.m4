@@ -285,36 +285,36 @@ blocks
 /* Inlet ports */
     // xMinus inlet port
     hex2D(inlXm0, inlXm1, inlXm2, inlXm3)
-    inletXm /*block 9*/
+    inletPorts /*block 9*/
     (Nr Nr Nr)
     simpleGrading (1 1 1)
     // xPlus inlet port
     hex2D(inlXp0, inlXp1, inlXp2, inlXp3)
-    inletXp /*block 10*/
+    inletPorts /*block 10*/
     (Nr Nr Nr)
     simpleGrading (1 1 1)
 
     // yMinus inlet port
     hex2D(inlYm0, inlYm1, inlYm2, inlYm3)
-    inletYm /*block 11*/
+    inletPorts /*block 11*/
     (Nr Nr Nr)
     simpleGrading (1 1 1)
 
     // yPlus inlet port
     hex2D(inlYp0, inlYp1, inlYp2, inlYp3)
-    inletYp /*block 12*/
+    inletPorts /*block 12*/
     (Nr Nr Nr)
     simpleGrading (1 1 1)
 
 /* Injectors */
     // xMinus injector
     hex2D(injXm0, injXm1, injXm2, injXm3)
-    injectorXm /*block 13*/
+    injectors /*block 13*/
     (2 1 1)
     simpleGrading (1 1 1)
     // xPlus injector
     hex2D(injXp0, injXp1, injXp2, injXp3)
-    injectorXp /*block 14*/
+    injectors /*block 14*/
     (2 1 1)
     simpleGrading (1 1 1)
 );

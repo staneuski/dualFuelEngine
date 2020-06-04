@@ -49,9 +49,8 @@ solvers
 
 PIMPLE
 {
-    nOuterCorrectors    2; // No of iterations
-    correctPhi          false;
-    checkMeshCourantNo  false;
+    nOuterCorrectors    1; // No of iterations
+    checkMeshCourantNo  true;
 }
 
 relaxationFactors

@@ -9,6 +9,7 @@ cd ${0%/*} || exit 1
 application=$(getApplication)
 
 ./Allmesh
+runApplication setFields
 
 #- Run serial
 runApplication $application

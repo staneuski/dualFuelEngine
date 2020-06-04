@@ -1,6 +1,6 @@
 /*--------------------------------*- C++ -*----------------------------------*\
   =========                 |
-  \\      /  F ield         | OpenFOAM: dualFuelEngline addition to OpenFOAM v7
+  \\      /  F ield         | OpenFOAM: dualFuelEngine addition to OpenFOAM v8
    \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
     \\  /    A nd           | Version:  0.4-alpha
      \\/     M anipulation  |
@@ -15,6 +15,11 @@ FoamFile
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
+#include        "../../../../resources/engineProperties/MAN-BW"
+
+endTimeCA       #calc "($EVO + 180)*$deltaTCA";
+
+
 application     moveMesh; // multiCompressionFoam \ moveMesh
 
 startFrom       startTime;
@@ -23,13 +28,13 @@ startTime       0;
 
 stopAt          endTime;
 
-endTime         0.48;
+endTime         $endTimeCA;
 
-deltaT          0.0018; // 0.009 \ 0.0018
+deltaT          1e-6;
 
 writeControl    adjustableRunTime;
 
-writeInterval   0.0018;
+writeInterval   $deltaTCA;
 
 purgeWrite      0;
 
@@ -45,9 +50,49 @@ timePrecision   6;
 
 runTimeModifiable true;
 
-adjustTimeStep  false; // true \ false
+adjustTimeStep  true;
 
-maxCo           1;
+maxCo           0.1;
+
+functions
+{
+    #includeFunc flowRatePatch(name=inletXm)
+    #includeFunc flowRatePatch(name=injectionXm)
+    #includeFunc flowRatePatch(name=outlet)
+
+    #includeFunc MachNo
+    #includeFunc CourantNo
+    #includeFunc writeObjects(e, K)
+    #includeFunc writeCellVolumes
+
+    volAverageFieldValues
+    {
+        type            volFieldValue;
+        libs            ("libfieldFunctionObjects.so");
+        writeControl    timeStep;
+        writeInterval   1;
+        log             true;
+        writeFields     false;
+        writeVolume     true;
+        regionType      cellZone;
+        name            cylinder;
+        operation       volAverage;
+        fields
+        (
+            p T rho e K alphaAir alphaExh alphaGas
+        );
+    }
+
+    totalEnergy
+    {
+        type            add;
+        libs            ("libfieldFunctionObjects.so");
+        executeControl  writeTime;
+        writeControl    writeTime;
+
+        fields          (e K);
+    }
+}
 
 
 // ************************************************************************* //
