@@ -30,7 +30,7 @@ solvers
         relTol          0.01;
     }
 
-    "(alphaAir|alphaGas).*"
+    "alpha.*"
     {
         solver          PBiCGStab;
         preconditioner  DILU;

@@ -36,8 +36,7 @@ divSchemes
     div(phiv,p)       Gauss limitedLinear 1;
     div((kappa*grad(T))) Gauss linear;
     div((p*U))        Gauss linear;
-    div(phi,alphaAir) Gauss upwind; // alphaAirEqn
-    div(phi,alphaGas) Gauss upwind; // alphaGasEqn
+    "div\(phi,alpha.*\)" Gauss upwind;
 }
 
 laplacianSchemes
