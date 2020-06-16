@@ -1,6 +1,6 @@
 /*---------------------------------------------------------------------------*\
   =========                 |
-  \\      /  F ield         | OpenFOAM: dualFuelEngline addition to OpenFOAM v7
+  \\      /  F ield         | OpenFOAM: dualFuelEngine addition to OpenFOAM v8
    \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
     \\  /    A nd           | Copyright (C) 2018-2020 Stanislau Stasheuski
      \\/     M anipulation  |
@@ -28,7 +28,7 @@ Description
     Density-based phenomenological multicomponent compressible flow solver
     (multiCompressionFoam stands for multicomponent compressible flow).
 
-    v0.4.9-alpha
+    v0.5-alpha
 
 \*---------------------------------------------------------------------------*/
 
