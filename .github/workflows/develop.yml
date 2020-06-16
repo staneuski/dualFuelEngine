@@ -10,7 +10,7 @@ on:
       - 'tutorials/multiCompressionFoam/quadPiston/**'
 
 jobs:
-  1D:
+  one-dimensional-cases:
     runs-on: ubuntu-18.04
     # container: openfoam/openfoam-dev-graphical-apps
 
