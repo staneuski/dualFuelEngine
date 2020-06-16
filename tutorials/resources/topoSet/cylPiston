@@ -1,0 +1,111 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: dualFuelEngine addition to OpenFOAM v8
+   \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
+    \\  /    A nd           | Version:  0.5.x-alpha
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      topoSetDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+actions
+(
+    // Get both sides of AMI
+    // ~~~~~~~~~~~~~~~~~~~~~
+
+    // Create faceZone for patch innerCouple1
+    {
+        name    innerCouple1FaceSet;
+        type    faceSet;
+        action  new;
+        source  patchToFace;
+        sourceInfo
+        {
+            name    innerCouple1;
+        }
+    }
+    {
+        name    innerCouple1Faces;
+        type    faceZoneSet;
+        action  new;
+        source  setToFaceZone;
+        sourceInfo
+        {
+            faceSet innerCouple1FaceSet;
+        }
+    }
+
+    // Create faceZone for patch innerCouple2
+    {
+        name    innerCouple2FaceSet;
+        type    faceSet;
+        action  new;
+        source  patchToFace;
+        sourceInfo
+        {
+            name    innerCouple2;
+        }
+    }
+    {
+        name    innerCouple2Faces;
+        type    faceZoneSet;
+        action  new;
+        source  setToFaceZone;
+        sourceInfo
+        {
+            faceSet innerCouple2FaceSet;
+        }
+    }
+
+    // Create faceZone for patch outerCouple1
+    {
+        name    outerCouple1FaceSet;
+        type    faceSet;
+        action  new;
+        source  patchToFace;
+        sourceInfo
+        {
+            name    outerCouple1;
+        }
+    }
+    {
+        name    outerCouple1Faces;
+        type    faceZoneSet;
+        action  new;
+        source  setToFaceZone;
+        sourceInfo
+        {
+            faceSet outerCouple1FaceSet;
+        }
+    }
+
+    // Create faceZone for patch outerCouple2
+    {
+        name    outerCouple2FaceSet;
+        type    faceSet;
+        action  new;
+        source  patchToFace;
+        sourceInfo
+        {
+            name    outerCouple2;
+        }
+    }
+    {
+        name    outerCouple2Faces;
+        type    faceZoneSet;
+        action  new;
+        source  setToFaceZone;
+        sourceInfo
+        {
+            faceSet outerCouple2FaceSet;
+        }
+    }
+);
+
+// ************************************************************************* //

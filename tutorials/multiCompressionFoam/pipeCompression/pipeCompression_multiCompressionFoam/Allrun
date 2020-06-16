@@ -1,0 +1,24 @@
+#!/bin/sh
+cd ${0%/*} || exit 1    # Run from this directory
+
+# Simultaneously create ParaView .foam-file & script to rerun the case
+printf '''#!/bin/sh
+cd ${0%%/*} || exit 1
+(foamCleanTutorials && foamRunTutorials) || cat `ls -rt log.* |tail -1`
+''' > ${PWD##*/}.foam && chmod u+x ${PWD##*/}.foam
+
+# Source tutorial run functions
+. $WM_PROJECT_DIR/bin/tools/RunFunctions
+
+runApplication blockMesh
+runApplication setFields
+
+#- Run serial
+runApplication $(getApplication)
+
+#- Run parallel
+# runApplication decomposePar -force
+# runParallel $application
+# runApplication reconstructPar
+
+#------------------------------------------------------------------------------

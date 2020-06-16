@@ -1,6 +1,6 @@
 /*---------------------------------------------------------------------------*\
   =========                 |
-  \\      /  F ield         | OpenFOAM: dualFuelEngline addition to OpenFOAM v7
+  \\      /  F ield         | OpenFOAM: dualFuelEngine addition to OpenFOAM v8
    \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
     \\  /    A nd           | Copyright (C) 2018-2020 Stanislau Stasheuski
      \\/     M anipulation  |
@@ -25,19 +25,17 @@ Application
     multiCompressionFoam
 
 Description
-    v0.4-alpha
+    Density-based phenomenological multicomponent compressible flow solver
+    (multiCompressionFoam stands for multicomponent compressible flow).
 
-Comments
-    Phenomenological multicomponent compressible solver (multiCompressionFoam
-    stands for multicomponent compressible flow).
+    v0.5-alpha
 
 \*---------------------------------------------------------------------------*/
 
 #include "fvCFD.H"
-#include "dynamicFvMesh.H" // DyM
+#include "dynamicFvMesh.H"
 #include "fluidThermo.H"
 #include "pimpleControl.H"
-#include "CorrectPhi.H" // DyM
 #include "fvOptions.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
@@ -46,11 +44,10 @@ int main(int argc, char *argv[])
 {
     #include "setRootCaseLists.H"
     #include "createTime.H"
-    #include "createDynamicFvMesh.H" // DyM
-    #include "createDyMControls.H" // pimpleControl pimple(mesh);
+    #include "createDynamicFvMesh.H"
+    #include "createDyMControls.H"
     #include "createFields.H"
     #include "createFieldRefs.H"
-    #include "createRhoUfIfPresent.H" // rhoUf = rho*U
 
     // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
@@ -59,20 +56,6 @@ int main(int argc, char *argv[])
     while (pimple.run(runTime))
     {
         #include "readDyMControls.H"
-
-        // Store divrhoU from the previous mesh so that it can be mapped
-        // and used in correctPhi to ensure the corrected phi has the
-        // same divergence
-        autoPtr<volScalarField> divrhoU;
-        if (correctPhi)
-        {
-            divrhoU = new volScalarField
-            (
-                "divrhoU",
-                fvc::div(fvc::absolute(phi, rho, U))
-            );
-        }
-
         #include "compressibleCourantNo.H"
         #include "setDeltaT.H"
 
@@ -80,21 +63,14 @@ int main(int argc, char *argv[])
 
         Info<< "Time = " << runTime.timeName() << nl << endl;
 
-        mesh.update(); // DyM, do any mesh changes
+        mesh.update();
 
-        if (mesh.changing())
+        phi = fvc::flux(rho*U);
+
+        if (mesh.moving())
         {
-            if (correctPhi)
-            {
-                // Calculate absolute flux
-                // from the mapped surface velocity
-                phi = mesh.Sf() & rhoUf();
-
-                #include "correctPhi.H"
-
-                // Make the fluxes relative to the mesh-motion
-                fvc::makeRelative(phi, rho, U);
-            }
+            // Make flux relative to the mesh-motion
+            phi = fvc::relative(phi, rho, U);
 
             if (checkMeshCourantNo)
             {
@@ -111,8 +87,7 @@ int main(int argc, char *argv[])
 
             fvVectorMatrix UEqn
             (
-                fvm::ddt(rho, U)
-              + fvc::div(phi, U)
+                fvm::ddt(rho, U) + fvc::div(phi, U)
              ==
               - fvc::grad(p)
               + fvc::grad
@@ -125,50 +100,47 @@ int main(int argc, char *argv[])
             UEqn.relax();
             UEqn.solve();
 
-            fvScalarMatrix eEqn
+            fvOptions.correct(U);
+            K = 0.5*magSqr(U);
+
+            fvScalarMatrix EEqn
             (
-                fvm::ddt(rho, e)
-              + fvm::div(phi, e)
-             ==
-              - fvc::div(p*U)
-              + fvc::div(thermo.kappa()*fvc::grad(T))
-              + (
-                     U & (
-                            mu*fvc::laplacian(U)
-                          + fvc::grad(mu/3*fvc::div(U))
-                         )
+                fvm::ddt(rho, e) + fvm::div(phi, e)
+              + fvc::ddt(rho, K) + fvc::div(phi, K)
+              + fvc::div
+                (
+                    fvc::absolute(phi/fvc::interpolate(rho), U),
+                    p,
+                    "div(phiv,p)"
                 )
-              //+ mu*D TODO
             );
 
-            eEqn.relax();
-            eEqn.solve();
+            EEqn.relax();
+            EEqn.solve();
 
-            // Upgrade values using field e
+            fvOptions.correct(e);
+
+            // Upgrade temperature using internal energy field
             thermo.correct();
 
             p = rho/psi;
-
-            phi = fvc::flux(rho*U);
-
-            fvScalarMatrix alphaAirEqn
-            (
-                fvm::ddt(rho, alphaAir)
-              + fvm::div(phi, alphaAir)
-              - fvc::laplacian(DAir, rho*alphaAir)
-            );
-
-            alphaAirEqn.solve();
-
-            fvScalarMatrix alphaGasEqn
-            (
-                fvm::ddt(rho, alphaGas)
-              + fvm::div(phi, alphaGas)
-              - fvc::laplacian(DGas, rho*alphaGas)
-            );
-
-            alphaGasEqn.solve();
+            p.correctBoundaryConditions();
         }
+
+        // --- Solve concentrations
+        solve
+        (
+            fvm::ddt(rho, alphaAir)
+          + fvm::div(phi, alphaAir)
+          - fvc::laplacian(DAir, rho*alphaAir)
+        );
+
+        solve
+        (
+            fvm::ddt(rho, alphaGas)
+          + fvm::div(phi, alphaGas)
+          - fvc::laplacian(DGas, rho*alphaGas)
+        );
 
         alphaExh = dimensionedScalar("1", dimless, 1) - alphaGas - alphaAir;
 

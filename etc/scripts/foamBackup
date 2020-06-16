@@ -1,0 +1,131 @@
+#!/bin/bash
+#------------------------------------------------------------------------------
+#  =========                 |
+#  \\      /  F ield         | OpenFOAM: dualFuelEngine addition to OpenFOAM v8
+#   \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
+#    \\  /    A nd           | Copyright (C) 2020 Stanislau Stasheuski
+#     \\/     M anipulation  |
+#------------------------------------------------------------------------------
+# License
+#     This file part of dualFuelEngine – OpenFOAM addition.
+#
+#     dualFuelEngine (like OpenFOAM) is free software: you can redistribute it
+#     and/or modify it under the terms of the GNU General Public License as
+#     published by the Free Software Foundation, either version 3 of the License,
+#     or (at your option) any later version.
+#
+#     dualFuelEngine (like OpenFOAM) is distributed in the hope that it will be
+#     useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+#     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+#     See the GNU General Public License for more details.
+#
+#     You should have received a copy of the GNU General Public License
+#     along with this repository. If not, see <http://www.gnu.org/licenses/>
+#
+# Script
+#     foamBackup
+#
+# Description
+#     Makes backup of the OpenFOAM case (only settings by default).
+#
+#------------------------------------------------------------------------------
+Script=$0
+[ "/${Script#/}" != "$Script" ] && Script="$PWD/$Script"
+
+usage () {
+    exec 1>&2
+    while [ "$#" -ge 1 ]; do echo "$1"; shift; done
+    cat <<USAGE
+
+Usage: ${0##*/} [OPTIONS]
+options:
+  -case <dir>  | -c   specify alternate case directory, default is the cwd (full path required)
+  -name <name> | -n   specify backup name, default is the YYYYMMDD-TIME
+  -results     | -r   include results
+  -archive     | -a   create archive
+  -help        | -h   help
+
+USAGE
+    exit 1
+}
+
+while [ "$#" -gt 0 ]
+do
+    case "$1" in
+    -c | -case)
+        [ "$#" -ge 2 ] || usage "'$1' option requires an argument"
+        CASE_DIR=$2
+        CASE_NAME=`basename $PWD/$CASE_DIR`
+        shift 2
+        ;;
+    -n | -name)
+        [ "$#" -ge 2 ] || usage "'$1' option requires an argument"
+        BACKUP_NAME=$2
+        shift 2
+        ;;
+    -r | -results)
+        results=yes
+        shift
+        ;;
+    -a | -archive)
+        archive=yes
+        shift
+        ;;
+    -ra | -ar)
+        results=yes
+        archive=yes
+        shift
+        ;;
+    -h | --help)
+        usage
+        ;;
+    *)
+        usage "Invalid option '$1'"
+        ;;
+    esac
+done
+
+if [ ! -n "$CASE_DIR" ]
+then
+    # If $CASE_DIR variable is empty back up current directory
+    CASE_DIR=${PWD}
+    CASE_NAME=${PWD##*/}
+fi
+
+if [ ! -n "$BACKUP_NAME" ]
+then
+    # If $BACKUP_NAME variable is empty set it as current date 
+    day=`date +%Y%m%d`
+    time=`date +%H%M`
+    BACKUP_NAME="${day}-${time}"
+fi
+
+# Create backup folder
+BACKUP_PATH=$CASE_DIR/../${CASE_NAME}_${BACKUP_NAME}.bak
+mkdir -p $BACKUP_PATH
+
+# Copy setup to the backup folder
+cp -r $CASE_DIR/{0/,constant/,system/} $BACKUP_PATH 2>/dev/null || {
+    echo "Error : Case files could not be found on $CASE_DIR" 1>&2
+    rm -r $BACKUP_PATH
+    exit 1
+}
+
+if [ "$results" ]
+then
+    # Copy all results to the backup folder
+    cp -r $CASE_DIR/{0..9}*/\
+        $CASE_DIR/{postProcessing/,*.foam,*.OpenFOAM} $BACKUP_PATH 2>/dev/null
+    cp -r $CASE_DIR/log.* $BACKUP_PATH 2>/dev/null ||\
+    echo "Warning : Results files could not be found on $CASE_DIR" 1>&2
+fi
+
+if [ "$archive" ]
+then
+    # Create an archive of the backup folder
+    tar -C $CASE_DIR/../ -czf $CASE_DIR/../${CASE_NAME}_${BACKUP_NAME}.tar\
+        ${CASE_NAME}_${BACKUP_NAME}.bak\
+    && rm -r $BACKUP_PATH
+fi
+
+#------------------------------------------------------------------------------

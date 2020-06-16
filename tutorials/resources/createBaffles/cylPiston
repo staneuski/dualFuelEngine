@@ -1,0 +1,190 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: dualFuelEngine addition to OpenFOAM v8
+   \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
+    \\  /    A nd           | Version:  0.5.x-alpha
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      createBafflesDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+// Whether to convert internal faces only (so leave boundary faces intact).
+// This is only relevant if your face selection type can pick up boundary
+// faces.
+internalFacesOnly false;
+
+
+// Baffles to create.
+baffles
+{
+    // NOTE: cyclicAMI patches MUST BE defined PRIOR to their associted
+    //       blockage patches
+
+    innerACMI1
+    {
+        //- Use predefined faceZone to select faces and orientation.
+        type        faceZone;
+        zoneName    innerCouple1Faces;
+
+        patches
+        {
+            master
+            {
+                //- Master side patch
+                name            innerACMI1_couple;
+                type            cyclicACMI;
+                matchTolerance  0.0001;
+                neighbourPatch  innerACMI2_couple;
+                nonOverlapPatch innerACMI1_blockage;
+                // transform       noOrdering; /* OpenFOAM v7 or lower */
+            }
+            slave // not used since we're manipulating a boundary patch
+            {
+                //- Slave side patch
+                name            innerACMI1_couple;
+                type            patch;
+            }
+
+            master2
+            {
+                //- Master side patch
+                name            innerACMI1_blockage;
+                type            wall;
+            }
+            slave2 // not used since we're manipulating a boundary patch
+            {
+                //- Slave side patch
+                name            innerACMI1_blockage;
+                type            wall;
+            }
+
+        }
+    }
+    innerACMI2
+    {
+        //- Use predefined faceZone to select faces and orientation.
+        type        faceZone;
+        zoneName    innerCouple2Faces;
+
+        patches
+        {
+            master
+            {
+                //- Master side patch
+                name            innerACMI2_couple;
+                type            cyclicACMI;
+                matchTolerance  0.0001;
+                neighbourPatch  innerACMI1_couple;
+                nonOverlapPatch innerACMI2_blockage;
+                // transform       noOrdering; /* OpenFOAM v7 or lower */
+            }
+            slave // not used since we're manipulating a boundary patch
+            {
+                //- Slave side patch
+                name            innerACMI2_couple;
+                type            patch;
+            }
+
+            master2
+            {
+                //- Master side patch
+                name            innerACMI2_blockage;
+                type            wall;
+            }
+            slave2 // not used since we're manipulating a boundary patch
+            {
+                //- Slave side patch
+                name            innerACMI2_blockage;
+                type            wall;
+            }
+        }
+    }
+
+    outerACMI1
+    {
+        //- Use predefined faceZone to select faces and orientation.
+        type        faceZone;
+        zoneName    outerCouple1Faces;
+
+        patches
+        {
+            master
+            {
+                //- Master side patch
+                name            outerACMI1_couple;
+                type            cyclicACMI;
+                matchTolerance  0.0001;
+                neighbourPatch  outerACMI2_couple;
+                nonOverlapPatch outerACMI1_blockage;
+                // transform       noOrdering; /* OpenFOAM v7 or lower */
+            }
+            slave // not used since we're manipulating a boundary patch
+            {
+                //- Slave side patch
+                name            outerACMI1_couple;
+                type            patch;
+            }
+
+            master2
+            {
+                //- Master side patch
+                name            outerACMI1_blockage;
+                type            wall;
+            }
+            slave2 // not used since we're manipulating a boundary patch
+            {
+                //- Slave side patch
+                name            outerACMI1_blockage;
+                type            wall;
+            }
+
+        }
+    }
+    outerACMI2
+    {
+        //- Use predefined faceZone to select faces and orientation.
+        type        faceZone;
+        zoneName    outerCouple2Faces;
+
+        patches
+        {
+            master
+            {
+                //- Master side patch
+                name            outerACMI2_couple;
+                type            cyclicACMI;
+                matchTolerance  0.0001;
+                neighbourPatch  outerACMI1_couple;
+                nonOverlapPatch outerACMI2_blockage;
+                // transform       noOrdering; /* OpenFOAM v7 or lower */
+            }
+            slave // not used since we're manipulating a boundary patch
+            {
+                //- Slave side patch
+                name            outerACMI2_couple;
+                type            patch;
+            }
+
+            master2
+            {
+                //- Master side patch
+                name            outerACMI2_blockage;
+                type            wall;
+            }
+            slave2 // not used since we're manipulating a boundary patch
+            {
+                name            outerACMI2_blockage;
+                type            wall;
+            }
+        }
+    }
+}
+
+
+// ************************************************************************* //

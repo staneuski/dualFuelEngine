@@ -1,0 +1,42 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: dualFuelEngine addition to OpenFOAM v8
+   \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
+    \\  /    A nd           | Version:  0.5.x-alpha
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    object      T;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 0 0 1 0 0 0]; // K
+
+internalField   uniform 1208.8;
+
+boundaryField
+{
+    inlet
+    {
+        type            fixedValue;
+        value           uniform 332;
+    }
+
+    outlet
+    {
+        type            inletOutlet;
+        inletValue      uniform 769.3;
+        value           $inletValue;
+    }
+
+    walls
+    {
+        type            zeroGradient;
+    }
+}
+
+// ************************************************************************* //

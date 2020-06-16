@@ -1,8 +1,8 @@
 /*--------------------------------*- C++ -*----------------------------------*\
   =========                 |
-  \\      /  F ield         | OpenFOAM: dualFuelEngline addition to OpenFOAM v7
+  \\      /  F ield         | OpenFOAM: dualFuelEngine addition to OpenFOAM v8
    \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
-    \\  /    A nd           | Version:  0.4-alpha
+    \\  /    A nd           | Version:  0.5.x-alpha
      \\/     M anipulation  |
 \*---------------------------------------------------------------------------*/
 FoamFile
@@ -10,17 +10,18 @@ FoamFile
     version     2.0;
     format      ascii;
     class       volScalarField;
+    location    "0";
     object      T;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [0 0 0 1 0 0 0]; // K
+dimensions      [0 0 0 1 0 0 0];
 
-internalField   uniform 293.15;
+internalField   uniform 0; // set using setFields utility
 
 boundaryField
 {
-    ".*"
+    walls
     {
         type    zeroGradient;
     }

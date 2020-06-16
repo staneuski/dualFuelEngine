@@ -1,8 +1,8 @@
 /*--------------------------------*- C++ -*----------------------------------*\
   =========                 |
-  \\      /  F ield         | OpenFOAM: dualFuelEngline addition to OpenFOAM v7
+  \\      /  F ield         | OpenFOAM: dualFuelEngine addition to OpenFOAM v8
    \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
-    \\  /    A nd           | Version:  0.4-alpha
+    \\  /    A nd           | Version:  0.5.x-alpha
      \\/     M anipulation  |
 \*---------------------------------------------------------------------------*/
 FoamFile
@@ -17,37 +17,42 @@ FoamFile
 
 ddtSchemes
 {
-    default     Euler;
+    default           Euler;
 }
 
 gradSchemes
 {
-    default     Gauss linear;
-    grad(p)     cellLimited Gauss linear 0.9; // UEqn
+    default           Gauss linear;
+    grad(p)           cellLimited Gauss linear 0.9; // UEqn
 }
 
 divSchemes
 {
-    default     Gauss cubic;
-    div(phi,U)  Gauss upwind;       // UEqn
-    div(phi,e)  Gauss upwind;       // eEqn
-    div(phi,alphaAir) Gauss upwind; // alphaAirEqn
-    div(phi,alphaGas) Gauss upwind; // alphaGasEqn
+    default           none;
+    div(phi,U)        Gauss upwind;
+    div(U)            Gauss linear;
+    div(phi,e)        Gauss limitedLinear 1;
+    div(phi,K)        Gauss limitedLinear 1;
+    div(phiv,p)       Gauss limitedLinear 1;
+    div((kappa*grad(T))) Gauss linear;
+    div((p*U))        Gauss linear;
+    "div\(phi,alpha.*\)" Gauss upwind;
 }
 
 laplacianSchemes
 {
-    default     Gauss linear corrected;
+    default         Gauss linear orthogonal;
 }
 
 interpolationSchemes
 {
-    default    cubic;
+    default         linear;
 }
 
 snGradSchemes
 {
-    default    corrected;
+    default         orthogonal;
 }
+
 
 // ************************************************************************* //

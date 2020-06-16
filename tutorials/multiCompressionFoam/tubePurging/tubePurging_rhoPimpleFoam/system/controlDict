@@ -1,0 +1,94 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: dualFuelEngine addition to OpenFOAM v8
+   \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
+    \\  /    A nd           | Version:  0.5.x-alpha
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+application     rhoPimpleFoam;
+
+startFrom       startTime;
+
+startTime       0;
+
+stopAt          endTime;
+
+endTime         0.0025;
+
+deltaT          1e-5;
+
+writeControl    adjustableRunTime;
+
+writeInterval   $deltaT;
+
+purgeWrite      0;
+
+writeFormat     ascii;
+
+writePrecision  6;
+
+writeCompression false;
+
+timeFormat      general;
+
+timePrecision   6;
+
+runTimeModifiable true;
+
+functions
+{
+    #includeFunc flowRatePatch(name=inlet)
+    #includeFunc flowRatePatch(name=outlet)
+    #includeFunc MachNo
+    #includeFunc CourantNo
+    #includeFunc writeObjects(e, K)
+
+    totalEnergy
+    {
+        type            add;
+        libs            ("libfieldFunctionObjects.so");
+        executeControl  writeTime;
+        writeControl    writeTime;
+        fields          (e K);
+    }
+
+    mass
+    {
+        type            volFieldValue;
+        libs            ("libfieldFunctionObjects.so");
+        writeControl    timeStep;
+        writeInterval   1;
+        log             true;
+        writeFields     false;
+        operation       volIntegrate;
+        fields          (rho);
+    }
+
+    volAverageFieldValues
+    {
+        type            volFieldValue;
+        libs            ("libfieldFunctionObjects.so");
+        writeControl    timeStep;
+        writeInterval   1;
+        log             true;
+        writeFields     false;
+        operation       volAverage;
+        fields
+        (
+            p T rho e K
+        );
+    }
+}
+
+
+// ************************************************************************* //

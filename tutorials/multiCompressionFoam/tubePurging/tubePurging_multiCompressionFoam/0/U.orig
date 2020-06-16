@@ -1,0 +1,50 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: dualFuelEngine addition to OpenFOAM v8
+   \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
+    \\  /    A nd           | Version:  0.5.x-alpha
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volVectorField;
+    object      U;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions      [0 1 -1 0 0 0 0];
+
+internalField   uniform (0 0 0);
+
+boundaryField
+{
+    inlet
+    {
+        type            flowRateInletVelocity;
+        rho             rho;
+        rhoInlet        4.0;
+        // massFlowRate    0.01;
+        massFlowRate    table
+        (
+            (0.0005     0)   /* phi      •--•       */
+            (0.0010     0.3) /*  |      /    \      */
+            (0.0015     0.3) /*  |     /      \     */
+            (0.0020     0)   /*  0 •--•        •--• */
+        );
+    }
+
+    outlet
+    {
+        type            pressureInletOutletVelocity;
+        value           uniform (0 0 0);
+    }
+
+    walls
+    {
+        type            slip;
+    }
+}
+
+// ************************************************************************* //

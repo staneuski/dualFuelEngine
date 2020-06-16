@@ -1,8 +1,8 @@
 /*--------------------------------*- C++ -*----------------------------------*\
   =========                 |
-  \\      /  F ield         | OpenFOAM: dualFuelEngline addition to OpenFOAM v7
+  \\      /  F ield         | OpenFOAM: dualFuelEngine addition to OpenFOAM v8
    \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
-    \\  /    A nd           | Version:  0.4-alpha
+    \\  /    A nd           | Version:  0.5.x-alpha
      \\/     M anipulation  |
 \*---------------------------------------------------------------------------*/
 FoamFile
@@ -20,26 +20,26 @@ internalField   uniform 0;
 
 boundaryField
 {
-    // Injection
+/* Injection */
     "injection(X|Y)(Minus|Plus)"
     {
         type            fixedValue;
         value           uniform 1;
     }
 
-    // Inlet
+/* Inlet */
     "inlet(X|Y)(Minus|Plus)"
     {
         type            zeroGradient;
     }
 
-    // Outlet
+/* Outlet */
     outlet
     {
         type            zeroGradient;
     }
     
-    // Walls
+/* Walls */
     "piston|valve|walls"
     {
         type            zeroGradient;

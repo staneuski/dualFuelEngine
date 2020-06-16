@@ -1,17 +1,23 @@
-name: Test dualFuelEngine-dev
+name: develop
 
-on: push
+on:
+  push:
+    paths:
+      - 'tutorials/multiCompressionFoam/RiemannTube/**'
+      - 'tutorials/multiCompressionFoam/shockTube/**'
+      - 'tutorials/multiCompressionFoam/tubePurging/**'
+      - 'tutorials/multiCompressionFoam/pipeCompression/**'
+      - 'tutorials/multiCompressionFoam/quadPiston/**'
 
 jobs:
-  tutorials-tubes:
+  one-dimensional-cases:
     runs-on: ubuntu-18.04
-    defaults:
-      run:
-        shell: bash
+    # container: openfoam/openfoam-dev-graphical-apps
 
     steps:
-    - uses: actions/checkout@v1
-      
+    - name: Check out code
+      uses: actions/checkout@v2
+
     - name: Install OpenFOAM-dev
       run: |
         sudo sh -c "wget -O - http://dl.openfoam.org/gpg.key | apt-key add -"
@@ -19,22 +25,35 @@ jobs:
         sudo apt update
         sudo apt install -y openfoam-dev
 
+    # wmake multiCompressionFoam solver
+    - name: Compile solvers
+      run: . /opt/openfoam-dev/etc/bashrc && solvers/./Allwmake
+
+    # Run multiCompressionFoam cases
     - name: RiemannTube
+      if: always()
       run: . /opt/openfoam-dev/etc/bashrc && foamRunTutorials
       working-directory: tutorials/multiCompressionFoam/RiemannTube
-
     - name: shockTube
+      if: always()
       run: . /opt/openfoam-dev/etc/bashrc && foamRunTutorials
       working-directory: tutorials/multiCompressionFoam/shockTube/shockTube_multiCompressionFoam
-
     - name: tubePurging
+      if: always()
       run: . /opt/openfoam-dev/etc/bashrc && foamRunTutorials
       working-directory: tutorials/multiCompressionFoam/tubePurging/tubePurging_multiCompressionFoam
-
     - name: pipeCompression
+      if: always()
       run: . /opt/openfoam-dev/etc/bashrc && foamRunTutorials
       working-directory: tutorials/multiCompressionFoam/pipeCompression/pipeCompression_multiCompressionFoam
-
     - name: quadPiston
+      if: always()
       run: . /opt/openfoam-dev/etc/bashrc && foamRunTutorials
       working-directory: tutorials/multiCompressionFoam/quadPiston
+
+    # Get all multiCompressionFoam logs
+    - uses: actions/upload-artifact@v2
+      if: always()
+      with:
+        name: logs_multiCompressionFoam
+        path: tutorials/multiCompressionFoam/**/log.multiCompressionFoam

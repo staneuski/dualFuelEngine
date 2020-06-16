@@ -1,8 +1,8 @@
 /*--------------------------------*- C++ -*----------------------------------*\
   =========                 |
-  \\      /  F ield         | OpenFOAM: dualFuelEngline addition to OpenFOAM v7
+  \\      /  F ield         | OpenFOAM: dualFuelEngine addition to OpenFOAM v8
    \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
-    \\  /    A nd           | Version:  0.4-alpha
+    \\  /    A nd           | Version:  0.5.x-alpha
      \\/     M anipulation  |
 \*---------------------------------------------------------------------------*/
 FoamFile
@@ -24,19 +24,20 @@ solvers
 
     "e.*"
     {
-        solver          GAMG;
-        smoother        DILU;
-        tolerance       1e-06;
+        solver          smoothSolver;
+        smoother        GaussSeidel;
+        tolerance       1e-09;
         relTol          0.01;
     }
 
-    "(alphaAir|alphaGas).*"
+    "alpha.*"
     {
         solver          PBiCGStab;
         preconditioner  DILU;
         tolerance       1e-06;
         relTol          0;
     }
+
     "cellMotionU.*"
     {
         solver          PCG;
@@ -57,7 +58,7 @@ relaxationFactors
 {
     fields
     {
-        p               0.5;
+        p               1;
     }
     equations
     {

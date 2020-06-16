@@ -1,0 +1,45 @@
+name: main
+
+on:
+  push:
+    paths:
+      - 'solvers/**'
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  allTutorials:
+    runs-on: ubuntu-18.04
+
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+
+    - name: Install OpenFOAM-dev
+      run: |
+        sudo sh -c "wget -O - http://dl.openfoam.org/gpg.key | apt-key add -"
+        sudo add-apt-repository "http://dl.openfoam.org/ubuntu dev"
+        sudo apt update
+        sudo apt install -y openfoam-dev
+
+    # wmake multiCompressionFoam solver
+    - name: Compile solvers
+      run: . /opt/openfoam-dev/etc/bashrc && solvers/./Allwmake
+
+    # Run Allrun scripts in tutorials/
+    - name: tutorials
+      run: . /opt/openfoam-dev/etc/bashrc && ./Allrun
+      working-directory: tutorials
+
+    # Get logs
+    - uses: actions/upload-artifact@v2
+      if: always()
+      with:
+        name: tutorials_logs
+        path: tutorials/multiCompressionFoam/**/log.*
+    - uses: actions/upload-artifact@v2
+      if: always()
+      with:
+        name: testLoopReport
+        path: tutorials/testLoopReport

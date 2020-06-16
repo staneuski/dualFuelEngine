@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# Run from this directory
+cd ${0%/*} || exit 1
+
+# Source tutorial run functions
+. $WM_PROJECT_DIR/bin/tools/RunFunctions
+
+application=$(getApplication)
+
+./Allmesh
+runApplication setFields
+
+#- Run serial
+runApplication $application
+
+#- Run parallel
+# runApplication decomposePar -force
+# runParallel $application
+# runApplication reconstructPar
+
+#------------------------------------------------------------------------------

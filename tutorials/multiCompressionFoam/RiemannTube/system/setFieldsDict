@@ -1,0 +1,41 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: dualFuelEngine addition to OpenFOAM v8
+   \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
+    \\  /    A nd           | Version:  0.5.x-alpha
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      setFieldsDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+defaultFieldValues
+(
+    volScalarFieldValue p 0.23e+06
+    volScalarFieldValue T 332
+    volScalarFieldValue alphaAir 1
+    volScalarFieldValue alphaGas 0
+);
+
+regions
+(
+    boxToCell
+    {
+        box (0 0.3 0) (1 0.6 1); // m, right part
+        fieldValues
+        (
+            volScalarFieldValue p 1.442e+06
+            volScalarFieldValue T 1208.8 // 1208.8 \ 850
+            volScalarFieldValue alphaAir 0
+        );
+    }
+);
+
+
+// ************************************************************************* //

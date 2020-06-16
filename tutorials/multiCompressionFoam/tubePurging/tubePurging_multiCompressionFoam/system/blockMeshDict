@@ -1,0 +1,71 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: dualFuelEngine addition to OpenFOAM v8
+   \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
+    \\  /    A nd           | Version:  0.5.x-alpha
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      blockMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+convertToMeters 0.01;
+
+vertices
+(
+    /*00*/ ( 0 0 0 )
+    /*01*/ ( 1 0 0 )
+    /*02*/ ( 1 60 0 )
+    /*03*/ ( 0 60 0 )
+    /*04*/ ( 0 0 1 )
+    /*05*/ ( 1 0 1 )
+    /*06*/ ( 1 60 1 )
+    /*07*/ ( 0 60 1 )
+);
+
+blocks
+( 
+    hex (0 1 2 3 4 5 6 7) (1 120 1) simpleGrading (1 1 1)
+);
+
+edges();
+
+boundary
+(
+    walls
+    {
+        type wall;
+        faces
+        (
+            (1 2 6 5)
+            (4 5 6 7)
+            (0 4 7 3)
+            (0 3 2 1)
+        );
+    }
+        
+    inlet
+    {
+        type patch;
+        faces
+        (
+            (0 1 5 4)
+        );
+    }
+
+    outlet
+    {
+        type patch;
+        faces
+        (
+            (3 2 6 7)
+        );
+    }
+);
+
+// ************************************************************************* //

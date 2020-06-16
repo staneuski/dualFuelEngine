@@ -2,38 +2,45 @@
 # Lines that start with '#' are comments.
 
 # Files - anywhere
-log.*
-*.log
-*.gz
-[cell,point]*Level
+*log*
+test*
+*.bak
+*.res
+*.tar
 *.foam
-!AllcleanAllrunAny.foam
+[cell,point]*ToRegion
+[cell,point]*Level
+[add,mag]*(*)
 
 
 # Folders - anywhere
+__pycache__/
+.ipynb_checkpoints/
 0.*/
 [1-9]*/
 backups/
 dynamicCode/
 extendedFeatureEdgeMesh/
-polyMesh/
-triSurface/
-postProcessing/
-VTK/
 linux*Gcc*/
+polyMesh/
+postProcessing/
+processor*/
+uniform/
+triSurface/
+VTK/
 
 
 # Files - local
-tutorials/**/cylPiston/system/blockMeshDict
+! etc/scripts/AllcleanAllrunAny.foam
+etc/FlowVision/**/*.*[backup,glo,err,sta]
+etc/FlowVision/**/*_[00001-99999]*.*[fvstat,fvinp]
 
-etc/FlowVision/**/*_[00001-99999]*.fvstat
-etc/FlowVision/**/*.backup
-etc/FlowVision/**/*.glo
-etc/FlowVision/**/*.err
-etc/FlowVision/**/*.sta
-
+tutorials/resources/blockMesh/cylCyclic2D
+tutorials/resources/blockMesh/cylPiston
+tutorials/**/0/*[alphaAir,alphaGas,Co,e,K,Ma,p,T,U,V]
+!tutorials/**/tubePurging_rho*[PimpleFoam,CentralFoam]/0/*[p,T,U]
 
 # Folders - local
-etc/DRK2Py/__pycache__/
-etc/DRK2Py/*.res/
-etc/DRK2Py/tmp*/
+etc/**/*.*[drk,fv,*]res/
+!tutorials/**/0/include/
+tutorials/multiCompressionFoam/shockTube/**/*.png

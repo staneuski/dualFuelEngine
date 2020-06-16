@@ -1,0 +1,65 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: dualFuelEngine addition to OpenFOAM v8
+   \\    /   O peration     | Website:  https://github.com/StasF1/dualFuelEngine
+    \\  /    A nd           | Version:  0.5.x-alpha
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      setFieldsDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+chS             2.995; // Cylinder stroke, clearance & chamfer size
+
+inlH            0.192; // Inlet port height
+
+
+defaultFieldValues // inlet ports
+(
+    volScalarFieldValue p 0.3102e+06
+    volScalarFieldValue T 332
+    volScalarFieldValue alphaAir 0
+    volScalarFieldValue alphaGas 0
+);
+
+regions
+(
+    cylinderToCell // inlet ports
+    {
+        p1 (0 0 -5); p2 (0 0 $inlH);
+        radius 10;
+        fieldValues
+        (
+            volScalarFieldValue alphaAir 1
+        );
+    }
+    cylinderToCell // engine stroke volume
+    {
+        p1 (0 0 $inlH); p2 (0 0 $chS);
+        radius 0.5;
+        fieldValues
+        (
+            volScalarFieldValue p 1.442e6
+            volScalarFieldValue T 1208.8
+        );
+    }
+    cylinderToCell // outlet pipe
+    {
+        p1 (0 0 $chS); p2 (0 0 10);
+        radius 5;
+        fieldValues
+        (
+            volScalarFieldValue p 0.23e+06
+            volScalarFieldValue T 769.3
+        );
+    }
+);
+
+
+// ************************************************************************* //

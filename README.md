@@ -2,9 +2,7 @@
 OpenFOAM solver based on phenomenological compression model for dual-fuel ship engines. Check [**releases**](https://github.com/StasF1/dualFuelEngine/releases) to view repository history and more detailed description.
 
 # Requirements
-- **OpenFOAM-dev (preferred)** or OpenFOAM v7
-- OpenFOAM v6 (had some bugs with an ACMI interfaces)
-- OpenFOAM v5 (check issue [#6](https://github.com/StasF1/dualFuelEngine/issues/6)) 
+- OpenFOAM-dev ([`20200426`](https://github.com/OpenFOAM/OpenFOAM-dev/releases/tag/20200426) at least) or OpenFOAM v8
 
 # Usage
 ## Installation
@@ -15,17 +13,15 @@ OpenFOAM solver based on phenomenological compression model for dual-fuel ship e
     sudo sed -i "s+# Convenience+# Convenience\nexport FOAM_ADD=$FOAM_ADD+g" $WM_PROJECT_DIR/etc/config.sh/settings
     ```
 
-3. To compile with OpenFOAM v6 or higher
+1. To compile with OpenFOAM v8 or higher
     ```sh
     git clone https://github.com/StasF1/dualFuelEngine.git $FOAM_ADD/dualFuelEngine
     $FOAM_ADD/dualFuelEngine/solvers/./Allwmake
     ```
 
-4. To compile with OpenFOAM v5.x (not tested on version [0.4-alpha](https://github.com/StasF1/dualFuelEngine/releases/tag/v0.4-alpha))
+1. Add makeBackup script as a link to the OpenFOAM-?/bin
     ```sh
-    git clone https://github.com/StasF1/dualFuelEngine.git $FOAM_ADD/dualFuelEngine
-    $FOAM_ADD/dualFuelEngine/etc/./v5x-compile
-    $FOAM_ADD/dualFuelEngine/solvers/./Allwmake
+    sudo ln -s $FOAM_ADD/dualFuelEngine/etc/scripts/foamBackup $FOAM_APP/../bin/foamBackup
     ```
 
 ## Run
@@ -33,30 +29,48 @@ OpenFOAM solver based on phenomenological compression model for dual-fuel ship e
     ```sh
     wmake $FOAM_ADD/dualFuelEngine/tutorials/./Allclean && $FOAM_ADD/dualFuelEngine/tutorials/./Allrun
     ```
-- ParaView _.foam_ result file is created after running the _Allrun_ script which is also a script which can **rerun the current case**
+- ParaView _.foam_ result file is created after running the _Allrun_ script which is also a script that can **rerun the current case**
     ```sh
     ./*foam
     ```
 
 # Structure
 ```gitignore
-dualFuelEngine-0.4-alpha
+dualFuelEngine-0.5.x-alpha
 ├── etc
-│   └── DRK2Py
+│   ├── DRK2Py
+│   │   ├── include
+│   │   └── MAN_BnW-DieselRK.drkres # download MAN_BnW.drkres.zip from the v0.5-alpha
+│   └── scripts
 ├── solvers
-│   ├── dyMFoam
-│   ├── multiCompressionFoam
-│   └── utilities
+│   └── multiCompressionFoam
+│       └── Make
 └── tutorials
-    ├── dyMFoam
-    │   ├── tube
-    │   ├── quadPiston
-    │   ├── cylSym2D
-    │   └── cylPiston
-    └── multiCompressionFoam
-        ├── RiemannTube
-        ├── tube
-        ├── closedPipe
-        ├── quadPiston
-        └── cylPiston
+    ├── multiCompressionFoam
+    │   ├── cylCyclic2D
+    │   │   ├── cylCyclic2D_multiCompressionFoam
+    │   │   └── cylCyclic2D_rhoPimpleFoam
+    │   ├── cylPiston
+    │   │   ├── cylPiston_multiCompressionFoam
+    │   │   └── cylPiston_rhoPimpleFoam
+    │   ├── pipeCompression
+    │   │   ├── pipeCompression_multiCompressionFoam
+    │   │   ├── pipeCompression_rhoCentralFoam
+    │   │   └── pipeCompression_rhoPimpleFoam
+    │   ├── quadPiston
+    │   ├── RiemannTube
+    │   ├── shockTube
+    │   │   ├── shockTube_multiCompressionFoam
+    │   │   ├── shockTube_rhoCentralFoam
+    │   │   └── shockTube_rhoPimpleFoam
+    │   └── tubePurging
+    │       ├── tubePurging_multiCompressionFoam
+    │       ├── tubePurging_rhoCentralFoam
+    │       └── tubePurging_rhoPimpleFoam
+    └── resources
+        ├── blockMesh
+        ├── createBaffles
+        ├── engineProperties
+        ├── geometry
+        └── topoSet
 ```

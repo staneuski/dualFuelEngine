@@ -8,45 +8,55 @@
 
 from math import pi
 
-# * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * #
+# * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
-tmpFolder          = 'tmp*' # path to Diesel-RK results folder
+# Download MAN_BnW.drkres.zip file from the source code of the 0.5-alpha
+# version and extract it at etc/DRK2Py/ as MAN_BnW-DieselRK.fvres/ folder
+tmpFolder          = 'MAN_BnW-DieselRK.drkres/tmp2020-02*' # path to Diesel-RK results folder
 
-n                  = 92 # RPM
+terminalOutput     = 'false' # 'true' \ 'false', output log in the Terminal window
 
-S                  = 2.7 # m
+cylParPlot         = 'false' # 'true' \ 'false', integral cylinder parameters plot
 
-IPO                = 42 # ˚CA before BDC
+inOutParPlot       = 'false' # 'true' \ 'false', integral manifolds parameters plot
 
-IPC                = IPO # ˚CA after BDC
+inletInjectionPlot = 'true' # 'true' \ 'false', inlet & injection mass flow rate
 
-EVO                = 85 # ˚CA before BDC
+massFlowRatePar    = 'G' # 'rhoU' \ 'G', mass flow rate to plot (relative or not)
 
-EVC                = 46 # ˚CA after BDC
+saveFormat         = 'csv' # 'None' \ 'csv' \ 'txt'
 
-inletArea          = 1.092e-03 # m^2
+movingPartsPlot    = 'false' # 'true' \ 'false', moving parts (valve, piston) scheme
 
+# * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
-injG_max           = 1.17 # kg/s, q_injGas = 95 (g), t_injGas = 0.0815 (s))
+n           = 92 # RPM
 
-injCA2Max          = 10 # ˚CA
-
-injArea            = pi*pow(0.85e-03, 2)/4*2 # m^2, area of the two injector orifices d = 0.85 (mm)
-
-
-terminalOutput     = 'true' # true or false
-
-saveFormat         = 'txt' # None, csv or txt (coordinates is writen in the .csv, velocities in the .txt)
-
-cylParPlot         = 'false' # true or false
-
-inOutParPlot       = 'false' # true or false
-
-movingPartsPlot    = 'false' # true or false
-
-inletInjectionPlot = 'false' # true or false
+S           = 2.7 # m
 
 
-# *************************************************************************** #
+IPO         = 42 # ˚CA before BDC
 
-# R = 518.3 # J/mol/K specific gas constant
+IPC         = IPO # ˚CA after BDC
+
+EVO         = 85 # ˚CA before BDC
+
+EVC         = 46 # ˚CA after BDC
+
+inletArea   = 1092*191*1e-6 # m^2
+
+
+injG_max    = 0.0983/0.0815/20 # kg/s, q_injGas/t_injGas
+
+injCA2Max   = 10 # ˚CA
+
+injDuration = 80 - 2*injCA2Max # ˚CA
+
+injArea     = pi*pow(3.75e-03, 2)/4*2 # m^2, area which equals of the two injector orifices d = 3.75 (mm)
+
+injT        = 380 # K (estimated)
+
+injR        = 518.3 # J/mol/K specific gas constant
+
+
+# *****************************************************************************
