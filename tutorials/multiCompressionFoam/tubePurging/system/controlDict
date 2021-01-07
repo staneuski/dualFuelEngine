@@ -77,7 +77,7 @@ functions
         log             true;
         writeFields     false;
         operation       volIntegrate;
-        fields          (rho);
+        fields           (rho);
     }
 
     volAverageFieldValues

@@ -1,299 +1,143 @@
 #!/usr/bin/env python3
-'''----------------------------------------------------------------------------
-       ___       |
-     _|o_ |_     |   Language: Python 3.x
-    /  ___| \    |   Website: https://github.com/StasF1/dualFuelEngine
-    \_| ____/    |   Copyright (C) 2020 Stanislau Stasheuski
-      |__o|      |
-----------------------------------------------------------------------------'''
-
+# %% [markdown]
+# # `tubePurging/` cases post-processing
+# %% 
 import re
 import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
+from tabulate import tabulate
 
-# * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-# User-defined parameters
+solvers = ['multiCompressionFoam', 'rhoPimpleFoam', 'rhoCentralFoam']
 
 #- Plot parameters
-xFigSize       = 10
-yFigSize       = 8
+figsize = 8
+figsize_xy_ratio = 1.2
+fontsize = 12
+linewidth = 2
 
-titleFontSize  = 16
-subplotFontSize= 14
-labelFontSize  = 16
-legendFontSize = 12
-ticksFontSize  = 12
+Figsize = np.array([figsize*figsize_xy_ratio, figsize])
+Fontsize = fontsize*figsize_xy_ratio
 
-linewidthHeavy = 2
-linewidthLight = 1
+# %% Functions initialisation
+def get_case_path(solver, case="tubePurging"):
+    if solver == "multiCompressionFoam":
+        case_path = ""
+    else:
+        case_path = f"../../{solver}/{case}/"
+    return case_path
 
-fieldNames = [
-    "Pressure",
-    "Temperature",
-    "Density",
-    "Energy"
-]
-fields = ["p, Pa", "T, K", "$\\rho, kg/m^3$", "e, J/kg", "K, J/kg", "E, J/kg"]
-
-solvers = [ "multiCompressionFoam", "rhoPimpleFoam", "rhoCentralFoam"]
-
-# * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-
-def getExecutionTime( solver ):
-    ''' Get execution time from the log '''
-
-    for grep in open(f"tubePurging_{solver}/log.{solver}"):
+def grep_execution_time(solver):
+    """Get execution time from the log
+    """
+    for grep in open(f"{get_case_path(solver)}log.{solver}"):
         if "ExecutionTime" in grep:
-            ExecutionTime = re.findall('(\d+.\d+)', grep)
-    print(f"{solver} execution time: {ExecutionTime[0]} s")
+            execution_time = re.findall('(\d+.\d+)', grep)
+    return float(execution_time[0])
 
-    return float(ExecutionTime[0])
-
-
-# Get data
-# ~~~~~~~~
-#- multiCompressionFoam
-multiCompressionFoam = [
-    np.loadtxt(
-        'tubePurging_multiCompressionFoam/postProcessing/volAverageFieldValues/0/volFieldValue.dat',
-        skiprows = 4
-    ),
-    np.loadtxt(
-        'tubePurging_multiCompressionFoam/postProcessing/flowRatePatch(name=inlet)/0/surfaceFieldValue.dat',
-        skiprows = 4
-    ),
-    np.loadtxt(
-        'tubePurging_multiCompressionFoam/postProcessing/flowRatePatch(name=outlet)/0/surfaceFieldValue.dat',
-        skiprows = 4
-    ),
-    np.loadtxt(
-        "tubePurging_multiCompressionFoam/postProcessing/mass/0/volFieldValue.dat",
-        skiprows = 4
+# %% Create case set w/ dataframes
+df = {}
+for solver in solvers:
+    case_path = get_case_path(solver)
+    df[solver] = dict(
+        execution_time = grep_execution_time(solver),
+        volFieldValue = pd.read_csv(case_path + "postProcessing/"
+                                                "volAverageFieldValues/"
+                                                "0/volFieldValue.dat",
+                                    sep='\t', header=3),
+        flowRatePatch = dict(
+            inlet = pd.read_csv(case_path + "postProcessing/"
+                                            "flowRatePatch(name=inlet)/"
+                                            "0/surfaceFieldValue.dat",
+                                sep='\t', header=3, names=['time', "phi"]),
+            outlet = pd.read_csv(case_path + "postProcessing/"
+                                             "flowRatePatch(name=outlet)/"
+                                             "0/surfaceFieldValue.dat",
+                                 sep='\t', header=3, names=['time', "phi"]),
+        ),
+    ) 
+    df[solver]['volFieldValue'] = (
+        df[solver]['volFieldValue'].rename(columns={'# Time        ': 'time'})
     )
-]
-
-#- rhoPimpleFoam
-rhoPimpleFoam = [
-    np.loadtxt(
-        'tubePurging_rhoPimpleFoam/postProcessing/volAverageFieldValues/0/volFieldValue.dat',
-        skiprows = 4
-    ),
-    np.loadtxt(
-        'tubePurging_rhoPimpleFoam/postProcessing/flowRatePatch(name=inlet)/0/surfaceFieldValue.dat',
-        skiprows = 4
-    ),
-    np.loadtxt(
-        'tubePurging_rhoPimpleFoam/postProcessing/flowRatePatch(name=outlet)/0/surfaceFieldValue.dat',
-        skiprows = 4
-    ),
-    np.loadtxt(
-        "tubePurging_rhoPimpleFoam/postProcessing/mass/0/volFieldValue.dat",
-        skiprows = 4
+    df[solver]['volFieldValue']['volIntegrate(rho)'] = (
+        pd.read_csv(case_path + "postProcessing/mass/0/volFieldValue.dat",
+                    sep='\t', header=3)['volIntegrate(rho)']
     )
-]
+del case_path
 
-#- rhoCentralFoam
-rhoCentralFoam = [
-    np.loadtxt(
-        'tubePurging_rhoCentralFoam/postProcessing/volAverageFieldValues/0/volFieldValue.dat',
-        skiprows = 4
-    ),
-    np.loadtxt(
-        'tubePurging_rhoCentralFoam/postProcessing/flowRatePatch(name=inlet)/0/surfaceFieldValue.dat',
-        skiprows = 4
-    ),
-    np.loadtxt(
-        'tubePurging_rhoCentralFoam/postProcessing/flowRatePatch(name=outlet)/0/surfaceFieldValue.dat',
-        skiprows = 4
-    ),
-    np.loadtxt(
-        "tubePurging_rhoCentralFoam/postProcessing/mass/0/volFieldValue.dat",
-        skiprows = 4
-    )
-]
+# %% Mean volFieldValue() parameters
+plt.figure(figsize=Figsize*2).suptitle('Mean parameters\nvolFieldValue',
+                                     fontweight='bold', fontsize=Fontsize)
+subplot = 321
+for column, subplot_name, label in zip(
+        df["rhoPimpleFoam"]['volFieldValue'].columns[1:][1:-1],
+        ["Pressure", "Temperature", "Density", "Energy", "Mass"],
+        ["p, Pa", "T, K", "$\\rho, kg/m^3$", "E, J/kg", "M, kg"]
+    ):
+    plt.subplot(subplot).set_title(subplot_name + ", " + column,
+                                   fontstyle='italic', fontsize=fontsize)
+    color = 0
+    for solver in solvers:
+        plt.plot(df[solver]['volFieldValue']['time']*1e+3,
+                 df[solver]['volFieldValue'][column],
+                 label=solver, linewidth=linewidth)
+        if ((solver == "multiCompressionFoam" or solver == "rhoPimpleFoam")
+            and (column == "volAverage(e)")):
+            plt.plot(df[solver]['volFieldValue']['time']*1e+3,
+                     df[solver]['volFieldValue']["volAverage(K)"],
+                     label=solver + " (K)", linestyle='--', linewidth=linewidth,
+                     color='C' + str(color))
+            color += 1
+    del color
+    subplot += 1
 
-#- Execution time for all solvers
-ExecutionTimes = [ ]
-solverColors   = [ ]
-for i in range(len(solvers)):
-    ExecutionTimes.append(getExecutionTime( solvers[i] ))
-    solverColors.append(f"C{i}")
+    plt.grid(True)
+    plt.legend(loc="best", fontsize=fontsize)
+    plt.xlabel("$\\tau$, ms", fontsize=fontsize)
+    plt.ylabel(label, fontsize=fontsize)
+    plt.tick_params(axis="both", labelsize=fontsize)
+del subplot, column, subplot_name, label
+plt.savefig("postProcessing/volFieldValue(time).png")
 
-
-# Create plots
-# ~~~~~~~~~~~~
-#- Mean parameters
-plt.figure(
-    figsize = (xFigSize*2, yFigSize*2)
-).suptitle(
-    'Mean parameters', fontweight = 'bold', fontsize = titleFontSize
-)
-for i in range (0, len(fields) - 2):
-    plt.subplot(221 + i).set_title(
-        f'{fieldNames[i]}', fontweight = 'bold', fontsize = subplotFontSize
-    )
-
-    #- multiCompressionFoam
-    if fields[i] != "e, J/kg":
-        plt.plot(
-            multiCompressionFoam[0][:, 0]*1e+03,
-            multiCompressionFoam[0][:, i + 1],
-            label = 'multiCompressionFoam',
-            linewidth = linewidthHeavy
-        )
-        plt.ylabel( fields[i], fontsize = labelFontSize )
+# %% Mass flow rates flowRatePatch
+plt.figure(figsize=Figsize).suptitle("Mass flow rates",
+                                   fontweight='bold', fontsize=Fontsize)
+for patch in ['inlet', 'outlet']:
+    if patch == 'outlet':
+        linestyle = '--'
     else:
-        for j in range(0, 2):
-            if j == 0: lineType = '-'  # e
-            else:      lineType = '--' # K
-            plt.plot(
-                multiCompressionFoam[0][:, 0]*1e+03,
-                multiCompressionFoam[0][:, i + j + 1],
-                label = f'multiCompressionFoam ({fields[i + j]})',
-                linestyle = lineType,
-                linewidth = linewidthHeavy,
-                color = 'C0'
-            )
-        plt.ylabel( fields[i], fontsize = labelFontSize )
+        linestyle = '-'
 
-    #- rhoPimpleFoam
-    if fields[i] != "e, J/kg":
-        plt.plot(
-            rhoPimpleFoam[0][:, 0]*1e+03,
-            rhoPimpleFoam[0][:, i + 1],
-            label = 'rhoPimpleFoam',
-            linewidth = linewidthLight
-        )
-        plt.ylabel( fields[i], fontsize = labelFontSize )
-    else:
-        for j in range(0, 2):
-            if j == 0: lineType = '-'  # e
-            else:      lineType = '--' # K
-            plt.plot(
-                rhoPimpleFoam[0][:, 0]*1e+03,
-                rhoPimpleFoam[0][:, i + j + 1],
-                label = f'rhoPimpleFoam ({fields[i + j]})',
-                linestyle = lineType,
-                linewidth = linewidthLight,
-                color = 'C1'
-            )
-        plt.ylabel( fields[i], fontsize = labelFontSize )
+    for solver, color in zip(solvers, ['C0', 'C1', 'C2']):
+        plt.plot(df[solver]['flowRatePatch'][patch]['time']*1e+3,
+                 df[solver]['flowRatePatch'][patch]['phi'],
+                 label=(solver + ", " + patch),
+                 linestyle=linestyle, linewidth=linewidth, color=color)
+    del solver, color
+del patch, linestyle
 
-    #- rhoCentralFoam
-    plt.plot(
-        rhoCentralFoam[0][:, 0]*1e+03,
-        rhoCentralFoam[0][:, i + 1],
-        label = 'rhoCentralFoam',
-        linewidth = linewidthLight,
-        color = 'C2'
-    )
-    plt.ylabel( fields[i], fontsize = labelFontSize )
+plt.gca().invert_yaxis()
+plt.grid(True)
+plt.legend(loc="best", fontsize=fontsize)
+plt.xlabel("$\\tau$, ms", fontsize=fontsize)
+plt.ylabel("$\\varphi$, kg/s", fontsize=fontsize)
+plt.tick_params(axis="both", labelsize=fontsize)
+plt.savefig("postProcessing/flowRatePatch(time).png")
 
-    plt.grid( True )
-    plt.legend( loc = 'best', fontsize = legendFontSize )
-    plt.xlabel( '$\\tau$, ms', fontsize = labelFontSize )
-    plt.xticks( fontsize = ticksFontSize );  plt.yticks( fontsize = ticksFontSize )
-plt.savefig( 'tubePurging_multiCompressionFoam/postProcessing/volFieldValues.png' )
+# %% Execution times
+execution_times = []
+for solver in solvers:
+    execution_times.append(df[solver]['execution_time'])
 
+print(tabulate({"Solver": solvers, "ExecutionTime": execution_times},
+               headers="keys"))
 
-#- Mass flow rates
-plt.figure(
-    figsize = (xFigSize, yFigSize)
-).suptitle(
-    'Mass flow rates', fontweight = 'bold', fontsize = titleFontSize
-)
-for i in range (0, 2):
-    if i == 0:
-        subplotName = 'inlet'
-        flipPlot = -1 # flip plot around Y axis = 'true'
-        lineType = '-'
-    else:
-        subplotName = 'outlet'
-        flipPlot = 1 # flip plot around Y axis = 'false'
-        lineType = '--'
-
-    plt.plot(
-        multiCompressionFoam[i + 1][:, 0]*1e+03,
-        multiCompressionFoam[i + 1][:, 1]*flipPlot,
-        label = f'multiCompressionFoam ({subplotName})',
-        linestyle = lineType,
-        linewidth = linewidthHeavy,
-        color = 'C0'
-    )
-    plt.plot(
-        rhoPimpleFoam[i + 1][:, 0]*1e+03,
-        rhoPimpleFoam[i + 1][:, 1]*flipPlot,
-        label = f'rhoPimpleFoam ({subplotName})',
-        linestyle = lineType,
-        linewidth = linewidthLight,
-        color = 'C1'
-    )
-    plt.plot(
-        rhoCentralFoam[i + 1][:, 0]*1e+03,
-        rhoCentralFoam[i + 1][:, 1]*flipPlot,
-        label = f'rhoCentralFoam ({subplotName})',
-        linestyle = lineType,
-        linewidth = linewidthLight,
-        color = 'C2'
-    )
-
-    plt.grid( True )
-    plt.legend( loc = 'best', fontsize = legendFontSize )
-    plt.xlabel( '$\\tau$, ms', fontsize = labelFontSize )
-    plt.ylabel( '$\\varphi$, kg/s', fontsize = labelFontSize )
-    plt.xticks( fontsize = ticksFontSize );  plt.yticks(fontsize = ticksFontSize )
-plt.savefig( 'tubePurging_multiCompressionFoam/postProcessing/massFlowRates.png' )
-
-
-# #- Mass
-# plt.figure(
-#     figsize = (xFigSize, yFigSize)
-# ).suptitle(
-#     'Mass in the domain', fontweight = 'bold', fontsize = titleFontSize
-# )
-# plt.plot(
-#     multiCompressionFoam[3][:, 0]*1e+03,
-#     multiCompressionFoam[3][:, 1]*100,
-#     label = 'multiCompressionFoam',
-#     linewidth = linewidthHeavy
-# )
-# plt.plot(
-#     rhoPimpleFoam[3][:, 0]*1e+03,
-#     rhoPimpleFoam[3][:, 1]*100,
-#     label = 'multiCompressionFoam',
-#     linewidth = linewidthLight
-# )
-# plt.plot(
-#     rhoCentralFoam[3][:, 0]*1e+03,
-#     rhoCentralFoam[3][:, 1]*100,
-#     label = 'multiCompressionFoam',
-#     linewidth = linewidthLight
-# )
-# plt.grid( True )
-# plt.legend( loc = 'best', fontsize = legendFontSize )
-# plt.xlabel( '$\\tau$, ms', fontsize = labelFontSize )
-# plt.ylabel( 'M, g', fontsize = labelFontSize )
-# plt.xticks( fontsize = ticksFontSize );  plt.yticks( fontsize = ticksFontSize )
-# plt.savefig( 'tubePurging_multiCompressionFoam/postProcessing/masses.png' )
-
-
-#- Execution time bar plot
-plt.figure(
-    figsize = (xFigSize, yFigSize*0.65)
-).suptitle(
-    'Execution time by solver', fontweight = 'bold', fontsize = subplotFontSize
-)
-plt.bar(
-    range(len(ExecutionTimes)), ExecutionTimes,
-    color = solverColors,
-    zorder = 3
-)
-plt.grid( zorder = 0 )
-plt.xticks( range(len(ExecutionTimes)), solvers, fontsize = labelFontSize )
-plt.yticks( fontsize = ticksFontSize )
-plt.ylabel( '$\\tau$, s', fontsize = labelFontSize )
-plt.savefig( 'tubePurging_multiCompressionFoam/postProcessing/executionTimes.png' )
-
-exit( plt.show() )
-
-# *****************************************************************************
+plt.figure(figsize=Figsize*0.7).suptitle('Execution time by solver',
+                                       fontweight='bold', fontsize=Fontsize)
+plt.bar(range(len(solvers)), execution_times,
+        color=['C0', 'C1', 'C2'], zorder=3)
+plt.grid(zorder=0)
+plt.xticks(range(len(solvers)), solvers, fontsize=fontsize)
+plt.yticks(fontsize=fontsize)
+plt.ylabel("$\\tau$, s", fontsize=fontsize)
+plt.savefig("postProcessing/ExecutionTime(solver).png")

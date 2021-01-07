@@ -1,173 +1,166 @@
 #!/usr/bin/env python3
-'''----------------------------------------------------------------------------
-       ___       |
-     _|o_ |_     |   Language: Python 3.x
-    /  ___| \    |   Website: https://github.com/StasF1/dualFuelEngine
-    \_| ____/    |   Copyright (C) 2018-2020 Stanislau Stasheuski
-      |__o|      |
-----------------------------------------------------------------------------'''
-
-import glob
+# %% [markdown]
+# # `tubePurging/` cases post-processing
+# %%
+import re
 import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
+from tabulate import tabulate
 
-# * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-# User-defined parameters
-
-#- Plot parameters
-xFigSize       = 10
-yFigSize       = 8
-
-titleFontSize  = 16
-subplotFontSize= 14
-labelFontSize  = 16
-legendFontSize = 12
-ticksFontSize  = 12
-
-linewidthHeavy = 2
-linewidthLight = 1.5
+solvers = ['multiCompressionFoam', 'rhoPimpleFoam']
 
 #- Engine parameters
 rpm = 92 # [1/min]
+evo = 85 # CA˚ before TDC [deg]
+ipo = 42 # CA˚ before BDC [deg]
+ipc = ipo # CA˚ after BDC [deg]
 
-EVO = 85 # CA˚ before TDC [CAD]
+#- Plot parameters
+figsize = 8
+figsize_xy_ratio = 1.2
+fontsize = 12
+linewidth = 2
 
-IPO = 42 # CA˚ before BDC [CAD]
+Figsize = np.array([figsize*figsize_xy_ratio, figsize])
+Fontsize = fontsize*figsize_xy_ratio
 
-IPC = IPO # CA˚ after BDC [CAD]
-
-
-fieldNames = [
-    "Pressure",
-    "Temperature",
-    "Density",
-    "Energy"
-]
-fields = ["p, Pa", "T, K", "rho, kg/m^3", "e, J/kg", "K, J/kg", "E, J/kg"]
-
-# * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-
-def enginePlot( labelFontSize, legendFontSize, ticksFontSize, EVO, IPO ):
-    ''' Stardart for all engine plots parameters and annotations '''
-
-    plt.annotate(
-    '(BDC)', (1, 1),
-    xytext = (EVO/(EVO + 180)*1.18, -0.04), textcoords = 'axes fraction',
-    horizontalalignment = 'right', verticalalignment = 'top'
-    )
-    plt.annotate(
-        '(TDC)', (1, 1),
-        xytext = (1, -0.04), textcoords = 'axes fraction',
-        horizontalalignment = 'right', verticalalignment = 'top'
-    )
-    plt.axvline( x = -180, color = 'black', linestyle = '--', linewidth = 1 )
-    plt.axvline( x = 0, color = 'black', linestyle = '--', linewidth = 1 )
-    plt.axvspan( -IPO - 180, IPO - 180, alpha = 0.18, color = 'grey' )
-    plt.grid( True )
-    plt.legend( loc = 'best', fontsize = legendFontSize )
-    plt.xlabel( '$\\theta$, CA˚', fontsize = labelFontSize )
-    plt.xticks( fontsize = ticksFontSize );  plt.yticks( fontsize = ticksFontSize )
-
-
-# Get data
-# ~~~~~~~~
-rhoPimpleFoam = [
-    np.loadtxt(
-        "cylCyclic2D_rhoPimpleFoam/postProcessing/volAverageFieldValues/0/volFieldValue.dat",
-        skiprows = 4
-    ),
-    np.loadtxt(
-        "cylCyclic2D_rhoPimpleFoam/postProcessing/flowRatePatch(name=inlet)/0/surfaceFieldValue.dat",
-        skiprows = 4
-    ),
-    np.loadtxt(
-        "cylCyclic2D_rhoPimpleFoam/postProcessing/flowRatePatch(name=injection)/0/surfaceFieldValue.dat",
-        skiprows = 4
-    ),
-    np.loadtxt(
-        "cylCyclic2D_rhoPimpleFoam/postProcessing/flowRatePatch(name=outlet)/0/surfaceFieldValue.dat",
-        skiprows = 4
-    )
-]
-# np.append(rhoPimpleFoam[3], rhoPimpleFoam[3][:,4] + rhoPimpleFoam[3][:,5]) # E = e + K
-
-
-# Create plots
-# ~~~~~~~~~~~~
-#- Mean parameters
-plt.figure(
-        figsize = (xFigSize*2, yFigSize*2)
-).suptitle(
-    'Mean parameters through time', fontweight = 'bold', fontsize = titleFontSize
-)
-
-for i in range (0, len(fields) - 2):
-    plt.subplot(221 + i).set_title(
-        f'{fieldNames[i]}', fontweight = 'bold', fontsize = subplotFontSize
-    )
-
-    #- rhoPimpleFoam
-    if fields[i] != "e, J/kg":
-        plt.plot(
-            rhoPimpleFoam[0][:, 0]*6*rpm - 180 - EVO,
-            rhoPimpleFoam[0][:, i + 1],
-            label = 'rhoPimpleFoam',
-            linewidth = linewidthLight
-        )
-        plt.ylabel( fields[i], fontsize = labelFontSize )
+# %% Functions initialisation
+def get_case_path(solver, case="cylCyclic2D"):
+    if solver == "multiCompressionFoam":
+        case_path = ""
     else:
-        for j in range(0, 2):
-            if j == 0: lineType = '-'  # e
-            else:      lineType = '--' # K
-            plt.plot(
-                rhoPimpleFoam[0][:, 0]*6*rpm - 180 - EVO,
-                rhoPimpleFoam[0][:, i + j + 1],
-                label = f'rhoPimpleFoam ({fields[i + j]})',
-                linestyle = lineType,
-                linewidth = linewidthLight,
-                color = 'C1'
-            )
-        plt.ylabel( fields[i], fontsize = labelFontSize )
+        case_path = f"../../{solver}/{case}/"
+    return case_path
 
-    enginePlot( labelFontSize, legendFontSize, ticksFontSize, EVO, IPO )
-plt.savefig( 'cylCyclic2D_rhoPimpleFoam/postProcessing/volFieldValues.png' )
+def grep_execution_time(solver):
+    """Get execution time from the log
+    """
+    for grep in open(f"{get_case_path(solver)}log.{solver}"):
+        if "ExecutionTime" in grep:
+            execution_time = re.findall('(\d+.\d+)', grep)
+    return float(execution_time[0])
 
-#- Mass flow rates
-plt.figure(
-    figsize = (xFigSize, yFigSize)
-).suptitle(
-    'Mass flow rates', fontweight = 'bold', fontsize = titleFontSize
-)
+def set_engine_plot_parameters():
+    """Stardart for all engine plots parameters and annotations
+    """
+    plt.annotate('(BDC)', (1, 1), xytext=(evo/(evo + 180)*1.16, -0.04),
+                 textcoords='axes fraction',
+                 horizontalalignment='right', verticalalignment='top')
+    plt.annotate('(TDC)', (1, 1), xytext=(0.985, -0.04),
+                 textcoords='axes fraction',
+                 horizontalalignment='right', verticalalignment='top')
+    plt.axvline(x=-180, color ='black', linestyle='--', linewidth=1)
+    plt.axvline(x=0, color='black', linestyle='--', linewidth=1)
+    plt.axvspan(-ipo - 180, ipo - 180, alpha=0.18, color='grey')
 
-#- rhoPimpleFoam
-plt.plot(
-    rhoPimpleFoam[1][:,0]*6*rpm - 180 - EVO,
-  - rhoPimpleFoam[1][:,1],
-    label = 'rhoPimpleFoam (inlet)',
-    linewidth = linewidthLight,
-    linestyle = '--',
-    color = 'C1'
-)
-plt.plot(
-    rhoPimpleFoam[2][:,0]*6*rpm - 180 - EVO,
-  - rhoPimpleFoam[2][:,1],
-    label = 'rhoPimpleFoam (injection)',
-    linewidth = linewidthLight,
-    linestyle = ':',
-    color = 'C1'
-)
-plt.plot(
-    rhoPimpleFoam[3][:,0]*6*rpm - 180 - EVO,
-    rhoPimpleFoam[3][:,1],
-    label = 'rhoPimpleFoam (outlet)',
-    linewidth = linewidthLight,
-    color = 'C1'
-)
+    plt.grid(True)
+    plt.legend(loc='best', fontsize=fontsize)
+    plt.xlabel('$\\theta$, CA˚', fontsize=fontsize)
 
-plt.ylabel( '$\\varphi$, kg/s', fontsize = labelFontSize )
-enginePlot( labelFontSize, legendFontSize, ticksFontSize, EVO, IPO )
+# %% Create case set w/ dataframes
+df = {}
+for solver in solvers:
+    case_path = get_case_path(solver)
+    df[solver] = dict(
+        execution_time = grep_execution_time(solver),
+        volFieldValue = pd.read_csv(case_path + "postProcessing/"
+                                                "volAverageFieldValues/"
+                                                "0/volFieldValue.dat",
+                                    sep='\t', header=3),
+        flowRatePatch = dict(
+            inlet = pd.read_csv(case_path + "postProcessing/"
+                                            "flowRatePatch(name=inlet)/"
+                                            "0/surfaceFieldValue.dat",
+                                sep='\t', header=3, names=['time', "phi"]),
+            injection = pd.read_csv(case_path + "postProcessing/"
+                                                "flowRatePatch(name=injection)/"
+                                                "0/surfaceFieldValue.dat",
+                                    sep='\t', header=3, names=['time', "phi"]),
+            outlet = pd.read_csv(case_path + "postProcessing/"
+                                             "flowRatePatch(name=outlet)/"
+                                             "0/surfaceFieldValue.dat",
+                                 sep='\t', header=3, names=['time', "phi"]),
+        ),
+    ) 
+    df[solver]['volFieldValue'] = (
+        df[solver]['volFieldValue'].rename(columns={'# Time        ': 'time'})
+    )
+    # df[solver]['volFieldValue']['volIntegrate(rho)'] = (
+    #     pd.read_csv(case_path + "postProcessing/mass/0/volFieldValue.dat",
+    #                 sep='\t', header=3)['volIntegrate(rho)']
+    # )
+del case_path
 
-exit(plt.show())
+# %% Mean volFieldValue() parameters
+plt.figure(figsize=Figsize*2).suptitle('Mean parameters\nvolFieldValue',
+                                     fontweight='bold', fontsize=Fontsize)
+subplot = 221
+for column, subplot_name, label in zip(
+        df["rhoPimpleFoam"]['volFieldValue'].columns[1:-1],
+        ["Pressure", "Temperature", "Density", "Energy", "Mass"],
+        ["p, Pa", "T, K", "$\\rho, kg/m^3$", "E, J/kg", "M, kg"]
+    ):
+    plt.subplot(subplot).set_title(subplot_name + ", " + column,
+                                   fontstyle='italic', fontsize=fontsize)
+    color = 0
+    for solver in solvers:
+        plt.plot(df[solver]['volFieldValue']['time']*6*rpm - 180 - evo,
+                 df[solver]['volFieldValue'][column],
+                 label=solver, linewidth=linewidth)
+        if ((solver == "multiCompressionFoam" or solver == "rhoPimpleFoam")
+            and (column == "volAverage(e)")):
+            plt.plot(df[solver]['volFieldValue']['time']*6*rpm - 180 - evo,
+                     df[solver]['volFieldValue']["volAverage(K)"],
+                     label=solver + " (K)", linestyle='--', linewidth=linewidth,
+                     color='C' + str(color))
+            color += 1
+    del color
+    subplot += 1
 
+    plt.ylabel(label, fontsize=fontsize)
+    set_engine_plot_parameters()
+del subplot, column, subplot_name, label
+plt.savefig("postProcessing/volFieldValue(time).png")
 
-# *****************************************************************************
+# %% Mass flow rates flowRatePatch
+plt.figure(figsize=Figsize).suptitle("Mass flow rates",
+                                   fontweight='bold', fontsize=Fontsize)
+for patch in ['inlet', 'injection', 'outlet']:
+    if patch == 'outlet':
+        linestyle = '--'
+    elif patch == 'injection':
+        linestyle = ':'
+    else:
+        linestyle = '-'
+
+    for solver, color in zip(solvers, ['C0', 'C1', 'C2']):
+        plt.plot(df[solver]['flowRatePatch'][patch]['time']*6*rpm - 180 - evo,
+                 df[solver]['flowRatePatch'][patch]['phi'],
+                 label=(solver + ", " + patch),
+                 linestyle=linestyle, linewidth=linewidth, color=color)
+    del solver, color
+del patch, linestyle
+
+plt.gca().invert_yaxis()
+plt.ylabel("$\\varphi$, kg/s", fontsize=fontsize)
+set_engine_plot_parameters()
+plt.savefig("postProcessing/flowRatePatch(time).png")
+
+# %% Execution times
+execution_times = []
+for solver in solvers:
+    execution_times.append(df[solver]['execution_time'])
+
+print(tabulate({"Solver": solvers, "ExecutionTime": execution_times},
+               headers="keys"))
+
+plt.figure(figsize=Figsize*0.7).suptitle('Execution time by solver',
+                                       fontweight='bold', fontsize=Fontsize)
+plt.bar(range(len(solvers)), execution_times,
+        color=['C0', 'C1', 'C2'], zorder=3)
+plt.grid(zorder=0)
+plt.xticks(range(len(solvers)), solvers, fontsize=fontsize)
+plt.yticks(fontsize=fontsize)
+plt.ylabel("$\\tau$, s", fontsize=fontsize)
+plt.savefig("postProcessing/ExecutionTime(solver).png")

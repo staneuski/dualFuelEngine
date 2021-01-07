@@ -1,70 +1,60 @@
 #!/usr/bin/env python3
-'''----------------------------------------------------------------------------
-       ___       |
-     _|o_ |_     |   Language: Python 3.x
-    /  ___| \    |   Website: https://github.com/StasF1/dualFuelEngine
-    \_| ____/    |   Copyright (C) 2020 Stanislau Stasheuski
-      |__o|      |
-----------------------------------------------------------------------------'''
-
+# %% [markdown]
+# # `shockTube/` cases post-processing
+# %%
+import os
 import re
+import numpy as np
 import matplotlib.pyplot as plt
-
-# * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-# User-defined parameters
-
-#- Plot parameters
-xFigSize       = 10
-yFigSize       = 8
-
-titleFontSize  = 16
-subplotFontSize= 14
-labelFontSize  = 16
-legendFontSize = 12
-ticksFontSize  = 12
-
-linewidthHeavy = 2
-linewidthLight = 1
+from tabulate import tabulate
 
 solvers = ["multiCompressionFoam", "rhoPimpleFoam", "rhoCentralFoam"]
 
-# * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+figsize = 8
+figsize_xy_ratio = 1.2
+fontsize = 12
+linewidth = 2
 
-def getExecutionTime(solver):
-    ''' Get execution time from the log '''
+Figsize = np.array([figsize*figsize_xy_ratio, figsize])
+Fontsize = fontsize*figsize_xy_ratio
 
-    for grep in open(f"shockTube_{solver}/log.{solver}"):
+# %% Initialisation
+def get_case_path(solver, case='shockTube'):
+    if solver == "multiCompressionFoam":
+        case_path = ""
+    else:
+        case_path = f"../../{solver}/{case}/"
+    return case_path
+
+def grep_execution_time(solver):
+    """Get execution time from the log
+    """
+    for grep in open(f"{get_case_path(solver)}log.{solver}"):
         if "ExecutionTime" in grep:
-            ExecutionTime = re.findall('(\d+.\d+)', grep)
-    print(f"{solver} execution time: {ExecutionTime[0]} s")
+            execution_time = re.findall('(\d+.\d+)', grep)
+    return float(execution_time[0])
 
-    return float(ExecutionTime[0])
+# %% Create case set w/ dataframes
+df = {}
+for solver in solvers:
+    df[solver] = dict(
+        execution_time = grep_execution_time(solver),
+    )
 
+# %% Execution times
+execution_times = []
+for solver in solvers:
+    execution_times.append(df[solver]['execution_time'])
 
-# Get data
-# ~~~~~~~~
-ExecutionTimes = [ ]
-solverColors   = [ ]
-for i in range(len(solvers)):
-    ExecutionTimes.append(getExecutionTime(solvers[i]))
-    solverColors.append(f"C{i}")
+print(tabulate({"Solver": solvers, "ExecutionTime": execution_times},
+               headers="keys"))
 
-
-# Create plot
-# ~~~~~~~~~~~
-plt.figure(figsize = (xFigSize, yFigSize*0.75))
-plt.title('Execution time by solver',
-          fontweight = 'bold', fontsize = subplotFontSize)
-
-plt.bar(range(len(ExecutionTimes)), ExecutionTimes,
-        color = solverColors, zorder = 3)
-
-plt.grid(zorder = 0)
-plt.xticks(range(len(ExecutionTimes)), solvers, fontsize = labelFontSize)
-plt.yticks(fontsize = ticksFontSize)
-plt.ylabel('$\\tau$, s', fontsize = labelFontSize)
-plt.savefig('shockTube_multiCompressionFoam/executionTimes.png')
-
-exit(plt.show())
-
-# *****************************************************************************
+plt.figure(figsize=Figsize*0.7).suptitle('Execution time by solver',
+                                       fontweight='bold', fontsize=Fontsize)
+plt.bar(range(len(solvers)), execution_times,
+        color=['C0', 'C1', 'C2'], zorder=3)
+plt.grid(zorder=0)
+plt.xticks(range(len(solvers)), solvers, fontsize=fontsize)
+plt.yticks(fontsize=fontsize)
+plt.ylabel("$\\tau$, s", fontsize=fontsize)
+plt.savefig("postProcessing/ExecutionTime(solver).png")
