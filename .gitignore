@@ -38,7 +38,7 @@ etc/FlowVision/**/*_[00001-99999]*.*[fvstat,fvinp]
 tutorials/resources/blockMesh/cylCyclic2D
 tutorials/resources/blockMesh/cylPiston
 tutorials/**/0/*[alphaAir,alphaGas,Co,e,K,Ma,p,T,U,V]
-!tutorials/**/tubePurging_rho*[PimpleFoam,CentralFoam]/0/*[p,T,U]
+!tutorials/rho*[PimpleFoam,CentralFoam]/**/0/*[p,T,U]
 
 # Folders - local
 etc/**/*.*[drk,fv,*]res/

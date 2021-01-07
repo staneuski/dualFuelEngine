@@ -36,41 +36,33 @@ OpenFOAM solver based on phenomenological compression model for dual-fuel ship e
 
 # Structure
 ```gitignore
-dualFuelEngine-0.5.x-alpha
+dualFuelEngine-0.6.x-alpha
 ├── etc
 │   ├── DRK2Py
-│   │   ├── include
-│   │   └── MAN_BnW-DieselRK.drkres # download MAN_BnW.drkres.zip from the v0.5-alpha
 │   └── scripts
 ├── solvers
 │   └── multiCompressionFoam
-│       └── Make
 └── tutorials
-    ├── multiCompressionFoam
-    │   ├── cylCyclic2D
-    │   │   ├── cylCyclic2D_multiCompressionFoam
-    │   │   └── cylCyclic2D_rhoPimpleFoam
-    │   ├── cylPiston
-    │   │   ├── cylPiston_multiCompressionFoam
-    │   │   └── cylPiston_rhoPimpleFoam
-    │   ├── pipeCompression
-    │   │   ├── pipeCompression_multiCompressionFoam
-    │   │   ├── pipeCompression_rhoCentralFoam
-    │   │   └── pipeCompression_rhoPimpleFoam
-    │   ├── quadPiston
-    │   ├── RiemannTube
-    │   ├── shockTube
-    │   │   ├── shockTube_multiCompressionFoam
-    │   │   ├── shockTube_rhoCentralFoam
-    │   │   └── shockTube_rhoPimpleFoam
-    │   └── tubePurging
-    │       ├── tubePurging_multiCompressionFoam
-    │       ├── tubePurging_rhoCentralFoam
-    │       └── tubePurging_rhoPimpleFoam
-    └── resources
-        ├── blockMesh
-        ├── createBaffles
-        ├── engineProperties
-        ├── geometry
-        └── topoSet
+    ├── multiCompressionFoam
+    │   ├── cylCyclic2D
+    │   ├── cylPiston
+    │   ├── pipeCompression
+    │   ├── quadPiston
+    │   ├── shockTube
+    │   └── tubePurging
+    ├── resources
+    │   ├── blockMesh
+    │   ├── createBaffles
+    │   ├── engineProperties
+    │   ├── geometry
+    │   └── topoSet
+    ├── rhoCentralFoam
+    │   ├── pipeCompression
+    │   ├── shockTube
+    │   └── tubePurging
+    └── rhoPimpleFoam
+        ├── cylCyclic2D
+        ├── cylPiston
+        ├── pipeCompression
+        └── tubePurging
 ```

@@ -26,11 +26,11 @@ ticksFontSize  = 12
 linewidthHeavy = 2
 linewidthLight = 1
 
-solvers = [ "multiCompressionFoam", "rhoPimpleFoam", "rhoCentralFoam"]
+solvers = ["multiCompressionFoam", "rhoPimpleFoam", "rhoCentralFoam"]
 
 # * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
-def getExecutionTime( solver ):
+def getExecutionTime(solver):
     ''' Get execution time from the log '''
 
     for grep in open(f"shockTube_{solver}/log.{solver}"):
@@ -46,27 +46,25 @@ def getExecutionTime( solver ):
 ExecutionTimes = [ ]
 solverColors   = [ ]
 for i in range(len(solvers)):
-    ExecutionTimes.append(getExecutionTime( solvers[i] ))
+    ExecutionTimes.append(getExecutionTime(solvers[i]))
     solverColors.append(f"C{i}")
 
 
 # Create plot
 # ~~~~~~~~~~~
-plt.figure( figsize = (xFigSize, yFigSize*0.75) )
-plt.title(
-    'Execution time by solver', fontweight = 'bold', fontsize = subplotFontSize
-)
-plt.bar(
-    range(len(ExecutionTimes)), ExecutionTimes,
-    color = solverColors,
-    zorder = 3
-)
-plt.grid( zorder = 0 )
-plt.xticks( range(len(ExecutionTimes)), solvers, fontsize = labelFontSize )
-plt.yticks( fontsize = ticksFontSize )
-plt.ylabel( '$\\tau$, s', fontsize = labelFontSize )
-plt.savefig( 'shockTube_multiCompressionFoam/executionTimes.png' )
+plt.figure(figsize = (xFigSize, yFigSize*0.75))
+plt.title('Execution time by solver',
+          fontweight = 'bold', fontsize = subplotFontSize)
 
-exit( plt.show() )
+plt.bar(range(len(ExecutionTimes)), ExecutionTimes,
+        color = solverColors, zorder = 3)
+
+plt.grid(zorder = 0)
+plt.xticks(range(len(ExecutionTimes)), solvers, fontsize = labelFontSize)
+plt.yticks(fontsize = ticksFontSize)
+plt.ylabel('$\\tau$, s', fontsize = labelFontSize)
+plt.savefig('shockTube_multiCompressionFoam/executionTimes.png')
+
+exit(plt.show())
 
 # *****************************************************************************

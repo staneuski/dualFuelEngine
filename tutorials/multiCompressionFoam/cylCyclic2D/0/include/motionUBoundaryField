@@ -1,0 +1,100 @@
+boundaryField
+{
+/* Inlet */
+    "injection|inlet"
+    {
+        type            uniformFixedValue;
+        uniformValue    constant 0;
+    }
+
+/* Outlet */
+    outlet
+    {
+        $inlet
+    }
+
+/* Walls */
+    piston
+    {
+        type            uniformFixedValue;
+        uniformValue
+        {
+            type             tableFile;
+            format           csv;
+            nHeaderLine      1;
+            refColumn        0;
+            componentColumns (1);
+            mergeSeparators  no;
+            file              "pistonMotionUz.csv";
+        }
+    }
+    valveHead
+    {
+        type            uniformFixedValue;
+        uniformValue
+        {
+            type             tableFile;
+            format           csv;
+            nHeaderLine      1;
+            refColumn        0;
+            componentColumns (1);
+            mergeSeparators  no;
+            file              "valveMotionUz.csv";
+        }
+    }
+    valveStem
+    {
+        type            slip;
+    }
+    walls
+    {
+        type            uniformFixedValue;
+        uniformValue    constant 0;
+    }
+
+/* ACMI & cyclic patches */
+    #includeEtc "caseDicts/setConstraintTypes"
+
+    // Inner ACMI patch
+    innerACMI1_couple
+    {
+        type            slip;
+        patchType       cyclicACMI;
+    }
+    innerACMI1_blockage
+    {
+        type            slip;
+    }
+    innerACMI2_couple
+    {
+        type            slip;
+        patchType       cyclicACMI;
+    }
+    innerACMI2_blockage
+    {
+        type            slip;
+    }
+
+    // Outer ACMI patch
+    outerACMI1_couple
+    {
+        type            uniformFixedValue;
+        patchType       cyclicACMI;
+        uniformValue    0;
+    }
+    outerACMI1_blockage
+    {
+        type            uniformFixedValue;
+        uniformValue    0;
+    }
+    outerACMI2_couple
+    {
+        type            slip;
+        patchType       cyclicACMI;
+    }
+    outerACMI2_blockage
+    {
+        type            slip;
+        value           uniform 0;
+    }
+}
