@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # %% [markdown]
-# # `tubePurging/` cases post-processing
+# # `pipeCompression/` cases post-processing
 # %%
 import os
 import re
@@ -9,19 +9,22 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from tabulate import tabulate
 
+sys.path.insert(0, '../../../src')
+from foam2py.plot_values import *
+
 solvers = ['multiCompressionFoam', 'rhoPimpleFoam', 'rhoCentralFoam']
 
-#- Plot parameters
-figsize = 8
-figsize_xy_ratio = 1.2
-fontsize = 12
-linewidth = 2
-
-Figsize = np.array([figsize*figsize_xy_ratio, figsize])
-Fontsize = fontsize*figsize_xy_ratio
+#- Adiabatic compression parameters
+frequency = 1 # [s]
+amplitude = 2 # [m/s]
+start = 0.15 # [s]
+Cp = 1005 # [J/kg/K]
+Cv = Cp - 287 # [J/kg/K]
+AREA = 1e-4 # [m^2]
+LENGTH = 0.6 # [m]
 
 # %% Functions initialisation
-def get_case_path(solver, case="tubePurging"):
+def get_case_path(solver, case="pipeCompression"):
     case_path = os.path.split(os.path.realpath(__file__))[0] + '/'
     if solver != "multiCompressionFoam":
         case_path += f"../../{solver}/{case}/"
@@ -54,17 +57,7 @@ for solver in solvers:
                                                 "volAverageFieldValues/"
                                                 "0/volFieldValue.dat",
                                     sep='\t', header=3),
-        flowRatePatch = dict(
-            inlet = pd.read_csv(case_path + "postProcessing/"
-                                            "flowRatePatch(name=inlet)/"
-                                            "0/surfaceFieldValue.dat",
-                                sep='\t', header=3, names=['time', "phi"]),
-            outlet = pd.read_csv(case_path + "postProcessing/"
-                                             "flowRatePatch(name=outlet)/"
-                                             "0/surfaceFieldValue.dat",
-                                 sep='\t', header=3, names=['time', "phi"]),
-        ),
-    ) 
+    )
     df[solver]['volFieldValue'] = (
         df[solver]['volFieldValue'].rename(columns={'# Time        ': 'time'})
     )
@@ -73,6 +66,37 @@ for solver in solvers:
                     sep='\t', header=3)['volIntegrate(rho)']
     )
 del case_path
+
+# Adiabatic process calculation
+coord = -amplitude/2/np.pi/frequency*np.cos(
+    2*np.pi*frequency*(df['multiCompressionFoam']['volFieldValue']['time']
+                       - start)
+)
+v = (LENGTH - (coord - coord[0]))*AREA
+
+df['adiabatic_process'] = {}
+df['adiabatic_process']['volFieldValue'] = {
+    'time': df['multiCompressionFoam']['volFieldValue']['time'],
+    'volAverage(p)': (df['multiCompressionFoam']['volFieldValue']
+                        ['volAverage(p)'][0]
+                      *pow(v[0]/v, Cp/Cv)), # p_IC*(V_IC/V)^(Cp/Cv)
+    'volAverage(T)': (df['multiCompressionFoam']['volFieldValue']
+                        ['volAverage(T)'][0]
+                      *pow(v[0]/v, Cp/Cv - 1)), # T_IC*(V_IC/V)^(Cp/Cv - 1)
+    'volAverage(rho)': (df['multiCompressionFoam']['volFieldValue']
+                          ['volAverage(rho)'][0]
+                        *v[0]/v), # rho_IC*(V_IC/V)
+    'volAverage(e)': (df['multiCompressionFoam']['volFieldValue']
+                        ['volAverage(e)'][0]
+                      *pow(v[0]/v, Cp/Cv - 1)), # e_IC*(V_IC/V)^(Cp/Cv - 1)
+    'volIntegrate(rho)': np.full(shape=len(df['multiCompressionFoam']['volFieldValue']
+                                             ['time']),
+                                 fill_value=df['multiCompressionFoam']['volFieldValue']
+                                             ['volIntegrate(rho)'][0])
+}
+
+print(f"Compression ratio: {max(v)/min(v):.3f}")
+del coord, v
 
 # %% Mean volFieldValue() parameters
 plt.figure(figsize=Figsize*2).suptitle('Mean parameters\nvolFieldValue',
@@ -86,7 +110,8 @@ for column, subplot_name, label in zip(
     plt.subplot(subplot).set_title(subplot_name + ", " + column,
                                    fontstyle='italic', fontsize=fontsize)
     color = 0
-    for solver in solvers:
+    for solver in ['multiCompressionFoam', 'rhoPimpleFoam', 'rhoCentralFoam',
+                   'adiabatic_process']:
         plt.plot(df[solver]['volFieldValue']['time']*1e+3,
                  df[solver]['volFieldValue'][column],
                  label=solver, linewidth=linewidth)
@@ -108,32 +133,6 @@ for column, subplot_name, label in zip(
 del subplot, column, subplot_name, label
 plt.savefig(get_case_path(solvers[0])
            + "postProcessing/volFieldValue(time).png")
-
-# %% Mass flow rates flowRatePatch
-plt.figure(figsize=Figsize).suptitle("Mass flow rates",
-                                   fontweight='bold', fontsize=Fontsize)
-for patch in ['inlet', 'outlet']:
-    if patch == 'outlet':
-        linestyle = '--'
-    else:
-        linestyle = '-'
-
-    for solver, color in zip(solvers, ['C0', 'C1', 'C2']):
-        plt.plot(df[solver]['flowRatePatch'][patch]['time']*1e+3,
-                 df[solver]['flowRatePatch'][patch]['phi'],
-                 label=(solver + ", " + patch),
-                 linestyle=linestyle, linewidth=linewidth, color=color)
-    del solver, color
-del patch, linestyle
-
-plt.gca().invert_yaxis()
-plt.grid(True)
-plt.legend(loc="best", fontsize=fontsize)
-plt.xlabel("$\\tau$, ms", fontsize=fontsize)
-plt.ylabel("$\\varphi$, kg/s", fontsize=fontsize)
-plt.tick_params(axis="both", labelsize=fontsize)
-plt.savefig(get_case_path(solvers[0])
-           + "postProcessing/flowRatePatch(time).png")
 
 # %% Execution times
 execution_times = []
@@ -158,4 +157,4 @@ class Output:
         print(tabulate({"solver": solvers,
                         f"time, s": execution_times},
                        headers="keys"))
-Output.execution_time("tubePurging")
+Output.execution_time("pipeCompression")

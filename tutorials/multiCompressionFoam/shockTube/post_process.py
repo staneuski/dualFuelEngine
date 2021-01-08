@@ -5,20 +5,16 @@
 import os
 import re
 import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
 from tabulate import tabulate
 
+sys.path.insert(0, '../../../src')
+from foam2py.plot_values import *
+
 solvers = ["multiCompressionFoam", "rhoPimpleFoam", "rhoCentralFoam"]
 
-figsize = 8
-figsize_xy_ratio = 1.2
-fontsize = 12
-linewidth = 2
-
-Figsize = np.array([figsize*figsize_xy_ratio, figsize])
-Fontsize = fontsize*figsize_xy_ratio
-
-# %% Initialisation
+# %% Functions initialisation
 def get_case_path(solver, case='shockTube'):
     case_path = os.path.split(os.path.realpath(__file__))[0] + '/'
     if solver != "multiCompressionFoam":
