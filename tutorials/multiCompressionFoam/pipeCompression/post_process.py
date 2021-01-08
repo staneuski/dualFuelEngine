@@ -36,8 +36,8 @@ for solver in solvers:
     df[solver] = dict(
         execution_time = openfoam_case.grep_value("ExecutionTime",
                                                   log=case_path
-                                                      + f"log.{solver}"),
-        volFieldValue = pd.read_csv(case_path + "postProcessing/"
+                                                      + f"/log.{solver}"),
+        volFieldValue = pd.read_csv(case_path + "/postProcessing/"
                                                 "volAverageFieldValues/"
                                                 "0/volFieldValue.dat",
                                     sep='\t', header=3),
@@ -46,7 +46,7 @@ for solver in solvers:
         df[solver]['volFieldValue'].rename(columns={'# Time        ': 'time'})
     )
     df[solver]['volFieldValue']['volIntegrate(rho)'] = (
-        pd.read_csv(case_path + "postProcessing/mass/0/volFieldValue.dat",
+        pd.read_csv(case_path + "/postProcessing/mass/0/volFieldValue.dat",
                     sep='\t', header=3)['volIntegrate(rho)']
     )
 del case_path

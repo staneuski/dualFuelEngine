@@ -33,21 +33,21 @@ for solver in solvers:
     df[solver] = dict(
         execution_time = openfoam_case.grep_value("ExecutionTime",
                                                   log=case_path
-                                                      + f"log.{solver}"),
-        volFieldValue = pd.read_csv(case_path + "postProcessing/"
+                                                      + f"/log.{solver}"),
+        volFieldValue = pd.read_csv(case_path + "/postProcessing/"
                                                 "volAverageFieldValues/"
                                                 "0/volFieldValue.dat",
                                     sep='\t', header=3),
         flowRatePatch = dict(
-            inlet = pd.read_csv(case_path + "postProcessing/"
+            inlet = pd.read_csv(case_path + "/postProcessing/"
                                             "flowRatePatch(name=inlet)/"
                                             "0/surfaceFieldValue.dat",
                                 sep='\t', header=3, names=['time', "phi"]),
-            injection = pd.read_csv(case_path + "postProcessing/"
+            injection = pd.read_csv(case_path + "/postProcessing/"
                                                 "flowRatePatch(name=injection)/"
                                                 "0/surfaceFieldValue.dat",
                                     sep='\t', header=3, names=['time', "phi"]),
-            outlet = pd.read_csv(case_path + "postProcessing/"
+            outlet = pd.read_csv(case_path + "/postProcessing/"
                                              "flowRatePatch(name=outlet)/"
                                              "0/surfaceFieldValue.dat",
                                  sep='\t', header=3, names=['time', "phi"]),
@@ -57,7 +57,7 @@ for solver in solvers:
         df[solver]['volFieldValue'].rename(columns={'# Time        ': 'time'})
     )
     # df[solver]['volFieldValue']['volIntegrate(rho)'] = (
-    #     pd.read_csv(case_path + "postProcessing/mass/0/volFieldValue.dat",
+    #     pd.read_csv(case_path + "/postProcessing/mass/0/volFieldValue.dat",
     #                 sep='\t', header=3)['volIntegrate(rho)']
     # )
 del case_path

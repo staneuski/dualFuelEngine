@@ -27,7 +27,7 @@ for solver in solvers:
     df[solver] = dict(
         execution_time = openfoam_case.grep_value("ExecutionTime",
                                                   log=case_path
-                                                      + f"log.{solver}"),
+                                                      + f"/log.{solver}"),
     )
 del case_path
 print(tabulated.info(project_path, df))
