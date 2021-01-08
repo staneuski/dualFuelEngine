@@ -21,8 +21,8 @@ jobs:
         sudo apt install -y openfoam-dev
     - name: pip3
       run: pip3 install -r requirements.txt
-      working-directory: src/foam2py/
-  
+      working-directory: src/foam2py
+
     - name: Allwmake
       run: . /opt/openfoam-dev/etc/bashrc && solvers/./Allwmake
     - name: Allrun
@@ -30,8 +30,10 @@ jobs:
         for CASE in *Foam/shockTube; do
           . /opt/openfoam-dev/etc/bashrc && $CASE/./Allrun
         done
-        multiCompressionFoam/shockTube/./post_process.py
       working-directory: tutorials
+    - name: post_process.py
+      run: ./post_process.py
+      working-directory: multiCompressionFoam/shockTube
 
     - uses: actions/upload-artifact@v2
       if: always()
