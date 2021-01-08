@@ -26,28 +26,34 @@ def get_case_path(solver, case='shockTube'):
         case_path = f"../../{solver}/{case}/"
     return case_path
 
-def grep_execution_time(solver):
-    """Get execution time from the log
-    """
-    for grep in open(f"{get_case_path(solver)}log.{solver}"):
-        if "ExecutionTime" in grep:
-            execution_time = re.findall('(\d+.\d+)', grep)
-    return float(execution_time[0])
+class GrepLog:
+    def execution_time(solver):
+        """Get execution time from the log
+        """
+        for grep in open(get_case_path(solver) + f"log.{solver}"):
+            if "ExecutionTime" in grep:
+                value = re.findall('(\d+.\d+)', grep)
+        return float(value[0])
+
+    def cells_number():
+        """Get cells number from the log
+        """
+        for grep in open("log.checkMesh"):
+            if "cells:" in grep:
+                value = re.findall('(\d+)', grep)
+        return int(value[0])
 
 # %% Create case set w/ dataframes
-df = {}
+df = {'cells': GrepLog.cells_number()}
 for solver in solvers:
     df[solver] = dict(
-        execution_time = grep_execution_time(solver),
+        execution_time = GrepLog.execution_time(solver),
     )
 
 # %% Execution times
 execution_times = []
 for solver in solvers:
     execution_times.append(df[solver]['execution_time'])
-
-print(tabulate({"Solver": solvers, "ExecutionTime": execution_times},
-               headers="keys"))
 
 plt.figure(figsize=Figsize*0.7).suptitle('Execution time by solver',
                                        fontweight='bold', fontsize=Fontsize)
@@ -58,3 +64,12 @@ plt.xticks(range(len(solvers)), solvers, fontsize=fontsize)
 plt.yticks(fontsize=fontsize)
 plt.ylabel("$\\tau$, s", fontsize=fontsize)
 plt.savefig("postProcessing/ExecutionTime(solver).png")
+
+class Output:
+    def execution_time(case):
+        print(tabulate([['cells', str(df['cells'])]],
+                       headers=['', case]), '\n')
+        print(tabulate({"solver": solvers,
+                        f"time, s": execution_times},
+                       headers="keys"))
+Output.execution_time('shockTube')
