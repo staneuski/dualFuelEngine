@@ -3,7 +3,7 @@ on:
   push:
     paths:
       - 'solvers/**'
-      - 'tutorials/*Foam/shockTube/**'
+      - 'tutorials/**' # 'tutorials/*Foam/shockTube/**'
   pull_request:
     branches:
       - master

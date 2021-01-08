@@ -1,14 +1,14 @@
 import os
 import re
 
-def rel_path(post_process_path, solver):
+def rel_path(project_path, solver):
     """Get relative to post_process.py script case path
     """
     if solver == "multiCompressionFoam":
-        return post_process_path + '/'
+        return project_path + '/'
     else:
-        return (post_process_path
-                + f"/../../{solver}/{os.path.basename(post_process_path)}/")
+        return (project_path
+                + f"/../../{solver}/{os.path.basename(project_path)}/")
 
 def grep_value(key, log="log.checkMesh", pattern='(\d+.\d+)'):
     """Get value in line with key by pattern

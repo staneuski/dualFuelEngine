@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from foam2py.plot_values import *
 
-def execution_time(case_data, post_process_path):
+def execution_time(case_data, project_path):
     """Create execution times bar plot and return execution times array
     """
     # Intersection array w/ solvers names
@@ -28,7 +28,7 @@ def execution_time(case_data, post_process_path):
                fontsize=fontsize)
     plt.yticks(fontsize=fontsize)
     plt.ylabel("$\\tau$, s", fontsize=fontsize)
-    plt.savefig(post_process_path
+    plt.savefig(project_path
                + "/postProcessing/ExecutionTime(solver).png")
     return execution_times
 

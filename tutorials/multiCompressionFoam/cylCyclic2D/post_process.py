@@ -8,8 +8,8 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-post_process_path = os.path.split(os.path.realpath(__file__))[0]
-sys.path.insert(0, post_process_path + '/../../../src')
+project_path = os.path.split(os.path.realpath(__file__))[0]
+sys.path.insert(0, project_path + '/../../../src')
 import foam2py.openfoam_case as openfoam_case
 import foam2py.figure as figure
 import foam2py.tabulated as tabulated
@@ -25,11 +25,11 @@ ipc = ipo # CA˚ after BDC [deg]
 
 # %% Create case set w/ dataframes
 df = {'cells': openfoam_case.grep_value("nCells:",
-                                        log=post_process_path
+                                        log=project_path
                                             + "/log.blockMesh",
                                         pattern='(\d+)')}
 for solver in solvers:
-    case_path = openfoam_case.rel_path(post_process_path, solver)
+    case_path = openfoam_case.rel_path(project_path, solver)
     df[solver] = dict(
         execution_time = openfoam_case.grep_value("ExecutionTime",
                                                   log=case_path
@@ -61,7 +61,7 @@ for solver in solvers:
     #                 sep='\t', header=3)['volIntegrate(rho)']
     # )
 del case_path
-print(tabulated.info(post_process_path, df))
+print(tabulated.info(project_path, df))
 
 # %% Mean volFieldValue() parameters
 plt.figure(figsize=Figsize*2).suptitle('Mean parameters\nvolFieldValue',
@@ -92,7 +92,7 @@ for column, subplot_name, label in zip(
     plt.ylabel(label, fontsize=fontsize)
     figure.engine_plot_parameters(evo, ipo)
 del subplot, column, subplot_name, label
-plt.savefig(post_process_path + "/postProcessing/volFieldValue(time).png")
+plt.savefig(project_path + "/postProcessing/volFieldValue(time).png")
 
 # %% Mass flow rates flowRatePatch
 plt.figure(figsize=Figsize).suptitle("Mass flow rates",
@@ -116,8 +116,8 @@ del patch, linestyle
 plt.gca().invert_yaxis()
 plt.ylabel("$\\varphi$, kg/s", fontsize=fontsize)
 figure.engine_plot_parameters(evo, ipo)
-plt.savefig(post_process_path + "/postProcessing/flowRatePatch(time).png")
+plt.savefig(project_path + "/postProcessing/flowRatePatch(time).png")
 
 # %% Execution times
-execution_times = figure.execution_time(df, post_process_path)
+execution_times = figure.execution_time(df, project_path)
 print(tabulated.times(solvers, execution_times), '\n')

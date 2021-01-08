@@ -8,8 +8,8 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 
-post_process_path = os.path.split(os.path.realpath(__file__))[0]
-sys.path.insert(0, post_process_path + '/../../../src')
+project_path = os.path.split(os.path.realpath(__file__))[0]
+sys.path.insert(0, project_path + '/../../../src')
 import foam2py.openfoam_case as openfoam_case
 import foam2py.figure as figure
 import foam2py.tabulated as tabulated
@@ -28,11 +28,11 @@ LENGTH = 0.6 # [m]
 
 # %% Create case set w/ dataframes
 df = {'cells': openfoam_case.grep_value("nCells:",
-                                        log=post_process_path
+                                        log=project_path
                                             + "/log.blockMesh",
                                         pattern='(\d+)')}
 for solver in solvers:
-    case_path = openfoam_case.rel_path(post_process_path, solver)
+    case_path = openfoam_case.rel_path(project_path, solver)
     df[solver] = dict(
         execution_time = openfoam_case.grep_value("ExecutionTime",
                                                   log=case_path
@@ -50,7 +50,7 @@ for solver in solvers:
                     sep='\t', header=3)['volIntegrate(rho)']
     )
 del case_path
-print(tabulated.info(post_process_path, df))
+print(tabulated.info(project_path, df))
 
 # Adiabatic process calculation
 coord = -amplitude/2/np.pi/frequency*np.cos(
@@ -116,8 +116,8 @@ for column, subplot_name, label in zip(
     plt.ylabel(label, fontsize=fontsize)
     plt.tick_params(axis="both", labelsize=fontsize)
 del subplot, column, subplot_name, label
-plt.savefig(post_process_path + "/postProcessing/volFieldValue(time).png")
+plt.savefig(project_path + "/postProcessing/volFieldValue(time).png")
 
 # %% Execution times
-execution_times = figure.execution_time(df, post_process_path)
+execution_times = figure.execution_time(df, project_path)
 print(tabulated.times(solvers, execution_times), '\n')
