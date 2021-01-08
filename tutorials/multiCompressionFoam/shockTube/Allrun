@@ -11,7 +11,7 @@ cd ${0%%/*} || exit 1
 . $WM_PROJECT_DIR/bin/tools/RunFunctions
 
 runApplication blockMesh -dict ../../resources/blockMesh/shockTube
-runApplication checkMesh
+# runApplication checkMesh
 runApplication setFields
 runApplication $(getApplication)
 # runApplication -s sample  postProcess -func sample

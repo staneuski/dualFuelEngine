@@ -25,9 +25,8 @@ jobs:
 
     - name: Run cases
       run: |
-        . /opt/openfoam-dev/etc/bashrc
-        for SUBCASE_SOLVER in *Foam/shockTube; do
-          $SUBCASE_SOLVER/./Allrun
+        for CASE in *Foam/shockTube; do
+          . /opt/openfoam-dev/etc/bashrc && $CASE/./Allrun
         done
       working-directory: tutorials
 

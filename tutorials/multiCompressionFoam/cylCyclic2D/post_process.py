@@ -59,8 +59,8 @@ def set_engine_plot_parameters():
     plt.xlabel('$\\theta$, CA˚', fontsize=fontsize)
 
 # %% Create case set w/ dataframes
-df = {'cells': grep_value("cells:",
-                          log=get_case_path(solvers[0])+f"log.checkMesh",
+df = {'cells': grep_value("nCells:",
+                          log=get_case_path(solvers[0])+f"log.blockMesh",
                           pattern='(\d+)')}
 for solver in solvers:
     case_path = get_case_path(solver)

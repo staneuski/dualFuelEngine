@@ -45,8 +45,8 @@ def grep_value(key, log="log.checkMesh", pattern='(\d+.\d+)'):
         return value[0]
 
 # %% Create case set w/ dataframes
-df = {'cells': grep_value("cells:",
-                          log=get_case_path(solvers[0])+f"log.checkMesh",
+df = {'cells': grep_value("nCells:",
+                          log=get_case_path(solvers[0])+f"log.blockMesh",
                           pattern='(\d+)')}
 for solver in solvers:
     case_path = get_case_path(solver)
