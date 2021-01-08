@@ -14,7 +14,7 @@ import foam2py.openfoam_case as openfoam_case
 import foam2py.figure as figure
 import foam2py.tabulated as tabulated
 
-from foam2py.plot_values import *
+from foam2py.plot_values import * 
 
 solvers = ["multiCompressionFoam", "rhoPimpleFoam", "rhoCentralFoam"]
 
