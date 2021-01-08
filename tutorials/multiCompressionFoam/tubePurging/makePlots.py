@@ -27,29 +27,29 @@ def get_case_path(solver, case="tubePurging"):
         case_path += f"../../{solver}/{case}/"
     return case_path
 
-class GrepLog:
-    def execution_time(solver):
-        """Get execution time from the log
-        """
-        for grep in open(get_case_path(solver) + f"log.{solver}"):
-            if "ExecutionTime" in grep:
-                value = re.findall('(\d+.\d+)', grep)
-        return float(value[0])
+def grep_value(key, log="log.checkMesh", pattern='(\d+.\d+)'):
+    """Get value in line with key by pattern
+    """
+    for grep in open(log):
+        if key in grep:
+            value = re.findall(pattern, grep)
 
-    def cells_number(solver):
-        """Get cells number from the log
-        """
-        for grep in open(get_case_path(solver) + "log.checkMesh"):
-            if "cells:" in grep:
-                value = re.findall('(\d+)', grep)
+    if pattern == '(\d+)':
         return int(value[0])
+    elif pattern == '(\d+.\d+)':
+        return float(value[0])
+    else:
+        return value[0]
 
 # %% Create case set w/ dataframes
-df = {'cells': GrepLog.cells_number(solvers[0])}
+df = {'cells': grep_value("cells:",
+                          log=get_case_path(solvers[0])+f"log.checkMesh",
+                          pattern='(\d+)')}
 for solver in solvers:
     case_path = get_case_path(solver)
     df[solver] = dict(
-        execution_time = GrepLog.execution_time(solver),
+        execution_time = grep_value("ExecutionTime",
+                                    log=case_path+f"log.{solver}"),
         volFieldValue = pd.read_csv(case_path + "postProcessing/"
                                                 "volAverageFieldValues/"
                                                 "0/volFieldValue.dat",
