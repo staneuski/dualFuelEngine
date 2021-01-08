@@ -23,24 +23,6 @@ evo = 85 # CA˚ before TDC [deg]
 ipo = 42 # CA˚ before BDC [deg]
 ipc = ipo # CA˚ after BDC [deg]
 
-# %% Functions initialisation
-def set_engine_plot_parameters():
-    """Stardart for all engine plots parameters and annotations
-    """
-    plt.annotate('(BDC)', (1, 1), xytext=(evo/(evo + 180)*1.16, -0.04),
-                 textcoords='axes fraction',
-                 horizontalalignment='right', verticalalignment='top')
-    plt.annotate('(TDC)', (1, 1), xytext=(0.985, -0.04),
-                 textcoords='axes fraction',
-                 horizontalalignment='right', verticalalignment='top')
-    plt.axvline(x=-180, color ='black', linestyle='--', linewidth=1)
-    plt.axvline(x=0, color='black', linestyle='--', linewidth=1)
-    plt.axvspan(-ipo - 180, ipo - 180, alpha=0.18, color='grey')
-
-    plt.grid(True)
-    plt.legend(loc='best', fontsize=fontsize)
-    plt.xlabel('$\\theta$, CA˚', fontsize=fontsize)
-
 # %% Create case set w/ dataframes
 df = {'cells': openfoam_case.grep_value("nCells:",
                                         log=post_process_path
@@ -108,7 +90,7 @@ for column, subplot_name, label in zip(
     subplot += 1
 
     plt.ylabel(label, fontsize=fontsize)
-    set_engine_plot_parameters()
+    figure.engine_plot_parameters(evo, ipo)
 del subplot, column, subplot_name, label
 plt.savefig(post_process_path + "/postProcessing/volFieldValue(time).png")
 
@@ -133,7 +115,7 @@ del patch, linestyle
 
 plt.gca().invert_yaxis()
 plt.ylabel("$\\varphi$, kg/s", fontsize=fontsize)
-set_engine_plot_parameters()
+figure.engine_plot_parameters(evo, ipo)
 plt.savefig(post_process_path + "/postProcessing/flowRatePatch(time).png")
 
 # %% Execution times

@@ -1,4 +1,4 @@
-name: shockTube cases
+name: shockTubes
 on:
   push:
     paths:
@@ -33,7 +33,7 @@ jobs:
       working-directory: tutorials
     - name: post_process.py
       run: ./post_process.py
-      working-directory: multiCompressionFoam/shockTube
+      working-directory: tutorials/multiCompressionFoam/shockTube
 
     - uses: actions/upload-artifact@v2
       if: always()
