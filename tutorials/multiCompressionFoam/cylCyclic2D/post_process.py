@@ -10,10 +10,10 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from tabulate import tabulate
 
-sys.path.insert(0, os.path.split(os.path.realpath(__file__))[0]
-                   + '/../../../src')
+post_process_path = os.path.split(os.path.realpath(__file__))[0]
+sys.path.insert(0, post_process_path + '/../../../src')
+import foam2py.openfoam_case as openfoam_case
 from foam2py.plot_values import *
-
 
 solvers = ['multiCompressionFoam', 'rhoPimpleFoam']
 
@@ -24,26 +24,6 @@ ipo = 42 # CA˚ before BDC [deg]
 ipc = ipo # CA˚ after BDC [deg]
 
 # %% Functions initialisation
-def get_case_path(solver, case="cylCyclic2D"):
-    case_path = os.path.split(os.path.realpath(__file__))[0] + '/'
-    if solver != "multiCompressionFoam":
-        case_path += f"../../{solver}/{case}/"
-    return case_path
-
-def grep_value(key, log="log.checkMesh", pattern='(\d+.\d+)'):
-    """Get value in line with key by pattern
-    """
-    for grep in open(log):
-        if key in grep:
-            value = re.findall(pattern, grep)
-
-    if pattern == '(\d+)':
-        return int(value[0])
-    elif pattern == '(\d+.\d+)':
-        return float(value[0])
-    else:
-        return value[0]
-
 def set_engine_plot_parameters():
     """Stardart for all engine plots parameters and annotations
     """
@@ -62,14 +42,16 @@ def set_engine_plot_parameters():
     plt.xlabel('$\\theta$, CA˚', fontsize=fontsize)
 
 # %% Create case set w/ dataframes
-df = {'cells': grep_value("nCells:",
-                          log=get_case_path(solvers[0])+f"log.blockMesh",
-                          pattern='(\d+)')}
+df = {'cells': openfoam_case.grep_value("nCells:",
+                                        log=post_process_path
+                                            + "/log.blockMesh",
+                                        pattern='(\d+)')}
 for solver in solvers:
-    case_path = get_case_path(solver)
+    case_path = openfoam_case.rel_path(post_process_path, solver)
     df[solver] = dict(
-        execution_time = grep_value("ExecutionTime",
-                                    log=case_path+f"log.{solver}"),
+        execution_time = openfoam_case.grep_value("ExecutionTime",
+                                                  log=case_path
+                                                      + f"log.{solver}"),
         volFieldValue = pd.read_csv(case_path + "postProcessing/"
                                                 "volAverageFieldValues/"
                                                 "0/volFieldValue.dat",
@@ -88,7 +70,7 @@ for solver in solvers:
                                              "0/surfaceFieldValue.dat",
                                  sep='\t', header=3, names=['time', "phi"]),
         ),
-    ) 
+    )
     df[solver]['volFieldValue'] = (
         df[solver]['volFieldValue'].rename(columns={'# Time        ': 'time'})
     )
@@ -127,8 +109,7 @@ for column, subplot_name, label in zip(
     plt.ylabel(label, fontsize=fontsize)
     set_engine_plot_parameters()
 del subplot, column, subplot_name, label
-plt.savefig(get_case_path(solvers[0])
-           + "postProcessing/volFieldValue(time).png")
+plt.savefig(post_process_path + "/postProcessing/volFieldValue(time).png")
 
 # %% Mass flow rates flowRatePatch
 plt.figure(figsize=Figsize).suptitle("Mass flow rates",
@@ -152,8 +133,7 @@ del patch, linestyle
 plt.gca().invert_yaxis()
 plt.ylabel("$\\varphi$, kg/s", fontsize=fontsize)
 set_engine_plot_parameters()
-plt.savefig(get_case_path(solvers[0])
-           + "postProcessing/flowRatePatch(time).png")
+plt.savefig(post_process_path + "/postProcessing/flowRatePatch(time).png")
 
 # %% Execution times
 execution_times = []
@@ -168,8 +148,7 @@ plt.grid(zorder=0)
 plt.xticks(range(len(solvers)), solvers, fontsize=fontsize)
 plt.yticks(fontsize=fontsize)
 plt.ylabel("$\\tau$, s", fontsize=fontsize)
-plt.savefig(get_case_path(solvers[0])
-           + "postProcessing/ExecutionTime(solver).png")
+plt.savefig(post_process_path + "/postProcessing/ExecutionTime(solver).png")
 
 class Output:
     def execution_time(case):

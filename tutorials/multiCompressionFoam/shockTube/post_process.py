@@ -10,42 +10,27 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from tabulate import tabulate
 
-sys.path.insert(0, os.path.split(os.path.realpath(__file__))[0]
-                   + '/../../../src')
+post_process_path = os.path.split(os.path.realpath(__file__))[0]
+sys.path.insert(0, post_process_path + '/../../../src')
+import foam2py.openfoam_case as openfoam_case
 from foam2py.plot_values import *
 
 solvers = ["multiCompressionFoam", "rhoPimpleFoam", "rhoCentralFoam"]
 
-# %% Functions initialisation
-def get_case_path(solver, case='shockTube'):
-    case_path = os.path.split(os.path.realpath(__file__))[0] + '/'
-    if solver != "multiCompressionFoam":
-        case_path += f"../../{solver}/{case}/"
-    return case_path
-
-def grep_value(key, log="log.checkMesh", pattern='(\d+.\d+)'):
-    """Get value in line with key by pattern
-    """
-    for grep in open(log):
-        if key in grep:
-            value = re.findall(pattern, grep)
-
-    if pattern == '(\d+)':
-        return int(value[0])
-    elif pattern == '(\d+.\d+)':
-        return float(value[0])
-    else:
-        return value[0]
-
 # %% Create case set w/ dataframes
-df = {'cells': grep_value("nCells:",
-                          log=get_case_path(solvers[0])+f"log.blockMesh",
-                          pattern='(\d+)')}
+df = {'cells': openfoam_case.grep_value("nCells:",
+                                        log=post_process_path
+                                            + "/log.blockMesh",
+                                        pattern='(\d+)')}
 for solver in solvers:
+    case_path = openfoam_case.rel_path(post_process_path, solver)
     df[solver] = dict(
-        execution_time = grep_value("ExecutionTime",
-                                    log=get_case_path(solver)+f"log.{solver}"),
+        execution_time = openfoam_case.grep_value("ExecutionTime",
+                                                  log=case_path
+                                                      + f"log.{solver}"),
     )
+del case_path
+
 
 # %% Execution times
 execution_times = []
@@ -60,8 +45,7 @@ plt.grid(zorder=0)
 plt.xticks(range(len(solvers)), solvers, fontsize=fontsize)
 plt.yticks(fontsize=fontsize)
 plt.ylabel("$\\tau$, s", fontsize=fontsize)
-plt.savefig(get_case_path(solvers[0])
-           + "postProcessing/ExecutionTime(solver).png")
+plt.savefig(post_process_path + "/postProcessing/ExecutionTime(solver).png")
 
 class Output:
     def execution_time(case):
