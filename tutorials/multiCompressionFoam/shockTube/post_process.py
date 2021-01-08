@@ -2,6 +2,7 @@
 # %% [markdown]
 # # `shockTube/` cases post-processing
 # %%
+import sys
 import os
 import re
 import numpy as np
@@ -9,7 +10,8 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from tabulate import tabulate
 
-sys.path.insert(0, '../../../src')
+sys.path.insert(0, os.path.split(os.path.realpath(__file__))[0]
+                   + '/../../../src')
 from foam2py.plot_values import *
 
 solvers = ["multiCompressionFoam", "rhoPimpleFoam", "rhoCentralFoam"]

@@ -18,6 +18,6 @@ runApplication topoSet -constant -dict ../../resources/topoSet/cylPiston
 # Split the mesh to generate the ACMI coupled patches
 runApplication createBaffles -overwrite -dict ../../resources/createBaffles/cylPiston
 
-# # runApplication checkMesh
+# runApplication checkMesh
 
 #------------------------------------------------------------------------------

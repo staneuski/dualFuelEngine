@@ -12,22 +12,25 @@ jobs:
   shockTubes:
     runs-on: ubuntu-latest
     steps:
-    - name: Install OpenFOAM-dev
+    - uses: actions/checkout@v2
+    - name: apt-get
       run: |
         sudo sh -c "wget -O - http://dl.openfoam.org/gpg.key | apt-key add -"
         sudo add-apt-repository "http://dl.openfoam.org/ubuntu dev"
         sudo apt update
         sudo apt install -y openfoam-dev
-
-    - uses: actions/checkout@v2
-    - name: Compile solvers
+    - name: pip3
+      run: pip3 install -r requirements.txt
+      working-directory: src/foam2py/
+  
+    - name: Allwmake
       run: . /opt/openfoam-dev/etc/bashrc && solvers/./Allwmake
-
-    - name: Run cases
+    - name: Allrun
       run: |
         for CASE in *Foam/shockTube; do
           . /opt/openfoam-dev/etc/bashrc && $CASE/./Allrun
         done
+        multiCompressionFoam/shockTube/./post_process.py
       working-directory: tutorials
 
     - uses: actions/upload-artifact@v2
@@ -35,5 +38,6 @@ jobs:
       with:
         name: artifacts
         path: |
-          tutorials/*Foam/shockTube/log.*(Mesh|Foam)
+          tutorials/*Foam/shockTube/log.*Mesh
+          tutorials/*Foam/shockTube/log.*Foam
           tutorials/*Foam/shockTube/postProcessing/*.png
