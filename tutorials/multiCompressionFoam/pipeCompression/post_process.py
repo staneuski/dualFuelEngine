@@ -2,17 +2,16 @@
 # %% [markdown]
 # # `pipeCompression/` cases post-processing
 # %%
-import sys
 import os
-import re
+import sys
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from tabulate import tabulate
 
 post_process_path = os.path.split(os.path.realpath(__file__))[0]
 sys.path.insert(0, post_process_path + '/../../../src')
 import foam2py.openfoam_case as openfoam_case
+import foam2py.tabulated as tabulated
 from foam2py.plot_values import *
 
 solvers = ['multiCompressionFoam', 'rhoPimpleFoam', 'rhoCentralFoam']
@@ -50,6 +49,7 @@ for solver in solvers:
                     sep='\t', header=3)['volIntegrate(rho)']
     )
 del case_path
+print(tabulated.create_info(post_process_path, df))
 
 # Adiabatic process calculation
 coord = -amplitude/2/np.pi/frequency*np.cos(
@@ -132,11 +132,4 @@ plt.yticks(fontsize=fontsize)
 plt.ylabel("$\\tau$, s", fontsize=fontsize)
 plt.savefig(post_process_path + "/postProcessing/ExecutionTime(solver).png")
 
-class Output:
-    def execution_time(case):
-        print(tabulate([['cells', str(df['cells'])]],
-                       headers=['', case]), '\n')
-        print(tabulate({"solver": solvers,
-                        f"time, s": execution_times},
-                       headers="keys"))
-Output.execution_time("pipeCompression")
+print(tabulated.create_times(solvers, execution_times))

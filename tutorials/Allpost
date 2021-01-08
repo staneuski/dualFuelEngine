@@ -1,0 +1,8 @@
+#!/bin/sh
+cd ${0%/*} || exit 1    # Run from this directory
+
+for CASE in multiCompressionFoam/*; do
+    if test -f "$CASE/post_process.py"; then
+        $CASE/./post_process.py
+    fi
+done
