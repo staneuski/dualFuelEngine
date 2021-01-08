@@ -2,6 +2,7 @@
 # %% [markdown]
 # # `tubePurging/` cases post-processing
 # %%
+import os
 import re
 import numpy as np
 import pandas as pd
@@ -21,10 +22,9 @@ Fontsize = fontsize*figsize_xy_ratio
 
 # %% Functions initialisation
 def get_case_path(solver, case="tubePurging"):
-    if solver == "multiCompressionFoam":
-        case_path = ""
-    else:
-        case_path = f"../../{solver}/{case}/"
+    case_path = os.path.split(os.path.realpath(__file__))[0] + '/'
+    if solver != "multiCompressionFoam":
+        case_path += f"../../{solver}/{case}/"
     return case_path
 
 class GrepLog:
@@ -36,16 +36,16 @@ class GrepLog:
                 value = re.findall('(\d+.\d+)', grep)
         return float(value[0])
 
-    def cells_number():
+    def cells_number(solver):
         """Get cells number from the log
         """
-        for grep in open("log.checkMesh"):
+        for grep in open(get_case_path(solver) + "log.checkMesh"):
             if "cells:" in grep:
                 value = re.findall('(\d+)', grep)
         return int(value[0])
 
 # %% Create case set w/ dataframes
-df = {'cells': GrepLog.cells_number()}
+df = {'cells': GrepLog.cells_number(solvers[0])}
 for solver in solvers:
     case_path = get_case_path(solver)
     df[solver] = dict(
@@ -106,7 +106,8 @@ for column, subplot_name, label in zip(
     plt.ylabel(label, fontsize=fontsize)
     plt.tick_params(axis="both", labelsize=fontsize)
 del subplot, column, subplot_name, label
-plt.savefig("postProcessing/volFieldValue(time).png")
+plt.savefig(get_case_path(solvers[0])
+           + "postProcessing/volFieldValue(time).png")
 
 # %% Mass flow rates flowRatePatch
 plt.figure(figsize=Figsize).suptitle("Mass flow rates",
@@ -131,7 +132,8 @@ plt.legend(loc="best", fontsize=fontsize)
 plt.xlabel("$\\tau$, ms", fontsize=fontsize)
 plt.ylabel("$\\varphi$, kg/s", fontsize=fontsize)
 plt.tick_params(axis="both", labelsize=fontsize)
-plt.savefig("postProcessing/flowRatePatch(time).png")
+plt.savefig(get_case_path(solvers[0])
+           + "postProcessing/flowRatePatch(time).png")
 
 # %% Execution times
 execution_times = []
@@ -146,7 +148,8 @@ plt.grid(zorder=0)
 plt.xticks(range(len(solvers)), solvers, fontsize=fontsize)
 plt.yticks(fontsize=fontsize)
 plt.ylabel("$\\tau$, s", fontsize=fontsize)
-plt.savefig("postProcessing/ExecutionTime(solver).png")
+plt.savefig(get_case_path(solvers[0])
+           + "postProcessing/ExecutionTime(solver).png")
 
 class Output:
     def execution_time(case):
