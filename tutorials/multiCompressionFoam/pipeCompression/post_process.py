@@ -11,6 +11,7 @@ import matplotlib.pyplot as plt
 post_process_path = os.path.split(os.path.realpath(__file__))[0]
 sys.path.insert(0, post_process_path + '/../../../src')
 import foam2py.openfoam_case as openfoam_case
+import foam2py.figure as figure
 import foam2py.tabulated as tabulated
 from foam2py.plot_values import *
 
@@ -49,7 +50,7 @@ for solver in solvers:
                     sep='\t', header=3)['volIntegrate(rho)']
     )
 del case_path
-print(tabulated.create_info(post_process_path, df))
+print(tabulated.info(post_process_path, df))
 
 # Adiabatic process calculation
 coord = -amplitude/2/np.pi/frequency*np.cos(
@@ -118,18 +119,5 @@ del subplot, column, subplot_name, label
 plt.savefig(post_process_path + "/postProcessing/volFieldValue(time).png")
 
 # %% Execution times
-execution_times = []
-for solver in solvers:
-    execution_times.append(df[solver]['execution_time'])
-
-plt.figure(figsize=Figsize*0.7).suptitle('Execution time by solver',
-                                       fontweight='bold', fontsize=Fontsize)
-plt.bar(range(len(solvers)), execution_times,
-        color=['C0', 'C1', 'C2'], zorder=3)
-plt.grid(zorder=0)
-plt.xticks(range(len(solvers)), solvers, fontsize=fontsize)
-plt.yticks(fontsize=fontsize)
-plt.ylabel("$\\tau$, s", fontsize=fontsize)
-plt.savefig(post_process_path + "/postProcessing/ExecutionTime(solver).png")
-
-print(tabulated.create_times(solvers, execution_times))
+execution_times = figure.execution_time(df, post_process_path)
+print(tabulated.times(solvers, execution_times), '\n')
