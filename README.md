@@ -37,11 +37,9 @@ OpenFOAM solver based on phenomenological compression model for dual-fuel ship e
 # Structure
 ```gitignore
 dualFuelEngine-0.6.x-alpha
-├── etc
-│   ├── DRK2Py
-│   └── scripts
 ├── solvers
 │   └── multiCompressionFoam
+├── etc
 └── tutorials
     ├── multiCompressionFoam
     │   ├── cylCyclic2D
