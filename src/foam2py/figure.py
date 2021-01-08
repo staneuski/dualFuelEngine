@@ -2,19 +2,19 @@ import numpy as np
 import matplotlib.pyplot as plt
 from foam2py.plot_values import *
 
-def execution_time(case_data, project_path):
+def execution_time(project_path, project):
     """Create execution times bar plot and return execution times array
     """
     # Intersection array w/ solvers names
     solvers = np.intersect1d(
         ['multiCompressionFoam', 'rhoPimpleFoam', 'rhoCentralFoam'],
-        np.array(list(case_data.keys()))
+        list(project.keys())
     )
 
     # Create execution times array
     execution_times, colors = [], []
     for i in range(len(solvers)):
-        execution_times.append(case_data[solvers[i]]['execution_time'])
+        execution_times.append(project[solvers[i]]['execution_time'])
         colors.append('C' + str(i))
 
     # Plot bar figure

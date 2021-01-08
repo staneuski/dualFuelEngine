@@ -13,6 +13,7 @@ sys.path.insert(0, project_path + '/../../../src')
 import foam2py.openfoam_case as openfoam_case
 import foam2py.figure as figure
 import foam2py.tabulated as tabulated
+
 from foam2py.plot_values import *
 
 solvers = ['multiCompressionFoam', 'rhoPimpleFoam', 'rhoCentralFoam']
@@ -27,13 +28,14 @@ AREA = 1e-4 # [m^2]
 LENGTH = 0.6 # [m]
 
 # %% Create case set w/ dataframes
-df = {'cells': openfoam_case.grep_value("nCells:",
-                                        log=project_path
-                                            + "/log.blockMesh",
-                                        pattern='(\d+)')}
+project = project = dict(
+    cells = openfoam_case.grep_value("nCells:",
+                                     log=project_path + "/log.blockMesh",
+                                     pattern='(\d+)')
+)
 for solver in solvers:
     case_path = openfoam_case.rel_path(project_path, solver)
-    df[solver] = dict(
+    project[solver] = dict(
         execution_time = openfoam_case.grep_value("ExecutionTime",
                                                   log=case_path
                                                       + f"/log.{solver}"),
@@ -42,41 +44,41 @@ for solver in solvers:
                                                 "0/volFieldValue.dat",
                                     sep='\t', header=3),
     )
-    df[solver]['volFieldValue'] = (
-        df[solver]['volFieldValue'].rename(columns={'# Time        ': 'time'})
+    project[solver]['volFieldValue'] = (
+        project[solver]['volFieldValue'].rename(columns={'# Time        ': 'time'})
     )
-    df[solver]['volFieldValue']['volIntegrate(rho)'] = (
+    project[solver]['volFieldValue']['volIntegrate(rho)'] = (
         pd.read_csv(case_path + "/postProcessing/mass/0/volFieldValue.dat",
                     sep='\t', header=3)['volIntegrate(rho)']
     )
 del case_path
-print(tabulated.info(project_path, df))
+print(tabulated.info(project_path, project))
 
 # Adiabatic process calculation
 coord = -amplitude/2/np.pi/frequency*np.cos(
-    2*np.pi*frequency*(df['multiCompressionFoam']['volFieldValue']['time']
+    2*np.pi*frequency*(project['multiCompressionFoam']['volFieldValue']['time']
                        - start)
 )
 v = (LENGTH - (coord - coord[0]))*AREA
 
-df['adiabatic_process'] = {}
-df['adiabatic_process']['volFieldValue'] = {
-    'time': df['multiCompressionFoam']['volFieldValue']['time'],
-    'volAverage(p)': (df['multiCompressionFoam']['volFieldValue']
+project['adiabatic_process'] = {}
+project['adiabatic_process']['volFieldValue'] = {
+    'time': project['multiCompressionFoam']['volFieldValue']['time'],
+    'volAverage(p)': (project['multiCompressionFoam']['volFieldValue']
                         ['volAverage(p)'][0]
                       *pow(v[0]/v, Cp/Cv)), # p_IC*(V_IC/V)^(Cp/Cv)
-    'volAverage(T)': (df['multiCompressionFoam']['volFieldValue']
+    'volAverage(T)': (project['multiCompressionFoam']['volFieldValue']
                         ['volAverage(T)'][0]
                       *pow(v[0]/v, Cp/Cv - 1)), # T_IC*(V_IC/V)^(Cp/Cv - 1)
-    'volAverage(rho)': (df['multiCompressionFoam']['volFieldValue']
+    'volAverage(rho)': (project['multiCompressionFoam']['volFieldValue']
                           ['volAverage(rho)'][0]
                         *v[0]/v), # rho_IC*(V_IC/V)
-    'volAverage(e)': (df['multiCompressionFoam']['volFieldValue']
+    'volAverage(e)': (project['multiCompressionFoam']['volFieldValue']
                         ['volAverage(e)'][0]
                       *pow(v[0]/v, Cp/Cv - 1)), # e_IC*(V_IC/V)^(Cp/Cv - 1)
-    'volIntegrate(rho)': np.full(shape=len(df['multiCompressionFoam']['volFieldValue']
+    'volIntegrate(rho)': np.full(shape=len(project['multiCompressionFoam']['volFieldValue']
                                              ['time']),
-                                 fill_value=df['multiCompressionFoam']['volFieldValue']
+                                 fill_value=project['multiCompressionFoam']['volFieldValue']
                                              ['volIntegrate(rho)'][0])
 }
 
@@ -88,7 +90,7 @@ plt.figure(figsize=Figsize*2).suptitle('Mean parameters\nvolFieldValue',
                                      fontweight='bold', fontsize=Fontsize)
 subplot = 321
 for column, subplot_name, label in zip(
-        df["rhoPimpleFoam"]['volFieldValue'].columns[1:].drop('volAverage(K)'),
+        project["rhoPimpleFoam"]['volFieldValue'].columns[1:].drop('volAverage(K)'),
         ["Pressure", "Temperature", "Density", "Energy", "Mass"],
         ["p, Pa", "T, K", "$\\rho, kg/m^3$", "E, J/kg", "M, kg"]
     ):
@@ -97,13 +99,13 @@ for column, subplot_name, label in zip(
     color = 0
     for solver in ['multiCompressionFoam', 'rhoPimpleFoam', 'rhoCentralFoam',
                    'adiabatic_process']:
-        plt.plot(df[solver]['volFieldValue']['time']*1e+3,
-                 df[solver]['volFieldValue'][column],
+        plt.plot(project[solver]['volFieldValue']['time']*1e+3,
+                 project[solver]['volFieldValue'][column],
                  label=solver, linewidth=linewidth)
         if ((solver == "multiCompressionFoam" or solver == "rhoPimpleFoam")
             and (column == "volAverage(e)")):
-            plt.plot(df[solver]['volFieldValue']['time']*1e+3,
-                     df[solver]['volFieldValue']["volAverage(K)"],
+            plt.plot(project[solver]['volFieldValue']['time']*1e+3,
+                     project[solver]['volFieldValue']["volAverage(K)"],
                      label=solver + " (K)", linestyle='--', linewidth=linewidth,
                      color='C' + str(color))
             color += 1
@@ -119,5 +121,5 @@ del subplot, column, subplot_name, label
 plt.savefig(project_path + "/postProcessing/volFieldValue(time).png")
 
 # %% Execution times
-execution_times = figure.execution_time(df, project_path)
+execution_times = figure.execution_time(project_path, project)
 print(tabulated.times(solvers, execution_times), '\n')

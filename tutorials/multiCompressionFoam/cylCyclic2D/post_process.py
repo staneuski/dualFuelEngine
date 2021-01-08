@@ -13,6 +13,7 @@ sys.path.insert(0, project_path + '/../../../src')
 import foam2py.openfoam_case as openfoam_case
 import foam2py.figure as figure
 import foam2py.tabulated as tabulated
+
 from foam2py.plot_values import *
 
 solvers = ['multiCompressionFoam', 'rhoPimpleFoam']
@@ -24,13 +25,14 @@ ipo = 42 # CA˚ before BDC [deg]
 ipc = ipo # CA˚ after BDC [deg]
 
 # %% Create case set w/ dataframes
-df = {'cells': openfoam_case.grep_value("nCells:",
-                                        log=project_path
-                                            + "/log.blockMesh",
-                                        pattern='(\d+)')}
+project = project = dict(
+    cells = openfoam_case.grep_value("nCells:",
+                                     log=project_path + "/log.blockMesh",
+                                     pattern='(\d+)')
+)
 for solver in solvers:
     case_path = openfoam_case.rel_path(project_path, solver)
-    df[solver] = dict(
+    project[solver] = dict(
         execution_time = openfoam_case.grep_value("ExecutionTime",
                                                   log=case_path
                                                       + f"/log.{solver}"),
@@ -53,22 +55,22 @@ for solver in solvers:
                                  sep='\t', header=3, names=['time', "phi"]),
         ),
     )
-    df[solver]['volFieldValue'] = (
-        df[solver]['volFieldValue'].rename(columns={'# Time        ': 'time'})
+    project[solver]['volFieldValue'] = (
+        project[solver]['volFieldValue'].rename(columns={'# Time        ': 'time'})
     )
-    # df[solver]['volFieldValue']['volIntegrate(rho)'] = (
+    # project[solver]['volFieldValue']['volIntegrate(rho)'] = (
     #     pd.read_csv(case_path + "/postProcessing/mass/0/volFieldValue.dat",
     #                 sep='\t', header=3)['volIntegrate(rho)']
     # )
 del case_path
-print(tabulated.info(project_path, df))
+print(tabulated.info(project_path, project))
 
 # %% Mean volFieldValue() parameters
 plt.figure(figsize=Figsize*2).suptitle('Mean parameters\nvolFieldValue',
                                      fontweight='bold', fontsize=Fontsize)
 subplot = 221
 for column, subplot_name, label in zip(
-        df["rhoPimpleFoam"]['volFieldValue'].columns[1:].drop('volAverage(K)'),
+        project["rhoPimpleFoam"]['volFieldValue'].columns[1:].drop('volAverage(K)'),
         ["Pressure", "Temperature", "Density", "Energy", "Mass"],
         ["p, Pa", "T, K", "$\\rho, kg/m^3$", "E, J/kg", "M, kg"]
     ):
@@ -76,13 +78,13 @@ for column, subplot_name, label in zip(
                                    fontstyle='italic', fontsize=fontsize)
     color = 0
     for solver in solvers:
-        plt.plot(df[solver]['volFieldValue']['time']*6*rpm - 180 - evo,
-                 df[solver]['volFieldValue'][column],
+        plt.plot(project[solver]['volFieldValue']['time']*6*rpm - 180 - evo,
+                 project[solver]['volFieldValue'][column],
                  label=solver, linewidth=linewidth)
         if ((solver == "multiCompressionFoam" or solver == "rhoPimpleFoam")
             and (column == "volAverage(e)")):
-            plt.plot(df[solver]['volFieldValue']['time']*6*rpm - 180 - evo,
-                     df[solver]['volFieldValue']["volAverage(K)"],
+            plt.plot(project[solver]['volFieldValue']['time']*6*rpm - 180 - evo,
+                     project[solver]['volFieldValue']["volAverage(K)"],
                      label=solver + " (K)", linestyle='--', linewidth=linewidth,
                      color='C' + str(color))
             color += 1
@@ -106,8 +108,8 @@ for patch in ['inlet', 'injection', 'outlet']:
         linestyle = '-'
 
     for solver, color in zip(solvers, ['C0', 'C1', 'C2']):
-        plt.plot(df[solver]['flowRatePatch'][patch]['time']*6*rpm - 180 - evo,
-                 df[solver]['flowRatePatch'][patch]['phi'],
+        plt.plot(project[solver]['flowRatePatch'][patch]['time']*6*rpm - 180 - evo,
+                 project[solver]['flowRatePatch'][patch]['phi'],
                  label=(solver + ", " + patch),
                  linestyle=linestyle, linewidth=linewidth, color=color)
     del solver, color
@@ -119,5 +121,5 @@ figure.engine_plot_parameters(evo, ipo)
 plt.savefig(project_path + "/postProcessing/flowRatePatch(time).png")
 
 # %% Execution times
-execution_times = figure.execution_time(df, project_path)
+execution_times = figure.execution_time(project_path, project)
 print(tabulated.times(solvers, execution_times), '\n')

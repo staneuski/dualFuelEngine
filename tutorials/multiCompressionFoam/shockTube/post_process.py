@@ -13,25 +13,27 @@ sys.path.insert(0, project_path + '/../../../src')
 import foam2py.openfoam_case as openfoam_case
 import foam2py.figure as figure
 import foam2py.tabulated as tabulated
+
 from foam2py.plot_values import *
 
 solvers = ["multiCompressionFoam", "rhoPimpleFoam", "rhoCentralFoam"]
 
 # %% Create case set w/ dataframes
-df = {'cells': openfoam_case.grep_value("nCells:",
-                                        log=project_path
-                                            + "/log.blockMesh",
-                                        pattern='(\d+)')}
+project = project = dict(
+    cells = openfoam_case.grep_value("nCells:",
+                                     log=project_path + "/log.blockMesh",
+                                     pattern='(\d+)')
+)
 for solver in solvers:
     case_path = openfoam_case.rel_path(project_path, solver)
-    df[solver] = dict(
+    project[solver] = dict(
         execution_time = openfoam_case.grep_value("ExecutionTime",
                                                   log=case_path
                                                       + f"/log.{solver}"),
     )
 del case_path
-print(tabulated.info(project_path, df))
+print(tabulated.info(project_path, project))
 
 # %% Execution times
-execution_times = figure.execution_time(df, project_path)
+execution_times = figure.execution_time(project_path, project)
 print(tabulated.times(solvers, execution_times), '\n')
