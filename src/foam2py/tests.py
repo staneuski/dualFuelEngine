@@ -11,7 +11,7 @@ try:
 except:
     full_output = False
 
-MEAN_ERROR = 10
+MEAN_ERROR = 15 # [%]
 
 def create_solvers_and_colors(project):
     solvers = np.intersect1d(
@@ -50,8 +50,8 @@ def volFieldValue(project_path, project, engine=False, rpm=92, evo=85, ipo=42):
         f = interp1d(df2['time'], df2[column], fill_value="extrapolate")
         errs = (df1[column] - f(df1['time']))/df1[column]*100
         return (column, solver,
-                (np.mean(errs) < MEAN_ERROR
-                     or np.mean(errs) == np.Infinity),
+                (abs(np.mean(errs)) < MEAN_ERROR
+                     or abs(np.mean(errs)) == np.Infinity),
                 np.mean(errs), np.max(errs))
 
     solvers, colors = create_solvers_and_colors(project)
@@ -135,8 +135,8 @@ def mass_flow_rate(project_path, project,
                 errs = (phi1 - f(time1))/phi1*100
                 checks.append([
                     patch, solver,
-                    (np.mean(errs) < MEAN_ERROR
-                     or np.mean(errs) == np.Infinity),
+                    (abs(np.mean(errs)) < MEAN_ERROR
+                     or abs(np.mean(errs)) == np.Infinity),
                     np.mean(errs), np.max(errs)
                 ])
     checks = pd.DataFrame(checks,
