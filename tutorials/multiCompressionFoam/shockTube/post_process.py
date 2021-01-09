@@ -43,9 +43,7 @@ print(tabulate([[os.path.basename(project_path),
                  str(project['cells']),
                  all(checks['execution_time']['passed'])]],
                 headers=['case          ', 'nCells',
-                         'execution_time'])
-      .replace("True", "\033[True\033[0m")
-      .replace("False", "\033[91mFalse\033[0m"))
+                         'execution_time']))
 
 # if not all(checks['execution_time']['passed']):
 #     print("\033[93mWARNING! Execution time test not passed "

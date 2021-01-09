@@ -7,9 +7,9 @@ from foam2py.plot_values import *
 
 try:
     get_ipython
-    plot_figures = True
+    full_output = True
 except:
-    plot_figures = False
+    full_output = False
 
 MEAN_ERROR = 10
 
@@ -69,7 +69,7 @@ def volFieldValue(project_path, project, engine=False, rpm=92, evo=85, ipo=42):
     checks = pd.DataFrame(checks,
                           columns=['par', 'solver', 'passed', 'mean', 'max'])
 
-    if plot_figures:
+    if full_output:
         plt.figure(figsize=Figsize*2).suptitle('Mean parameters\nvolFieldValue',
                                              fontweight='bold',
                                              fontsize=Fontsize)
@@ -142,7 +142,7 @@ def mass_flow_rate(project_path, project,
     checks = pd.DataFrame(checks,
                           columns=['patch', 'solver', 'passed', 'mean', 'max'])
 
-    if plot_figures:
+    if full_output:
         plt.figure(figsize=Figsize).suptitle("Mass flow rates",
                                            fontweight='bold',
                                            fontsize=Fontsize)
@@ -194,7 +194,7 @@ def execution_time(project_path, project):
     checks = pd.DataFrame(checks,
                           columns=['solver', 'passed', 'execution_time', 'delta'])
 
-    if plot_figures:
+    if full_output:
         plt.figure(figsize=Figsize*0.7).suptitle('Execution time by solver',
                                                fontweight='bold',
                                                fontsize=Fontsize)
