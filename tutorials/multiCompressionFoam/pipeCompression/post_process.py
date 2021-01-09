@@ -1,9 +1,19 @@
 #!/usr/bin/env python3
 # %%
-import os, sys
+import os
+import sys
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+from tabulate import tabulate
+
 project_path = os.path.split(os.path.realpath(__file__))[0]
 sys.path.insert(0, project_path + '/../../../src')
-from foam2py.imports import *
+
+import foam2py.openfoam_case as openfoam_case
+import foam2py.tests as tests
+import foam2py.tabulated as tabulated
 
 solvers = ['multiCompressionFoam', 'rhoPimpleFoam', 'rhoCentralFoam']
 
