@@ -55,18 +55,16 @@ del case_path
 print(tabulated.info(project_path, project))
 
 # %% Figures
-if plot_figures:
-    # Mean volFieldValue() parameters
-    figure.volFieldValue(project_path, project,
-                        engine=True, rpm=rpm, evo=evo, ipo=ipo)
+# Mean volFieldValue() parameters
+figure.volFieldValue(project_path, project,
+                    engine=True, rpm=rpm, evo=evo, ipo=ipo)
 
-    # Mass flow rates flowRatePatch
-    figure.mass_flow_rate(project_path, project,
-                        engine=True, rpm=rpm, evo=evo, ipo=ipo)
+# Mass flow rates flowRatePatch
+figure.mass_flow_rate(project_path, project,
+                    engine=True, rpm=rpm, evo=evo, ipo=ipo)
 
 # Execution times
-execution_times = figure.execution_time(project_path, project,
-                                       create_figure=plot_figures)
+execution_times = figure.execution_time(project_path, project)
 
 # %% Output
 print(tabulated.times(solvers, execution_times), '\n')

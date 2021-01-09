@@ -79,12 +79,11 @@ print(f"Compression ratio: {max(v)/min(v):.3f}")
 del coord, v
 
 # %% Figures
-if plot_figures:
-    # Mean volFieldValue() parameters
-    figure.volFieldValue(project_path, project)
+# Mean volFieldValue() parameters
+figure.volFieldValue(project_path, project)
 
 # Execution times
-execution_times = figure.execution_time(project_path, project, create_figure=plot_figures)
+execution_times = figure.execution_time(project_path, project)
 
 # %% Output
 print(tabulated.times(solvers, execution_times), '\n')

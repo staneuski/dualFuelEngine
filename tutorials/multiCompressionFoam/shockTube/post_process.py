@@ -25,8 +25,7 @@ print(tabulated.info(project_path, project))
 
 # %% Figures
 # Execution times
-execution_times = figure.execution_time(project_path, project,
-                                       create_figure=plot_figures)
+execution_times = figure.execution_time(project_path, project)
 
 # %% Output
 print(tabulated.times(solvers, execution_times), '\n')

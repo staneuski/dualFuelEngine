@@ -2,6 +2,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 from foam2py.plot_values import *
 
+try:
+    get_ipython
+    plot_figures = True
+except:
+    plot_figures = False
 
 def create_solvers_and_colors(project):
     solvers = np.intersect1d(
@@ -37,79 +42,86 @@ def engine_plot_parameters(evo, ipo):
 def volFieldValue(project_path, project, engine=False, rpm=92, evo=85, ipo=42):
     solvers, colors = create_solvers_and_colors(project)
 
-    plt.figure(figsize=Figsize*2).suptitle('Mean parameters\nvolFieldValue',
-                                         fontweight='bold', fontsize=Fontsize)
-    subplot = 321
-    for column, subplot_name, label in zip(
-            project['rhoPimpleFoam']['volFieldValue'].columns[1:].drop('volAverage(K)'),
-            ["Pressure", "Temperature", "Density", "Energy", "Mass"],
-            ["p, Pa", "T, K", "$\\rho, kg/m^3$", "E, J/kg", "M, kg"]
-        ):
-        plt.subplot(subplot).set_title(subplot_name + ", " + column,
-                                       fontstyle='italic', fontsize=fontsize)
+    if plot_figures:
+        plt.figure(figsize=Figsize*2).suptitle('Mean parameters\nvolFieldValue',
+                                             fontweight='bold',
+                                             fontsize=Fontsize)
+        subplot = 321
+        for column, subplot_name, label in zip(
+                project['rhoPimpleFoam']['volFieldValue'].columns[1:].drop('volAverage(K)'),
+                ["Pressure", "Temperature", "Density", "Energy", "Mass"],
+                ["p, Pa", "T, K", "$\\rho, kg/m^3$", "E, J/kg", "M, kg"]
+            ):
+            plt.subplot(subplot).set_title(subplot_name + ", " + column,
+                                           fontstyle='italic', fontsize=fontsize)
 
-        for solver, color in zip(solvers, colors):
-            time = project[solver]['volFieldValue']['time']
+            for solver, color in zip(solvers, colors):
+                time = project[solver]['volFieldValue']['time']
+                if engine:
+                    time = time*6*rpm - 180 - evo
+                plt.plot(time, project[solver]['volFieldValue'][column],
+                        label=solver, linewidth=linewidth)
+                if ((solver == "multiCompressionFoam"
+                     or solver == "rhoPimpleFoam")
+                    and (column == "volAverage(e)")):
+                    plt.plot(time,
+                             project[solver]['volFieldValue']["volAverage(K)"],
+                            label=solver + " (K)", linestyle='--', linewidth=linewidth,
+                            color=color)
+            subplot += 1
+
+            plt.ylabel(label, fontsize=fontsize)
             if engine:
-                time = time*6*rpm - 180 - evo
-            plt.plot(time, project[solver]['volFieldValue'][column],
-                     label=solver, linewidth=linewidth)
-            if ((solver == "multiCompressionFoam" or solver == "rhoPimpleFoam")
-                and (column == "volAverage(e)")):
-                plt.plot(time, project[solver]['volFieldValue']["volAverage(K)"],
-                        label=solver + " (K)", linestyle='--', linewidth=linewidth,
-                        color=color)
-        subplot += 1
+                engine_plot_parameters(evo, ipo)
+            else:
+                plt.grid(True)
+                plt.legend(loc="best", fontsize=fontsize)
+                plt.xlabel("$\\tau$, ms", fontsize=fontsize)
+                plt.tick_params(axis="both", labelsize=fontsize)
+        del subplot, column, subplot_name, label
+        plt.savefig(project_path + "/postProcessing/volFieldValue(time).png")
 
-        plt.ylabel(label, fontsize=fontsize)
+
+def mass_flow_rate(project_path, project,
+        engine=False, rpm=92, evo=85, ipo=42):
+    if plot_figures:
+        plt.figure(figsize=Figsize).suptitle("Mass flow rates",
+                                           fontweight='bold',
+                                           fontsize=Fontsize)
+        for patch in list(project['multiCompressionFoam']
+                                 ['flowRatePatch'].keys()):
+            if patch == 'outlet':
+                linestyle = '--'
+            elif patch == 'injection':
+                linestyle = ':'
+            else:
+                linestyle = '-'
+
+            solvers, colors = create_solvers_and_colors(project)
+            for solver, color in zip(solvers, colors):
+                time = project[solver]['flowRatePatch'][patch]['time']
+                if engine:
+                    time = time*6*rpm - 180 - evo
+                plt.plot(time, project[solver]['flowRatePatch'][patch]['phi'],
+                         label=(solver + ", " + patch), linestyle=linestyle,
+                         linewidth=linewidth, color=color)
+            del solvers, colors, solver, color, time
+        del patch, linestyle
+
+        plt.gca().invert_yaxis()
+        plt.ylabel("$\\varphi$, kg/s", fontsize=fontsize)
+
         if engine:
             engine_plot_parameters(evo, ipo)
         else:
             plt.grid(True)
             plt.legend(loc="best", fontsize=fontsize)
-            plt.xlabel("$\\tau$, ms", fontsize=fontsize)
             plt.tick_params(axis="both", labelsize=fontsize)
-    del subplot, column, subplot_name, label
-    plt.savefig(project_path + "/postProcessing/volFieldValue(time).png")
+            plt.xlabel("$\\tau$, ms", fontsize=fontsize)
+        plt.savefig(project_path + "/postProcessing/flowRatePatch(time).png")
 
 
-def mass_flow_rate(project_path, project, engine=False, rpm=92, evo=85, ipo=42):
-    plt.figure(figsize=Figsize).suptitle("Mass flow rates",
-                                       fontweight='bold', fontsize=Fontsize)
-    for patch in list(project['multiCompressionFoam']
-                             ['flowRatePatch'].keys()):
-        if patch == 'outlet':
-            linestyle = '--'
-        elif patch == 'injection':
-            linestyle = ':'
-        else:
-            linestyle = '-'
-
-        solvers, colors = create_solvers_and_colors(project)
-        for solver, color in zip(solvers, colors):
-            time = project[solver]['flowRatePatch'][patch]['time']
-            if engine:
-                time = time*6*rpm - 180 - evo
-            plt.plot(time, project[solver]['flowRatePatch'][patch]['phi'],
-                     label=(solver + ", " + patch),
-                     linestyle=linestyle, linewidth=linewidth, color=color)
-        del solvers, colors, solver, color, time
-    del patch, linestyle
-
-    plt.gca().invert_yaxis()
-    plt.ylabel("$\\varphi$, kg/s", fontsize=fontsize)
-
-    if engine:
-        engine_plot_parameters(evo, ipo)
-    else:
-        plt.grid(True)
-        plt.legend(loc="best", fontsize=fontsize)
-        plt.tick_params(axis="both", labelsize=fontsize)
-        plt.xlabel("$\\tau$, ms", fontsize=fontsize)
-    plt.savefig(project_path + "/postProcessing/flowRatePatch(time).png")
-
-
-def execution_time(project_path, project, create_figure=True):
+def execution_time(project_path, project):
     """Create execution times bar plot and return execution times array
     """
     # Create execution times array
@@ -118,7 +130,7 @@ def execution_time(project_path, project, create_figure=True):
     for solver in solvers:
         execution_times.append(project[solver]['execution_time'])
 
-    if create_figure:
+    if plot_figures:
         plt.figure(figsize=Figsize*0.7).suptitle('Execution time by solver',
                                                fontweight='bold',
                                                fontsize=Fontsize)
