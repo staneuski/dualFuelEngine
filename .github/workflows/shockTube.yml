@@ -27,8 +27,10 @@ jobs:
       run: . /opt/openfoam-dev/etc/bashrc && solvers/./Allwmake
     - name: Allrun
       run: |
-        for CASE in *Foam/shockTube; do
-          . /opt/openfoam-dev/etc/bashrc && $CASE/./Allrun
+        for CASE_PATH in *Foam/shockTube; do
+          if test -d "$CASE_PATH"; then
+            . /opt/openfoam-dev/etc/bashrc && $CASE_PATH/./Allrun
+          fi
         done
       working-directory: tutorials
     - name: post_process.py
