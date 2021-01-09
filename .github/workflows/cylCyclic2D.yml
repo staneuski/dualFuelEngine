@@ -2,6 +2,7 @@ name: cylCyclic2D
 on:
   push:
     paths:
+      - '.github/workflows/cylCyclic2D.yml'
       - 'solvers/**'
       - 'tutorials/*Foam/cylCyclic2D/**'
   pull_request:
@@ -17,19 +18,20 @@ jobs:
       run: |
         sudo sh -c "wget -O - http://dl.openfoam.org/gpg.key | apt-key add -"
         sudo add-apt-repository "http://dl.openfoam.org/ubuntu dev"
+        sudo add-apt-repository http://dl.openfoam.org/ubuntu
         sudo apt update
-        sudo apt install -y openfoam-dev
+        sudo apt install -y openfoam8
     - name: pip3
       run: pip3 install -r requirements.txt
       working-directory: src/foam2py
 
     - name: Allwmake
-      run: . /opt/openfoam-dev/etc/bashrc && solvers/./Allwmake
+      run: . /opt/openfoam8/etc/bashrc && solvers/./Allwmake
     - name: Allrun
       run: |
         for CASE_PATH in *Foam/cylCyclic2D; do
           if test -d "$CASE_PATH"; then
-            . /opt/openfoam-dev/etc/bashrc && $CASE_PATH/./Allrun
+            . /opt/openfoam8/etc/bashrc && $CASE_PATH/./Allrun
           fi
         done
       working-directory: tutorials
