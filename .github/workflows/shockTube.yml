@@ -45,3 +45,4 @@ jobs:
         path: |
           tutorials/*Foam/shockTube/log.*Mesh
           tutorials/*Foam/shockTube/log.*Foam
+          tutorials/*Foam/shockTube/log.post*

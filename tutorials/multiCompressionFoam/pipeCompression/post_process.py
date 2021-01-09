@@ -97,14 +97,3 @@ checks['vol'] = tests.volFieldValue(project_path, project)
 # %% Output
 output.info(project_path, project, checks)
 # print(f"Compression ratio: {max(v)/min(v):.3f}")
-
-
-# if not all(checks['exec_time']['passed']):
-#     print("\033[93mWARNING! Execution time test not passed "
-#           f"for case {os.path.basename(project_path)}/\033[0m")
-#     print(checks['exec_time'])
-
-# if not all(checks['vol']['passed']):
-#     print("\033[93mWARNING! Volume averaged test not passed "
-#           f"for case {os.path.basename(project_path)}/\033[0m")
-#     print(checks['vol'])

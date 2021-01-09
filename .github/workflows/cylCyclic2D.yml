@@ -45,3 +45,4 @@ jobs:
         path: |
           tutorials/*Foam/cylCyclic2D/log.*Mesh
           tutorials/*Foam/cylCyclic2D/log.*Foam
+          tutorials/*Foam/cylCyclic2D/log.post*

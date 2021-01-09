@@ -45,3 +45,4 @@ jobs:
         path: |
           tutorials/*Foam/pipeCompression/log.*Mesh
           tutorials/*Foam/pipeCompression/log.*Foam
+          tutorials/*Foam/pipeCompression/log.post*
