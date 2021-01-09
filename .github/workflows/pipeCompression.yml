@@ -10,14 +10,13 @@ on:
       - master
 
 jobs:
-  pipeCompression:
+  openfoam8:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - name: apt-get
       run: |
         sudo sh -c "wget -O - http://dl.openfoam.org/gpg.key | apt-key add -"
-        sudo add-apt-repository "http://dl.openfoam.org/ubuntu dev"
         sudo add-apt-repository http://dl.openfoam.org/ubuntu
         sudo apt update
         sudo apt install -y openfoam8

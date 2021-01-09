@@ -13,7 +13,7 @@ sys.path.insert(0, project_path + '/../../../src')
 
 import foam2py.openfoam_case as openfoam_case
 import foam2py.tests as tests
-import foam2py.tabulated as tabulated
+import foam2py.output as output
 
 solvers = ["multiCompressionFoam", "rhoPimpleFoam", "rhoCentralFoam"]
 
@@ -26,9 +26,8 @@ project = project = dict(
 for solver in solvers:
     case_path = openfoam_case.rel_path(project_path, solver)
     project[solver] = dict(
-        execution_time = openfoam_case.grep_value("ExecutionTime",
-                                                  log=case_path
-                                                      + f"/log.{solver}"),
+        exec_time = openfoam_case.grep_value("ExecutionTime",
+                                             log=case_path + f"/log.{solver}"),
     )
 del case_path
 
@@ -36,16 +35,12 @@ del case_path
 checks = {}
 
 # Execution times
-checks['execution_time'] = tests.execution_time(project_path, project)
+checks['exec_time'] = tests.execution_time(project_path, project)
 
 # %% Output
-print(tabulate([[os.path.basename(project_path),
-                 str(project['cells']),
-                 all(checks['execution_time']['passed'])]],
-                headers=['case          ', 'nCells',
-                         'execution_time']))
+output.info(project_path, project, checks)
 
-# if not all(checks['execution_time']['passed']):
+# if not all(checks['exec_time']['passed']):
 #     print("\033[93mWARNING! Execution time test not passed "
 #           f"for case {os.path.basename(project_path)}/\033[0m")
-#     print(checks['execution_time'])
+#     print(checks['exec_time'])

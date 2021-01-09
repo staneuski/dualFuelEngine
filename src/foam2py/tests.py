@@ -183,22 +183,22 @@ def execution_time(project_path, project):
     solvers, colors = create_solvers_and_colors(project)
     checks = []
     for solver in solvers:
-        delta = (project['multiCompressionFoam']['execution_time']
-                 - project[solver]['execution_time'])
+        delta = (project['multiCompressionFoam']['exec_time']
+                 - project[solver]['exec_time'])
         checks.append([
             solver,
             delta <= 0,
-            project[solver]['execution_time'],
+            project[solver]['exec_time'],
             delta
         ])
     checks = pd.DataFrame(checks,
-                          columns=['solver', 'passed', 'execution_time', 'delta'])
+                          columns=['solver', 'passed', 'exec_time', 'delta'])
 
     if full_output:
         plt.figure(figsize=Figsize*0.7).suptitle('Execution time by solver',
                                                fontweight='bold',
                                                fontsize=Fontsize)
-        plt.bar(range(len(solvers)), checks['execution_time'],
+        plt.bar(range(len(solvers)), checks['exec_time'],
                 color=['C0', 'C1', 'C2'], zorder=3)
         plt.grid(zorder=0)
         plt.xticks(range(len(solvers)), solvers,
