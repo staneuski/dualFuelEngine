@@ -31,9 +31,7 @@ VTK/
 
 
 # Files - local
-! etc/scripts/AllcleanAllrunAny.foam
-etc/FlowVision/**/*.*[backup,glo,err,sta]
-etc/FlowVision/**/*_[00001-99999]*.*[fvstat,fvinp]
+!src/foam2py/tests.py
 
 tutorials/resources/blockMesh/cylCyclic2D
 tutorials/resources/blockMesh/cylPiston
@@ -41,6 +39,5 @@ tutorials/**/0/*[alphaAir,alphaGas,Co,e,K,Ma,p,T,U,V]
 !tutorials/rho*[PimpleFoam,CentralFoam]/**/0/*[p,T,U]
 
 # Folders - local
-etc/**/*.*[drk,fv,*]res/
 !tutorials/**/0/include/
 tutorials/multiCompressionFoam/shockTube/**/*.png
