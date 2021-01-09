@@ -16,6 +16,7 @@ import foam2py.tabulated as tabulated
 
 from foam2py.plot_values import *
 
+# %% Initialisation
 solvers = ['multiCompressionFoam', 'rhoPimpleFoam', 'rhoCentralFoam']
 
 #- Adiabatic compression parameters
@@ -85,7 +86,8 @@ project['adiabatic_process']['volFieldValue'] = {
 print(f"Compression ratio: {max(v)/min(v):.3f}")
 del coord, v
 
-# %% Mean volFieldValue() parameters
+# %% Figures
+# Mean volFieldValue() parameters
 plt.figure(figsize=Figsize*2).suptitle('Mean parameters\nvolFieldValue',
                                      fontweight='bold', fontsize=Fontsize)
 subplot = 321
@@ -120,6 +122,8 @@ for column, subplot_name, label in zip(
 del subplot, column, subplot_name, label
 plt.savefig(project_path + "/postProcessing/volFieldValue(time).png")
 
-# %% Execution times
+# Execution times
 execution_times = figure.execution_time(project_path, project)
+
+# %% Output
 print(tabulated.times(solvers, execution_times), '\n')

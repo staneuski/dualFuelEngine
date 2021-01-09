@@ -14,8 +14,9 @@ import foam2py.openfoam_case as openfoam_case
 import foam2py.figure as figure
 import foam2py.tabulated as tabulated
 
-from foam2py.plot_values import * 
+from foam2py.plot_values import *
 
+# %% Initialisation
 solvers = ["multiCompressionFoam", "rhoPimpleFoam", "rhoCentralFoam"]
 
 # %% Create case set w/ dataframes
@@ -34,6 +35,9 @@ for solver in solvers:
 del case_path
 print(tabulated.info(project_path, project))
 
-# %% Execution times
+# %% Figures
+# Execution times
 execution_times = figure.execution_time(project_path, project)
+
+# %% Output
 print(tabulated.times(solvers, execution_times), '\n')

@@ -16,6 +16,7 @@ import foam2py.tabulated as tabulated
 
 from foam2py.plot_values import *
 
+# %% Initialisation
 solvers = ['multiCompressionFoam', 'rhoPimpleFoam', 'rhoCentralFoam']
 
 # %% Create case set w/ dataframes
@@ -55,7 +56,8 @@ for solver in solvers:
 del case_path
 print(tabulated.info(project_path, project))
 
-# %% Mean volFieldValue() parameters
+# %% Figures
+# Mean volFieldValue() parameters
 plt.figure(figsize=Figsize*2).suptitle('Mean parameters\nvolFieldValue',
                                      fontweight='bold', fontsize=Fontsize)
 subplot = 321
@@ -89,31 +91,11 @@ for column, subplot_name, label in zip(
 del subplot, column, subplot_name, label
 plt.savefig(project_path + "/postProcessing/volFieldValue(time).png")
 
-# %% Mass flow rates flowRatePatch
-plt.figure(figsize=Figsize).suptitle("Mass flow rates",
-                                   fontweight='bold', fontsize=Fontsize)
-for patch in ['inlet', 'outlet']:
-    if patch == 'outlet':
-        linestyle = '--'
-    else:
-        linestyle = '-'
+# Mass flow rates flowRatePatch
+figure.mass_flow_rate(project_path, project)
 
-    for solver, color in zip(solvers, ['C0', 'C1', 'C2']):
-        plt.plot(project[solver]['flowRatePatch'][patch]['time']*1e+3,
-                 project[solver]['flowRatePatch'][patch]['phi'],
-                 label=(solver + ", " + patch),
-                 linestyle=linestyle, linewidth=linewidth, color=color)
-    del solver, color
-del patch, linestyle
-
-plt.gca().invert_yaxis()
-plt.grid(True)
-plt.legend(loc="best", fontsize=fontsize)
-plt.xlabel("$\\tau$, ms", fontsize=fontsize)
-plt.ylabel("$\\varphi$, kg/s", fontsize=fontsize)
-plt.tick_params(axis="both", labelsize=fontsize)
-plt.savefig(project_path + "/postProcessing/flowRatePatch(time).png")
-
-# %% Execution times
+# Execution times
 execution_times = figure.execution_time(project_path, project)
+
+# %% Output
 print(tabulated.times(solvers, execution_times), '\n')
