@@ -21,11 +21,21 @@ for solver in solvers:
                                                       + f"/log.{solver}"),
     )
 del case_path
-print(tabulated.info(project_path, project))
 
 # %% Figures
+checks = {}
+
 # Execution times
-execution_times = figure.execution_time(project_path, project)
+checks['execution_time'] = tests.execution_time(project_path, project)
 
 # %% Output
-print(tabulated.times(solvers, execution_times), '\n')
+print(tabulate([[os.path.basename(project_path),
+                 str(project['cells']),
+                 all(checks['execution_time']['passed'])]],
+                headers=['case          ', 'nCells',
+                         'execution_time']))
+
+# if not all(checks['execution_time']['passed']):
+#     print("\033[93mWARNING! Execution time test not passed "
+#           f"for case {os.path.basename(project_path)}/\033[0m")
+#     print(checks['execution_time'])

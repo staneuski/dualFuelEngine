@@ -41,7 +41,6 @@ for solver in solvers:
                     sep='\t', header=3)['volIntegrate(rho)']
     )
 del case_path
-print(tabulated.info(project_path, project))
 
 # Adiabatic process calculation
 coord = -amplitude/2/np.pi/frequency*np.cos(
@@ -75,15 +74,33 @@ project['adiabatic_process']['volFieldValue'] = {
                                                   ['volFieldValue']
                                                   ['volIntegrate(rho)'][0])
 }
-print(f"Compression ratio: {max(v)/min(v):.3f}")
 del coord, v
 
 # %% Figures
-# Mean volFieldValue() parameters
-figure.volFieldValue(project_path, project)
+checks = {}
 
 # Execution times
-execution_times = figure.execution_time(project_path, project)
+checks['execution_time'] = tests.execution_time(project_path, project)
+
+# Mean volFieldValue() parameters
+checks['vol'] = tests.volFieldValue(project_path, project)
 
 # %% Output
-print(tabulated.times(solvers, execution_times), '\n')
+# print(f"Compression ratio: {max(v)/min(v):.3f}")
+
+print(tabulate([[os.path.basename(project_path),
+                 str(project['cells']),
+                 all(checks['execution_time']['passed']),
+                 all(checks['vol']['passed'])]],
+                headers=['case          ', 'nCells',
+                         'execution_time', 'vol']))
+
+# if not all(checks['execution_time']['passed']):
+#     print("\033[93mWARNING! Execution time test not passed "
+#           f"for case {os.path.basename(project_path)}/\033[0m")
+#     print(checks['execution_time'])
+
+# if not all(checks['vol']['passed']):
+#     print("\033[93mWARNING! Volume averaged test not passed "
+#           f"for case {os.path.basename(project_path)}/\033[0m")
+#     print(checks['vol'])
