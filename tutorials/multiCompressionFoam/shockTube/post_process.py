@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
-# %% [markdown]
-# # `shockTube/` cases post-processing
-# %%
+# %% Import
 import os
 import sys
 import numpy as np

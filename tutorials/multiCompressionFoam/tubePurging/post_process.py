@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
-# %% [markdown]
-# # `tubePurging/` cases post-processing
-# %%
+# %% Import
 import os
 import sys
 import numpy as np
@@ -58,38 +56,7 @@ print(tabulated.info(project_path, project))
 
 # %% Figures
 # Mean volFieldValue() parameters
-plt.figure(figsize=Figsize*2).suptitle('Mean parameters\nvolFieldValue',
-                                     fontweight='bold', fontsize=Fontsize)
-subplot = 321
-for column, subplot_name, label in zip(
-        project["rhoPimpleFoam"]['volFieldValue'].columns[1:].drop('volAverage(K)'),
-        ["Pressure", "Temperature", "Density", "Energy", "Mass"],
-        ["p, Pa", "T, K", "$\\rho, kg/m^3$", "E, J/kg", "M, kg"]
-    ):
-    plt.subplot(subplot).set_title(subplot_name + ", " + column,
-                                   fontstyle='italic', fontsize=fontsize)
-    color = 0
-    for solver in solvers:
-        plt.plot(project[solver]['volFieldValue']['time']*1e+3,
-                 project[solver]['volFieldValue'][column],
-                 label=solver, linewidth=linewidth)
-        if ((solver == "multiCompressionFoam" or solver == "rhoPimpleFoam")
-            and (column == "volAverage(e)")):
-            plt.plot(project[solver]['volFieldValue']['time']*1e+3,
-                     project[solver]['volFieldValue']["volAverage(K)"],
-                     label=solver + " (K)", linestyle='--', linewidth=linewidth,
-                     color='C' + str(color))
-            color += 1
-    del color
-    subplot += 1
-
-    plt.grid(True)
-    plt.legend(loc="best", fontsize=fontsize)
-    plt.xlabel("$\\tau$, ms", fontsize=fontsize)
-    plt.ylabel(label, fontsize=fontsize)
-    plt.tick_params(axis="both", labelsize=fontsize)
-del subplot, column, subplot_name, label
-plt.savefig(project_path + "/postProcessing/volFieldValue(time).png")
+figure.volFieldValue(project_path, project)
 
 # Mass flow rates flowRatePatch
 figure.mass_flow_rate(project_path, project)
