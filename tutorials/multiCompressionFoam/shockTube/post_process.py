@@ -1,20 +1,10 @@
 #!/usr/bin/env python3
-# %% Import
-import os
-import sys
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-
+# %%
+import os, sys
 project_path = os.path.split(os.path.realpath(__file__))[0]
 sys.path.insert(0, project_path + '/../../../src')
-import foam2py.openfoam_case as openfoam_case
-import foam2py.figure as figure
-import foam2py.tabulated as tabulated
+from foam2py.imports import *
 
-from foam2py.plot_values import *
-
-# %% Initialisation
 solvers = ["multiCompressionFoam", "rhoPimpleFoam", "rhoCentralFoam"]
 
 # %% Create case set w/ dataframes
@@ -35,7 +25,8 @@ print(tabulated.info(project_path, project))
 
 # %% Figures
 # Execution times
-execution_times = figure.execution_time(project_path, project)
+execution_times = figure.execution_time(project_path, project,
+                                       create_figure=plot_figures)
 
 # %% Output
 print(tabulated.times(solvers, execution_times), '\n')

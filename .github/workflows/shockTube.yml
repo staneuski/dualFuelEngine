@@ -32,14 +32,13 @@ jobs:
         done
       working-directory: tutorials
     - name: post_process.py
-      run: tutorials/multiCompressionFoam/shockTube/./post_process.py
-      # working-directory: tutorials/multiCompressionFoam/shockTube
+      run: ./post_process.py
+      working-directory: tutorials/multiCompressionFoam/shockTube
 
     - uses: actions/upload-artifact@v2
       if: always()
       with:
-        name: artifacts
+        name: artifacts-shockTube
         path: |
           tutorials/*Foam/shockTube/log.*Mesh
           tutorials/*Foam/shockTube/log.*Foam
-          tutorials/*Foam/shockTube/postProcessing/*.png

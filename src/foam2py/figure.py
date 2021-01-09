@@ -109,7 +109,7 @@ def mass_flow_rate(project_path, project, engine=False, rpm=92, evo=85, ipo=42):
     plt.savefig(project_path + "/postProcessing/flowRatePatch(time).png")
 
 
-def execution_time(project_path, project):
+def execution_time(project_path, project, create_figure=True):
     """Create execution times bar plot and return execution times array
     """
     # Create execution times array
@@ -118,18 +118,19 @@ def execution_time(project_path, project):
     for solver in solvers:
         execution_times.append(project[solver]['execution_time'])
 
-    # Plot bar figure
-    plt.figure(figsize=Figsize*0.7).suptitle('Execution time by solver',
-                                           fontweight='bold',
-                                           fontsize=Fontsize)
-    plt.bar(range(len(solvers)), execution_times,
-            color=['C0', 'C1', 'C2'], zorder=3)
-    plt.grid(zorder=0)
-    plt.xticks(range(len(solvers)), solvers,
-               fontsize=fontsize)
-    plt.yticks(fontsize=fontsize)
-    plt.ylabel("$\\tau$, s", fontsize=fontsize)
-    plt.savefig(project_path
-               + "/postProcessing/ExecutionTime(solver).png")
+    if create_figure:
+        plt.figure(figsize=Figsize*0.7).suptitle('Execution time by solver',
+                                               fontweight='bold',
+                                               fontsize=Fontsize)
+        plt.bar(range(len(solvers)), execution_times,
+                color=['C0', 'C1', 'C2'], zorder=3)
+        plt.grid(zorder=0)
+        plt.xticks(range(len(solvers)), solvers,
+                   fontsize=fontsize)
+        plt.yticks(fontsize=fontsize)
+        plt.ylabel("$\\tau$, s", fontsize=fontsize)
+        plt.savefig(project_path
+                   + "/postProcessing/ExecutionTime(solver).png")
+
     return execution_times
 

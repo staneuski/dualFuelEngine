@@ -1,21 +1,20 @@
 #!/usr/bin/env python3
-# %% Import
-import os
-import sys
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-
+# %%
+import os, sys
 project_path = os.path.split(os.path.realpath(__file__))[0]
 sys.path.insert(0, project_path + '/../../../src')
-import foam2py.openfoam_case as openfoam_case
-import foam2py.figure as figure
-import foam2py.tabulated as tabulated
+from foam2py.imports import *
 
-from foam2py.plot_values import *
-
-# %% Initialisation
 solvers = ['multiCompressionFoam', 'rhoPimpleFoam', 'rhoCentralFoam']
+
+#- Adiabatic compression parameters
+frequency = 1 # [s]
+amplitude = 2 # [m/s]
+start = 0.15 # [s]
+Cp = 1005 # [J/kg/K]
+Cv = Cp - 287 # [J/kg/K]
+AREA = 1e-4 # [m^2]
+LENGTH = 0.6 # [m]
 
 # %% Create case set w/ dataframes
 project = project = dict(
@@ -80,11 +79,12 @@ print(f"Compression ratio: {max(v)/min(v):.3f}")
 del coord, v
 
 # %% Figures
-# Mean volFieldValue() parameters
-figure.volFieldValue(project_path, project)
+if plot_figures:
+    # Mean volFieldValue() parameters
+    figure.volFieldValue(project_path, project)
 
 # Execution times
-execution_times = figure.execution_time(project_path, project)
+execution_times = figure.execution_time(project_path, project, create_figure=plot_figures)
 
 # %% Output
 print(tabulated.times(solvers, execution_times), '\n')
