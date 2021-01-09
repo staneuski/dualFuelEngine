@@ -1,15 +1,15 @@
-name: shockTube
+name: pipeCompression
 on:
   push:
     paths:
       - 'solvers/**'
-      - 'tutorials/*Foam/shockTube/**'
+      - 'tutorials/*Foam/pipeCompression/**'
   pull_request:
     branches:
       - master
 
 jobs:
-  shockTube:
+  pipeCompression:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -27,7 +27,7 @@ jobs:
       run: . /opt/openfoam-dev/etc/bashrc && solvers/./Allwmake
     - name: Allrun
       run: |
-        for CASE_PATH in *Foam/shockTube; do
+        for CASE_PATH in *Foam/pipeCompression; do
           if test -d "$CASE_PATH"; then
             . /opt/openfoam-dev/etc/bashrc && $CASE_PATH/./Allrun
           fi
@@ -35,12 +35,12 @@ jobs:
       working-directory: tutorials
     - name: post_process.py
       run: ./post_process.py
-      working-directory: tutorials/multiCompressionFoam/shockTube
+      working-directory: tutorials/multiCompressionFoam/pipeCompression
 
     - uses: actions/upload-artifact@v2
       if: always()
       with:
-        name: artifacts-shockTube
+        name: artifacts-pipeCompression
         path: |
-          tutorials/*Foam/shockTube/log.*Mesh
-          tutorials/*Foam/shockTube/log.*Foam
+          tutorials/*Foam/pipeCompression/log.*Mesh
+          tutorials/*Foam/pipeCompression/log.*Foam
