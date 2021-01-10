@@ -22,9 +22,9 @@ def info(project_path, project, checks):
 
     basics = tabulate([body], headers=header)
 
-    # Write complete output to log.postProcess
-    log = open(project_path + "/log.postProcess", 'w+') # 'a+'
-    log.write('\n' + basics + '\n' + details + '\nend\n')
+    # Write complete output to log.tests
+    log = open(project_path + "/log.post_process", 'w+')
+    log.write(basics + '\n' + details + '\nend\n')
     log.close()
 
     # Print output

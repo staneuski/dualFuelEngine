@@ -52,4 +52,4 @@ jobs:
     - uses: actions/upload-artifact@v2
       with:
         name: ${{ matrix.foam }}, ${{ matrix.case }}
-        path: tutorials/multiCompressionFoam/${{ matrix.case }}/log.post*
+        path: tutorials/multiCompressionFoam/${{ matrix.case }}/log.post_process
