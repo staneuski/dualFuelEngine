@@ -7,8 +7,8 @@ def rel_path(project_path, solver):
     if solver == "multiCompressionFoam":
         return project_path
     else:
-        return (project_path
-                + f"/../../{solver}/{os.path.basename(project_path)}")
+        return os.path.realpath(project_path + f"/../../{solver}"
+                                f"/{os.path.basename(project_path)}")
 
 def grep_value(key, log="/log.checkMesh", pattern='(\d+.\d+)'):
     """Get value in line with key by pattern

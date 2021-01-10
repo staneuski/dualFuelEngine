@@ -40,15 +40,16 @@ jobs:
           fi
         done
       working-directory: tutorials
+    - uses: actions/upload-artifact@v2
+      if: failure()
+      with:
+        name: ${{ matrix.case }}
+        path: tutorials/*Foam/${{ matrix.case }}/log.*
+
     - name: post_process.py
       run: ./post_process.py
       working-directory: tutorials/multiCompressionFoam/${{ matrix.case }}
-
     - uses: actions/upload-artifact@v2
-      if: always()
       with:
-        name: artifacts-${{ matrix.case }}
-        path: |
-          tutorials/*Foam/${{ matrix.case }}/log.*Mesh
-          tutorials/*Foam/${{ matrix.case }}/log.*Foam
-          tutorials/*Foam/${{ matrix.case }}/log.post*
+        name: ${{ matrix.case }}
+        path: tutorials/*Foam/${{ matrix.case }}/log.post*
