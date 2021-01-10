@@ -1,16 +1,17 @@
-name: 
+name: main
 on:
   push:
     paths:
-      - '.github/workflows/main.yml'
+      - '.github/workflows/*.yml'
       - 'solvers/**'
-      - 'tutorials/multiCompressionFoam/**'
+      - 'tutorials/**'
+      - '!tutorials/resources/**'
   pull_request:
     branches:
       - master
 
 jobs:
-  case:
+  tests:
     runs-on: ubuntu-latest
     strategy:
       matrix:
