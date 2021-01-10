@@ -70,7 +70,7 @@ checks['exec_time'] = tests.execution_time(project_path, project)
 checks['vol'] = tests.volFieldValue(project_path, project)
 
 # Mass flow rates flowRatePatch
-checks['phi'] = tests.mass_flow_rate(project_path, project)
+checks['mass_flow_rate'] = tests.mass_flow_rate(project_path, project)
 
 # %% Output
 output.info(project_path, project, checks)

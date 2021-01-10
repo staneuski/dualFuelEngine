@@ -77,7 +77,7 @@ checks['vol'] = tests.volFieldValue(project_path, project,
                                     engine=True, rpm=rpm, evo=evo, ipo=ipo)
 
 # Mass flow rates flowRatePatch
-checks['phi'] = tests.mass_flow_rate(project_path, project,
+checks['mass_flow_rate'] = tests.mass_flow_rate(project_path, project,
                                     engine=True, rpm=rpm, evo=evo, ipo=ipo)
 
 # %% Output
