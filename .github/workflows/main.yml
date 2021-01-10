@@ -43,7 +43,7 @@ jobs:
     - uses: actions/upload-artifact@v2
       if: failure()
       with:
-        name: ${{ matrix.case }}
+        name: ${{ matrix.foam }}, ${{ matrix.case }}
         path: tutorials/*Foam/${{ matrix.case }}/log.*
 
     - name: post_process.py
@@ -51,5 +51,5 @@ jobs:
       working-directory: tutorials/multiCompressionFoam/${{ matrix.case }}
     - uses: actions/upload-artifact@v2
       with:
-        name: ${{ matrix.case }}
-        path: tutorials/*Foam/${{ matrix.case }}/log.post*
+        name: ${{ matrix.foam }}, ${{ matrix.case }}
+        path: tutorials/multiCompressionFoam/${{ matrix.case }}/log.post*
