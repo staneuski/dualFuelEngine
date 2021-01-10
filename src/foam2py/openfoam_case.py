@@ -13,13 +13,16 @@ def rel_path(project_path, solver):
 def grep_value(key, log="/log.checkMesh", pattern='(\d+.\d+)'):
     """Get value in line with key by pattern
     """
-    for grep in open(log):
-        if key in grep:
-            value = re.findall(pattern, grep)
+    found = []
+    for line in open(log):
+        if key in line:
+            value = re.findall(pattern, line)
+            found.append((key in line))
+    found = any(found)
 
-    if pattern == '(\d+)':
+    if found and (pattern == '(\d+)'):
         return int(value[0])
-    elif pattern == '(\d+.\d+)':
+    elif found and (pattern == '(\d+.\d+)'):
         return float(value[0])
     else:
-        return value[0]
+        return found

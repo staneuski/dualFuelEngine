@@ -15,7 +15,8 @@ import foam2py.openfoam_case as openfoam_case
 import foam2py.tests as tests
 import foam2py.output as output
 
-solvers = ['multiCompressionFoam', 'rhoPimpleFoam', 'rhoCentralFoam']
+solvers = ["multiCompressionFoam", "rhoPimpleFoam", "rhoCentralFoam"]
+fields = ["alphaAir", "alphaExh", "alphaGas", "Ma", 'p', "phi", "rho", 'T']
 
 # %% Create case set w/ dataframes
 project = dict(
@@ -54,6 +55,13 @@ del case_path
 
 # %% Checks
 checks = {}
+checks['field_extremums'], extremums = [], {}
+for field in fields:
+    extremums[field] = tests.field_extremums(project_path, field=field,
+                                            cells=project['cells'])
+    checks['field_extremums'].append([field, all(extremums[field])])
+checks['field_extremums'] = pd.DataFrame(checks['field_extremums'],
+                                        columns=['field', 'passed'])
 
 # Execution times
 checks['exec_time'] = tests.execution_time(project_path, project)

@@ -15,7 +15,8 @@ import foam2py.openfoam_case as openfoam_case
 import foam2py.tests as tests
 import foam2py.output as output
 
-solvers = ['multiCompressionFoam', 'rhoPimpleFoam']
+solvers = ["multiCompressionFoam", "rhoPimpleFoam"]
+fields = ["alphaAir", "alphaExh", "alphaGas", "Ma", 'p', "phi", "rho", 'T']
 
 #- Engine parameters
 rpm = 92 # [1/min]
@@ -56,14 +57,17 @@ for solver in solvers:
     project[solver]['volFieldValue'] = (
         project[solver]['volFieldValue'].rename(columns={'# Time        ': 'time'})
     )
-    # project[solver]['volFieldValue']['volIntegrate(rho)'] = (
-    #     pd.read_csv(case_path + "/postProcessing/mass/0/volFieldValue.dat",
-    #                 sep='\t', header=3)['volIntegrate(rho)']
-    # )
 del case_path
 
 # %% Checks
 checks = {}
+checks['field_extremums'], extremums = [], {}
+for field in fields:
+    extremums[field] = tests.field_extremums(project_path, field=field,
+                                            cells=project['cells'])
+    checks['field_extremums'].append([field, all(extremums[field])])
+checks['field_extremums'] = pd.DataFrame(checks['field_extremums'],
+                                        columns=['field', 'passed'])
 
 # Execution times
 checks['exec_time'] = tests.execution_time(project_path, project)

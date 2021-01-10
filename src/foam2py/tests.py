@@ -1,8 +1,10 @@
+import os
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from scipy.interpolate import interp1d
 
+from foam2py.openfoam_case import grep_value
 from foam2py.plot_values import *
 
 try:
@@ -11,7 +13,66 @@ try:
 except:
     full_output = False
 
+ALPHA_DELTA = 0.01
+MA_MAX = 1
+P_MAX = 1e+9
+RHO_MAX = 50
+T_MAX = 5000
+
 MEAN_ERROR = 15 # [%]
+
+def field_extremums(case_path, field, cells):
+    def get_internal_field_extremums(time_folder, field, cells):
+
+        field_file = time_folder + '/' + field
+
+        # Check if internalField is uniform and create array from it if not
+        uniform = grep_value("internalField   uniform",
+                             log=field_file, pattern='(\d+)')
+        if (type(uniform) is bool) and (not uniform):
+            field = np.loadtxt(field_file, skiprows=22, max_rows=cells)
+        else:
+            field = [uniform]
+
+        return [min(field), max(field)]
+
+    def list_time_folders(case_path):
+        time_folders = set()
+        for folder in os.listdir(case_path):
+            if os.path.isdir(folder):
+                time_folders.add(folder)
+        return list(time_folders - {'0', 'constant', 'dynamicCode', 'postProcessing', 'system'})
+
+    field_min, field_max = 0, np.Inf
+    if 'alpha' in field:
+        field_min, field_max = -ALPHA_DELTA, 1 + ALPHA_DELTA
+    elif field is 'Ma':
+        field_max = MA_MAX
+    elif field is 'p':
+        field_max = P_MAX
+    elif field is 'rho':
+        field_max = RHO_MAX
+    elif field is 'rho':
+        field_max = T_MAX
+    elif field is 'phi':
+        cells -= 1
+
+    times, checks = [], []
+    for time_folder in list_time_folders(case_path):
+        times.append(float(time_folder))
+        checks.append(
+            get_internal_field_extremums(case_path + '/' + time_folder,
+                                        field, cells)
+        )
+    checks = pd.DataFrame(checks, columns=['min', 'max'], index=times)
+    checks['passed_min'] = checks['min'].ge(field_min)
+    checks['passed_max'] = checks['max'].le(field_max)
+    checks['passed'] = (checks[['passed_min', 'passed_max']]
+                                              .all(axis=1))
+    return checks.reindex(
+        columns=['passed', 'passed_min', 'passed_max', 'min', 'max']
+    )
+
 
 def create_solvers_and_colors(project):
     solvers = np.intersect1d(
