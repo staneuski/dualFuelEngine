@@ -1,20 +1,21 @@
-name: cylCyclic2D
+name: 
 on:
-  # push:
-  #   paths:
-  #     - '.github/workflows/cylCyclic2D.yml'
-  #     - 'solvers/**'
-  #     - 'tutorials/*Foam/cylCyclic2D/**'
+  push:
+    paths:
+      - '.github/workflows/main.yml'
+      - 'solvers/**'
+      - 'tutorials/multiCompressionFoam/**'
   pull_request:
     branches:
       - master
 
 jobs:
-  cylCyclic2D:
+  case:
     runs-on: ubuntu-latest
     strategy:
       matrix:
         foam: [openfoam8]
+        case: [shockTube, tubePurging, pipeCompression, cylCyclic2D]
     steps:
     - uses: actions/checkout@v2
     - name: apt-get
@@ -32,7 +33,7 @@ jobs:
       run: . /opt/${{ matrix.foam }}/etc/bashrc && solvers/./Allwmake
     - name: Allrun
       run: |
-        for CASE_PATH in *Foam/cylCyclic2D; do
+        for CASE_PATH in *Foam/${{ matrix.case }}; do
           if test -d "$CASE_PATH"; then
             . /opt/${{ matrix.foam }}/etc/bashrc && $CASE_PATH/./Allrun
           fi
@@ -40,13 +41,13 @@ jobs:
       working-directory: tutorials
     - name: post_process.py
       run: ./post_process.py
-      working-directory: tutorials/multiCompressionFoam/cylCyclic2D
+      working-directory: tutorials/multiCompressionFoam/${{ matrix.case }}
 
     - uses: actions/upload-artifact@v2
       if: always()
       with:
-        name: artifacts-cylCyclic2D
+        name: artifacts-${{ matrix.case }}
         path: |
-          tutorials/*Foam/cylCyclic2D/log.*Mesh
-          tutorials/*Foam/cylCyclic2D/log.*Foam
-          tutorials/*Foam/cylCyclic2D/log.post*
+          tutorials/*Foam/${{ matrix.case }}/log.*Mesh
+          tutorials/*Foam/${{ matrix.case }}/log.*Foam
+          tutorials/*Foam/${{ matrix.case }}/log.post*

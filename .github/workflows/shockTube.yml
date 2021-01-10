@@ -1,10 +1,10 @@
 name: shockTube
 on:
-  push:
-    paths:
-      - '.github/workflows/shockTube.yml'
-      - 'solvers/**'
-      - 'tutorials/*Foam/shockTube/**'
+  # push:
+  #   paths:
+  #     - '.github/workflows/shockTube.yml'
+  #     - 'solvers/**'
+  #     - 'tutorials/*Foam/shockTube/**'
   pull_request:
     branches:
       - master

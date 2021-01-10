@@ -1,10 +1,10 @@
 name: tubePurging
 on:
-  push:
-    paths:
-      - '.github/workflows/tubePurging.yml'
-      - 'solvers/**'
-      - 'tutorials/*Foam/tubePurging/**'
+  # push:
+  #   paths:
+  #     - '.github/workflows/tubePurging.yml'
+  #     - 'solvers/**'
+  #     - 'tutorials/*Foam/tubePurging/**'
   pull_request:
     branches:
       - master

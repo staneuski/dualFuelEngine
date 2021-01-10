@@ -1,10 +1,10 @@
 name: pipeCompression
 on:
-  push:
-    paths:
-      - '.github/workflows/pipeCompression.yml'
-      - 'solvers/**'
-      - 'tutorials/*Foam/pipeCompression/**'
+  # push:
+  #   paths:
+  #     - '.github/workflows/pipeCompression.yml'
+  #     - 'solvers/**'
+  #     - 'tutorials/*Foam/pipeCompression/**'
   pull_request:
     branches:
       - master
