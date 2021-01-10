@@ -10,27 +10,31 @@ on:
       - master
 
 jobs:
-  openfoam8:
+  cylCyclic2D:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        foam: [openfoam8]
     steps:
     - uses: actions/checkout@v2
     - name: apt-get
       run: |
         sudo sh -c "wget -O - http://dl.openfoam.org/gpg.key | apt-key add -"
+        sudo add-apt-repository "http://dl.openfoam.org/ubuntu dev"
         sudo add-apt-repository http://dl.openfoam.org/ubuntu
         sudo apt update
-        sudo apt install -y openfoam8
+        sudo apt install -y ${{ matrix.foam }}
     - name: pip3
       run: pip3 install -r requirements.txt
       working-directory: src/foam2py
 
     - name: Allwmake
-      run: . /opt/openfoam8/etc/bashrc && solvers/./Allwmake
+      run: . /opt/${{ matrix.foam }}/etc/bashrc && solvers/./Allwmake
     - name: Allrun
       run: |
         for CASE_PATH in *Foam/cylCyclic2D; do
           if test -d "$CASE_PATH"; then
-            . /opt/openfoam8/etc/bashrc && $CASE_PATH/./Allrun
+            . /opt/${{ matrix.foam }}/etc/bashrc && $CASE_PATH/./Allrun
           fi
         done
       working-directory: tutorials
