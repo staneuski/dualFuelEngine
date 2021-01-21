@@ -54,10 +54,8 @@ functions
     #includeFunc CourantNo
 
     #includeFunc MachNo
-    #includeFunc writeObjects(e, K)
-    #includeFunc add(e, K)
-    #includeFunc cellMin(p,T,Ma,rho,e)
-    #includeFunc cellMax(p,T,Ma,rho,e)
+    #includeFunc cellMin(p,T,Ma,rho)
+    #includeFunc cellMax(p,T,Ma,rho)
 
     #includeFunc writeCellVolumes
     readFields(V)
