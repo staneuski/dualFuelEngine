@@ -79,6 +79,18 @@ functions
         fields           (V);
     }
 
+    volFieldValue(operation=volIntegrate,V)
+    {
+        type            volFieldValue;
+        libs            ("libfieldFunctionObjects.so");
+        writeControl    outputTime;
+        log             true;
+        writeFields     false;
+        regionType      all;
+        operation       volIntegrate;
+        fields           (V);
+    }
+
     volFieldValue(operation=volAverage)
     {
         type            volFieldValue;
