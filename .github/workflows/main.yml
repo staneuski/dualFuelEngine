@@ -28,7 +28,7 @@ jobs:
         sudo apt install -y ${{ matrix.foam }}
     - name: pip3
       run: pip3 install -r requirements.txt
-      working-directory: src/foam2py
+      working-directory: src/foam2pandas
 
     - name: Allwmake
       run: . /opt/${{ matrix.foam }}/etc/bashrc && solvers/./Allwmake
@@ -52,4 +52,4 @@ jobs:
     - uses: actions/upload-artifact@v2
       with:
         name: ${{ matrix.foam }}, ${{ matrix.case }}
-        path: tutorials/multiCompressionFoam/${{ matrix.case }}/log.post_process
+        path: tutorials/multiCompressionFoam/${{ matrix.case }}/log.postProcess

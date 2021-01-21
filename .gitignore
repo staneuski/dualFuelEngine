@@ -31,7 +31,7 @@ VTK/
 
 
 # Files - local
-!src/foam2py/tests.py
+!src/foam2pandas/tests.py
 
 tutorials/resources/blockMesh/cylCyclic2D
 tutorials/resources/blockMesh/cylPiston
