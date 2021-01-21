@@ -51,39 +51,32 @@ maxCo           0.5;
 
 functions
 {
+    #includeFunc CourantNo
+
+    #includeFunc MachNo
+    #includeFunc writeObjects(e, K)
+    #includeFunc add(e, K)
+    #includeFunc cellMin(p,T,Ma,rho,e)
+    #includeFunc cellMax(p,T,Ma,rho,e)
+
     #includeFunc flowRatePatch(name=inlet)
     #includeFunc flowRatePatch(name=outlet)
-    #includeFunc MachNo
-    #includeFunc CourantNo
-    #includeFunc writeObjects(e)
 
-    mass
+    volFieldValue(operation=volAverage)
     {
         type            volFieldValue;
         libs            ("libfieldFunctionObjects.so");
-        writeControl    timeStep;
-        writeInterval   1;
+        writeControl    outputTime;
         log             true;
         writeFields     false;
-        operation       volIntegrate;
-        fields          (rho);
-    }
-
-    volAverageFieldValues
-    {
-        type            volFieldValue;
-        libs            ("libfieldFunctionObjects.so");
-        writeControl    timeStep;
-        writeInterval   1;
-        log             true;
-        writeFields     false;
+        regionType      cellZone;
+        name            cylinder;
         operation       volAverage;
         fields
         (
-            p T rho e
+            p T rho e K
         );
     }
-}
 }
 
 
