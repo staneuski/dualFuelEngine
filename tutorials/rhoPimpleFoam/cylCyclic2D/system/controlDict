@@ -20,7 +20,7 @@ FoamFile
 endTimeCA       #calc "($EVO + 180)*$deltaTCA";
 
 
-application     rhoPimpleFoam; // rhoPimpleFoam \ moveMesh
+application     rhoPimpleFoam;
 
 startFrom       startTime;
 
@@ -52,28 +52,49 @@ runTimeModifiable true;
 
 adjustTimeStep  true;
 
-maxCo           0.4;
+maxCo           0.1;
 
 functions
 {
+    #includeFunc CourantNo
+
+    #includeFunc MachNo
+    #includeFunc writeObjects(e, K)
+    #includeFunc add(e, K)
+    #includeFunc cellMin(p,T,Ma,rho,e)
+    #includeFunc cellMax(p,T,Ma,rho,e)
+
     #includeFunc flowRatePatch(name=inlet)
     #includeFunc flowRatePatch(name=injection)
     #includeFunc flowRatePatch(name=outlet)
 
-    #includeFunc MachNo
-    #includeFunc CourantNo
-    #includeFunc writeObjects(e, K)
-    #includeFunc writeCellVolumes
-
-    volAverageFieldValues
+    readFields(V)
+    {
+        type            readFields;
+        libs            ("libfieldFunctionObjects.so");
+        writeControl    outputTime;
+        fields           (V);
+    }
+    volFieldValue(operation=sum,V)
     {
         type            volFieldValue;
         libs            ("libfieldFunctionObjects.so");
-        writeControl    timeStep;
-        writeInterval   1;
+        writeControl    outputTime;
         log             true;
         writeFields     false;
-        writeVolume     true; /*FIXME #0003489: https://bugs.openfoam.org/view.php?id=3489 */
+        regionType      cellZone;
+        name            cylinder;
+        operation       sum;
+        fields           (V);
+    }
+
+    volFieldValue(operation=volAverage)
+    {
+        type            volFieldValue;
+        libs            ("libfieldFunctionObjects.so");
+        writeControl    outputTime;
+        log             true;
+        writeFields     false;
         regionType      cellZone;
         name            cylinder;
         operation       volAverage;
@@ -81,17 +102,6 @@ functions
         (
             p T rho e K
         );
-    }
-
-    totalEnergy
-    {
-        type            add;
-        libs            ("libfieldFunctionObjects.so");
-
-        fields          (e K);
-
-        executeControl  writeTime;
-        writeControl    writeTime;
     }
 }
 
