@@ -51,40 +51,42 @@ maxCo           0.1;
 
 functions
 {
-    #includeFunc MachNo
     #includeFunc CourantNo
+
+    #includeFunc MachNo
     #includeFunc writeObjects(e, K)
+    #includeFunc add(e, K)
+    #includeFunc cellMin(p,T,Ma,rho,e)
+    #includeFunc cellMax(p,T,Ma,rho,e)
+
     #includeFunc writeCellVolumes
-
-    totalEnergy
+    readFields(V)
     {
-        type            add;
+        type            readFields;
         libs            ("libfieldFunctionObjects.so");
-        executeControl  writeTime;
-        writeControl    writeTime;
-        fields          (e K);
+        writeControl    outputTime;
+        fields           (V);
     }
-
-    mass
+    volFieldValue(operation=sum,V)
     {
         type            volFieldValue;
         libs            ("libfieldFunctionObjects.so");
-        writeControl    timeStep;
-        writeInterval   1;
+        writeControl    outputTime;
         log             true;
         writeFields     false;
-        operation       volIntegrate;
-        fields          (rho);
+        regionType      all;
+        operation       sum;
+        fields           (V);
     }
 
-    volAverageFieldValues
+    volFieldValue(operation=volAverage)
     {
         type            volFieldValue;
         libs            ("libfieldFunctionObjects.so");
-        writeControl    timeStep;
-        writeInterval   1;
+        writeControl    outputTime;
         log             true;
         writeFields     false;
+        regionType      all;
         operation       volAverage;
         fields
         (
