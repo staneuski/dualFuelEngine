@@ -68,6 +68,7 @@ functions
     #includeFunc flowRatePatch(name=injection)
     #includeFunc flowRatePatch(name=outlet)
 
+    #includeFunc writeCellVolumes
     readFields(V)
     {
         type            readFields;

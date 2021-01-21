@@ -52,7 +52,7 @@ runTimeModifiable true;
 
 adjustTimeStep  true;
 
-maxCo           0.1;
+maxCo           0.4;
 
 functions
 {
@@ -68,6 +68,7 @@ functions
     #includeFunc flowRatePatch(name=injection)
     #includeFunc flowRatePatch(name=outlet)
 
+    #includeFunc writeCellVolumes
     readFields(V)
     {
         type            readFields;
