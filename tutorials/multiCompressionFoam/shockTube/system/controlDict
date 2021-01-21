@@ -53,16 +53,27 @@ maxDeltaT       1;
 
 functions
 {
-    #includeFunc MachNo
+    #includeFunc CourantNo
 
-    internalEnergy
+    #includeFunc MachNo
+    #includeFunc writeObjects(e, K)
+    #includeFunc add(e, K)
+    #includeFunc cellMin(p,T,Ma,rho,e,alphaAir,alphaGas,alphaExh)
+    #includeFunc cellMax(p,T,Ma,rho,e,alphaAir,alphaGas,alphaExh)
+
+    volFieldValue(operation=volAverage)
     {
-        type            writeObjects;
-        libs            ("libutilityFunctionObjects.so");
-        writeControl    writeTime;
-        objects
+        type            volFieldValue;
+        libs            ("libfieldFunctionObjects.so");
+        writeControl    timeStep;
+        writeInterval   1;
+        log             true;
+        writeFields     false;
+        regionType      all;
+        operation       volAverage;
+        fields
         (
-            e
+            p T rho e K alphaAir alphaExh alphaGas
         );
     }
 }

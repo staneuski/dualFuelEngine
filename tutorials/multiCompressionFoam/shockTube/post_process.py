@@ -37,7 +37,7 @@ checks = {}
 checks['field_extremums'], extremums = [], {}
 for field in fields:
     extremums[field] = tests.field_extremums(project_path, field=field,
-                                            cells=project['cells'])
+                                           cells=project['cells'])
     checks['field_extremums'].append([field, all(extremums[field])])
 checks['field_extremums'] = pd.DataFrame(checks['field_extremums'],
                                         columns=['field', 'passed'])
