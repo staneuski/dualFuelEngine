@@ -11,9 +11,9 @@ from tabulate import tabulate
 project_path = os.path.split(os.path.realpath(__file__))[0]
 sys.path.insert(0, project_path + '/../../../src')
 
-import foam2py.openfoam_case as openfoam_case
-import foam2py.tests as tests
-import foam2py.output as output
+import foam2pandas.openfoam_case as openfoam_case
+import foam2pandas.tests as tests
+import foam2pandas.output as output
 
 solvers = ["multiCompressionFoam", "rhoPimpleFoam", "rhoCentralFoam"]
 fields = ["alphaAir", "alphaExh", "alphaGas", "Ma", 'p', "phi", "rho", 'T']

@@ -54,6 +54,7 @@ functions
     #includeFunc CourantNo
 
     #includeFunc MachNo
+    #includeFunc writeObjects(e)
     #includeFunc cellMin(p,T,Ma,rho,e)
     #includeFunc cellMax(p,T,Ma,rho,e)
 

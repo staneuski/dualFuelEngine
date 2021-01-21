@@ -59,6 +59,19 @@ functions
     #includeFunc cellMin(p,T,Ma,rho,e,alphaAir,alphaGas,alphaExh)
     #includeFunc cellMax(p,T,Ma,rho,e,alphaAir,alphaGas,alphaExh)
 
+    volFieldValue(operation=volIntegrate,rho)
+    {
+        type            volFieldValue;
+        libs            ("libfieldFunctionObjects.so");
+        writeControl    timeStep;
+        writeInterval   1;
+        log             true;
+        writeFields     false;
+        regionType      all;
+        operation       volIntegrate;
+        fields           (rho);
+    }
+
     #includeFunc writeCellVolumes
     readFields(V)
     {
@@ -76,18 +89,6 @@ functions
         writeFields     false;
         regionType      all;
         operation       sum;
-        fields           (V);
-    }
-
-    volFieldValue(operation=volIntegrate,V)
-    {
-        type            volFieldValue;
-        libs            ("libfieldFunctionObjects.so");
-        writeControl    outputTime;
-        log             true;
-        writeFields     false;
-        regionType      all;
-        operation       volIntegrate;
         fields           (V);
     }
 
