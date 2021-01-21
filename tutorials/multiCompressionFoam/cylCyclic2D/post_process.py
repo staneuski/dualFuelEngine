@@ -20,6 +20,5 @@ df_self, df_etalon = make_io(Checks(),
 # %% exit
 try:
     get_ipython
-    exit( (not all(df_self.all())) + (not all(df_etalon.all())) )
 except:
-    pass
+    exit( (not all(df_self.all())) ) # + (not all(df_etalon.all()))
