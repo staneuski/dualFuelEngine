@@ -17,6 +17,7 @@ jobs:
       matrix:
         foam: [openfoam8]
         case: [shockTube, tubePurging, pipeCompression, cylCyclic2D]
+      fail-fast: false
     steps:
     - uses: actions/checkout@v2
     - name: apt-get
