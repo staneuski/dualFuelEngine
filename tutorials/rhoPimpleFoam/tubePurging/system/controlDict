@@ -65,8 +65,7 @@ functions
         writeControl    outputTime;
         log             true;
         writeFields     false;
-        regionType      cellZone;
-        name            cylinder;
+        regionType      all;
         operation       volAverage;
         fields
         (
