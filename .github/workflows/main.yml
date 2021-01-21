@@ -51,6 +51,7 @@ jobs:
       run: ./post_process.py
       working-directory: tutorials/multiCompressionFoam/${{ matrix.case }}
     - uses: actions/upload-artifact@v2
+      if: always()
       with:
         name: ${{ matrix.foam }}, ${{ matrix.case }}
         path: tutorials/multiCompressionFoam/${{ matrix.case }}/log.postProcess
